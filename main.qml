@@ -9,7 +9,7 @@ ApplicationWindow {
     width:1080
     height:1000
 
-//    visibility: "FullScreen"
+    visibility: "FullScreen"
     Item {
         id: parametri_generali
         property string coloreTesto: "#473729"

@@ -34,7 +34,7 @@ Rectangle {
             GridView {
                 Layout.alignment: Qt.AlignCenter
                 snapMode: GridView.SnapToRow
-                cellWidth: 300; cellHeight: cellWidth
+                cellWidth: 250; cellHeight: cellWidth
                 anchors.fill: parent
 
 

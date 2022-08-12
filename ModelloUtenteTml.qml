@@ -2,16 +2,16 @@ import QtQuick 2.0
 
 ListModel {
     ListElement {
-        nome: "Tizio"
+        nome: "GIOVANNI"
     }
     ListElement {
-        nome: "Caio"
+        nome: "ALBERTO"
     }
 
-//    ListElement {
-//        nome: "Sempronio"
-//    }
     ListElement {
-        nome: "Nuovo Utente"
+        nome: "UTENTE 3"
+    }
+    ListElement {
+        nome: "NUOVO UTENTE"
     }
 }
