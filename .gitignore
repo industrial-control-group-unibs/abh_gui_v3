@@ -1,0 +1,7 @@
+*~
+*.txt.user
+build/
+*.log
+*.mp4
+*.xls
+*/__pycache__/*
