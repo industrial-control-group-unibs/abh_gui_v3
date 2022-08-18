@@ -45,6 +45,8 @@ SET(APP_FILES
   ListaEsercizi.cpp
   ListaZone.cpp
   ListaUtenti.cpp
+  ProgrammaAllenamento.cpp
+  DescrizioneEsercizi.cpp
   )
 
 if(ANDROID)

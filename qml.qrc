@@ -31,7 +31,6 @@
         <file>DefinizioneUtente1.qml</file>
         <file>IconaCerchio.qml</file>
         <file>BottoniSwipe.qml</file>
-        <file>DefinizioneUtente2.qml</file>
         <file>PaginaImpostazioni.qml</file>
         <file>PaginaPreparati.qml</file>
         <file>CircularSlider.qml</file>
@@ -51,5 +50,10 @@
         <file>QuattroImmagini.qml</file>
         <file>ModelloRichiesteUtente.qml</file>
         <file>PaginaSceltaAvatar.qml</file>
+        <file>PaginaRiposo.qml</file>
+        <file>SceltaWorkout.qml</file>
+        <file>IconaWorkout.qml</file>
+        <file>PaginaConfWorkout.qml</file>
+        <file>PaginaRiepilogo.qml</file>
     </qresource>
 </RCC>

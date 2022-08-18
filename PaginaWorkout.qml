@@ -15,11 +15,16 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
-    Component.onCompleted: startstop_udp.string="start"
+    Component.onCompleted:
+    {
+        timer_tut.active=true
+        startstop_udp.string="start"
+    }
     Component.onDestruction:
     {
-        selected_exercise.name="unselected"
-        selected_exercise.code="unselected"
+//        selected_exercise.name="unselected"
+//        selected_exercise.code="unselected"
+        timer_tut.active=false
         startstop_udp.string="stop"
         pageLoader.last_source="PaginaWorkout.qml"
     }
@@ -27,7 +32,7 @@ Item {
     Barra_superiore{}
     FrecceSxDx
     {
-        link_sx: pageLoader.last_source
+        link_sx: "PaginaAllenamento.qml"
         dx_visible: false
         z:5
     }

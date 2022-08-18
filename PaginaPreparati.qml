@@ -49,8 +49,8 @@ Item {
             width: 436*parent.width/1080
             height: 581*parent.width/1080
             radius: 20
-//            border.color: mp_esercizio_preparati.status===MediaPlayer.EndOfMedia? "transparent": parametri_generali.coloreBordo
-            border.color: parametri_generali.coloreBordo
+            border.color: mp_esercizio_preparati.status===MediaPlayer.EndOfMedia? "transparent": parametri_generali.coloreBordo
+//            border.color: parametri_generali.coloreBordo
             border.width: 2
 
 

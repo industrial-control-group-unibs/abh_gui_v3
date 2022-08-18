@@ -13,10 +13,14 @@ import QtGraphicalEffects 1.12
 
 ApplicationWindow {
     visible: true
-    width: 1080*0.5
+    width: 1080/2
+    //    height: 1080
     height: width/1080*1920
 
-    //    visibility: "FullScreen"
+    Component.onCompleted: console.log(_esercizi.getImage("addominali1"))
+
+
+            visibility: "FullScreen"
     Item {
         id: parametri_generali
         property string coloreTesto: "#473729"
@@ -27,7 +31,7 @@ ApplicationWindow {
         property string coloreIcona: "#ff9f9181"
         property int larghezza_barra: 172
         property int offset_icone4x3: 400
-        property int logo_time: 1000
+        property int logo_time: 2000
 
         state: "SABBIA"
 
@@ -61,6 +65,7 @@ ApplicationWindow {
     Timer
     {
         property int value: 0
+        property bool active: false
         interval: 500
         id: timer_tut
         repeat: true
@@ -76,25 +81,39 @@ ApplicationWindow {
         property string nome: ""
         property string foto: ""
         onNomeChanged: _utenti.readFile()
-
     }
 
 
     Item {
         id: selected_exercise
         property string name: "unselected"
-        property string code: "unselected"
-        property string video_intro: "placeholver_video.mp4"
-        property string video_preparati: "placeholver_video.mp4"
-        property string video_workout: "placeholver_video.mp4"
-        property string immagine: ""
-//        property string level: "1"
-//        property string difficulty: "Facile"
-        property real power: 4
-        property real reps: 15
-        property real sets: 3
+        property string code: _esercizi.getCode(name)
+        property string video_intro: _esercizi.getVideoIntro(name)
+        property string video_preparati: _esercizi.getVideoPrep(name)
+        property string video_workout: _esercizi.getVideoWorkout(name)
+        property string immagine: _esercizi.getImage(name)
+        //        property string level: "1"
+        //        property string difficulty: "Facile"
+        property int power: 1
+        property int reps: 15
+        property int sets: 3
+        property int current_set: 0
+        property int rest_time: 10
         property real max_pos_speed: 70
         property real max_neg_speed: -70
+        property string workout: "workout1"
+
+        property string level: "1"// TO BE REMOVED
+        property string difficulty: "Facile"  // TO BE REMOVED
+
+        onNameChanged:
+        {
+            code= _esercizi.getCode(name)
+            video_intro= _esercizi.getVideoIntro(name)
+            video_preparati= _esercizi.getVideoPrep(name)
+            video_workout= _esercizi.getVideoWorkout(name)
+            immagine= _esercizi.getImage(name)
+        }
     }
 
     Item {
@@ -105,27 +124,54 @@ ApplicationWindow {
 
     StringSender {
         id: exercise_udp
+        // @disable-check M16
         port: "21004"
+        // @disable-check M16
         host: "localhost"
+        // @disable-check M16
         string: selected_exercise.code+qsTr(";")+selected_exercise.level+qsTr(";")+selected_exercise.difficulty
     }
 
     StringSender {
         id: startstop_udp
+        //@disable-check M16
         port: "21003"
+        // @disable-check M16
         host: "localhost"
+        // @disable-check M16
         string: "stop"
     }
 
-    BinaryReceiver {
-        id: repetion_udp
-        port: "21012"
-        data: [0,0]
-        size: 2
+//    BinaryReceiver {
+//        id: feedback_udp
+//        // @disable-check M16
+//        name: "fb"
+//        // @disable-check M16
+//        port: "15005"
+//        // @disable-check M16
+//        data: [0.0,0.0,0.0]
+//        // @disable-check M16
+//        size: 2
+//        // @disable-check M16
+//        onDataChanged: console.log(data)
+//    }
 
+    BinaryReceiver
+    {
+        id: fb_udp
+        // @disable-check M16
+        name: "fba"
+        // @disable-check M16
+        port: "99999"
+        // @disable-check M16
+        data: [0.0,0.0,0.0]
+        // @disable-check M16
+        size: 3
+        // @disable-check M16
         onDataChanged:
         {
-            if (data[1]===1)
+//            console.log(data)
+            if (data[1]===1 && timer_tut.active)
             {
                 timer_tut.start()
             }
@@ -134,20 +180,27 @@ ApplicationWindow {
                 timer_tut.stop()
             }
         }
+
+
     }
 
-    BinaryReceiver {
-        id: feedback_udp
-        port: "15005"
-        data: [0,0]
-        size: 2
+    Timer
+    {
+
+        interval: 1000
+        repeat: false
+        running: true
+        onTriggered:
+        {
+            fb_udp.port="21012"
+        }
     }
 
-//    UdpVideoStream {
-//        id: udpStream
-//        // @disable-check M16
-//        port: "5000"
-//    }
+    UdpVideoStream {
+        id: udpStream
+        // @disable-check M16
+        port: "5000"
+    }
 
 
 
@@ -164,8 +217,8 @@ ApplicationWindow {
         property url last_source
 
         sourceComponent: PaginaLogo{}
-//                sourceComponent: TestPage{}
-//        sourceComponent: PaginaSceltaAvatar{}
+        //                sourceComponent: TestPage{}
+//        sourceComponent: PaginaRiepilogo{}
     }
 
 

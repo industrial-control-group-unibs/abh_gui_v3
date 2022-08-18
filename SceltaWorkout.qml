@@ -15,14 +15,13 @@ Item {
 
     Component.onDestruction:
     {
-        pageLoader.last_source="SceltaGruppo.qml"
+        pageLoader.last_source="SceltaWorkout.qml"
     }
 
     FrecceSxDx
     {
         link_sx: "PaginaMondi.qml"
-        dx_visible: lista_zona.currentIndex>=0
-        link_dx: "SceltaEsercizi.qml"
+        link_dx: "PaginaConfWorkout.qml"
     }
     Rectangle{
         anchors.fill: parent
@@ -44,7 +43,7 @@ Item {
         ListView {
             snapMode: ListView.SnapOneItem
             highlightRangeMode: ListView.StrictlyEnforceRange
-            id: lista_zona
+            id: lista_workout
             anchors {
                 top: parent.top
                 bottom: parent.bottom
@@ -52,9 +51,9 @@ Item {
                 right: parent.right
             }
 
-            model: _zona
-            currentIndex:-1
-            delegate: IconaZona{}
+            model: _workout_list
+
+            delegate: IconaWorkout{}
 
 
 

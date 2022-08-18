@@ -9,13 +9,13 @@ Rectangle   {
 
     //id: esercizio
     color: "transparent"
-    width: lista_zona.width-2 //lista_zona.cellWidth-2
+    width: lista_workout.width-2 //lista_zona.cellWidth-2
     //height: 400
 
     implicitWidth: 1080
     implicitHeight: 447
     radius: 20
-    border.color:  lista_zona.currentIndex !== index ? parametri_generali.coloreSfondo: parametri_generali.coloreIcona
+    border.color:  lista_workout.currentIndex !== index ? parametri_generali.coloreSfondo: parametri_generali.coloreIcona
     border.width: 5
 
 //    layer.enabled: true
@@ -29,14 +29,12 @@ Rectangle   {
         anchors.fill: parent
         propagateComposedEvents: true
         onPressed: {
-            mouse.accepted = false
-            console.log("clicked")
-            selected_exercise.name="unselected"
-            zona_allenamento.gruppo=ex_name
+            selected_exercise.workout=ex_name
+
             console.log("clicked + ",ex_name)
 
-            lista_zona.currentIndex=index
-            console.log(lista_zona.currentIndex, index,parent.border.color)
+            lista_workout.currentIndex=index
+            console.log(lista_workout.currentIndex, index,parent.border.color)
         }
     }
 

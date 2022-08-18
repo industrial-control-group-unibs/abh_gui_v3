@@ -64,7 +64,7 @@ Item {
                 onPressed: pageLoader.source= "PaginaSceltaAvatar.qml"//impostazioni_utente.foto="avatar1.png" //
                 Testo
                 {
-                    text: "SCATTA FOTO\nPROFILO"
+                    text: "SCEGLI FOTO\nPROFILO"
                     anchors
                     {
                         horizontalCenter: parent.horizontalCenter
@@ -140,7 +140,7 @@ Item {
             IconaCerchio
             {
                 anchors.right: parent.right
-                anchors.rightMargin: 10
+                anchors.rightMargin: 30
                 anchors.verticalCenter: parent.verticalCenter
                 width: 100
                 z: 3
@@ -195,7 +195,7 @@ Item {
             IconaCerchio
             {
                 anchors.left: parent.left
-                anchors.leftMargin: 10
+                anchors.leftMargin: 30
                 anchors.verticalCenter: parent.verticalCenter
                 width: 100
                 z: 3
@@ -264,16 +264,15 @@ Item {
                                 topMargin: 5
                             }
                         }
-//                        valore: input_nome.text
+
 
                         TextInput {
                             id: input_nome
-//                            anchors.left:parent.left
-//                            anchors.right: parent.right
-//                            anchors.leftMargin: 20
-//                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.left:parent.left
+                            anchors.right: parent.right
+                            anchors.verticalCenter: parent.verticalCenter
 
-                            anchors.fill: parent
+                            height: 60
                             text: ""
                             cursorVisible: false
 
@@ -282,7 +281,7 @@ Item {
 
                             font.italic: false
                             font.letterSpacing: 0
-                            font.pixelSize: 10
+                            font.pixelSize: 20
                             font.weight: Font.Normal
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignTop
@@ -291,219 +290,11 @@ Item {
                     }
 
 
-//                    Testo
-//                    {
-//                        text: campo
-//                        anchors.left: parent.left
-//                        anchors.leftMargin: 10
-//                        font.pixelSize: 35
-//                        anchors.verticalCenter: parent.verticalCenter
-//                    }
                 }
 
             }
 
-//            Testo
-//            {
-//                text: "NOME"
-//                anchors.left: parent.left
-//                anchors.leftMargin: 10
-//                font.pixelSize: 35
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
-
-//            Rectangle
-//            {
-//                anchors
-//                {
-//                    horizontalCenter: parent.horizontalCenter
-//                    verticalCenter: parent.verticalCenter
-//                }
-//                width: parent.width*0.5
-//                height: 80/1080*parent.width
-//                radius: 20
-//                color: "transparent"
-//                border.color: parametri_generali.coloreBordo
-
-//                TextInput {
-//                    id: input_nome
-//                    anchors.left:parent.left
-//                    anchors.right: parent.right
-//                    anchors.leftMargin: 20
-//                    anchors.verticalCenter: parent.verticalCenter
-
-//                    text: ""
-//                    cursorVisible: false
-
-//                    color: parametri_generali.coloreBordo
-//                    font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
-
-//                    font.italic: false
-//                    font.letterSpacing: 0
-//                    font.pixelSize: 35
-//                    font.weight: Font.Normal
-//                    horizontalAlignment: Text.AlignHCenter
-//                    verticalAlignment: Text.AlignTop
-//                }
-//            }
         }
 
-        //        Item
-        //        {
-        //            anchors
-        //            {
-        ////                horizontalCenter: parent.horizontalCenter
-        //                top: parent.top
-        //                left: parent.left
-        //                right: parent.right
-        //                bottom: parent.bottom
-        //                topMargin: 570
-        //            }
-        //            ColumnLayout
-        //            {
-        //                spacing: 20
-        //                Item { //NOME
-        //                    Layout.alignment: Qt.AlignCenter
-        //                    Layout.preferredWidth: parent.width
-        //                    Layout.preferredHeight: 80
-
-        //                    Item
-        //                    {
-        //                        anchors
-        //                        {
-        //                            top:parent.top
-        //                            bottom:parent.bottom
-        //                            left:parent.left
-        //                            leftMargin: 70
-        //                        }
-        //                        width: 400-anchors.leftMargin
-
-        //                        Text {
-        //                            text: "NOME"
-        //                            anchors.verticalCenter: parent.verticalCenter
-        //                            anchors.horizontalCenter: parent.horizontalCenter
-        //                            color: parametri_generali.coloreBordo
-        //                            font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
-
-        //                            font.italic: false
-        //                            font.letterSpacing: 0
-        //                            font.pixelSize: 35
-        //                            font.weight: Font.Normal
-        //                            horizontalAlignment: Text.AlignHCenter
-        //                            verticalAlignment: Text.AlignTop
-
-        //                        }
-        //                    }
-        //                    Rectangle
-        //                    {
-        //                        anchors
-        //                        {
-        //                            top:parent.top
-        //                            bottom:parent.bottom
-        //                            left:parent.right
-        //                            leftMargin: 398
-        //                        }
-        //                        width: 447
-        //                        radius: 20
-        //                        color: "transparent"
-        //                        border.color: parametri_generali.coloreBordo
-
-        //                        TextInput {
-        //                            id: input_nome
-        //                            anchors.left:parent.left
-        //                            anchors.right: parent.right
-        //                            anchors.leftMargin: 20
-        //                            anchors.verticalCenter: parent.verticalCenter
-
-        //                            text: ""
-        //                            cursorVisible: false
-
-        //                            color: parametri_generali.coloreBordo
-        //                            font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
-
-        //                            font.italic: false
-        //                            font.letterSpacing: 0
-        //                            font.pixelSize: 35
-        //                            font.weight: Font.Normal
-        //                            horizontalAlignment: Text.AlignHCenter
-        //                            verticalAlignment: Text.AlignTop
-        //                        }
-        //                    }
-
-        //                }
-
-        //                Item { //COGNOME
-        //                    Layout.alignment: Qt.AlignCenter
-        //                    Layout.preferredWidth: parent.width
-        //                    Layout.preferredHeight: 80
-
-        //                    Item
-        //                    {
-        //                        anchors
-        //                        {
-        //                            top:parent.top
-        //                            bottom:parent.bottom
-        //                            left:parent.left
-        //                            leftMargin: 70
-        //                        }
-        //                        width: 400-anchors.leftMargin
-
-        //                        Text {
-        //                            text: "COGNOME"
-        //                            anchors.verticalCenter: parent.verticalCenter
-        //                            anchors.horizontalCenter: parent.horizontalCenter
-        //                            color: parametri_generali.coloreBordo
-        //                            font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
-
-        //                            font.italic: false
-        //                            font.letterSpacing: 0
-        //                            font.pixelSize: 35
-        //                            font.weight: Font.Normal
-        //                            horizontalAlignment: Text.AlignHCenter
-        //                            verticalAlignment: Text.AlignTop
-
-        //                        }
-        //                    }
-        //                    Rectangle
-        //                    {
-        //                        anchors
-        //                        {
-        //                            top:parent.top
-        //                            bottom:parent.bottom
-        //                            left:parent.right
-        //                            leftMargin: 398
-        //                        }
-        //                        width: 447
-        //                        radius: 20
-        //                        color: "transparent"
-        //                        border.color: parametri_generali.coloreBordo
-
-        //                        TextInput {
-        //                            id: input_cognome
-        //                            anchors.left:parent.left
-        //                            anchors.right: parent.right
-        //                            anchors.leftMargin: 20
-        //                            anchors.verticalCenter: parent.verticalCenter
-
-        //                            text: ""
-        //                            cursorVisible: false
-
-        //                            color: parametri_generali.coloreBordo
-        //                            font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
-
-        //                            font.italic: false
-        //                            font.letterSpacing: 0
-        //                            font.pixelSize: 35
-        //                            font.weight: Font.Normal
-        //                            horizontalAlignment: Text.AlignHCenter
-        //                            verticalAlignment: Text.AlignTop
-        //                        }
-        //                    }
-
-        //                }
-
-
-        //            }
-        //        }
     }
 }

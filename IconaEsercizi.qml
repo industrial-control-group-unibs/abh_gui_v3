@@ -13,6 +13,7 @@ Rectangle   {
     border.color:  grid.currentIndex !== index ? parametri_generali.coloreSfondo: parametri_generali.coloreIcona
     border.width: 3
 
+
     MouseArea {
         anchors.fill: parent
         propagateComposedEvents: true
@@ -20,12 +21,10 @@ Rectangle   {
             mouse.accepted = false
             console.log("clicked")
             selected_exercise.name= ex_name
-            selected_exercise.code= ex_code
-            selected_exercise.immagine=image_name
-            //            global_var.path=path
-            console.log("clicked + ",selected_exercise.name,", ",path)
+            selected_exercise.workout=""
+            selected_exercise.sets=1
+            selected_exercise.reps=5000
             grid.currentIndex=index
-
         }
     }
 
@@ -59,6 +58,6 @@ Rectangle   {
         visible: false
         mipmap: true
         anchors.fill: parent
-        source: "file://"+PATH+"/"+image_name
+        source: "file://"+PATH+"/images/"+_esercizi.getImage(ex_name)
     }
 }

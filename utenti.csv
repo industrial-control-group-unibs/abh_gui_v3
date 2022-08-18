@@ -1,2 +1,4 @@
 nome,cognome,data_nascita,peso,altezza,mail,telefono,indirizzo,professione,social_media,stato,foto,id
-Mario,Rossi,24/04/1986,68,184,mario.rossi@abh.it,+39123456789,"via branze",pensionato,nessuno,sposato,avatar1.png,mario_rossi
+Alberto,Benini,24/04/1986,68,184,mario.rossi@abh.it,+39123456789,"via branze",pensionato,nessuno,sposato,avatar3.png,mario_rossi
+Giovanni,Arduini,24/04/1986,68,184,mario.rossi@abh.it,+39123456789,"via branze",pensionato,nessuno,sposato,avatar4.png,mario_rossi
+test,dldl,,,,,,,,,,avatar1.png,2_test_dldl

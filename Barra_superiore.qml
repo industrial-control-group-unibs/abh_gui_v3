@@ -189,6 +189,11 @@ Item
             anchors.fill:parent
             source: "file://"+PATH+"/images/LogoABHCorner.png"
         }
+        MouseArea
+        {
+            anchors.fill: parent
+            onClicked: pageLoader.source=  "PaginaImpostazioni.qml"
+        }
 
     }
 

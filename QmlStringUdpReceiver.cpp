@@ -71,6 +71,7 @@ void StringReceiver::createSocket()
     socket_=std::make_shared<udp_string_helper::Receiver>( port_.toStdString());
     stop_flag_=false;
     connected_=true;
+    std::cout << "connected to " << port_.toStdString() << std::endl;
   }
   catch (std::exception& e)
   {

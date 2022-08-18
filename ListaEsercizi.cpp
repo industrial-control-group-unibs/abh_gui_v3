@@ -35,10 +35,10 @@ QVariant ListaEsercizi::data(const QModelIndex &index, int role) const
   if ( role == NameRole ){
     return data.ex_name_;
   }
-  else if ( role == CodeRole )
-    return data.ex_code_;
-  else if ( role == ImageRole )
-    return data.image_name_;
+//  else if ( role == CodeRole )
+//    return data.ex_code_;
+//  else if ( role == ImageRole )
+//    return data.image_name_;
   else if ( role == PathRole )
     return path_;
   else
@@ -50,8 +50,8 @@ QHash<int, QByteArray> ListaEsercizi::roleNames() const
 {
   static QHash<int, QByteArray> mapping {
     {NameRole, "ex_name"},
-    {CodeRole, "ex_code"},
-    {ImageRole, "image_name"},
+//    {CodeRole, "ex_code"},
+//    {ImageRole, "image_name"},
     {PathRole, "path"}
   };
   return mapping;
@@ -71,11 +71,11 @@ void ListaEsercizi::readFile(QString string)
   data_.clear();
   for (size_t idx=0;idx<elements;idx++)
   {
-    std::cout << doc.GetCell<std::string>(0,idx)<< ", " << doc.GetCell<std::string>(1, idx) << ", " << doc.GetCell<std::string>(2, idx) << std::endl;
+//    std::cout << doc.GetCell<std::string>(0,idx)<< ", " << doc.GetCell<std::string>(1, idx) << ", " << doc.GetCell<std::string>(2, idx) << std::endl;
 
     QString ex_name=QString::fromStdString(doc.GetCell<std::string>(0,idx));
-    QString ex_code=QString::fromStdString(doc.GetCell<std::string>(1,idx));
-    QString image=QString::fromStdString(doc.GetCell<std::string>(2,idx));
-    data_ << Data(ex_name,ex_code,image);
+//    QString ex_code=QString::fromStdString(doc.GetCell<std::string>(1,idx));
+//    QString image=QString::fromStdString(doc.GetCell<std::string>(2,idx));
+    data_ << Data(ex_name/*,ex_code,image*/);
   }
 }

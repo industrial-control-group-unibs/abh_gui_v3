@@ -28,7 +28,7 @@ Item
             PropertyChanges { target: rect_video_centrale;  height: 0.8*component.height   }
             PropertyChanges { target: rect_video_centrale;  x: 0.5*(component.width-video_workout.width) }
             PropertyChanges { target: rect_utente; height: 0.3*component.height           }
-            PropertyChanges { target: rect_utente; x: 890/1080*component.width-0.5*video2_workout.width  }
+            PropertyChanges { target: rect_utente; x: 910/1080*component.width-0.5*video2_workout.width  }
             PropertyChanges { target: rect_utente; visible: true }
         },
         State {
@@ -36,7 +36,7 @@ Item
             PropertyChanges { target: rect_utente; height: 0.8*component.height   }
             PropertyChanges { target: rect_utente; x: 0.5*(component.width-width) }
             PropertyChanges { target: rect_video_centrale;  height: 0.3*component.height           }
-            PropertyChanges { target: rect_video_centrale;  x: 890/1080*component.width-0.5*width  }
+            PropertyChanges { target: rect_video_centrale;  x: 910/1080*component.width-0.5*width  }
             PropertyChanges { target: rect_utente; visible: true }
         },
         State {
@@ -206,7 +206,7 @@ Item
             maxValue: 100
             snap: true
             stepSize: 1
-            value: (feedback_udp.data[1])
+            value: (fb_udp.data[2])
 
             handleColor: "#4E4F50"
             trackColor: "#4E4F50"

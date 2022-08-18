@@ -32,8 +32,8 @@ Rectangle {
             }
             width: 1000
             height: 500
-            border.color: "blue"
-
+//            border.color: "blue"
+            clip: true
             GridView {
                 Layout.alignment: Qt.AlignCenter
                 snapMode: GridView.SnapToRow

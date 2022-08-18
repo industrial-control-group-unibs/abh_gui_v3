@@ -17,7 +17,7 @@ Item {
     {
         immagine11: "place_holder_4_3.png"
         testo11: "PROGRAMMA\n DI ALLENAMENTO"
-        link11: "SceltaGruppo.qml"
+        link11: "SceltaWorkout.qml"
         immagine12: "place_holder_4_3.png"
         testo12: "SFIDA\n"
         link12: "PaginaLogin.qml"

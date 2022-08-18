@@ -78,7 +78,10 @@ Item {
 
                     MouseArea{
                         anchors.fill: parent
-                        onPressed: impostazioni_utente.foto=foto
+                        onPressed: {
+                            impostazioni_utente.foto=foto
+                            pageLoader.source="DefinizioneUtente1.qml"
+                        }
                     }
 
                     Image {

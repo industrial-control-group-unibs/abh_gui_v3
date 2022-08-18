@@ -11,7 +11,7 @@ CircularSlider {
     width: 60
     height: 60
 
-
+    property color colore: parametri_generali.coloreBordo
 
 
     interactive: false
@@ -35,7 +35,7 @@ CircularSlider {
             horizontalCenter: parent.horizontalCenter
             verticalCenter: parent.verticalCenter
         }
-        color: parametri_generali.coloreBordo
+        color: progressIndicator.colore
         font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
 
         font.italic: false
@@ -54,7 +54,7 @@ CircularSlider {
             width: 4
             height: width
             radius: width / 2
-            color: indicator1.angle > progressIndicator.angle ? "transparent" : parametri_generali.coloreBordo
+            color: indicator1.angle > progressIndicator.angle ? "transparent" : progressIndicator.colore
             readonly property real angle: index * 360/progressIndicator.tacche
             transform: [
                 Translate {

@@ -68,6 +68,7 @@ void BinaryReceiver::readThread()
   std::cout << "[" << name_.toStdString() <<": " << port_.toStdString() << "]" << " start read thread" << std::endl;
   while (not stop_flag_)
   {
+
     if (socket_->isUnreadDataAvailable())
     {
       std::vector<double> v=socket_->getData();
@@ -88,6 +89,8 @@ void BinaryReceiver::readThread()
     }
     usleep(1000);
   }
+  std::cout << "[" << name_.toStdString() <<": " << port_.toStdString() << "]" << " stop read thread" << std::endl;
+
   socket_.reset();
 }
 

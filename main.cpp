@@ -10,10 +10,13 @@
 #include <QQmlContext>
 #include <QQmlComponent>
 
+#include <UdpVideoStream.h>
+
 #include "ListaEsercizi.h"
 #include "ListaZone.h"
 #include "ListaUtenti.h"
-#include <UdpVideoStream.h>
+#include "ProgrammaAllenamento.h"
+#include "DescrizioneEsercizi.h"
 
 int main(int argc, char *argv[])
 {
@@ -35,7 +38,16 @@ int main(int argc, char *argv[])
 
   ListaEsercizi model;
   ListaZona zone;
+  ListaZona workout_list;
+  workout_list.readFile("lista_workout");
   ListaUtenti utenti;
+
+
+
+
+  abh::ProgrammaAllenamento workout;
+  workout.setPath(cpp_path);
+  workout.readFile("workout1_facile_1");
 
 
   std::shared_ptr<QGuiApplication> app=std::make_shared<QGuiApplication>(argc, argv);
@@ -43,9 +55,23 @@ int main(int argc, char *argv[])
 
   QQmlContext *context = engine->rootContext();
   context->setContextProperty("_myModel", &model);
-  context->setContextProperty("_zona", &zone);
+  context->setContextProperty("_workout_list", &workout_list);
   context->setContextProperty("_utenti", &utenti);
+  context->setContextProperty("_zona", &zone);
+
+//  UdpCom::BinaryReceiver rec;
+//  rec.setName("ricevitore");
+//  rec.setSize(3);
+//  rec.setData({0.0,0.0,0.0});
+//  rec.setPort("15005");
+//  context->setContextProperty("_rec_udp", &rec);
+
+  context->setContextProperty("_workout", &workout);
   engine->rootContext()->setContextProperty("PATH", cpp_path);
+
+  abh::DescrizioneEsercizi esercizi;
+  esercizi.setPath(cpp_path);
+  context->setContextProperty("_esercizi",&esercizi);
 
   const QUrl url(QStringLiteral("qrc:/main.qml"));
   QObject::connect(&(*engine), &QQmlApplicationEngine::objectCreated,

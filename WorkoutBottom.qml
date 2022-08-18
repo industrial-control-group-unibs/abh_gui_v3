@@ -3,7 +3,8 @@ import QtQuick 2.12
 Item
 {
     Component.onCompleted: {
-        timer_tempo.start()
+        //timer_tempo.start()
+        power_settings.value= selected_exercise.power
         //            timer_tut.start()
     }
 
@@ -20,11 +21,13 @@ Item
 
     CSlider
     {
+        id: power_settings
         width: 100
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height*0.25
-        value: selected_exercise.power
+        value: 1
+        z:10
         Testo
         {
             text: "POWER"
@@ -45,11 +48,11 @@ Item
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenterOffset: parent.height*0.25
         anchors.verticalCenter: parent.verticalCenter
-        ripetizioni: repetion_udp.data[0]
+        ripetizioni: fb_udp.data[0]
 
         onRipetizioniChanged: {
-            if (repetion_udp.data[0]>selected_exercise.reps)
-                pageLoader.source = "SceltaGruppo.qml"
+            if (ripetizioni>selected_exercise.reps)
+                pageLoader.source = "PaginaRiposo.qml"
         }
 
         Testo
@@ -86,6 +89,7 @@ Item
             }
         }
     }
+
     CircularTimer {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: -parent.width*0.25
