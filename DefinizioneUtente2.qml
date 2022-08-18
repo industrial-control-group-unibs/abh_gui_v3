@@ -14,7 +14,7 @@ Item {
     Barra_superiore{}
 
     BottoniSwipe{
-        link_sx: "DefinizioneUtente1.qml"
+        onPressLeft: pageLoader.source="DefinizioneUtente1.qml"
         state: "dx"
     }
 
@@ -81,16 +81,16 @@ Item {
         }
 
 
-        IconaCerchioVuoto{
-            anchors{
-                bottom: parent.bottom
-                right: parent.right
+//        IconaCerchio{
+//            anchors{
+//                bottom: parent.bottom
+//                right: parent.right
 
-                bottomMargin: 260-height*0.5
-                rightMargin: 182-width*0.5
-            }
-            link: "PaginaLogin.qml"
-        }
+//                bottomMargin: 260-height*0.5
+//                rightMargin: 182-width*0.5
+//            }
+//            link: "PaginaLogin.qml"
+//        }
 
         Item
         {

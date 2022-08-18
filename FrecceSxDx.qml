@@ -7,6 +7,7 @@ Item {
 
     property string link_sx: "PaginaMondi.qml"
     property string link_dx: "PaginaMondi.qml"
+    property bool dx_visible: true
 
     anchors
     {
@@ -84,7 +85,7 @@ Item {
             samples: 17
             color: "#40000000"
         }
-
+        visible: dx_visible
 
 
         anchors

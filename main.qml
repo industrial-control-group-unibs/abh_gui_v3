@@ -1,15 +1,22 @@
+
 import QtQuick 2.12
 import QtQuick.Controls 2.5
-
-import QtGraphicalEffects 1.12
 import QtQuick.Shapes 1.12
+import StringSender 1.0
+import StringReceiver 1.0
+import StringSender 1.0
+import BinaryReceiver 1.0
+import BinarySender 1.0
+import UdpVideoStream 1.0
+import QtGraphicalEffects 1.12
+
 
 ApplicationWindow {
     visible: true
-    width:1080
-    height:1000
+    width: 1080*0.5
+    height: width/1080*1920
 
-    visibility: "FullScreen"
+    //    visibility: "FullScreen"
     Item {
         id: parametri_generali
         property string coloreTesto: "#473729"
@@ -38,20 +45,56 @@ ApplicationWindow {
 
     }
 
+    Timer
+    {
+        property int value: 0
+        interval: 500
+        id: timer_tempo
+        repeat: true
+        running: false
+        onTriggered:
+        {
+            value+=interval
+        }
+    }
+
+    Timer
+    {
+        property int value: 0
+        interval: 500
+        id: timer_tut
+        repeat: true
+        running: false
+        onTriggered:
+        {
+            value+=interval
+        }
+    }
+
     Item {
         id: impostazioni_utente
         property string nome: ""
+        property string foto: ""
+        onNomeChanged: _utenti.readFile()
+
     }
+
+
     Item {
         id: selected_exercise
-        property string ex_name: "unselected"
-        property string ex_code: "unselected"
-        property string source: ""
-        property string level: "1"
-        property string difficulty: "Facile"
-        property string counter: "15"
-        property string actual_rep_count: "0"
-        property real rep_count: 15
+        property string name: "unselected"
+        property string code: "unselected"
+        property string video_intro: "placeholver_video.mp4"
+        property string video_preparati: "placeholver_video.mp4"
+        property string video_workout: "placeholver_video.mp4"
+        property string immagine: ""
+//        property string level: "1"
+//        property string difficulty: "Facile"
+        property real power: 4
+        property real reps: 15
+        property real sets: 3
+        property real max_pos_speed: 70
+        property real max_neg_speed: -70
     }
 
     Item {
@@ -60,15 +103,69 @@ ApplicationWindow {
         onGruppoChanged: _myModel.readFile(gruppo)
     }
 
+    StringSender {
+        id: exercise_udp
+        port: "21004"
+        host: "localhost"
+        string: selected_exercise.code+qsTr(";")+selected_exercise.level+qsTr(";")+selected_exercise.difficulty
+    }
 
+    StringSender {
+        id: startstop_udp
+        port: "21003"
+        host: "localhost"
+        string: "stop"
+    }
+
+    BinaryReceiver {
+        id: repetion_udp
+        port: "21012"
+        data: [0,0]
+        size: 2
+
+        onDataChanged:
+        {
+            if (data[1]===1)
+            {
+                timer_tut.start()
+            }
+            else
+            {
+                timer_tut.stop()
+            }
+        }
+    }
+
+    BinaryReceiver {
+        id: feedback_udp
+        port: "15005"
+        data: [0,0]
+        size: 2
+    }
+
+//    UdpVideoStream {
+//        id: udpStream
+//        // @disable-check M16
+//        port: "5000"
+//    }
+
+
+
+    Rectangle
+    {
+        anchors.fill: parent
+        z:-1
+        color: parametri_generali.coloreSfondo
+    }
 
     Loader {
         id: pageLoader
         anchors.fill: parent
-        //anchors.topMargin: schema_colori.larghezza_barra
+        property url last_source
 
         sourceComponent: PaginaLogo{}
-//        sourceComponent: DefinizioneUtente1{}
+//                sourceComponent: TestPage{}
+//        sourceComponent: PaginaSceltaAvatar{}
     }
 
 

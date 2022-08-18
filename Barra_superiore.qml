@@ -4,7 +4,7 @@ import QtQuick.Controls 2.5
 import QtGraphicalEffects 1.12
 import QtQuick.Shapes 1.12
 
-Rectangle
+Item
 {
     id: barra
     anchors
@@ -15,20 +15,32 @@ Rectangle
         bottom: parent.bottom
         bottomMargin: parent.height-parametri_generali.larghezza_barra
     }
-    z: 10
-    color: parametri_generali.coloreBarra
+    DropShadow {
+        anchors.fill: barra_colore
+        //horizontalOffset: 3
+        verticalOffset: barra_colore.anchors.bottomMargin
+        radius: 8.0
+        samples: 17
+        color: "black"
+        source: barra_colore
+    }
 
-
-    Item {
-        objectName:"Rectangle 71"
+    Rectangle
+    {
+        id: barra_colore
         anchors.fill: parent
-        Image {
-            id: sfumatura_barra
-            anchors.fill: parent
-            mipmap: true
-            fillMode: Image.Stretch
-            source: "file://"+PATH+"/images/"+"sfumatura_barra.png"
-        }
+        anchors.bottomMargin: 5
+        color: parametri_generali.coloreBarra
+    }
+
+
+
+    Image {
+        id: sfumatura_barra
+        anchors.fill: barra_colore
+        mipmap: true
+        fillMode: Image.Stretch
+        source: "file://"+PATH+"/images/"+"sfumatura_barra.png"
     }
 
 
@@ -84,7 +96,7 @@ Rectangle
                 onClicked: pageLoader.source=  "PaginaImpostazioni.qml"
             }
 
-            source:  "file://"+PATH+"/images/"+"pic_foto.jpg"
+            source:  "file://"+PATH+"/images/"+impostazioni_utente.foto//"pic_foto.jpg"
             layer.effect: OpacityMask {
                 maskSource: Item {
                     width: img_barra.width
@@ -179,6 +191,7 @@ Rectangle
         }
 
     }
+
 }
 
 

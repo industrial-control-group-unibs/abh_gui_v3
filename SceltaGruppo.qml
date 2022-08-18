@@ -13,6 +13,11 @@ Item {
 
     Barra_superiore{}
 
+    Component.onDestruction:
+    {
+        pageLoader.last_source="SceltaGruppo.qml"
+    }
+
     FrecceSxDx
     {
         link_sx: "PaginaMondi.qml"
@@ -26,9 +31,9 @@ Item {
 
         Component.onDestruction:
         {
-            selected_exercise.ex_name="unselected"
-            selected_exercise.ex_code="unselected"
-            selected_exercise.source=""
+            selected_exercise.name="unselected"
+            selected_exercise.code="unselected"
+            selected_exercise.immagine=""
         }
 
 

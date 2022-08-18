@@ -19,11 +19,11 @@ Rectangle   {
         onPressed: {
             mouse.accepted = false
             console.log("clicked")
-            selected_exercise.ex_name= ex_name
-            selected_exercise.ex_code= ex_code
-            selected_exercise.source=image_name
+            selected_exercise.name= ex_name
+            selected_exercise.code= ex_code
+            selected_exercise.immagine=image_name
             //            global_var.path=path
-            console.log("clicked + ",selected_exercise.ex_name,", ",path)
+            console.log("clicked + ",selected_exercise.name,", ",path)
             grid.currentIndex=index
 
         }

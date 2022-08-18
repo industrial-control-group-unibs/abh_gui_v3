@@ -16,61 +16,59 @@ Item {
     Rectangle{
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
-        color:parametri_generali.coloreSfondo
+        color: "transparent"//parametri_generali.coloreSfondo
         clip: true
 
-        Text {
+
+        Titolo
+        {
             text: "IMPOSTAZIONI"
-            id: testo_utente
-            anchors
-            {
-                horizontalCenter: parent.horizontalCenter
-                top: parent.top
-                topMargin: 20
-            }
-            color: parametri_generali.coloreBordo
-            font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
-
-            font.italic: false
-            font.letterSpacing: 0
-            font.pixelSize: 70
-            font.weight: Font.Normal
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignTop
-
         }
-
-        GridLayout {
-            anchors.left: parent.left
-            anchors.right: parent.right
-
-            anchors.verticalCenter: parent.verticalCenter
-            columns: 2
-
-            Icona_4_3{
-                nome: "UTENTE\n"
-                link: "PaginaLogin.qml"
-                immagine: "place_holder_4_3.png"
-            }
-
-            Icona_4_3{
-                nome: "CONNETIVITÀ\n"
-                link: "PaginaLogin.qml"
-                immagine: "place_holder_4_3.png"
-            }
-
-            Icona_4_3{
-                nome: "SCHERMO-AUDIO\n"
-                link: "PaginaLogin.qml"
-                immagine: "place_holder_4_3.png"
-            }
-
-            Icona_4_3{
-                nome: "LOG OUT\n"
-                link: "PaginaLogin.qml"
-                immagine: "place_holder_4_3.png"
-            }
-        }
-
     }
+
+    QuattroImmagini
+    {
+        immagine11: "place_holder_4_3.png"
+        testo11: "UTENTE\n"
+        link11: "PaginaLogin.qml"
+        immagine12: "place_holder_4_3.png"
+        testo12: "CONNETIVITÀ\n"
+        link12: "PaginaLogin.qml"
+        immagine21: "place_holder_4_3.png"
+        testo21: "SCHERMO-AUDIO\n"
+        link21: "PaginaLogin.qml"
+        immagine22: "place_holder_4_3.png"
+        testo22: "LOG OUT\n"
+        link22: "SceltaGruppo.qml"
+    }
+
+//    Rectangle{
+//        anchors.fill: parent
+//        anchors.topMargin: parametri_generali.larghezza_barra
+//        color:parametri_generali.coloreSfondo
+//        clip: true
+
+//        Text {
+//            text: "IMPOSTAZIONI"
+//            id: testo_utente
+//            anchors
+//            {
+//                horizontalCenter: parent.horizontalCenter
+//                top: parent.top
+//                topMargin: 20
+//            }
+//            color: parametri_generali.coloreBordo
+//            font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
+
+//            font.italic: false
+//            font.letterSpacing: 0
+//            font.pixelSize: 70
+//            font.weight: Font.Normal
+//            horizontalAlignment: Text.AlignHCenter
+//            verticalAlignment: Text.AlignTop
+
+//        }
+
+
+//    }
 }

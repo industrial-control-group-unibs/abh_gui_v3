@@ -15,45 +15,41 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
+    Component.onDestruction:
+    {
+        pageLoader.last_source="PaginaPreparati.qml"
+    }
+
     Barra_superiore{}
+    FrecceSxDx
+    {
+        link_sx: pageLoader.last_source
+        link_dx: "PaginaWorkout.qml"
+    }
 
     Rectangle{
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
-        color:parametri_generali.coloreSfondo
+        color: "transparent"//parametri_generali.coloreSfondo
         clip: true
 
 
-        Text {
-            text: selected_exercise.ex_name
-            id: testo_utente
-            anchors
-            {
-                horizontalCenter: parent.horizontalCenter
-                top: parent.top
-                topMargin: 20
-            }
-            color: parametri_generali.coloreBordo
-            font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
-
-            font.italic: false
-            font.letterSpacing: 0
-            font.pixelSize: 70
-            font.weight: Font.Normal
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignTop
-
+        Titolo
+        {
+            text: selected_exercise.name
         }
+
 
 
         Rectangle   {
             color: "transparent"
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
-            anchors.topMargin: 426-parametri_generali.larghezza_barra
-            width: 436
-            height: 581
+            anchors.topMargin: 300*parent.width/1080
+            width: 436*parent.width/1080
+            height: 581*parent.width/1080
             radius: 20
+//            border.color: mp_esercizio_preparati.status===MediaPlayer.EndOfMedia? "transparent": parametri_generali.coloreBordo
             border.color: parametri_generali.coloreBordo
             border.width: 2
 
@@ -87,9 +83,9 @@ Item {
                 autoPlay: true
                 autoLoad: true
 
-                loops: MediaPlayer.Infinite
-                source: "file://"+PATH+"/video/"+"placeholver_video.mp4"
-
+//                loops: MediaPlayer.Infinite
+                source: "file://"+PATH+"/video/"+selected_exercise.video_preparati
+                onStopped: tasto_video.state= "play"
 
             }
 
@@ -101,6 +97,57 @@ Item {
                 z:0
                 visible: false
             }
+
+            PlayPauseButton
+            {
+                id: tasto_video
+                width: 20
+                anchors
+                {
+                    horizontalCenter: parent.horizontalCenter
+                    top: video_preparatorio.bottom
+                    topMargin: 5
+                }
+                z:2
+                state: "pause"
+
+                onPressPause: mp_esercizio_preparati.pause()
+                onPressPlay:
+                {
+                    mp_esercizio_preparati.play()
+                }
+            }
+
+
+
+            CircularTimer {
+                anchors
+                {
+                    horizontalCenter: parent.horizontalCenter
+                    top: video_preparatorio.bottom
+                    topMargin: 50
+                }
+
+                id: tempo
+                value: mp_esercizio_preparati.position/mp_esercizio_preparati.duration
+                tempo: (mp_esercizio_preparati.duration-mp_esercizio_preparati.position) //timerino.remaining_time
+            }
+
+//            PlayButton
+//            {
+//                anchors
+//                {
+//                    horizontalCenter: parent.horizontalCenter
+//                    top: video_preparatorio.bottom
+//                    topMargin: 200
+//                }
+//                width: 100
+//                MouseArea
+//                {
+//                    anchors.fill: parent
+//                    onClicked: pageLoader.source=  "PaginaWorkout.qml"
+//                }
+//            }
 
 
         }

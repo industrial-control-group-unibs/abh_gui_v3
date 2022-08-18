@@ -13,43 +13,59 @@ Item {
 
     Barra_superiore{}
 
-    Rectangle{
-        anchors.fill: parent
-        anchors.topMargin: parametri_generali.larghezza_barra
-        color:parametri_generali.coloreSfondo
-        clip: true
-
-        GridLayout {
-            anchors.left: parent.left
-            anchors.right: parent.right
-
-            anchors.verticalCenter: parent.verticalCenter
-            columns: 2
-
-            Icona_4_3{
-                nome: "PROGRAMMA\n DI ALLENAMENTO"
-                link: "SceltaGruppo.qml"
-                immagine: "place_holder_4_3.png"
-            }
-
-            Icona_4_3{
-                nome: "SFIDA\n"
-                link: "PaginaLogin.qml"
-                immagine: "place_holder_4_3.png"
-            }
-
-            Icona_4_3{
-                nome: "EXTRA\n"
-                link: "PaginaLogin.qml"
-                immagine: "place_holder_4_3.png"
-            }
-
-            Icona_4_3{
-                nome: "ALLENAMENTO SINGOLO\n"
-                link: "SceltaGruppo.qml"
-                immagine: "place_holder_4_3.png"
-            }
-        }
-
+    QuattroImmagini
+    {
+        immagine11: "place_holder_4_3.png"
+        testo11: "PROGRAMMA\n DI ALLENAMENTO"
+        link11: "SceltaGruppo.qml"
+        immagine12: "place_holder_4_3.png"
+        testo12: "SFIDA\n"
+        link12: "PaginaLogin.qml"
+        immagine21: "place_holder_4_3.png"
+        testo21: "EXTRA\n"
+        link21: "PaginaLogin.qml"
+        immagine22: "place_holder_4_3.png"
+        testo22: "ALLENAMENTO\n SINGOLO"
+        link22: "SceltaGruppo.qml"
     }
+
+//    Rectangle{
+//        anchors.fill: parent
+//        anchors.topMargin: parametri_generali.larghezza_barra
+//        color:parametri_generali.coloreSfondo
+//        clip: true
+
+//        GridLayout {
+//            anchors.left: parent.left
+//            anchors.right: parent.right
+
+//            anchors.verticalCenter: parent.verticalCenter
+//            columns: 2
+
+//            Icona_4_3{
+//                nome: "PROGRAMMA\n DI ALLENAMENTO"
+//                link: "SceltaGruppo.qml"
+//                immagine: "place_holder_4_3.png"
+//            }
+
+//            Icona_4_3{
+//                nome: "SFIDA\n"
+//                link: "PaginaLogin.qml"
+//                immagine: "place_holder_4_3.png"
+//            }
+
+//            Icona_4_3{
+//                nome: "EXTRA\n"
+//                link: "PaginaLogin.qml"
+//                immagine: "place_holder_4_3.png"
+//            }
+
+//            Icona_4_3{
+//                nome: "ALLENAMENTO SINGOLO\n"
+//                link: "SceltaGruppo.qml"
+//                immagine: "place_holder_4_3.png"
+//            }
+//        }
+
+//    }
 }

@@ -24,23 +24,40 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #    endif()
 #endif()
 
-find_package(Qt5 COMPONENTS Core Quick REQUIRED)
+find_package(Qt5 COMPONENTS Core Quick Multimedia REQUIRED)
+find_package(Boost 1.40.0 REQUIRED system thread regex)
+find_package( OpenCV REQUIRED )
+
+
+include_directories(
+   ${Boost_INCLUDE_DIRS}
+)
+
+SET(APP_FILES
+  qml.qrc
+  main.cpp
+  QmlStringUdpReceiver.cpp
+  QmlStringUdpSender.cpp
+  QmlBinaryUdpReceiver.cpp
+  QmlBinaryUdpSender.cpp
+  UdpVideoStream.cpp
+  PracticalSocket.cpp
+  ListaEsercizi.cpp
+  ListaZone.cpp
+  ListaUtenti.cpp
+  )
 
 if(ANDROID)
     add_library(abh_gui_v3 SHARED
-      main.cpp
-      qml.qrc
+        ${APP_FILES}
     )
 else()
     add_executable(abh_gui_v3
-      main.cpp
-      ListaEsercizi.cpp
-      ListaZone.cpp
-      qml.qrc
+        ${APP_FILES}
     )
 endif()
 
 target_compile_definitions(abh_gui_v3
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(abh_gui_v3
-  PRIVATE Qt5::Core Qt5::Quick)
+  PRIVATE Qt5::Core Qt5::Quick  Qt5::Multimedia ${Boost_LIBRARIES} ${OpenCV_LIBS} )

@@ -1,18 +1,29 @@
-#include <QQmlApplicationEngine>
 #include <QGuiApplication>
+#include <QQmlApplicationEngine>
+#include <QmlStringUdpReceiver.h>
+#include <QmlStringUdpSender.h>
+#include <QmlBinaryUdpReceiver.h>
+#include <QmlBinaryUdpSender.h>
 #include <QQuickView>
 #include <QStringListModel>
 #include <QQmlEngine>
 #include <QQmlContext>
 #include <QQmlComponent>
+
 #include "ListaEsercizi.h"
 #include "ListaZone.h"
+#include "ListaUtenti.h"
+#include <UdpVideoStream.h>
 
 int main(int argc, char *argv[])
 {
+  qmlRegisterType<UdpCom::StringReceiver>("StringReceiver", 1, 0, "StringReceiver");
+  qmlRegisterType<UdpCom::StringSender>  ("StringSender",   1, 0, "StringSender");
+  qmlRegisterType<UdpCom::BinaryReceiver>("BinaryReceiver", 1, 0, "BinaryReceiver");
+  qmlRegisterType<UdpCom::BinarySender>  ("BinarySender",   1, 0, "BinarySender");
+  qmlRegisterType<UdpCom::UdpVideoStream>("UdpVideoStream", 1, 0, "UdpVideoStream");
   QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-  QGuiApplication app(argc, argv);
 
   QSurfaceFormat format;
   format.setSamples(8);
@@ -24,21 +35,28 @@ int main(int argc, char *argv[])
 
   ListaEsercizi model;
   ListaZona zone;
+  ListaUtenti utenti;
 
-  QQmlApplicationEngine engine;
-  const QUrl url(QStringLiteral("qrc:/main.qml"));
 
-  QQmlContext *context = engine.rootContext();
+  std::shared_ptr<QGuiApplication> app=std::make_shared<QGuiApplication>(argc, argv);
+  std::shared_ptr<QQmlApplicationEngine> engine=std::make_shared<QQmlApplicationEngine>();
+
+  QQmlContext *context = engine->rootContext();
   context->setContextProperty("_myModel", &model);
   context->setContextProperty("_zona", &zone);
-  engine.rootContext()->setContextProperty("PATH", cpp_path);
+  context->setContextProperty("_utenti", &utenti);
+  engine->rootContext()->setContextProperty("PATH", cpp_path);
 
-  QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                   &app, [url](QObject *obj, const QUrl &objUrl) {
+  const QUrl url(QStringLiteral("qrc:/main.qml"));
+  QObject::connect(&(*engine), &QQmlApplicationEngine::objectCreated,
+                   &(*app), [url](QObject *obj, const QUrl &objUrl) {
     if (!obj && url == objUrl)
       QCoreApplication::exit(-1);
   }, Qt::QueuedConnection);
-  engine.load(url);
+  engine->load(url);
 
-  return app.exec();
+  int output=app->exec();
+  engine.reset();
+  std::cout << "exit" << std::endl;
+  return output;
 }

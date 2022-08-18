@@ -31,7 +31,7 @@ Rectangle   {
         onPressed: {
             mouse.accepted = false
             console.log("clicked")
-            selected_exercise.ex_name="unselected"
+            selected_exercise.name="unselected"
             zona_allenamento.gruppo=ex_name
             console.log("clicked + ",ex_name)
 

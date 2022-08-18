@@ -6,28 +6,22 @@ import QtQuick.Layouts 1.1
 
 Item {
 
-    property string link_sx: ""
-    property string link_dx: ""
+    signal pressLeft
+    signal pressRight
 
     state: "sx"
-    id: barra_bottoni_swipe
-    onStateChanged:
-    {
-        if (state==="dx")
-        {
-            if (link_dx!=="")
-            {
-                pageLoader.source=  link_dx
-            }
-        }
-        if (state==="sx")
-        {
-            if (link_sx!=="")
-            {
-                pageLoader.source=  link_sx
-            }
-        }
-    }
+    id: component
+//    onStateChanged:
+//    {
+//        if (state==="dx")
+//        {
+//            pressRight()
+//        }
+//        if (state==="sx")
+//        {
+//            pressLeft()
+//        }
+//    }
 
     states: [
         State {
@@ -47,10 +41,14 @@ Item {
         onReleased: {
             if (mouse.x>width*0.5)
             {
+                if (component.state==="sx")
+                    component.pressRight()
                 parent.state= "dx"
             }
             else
             {
+                if (component.state==="dx")
+                    component.pressLeft()
                 parent.state= "sx"
             }
         }
@@ -75,20 +73,6 @@ Item {
         width: height
         radius: width*0.5
         color: "#D4C9BD"
-
-
-//        MouseArea
-//        {
-//            anchors.fill: parent
-//            onClicked:
-//            {
-//                barra_bottoni_swipe.state="sx"
-//                if (link_sx!=="")
-//                {
-//                      //pageLoader.source=  link_sx
-//                }
-//            }
-//        }
     }
 
     Rectangle
@@ -100,19 +84,6 @@ Item {
         width: height
         radius: width*0.5
         color: "#4E4F5075"
-
-//        MouseArea
-//        {
-//            anchors.fill: parent
-//            onClicked:
-//            {
-//                barra_bottoni_swipe.state="dx"
-//                if (link_dx!=="")
-//                {
-////                    pageLoader.source=  link_dx
-//                }
-//            }
-//        }
     }
 
 }

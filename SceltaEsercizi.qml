@@ -14,6 +14,12 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
+    Component.onDestruction:
+    {
+        pageLoader.last_source="SceltaEsercizi.qml"
+    }
+
+
     Barra_superiore{}
 
     FrecceSxDx
@@ -43,7 +49,7 @@ Item {
 
 
             Text {
-                text:selected_exercise.ex_name==="unselected"? zona_allenamento.gruppo+"\n" : zona_allenamento.gruppo+"\n"+selected_exercise.ex_name
+                text:selected_exercise.name==="unselected"? zona_allenamento.gruppo+"\n" : zona_allenamento.gruppo+"\n"+selected_exercise.name
                 anchors
                 {
                     left:parent.left
@@ -77,10 +83,10 @@ Item {
                 anchors.right: parent.right
                 anchors.rightMargin: 10
                 anchors.verticalCenter: parent.verticalCenter
-                width: 256*2
-                height: 135*2
+                width: grid.cellWidth
+                height: width
                 radius: 20
-                border.color: selected_exercise.source? parametri_generali.coloreBordo: "transparent"
+                border.color: selected_exercise.immagine? parametri_generali.coloreBordo: "transparent"
                 border.width: 2
 
 
@@ -113,10 +119,7 @@ Item {
                     autoPlay: false
                     autoLoad: true
 
-//                    loops: MediaPlayer.Infinite
-                    //source: selected_exercise.ex_code+ ".mp4"
-                    source: "file://"+PATH+"/video/"+"placeholver_video.mp4"
-//                    onSourceChanged: console.log("video "+selected_exercise.ex_code+ ".mp4")
+                    source: "file://"+PATH+"/video/"+selected_exercise.video_intro
 
                     onPlaybackStateChanged: {
                         if(playbackState==1){
@@ -146,24 +149,7 @@ Item {
                     visible: false
                 }
 
-//                Image {
-//                    id: immagine_selezionata
-//                    layer.enabled: true
-//                    fillMode: Image.PreserveAspectFit
-//                    visible: false
-//                    mipmap: true
-//                    //                    z: 2
-//                    anchors
-//                    {
-//                        fill: parent
-//                        leftMargin: 5
-//                        rightMargin: 5
-//                        topMargin: 5
-//                        bottomMargin: 5
-//                    }
-//                    source: "file://"+PATH+"/"+selected_exercise.source
 
-//                }
             }
         }
 

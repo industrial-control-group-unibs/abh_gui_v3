@@ -29,10 +29,27 @@
         <file>IconaZona.qml</file>
         <file>IconaEsercizi.qml</file>
         <file>DefinizioneUtente1.qml</file>
-        <file>IconaCerchioVuoto.qml</file>
+        <file>IconaCerchio.qml</file>
         <file>BottoniSwipe.qml</file>
         <file>DefinizioneUtente2.qml</file>
         <file>PaginaImpostazioni.qml</file>
         <file>PaginaPreparati.qml</file>
+        <file>CircularSlider.qml</file>
+        <file>CircularTimer.qml</file>
+        <file>PlayButton.qml</file>
+        <file>PauseButton.qml</file>
+        <file>PlayPauseButton.qml</file>
+        <file>PaginaWorkout.qml</file>
+        <file>TestPage.qml</file>
+        <file>IconaRipetizioni.qml</file>
+        <file>CSlider.qml</file>
+        <file>Testo.qml</file>
+        <file>WorkoutBottom.qml</file>
+        <file>WorkoutTop.qml</file>
+        <file>Titolo.qml</file>
+        <file>CircularIndicator.qml</file>
+        <file>QuattroImmagini.qml</file>
+        <file>ModelloRichiesteUtente.qml</file>
+        <file>PaginaSceltaAvatar.qml</file>
     </qresource>
 </RCC>
