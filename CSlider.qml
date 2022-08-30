@@ -20,7 +20,7 @@ CircularSlider {
 
     startAngle: 0
     endAngle: 360
-    minValue: 0
+    minValue: 1
     maxValue: 10
     snap: true
     stepSize: 1

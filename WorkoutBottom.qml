@@ -22,7 +22,7 @@ Item
     CSlider
     {
         id: power_settings
-        width: 100
+        width: 200
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height*0.25
@@ -76,7 +76,7 @@ Item
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: parent.width*0.25
         anchors.verticalCenter: parent.verticalCenter
-        width: 100
+        width: 200
         id: time
         value: timer_tempo.value/1000/60-Math.floor(timer_tempo.value/1000/60)
         tempo: timer_tempo.value
@@ -98,7 +98,7 @@ Item
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: -parent.width*0.25
         anchors.verticalCenter: parent.verticalCenter
-        width: 100
+        width: 200
         id: tut
         value: timer_tut.value/1000/60-Math.floor(timer_tut.value/1000/60)
         tempo: timer_tut.value

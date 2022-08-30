@@ -33,13 +33,13 @@ Item {
         link11: "PaginaLogin.qml"
         immagine12: "place_holder_4_3.png"
         testo12: "CONNETIVITÀ\n"
-        link12: "PaginaLogin.qml"
+        link12: "PaginaExit.qml"
         immagine21: "place_holder_4_3.png"
         testo21: "SCHERMO-AUDIO\n"
         link21: "PaginaLogin.qml"
         immagine22: "place_holder_4_3.png"
         testo22: "LOG OUT\n"
-        link22: "SceltaGruppo.qml"
+        link22: "PaginaLogin.qml"
     }
 
 //    Rectangle{

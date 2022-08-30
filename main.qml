@@ -20,7 +20,7 @@ ApplicationWindow {
     Component.onCompleted: console.log(_esercizi.getImage("addominali1"))
 
 
-    visibility: "FullScreen"
+//    visibility: "FullScreen"
     Item {
         id: parametri_generali
         property string coloreTesto: "#473729"

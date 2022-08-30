@@ -25,7 +25,7 @@ Item {
     FrecceSxDx
     {
         link_sx: "SceltaGruppo.qml"
-        link_dx: "PaginaPreparati.qml"
+        link_dx: "PaginaConfEsercizioSingolo.qml"
     }
 
 
