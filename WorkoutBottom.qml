@@ -26,7 +26,11 @@ Item
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height*0.25
-        value: 1
+        value: selected_exercise.power
+        onValueChanged: {
+            selected_exercise.level=qsTr(Math.min(3,value))
+        }
+
         z:10
         Testo
         {
