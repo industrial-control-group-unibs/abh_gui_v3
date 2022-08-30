@@ -1,3 +1,4 @@
 nome,power,ripetizioni,set,riposo,max_velocita_positiva,max_velocita_negativa
-SIT-UP,3,15,3,20,50,-100
-CRUNCH,5,15,3,20,50,-100
+biceps_curl,3,15,3,20,50,-100
+triceps_push_down,5,15,3,20,50,-100
+pulls_apart,4,10,3,20,20,-50

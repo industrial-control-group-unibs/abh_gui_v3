@@ -99,8 +99,8 @@ ApplicationWindow {
         property int sets: 3
         property int current_set: 0
         property int rest_time: 10
-        property real max_pos_speed: 70
-        property real max_neg_speed: -70
+        property real max_pos_speed: 20
+        property real max_neg_speed: -10
         property string workout: "workout1"
 
         property string level: "1"// TO BE REMOVED
