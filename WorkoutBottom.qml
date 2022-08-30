@@ -28,7 +28,7 @@ Item
         anchors.verticalCenterOffset: -parent.height*0.25
         value: selected_exercise.power
         onValueChanged: {
-            selected_exercise.level=qsTr(Math.min(3,value))
+            selected_exercise.level=(Math.min(3,value)).toString()
         }
 
         z:10
