@@ -1,0 +1,3 @@
+soglia_velocita: 1.0  # giri motore al secondo
+soglia_velocita_return: -1.0 # giri motore al secondo
+tempo_variazione_coppia: 0.5 # secondi per passare dal massimo al minimo
