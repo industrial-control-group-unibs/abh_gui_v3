@@ -174,6 +174,7 @@ def exercise_thread():
             else:
                 logging.warning("startstop_client_d should receive start or stop. received: "+stringa)
 
+
         if (motor_fb_udp.isNewDataAvailable()):
             motor_fb=motor_fb_udp.getLastDataAndClearQueue()
             if len(motor_fb)==2:
