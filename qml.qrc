@@ -57,5 +57,7 @@
         <file>PaginaRiepilogo.qml</file>
         <file>PaginaConfEsercizioSingolo.qml</file>
         <file>PaginaExit.qml</file>
+        <file>PaginaCancellaUtente.qml</file>
+        <file>SiNo.qml</file>
     </qresource>
 </RCC>

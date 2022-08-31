@@ -24,7 +24,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #    endif()
 #endif()
 
-find_package(Qt5 COMPONENTS Core Quick Multimedia REQUIRED)
+find_package(Qt5 COMPONENTS Core Quick Multimedia Widgets Qml  REQUIRED)
 find_package(Boost 1.40.0 REQUIRED system thread regex)
 find_package( OpenCV REQUIRED )
 
@@ -62,4 +62,4 @@ endif()
 target_compile_definitions(abh_gui_v3
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(abh_gui_v3
-  PRIVATE Qt5::Core Qt5::Quick  Qt5::Multimedia ${Boost_LIBRARIES} ${OpenCV_LIBS} )
+  PRIVATE Qt5::Core Qt5::Quick  Qt5::Multimedia Qt5::Widgets Qt5::Qml  ${Boost_LIBRARIES} ${OpenCV_LIBS} )

@@ -36,7 +36,7 @@ Item {
         link12: "PaginaExit.qml"
         immagine21: "place_holder_4_3.png"
         testo21: "SCHERMO-AUDIO\n"
-        link21: "PaginaLogin.qml"
+        link21: "TestPage.qml"
         immagine22: "place_holder_4_3.png"
         testo22: "LOG OUT\n"
         link22: "PaginaLogin.qml"

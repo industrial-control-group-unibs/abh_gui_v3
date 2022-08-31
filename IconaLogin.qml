@@ -17,6 +17,16 @@ Item
 
     MouseArea {
         anchors.fill: parent
+        pressAndHoldInterval: 2000
+        onPressAndHold:
+        {
+            if(identifier !== "") {
+                impostazioni_utente.nome=nome
+                impostazioni_utente.foto=foto
+                pageLoader.source=  "PaginaCancellaUtente.qml"
+            }
+        }
+
         onClicked: {
             if(identifier === "") {
                 pageLoader.source=  "DefinizioneUtente1.qml"

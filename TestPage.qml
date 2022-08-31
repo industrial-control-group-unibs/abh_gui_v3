@@ -5,6 +5,12 @@ import QtQuick 2.12
 import QtQuick.Shapes 1.12
 
 import QtQuick.Layouts 1.1
+
+import QtQuick.VirtualKeyboard 2.4
+import QtQuick.Controls 2.3
+
+
+
 Item {
     anchors.fill: parent
 
@@ -13,19 +19,23 @@ Item {
 
     Barra_superiore{}
 
-    QuattroImmagini
-    {
-        immagine11: "place_holder_4_3.png"
-        testo11: "ALLENAMENTO\n"
-        link11: "PaginaAllenamento.qml"
-        immagine12: "place_holder_4_3.png"
-        testo12: "NUTRIZIONE\n"
-        link12: "PaginaAllenamento.qml"
-        immagine21: "place_holder_4_3.png"
-        testo21: "PSICHE\n"
-        link21: "PaginaAllenamento.qml"
-        immagine22: "place_holder_4_3.png"
-        testo22: "MEDITAZIONE\n"
-        link22: "PaginaAllenamento.qml"
+
+    Item {
+        id: root
+        Item {
+            id: appContainer
+            anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.topMargin: impo
+            anchors.right: parent.right
+            anchors.bottom: inputPanel.top
+        }
+
+        InputPanel {
+            id: inputPanel
+            externalLanguageSwitchEnabled: true
+            onExternalLanguageSwitch: languageDialog.show(localeList, currentIndex)
+
+        }
     }
 }

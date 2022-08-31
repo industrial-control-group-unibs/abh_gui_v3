@@ -42,6 +42,7 @@ public:
 
 public slots:
     void readFile();
+    void removeUser(QString name);
     void addUser(std::vector<QString> dati);
 
 

@@ -20,7 +20,7 @@ ApplicationWindow {
     Component.onCompleted: console.log(_esercizi.getImage("addominali1"))
 
 
-    visibility: "FullScreen"
+    visibility: _fullscreen?"FullScreen":false
     onVisibilityChanged: {
         visibility="FullScreen"
     }
@@ -84,7 +84,11 @@ ApplicationWindow {
         id: impostazioni_utente
         property string nome: ""
         property string foto: ""
-        onNomeChanged: _utenti.readFile()
+        onNomeChanged:
+        {
+
+            _utenti.readFile()
+        }
     }
 
 
@@ -134,6 +138,16 @@ ApplicationWindow {
         host: "localhost"
         // @disable-check M16
         string: selected_exercise.code+qsTr(";")+selected_exercise.level+qsTr(";")+selected_exercise.difficulty
+    }
+
+    StringSender {
+        id: user_udp
+        // @disable-check M16
+        port: "21005"
+        // @disable-check M16
+        host: "localhost"
+        // @disable-check M16
+        string: impostazioni_utente.nome
     }
 
     StringSender {
@@ -221,7 +235,7 @@ ApplicationWindow {
         property url last_source
 
         sourceComponent: PaginaLogo{}
-        //                sourceComponent: TestPage{}
+//                        sourceComponent: TestPage{}
 //        sourceComponent: PaginaRiepilogo{}
     }
 

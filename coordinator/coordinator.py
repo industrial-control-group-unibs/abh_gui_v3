@@ -41,6 +41,7 @@ def exercise_thread():
 
     exercise_client=-1
     startstop_client=-1
+    user_client=-1
     exercise_name_eval=-1
     motor_target=-1
     repetition_udp=-1
@@ -54,6 +55,8 @@ def exercise_thread():
             exercise_client.start()
             startstop_client = UdpReceiverThread("startstop_client_d",abh.ABH_CONTROL,abh.START_EXERCISE_PORT)
             startstop_client.start()
+            user_client = UdpReceiverThread("user_client_d",abh.ABH_CONTROL,abh.UTENTE_PORT)
+            user_client.start()
             repetition_udp = UdpBinaryReceiverThread("repetition_udp",abh.ABH_VISION,abh.REP_COUNT_PORT)
             repetition_udp.start()
             repetition_udp.bufferLength(2)
@@ -156,6 +159,13 @@ def exercise_thread():
 
             if not isinstance(exercise_name_eval,int):
                 exercise_name_eval.sendString(esercizio[0])
+
+        if (user_client.isNewStringAvailable()):
+            stringa=user_client.getLastStringAndClearQueue()
+            print(stringa)
+            if (stringa):
+                exercise_name_eval.sendString("user_"+stringa)
+
         if (startstop_client.isNewStringAvailable()):
             stringa=startstop_client.getLastStringAndClearQueue()
             if stringa[0:5]=="start" :
@@ -199,7 +209,7 @@ def exercise_thread():
                     state=Status.UNDEFINED
                     print("non c'è nessuno")
                     #print(motor_speed)
-    
+
         if (state == Status.STOP):
             repetition_count=0.0
             direction=0.0
@@ -233,6 +243,14 @@ def exercise_thread():
         startstop_client.join()
     else:
         logging.debug("startstop_client is off")
+
+    if not isinstance(user_client,int):
+        user_client.stopThread()
+        user_client.join()
+    else:
+        logging.debug("user_client is off")
+
+
 
     if not isinstance(repetition_udp,int):
         repetition_udp.stopThread()

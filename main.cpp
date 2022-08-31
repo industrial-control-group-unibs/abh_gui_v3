@@ -17,6 +17,8 @@
 #include "ListaUtenti.h"
 #include "ProgrammaAllenamento.h"
 #include "DescrizioneEsercizi.h"
+#include <iostream>
+
 
 int main(int argc, char *argv[])
 {
@@ -27,6 +29,8 @@ int main(int argc, char *argv[])
   qmlRegisterType<UdpCom::UdpVideoStream>("UdpVideoStream", 1, 0, "UdpVideoStream");
   QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
+  std::string Username = getlogin();
+  std::cout << Username << std::endl;
 
   QSurfaceFormat format;
   format.setSamples(8);
@@ -58,6 +62,16 @@ int main(int argc, char *argv[])
   context->setContextProperty("_workout_list", &workout_list);
   context->setContextProperty("_utenti", &utenti);
   context->setContextProperty("_zona", &zone);
+
+  bool fs=true;
+  if (!Username.compare("abh"))
+  {
+  }
+  else
+  {
+    fs=false;
+  }
+  context->setContextProperty("_fullscreen", fs);
 
 //  UdpCom::BinaryReceiver rec;
 //  rec.setName("ricevitore");
