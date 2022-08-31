@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
   context->setContextProperty("_zona", &zone);
 
   bool fs=true;
-  if (!Username.compare("abh"))
+  if (!Username.compare("abhorizon"))
   {
   }
   else
