@@ -162,8 +162,8 @@ def exercise_thread():
 
         if (user_client.isNewStringAvailable()):
             stringa=user_client.getLastStringAndClearQueue()
-            print(stringa)
             if (stringa):
+                print("user_"+stringa)
                 exercise_name_eval.sendString("user_"+stringa)
 
         if (startstop_client.isNewStringAvailable()):
