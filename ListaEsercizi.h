@@ -26,7 +26,7 @@ public:
         PathRole
     };
 
-    explicit ListaEsercizi(QObject *parent = nullptr);
+    explicit ListaEsercizi(QString path, QObject *parent = nullptr);
 
     int rowCount(const QModelIndex& parent) const override;
     QVariant data( const QModelIndex& index, int role = Qt::DisplayRole ) const override;

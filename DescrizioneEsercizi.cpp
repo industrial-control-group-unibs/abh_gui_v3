@@ -4,9 +4,10 @@
 
 namespace abh {
 
-DescrizioneEsercizi::DescrizioneEsercizi(QObject *parent)
+DescrizioneEsercizi::DescrizioneEsercizi(QString path, QObject *parent)
 {
-
+  dir_path_=path;
+  readFile();
 }
 void DescrizioneEsercizi::readFile()
 {

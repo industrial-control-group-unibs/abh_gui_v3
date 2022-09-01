@@ -67,7 +67,7 @@ Item
             visible: false
             mipmap: true
             anchors.fill:parent
-            source: "file://"+PATH+"/images/"+foto
+            source: "file://"+PATH+"/utenti/"+foto
             id: allenamento_icona
         }
 
@@ -169,7 +169,7 @@ Item
 //        visible: true
 //        mipmap: true
 //        anchors.fill:parent
-//        source: "file://"+PATH+"/images/"+img_name
+//        source: "file://"+PATH+"/utente/"+img_name
 
 //        layer.effect: OpacityMask {
 //            maskSource: Item {

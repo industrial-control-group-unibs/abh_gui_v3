@@ -4,8 +4,9 @@
 
 namespace abh {
 
-ProgrammaAllenamento::ProgrammaAllenamento(QObject *parent)
+ProgrammaAllenamento::ProgrammaAllenamento(QString path, QObject *parent)
 {
+  dir_path_=path;
   completed_=true;
 }
 void ProgrammaAllenamento::readFile(QString string)

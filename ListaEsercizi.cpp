@@ -6,14 +6,13 @@
 #include <cstdlib>
 #include <rapidcsv.h>
 
-ListaEsercizi::ListaEsercizi(QObject *parent) :
+ListaEsercizi::ListaEsercizi(QString path, QObject *parent) :
   QAbstractListModel(parent)
 {
 
 
-  std::string file_path = __FILE__;
-  dir_path_ = file_path.substr(0, file_path.rfind("/"));
-  path_=QString::fromStdString(dir_path_);
+  path_=path;
+  dir_path_=path_.toStdString();
 
   readFile("Gambe");
 }
@@ -61,7 +60,8 @@ QHash<int, QByteArray> ListaEsercizi::roleNames() const
 void ListaEsercizi::readFile(QString string)
 {
 
-  std::string nome_file=dir_path_+"/"+string.toStdString()+".csv";
+  std::string nome_file=dir_path_+"/zone/"+string.toStdString()+".csv";
+  std::cout << "file = "<<nome_file<<std::endl;
   rapidcsv::Document doc(nome_file);
 
   std::vector<std::string> col = doc.GetColumn<std::string>("ex_name");

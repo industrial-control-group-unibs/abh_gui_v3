@@ -33,7 +33,7 @@ public:
       Role_foto
     };
 
-    explicit ListaUtenti(QObject *parent = nullptr);
+    explicit ListaUtenti(QString path, QObject *parent = nullptr);
 
     int rowCount(const QModelIndex& parent) const override;
     QVariant data( const QModelIndex& index, int role = Qt::DisplayRole ) const override;

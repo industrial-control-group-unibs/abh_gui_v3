@@ -128,7 +128,7 @@ Item
             autoLoad: true
             loops: MediaPlayer.Infinite
             //                loops: MediaPlayer.Infinite
-            source: "file://"+PATH+"/video/"+selected_exercise.video_workout
+            source: "file://"+PATH+"/video_workout_esercizi/"+selected_exercise.video_workout
             onStopped: tasto_video.state= "play"
             onPositionChanged:
             {

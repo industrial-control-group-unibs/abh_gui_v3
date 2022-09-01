@@ -27,7 +27,7 @@ class ProgrammaAllenamento : public QObject
   Q_PROPERTY(QString         workoutName    MEMBER  workoutName_   NOTIFY workoutNameChanged   )
 
 public:
-  explicit ProgrammaAllenamento(QObject *parent = nullptr);
+  explicit ProgrammaAllenamento(QString path, QObject *parent = nullptr);
 //  virtual ~ProgrammaAllenamento();
 
   bool    completed  () const {return completed_    ;}
@@ -40,7 +40,6 @@ public:
   double  maxPosSpeed() const {return maxPosSpeed_  ;}
   double  maxNegSpeed() const {return maxNegSpeed_  ;}
 
-  void setPath(QString& path){dir_path_=path;}
   public slots:
     void readFile(QString string);
     void next();

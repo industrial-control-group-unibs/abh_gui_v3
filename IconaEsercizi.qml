@@ -58,6 +58,6 @@ Rectangle   {
         visible: false
         mipmap: true
         anchors.fill: parent
-        source: "file://"+PATH+"/images/"+_esercizi.getImage(ex_name)
+        source: "file://"+PATH+"/immagini_esercizi/"+_esercizi.getImage(ex_name)
     }
 }

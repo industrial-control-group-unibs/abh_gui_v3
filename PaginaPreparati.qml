@@ -84,7 +84,7 @@ Item {
                 autoLoad: true
 
 //                loops: MediaPlayer.Infinite
-                source: "file://"+PATH+"/video/"+selected_exercise.video_preparati
+                source: "file://"+PATH+"/video_preparazione_esercizi/"+selected_exercise.video_preparati
                 onStopped: tasto_video.state= "play"
 
             }

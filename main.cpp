@@ -31,71 +31,90 @@ int main(int argc, char *argv[])
 
   std::string Username = getlogin();
   std::cout << Username << std::endl;
+  bool fs=true;
+  if (!Username.compare("abhorizon"))
+  {
+
+  }
+  else
+  {
+
+    fs=false;
+  }
 
   QSurfaceFormat format;
   format.setSamples(8);
   QSurfaceFormat::setDefaultFormat(format);
 
-  std::string file_path = __FILE__;
-  std::string dir_path = file_path.substr(0, file_path.rfind("/"));
-  QString cpp_path=QString::fromStdString(dir_path);
+  std::string dir_path;
 
-  ListaEsercizi model;
-  ListaZona zone;
-  ListaZona workout_list;
+  if (fs)
+  {
+    dir_path="/home/abhorizon/Scrivania/abh_data";
+  }
+  else
+  {
+    dir_path="/home/jacobi/projects/abh_data";
+  }
+
+  QString data_path=QString::fromStdString(dir_path);
+
+std::cout << "a" <<std::endl;
+  ListaEsercizi model(data_path);
+  std::cout << "b" <<std::endl;
+  ListaZona zone(data_path+"/zone");
+  std::cout << "c" <<std::endl;
+  ListaZona workout_list(data_path+"/allenamento_programmato");
+  std::cout << "d" <<std::endl;
+  ListaUtenti utenti(data_path+"/utenti");
+  std::cout << "e" <<std::endl;
+  abh::ProgrammaAllenamento workout(data_path+"/allenamento_programmato");
+  std::cout << "f" <<std::endl;
+  abh::DescrizioneEsercizi esercizi(data_path);
+  std::cout << "g" <<std::endl;
+
+  std::cout << __LINE__ <<std::endl;
+  zone.readFile("Zone");
+  std::cout << __LINE__ <<std::endl;
   workout_list.readFile("lista_workout");
-  ListaUtenti utenti;
-
-
-
-
-  abh::ProgrammaAllenamento workout;
-  workout.setPath(cpp_path);
+  std::cout << __LINE__ <<std::endl;
   workout.readFile("workout1_facile_1");
+  std::cout << __LINE__ <<std::endl;
 
 
   std::shared_ptr<QGuiApplication> app=std::make_shared<QGuiApplication>(argc, argv);
   std::shared_ptr<QQmlApplicationEngine> engine=std::make_shared<QQmlApplicationEngine>();
 
   QQmlContext *context = engine->rootContext();
+  std::cout << __LINE__ <<std::endl;
   context->setContextProperty("_myModel", &model);
   context->setContextProperty("_workout_list", &workout_list);
   context->setContextProperty("_utenti", &utenti);
   context->setContextProperty("_zona", &zone);
-
-  bool fs=true;
-  if (!Username.compare("abhorizon"))
-  {
-  }
-  else
-  {
-    fs=false;
-  }
   context->setContextProperty("_fullscreen", fs);
-
-//  UdpCom::BinaryReceiver rec;
-//  rec.setName("ricevitore");
-//  rec.setSize(3);
-//  rec.setData({0.0,0.0,0.0});
-//  rec.setPort("15005");
-//  context->setContextProperty("_rec_udp", &rec);
+  context->setContextProperty("_esercizi",&esercizi);
+  std::cout << __LINE__ <<std::endl;
 
   context->setContextProperty("_workout", &workout);
-  engine->rootContext()->setContextProperty("PATH", cpp_path);
+  std::cout << __LINE__ <<std::endl;
+  engine->rootContext()->setContextProperty("PATH", data_path);
+  std::cout << __LINE__ <<std::endl;
 
-  abh::DescrizioneEsercizi esercizi;
-  esercizi.setPath(cpp_path);
-  context->setContextProperty("_esercizi",&esercizi);
 
   const QUrl url(QStringLiteral("qrc:/main.qml"));
+  std::cout << __LINE__ <<std::endl;
   QObject::connect(&(*engine), &QQmlApplicationEngine::objectCreated,
                    &(*app), [url](QObject *obj, const QUrl &objUrl) {
     if (!obj && url == objUrl)
       QCoreApplication::exit(-1);
   }, Qt::QueuedConnection);
+  std::cout << __LINE__ <<std::endl;
   engine->load(url);
+  std::cout << __LINE__ <<std::endl;
 
+  std::cout << __LINE__ <<std::endl;
   int output=app->exec();
+  std::cout << __LINE__ <<std::endl;
   engine.reset();
   std::cout << "exit" << std::endl;
   return output;

@@ -28,7 +28,7 @@ Rectangle
             anchors.fill: parent
             mipmap: true
             fillMode: Image.Stretch
-            source: "file://"+PATH+"/images/"+"sfumatura_barra.png"
+            source: "file://"+PATH+"/loghi/"+"sfumatura_barra.png"
         }
     }
 
@@ -108,7 +108,7 @@ Rectangle
             visible: true
             mipmap: true
             anchors.fill:parent
-            source: "file://"+PATH+"/images/LogoABHCorner.png"
+            source: "file://"+PATH+"/loghi/LogoABHCorner.png"
         }
 
     }

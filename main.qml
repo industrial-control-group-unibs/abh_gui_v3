@@ -17,14 +17,12 @@ ApplicationWindow {
     //    height: 1080
     height: width/1080*1920
 
-    Component.onCompleted: console.log(_esercizi.getImage("addominali1"))
 
 
     visibility: _fullscreen?"FullScreen":false
     onVisibilityChanged: {
         visibility="FullScreen"
     }
-
     Item {
         id: parametri_generali
         property string coloreTesto: "#473729"

@@ -119,7 +119,7 @@ Item {
                     autoPlay: false
                     autoLoad: true
 
-                    source: "file://"+PATH+"/video/"+selected_exercise.video_intro
+                    source: "file://"+PATH+"/video_brevi_esercizi/"+selected_exercise.video_intro
                     onSourceChanged: console.log(source)
 
                     onPlaybackStateChanged: {

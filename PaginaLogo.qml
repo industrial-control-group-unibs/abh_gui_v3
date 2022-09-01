@@ -43,7 +43,7 @@ Rectangle {
             visible: true
             mipmap: true
             anchors.fill:parent
-            source: "file://"+PATH+"/images/LogoABIntro.png"
+            source: "file://"+PATH+"/loghi/LogoABIntro.png"
         }
     } 
 }

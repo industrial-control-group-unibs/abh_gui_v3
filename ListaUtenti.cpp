@@ -6,16 +6,15 @@
 #include <cstdlib>
 #include <rapidcsv.h>
 
-ListaUtenti::ListaUtenti(QObject *parent) :
+ListaUtenti::ListaUtenti(QString path, QObject *parent) :
   QAbstractListModel(parent)
 {
 
 
   roles_=roleNames().size();
 
-  std::string file_path = __FILE__;
-  dir_path_ = file_path.substr(0, file_path.rfind("/"));
-  path_=QString::fromStdString(dir_path_);
+  path_=path;
+  dir_path_=path_.toStdString();
 
   readFile();
 }

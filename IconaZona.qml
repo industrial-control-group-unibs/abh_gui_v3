@@ -108,7 +108,7 @@ Rectangle   {
             topMargin: 5
             bottomMargin: 5
         }
-        source: "file://"+PATH+"/images/"+image_name
+        source: "file://"+PATH+"/zone/"+image_name
     }
 }
 

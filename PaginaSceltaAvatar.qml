@@ -90,7 +90,7 @@ Item {
                         visible: false
                         mipmap: true
                         anchors.fill:parent
-                        source: "file://"+PATH+"/images/"+foto
+                        source: "file://"+PATH+"/utente/"+foto
                         id: allenamento_icona
                     }
 

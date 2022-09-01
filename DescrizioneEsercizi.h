@@ -19,11 +19,10 @@ class DescrizioneEsercizi : public QObject
   Q_PROPERTY(QString         video_workout       MEMBER video_workout        NOTIFY video_workoutChanged      )
 
 public:
-  explicit DescrizioneEsercizi(QObject *parent = nullptr);
+  explicit DescrizioneEsercizi(QString path, QObject *parent = nullptr);
 
   void setName(QString new_name);
 
-  void setPath(QString& path){dir_path_=path;readFile();}
 public slots:
   void readFile();
 

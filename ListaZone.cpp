@@ -6,16 +6,16 @@
 #include <cstdlib>
 #include <rapidcsv.h>
 
-ListaZona::ListaZona(QObject *parent) :
+ListaZona::ListaZona(QString path, QObject *parent) :
   QAbstractListModel(parent)
 {
 
 
-  std::string file_path = __FILE__;
-  dir_path_ = file_path.substr(0, file_path.rfind("/"));
-  path_=QString::fromStdString(dir_path_);
 
-  readFile("Zone");
+  path_=path;
+  dir_path_=path_.toStdString();
+
+//  readFile("Zone");
 }
 
 int ListaZona::rowCount( const QModelIndex& parent) const
@@ -59,6 +59,7 @@ void ListaZona::readFile(QString string)
 {
 
   std::string nome_file=dir_path_+"/"+string.toStdString()+".csv";
+  std::cout << nome_file<<std::endl;
   rapidcsv::Document doc(nome_file);
 
   std::vector<std::string> col = doc.GetColumn<std::string>("ex_name");

@@ -26,7 +26,7 @@ Item {
             visible: false
             mipmap: true
             anchors.fill:parent
-            source: "file://"+PATH+"/images/"+component.immagine
+            source: "file://"+PATH+"/loghi/"+component.immagine
             id: allenamento_icona
         }
 
