@@ -111,17 +111,21 @@ QHash<int, QByteArray> ListaUtenti::roleNames() const
 
 void ListaUtenti::removeUser(QString name)
 {
-//  std::string nome_file=dir_path_+"/utenti.csv";
-//  rapidcsv::Document doc(nome_file);
-//  std::vector<std::string> row(roles_);
-//  for (size_t ifield=0;ifield<dati.size();ifield++)
-//  {
-//    row[ifield]=dati.at(ifield).toStdString();
-//    std::cout<<row[ifield];
-//  }
-//  row[12]=std::to_string(doc.GetRowCount())+"_"+row[0]+"_"+row[1];
-//  doc.InsertRow(doc.GetRowCount(),row);
-//  doc.Save(nome_file);
+  std::string nome=name.toStdString();
+  std::string nome_file=dir_path_+"/utenti.csv";
+  rapidcsv::Document doc(nome_file);
+
+  std::vector<std::string> col = doc.GetColumn<std::string>("nome");
+  for (size_t ifield=0;ifield<col.size();ifield++)
+  {
+    if (!col.at(ifield).compare(nome))
+    {
+      std::cout << "removed " << nome << std::endl;
+      doc.RemoveRow(ifield);
+      break;
+    }
+  }
+  doc.Save(nome_file);
 
 }
 void ListaUtenti::readFile()

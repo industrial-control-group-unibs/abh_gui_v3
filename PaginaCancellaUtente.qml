@@ -30,7 +30,8 @@ Item {
             onPressNo: pageLoader.source=  "PaginaLogin.qml"
             onPressYes:
             {
-
+                _utenti.removeUser(impostazioni_utente.nome)
+                _utenti.readFile()
                 pageLoader.source=  "PaginaLogin.qml"
             }
         }
