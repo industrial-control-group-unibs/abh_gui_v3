@@ -34,6 +34,7 @@ ApplicationWindow {
         property int larghezza_barra: 172
         property int offset_icone4x3: 400
         property int logo_time: 2000
+        property bool login_page: false
 
         state: "SABBIA"
 

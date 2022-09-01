@@ -14,6 +14,9 @@ Rectangle {
     color:parametri_generali.coloreSfondo
     clip: true
 
+    Component.onCompleted: parametri_generali.login_page=true
+    Component.onDestruction: parametri_generali.login_page=false
+
     Barra_superiore{}
 
     Item {

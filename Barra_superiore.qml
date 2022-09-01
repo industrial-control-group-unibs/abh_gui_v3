@@ -46,15 +46,19 @@ Item
 
         onPressed:
         {
-            console.log("Pressed")
-            if (pageLoader.source==="PaginaLogin.qml")
+            console.log("Pressed", pageLoader.source)
+            if (parametri_generali.login_page)
+            {
+                console.log("Pressed!!!")
+
                 startstop_udp.string="rewire"
+            }
         }
         onReleased:
         {
-            console.log("release")
+            console.log("release ", pageLoader.source)
 
-            if (pageLoader.source==="PaginaLogin.qml")
+            if (parametri_generali.login_page)
                 startstop_udp.string="stop"
         }
     }
