@@ -192,7 +192,6 @@ ApplicationWindow {
         // @disable-check M16
         onDataChanged:
         {
-            console.log(data)
             if (data[1]===1 && timer_tut.active)
             {
                 timer_tut.start()
