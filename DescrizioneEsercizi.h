@@ -32,6 +32,11 @@ public slots:
   QString getVideoPrep(QString nome);
   QString getVideoWorkout(QString nome);
 
+  int getRepetition(QString nome);
+  int getMaxPosVel(QString nome);
+  int getMaxNegVel(QString nome);
+
+
 signals:
   void nameChanged()              ;
   void codeChanged()              ;
@@ -52,6 +57,7 @@ protected:
   std::unique_ptr<rapidcsv::Document> doc_;
 
   QString getInfo(QString nome,std::string field);
+  double getValue(QString nome, std::string field);
 };
 
 }

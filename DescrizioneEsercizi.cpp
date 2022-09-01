@@ -91,6 +91,19 @@ QString DescrizioneEsercizi::getVideoWorkout(QString nome)
 }
 
 
+int DescrizioneEsercizi::getRepetition(QString nome)
+{
+  return getValue(nome,"ripetizioni");
+}
+int DescrizioneEsercizi::getMaxPosVel(QString nome)
+{
+  return getValue(nome,"max_vel_positiva");
+}
+int DescrizioneEsercizi::getMaxNegVel(QString nome)
+{
+  return getValue(nome,"max_vel_negativa");
+}
+
 QString DescrizioneEsercizi::getInfo(QString nome,std::string field)
 {
   std::string n=nome.toStdString();
@@ -107,4 +120,22 @@ QString DescrizioneEsercizi::getInfo(QString nome,std::string field)
   }
   return out;
 }
+
+double DescrizioneEsercizi::getValue(QString nome, std::string field)
+{
+  std::string n=nome.toStdString();
+  std::vector<std::string> col = doc_->GetColumn<std::string>("nome");
+  std::vector<double> col2 = doc_->GetColumn<double>(field);
+  size_t elements=col.size();
+  double out;
+  for (size_t idx=0;idx<elements;idx++)
+  {
+    if (!n.compare(col.at(idx)))
+    {
+      out=col2.at(idx);
+    }
+  }
+  return out;
+}
+
 }

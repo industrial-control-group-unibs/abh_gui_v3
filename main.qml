@@ -107,7 +107,7 @@ ApplicationWindow {
         property int rest_time: 10
         property real max_pos_speed: 20
         property real max_neg_speed: -10
-        property string workout: "workout1"
+        property string workout: ""
 
         property string level: "1"// TO BE REMOVED
         property string difficulty: "Facile"  // TO BE REMOVED
@@ -119,6 +119,12 @@ ApplicationWindow {
             video_preparati= _esercizi.getVideoPrep(name)
             video_workout= _esercizi.getVideoWorkout(name)
             immagine= _esercizi.getImage(name)
+            if (workout==="")
+            {
+                reps=_esercizi.getRepetition(name)
+                max_pos_speed=_esercizi.getMaxPosVel(name)
+                max_neg_speed=_esercizi.getMaxNegVel(name)
+            }
         }
     }
 
@@ -186,7 +192,7 @@ ApplicationWindow {
         // @disable-check M16
         onDataChanged:
         {
-//            console.log(data)
+            console.log(data)
             if (data[1]===1 && timer_tut.active)
             {
                 timer_tut.start()
