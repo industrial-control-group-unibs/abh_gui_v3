@@ -23,8 +23,8 @@ Item {
     Barra_superiore{}
     FrecceSxDx
     {
-        link_sx: pageLoader.last_source
-        link_dx: "PaginaWorkout.qml"
+        onPressSx: pageLoader.source= pageLoader.last_source
+        onPressDx: pageLoader.source=  "PaginaWorkout.qml"
     }
 
     Rectangle{

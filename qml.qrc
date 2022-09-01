@@ -59,5 +59,6 @@
         <file>PaginaExit.qml</file>
         <file>PaginaCancellaUtente.qml</file>
         <file>SiNo.qml</file>
+        <file>WorkoutEarlyStop.qml</file>
     </qresource>
 </RCC>

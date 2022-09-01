@@ -21,6 +21,7 @@ class Status(Enum):
     BACKWARD  = -1
     STOP      =  0
     UNDEFINED =  2
+    REWIRE    =  3
 
 stop=False
 def handler(signal_received, frame):
@@ -175,6 +176,10 @@ def exercise_thread():
                 if not isinstance(exercise_name_eval,int):
                     exercise_name_eval.sendString("start")
 
+            elif stringa=="rewire":
+                state=Status.STOP
+                motor_target_data=[0,0.20,0.5,1]
+                print("rewire on")
             elif stringa=="stop":
                 state=Status.STOP
                 motor_target_data=[1,0,0,0.5]
@@ -227,6 +232,9 @@ def exercise_thread():
                 logging.debug("Stop")
             elif (state == Status.UNDEFINED):
                 motor_target_data=[1,0,0,1]
+                logging.debug("undefined")
+            elif (state == Status.REWIRE):
+                motor_target_data=[0,0.20,0.5,1]
                 logging.debug("undefined")
             motor_target.sendData(motor_target_data)
             last_state=state

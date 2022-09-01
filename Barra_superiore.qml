@@ -34,6 +34,28 @@ Item
     }
 
 
+    MouseArea
+    {
+
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.leftMargin: parent.width*0.33
+        anchors.rightMargin: parent.width*0.33
+
+        onPressed:
+        {
+            if (pageLoader.source==="PaginaLogin.qml")
+                startstop_udp.string="rewire"
+        }
+        onReleased:
+        {
+            if (pageLoader.source==="PaginaLogin.qml")
+                startstop_udp.string="stop"
+        }
+    }
+
 
     Image {
         id: sfumatura_barra

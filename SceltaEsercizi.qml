@@ -24,8 +24,8 @@ Item {
 
     FrecceSxDx
     {
-        link_sx: "SceltaGruppo.qml"
-        link_dx: "PaginaConfEsercizioSingolo.qml"
+        onPressSx: pageLoader.source= "SceltaGruppo.qml"
+        onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
     }
 
 

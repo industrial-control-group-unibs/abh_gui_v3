@@ -18,7 +18,7 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: -parent.width*0.25
         anchors.verticalCenter: parent.verticalCenter
-        width: 200
+        width: 150
 
         onPressed: pressYes()
         Testo
@@ -39,7 +39,7 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: parent.width*0.25
         anchors.verticalCenter: parent.verticalCenter
-        width: 200
+        width: 150
         state: "pieno"
         onPressed: pressNo()
         Testo

@@ -8,8 +8,8 @@ CircularSlider {
     id: progressIndicator
     hideProgress: true
     hideTrack: true
-    width: 60
-    height: 60
+    width: 120
+    height: width
 
     property color colore: parametri_generali.coloreBordo
 

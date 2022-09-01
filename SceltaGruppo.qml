@@ -20,9 +20,10 @@ Item {
 
     FrecceSxDx
     {
-        link_sx: "PaginaMondi.qml"
+        onPressSx: pageLoader.source= "PaginaMondi.qml"
+        onPressDx: pageLoader.source=  "SceltaEsercizi.qml"
         dx_visible: lista_zona.currentIndex>=0
-        link_dx: "SceltaEsercizi.qml"
+
     }
     Rectangle{
         anchors.fill: parent

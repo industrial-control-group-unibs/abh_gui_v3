@@ -16,8 +16,8 @@ Item {
 
     FrecceSxDx
     {
-        link_sx: "DefinizioneUtente1.qml"
-        dx_visible: false
+        onPressSx: pageLoader.source=  "DefinizioneUtente1.qml"
+        onPressDx: pageLoader.source=  "PaginaWorkout.qml"
         z:5
     }
 

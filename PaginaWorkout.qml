@@ -32,7 +32,13 @@ Item {
     Barra_superiore{}
     FrecceSxDx
     {
-        link_sx: "PaginaAllenamento.qml"
+        id: freccia
+        onPressSx:
+        {
+            sx_visible= false
+            sotto.visible=false
+            early_stop.visible=true
+        }
         dx_visible: false
         z:5
     }
@@ -65,6 +71,20 @@ Item {
         WorkoutTop{
             id: video_top
         }
-        WorkoutBottom{}
+        WorkoutBottom{
+            id: sotto
+        }
+
+        WorkoutEarlyStop
+        {
+            id: early_stop
+            visible: false
+            onCancel: {
+                freccia.sx_visible=true
+                sotto.visible=true
+                early_stop.visible=false
+            }
+            onExit: pageLoader.source= "PaginaAllenamento.qml"
+        }
     }
 }

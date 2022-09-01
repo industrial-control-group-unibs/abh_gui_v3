@@ -32,8 +32,8 @@ Item {
     Barra_superiore{}
     FrecceSxDx
     {
-        link_sx: "SceltaEsercizi.qml"
-        link_dx: "PaginaPreparati.qml"
+        onPressSx: pageLoader.source= "SceltaEsercizi.qml"
+        onPressDx: pageLoader.source=  "PaginaPreparati.qml"
     }
 
     Rectangle{

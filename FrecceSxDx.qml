@@ -5,9 +5,13 @@ import QtQuick.Layouts 1.1
 
 Item {
 
-    property string link_sx: "PaginaMondi.qml"
-    property string link_dx: "PaginaMondi.qml"
+//    property string link_sx: "PaginaMondi.qml"
+//    property string link_dx: "PaginaMondi.qml"
+
+    signal pressSx
+    signal pressDx
     property bool dx_visible: true
+    property bool sx_visible: true
 
     anchors
     {
@@ -27,6 +31,8 @@ Item {
             samples: 17
             color: "#40000000"
         }
+
+        visible: sx_visible
 
         anchors
         {
@@ -49,7 +55,7 @@ Item {
             MouseArea
             {
                 anchors.fill: parent
-                onClicked: pageLoader.source=  link_sx
+                onClicked: pressSx()
             }
         }
 
@@ -109,7 +115,7 @@ Item {
             MouseArea
             {
                 anchors.fill: parent
-                onClicked: pageLoader.source=  link_dx
+                onClicked: pressDx()
             }
         }
 

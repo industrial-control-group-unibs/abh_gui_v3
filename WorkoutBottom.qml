@@ -16,6 +16,7 @@ Item
     }
     height: parent.height*0.4
 
+    property bool is_visible: true
 
 
 
@@ -32,6 +33,7 @@ Item
         }
 
         z:10
+        visible: parent.is_visible
         Testo
         {
             text: "POWER"
@@ -58,7 +60,7 @@ Item
             if (ripetizioni>selected_exercise.reps)
                 pageLoader.source = "PaginaRiposo.qml"
         }
-
+        visible: parent.is_visible
         Testo
         {
             text: "RIPETIZIONI"
@@ -76,11 +78,11 @@ Item
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: parent.width*0.25
         anchors.verticalCenter: parent.verticalCenter
-        width: 200
+        width: 300
         id: time
         value: timer_tempo.value/1000/60-Math.floor(timer_tempo.value/1000/60)
         tempo: timer_tempo.value
-
+        visible: parent.is_visible
         Testo
         {
             text: "TIME"
@@ -98,11 +100,11 @@ Item
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: -parent.width*0.25
         anchors.verticalCenter: parent.verticalCenter
-        width: 200
+        width: 300
         id: tut
         value: timer_tut.value/1000/60-Math.floor(timer_tut.value/1000/60)
         tempo: timer_tut.value
-
+        visible: parent.is_visible
         Testo
         {
             text: "TUT"

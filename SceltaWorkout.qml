@@ -20,8 +20,8 @@ Item {
 
     FrecceSxDx
     {
-        link_sx: "PaginaMondi.qml"
-        link_dx: "PaginaConfWorkout.qml"
+        onPressSx: pageLoader.source= "PaginaMondi.qml"
+        onPressDx: pageLoader.source=  "PaginaConfWorkout.qml"
     }
     Rectangle{
         anchors.fill: parent
