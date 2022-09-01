@@ -179,7 +179,7 @@ def exercise_thread():
 
             elif stringa=="rewire":
                 state=Status.REWIRE
-                motor_target_data=[0,0.20,0.5,1]
+                motor_target_data=[0,0.20,0.2,1]
                 print("rewire on")
             elif stringa=="stop":
                 state=Status.STOP
@@ -235,7 +235,7 @@ def exercise_thread():
                 motor_target_data=[1,0,0,1]
                 logging.debug("undefined")
             elif (state == Status.REWIRE):
-                motor_target_data=[0,0.20,0.5,1]
+                motor_target_data=[0,0.20,0.2,1]
                 logging.debug("undefined")
             motor_target.sendData(motor_target_data)
             last_state=state
