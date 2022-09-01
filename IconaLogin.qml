@@ -169,7 +169,7 @@ Item
 //        visible: true
 //        mipmap: true
 //        anchors.fill:parent
-//        source: "file://"+PATH+"/utente/"+img_name
+//        source: "file://"+PATH+"/utenti/"+img_name
 
 //        layer.effect: OpacityMask {
 //            maskSource: Item {
