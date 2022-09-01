@@ -32,6 +32,9 @@ Item {
             {
                 _utenti.removeUser(impostazioni_utente.nome)
                 _utenti.readFile()
+                impostazioni_utente.nome=""
+                impostazioni_utente.foto=""
+
                 pageLoader.source=  "PaginaLogin.qml"
             }
         }
