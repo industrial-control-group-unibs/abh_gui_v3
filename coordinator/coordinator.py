@@ -177,7 +177,7 @@ def exercise_thread():
                     exercise_name_eval.sendString("start")
 
             elif stringa=="rewire":
-                state=Status.STOP
+                state=Status.REWIRE
                 motor_target_data=[0,0.20,0.5,1]
                 print("rewire on")
             elif stringa=="stop":
