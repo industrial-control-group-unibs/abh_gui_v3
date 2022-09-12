@@ -1,6 +1,6 @@
 #include <UdpVideoStream.h>
 #include <QDebug>
-
+#include <unistd.h>
 #define BUF_LEN 65536 // Larger than maximum UDP packet size
 
 
@@ -169,6 +169,7 @@ void UdpVideoStream::receiverThread()
         total_pack=dat.size();
         dat.clear();
       }
+      usleep(1000);
     }
   } catch (SocketException & e) {
     std::cerr << e.what() << std::endl;
