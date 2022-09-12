@@ -1,8 +1,8 @@
 nome,codice,video_breve,video_preparazione,video_workout,immagine
-SIT-UP,sit_up,placeholver_video.mp4,placeholver_video.mp4,placeholver_video.mp4,place_holder_1x1.png
+SIT-UP,sit_up,1.mp4,2.mp4,3.mp4,place_holder_1x1.png
 CRUNCH,cruch,placeholver_video.mp4,placeholver_video.mp4,placeholver_video.mp4,place_holder_1x1.png
-BICEPS CURL,biceps_curl,placeholver_video.mp4,placeholver_video.mp4,placeholver_video.mp4,place_holder_1x1.png
-biceps_curl,biceps_curl,placeholver_video.mp4,placeholver_video.mp4,placeholver_video.mp4,place_holder_1x1.png
+BICEPS CURL,biceps_curl,1.mp4,2.mp4,3.mp4,place_holder_1x1.png
+biceps_curl,biceps_curl,3.mp4,4.mp4,5.mp4,place_holder_1x1.png
 triceps_push_down,triceps_push_down,placeholver_video.mp4,placeholver_video.mp4,placeholver_video.mp4,place_holder_1x1.png
 pulls_apart,pulls_apart,placeholver_video.mp4,placeholver_video.mp4,placeholver_video.mp4,place_holder_1x1.png
 high_elbow_curl,high_elbow_curl,placeholver_video.mp4,placeholver_video.mp4,placeholver_video.mp4,place_holder_1x1.png
