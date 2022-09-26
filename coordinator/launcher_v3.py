@@ -19,8 +19,8 @@ try:
 
     p.append(subprocess.Popen([pycmd,path+"/coordinator.py"], cwd=path))
     p[-1].name="coordinator"
-    p.append(subprocess.Popen([path+"/../build/abh_gui_v3"], cwd=path, stdout=subprocess.DEVNULL))
-    p[-1].name="gui"
+    #p.append(subprocess.Popen([path+"/../build/abh_gui_v3"], cwd=path, stdout=subprocess.DEVNULL    ))
+    #p[-1].name="gui"
 
     if (user=='jacobi'):
         p.append(subprocess.Popen([pycmd,path+"/fake_evaluator.py"], cwd=path))
