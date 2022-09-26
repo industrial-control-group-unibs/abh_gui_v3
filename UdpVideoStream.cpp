@@ -117,10 +117,12 @@ void UdpVideoStream::updateFrame(cv::Mat& frame)
                    frame.rows,
                    frame.step,
                    QImage::Format_RGB888);
-  image = image.rgbSwapped();
+//  image = image.rgbSwapped();
+  image = std::move(image).rgbSwapped().convertToFormat(QImage::Format_RGB32);
   m_mtx.lock();
   delete mImage;
-  mImage=new QImage(image.convertToFormat(QImage::Format_RGB32));
+//  mImage=new QImage(image.convertToFormat(QImage::Format_RGB32));
+  mImage=new QImage(image);
   m_mtx.unlock();
   if (not m_started)
     startSurface();

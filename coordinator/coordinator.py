@@ -12,9 +12,13 @@ import pandas as pd
 import abh_constants as abh
 from enum import Enum
 
+import os
+import getpass
 
 
 
+path=os.path.dirname(os.path.realpath(__file__))
+user=getpass.getuser()
 
 class Status(Enum):
     FORWARD   =  1
@@ -36,7 +40,10 @@ def exercise_thread():
 
 
 
-    df = pd.read_excel (r'/home/abhorizon/Scrivania/esercizi.xlsx', sheet_name='ParameteriForza')
+    if (user!='jacobi'):
+        df = pd.read_excel (r'/home/abhorizon/Scrivania/esercizi.xlsx', sheet_name='ParameteriForza')
+    else:
+        df = pd.read_excel (r'/home/jacobi/projects/ab-horizon/esercizi.xlsx', sheet_name='ParameteriForza')
     logging.debug("creating client from gui")
     itrial=0
 
@@ -47,6 +54,7 @@ def exercise_thread():
     motor_target=-1
     repetition_udp=-1
     repetition_udp_repetiter=-1
+    percentage=0
 
 
 
@@ -60,7 +68,7 @@ def exercise_thread():
             user_client.start()
             repetition_udp = UdpBinaryReceiverThread("repetition_udp",abh.ABH_VISION,abh.REP_COUNT_PORT)
             repetition_udp.start()
-            repetition_udp.bufferLength(2)
+            repetition_udp.bufferLength(3)
 
 
             motor_fb_udp = UdpBinaryReceiverThread("motor_feedback",abh.ABH_CONTROL,abh.MOTOR_FEEDBACK_PORT)
@@ -119,6 +127,11 @@ def exercise_thread():
     motor_speed_threshold_return=-1.0
     torque_change_time=0.5
 
+    motor_speed_early_stop=0.1
+    percentage_early_stop=90
+    motor_speed_early_stop_return=-0.1
+    percentage_early_stop_return=10
+
     state=Status.STOP
     last_state=Status.UNDEFINED
     repetition_count=0.0
@@ -157,6 +170,10 @@ def exercise_thread():
             torque_change_time=es_data.TimeFrom0To100.iloc[0]
             motor_speed_threshold=es_data.PositiveVelocityThreshold.iloc[0]
             motor_speed_threshold_return=es_data.NegativeVelocityThreshold.iloc[0]
+            motor_speed_early_stop=es_data.VelocityEndPhase.iloc[0]
+            percentage_early_stop=es_data.PercentageEndPhase.iloc[0]
+            motor_speed_early_stop_return=es_data.VelocityEndPhaseReturn.iloc[0]
+            percentage_early_stop_return=es_data.PercentageEndPhaseReturn.iloc[0]
 
             if not isinstance(exercise_name_eval,int):
                 exercise_name_eval.sendString(esercizio[0])
@@ -197,24 +214,41 @@ def exercise_thread():
                 motor_speed=motor_fb[1]
         if (repetition_udp.isNewDataAvailable()):
             repetition_state=repetition_udp.getData()
-            if len(repetition_state)==2:
+            if len(repetition_state)==3:
                 repetition_count=float(repetition_state[0])
                 direction=float(repetition_state[1])
+                percentage=float(repetition_state[2])
+                print(percentage)
 
-                if (motor_speed<motor_speed_threshold and state == Status.FORWARD and direction==-1):
-                    state=Status.BACKWARD
-                    #print(motor_speed)
-                elif (motor_speed>motor_speed_threshold_return and state == Status.BACKWARD and direction==1):
-                    state=Status.FORWARD
-                    #print(motor_speed)
-                elif (state == Status.UNDEFINED and direction==1):
-                    state=Status.FORWARD
-                elif (state == Status.UNDEFINED and direction==-1):
-                    state=Status.BACKWARD
-                elif (direction==5):
-                    state=Status.UNDEFINED
-                    print("non c'è nessuno")
-                    #print(motor_speed)
+                # if (motor_speed<motor_speed_threshold and state == Status.FORWARD and direction==-1):
+                #     state=Status.BACKWARD
+                #     #print(motor_speed)
+                # elif (motor_speed>motor_speed_threshold_return and state == Status.BACKWARD and direction==1):
+                #     state=Status.FORWARD
+                #     #print(motor_speed)
+
+        if ( (state == Status.FORWARD) and
+             ( (motor_speed<motor_speed_threshold and direction==-1) or
+               (motor_speed<motor_speed_early_stop) and  (percentage>percentage_early_stop)
+             )
+           ):
+            state=Status.BACKWARD
+            #print(motor_speed)
+        elif ( (state == Status.BACKWARD) and
+             ( (motor_speed>motor_speed_threshold_return and direction==1) or
+               (motor_speed>motor_speed_early_stop_return) and  (percentage<percentage_early_stop_return)
+             )
+           ):
+            state=Status.FORWARD
+            #print(motor_speed)
+        elif (state == Status.UNDEFINED and direction==1):
+            state=Status.FORWARD
+        elif (state == Status.UNDEFINED and direction==-1):
+            state=Status.BACKWARD
+        elif (direction==5):
+            state=Status.UNDEFINED
+            print("non c'è nessuno")
+            #print(motor_speed)
 
         if (state == Status.STOP):
             repetition_count=0.0
