@@ -254,7 +254,8 @@ def exercise_thread():
         if (state == Status.STOP):
             repetition_count=0.0
             direction=0.0
-        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed])
+        #repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed])
+        repetition_udp_repetiter.sendData([repetition_count,direction,percentage])
 
         if (last_state != state):
             if (state == Status.FORWARD):
