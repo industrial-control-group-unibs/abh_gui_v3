@@ -68,7 +68,7 @@ def exercise_thread():
             user_client.start()
             repetition_udp = UdpBinaryReceiverThread("repetition_udp",abh.ABH_VISION,abh.REP_COUNT_PORT)
             repetition_udp.start()
-            repetition_udp.bufferLength(3)
+            repetition_udp.bufferLength(2)
 
 
             motor_fb_udp = UdpBinaryReceiverThread("motor_feedback",abh.ABH_CONTROL,abh.MOTOR_FEEDBACK_PORT)
