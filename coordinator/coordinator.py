@@ -214,6 +214,7 @@ def exercise_thread():
                 motor_speed=motor_fb[1]
         if (repetition_udp.isNewDataAvailable()):
             repetition_state=repetition_udp.getData()
+            print(repetition_state)
             if len(repetition_state)==3:
                 repetition_count=float(repetition_state[0])
                 direction=float(repetition_state[1])
