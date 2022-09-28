@@ -26,6 +26,7 @@ Item {
     {
         onPressSx: pageLoader.source= "SceltaGruppo.qml"
         onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
+        dx_visible: grid.currentIndex>=0
     }
 
 
@@ -40,7 +41,7 @@ Item {
         Rectangle
         {
             id: header
-            height: video_zone.height+20
+            height: video_zone.height+nome_titolo.height+20
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top
@@ -49,13 +50,17 @@ Item {
 
 
             Text {
-                text:selected_exercise.name==="unselected"? zona_allenamento.gruppo+"\n" : zona_allenamento.gruppo+"\n"+selected_exercise.name
+                id: nome_titolo
+                //text:selected_exercise.name==="unselected"? zona_allenamento.gruppo+"\n" : zona_allenamento.gruppo+"\n"+selected_exercise.name
+                text:selected_exercise.name==="unselected"? zona_allenamento.gruppo : selected_exercise.name
                 anchors
                 {
-                    left:parent.left
-                    right:parent.right
-                    leftMargin: 5
-                    verticalCenter: parent.verticalCenter
+//                    left:parent.left
+//                    right:parent.right
+//                    leftMargin: 5
+                    horizontalCenter: parent.horizontalCenter
+                    top: parent.top
+//                    verticalCenter: parent.verticalCenter
                 }
                 color: parametri_generali.coloreBordo
                 wrapMode: TextEdit.WordWrap
@@ -80,9 +85,15 @@ Item {
             Rectangle   {
                 color: "transparent"
                 id: video_zone
-                anchors.right: parent.right
-                anchors.rightMargin: 10
-                anchors.verticalCenter: parent.verticalCenter
+                //anchors.right: parent.right
+                //anchors.rightMargin: 10
+                anchors.horizontalCenter: parent.horizontalCenter
+//                anchors.verticalCenter: parent.verticalCenter
+//                anchors.bottom: parent.bottom
+                anchors.top: nome_titolo.bottom
+
+
+
                 width: grid.cellWidth
                 height: width
                 radius: 20

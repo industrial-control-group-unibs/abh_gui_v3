@@ -15,18 +15,18 @@ Item {
 
     QuattroImmagini
     {
-        immagine11: "place_holder_4_3.png"
+        immagine11: "workout.jpg"
         testo11: "PROGRAMMA\n DI ALLENAMENTO"
         link11: "SceltaWorkout.qml"
-        immagine12: "place_holder_4_3.png"
-        testo12: "SFIDA\n"
-        link12: "PaginaLogin.qml"
-        immagine21: "place_holder_4_3.png"
-        testo21: "EXTRA\n"
-        link21: "PaginaLogin.qml"
-        immagine22: "place_holder_4_3.png"
-        testo22: "ALLENAMENTO\n SINGOLO"
-        link22: "SceltaGruppo.qml"
+        immagine12: "allenamento_singolo.jpg"
+        testo12: "ALLENAMENTO\n SINGOLO"
+        link12: "SceltaGruppo.qml"
+        immagine21: "sfida.jpg"
+        testo21: "SFIDA\n"
+        link21: "PaginaAllenamento.qml"
+        immagine22: "statistiche.jpg"
+        testo22: "STATISTICHE\n"
+        link22: "PaginaAllenamento.qml"
     }
 
 //    Rectangle{

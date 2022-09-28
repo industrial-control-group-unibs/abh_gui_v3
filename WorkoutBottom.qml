@@ -14,7 +14,7 @@ Item
         right: parent.right
         bottom: parent.bottom
     }
-    height: parent.height*0.4
+    height: parent.height*0.3
 
     property bool is_visible: true
 
@@ -23,7 +23,7 @@ Item
     CSlider
     {
         id: power_settings
-        width: 200
+        width: parent.height*0.2
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height*0.25
@@ -50,7 +50,7 @@ Item
 
     IconaRipetizioni
     {
-        width: 100
+        width: power_settings.width
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenterOffset: parent.height*0.25
         anchors.verticalCenter: parent.verticalCenter
@@ -78,7 +78,7 @@ Item
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: parent.width*0.25
         anchors.verticalCenter: parent.verticalCenter
-        width: 300
+        width: power_settings.width
         id: time
         value: timer_tempo.value/1000/60-Math.floor(timer_tempo.value/1000/60)
         tempo: timer_tempo.value
@@ -100,7 +100,7 @@ Item
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: -parent.width*0.25
         anchors.verticalCenter: parent.verticalCenter
-        width: 300
+        width: power_settings.width
         id: tut
         value: timer_tut.value/1000/60-Math.floor(timer_tut.value/1000/60)
         tempo: timer_tut.value

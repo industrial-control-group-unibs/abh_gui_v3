@@ -17,7 +17,8 @@ Item {
     {
         left: parent.left
         right: parent.right
-        bottom: parent.bottom
+        verticalCenter: parent.verticalCenter
+//        bottom: parent.bottom
     }
     height: 274+50
     z: 5

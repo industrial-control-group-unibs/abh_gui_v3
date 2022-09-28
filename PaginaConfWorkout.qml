@@ -35,7 +35,12 @@ Item {
         timer_tempo.start()
     }
 
-    Barra_superiore{}
+    Barra_superiore{
+        Titolo
+        {
+            text: selected_exercise.workout
+        }
+    }
     FrecceSxDx
     {
         onPressSx: pageLoader.source= "SceltaWorkout.qml"
@@ -49,10 +54,7 @@ Item {
         clip: true
 
 
-        Titolo
-        {
-            text: selected_exercise.workout
-        }
+
 
 
         Item

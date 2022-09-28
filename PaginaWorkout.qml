@@ -29,19 +29,38 @@ Item {
         pageLoader.last_source="PaginaWorkout.qml"
     }
 
-    Barra_superiore{}
-    FrecceSxDx
-    {
-        id: freccia
-        onPressSx:
+    Barra_superiore{
+        Titolo
         {
-            sx_visible= false
-            sotto.visible=false
-            early_stop.visible=true
+            text: selected_exercise.name
+            z:20
         }
-        dx_visible: false
-        z:5
     }
+
+
+    Item
+    {
+        anchors
+        {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        height: parent.height*0.3
+        FrecceSxDx
+        {
+            id: freccia
+            onPressSx:
+            {
+                sx_visible= false
+                sotto.visible=false
+                early_stop.visible=true
+            }
+            dx_visible: false
+            z:5
+        }
+    }
+
     BottoniSwipe{
         onPressRight:
         {
@@ -60,10 +79,7 @@ Item {
         color: "transparent"//parametri_generali.coloreSfondo
         clip: true
 
-        Titolo
-        {
-            text: selected_exercise.name
-        }
+
 
 
 

@@ -37,7 +37,7 @@ Item
             {
                 impostazioni_utente.nome=nome
                 impostazioni_utente.foto=foto
-                pageLoader.source=  "PaginaMondi.qml"
+                pageLoader.source=  "PaginaAllenamento.qml" //"PaginaMondi.qml"
             }
 
         }

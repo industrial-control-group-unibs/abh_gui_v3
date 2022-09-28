@@ -25,35 +25,42 @@ Item
     states: [
         State {
             name: "workout"
-            PropertyChanges { target: rect_video_centrale;  height: 0.8*component.height   }
+            PropertyChanges { target: rect_video_centrale;  height: 0.95*component.height   }
+            PropertyChanges { target: rect_video_centrale;  y: 0.5*(component.height-height)   }
             PropertyChanges { target: rect_video_centrale;  x: 0.5*(component.width-video_workout.width) }
             PropertyChanges { target: rect_utente; height: 0.3*component.height           }
-            PropertyChanges { target: rect_utente; x: 910/1080*component.width-0.5*video2_workout.width  }
-            PropertyChanges { target: rect_utente; visible: true }
+            PropertyChanges { target: rect_utente; x: rect_video_centrale.x+rect_video_centrale.width-width  }
+            PropertyChanges { target: rect_utente; y: rect_video_centrale.y  }
+            PropertyChanges { target: rect_video_centrale; visible: true }
         },
         State {
             name: "utente"
-            PropertyChanges { target: rect_utente; height: 0.8*component.height   }
+            PropertyChanges { target: rect_utente; height: 0.95*component.height   }
+            PropertyChanges { target: rect_utente; y: 0.5*(component.height-height)   }
             PropertyChanges { target: rect_utente; x: 0.5*(component.width-width) }
             PropertyChanges { target: rect_video_centrale;  height: 0.3*component.height           }
-            PropertyChanges { target: rect_video_centrale;  x: 910/1080*component.width-0.5*width  }
-            PropertyChanges { target: rect_utente; visible: true }
+            PropertyChanges { target: rect_video_centrale; x: rect_utente.x+rect_utente.width-width  }
+            PropertyChanges { target: rect_video_centrale; y: rect_utente.y  }
+            PropertyChanges { target: rect_video_centrale; visible: true }
         },
         State {
             name: "uguali"
             PropertyChanges { target: rect_utente; height: 0.8*component.height   }
+            PropertyChanges { target: rect_utente; y: 0.5*(component.height-height)   }
             PropertyChanges { target: rect_utente; x: 0.75*component.width-0.5*width }
             PropertyChanges { target: rect_video_centrale; height: 0.8*component.height   }
+            PropertyChanges { target: rect_video_centrale;  y: 0.5*(component.height-height)   }
             PropertyChanges { target: rect_video_centrale; x: 0.25*component.width-0.5*width }
-            PropertyChanges { target: rect_utente; visible: true }
+            PropertyChanges { target: rect_video_centrale; visible: true }
         },
         State {
             name: "stats"
             PropertyChanges { target: rect_utente; height: 0.8*component.height   }
-            PropertyChanges { target: rect_utente; x: 0.75*component.width-0.5*width }
+            PropertyChanges { target: rect_utente; y: 0.5*(component.height-height)   }
+            PropertyChanges { target: rect_utente; x: 0.25*component.width-0.5*width  }
             PropertyChanges { target: rect_video_centrale; height: 0.8*component.height   }
             PropertyChanges { target: rect_video_centrale; x: 0.25*component.width-0.5*width }
-            PropertyChanges { target: rect_utente; visible: false }
+            PropertyChanges { target: rect_video_centrale; visible: false }
         }
     ]
 
@@ -67,16 +74,16 @@ Item
         left: parent.left
         right: parent.right
         top: parent.top
-        topMargin: parent.height*.1
     }
-    height: parent.height*0.5
+    height: parent.height*0.7
+
 
 
     Rectangle   {
         height: 0.8*parent.height
-        width: 436/581*height
+        width: 9/16*height
         x: 0.5*(parent.width-width)
-        y: 0.1*parent.height
+        y: 0.5*(parent.height-height)
         radius: 20
         color: "transparent"
         border.color: parametri_generali.coloreBordo
@@ -184,7 +191,7 @@ Item
         border.width: rect_utente.border.width
 //        border.color: parametri_generali.coloreBordo
 //        border.width: 2
-        visible: !rect_utente.visible
+        visible: !rect_video_centrale.visible
 
         CircularIndicator
         {
@@ -253,7 +260,7 @@ Item
 
     Rectangle   {
         height: 0.3*parent.height
-        width: 436/581*height
+        width: 9/16*height
         x: 890/1080*parent.width-0.5*width
         y: 0.1*parent.height
         id: rect_utente

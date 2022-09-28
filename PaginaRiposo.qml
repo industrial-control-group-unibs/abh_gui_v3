@@ -20,7 +20,13 @@ Item {
 //        pageLoader.last_source="PaginaPreparati.qml"
 //    }
 
-    Barra_superiore{}
+    Barra_superiore{
+
+        Titolo
+        {
+            text: selected_exercise.name
+        }
+    }
 //    FrecceSxDx
 //    {
 //        link_sx: pageLoader.last_source
@@ -34,10 +40,6 @@ Item {
         clip: true
 
 
-        Titolo
-        {
-            text: selected_exercise.name
-        }
 
         Timer{
             id: conto_alla_rovescia

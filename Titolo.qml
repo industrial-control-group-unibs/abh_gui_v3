@@ -18,7 +18,8 @@ Item {
         clip: true
 
 
-        height: parent.height*0.1
+        height: parent.height
+        z: 20
 
         Testo
         {

@@ -20,11 +20,27 @@ Item {
         pageLoader.last_source="PaginaPreparati.qml"
     }
 
-    Barra_superiore{}
-    FrecceSxDx
+    Barra_superiore{
+        Titolo
+        {
+            text: selected_exercise.name
+        }
+    }
+
+    Item
     {
-        onPressSx: pageLoader.source= pageLoader.last_source
-        onPressDx: pageLoader.source=  "PaginaWorkout.qml"
+        anchors
+        {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        height: parent.height*0.3
+        FrecceSxDx
+        {
+            onPressSx: pageLoader.source= pageLoader.last_source
+            onPressDx: pageLoader.source=  "PaginaWorkout.qml"
+        }
     }
 
     Rectangle{
@@ -34,10 +50,6 @@ Item {
         clip: true
 
 
-        Titolo
-        {
-            text: selected_exercise.name
-        }
 
 
 

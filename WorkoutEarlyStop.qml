@@ -4,7 +4,7 @@ Item
 {
     Component.onCompleted: {
         //timer_tempo.start()
-        power_settings.value= selected_exercise.power
+//        power_settings.value= selected_exercise.power
         //            timer_tut.start()
     }
 
@@ -14,7 +14,7 @@ Item
         right: parent.right
         bottom: parent.bottom
     }
-    height: parent.height*0.4
+    height: parent.height*0.3
 
     property bool is_visible: true
 

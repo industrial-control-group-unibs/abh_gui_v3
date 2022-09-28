@@ -15,16 +15,16 @@ Item {
 
     QuattroImmagini
     {
-        immagine11: "place_holder_4_3.png"
+        immagine11: "mondi1.jpg"
         testo11: "ALLENAMENTO\n"
         link11: "PaginaAllenamento.qml"
-        immagine12: "place_holder_4_3.png"
+        immagine12: "mondi2.jpg"
         testo12: "NUTRIZIONE\n"
         link12: "PaginaLogin.qml"
-        immagine21: "place_holder_4_3.png"
+        immagine21: "mondi3.jpg"
         testo21: "PSICHE\n"
         link21: "PaginaLogin.qml"
-        immagine22: "place_holder_4_3.png"
+        immagine22: "mondi4.jpg"
         testo22: "MEDITAZIONE\n"
         link22: "PaginaLogin.qml"
     }

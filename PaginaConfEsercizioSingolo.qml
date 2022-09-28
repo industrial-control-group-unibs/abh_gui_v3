@@ -29,11 +29,26 @@ Item {
         timer_tempo.start()
     }
 
-    Barra_superiore{}
-    FrecceSxDx
+    Barra_superiore{
+        Titolo
+        {
+            text: selected_exercise.name
+        }
+    }
+    Item
     {
-        onPressSx: pageLoader.source= "SceltaEsercizi.qml"
-        onPressDx: pageLoader.source=  "PaginaPreparati.qml"
+        anchors
+        {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        height: parent.height*0.3
+        FrecceSxDx
+        {
+            onPressSx: pageLoader.source= "SceltaEsercizi.qml"
+            onPressDx: pageLoader.source=  "PaginaPreparati.qml"
+        }
     }
 
     Rectangle{
@@ -43,10 +58,7 @@ Item {
         clip: true
 
 
-        Titolo
-        {
-            text: selected_exercise.name
-        }
+
 
 
         Item
@@ -86,10 +98,11 @@ Item {
 
             Testo
             {
-                anchors.left: parent.left
+//                anchors.left: parent.left
                 anchors.top: parent.top
-                anchors.leftMargin: 30
+//                anchors.leftMargin: 30
 //                anchors.topMargin: 30
+                anchors.horizontalCenter: parent.horizontalCenter
                 font.pixelSize: 30
                 text: "LIVELLO"
             }
@@ -105,7 +118,7 @@ Item {
                     radius: 20
                     anchors.verticalCenter: parent.verticalCenter
                     width: livello.width*0.25
-                    height: 0.66*width
+                    height: 0.8*width
                     Testo
                     {
                         anchors.verticalCenter: parent.verticalCenter
@@ -180,9 +193,10 @@ Item {
 
             Testo
             {
-                anchors.left: parent.left
+//                anchors.left: parent.left
                 anchors.top: parent.top
-                anchors.leftMargin: 30
+//                anchors.leftMargin: 30
+                anchors.horizontalCenter: parent.horizontalCenter
 //                anchors.topMargin: 30
                 font.pixelSize: 30
                 text: "DIFFICOLTÀ"
@@ -223,7 +237,7 @@ Item {
                         radius: 20
                         color: parametri_generali.coloreBordo
                         width: lista_difficolta.currentIndex===index?livello.width*0.3: livello.width*0.25
-                        height: 0.66*width
+                        height: 0.8*width
                         MouseArea{
                             anchors.fill: parent
                             onPressed:

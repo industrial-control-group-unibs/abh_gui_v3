@@ -23,6 +23,7 @@ Item {
         Titolo
         {
             text: "VUOI USCIRE?"
+            height: parent.height*0.1
         }
 
 

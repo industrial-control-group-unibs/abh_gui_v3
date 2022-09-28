@@ -23,6 +23,7 @@ Item {
         Titolo
         {
             text: "VUOI CANCELLARE L'UTENTE?"
+            height: parent.height*0.1
         }
 
         SiNo
