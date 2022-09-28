@@ -59,7 +59,7 @@ Item
             PropertyChanges { target: rect_utente; y: 0.5*(component.height-height)   }
             PropertyChanges { target: rect_utente; x: 0.25*component.width-0.5*width  }
             PropertyChanges { target: rect_video_centrale; height: 0.8*component.height   }
-            PropertyChanges { target: rect_video_centrale; x: 0.25*component.width-0.5*width }
+            PropertyChanges { target: rect_video_centrale; x: 0.75*component.width-0.5*width }
             PropertyChanges { target: rect_video_centrale; visible: false }
         }
     ]
