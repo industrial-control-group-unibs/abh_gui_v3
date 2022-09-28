@@ -45,17 +45,17 @@ Item
         },
         State {
             name: "uguali"
-            PropertyChanges { target: rect_utente; height: 0.8*component.height   }
+            PropertyChanges { target: rect_utente; height: 0.7*component.height   }
             PropertyChanges { target: rect_utente; y: 0.5*(component.height-height)   }
             PropertyChanges { target: rect_utente; x: 0.75*component.width-0.5*width }
-            PropertyChanges { target: rect_video_centrale; height: 0.8*component.height   }
+            PropertyChanges { target: rect_video_centrale; height: 0.7*component.height   }
             PropertyChanges { target: rect_video_centrale;  y: 0.5*(component.height-height)   }
             PropertyChanges { target: rect_video_centrale; x: 0.25*component.width-0.5*width }
             PropertyChanges { target: rect_video_centrale; visible: true }
         },
         State {
             name: "stats"
-            PropertyChanges { target: rect_utente; height: 0.8*component.height   }
+            PropertyChanges { target: rect_utente; height: 0.7*component.height   }
             PropertyChanges { target: rect_utente; y: 0.5*(component.height-height)   }
             PropertyChanges { target: rect_utente; x: 0.25*component.width-0.5*width  }
             PropertyChanges { target: rect_video_centrale; height: 0.8*component.height   }
@@ -184,11 +184,11 @@ Item
 
     Rectangle
     {
-        anchors.fill: rect_utente
+        anchors.fill: rect_video_centrale
         color: "transparent"
         radius: rect_utente.radius
         border.color: "transparent"//rect_utente.border.color
-        border.width: rect_utente.border.width
+        border.width: rect_video_centrale.border.width
 //        border.color: parametri_generali.coloreBordo
 //        border.width: 2
         visible: !rect_video_centrale.visible

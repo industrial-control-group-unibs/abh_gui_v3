@@ -23,7 +23,7 @@ Item {
         Titolo
         {
             text: "IMPOSTAZIONI"
-            height: parent.height
+            height: parent.height*.1
         }
     }
 
