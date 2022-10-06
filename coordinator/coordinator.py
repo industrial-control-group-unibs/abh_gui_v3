@@ -230,14 +230,14 @@ def exercise_thread():
 
         if ( (state == Status.FORWARD) and
              ( (motor_speed<motor_speed_threshold and direction==-1) or
-               (motor_speed<motor_speed_early_stop) and  (percentage>percentage_early_stop)
+               ((motor_speed<motor_speed_early_stop) and  (percentage>percentage_early_stop))
              )
            ):
             state=Status.BACKWARD
             #print(motor_speed)
         elif ( (state == Status.BACKWARD) and
              ( (motor_speed>motor_speed_threshold_return and direction==1) or
-               (motor_speed>motor_speed_early_stop_return) and  (percentage<percentage_early_stop_return)
+               ((motor_speed>motor_speed_early_stop_return) and  (percentage<percentage_early_stop_return))
              )
            ):
             state=Status.FORWARD
