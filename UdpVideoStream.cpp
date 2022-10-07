@@ -9,7 +9,7 @@ namespace UdpCom
 UdpVideoStream::UdpVideoStream(QObject *parent)
   : QObject(parent), mVideoSurface(nullptr), mSurfaceFormat(nullptr)
 {
-  mTimer.setInterval(30);
+  mTimer.setInterval(50);
   connect(&mTimer, &QTimer::timeout, this, &UdpVideoStream::slotTick);
   thread_=std::thread(&UdpVideoStream::receiverThread,this);
 }
@@ -117,12 +117,13 @@ void UdpVideoStream::updateFrame(cv::Mat& frame)
                    frame.rows,
                    frame.step,
                    QImage::Format_RGB888);
-//  image = image.rgbSwapped();
   image = std::move(image).rgbSwapped().convertToFormat(QImage::Format_RGB32);
   m_mtx.lock();
-  delete mImage;
-//  mImage=new QImage(image.convertToFormat(QImage::Format_RGB32));
-  mImage=new QImage(image);
+  if (mImage)
+    *mImage=image;
+  else
+    mImage=new QImage(image);
+  *mImage=image;
   m_mtx.unlock();
   if (not m_started)
     startSurface();
