@@ -239,9 +239,9 @@ ApplicationWindow {
         anchors.fill: parent
         property url last_source
 
-//        sourceComponent: PaginaLogo{}
+        sourceComponent: PaginaLogo{}
 //                        sourceComponent: TestPage{}
-        sourceComponent: DefinizioneUtente1{}
+//        sourceComponent: DefinizioneUtente1{}
     }
 
 
