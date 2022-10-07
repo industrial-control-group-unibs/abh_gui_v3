@@ -193,7 +193,7 @@ ApplicationWindow {
         // @disable-check M16
         onDataChanged:
         {
-            console.log(data)
+//            console.log(data)
             if (data[1]===1 && timer_tut.active)
             {
                 timer_tut.start()
@@ -239,9 +239,9 @@ ApplicationWindow {
         anchors.fill: parent
         property url last_source
 
-        sourceComponent: PaginaLogo{}
+//        sourceComponent: PaginaLogo{}
 //                        sourceComponent: TestPage{}
-//        sourceComponent: PaginaRiepilogo{}
+        sourceComponent: PaginaWorkout{}
     }
 
 

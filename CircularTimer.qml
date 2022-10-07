@@ -15,7 +15,7 @@ CircularSlider {
 
 
     interactive: false
-    property int tacche: 30
+    property int tacche: 60
     property double tempo: 0.0
 
     Text {

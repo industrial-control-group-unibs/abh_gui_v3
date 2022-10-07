@@ -1,0 +1,26 @@
+
+
+import QtGraphicalEffects 1.12
+import QtQuick 2.12
+import QtQuick.Shapes 1.12
+
+import QtQuick.Layouts 1.1
+
+import QtMultimedia 5.0
+
+
+PaginaVideoSingolo
+{
+    link_sx: pageLoader.last_source
+    link_dx: "PaginaPreparati.qml"
+    video_folder: "video_istruzioni"
+    video_name: selected_exercise.video_preparati
+    titolo: selected_exercise.name
+    timer: false
+    Component.onDestruction:
+    {
+        pageLoader.last_source="PaginaIstruzioni.qml"
+        console.log("vai a",link_dx)
+    }
+}
+

@@ -60,5 +60,7 @@
         <file>PaginaCancellaUtente.qml</file>
         <file>SiNo.qml</file>
         <file>WorkoutEarlyStop.qml</file>
+        <file>PaginaIstruzioni.qml</file>
+        <file>PaginaVideoSingolo.qml</file>
     </qresource>
 </RCC>

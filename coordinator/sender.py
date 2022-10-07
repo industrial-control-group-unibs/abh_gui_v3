@@ -57,7 +57,7 @@ def main():
     fs = FrameSegment(s, port)
 
     print("start recording")
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
     while (cap.isOpened()):
         _, frame = cap.read()
         fs.udp_frame(frame)

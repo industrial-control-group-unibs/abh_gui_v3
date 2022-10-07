@@ -47,7 +47,7 @@ Item {
         FrecceSxDx
         {
             onPressSx: pageLoader.source= "SceltaEsercizi.qml"
-            onPressDx: pageLoader.source=  "PaginaPreparati.qml"
+            onPressDx: pageLoader.source=  "PaginaIstruzioni.qml"
         }
     }
 

@@ -8,7 +8,7 @@ import QtMultimedia 5.12
 
 import UdpVideoStream 1.0
 
-
+import Charts 1.0
 Item
 {
     Component.onCompleted: {
@@ -28,10 +28,14 @@ Item
             PropertyChanges { target: rect_video_centrale;  height: 0.95*component.height   }
             PropertyChanges { target: rect_video_centrale;  y: 0.5*(component.height-height)   }
             PropertyChanges { target: rect_video_centrale;  x: 0.5*(component.width-video_workout.width) }
+
             PropertyChanges { target: rect_utente; height: 0.3*component.height           }
             PropertyChanges { target: rect_utente; x: rect_video_centrale.x+rect_video_centrale.width-width  }
             PropertyChanges { target: rect_utente; y: rect_video_centrale.y  }
             PropertyChanges { target: rect_video_centrale; visible: true }
+
+            PropertyChanges { target: rect_video_centrale;  z:1 }
+            PropertyChanges { target: rect_utente;          z:5 }
         },
         State {
             name: "utente"
@@ -42,6 +46,9 @@ Item
             PropertyChanges { target: rect_video_centrale; x: rect_utente.x+rect_utente.width-width  }
             PropertyChanges { target: rect_video_centrale; y: rect_utente.y  }
             PropertyChanges { target: rect_video_centrale; visible: true }
+
+            PropertyChanges { target: rect_video_centrale;  z:5 }
+            PropertyChanges { target: rect_utente;          z:1 }
         },
         State {
             name: "uguali"
@@ -58,8 +65,9 @@ Item
             PropertyChanges { target: rect_utente; height: 0.7*component.height   }
             PropertyChanges { target: rect_utente; y: 0.5*(component.height-height)   }
             PropertyChanges { target: rect_utente; x: 0.25*component.width-0.5*width  }
-            PropertyChanges { target: rect_video_centrale; height: 0.8*component.height   }
+            PropertyChanges { target: rect_video_centrale; height: 0.7*component.height   }
             PropertyChanges { target: rect_video_centrale; x: 0.75*component.width-0.5*width }
+            PropertyChanges { target: rect_video_centrale; y: 0.5*(component.height-height)   }
             PropertyChanges { target: rect_video_centrale; visible: false }
         }
     ]
@@ -184,79 +192,130 @@ Item
 
     Rectangle
     {
-        anchors.fill: rect_video_centrale
+        height: 0.7*component.height
+        x: 0.75*component.width-0.5*width
+        y: 0.5*(component.height-height)
+        width: 9/16*height
+        id: rect_grafici
         color: "transparent"
         radius: rect_utente.radius
-        border.color: "transparent"//rect_utente.border.color
         border.width: rect_video_centrale.border.width
-//        border.color: parametri_generali.coloreBordo
-//        border.width: 2
+        border.color: parametri_generali.coloreBordo
         visible: !rect_video_centrale.visible
 
-        CircularIndicator
-        {
 
-
-            width: parent.width
-
-            trackWidth: 2
-            progressWidth: 3
-            handleWidth: 0//13
-            handleHeight: handleWidth
-            handleRadius: handleWidth*.5
-            handleVerticalOffset: 0
-
-            startAngle: 0
-            endAngle: 360
-            rotation: 0
-            minValue: 0//-100
-            maxValue: 100
-            snap: true
-            stepSize: 1
-            value: (fb_udp.data[2])
-
-            handleColor: "#4E4F50"
-            trackColor: "#4E4F50"
-            progressColor: value>selected_exercise.max_pos_speed?"red": value<selected_exercise.max_neg_speed?"red": "#D4C9BD"
-
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
-//            anchors.verticalCenterOffset: -parent.height*0.25
-
-            Text {
-                text:Number(parent.value).toFixed()
-                anchors
-                {
-                    verticalCenter: parent.verticalCenter
-                    horizontalCenter: parent.horizontalCenter
-                }
-                color: parametri_generali.coloreBordo
-                wrapMode: TextEdit.WordWrap
-                font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
-
-                font.italic: false
-                font.letterSpacing: 0
-                font.pixelSize: 30
-                font.weight: Font.Normal
-                horizontalAlignment: Text.AlignLeft
-                verticalAlignment: Text.AlignTop
-
-            }
-            Testo
+        AreaChart{
+            id: chrt_areachart
+//            anchors.fill: parent
+            anchors
             {
-                text: "SPEED"
-                anchors
-                {
-                    horizontalCenter: parent.horizontalCenter
-                    top: parent.bottom
-                    topMargin: 5
+                horizontalCenter: parent.horizontalCenter
+                verticalCenter: parent.verticalCenter
+            }
+            width: parent.width
+            height: parent.height-2*parent.radius
 
+            max: 100
+            color:parametri_generali.coloreBordo
+            chdata: (fb_udp.data[2])
+
+            Shape {
+                anchors.fill: parent
+                id: limiti
+                property real up: chrt_areachart.height*0.5*(1-(selected_exercise.max_pos_speed/chrt_areachart.max))
+                property real down: chrt_areachart.height*0.5*(1-(selected_exercise.max_neg_speed/chrt_areachart.max))
+                onUpChanged:
+                {
+                    console.log("height = ",chrt_areachart.height)
+                }
+
+                ShapePath {
+                    strokeColor: chrt_areachart.chdata>selected_exercise.max_pos_speed?"red": parametri_generali.coloreBordo
+                    strokeWidth: 2
+                    strokeStyle: ShapePath.DashLine
+                    //startY: parent.width*0.5*(1.0+selected_exercise.max_pos_speed/max)
+
+                    startX: 0
+                    startY: limiti.up
+                    PathLine { x: chrt_areachart.width; y: limiti.up }
+                }
+                ShapePath {
+                    strokeColor: chrt_areachart.chdata<selected_exercise.max_neg_speed?"red": parametri_generali.coloreBordo
+                    strokeWidth: 2
+                    strokeStyle: ShapePath.DashLine
+                    //startY: parent.width*0.5*(1.0+selected_exercise.max_pos_speed/max)
+
+                    startX: 0
+                    startY: limiti.down
+                    PathLine { x: chrt_areachart.width; y: limiti.down }
+                }
+
+                ShapePath {
+                    strokeColor: parametri_generali.coloreBordo
+                    strokeWidth: 0.25
+                    startX: 0
+                    startY: chrt_areachart.height*0.5
+                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.5 }
+                }
+                ShapePath {
+                    strokeColor: parametri_generali.coloreBordo
+                    strokeWidth: 0.25
+                    startX: 0
+                    startY: chrt_areachart.height*0.25
+                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.25 }
+                }
+                ShapePath {
+                    strokeColor: parametri_generali.coloreBordo
+                    strokeWidth: 0.25
+                    startX: 0
+                    startY: chrt_areachart.height*0.75
+                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.75 }
+                }
+                ShapePath {
+                    strokeColor: parametri_generali.coloreBordo
+                    strokeWidth: 0.25
+                    startX: 0
+                    startY: chrt_areachart.height*1
+                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*1 }
+                }
+                ShapePath {
+                    strokeColor: parametri_generali.coloreBordo
+                    strokeWidth: 0.25
+                    startX: 0
+                    startY: chrt_areachart.height*0
+                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0 }
+                }
+
+                ShapePath {
+                    strokeColor: parametri_generali.coloreBordo
+                    strokeWidth: 0.25
+                    startX:  chrt_areachart.width*.5
+                    startY: 0
+                    PathLine { x: chrt_areachart.width*.5; y: chrt_areachart.height }
+                }
+
+
+                ShapePath {
+                    strokeColor: parametri_generali.coloreBordo
+                    strokeWidth: 0.25
+                    startX:  chrt_areachart.width*.75
+                    startY: 0
+                    PathLine { x: chrt_areachart.width*.75; y: chrt_areachart.height }
+                }
+
+                ShapePath {
+                    strokeColor: parametri_generali.coloreBordo
+                    strokeWidth: 0.25
+                    startX:  chrt_areachart.width*.25
+                    startY: 0
+                    PathLine { x: chrt_areachart.width*.25; y: chrt_areachart.height }
                 }
             }
-
         }
 
+
     }
+
 
     Rectangle   {
         height: 0.3*parent.height

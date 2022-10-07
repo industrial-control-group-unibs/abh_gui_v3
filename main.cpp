@@ -19,6 +19,8 @@
 #include "DescrizioneEsercizi.h"
 #include <iostream>
 
+#include "areachart.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -27,6 +29,7 @@ int main(int argc, char *argv[])
   qmlRegisterType<UdpCom::BinaryReceiver>("BinaryReceiver", 1, 0, "BinaryReceiver");
   qmlRegisterType<UdpCom::BinarySender>  ("BinarySender",   1, 0, "BinarySender");
   qmlRegisterType<UdpCom::UdpVideoStream>("UdpVideoStream", 1, 0, "UdpVideoStream");
+  qmlRegisterType<AreaChart>("Charts",1,0,"AreaChart");
   QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
   std::string Username = getlogin();
@@ -84,6 +87,8 @@ std::cout << "a" <<std::endl;
 
   std::shared_ptr<QGuiApplication> app=std::make_shared<QGuiApplication>(argc, argv);
   std::shared_ptr<QQmlApplicationEngine> engine=std::make_shared<QQmlApplicationEngine>();
+
+
 
   QQmlContext *context = engine->rootContext();
   std::cout << __LINE__ <<std::endl;
