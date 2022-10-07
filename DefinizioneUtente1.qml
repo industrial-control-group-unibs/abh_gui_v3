@@ -28,6 +28,20 @@ Item {
     Barra_superiore{}
 
 
+    Tastiera
+    {
+        z: 4
+        id: tastiera
+        anchors.left: parent.left
+        anchors.right: parent.right
+        //anchors.top: barra.bottom
+        anchors.bottom: parent.bottom
+        colore: parametri_generali.coloreBordo
+        font_colore: parametri_generali.coloreSfondo
+        visible: dati_utente.visible
+    }
+
+
 
     Rectangle{
         anchors.fill: parent
@@ -144,6 +158,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 width: 100
                 z: 3
+                id: avanti
                 property var dati: ["",""]
 
                 Testo
@@ -167,6 +182,7 @@ Item {
                             dati[lista_utente.currentIndex]=lista_utente.currentItem.name
                             console.log(dati)
                             lista_utente.currentIndex++;
+                            tastiera.testo=""
                         }
                         else
                         {
@@ -215,6 +231,7 @@ Item {
                     if (lista_utente.currentIndex>0)
                     {
                         lista_utente.currentIndex--;
+                        tastiera.testo=avanti.dati[lista_utente.currentIndex]
                     }
                 }
             }
@@ -266,15 +283,14 @@ Item {
                         }
 
 
-                        TextInput {
+                        Text {
                             id: input_nome
                             anchors.left:parent.left
                             anchors.right: parent.right
                             anchors.verticalCenter: parent.verticalCenter
 
                             height: 60
-                            text: ""
-                            cursorVisible: false
+                            text: tastiera.testo
 
                             color: parametri_generali.coloreBordo
                             font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype

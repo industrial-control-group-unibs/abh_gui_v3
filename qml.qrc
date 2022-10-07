@@ -62,5 +62,7 @@
         <file>WorkoutEarlyStop.qml</file>
         <file>PaginaIstruzioni.qml</file>
         <file>PaginaVideoSingolo.qml</file>
+        <file>Tastiera.qml</file>
+        <file>KeyBotton.qml</file>
     </qresource>
 </RCC>

@@ -241,7 +241,7 @@ ApplicationWindow {
 
 //        sourceComponent: PaginaLogo{}
 //                        sourceComponent: TestPage{}
-        sourceComponent: PaginaWorkout{}
+        sourceComponent: DefinizioneUtente1{}
     }
 
 

@@ -17,25 +17,29 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
-    Barra_superiore{}
+    Barra_superiore{id:barra}
 
 
-    Item {
-        id: root
-        Item {
-            id: appContainer
-            anchors.left: parent.left
-            anchors.top: parent.top
-            anchors.topMargin: impo
-            anchors.right: parent.right
-            anchors.bottom: inputPanel.top
-        }
-
-        InputPanel {
-            id: inputPanel
-            externalLanguageSwitchEnabled: true
-            onExternalLanguageSwitch: languageDialog.show(localeList, currentIndex)
-
-        }
+    Tastiera
+    {
+        z: 4
+        id: tastiera
+        anchors.left: parent.left
+        anchors.top: barra.bottom
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        colore: parametri_generali.coloreBordo
+        font_colore: parametri_generali.coloreSfondo
     }
+
+    Testo
+    {
+        id: testo
+
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        text: tastiera.testo
+    }
+
+
 }
