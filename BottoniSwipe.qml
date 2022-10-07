@@ -11,17 +11,17 @@ Item {
 
     state: "sx"
     id: component
-//    onStateChanged:
-//    {
-//        if (state==="dx")
-//        {
-//            pressRight()
-//        }
-//        if (state==="sx")
-//        {
-//            pressLeft()
-//        }
-//    }
+
+    z: 10
+    anchors
+    {
+        bottom: parent.bottom
+        bottomMargin: 35
+        horizontalCenter: parent.horizontalCenter
+    }
+    width: 77+40
+    height: 40
+
 
     states: [
         State {
@@ -54,15 +54,7 @@ Item {
         }
     }
 
-    z: 10
-    anchors
-    {
-        bottom: parent.bottom
-        bottomMargin: 35
-        horizontalCenter: parent.horizontalCenter
-    }
-    width: 77+20
-    height: 20
+
 
     Rectangle
     {
@@ -71,6 +63,7 @@ Item {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         width: height
+        height: parent.height
         radius: width*0.5
         color: "#D4C9BD"
     }
@@ -82,6 +75,7 @@ Item {
         anchors.bottom: parent.bottom
         anchors.right: parent.right
         width: height
+        height: parent.height
         radius: width*0.5
         color: "#4E4F5075"
     }
