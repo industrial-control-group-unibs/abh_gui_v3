@@ -17,7 +17,7 @@ Item {
 
     id: component
     property int difficolta: 1
-    property string nome_livello: livello.state
+//    property string nome_livello: livello.state
 
     Component.onDestruction:
     {
@@ -29,21 +29,32 @@ Item {
         timer_tempo.start()
     }
 
+    Component.onCompleted:
+    {
+        selected_exercise.sets= 3
+        selected_exercise.reps= 12
+        selected_exercise.power=3
+    }
+
     Barra_superiore{
         Titolo
         {
             text: selected_exercise.name
         }
+        id: barra
     }
+
+
     Item
     {
+        id: sotto
         anchors
         {
             left: parent.left
             right: parent.right
             bottom: parent.bottom
         }
-        height: parent.height*0.3
+        height: parent.height*0.2
         FrecceSxDx
         {
             onPressSx: pageLoader.source= "SceltaEsercizi.qml"
@@ -51,6 +62,218 @@ Item {
         }
     }
 
+    Item
+    {
+        anchors
+        {
+            bottom: sotto.top
+            top: barra.bottom
+            topMargin: 30
+            left: parent.left
+            right: parent.right
+        }
+
+        Item
+        {
+            id: serie
+            anchors
+            {
+                top: parent.top
+                left: parent.left
+                right: parent.right
+            }
+            height: parent.height/3.0
+
+            Rectangle{
+//                id: medio
+                color: parametri_generali.coloreBordo
+                radius: 20
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: parent.width/3.0
+                height: 0.8*width
+                Testo
+                {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: selected_exercise.sets
+                    font.pixelSize: 40
+                    color: parametri_generali.coloreSfondo
+                }
+
+                Testo
+                {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.top
+                    width: 300
+                    anchors.bottomMargin: 10
+                    text: "N° SERIE"
+                    font.pixelSize: 20
+                    color: parametri_generali.coloreBordo
+                }
+            }
+
+            Rectangle
+            {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenterOffset: -parent.width*0.25
+                anchors.verticalCenter: parent.verticalCenter
+                height: parent.height/3.0
+                width: height
+                radius: width*0.5
+                border.color: parametri_generali.coloreBordo
+                color: "transparent"
+                border.width: 5
+                id: icona_meno
+                Shape {
+                    anchors.fill: parent
+
+
+                    ShapePath {
+                        strokeColor: parametri_generali.coloreBordo
+                        strokeWidth: 5
+//                        strokeStyle: ShapePath.DashLine
+                        //startY: parent.width*0.5*(1.0+selected_exercise.max_pos_speed/max)
+
+                        startX: icona_meno.width*0.3
+                        startY: icona_meno.height*0.5
+                        PathLine { x: icona_meno.width*0.7; y: icona_meno.height*0.5 }
+                    }
+                }
+
+                MouseArea
+                {
+                    anchors.fill: parent
+                    onPressed: {
+                        if (selected_exercise.sets>1)
+                            selected_exercise.sets--
+                    }
+                }
+            }
+
+            Rectangle
+            {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenterOffset: parent.width*0.25
+                anchors.verticalCenter: parent.verticalCenter
+                height: parent.height/3.0
+                width: height
+                radius: width*0.5
+                border.color: parametri_generali.coloreBordo
+                color: "transparent"
+                border.width: 5
+                id: icona_piu
+                Shape {
+                    anchors.fill: parent
+
+
+                    ShapePath {
+                        strokeColor: parametri_generali.coloreBordo
+                        strokeWidth: 5
+                        startX: icona_piu.width*0.3
+                        startY: icona_piu.height*0.5
+                        PathLine { x: icona_piu.width*0.7; y: icona_piu.height*0.5 }
+                    }
+                    ShapePath {
+                        strokeColor: parametri_generali.coloreBordo
+                        strokeWidth: 5
+                        startX: icona_piu.width*0.5
+                        startY: icona_piu.height*0.3
+                        PathLine { x: icona_piu.width*0.5; y: icona_piu.height*0.7 }
+                    }
+
+                }
+
+                MouseArea
+                {
+                    anchors.fill: parent
+                    onPressed: selected_exercise.sets++
+                }
+            }
+        }
+
+        Item
+        {
+            id: ripetizioni
+            anchors
+            {
+                top: serie.bottom
+                left: parent.left
+                right: parent.right
+            }
+            height: parent.height/3.0
+
+            Rectangle{
+//                id: medio
+                color: parametri_generali.coloreBordo
+                radius: 20
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: parent.width/3.0
+                height: 0.8*width
+                Testo
+                {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: selected_exercise.reps
+                    font.pixelSize: 40
+                    color: parametri_generali.coloreSfondo
+                }
+                Testo
+                {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.top
+                    width: 300
+                    anchors.bottomMargin: 10
+                    text: "N° RIPETIZIONI"
+                    font.pixelSize: 20
+                    color: parametri_generali.coloreBordo
+                }
+            }
+        }
+
+        Item
+        {
+            id: difficolta
+            anchors
+            {
+                top: ripetizioni.bottom
+                left: parent.left
+                right: parent.right
+            }
+            height: parent.height/3.0
+
+            Rectangle{
+//                id: medio
+                color: parametri_generali.coloreBordo
+                radius: 20
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: parent.width/3.0
+                height: 0.8*width
+                Testo
+                {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: selected_exercise.power
+                    font.pixelSize: 40
+                    color: parametri_generali.coloreSfondo
+                }
+                Testo
+                {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.top
+                    width: 300
+                    anchors.bottomMargin: 10
+                    text: "DIFFICOLTA’"
+                    font.pixelSize: 20
+                    color: parametri_generali.coloreBordo
+                }
+            }
+        }
+    }
+
+    /*
     Rectangle{
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
@@ -261,6 +484,7 @@ Item {
 
             }
         }
-
     }
+*/
+
 }

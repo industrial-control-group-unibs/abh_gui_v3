@@ -101,8 +101,8 @@ ApplicationWindow {
         property string immagine: _esercizi.getImage(name)
         //        property string level: "1"
         //        property string difficulty: "Facile"
-        property int power: 1
-        property int reps: 15
+        property int power: 3
+        property int reps: 12
         property int sets: 3
         property int current_set: 0
         property int rest_time: 10
@@ -241,7 +241,7 @@ ApplicationWindow {
 
         sourceComponent: PaginaLogo{}
 //                        sourceComponent: TestPage{}
-//        sourceComponent: DefinizioneUtente1{}
+//        sourceComponent: PaginaConfEsercizioSingolo{}
     }
 
 
