@@ -27,6 +27,7 @@ Item {
         onPressSx: pageLoader.source= "SceltaGruppo.qml"
         onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
         dx_visible: grid.currentIndex>=0
+        colore: parametri_generali.coloreSfondo
     }
 
 

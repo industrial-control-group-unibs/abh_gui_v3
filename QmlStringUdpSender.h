@@ -24,7 +24,10 @@ public:
   QString string() const;
   void setString(QString string);
 
-  protected slots:
+public slots:
+  void send();
+
+protected slots:
   void createSocket();
 signals:
   void portChanged();

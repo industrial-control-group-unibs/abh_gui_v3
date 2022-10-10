@@ -29,7 +29,7 @@ void AreaChart::recompute()
   height_=height();
   for (size_t idx=0;idx<x.size();idx++)
   {
-    x.at(idx)=double(width())*double(idx)/double(x.size());
+    x.at(idx)=double(0.8*width())*double(idx)/double(x.size());
     y.at(idx)=height()*.5;
   }
 }

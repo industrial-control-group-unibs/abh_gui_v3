@@ -212,12 +212,18 @@ Item
                 horizontalCenter: parent.horizontalCenter
                 verticalCenter: parent.verticalCenter
             }
+            property bool show_motor: true
             width: parent.width
             height: parent.height-2*parent.radius
 
             max: 100
             color:parametri_generali.coloreBordo
-            chdata: (fb_udp.data[2])
+            chdata: show_motor? (fb_udp.data[2]) : (fb_udp.data[3])
+
+            MouseArea{
+                anchors.fill: parent
+                onPressed: parent.show_motor=!(parent.show_motor)
+            }
 
             Shape {
                 anchors.fill: parent

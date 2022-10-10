@@ -189,7 +189,7 @@ ApplicationWindow {
         // @disable-check M16
         data: [0.0,0.0,0.0]
         // @disable-check M16
-        size: 3
+        size: 4
         // @disable-check M16
         onDataChanged:
         {

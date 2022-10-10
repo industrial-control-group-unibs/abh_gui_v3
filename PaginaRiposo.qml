@@ -57,7 +57,10 @@ Item {
                 {
                     selected_exercise.current_set++
                     if (selected_exercise.current_set<selected_exercise.sets)
+                    {
+                        exercise_udp.send()
                         pageLoader.source="PaginaWorkout.qml"
+                    }
                     else
                     {
                         _workout.next();
@@ -107,7 +110,7 @@ Item {
             }
             Testo
             {
-                text: "SET "(selected_exercise.current_set+1)+" DI "+selected_exercise.sets
+                text: "SET "+(selected_exercise.current_set+1)+" DI "+selected_exercise.sets
                 font.pixelSize: 30
                 anchors
                 {

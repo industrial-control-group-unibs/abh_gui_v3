@@ -67,5 +67,10 @@ void StringSender::createSocket()
   }
 }
 
+void StringSender::send()
+{
+  std::cout << "send " << string_.toStdString() << std::endl;
+  socket_->sendString(string_.toStdString()+"\n");
+}
 
 }

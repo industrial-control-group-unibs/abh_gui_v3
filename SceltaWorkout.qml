@@ -20,8 +20,9 @@ Item {
 
     FrecceSxDx
     {
-        onPressSx: pageLoader.source= "PaginaMondi.qml"
+        onPressSx: pageLoader.source= "PaginaAllenamento.qml"
         onPressDx: pageLoader.source=  "PaginaConfWorkout.qml"
+        colore: parametri_generali.coloreSfondo
     }
     Rectangle{
         anchors.fill: parent

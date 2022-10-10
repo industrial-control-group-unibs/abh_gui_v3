@@ -28,8 +28,8 @@ if __name__ == '__main__':
         fb_velocity= 0.0
 
         while True:
-            repetition_udp_repetiter.sendData([repetition_count,direction,fb_velocity])
-            motor_feedback.sendData([abs_position,fb_velocity,fb_velocity])
+            repetition_udp_repetiter.sendData([repetition_count,direction,fb_velocity,20+0.1*fb_velocity])
+            motor_feedback.sendData([abs_position,fb_velocity,20+0.1*fb_velocity])
             time.sleep(0.001)
             iter+=1
             if direction>0:
