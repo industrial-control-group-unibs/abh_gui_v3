@@ -113,83 +113,28 @@ Item {
                 }
             }
 
-            Rectangle
+            IconaMeno
             {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenterOffset: -parent.width*0.25
                 anchors.verticalCenter: parent.verticalCenter
                 height: parent.height/3.0
-                width: height
-                radius: width*0.5
-                border.color: parametri_generali.coloreBordo
-                color: "transparent"
-                border.width: 5
-                id: icona_meno
-                Shape {
-                    anchors.fill: parent
-
-
-                    ShapePath {
-                        strokeColor: parametri_generali.coloreBordo
-                        strokeWidth: 5
-//                        strokeStyle: ShapePath.DashLine
-                        //startY: parent.width*0.5*(1.0+selected_exercise.max_pos_speed/max)
-
-                        startX: icona_meno.width*0.3
-                        startY: icona_meno.height*0.5
-                        PathLine { x: icona_meno.width*0.7; y: icona_meno.height*0.5 }
-                    }
-                }
-
-                MouseArea
-                {
-                    anchors.fill: parent
-                    onPressed: {
-                        if (selected_exercise.sets>1)
-                            selected_exercise.sets--
-                    }
+                onPressed: {
+                    if (selected_exercise.sets>1)
+                        selected_exercise.sets--
                 }
             }
 
-            Rectangle
+            IconaPiu
             {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenterOffset: parent.width*0.25
                 anchors.verticalCenter: parent.verticalCenter
                 height: parent.height/3.0
-                width: height
-                radius: width*0.5
-                border.color: parametri_generali.coloreBordo
-                color: "transparent"
-                border.width: 5
-                id: icona_piu
-                Shape {
-                    anchors.fill: parent
-
-
-                    ShapePath {
-                        strokeColor: parametri_generali.coloreBordo
-                        strokeWidth: 5
-                        startX: icona_piu.width*0.3
-                        startY: icona_piu.height*0.5
-                        PathLine { x: icona_piu.width*0.7; y: icona_piu.height*0.5 }
-                    }
-                    ShapePath {
-                        strokeColor: parametri_generali.coloreBordo
-                        strokeWidth: 5
-                        startX: icona_piu.width*0.5
-                        startY: icona_piu.height*0.3
-                        PathLine { x: icona_piu.width*0.5; y: icona_piu.height*0.7 }
-                    }
-
-                }
-
-                MouseArea
-                {
-                    anchors.fill: parent
-                    onPressed: selected_exercise.sets++
-                }
+                onPressed: selected_exercise.sets++
             }
+
+
         }
 
         Item
@@ -229,6 +174,28 @@ Item {
                     font.pixelSize: 20
                     color: parametri_generali.coloreBordo
                 }
+            }
+
+
+            IconaMeno
+            {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenterOffset: -parent.width*0.25
+                anchors.verticalCenter: parent.verticalCenter
+                height: parent.height/3.0
+                onPressed: {
+                    if (selected_exercise.reps>1)
+                        selected_exercise.reps--
+                }
+            }
+
+            IconaPiu
+            {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenterOffset: parent.width*0.25
+                anchors.verticalCenter: parent.verticalCenter
+                height: parent.height/3.0
+                onPressed: selected_exercise.reps++
             }
         }
 
@@ -270,7 +237,34 @@ Item {
                     color: parametri_generali.coloreBordo
                 }
             }
+
+            IconaMeno
+            {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenterOffset: -parent.width*0.25
+                anchors.verticalCenter: parent.verticalCenter
+                height: parent.height/3.0
+                onPressed: {
+                    if (selected_exercise.power>1)
+                        selected_exercise.power--
+                }
+            }
+
+            IconaPiu
+            {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenterOffset: parent.width*0.25
+                anchors.verticalCenter: parent.verticalCenter
+                height: parent.height/3.0
+                onPressed:
+                {
+                    if (selected_exercise.power<9)
+                        selected_exercise.power++
+                }
+            }
         }
+
+
     }
 
     /*

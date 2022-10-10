@@ -64,5 +64,7 @@
         <file>PaginaVideoSingolo.qml</file>
         <file>Tastiera.qml</file>
         <file>KeyBotton.qml</file>
+        <file>IconaPiu.qml</file>
+        <file>IconaMeno.qml</file>
     </qresource>
 </RCC>
