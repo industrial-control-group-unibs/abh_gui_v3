@@ -20,7 +20,7 @@
 #include <iostream>
 
 #include "areachart.h"
-
+#include "ChiamataSistema.h"
 
 int main(int argc, char *argv[])
 {
@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
   qmlRegisterType<UdpCom::BinarySender>  ("BinarySender",   1, 0, "BinarySender");
   qmlRegisterType<UdpCom::UdpVideoStream>("UdpVideoStream", 1, 0, "UdpVideoStream");
   qmlRegisterType<AreaChart>("Charts",1,0,"AreaChart");
+  qmlRegisterType<SysCall>("SysCall",1,0,"SysCall");
   QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
   std::string Username = getlogin();

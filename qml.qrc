@@ -66,5 +66,7 @@
         <file>KeyBotton.qml</file>
         <file>IconaPiu.qml</file>
         <file>IconaMeno.qml</file>
+        <file>PaginaSiNo.qml</file>
+        <file>IconaOff.qml</file>
     </qresource>
 </RCC>

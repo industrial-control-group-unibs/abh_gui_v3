@@ -1,9 +1,9 @@
 import QtQuick 2.12
 
 Item {
-//    anchors.fill: parent
     id: component
     property string text: "TITOLO"
+    property int fontSize: 70
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
@@ -12,7 +12,6 @@ Item {
         left: parent.left
         right: parent.right
         top: parent.top
-//        bottom: parent.bottom
     }
     height: parent.height
     Item{
@@ -26,13 +25,12 @@ Item {
         clip: true
 
 
-//        height: parent.height
         z: 20
 
         Testo
         {
             text: component.text
-            font.pixelSize: 70
+            font.pixelSize: component.fontSize
             anchors
             {
                 verticalCenter: parent.verticalCenter

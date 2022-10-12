@@ -10,7 +10,6 @@ import BinarySender 1.0
 import UdpVideoStream 1.0
 import QtGraphicalEffects 1.12
 
-
 ApplicationWindow {
     visible: true
     width: 1080/2
@@ -89,6 +88,7 @@ ApplicationWindow {
             _utenti.readFile()
         }
     }
+
 
 
     Item {

@@ -50,6 +50,7 @@ SET(APP_FILES
   ProgrammaAllenamento.cpp
   DescrizioneEsercizi.cpp
   areachart.cpp
+  ChiamataSistema.cpp
   )
 
 if(ANDROID)

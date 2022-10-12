@@ -28,20 +28,16 @@ Rectangle {
             color:parametri_generali.coloreSfondo
 
             anchors {
-//                left: parent.left
-//                right: parent.right
                 verticalCenter: parent.verticalCenter
                 horizontalCenter: parent.horizontalCenter
             }
             width: 1000
             height: 500
-//            border.color: "blue"
             clip: true
             GridView {
                 Layout.alignment: Qt.AlignCenter
                 snapMode: GridView.SnapToRow
                 cellWidth: 250; cellHeight: cellWidth
-//                orientation: ListView.Horizontal
                 clip: true
                 anchors {
                     left: parent.left
@@ -54,13 +50,26 @@ Rectangle {
                 id: lista_login
 
 
-                model: _utenti //ModelloUtenteTml{}
+                model: _utenti
 
 
                 delegate: IconaLogin{}
 
             }
         }
+
+
+    }
+
+    IconaOff
+    {
+        anchors
+        {
+            horizontalCenter: parent.horizontalCenter
+            bottom: parent.bottom
+            bottomMargin: 40
+        }
+        onPressed: pageLoader.source=  "PaginaExit.qml"
     }
 
 }
