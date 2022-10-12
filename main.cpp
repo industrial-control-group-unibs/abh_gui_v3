@@ -62,27 +62,16 @@ int main(int argc, char *argv[])
 
   QString data_path=QString::fromStdString(dir_path);
 
-std::cout << "a" <<std::endl;
   ListaEsercizi model(data_path);
-  std::cout << "b" <<std::endl;
   ListaZona zone(data_path+"/zone");
-  std::cout << "c" <<std::endl;
   ListaZona workout_list(data_path+"/allenamento_programmato");
-  std::cout << "d" <<std::endl;
   ListaUtenti utenti(data_path+"/utenti");
-  std::cout << "e" <<std::endl;
   abh::ProgrammaAllenamento workout(data_path+"/allenamento_programmato");
-  std::cout << "f" <<std::endl;
   abh::DescrizioneEsercizi esercizi(data_path);
-  std::cout << "g" <<std::endl;
 
-  std::cout << __LINE__ <<std::endl;
   zone.readFile("Zone");
-  std::cout << __LINE__ <<std::endl;
   workout_list.readFile("lista_workout");
-  std::cout << __LINE__ <<std::endl;
   workout.readFile("workout1_facile_1");
-  std::cout << __LINE__ <<std::endl;
 
 
   std::shared_ptr<QGuiApplication> app=std::make_shared<QGuiApplication>(argc, argv);
@@ -91,35 +80,25 @@ std::cout << "a" <<std::endl;
 
 
   QQmlContext *context = engine->rootContext();
-  std::cout << __LINE__ <<std::endl;
   context->setContextProperty("_myModel", &model);
   context->setContextProperty("_workout_list", &workout_list);
   context->setContextProperty("_utenti", &utenti);
   context->setContextProperty("_zona", &zone);
   context->setContextProperty("_fullscreen", fs);
   context->setContextProperty("_esercizi",&esercizi);
-  std::cout << __LINE__ <<std::endl;
-
   context->setContextProperty("_workout", &workout);
-  std::cout << __LINE__ <<std::endl;
   engine->rootContext()->setContextProperty("PATH", data_path);
-  std::cout << __LINE__ <<std::endl;
 
 
   const QUrl url(QStringLiteral("qrc:/main.qml"));
-  std::cout << __LINE__ <<std::endl;
   QObject::connect(&(*engine), &QQmlApplicationEngine::objectCreated,
                    &(*app), [url](QObject *obj, const QUrl &objUrl) {
     if (!obj && url == objUrl)
       QCoreApplication::exit(-1);
   }, Qt::QueuedConnection);
-  std::cout << __LINE__ <<std::endl;
   engine->load(url);
-  std::cout << __LINE__ <<std::endl;
 
-  std::cout << __LINE__ <<std::endl;
   int output=app->exec();
-  std::cout << __LINE__ <<std::endl;
   engine.reset();
   std::cout << "exit" << std::endl;
   return output;

@@ -137,7 +137,6 @@ Item {
                     onPlaybackStateChanged: {
                         if(playbackState==1){
                             durTrig.stop();
-                            console.log(duration)
                             durTrig.interval=duration-100;
                             durTrig.restart();
                          }

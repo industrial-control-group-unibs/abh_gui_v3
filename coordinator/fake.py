@@ -43,9 +43,9 @@ if __name__ == '__main__':
                     fb_velocity=-100
                     direction=1
 
-            if iter>100:
+            if iter>500:
                 repetition_count+=1
-                if repetition_count>10:
+                if repetition_count>13:
                     repetition_count=0
                 iter=0
                 print("rep =",repetition_count)

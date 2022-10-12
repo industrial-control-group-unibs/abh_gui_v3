@@ -230,10 +230,6 @@ Item
                 id: limiti
                 property real up: chrt_areachart.height*0.5*(1-(selected_exercise.max_pos_speed/chrt_areachart.max))
                 property real down: chrt_areachart.height*0.5*(1-(selected_exercise.max_neg_speed/chrt_areachart.max))
-                onUpChanged:
-                {
-                    console.log("height = ",chrt_areachart.height)
-                }
 
                 ShapePath {
                     strokeColor: chrt_areachart.chdata>selected_exercise.max_pos_speed?"red": parametri_generali.coloreBordo

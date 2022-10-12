@@ -17,10 +17,11 @@ PaginaVideoSingolo
     video_name: selected_exercise.video_preparati
     titolo: selected_exercise.name
     timer: false
+
+    Component.onCompleted: startstop_udp.string="rewire"
     Component.onDestruction:
     {
         pageLoader.last_source="PaginaIstruzioni.qml"
-        console.log("vai a",link_dx)
     }
 }
 

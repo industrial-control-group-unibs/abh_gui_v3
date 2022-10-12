@@ -99,8 +99,6 @@ ApplicationWindow {
         property string video_preparati: _esercizi.getVideoPrep(name)
         property string video_workout: _esercizi.getVideoWorkout(name)
         property string immagine: _esercizi.getImage(name)
-        //        property string level: "1"
-        //        property string difficulty: "Facile"
         property int power: 3
         property int reps: 12
         property int sets: 3
@@ -110,7 +108,6 @@ ApplicationWindow {
         property real max_neg_speed: -10
         property string workout: ""
 
-        property string level: "1"// TO BE REMOVED
         property string difficulty: "Facile"  // TO BE REMOVED
 
         onNameChanged:
@@ -142,7 +139,7 @@ ApplicationWindow {
         // @disable-check M16
         host: "localhost"
         // @disable-check M16
-        string: selected_exercise.code+qsTr(";")+selected_exercise.level+qsTr(";")+selected_exercise.difficulty
+        string: selected_exercise.code+qsTr(";")+selected_exercise.power.toString()//+qsTr(";")+selected_exercise.difficulty
     }
 
     StringSender {
@@ -191,9 +188,15 @@ ApplicationWindow {
         // @disable-check M16
         size: 4
         // @disable-check M16
+
+        property int counter: 0
         onDataChanged:
         {
-//            console.log(data)
+            if (counter++>1000)
+            {
+                counter=0
+                console.log(data)
+            }
             if (data[1]===1 && timer_tut.active)
             {
                 timer_tut.start()

@@ -44,8 +44,6 @@ Item
                 parent.state="play"
                 parent.pressPause()
             }
-            console.log("premuto: ",parent.state)
-
         }
     }
 

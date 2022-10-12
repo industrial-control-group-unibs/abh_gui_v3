@@ -8,7 +8,7 @@ CircularSlider {
     anchors.centerIn: parent
 
     y: 800
-    width: 100
+    width: 200
     height: width
 
     trackWidth: 2
@@ -21,7 +21,7 @@ CircularSlider {
     startAngle: 0
     endAngle: 360
     minValue: 1
-    maxValue: 10
+    maxValue: 20
     snap: true
     stepSize: 1
     value: 1

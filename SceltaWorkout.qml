@@ -58,7 +58,6 @@ Item {
 
 
 
-//            onCurrentItemChanged: console.log(model.get(list.currentIndex).name + ' selected')
         }
 
     }

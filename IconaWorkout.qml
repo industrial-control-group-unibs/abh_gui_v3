@@ -31,7 +31,6 @@ Rectangle   {
         onPressed: {
             selected_exercise.workout=ex_name
 
-            console.log("clicked + ",ex_name)
 
             lista_workout.currentIndex=index
             console.log(lista_workout.currentIndex, index,parent.border.color)

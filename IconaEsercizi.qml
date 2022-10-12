@@ -19,7 +19,6 @@ Rectangle   {
         propagateComposedEvents: true
         onPressed: {
             mouse.accepted = false
-            console.log("clicked")
             selected_exercise.workout=""
             selected_exercise.name= ex_name
             selected_exercise.sets=1

@@ -67,6 +67,7 @@ Item {
                         if (selected_exercise.workout==="" || _workout.completed)
                         {
                             pageLoader.source="PaginaRiepilogo.qml"
+                            selected_exercise.current_set=0
                         }
                         else
                         {

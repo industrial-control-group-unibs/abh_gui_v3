@@ -59,7 +59,6 @@ Item {
             }
             width: 100
             onPressed: {
-                console.log("exit");
                 Qt.callLater(Qt.quit)
             }
             Testo

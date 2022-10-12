@@ -87,12 +87,16 @@ void BinaryReceiver::readThread()
         std::cout << "[" << name_.toStdString() <<": " << port_.toStdString() << "]" << v.size()<< " instead of " << size_ << std::endl;
         if (v.size()<size_)
         {
+          std::cout << "qui1" << std::endl;
           int tmp_size=size_+(size_-v.size());
+          std::cout << "qui2" << std::endl;
           socket_->setDataSize(tmp_size);
+          std::cout << "qui3" << std::endl;
           while (not stop_flag_)
           {
              if (socket_->isUnreadDataAvailable())
              {
+               std::cout << "qui5" << std::endl;
                break;
              }
           }

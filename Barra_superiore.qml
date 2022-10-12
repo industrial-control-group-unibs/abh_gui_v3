@@ -46,11 +46,8 @@ Item
 
         onPressed:
         {
-            console.log("Pressed", pageLoader.source)
             if (parametri_generali.login_page)
             {
-                console.log("Pressed!!!")
-
                 startstop_udp.string="rewire"
             }
         }

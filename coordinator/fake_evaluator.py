@@ -55,11 +55,11 @@ if __name__ == '__main__':
            elif (percentage<=0):
                percentage=0
                inc*=-1
-           if rep>17:
+           if rep>21:
                rep=0
            stringa=str(rep)+","+str(percentage)
            repetition_udp.sendData([rep,percentage,inc])
-           time.sleep(0.01)
+           time.sleep(0.003)
 
         exercise_client.join()
         repetition_udp.join()

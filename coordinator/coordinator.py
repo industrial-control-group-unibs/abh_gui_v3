@@ -41,9 +41,11 @@ def exercise_thread():
 
 
     if (user!='jacobi'):
-        df = pd.read_excel (r'/home/abhorizon/Scrivania/esercizi.xlsx', sheet_name='ParameteriForza')
+        df = pd.read_excel (r'/home/abhorizon/Scrivania/abh_data/esercizi.xlsx', sheet_name='ParameteriForza')
+        df_forza=pd.real_csv(r'/home/abhorizon/Scrivania/abh_data/livelli_potenza.csv')
     else:
-        df = pd.read_excel (r'/home/jacobi/projects/ab-horizon/esercizi.xlsx', sheet_name='ParameteriForza')
+        df = pd.read_excel (r'/home/jacobi/projects/abh_data/esercizi.xlsx', sheet_name='ParameteriForza')
+        df_forza=pd.read_csv(r'/home/jacobi/projects/abh_data/livelli_potenza.csv')
     logging.debug("creating client from gui")
     itrial=0
 
@@ -116,8 +118,6 @@ def exercise_thread():
     exercise=dict.fromkeys(['name','level','difficulty','force','velocity'])
 
     exercise["name"]=""
-    exercise["level"]="1"
-    exercise["difficulty"]="0"
     exercise["force"]=0.0
     exercise["force_return"]=0.0
     exercise["velocity"]=0.0
@@ -139,7 +139,7 @@ def exercise_thread():
 
     motor_speed=0.0
 
-
+    last_esercizio=""
 
     while (not stop):
         time.sleep(0.001)
@@ -148,24 +148,24 @@ def exercise_thread():
             stringa=exercise_client.getLastStringAndClearQueue()
             print(stringa)
             esercizio=stringa.split(";")
-            if len(esercizio)!=3:
+            if len(esercizio)!=2:
                 print("partial string: ",stringa)
                 continue
             if esercizio[0]=="stop":
                 esercizio[0]="stop"
             try:
-                es_data=df[(df.Name==esercizio[0])&(df.Level==int(esercizio[1]))&(df.Difficulty==esercizio[2])]
+                es_data=df[(df.Name==esercizio[0])]
             except:
                 print("invalid exercise = ", stringa)
                 continue
             if (len(es_data)==0):
                 logging.warning("exercise not found: %s", esercizio)
                 continue
+            power_level=min(20,max(1,int(esercizio[1])))
+            parametri_foza=df_forza[df_forza.power==power_level]
             exercise["name"]=esercizio[0]
-            exercise["level"]=int(esercizio[1])
-            exercise["difficulty"]=esercizio[2]
-            exercise["force"]=es_data.Force.iloc[0]
-            exercise["force_return"]=es_data.ForceReturn.iloc[0]
+            exercise["force"]=parametri_foza.force.iloc[0]
+            exercise["force_return"]=parametri_foza.force_return.iloc[0]
             exercise["velocity"]=es_data.Velocity.iloc[0]
             torque_change_time=es_data.TimeFrom0To100.iloc[0]
             motor_speed_threshold=es_data.PositiveVelocityThreshold.iloc[0]
@@ -175,8 +175,10 @@ def exercise_thread():
             motor_speed_early_stop_return=es_data.VelocityEndPhaseReturn.iloc[0]
             percentage_early_stop_return=es_data.PercentageEndPhaseReturn.iloc[0]
 
-            if not isinstance(exercise_name_eval,int):
+            if (not isinstance(exercise_name_eval,int) and last_esercizio!=esercizio[0]):
                 exercise_name_eval.sendString(esercizio[0])
+                last_esercizio=esercizio[0]
+                print("send ", esercizio[0])
 
         if (user_client.isNewStringAvailable()):
             stringa=user_client.getLastStringAndClearQueue()
@@ -198,9 +200,11 @@ def exercise_thread():
                 state=Status.REWIRE
                 motor_target_data=[0,0.20,0.2,1]
                 print("rewire on")
+                last_esercizio=""
             elif stringa=="stop":
                 state=Status.STOP
                 motor_target_data=[1,0,0,0.5]
+                last_esercizio=""
 
                 if not isinstance(exercise_name_eval,type):
                     exercise_name_eval.sendString("stop")
@@ -214,12 +218,10 @@ def exercise_thread():
                 motor_speed=motor_fb[1]
         if (repetition_udp.isNewDataAvailable()):
             repetition_state=repetition_udp.getData()
-            print(repetition_state)
             if len(repetition_state)==3:
                 repetition_count=float(repetition_state[0])
                 direction=float(repetition_state[1])
                 percentage=float(repetition_state[2])
-                print(percentage)
 
                 # if (motor_speed<motor_speed_threshold and state == Status.FORWARD and direction==-1):
                 #     state=Status.BACKWARD
@@ -248,14 +250,15 @@ def exercise_thread():
             state=Status.BACKWARD
         elif (direction==5):
             state=Status.UNDEFINED
-            print("non c'è nessuno")
             #print(motor_speed)
 
         if (state == Status.STOP):
             repetition_count=0.0
             direction=0.0
-        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage])
 
+
+        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage])
+        
         if (last_state != state):
             if (state == Status.FORWARD):
                 motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time]

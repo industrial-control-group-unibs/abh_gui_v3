@@ -30,12 +30,8 @@ Rectangle   {
         propagateComposedEvents: true
         onPressed: {
             mouse.accepted = false
-            console.log("clicked")
-            console.log(lista_zona.currentIndex, index)
             selected_exercise.name="unselected"
             zona_allenamento.gruppo=ex_name
-            console.log("clicked + ",ex_name)
-
             lista_zona.currentIndex=index
             console.log(lista_zona.currentIndex, index)
         }

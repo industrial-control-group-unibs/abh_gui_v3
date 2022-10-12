@@ -180,7 +180,6 @@ Item {
                         {
                             lista_utente.currentItem.colore=parametri_generali.coloreBordo
                             dati[lista_utente.currentIndex]=lista_utente.currentItem.name
-                            console.log(dati)
                             lista_utente.currentIndex++;
                             tastiera.testo=""
                         }

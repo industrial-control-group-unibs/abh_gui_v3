@@ -23,13 +23,13 @@ Item
     CSlider
     {
         id: power_settings
-        width: parent.height*0.2
+        width: parent.height*0.4
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height*0.25
         value: selected_exercise.power
         onValueChanged: {
-            selected_exercise.level=(Math.min(3,value)).toString()
+            selected_exercise.power=value
         }
 
         z:10

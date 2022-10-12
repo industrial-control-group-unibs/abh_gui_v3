@@ -24,7 +24,6 @@ Item {
         pageLoader.last_source="PaginaConfEsercizioSingolo.qml"
         selected_exercise.power=difficolta
         selected_exercise.difficulty=nome_livello
-        selected_exercise.level=(Math.min(3,difficolta)).toString()
 
         timer_tempo.start()
     }
@@ -258,7 +257,7 @@ Item {
 //                height: parent.height/3.0
                 onPressed:
                 {
-                    if (selected_exercise.power<=12)
+                    if (selected_exercise.power<20)
                         selected_exercise.power++
                 }
             }

@@ -21,7 +21,6 @@ PaginaVideoSingolo
     Component.onDestruction:
     {
         pageLoader.last_source="PaginaPreparati.qml"
-        console.log("vai a",link_dx)
     }
 }
 
