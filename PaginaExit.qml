@@ -11,14 +11,20 @@ import SysCall 1.0
 PaginaSiNo
 {
     titolo: "VUOI USCIRE?"
+
+    signal spegni
     onPressNo: pageLoader.source=  "PaginaLogin.qml"
     onPressYes: {
         chiamata_sistema.string="shutdown"
         chiamata_sistema.call()
-        chiamata_sistema.string="xset -display :0.0 dpms force off"
-        chiamata_sistema.call()
+        spegni()
 
 //        Qt.callLater(Qt.quit)
+    }
+    onSpegni: {
+
+        chiamata_sistema.string="xset -display :0.0 dpms force off"
+        chiamata_sistema.call()
     }
 
 
