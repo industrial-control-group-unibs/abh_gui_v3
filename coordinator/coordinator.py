@@ -42,7 +42,7 @@ def exercise_thread():
 
     if (user!='jacobi'):
         df = pd.read_excel (r'/home/abhorizon/Scrivania/abh_data/esercizi.xlsx', sheet_name='ParameteriForza')
-        df_forza=pd.real_csv(r'/home/abhorizon/Scrivania/abh_data/livelli_potenza.csv')
+        df_forza=pd.read_csv(r'/home/abhorizon/Scrivania/abh_data/livelli_potenza.csv')
     else:
         df = pd.read_excel (r'/home/jacobi/projects/abh_data/esercizi.xlsx', sheet_name='ParameteriForza')
         df_forza=pd.read_csv(r'/home/jacobi/projects/abh_data/livelli_potenza.csv')
@@ -258,7 +258,7 @@ def exercise_thread():
 
 
         repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage])
-        
+
         if (last_state != state):
             if (state == Status.FORWARD):
                 motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time]
