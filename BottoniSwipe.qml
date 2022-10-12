@@ -19,8 +19,8 @@ Item {
         bottomMargin: 35
         horizontalCenter: parent.horizontalCenter
     }
-    width: 77+40
-    height: 40
+    width: 180+height*2
+    height: 60
 
 
     states: [

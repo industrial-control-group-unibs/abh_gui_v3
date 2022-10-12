@@ -64,6 +64,7 @@ Item {
     }
 
     BottoniSwipe{
+
         onPressRight:
         {
             video_top.state="stats"
