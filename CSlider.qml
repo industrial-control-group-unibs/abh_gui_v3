@@ -11,9 +11,9 @@ CircularSlider {
     width: 200
     height: width
 
-    trackWidth: 2
-    progressWidth: 3
-    handleWidth: 13
+    trackWidth: 3
+    progressWidth: 5
+    handleWidth: 20
     handleHeight: handleWidth
     handleRadius: handleWidth*.5
     handleVerticalOffset: 0

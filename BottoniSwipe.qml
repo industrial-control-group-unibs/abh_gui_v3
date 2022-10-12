@@ -19,7 +19,7 @@ Item {
         bottomMargin: 35
         horizontalCenter: parent.horizontalCenter
     }
-    width: 180+height*2
+    width: 220+height*2
     height: 60
 
 
