@@ -13,12 +13,12 @@ PaginaSiNo
     titolo: "VUOI USCIRE?"
     onPressNo: pageLoader.source=  "PaginaLogin.qml"
     onPressYes: {
-        chiamata_sistema.string="xset -display :0.0 dpms force off"
-        chiamata_sistema.call()
         chiamata_sistema.string="shutdown"
         chiamata_sistema.call()
+        chiamata_sistema.string="xset -display :0.0 dpms force off"
+        chiamata_sistema.call()
 
-        Qt.callLater(Qt.quit)
+//        Qt.callLater(Qt.quit)
     }
 
 
