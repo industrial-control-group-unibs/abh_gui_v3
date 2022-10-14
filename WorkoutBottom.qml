@@ -23,7 +23,7 @@ Item
     CSlider
     {
         id: power_settings
-        width: parent.height*0.4
+        width: parent.height*0.35
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height*0.25

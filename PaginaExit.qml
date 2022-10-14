@@ -15,9 +15,9 @@ PaginaSiNo
     signal spegni
     onPressNo: pageLoader.source=  "PaginaLogin.qml"
     onPressYes: {
-        chiamata_sistema.string="shutdown"
-        chiamata_sistema.call()
-//        spegni()
+//        chiamata_sistema.string="shutdown"
+//        chiamata_sistema.call()
+        spegni()
 
         Qt.callLater(Qt.quit)
     }
