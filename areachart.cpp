@@ -97,6 +97,17 @@ void AreaChart::paint(QPainter *painter)
   painter->setPen(QPen(m_color, 2, Qt::SolidLine,
                        Qt::RoundCap, Qt::RoundJoin));
   //    painter->setBrush(QColor("red"));
-  painter->setOpacity(0.5);
+  painter->setOpacity(1.0);
   painter->drawPath(areapath);
+
+  QPainterPath areapath2;
+  areapath2.moveTo(x.at(x.size()-2),y.at(x.size()-2));
+  areapath2.lineTo(x.back(),y.back());
+  painter->setRenderHints(QPainter::Antialiasing, true);
+  painter->setPen(QPen(m_color, 6, Qt::SolidLine,
+                       Qt::RoundCap, Qt::RoundJoin));
+  painter->setOpacity(1.0);
+  painter->drawPath(areapath2);
+
+
 }

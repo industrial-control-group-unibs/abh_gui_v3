@@ -17,9 +17,9 @@ PaginaSiNo
     onPressYes: {
         chiamata_sistema.string="shutdown"
         chiamata_sistema.call()
-        spegni()
+//        spegni()
 
-//        Qt.callLater(Qt.quit)
+        Qt.callLater(Qt.quit)
     }
     onSpegni: {
 

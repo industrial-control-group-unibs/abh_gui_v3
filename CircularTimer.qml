@@ -40,7 +40,7 @@ CircularSlider {
 
         font.italic: false
         font.letterSpacing: 0
-        font.pixelSize: 10
+        font.pixelSize: 30
         font.weight: Font.Normal
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignTop

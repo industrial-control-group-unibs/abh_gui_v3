@@ -76,7 +76,7 @@ Item
 
     CircularTimer {
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.horizontalCenterOffset: parent.width*0.25
+        anchors.horizontalCenterOffset: parent.width*0.20
         anchors.verticalCenter: parent.verticalCenter
         width: power_settings.width
         id: time
@@ -98,7 +98,7 @@ Item
 
     CircularTimer {
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.horizontalCenterOffset: -parent.width*0.25
+        anchors.horizontalCenterOffset: -parent.width*0.20
         anchors.verticalCenter: parent.verticalCenter
         width: power_settings.width
         id: tut

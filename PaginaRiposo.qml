@@ -111,7 +111,7 @@ Item {
             }
             Testo
             {
-                text: "SET "+(selected_exercise.current_set+1)+" DI "+selected_exercise.sets
+                text: "SERIE "+(selected_exercise.current_set+1)+" DI "+selected_exercise.sets
                 font.pixelSize: 30
                 anchors
                 {

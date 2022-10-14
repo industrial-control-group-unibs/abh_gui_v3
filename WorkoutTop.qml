@@ -254,7 +254,7 @@ Item
 
                 ShapePath {
                     strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 0.25
+                    strokeWidth: 1.0
                     startX: 0
                     startY: chrt_areachart.height*0.5
                     PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.5 }

@@ -20,6 +20,7 @@ Item {
         timer_tut.stop()
         timer_tut.active=false
         timer_tempo.stop()
+        startstop_udp.string="rewire"
     }
 
 
@@ -38,9 +39,20 @@ Item {
         clip: true
 
 
-        Titolo
-        {
-            text: "BEN FATTO!"
+        Item {
+            anchors
+            {
+                left: parent.left
+                right: parent.right
+                top:parent.top
+                topMargin: 10
+            }
+            height: parent.height*0.2
+            Titolo
+            {
+                text: "BEN FATTO!"
+            }
+
         }
 
         CircularTimer {
@@ -93,7 +105,16 @@ Item {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: parent.height*0.1
             width: 100
-            onPressPlay: pageLoader.source="PaginaLogin.qml"
+            onPressPlay:
+            {
+                selected_exercise.current_set=0
+
+                if (selected_exercise.workout==="")
+                    pageLoader.source = "SceltaGruppo.qml"
+                else
+                    pageLoader.source = "SceltaWorkout.qml"
+
+            }
             Testo
             {
                 text: "CONTINUA PER IL\nLOG OUT"

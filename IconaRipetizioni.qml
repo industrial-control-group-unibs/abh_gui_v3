@@ -53,13 +53,13 @@ Item {
                 verticalCenter: parent.verticalCenter
                 horizontalCenter: parent.horizontalCenter
             }
-            color: parametri_generali.coloreBordo
+            color: parametri_generali.coloreSfondo
             wrapMode: TextEdit.WordWrap
             font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
 
             font.italic: false
             font.letterSpacing: 0
-            font.pixelSize: 30
+            font.pixelSize: 60
             font.weight: Font.Normal
             horizontalAlignment: Text.AlignLeft
             verticalAlignment: Text.AlignTop
