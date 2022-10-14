@@ -13,7 +13,7 @@ Item {
     property bool dx_visible: true
     property bool sx_visible: true
 
-    property string colore: parametri_generali.coloreIcona
+    property string colore: parametri_generali.coloreBordo
     id: component
 
     anchors

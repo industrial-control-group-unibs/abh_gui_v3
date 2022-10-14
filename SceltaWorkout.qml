@@ -22,7 +22,7 @@ Item {
     {
         onPressSx: pageLoader.source= "PaginaAllenamento.qml"
         onPressDx: pageLoader.source=  "PaginaConfWorkout.qml"
-        colore: parametri_generali.coloreSfondo
+        colore: parametri_generali.coloreBordo
     }
     Rectangle{
         anchors.fill: parent

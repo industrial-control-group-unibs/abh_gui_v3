@@ -23,7 +23,7 @@ Item {
         onPressSx: pageLoader.source= "PaginaAllenamento.qml"
         onPressDx: pageLoader.source=  "SceltaEsercizi.qml"
         dx_visible: lista_zona.currentIndex>=0
-        colore: parametri_generali.coloreSfondo
+        colore: parametri_generali.coloreBordo
 
     }
     Rectangle{
