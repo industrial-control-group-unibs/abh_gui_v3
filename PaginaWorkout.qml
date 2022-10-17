@@ -26,7 +26,7 @@ Item {
 //        selected_exercise.name="unselected"
 //        selected_exercise.code="unselected"
         timer_tut.active=false
-//        startstop_udp.string="stop"
+        startstop_udp.string="stop"
         parametri_generali.login_page=true
 
         pageLoader.last_source="PaginaWorkout.qml"
