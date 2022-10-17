@@ -19,6 +19,7 @@ Item {
     {
         timer_tut.active=true
         startstop_udp.string="start"
+        parametri_generali.login_page=false
     }
     Component.onDestruction:
     {
@@ -26,7 +27,7 @@ Item {
 //        selected_exercise.code="unselected"
         timer_tut.active=false
         startstop_udp.string="stop"
-
+        parametri_generali.login_page=true
 
         pageLoader.last_source="PaginaWorkout.qml"
     }

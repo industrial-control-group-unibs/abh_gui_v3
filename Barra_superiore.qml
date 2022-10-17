@@ -46,17 +46,17 @@ Item
 
         onPressed:
         {
-//            if (parametri_generali.login_page)
-//            {
+            if (parametri_generali.login_page)
+            {
                 startstop_udp.string="rewire"
-//            }
+            }
         }
         onReleased:
         {
             console.log("release ", pageLoader.source)
 
-//            if (parametri_generali.login_page)
-            startstop_udp.string="stop"
+            if (parametri_generali.login_page)
+                startstop_udp.string="stop"
         }
     }
 
