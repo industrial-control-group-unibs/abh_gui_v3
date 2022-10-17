@@ -212,6 +212,7 @@ def exercise_thread():
                 last_esercizio=""
 
                 if not isinstance(exercise_name_eval,type):
+                    exercise_name_eval.sendString("undefined")
                     exercise_name_eval.sendString("stop")
             else:
                 logging.warning("startstop_client_d should receive start or stop. received: "+stringa)
