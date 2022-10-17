@@ -22,7 +22,7 @@ PaginaVideoSingolo
     Component.onDestruction:
     {
         pageLoader.last_source="PaginaIstruzioni.qml"
-        startstop_udp.string="stop"
+        startstop_udp.string="stop_rewire"
     }
 }
 

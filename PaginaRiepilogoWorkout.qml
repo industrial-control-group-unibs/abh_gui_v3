@@ -24,7 +24,7 @@ Item {
     }
     Component.onDestruction:
     {
-        startstop_udp.string="stop"
+        startstop_udp.string="stop_rewire"
     }
 
     Barra_superiore{}

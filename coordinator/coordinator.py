@@ -201,6 +201,10 @@ def exercise_thread():
                 motor_target_data=[0,0.20,0.2,1]
                 print("rewire on")
                 last_esercizio=""
+            elif stringa=="stop_rewire":
+                state=Status.STOP
+                motor_target_data=[1,0,0,0.5]
+                last_esercizio=""
             elif stringa=="stop":
                 state=Status.STOP
                 motor_target_data=[1,0,0,0.5]
