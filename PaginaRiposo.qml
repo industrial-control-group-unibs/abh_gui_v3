@@ -108,6 +108,14 @@ Item {
                 value: 1-conto_alla_rovescia.position/conto_alla_rovescia.duration
                 tempo: (conto_alla_rovescia.duration-conto_alla_rovescia.position) //timerino.remaining_time
                 colore: (tempo<5000)?"red":parametri_generali.coloreBordo
+
+                MouseArea
+                {
+                    anchors.fill: parent
+                    onClicked: {
+                        conto_alla_rovescia.position=conto_alla_rovescia.duration
+                    }
+                }
             }
             Testo
             {

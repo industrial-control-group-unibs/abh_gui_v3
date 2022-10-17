@@ -22,8 +22,10 @@ Item {
         timer_tempo.stop()
         startstop_udp.string="rewire"
     }
-    Component.onDestroyed: startstop_udp.string="stop"
-
+    Component.onDestroyed:
+    {
+        startstop_udp.string="stop"
+    }
 
 
     Barra_superiore{}
