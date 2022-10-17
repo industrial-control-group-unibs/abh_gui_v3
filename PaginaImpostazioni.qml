@@ -30,16 +30,16 @@ Item {
 
     QuattroImmagini
     {
-        immagine11: "place_holder_4_3.png"
+        immagine11: "impostazioni1.png"
         testo11: "UTENTE\n"
         link11: "PaginaLogin.qml"
-        immagine12: "place_holder_4_3.png"
+        immagine12: "impostazioni2.png"
         testo12: "CONNETIVITÀ\n"
         link12: "PaginaExit.qml"
-        immagine21: "place_holder_4_3.png"
+        immagine21: "impostazioni3.png"
         testo21: "SCHERMO-AUDIO\n"
         link21: "TestPage.qml"
-        immagine22: "place_holder_4_3.png"
+        immagine22: "impostazioni4.png"
         testo22: "LOG OUT\n"
         link22: "PaginaLogin.qml"
     }
