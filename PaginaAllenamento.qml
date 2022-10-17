@@ -26,7 +26,7 @@ Item {
         link12: "PaginaAllenamento.qml"
         immagine22: "statistiche.jpg"
         testo22: "STATISTICHE\n"
-        link22: "PaginaAllenamento.qml"
+        link22: "PaginaRiepilogoWorkout.qml"
     }
 
 //    Rectangle{

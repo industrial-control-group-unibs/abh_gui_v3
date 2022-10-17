@@ -68,5 +68,6 @@
         <file>IconaMeno.qml</file>
         <file>PaginaSiNo.qml</file>
         <file>IconaOff.qml</file>
+        <file>PaginaRiepilogoWorkout.qml</file>
     </qresource>
 </RCC>
