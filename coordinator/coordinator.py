@@ -194,6 +194,7 @@ def exercise_thread():
                 change_direction=True
                 motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time]
                 if not isinstance(exercise_name_eval,int):
+                    exercise_name_eval.sendString(last_esercizio)
                     exercise_name_eval.sendString("start")
 
             elif stringa=="rewire":
