@@ -1,20 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>images/038f5ea024da590a3112d0bf5a63b60b5ee436e5.jpg</file>
-        <file>images/0c34dd84ffb367109485db8866b1ddbfadac6c19.jpg</file>
-        <file>images/3d5813a1b1d93dd582af2b64edda401d4c79fe37.jpg</file>
-        <file>images/48ff49f433223998c4016a2215f11116a54f0f24.jpg</file>
-        <file>images/50a9851e0e247e75db86b6f60ef5b9144822b13b.jpg</file>
-        <file>images/5d5a60d4d7bac8113a3b692bf958688b27fcc35e.jpg</file>
-        <file>images/6f752207c36d533754e034b82bf78dc67281c078.jpg</file>
-        <file>images/77ad4ea61eff41e03f60c6f9811b8bf76cbde83a.jpg</file>
-        <file>images/7920b88844051cebef27b8a5bd31c8a9f056ba2d.jpg</file>
-        <file>images/8baeaae9074197fa2463c4fa50960ceb24beb9de.jpg</file>
-        <file>images/c937eea7bbc0d22182a6e5905ca46be332d3f137.jpg</file>
-        <file>images/d47f045ce7875e59666714b87ca7a7a49d4e1018.jpg</file>
-        <file>images/fe757f0cb0f868f6e9d7e7a180984a76165c28a0.png</file>
-        <file>images/freccia.svg</file>
         <file>SceltaEsercizi.qml</file>
         <file>Barra_superiore.qml</file>
         <file>SceltaGruppo.qml</file>
@@ -69,5 +55,9 @@
         <file>PaginaSiNo.qml</file>
         <file>IconaOff.qml</file>
         <file>PaginaRiepilogoWorkout.qml</file>
+        <file>PaginaScattaFoto.qml</file>
+        <file>PaginaConfermaFoto.qml</file>
+        <file>PaginaOpzioniImpostazioni.qml</file>
+        <file>BarraVolume.qml</file>
     </qresource>
 </RCC>

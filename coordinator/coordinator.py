@@ -68,14 +68,17 @@ def exercise_thread():
             startstop_client.start()
             user_client = UdpReceiverThread("user_client_d",abh.ABH_CONTROL,abh.UTENTE_PORT)
             user_client.start()
+            power_client = UdpBinaryReceiverThread("power_client_d",abh.ABH_CONTROL,abh.POWER_NAME_DM_PORT)
+            power_client.bufferLength(1)
+            power_client.start()
             repetition_udp = UdpBinaryReceiverThread("repetition_udp",abh.ABH_VISION,abh.REP_COUNT_PORT)
-            repetition_udp.start()
             repetition_udp.bufferLength(3)
+            repetition_udp.start()
 
 
             motor_fb_udp = UdpBinaryReceiverThread("motor_feedback",abh.ABH_CONTROL,abh.MOTOR_FEEDBACK_PORT)
-            motor_fb_udp.start()
             motor_fb_udp.bufferLength(2)
+            motor_fb_udp.start()
 
             logging.debug("connected with gui")
             break
@@ -139,34 +142,27 @@ def exercise_thread():
 
     motor_speed=0.0
 
-    last_esercizio=""
-
     while (not stop):
         time.sleep(0.001)
 
+        if (power_client.isNewDataAvailable()):
+            power_level=min(20,max(1,int(esercizio[1])))
+            parametri_forza=df_forza[df_forza.power==power_level]
+            exercise["force"]=parametri_forza.force.iloc[0]
+            exercise["force_return"]=parametri_forza.force_return.iloc[0]
+            exercise["velocity"]=parametri_forza.velocity.iloc[0]
+
         if (exercise_client.isNewStringAvailable()):
-            stringa=exercise_client.getLastStringAndClearQueue()
-            print(stringa)
-            esercizio=stringa.split(";")
-            if len(esercizio)!=2:
-                print("partial string: ",stringa)
-                continue
-            if esercizio[0]=="stop":
-                esercizio[0]="stop"
+            esercizio=exercise_client.getLastStringAndClearQueue()
             try:
-                es_data=df[(df.Name==esercizio[0])]
+                es_data=df[(df.Name==esercizio)]
             except:
                 print("invalid exercise = ", stringa)
                 continue
             if (len(es_data)==0):
                 logging.warning("exercise not found: %s", esercizio)
                 continue
-            power_level=min(20,max(1,int(esercizio[1])))
-            parametri_foza=df_forza[df_forza.power==power_level]
-            exercise["name"]=esercizio[0]
-            exercise["force"]=parametri_foza.force.iloc[0]
-            exercise["force_return"]=parametri_foza.force_return.iloc[0]
-            exercise["velocity"]=es_data.Velocity.iloc[0]
+            exercise["name"]=esercizio
             torque_change_time=es_data.TimeFrom0To100.iloc[0]
             motor_speed_threshold=es_data.PositiveVelocityThreshold.iloc[0]
             motor_speed_threshold_return=es_data.NegativeVelocityThreshold.iloc[0]
@@ -175,10 +171,9 @@ def exercise_thread():
             motor_speed_early_stop_return=es_data.VelocityEndPhaseReturn.iloc[0]
             percentage_early_stop_return=es_data.PercentageEndPhaseReturn.iloc[0]
 
-            if (not isinstance(exercise_name_eval,int) and last_esercizio!=esercizio[0]):
-                exercise_name_eval.sendString(esercizio[0])
-                last_esercizio=esercizio[0]
-                print("send ", esercizio[0])
+            if (not isinstance(exercise_name_eval,int)):
+                exercise_name_eval.sendString(esercizio)
+                print("send ", esercizio)
 
         if (user_client.isNewStringAvailable()):
             stringa=user_client.getLastStringAndClearQueue()
@@ -194,25 +189,20 @@ def exercise_thread():
                 change_direction=True
                 motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time]
                 if not isinstance(exercise_name_eval,int):
-                    exercise_name_eval.sendString(last_esercizio)
                     exercise_name_eval.sendString("start")
 
             elif stringa=="rewire":
                 state=Status.REWIRE
                 motor_target_data=[0,0.20,0.2,1]
                 print("rewire on")
-                last_esercizio=""
             elif stringa=="stop_rewire":
                 state=Status.STOP
                 motor_target_data=[1,0,0,0.5]
-                last_esercizio=""
             elif stringa=="stop":
                 state=Status.STOP
                 motor_target_data=[1,0,0,0.5]
-                last_esercizio=""
 
                 if not isinstance(exercise_name_eval,type):
-                    exercise_name_eval.sendString("undefined")
                     exercise_name_eval.sendString("stop")
             else:
                 logging.warning("startstop_client_d should receive start or stop. received: "+stringa)
@@ -302,6 +292,12 @@ def exercise_thread():
         user_client.join()
     else:
         logging.debug("user_client is off")
+
+    if not isinstance(power_client,int):
+        power_client.stopThread()
+        power_client.join()
+    else:
+        logging.debug("power_client is off")
 
 
 

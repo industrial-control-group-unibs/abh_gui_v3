@@ -139,7 +139,16 @@ ApplicationWindow {
         // @disable-check M16
         host: "localhost"
         // @disable-check M16
-        string: selected_exercise.code+qsTr(";")+selected_exercise.power.toString()//+qsTr(";")+selected_exercise.difficulty
+        string: selected_exercise.code
+    }
+    StringSender {
+        id: power_udp
+        // @disable-check M16
+        port: "21002"
+        // @disable-check M16
+        host: "localhost"
+        // @disable-check M16
+        string: selected_exercise.power
     }
 
     StringSender {
@@ -162,19 +171,6 @@ ApplicationWindow {
         string: "stop"
     }
 
-//    BinaryReceiver {
-//        id: feedback_udp
-//        // @disable-check M16
-//        name: "fb"
-//        // @disable-check M16
-//        port: "15005"
-//        // @disable-check M16
-//        data: [0.0,0.0,0.0]
-//        // @disable-check M16
-//        size: 2
-//        // @disable-check M16
-//        onDataChanged: console.log(data)
-//    }
 
     BinaryReceiver
     {
@@ -210,6 +206,31 @@ ApplicationWindow {
 
     }
 
+
+    BinaryReceiver
+    {
+        id: comando_vocale_udp
+        // @disable-check M16
+        name: "comando vocale"
+        // @disable-check M16
+        port: "21006"
+        // @disable-check M16
+        data: [0.0]
+        // @disable-check M16
+        size: 1
+        // @disable-check M16
+
+        property int counter: 0
+        onDataChanged:
+        {
+            console.log(data)
+
+        }
+
+
+    }
+
+
     Timer
     {
 
@@ -243,7 +264,7 @@ ApplicationWindow {
         property url last_source
 
         sourceComponent: PaginaLogo{}
-//                        sourceComponent: TestPage{}
+//                        sourceComponent: PaginaOpzioniImpostazioni{}
 //        sourceComponent: PaginaConfEsercizioSingolo{}
     }
 

@@ -32,6 +32,20 @@ Item {
         pageLoader.last_source="PaginaWorkout.qml"
     }
 
+    Item {
+        id: ricevi_comando_vocale
+        property real data: comando_vocale_udp.data[0]
+        onDataChanged:
+        {
+            console.log("data = ",data)
+            if (data==2)
+            {
+                console.log("qui")
+                pageLoader.source = "PaginaRiposo.qml"
+            }
+        }
+    }
+
     Barra_superiore{
         Titolo
         {

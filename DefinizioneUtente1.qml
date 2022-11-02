@@ -52,6 +52,7 @@ Item {
         Titolo
         {
             text: "UTENTE"
+            height: parent.height*0.1
         }
 
 
@@ -66,6 +67,7 @@ Item {
                 topMargin: parent.height*.1
             }
             height: parent.height*0.4
+            id: icona_foto
 
             IconaCerchio{
                 id: link_foto
@@ -75,7 +77,7 @@ Item {
                     verticalCenter: parent.verticalCenter
                 }
                 width: 100
-                onPressed: pageLoader.source= "PaginaSceltaAvatar.qml"//impostazioni_utente.foto="avatar1.png" //
+                onPressed: pageLoader.source= "PaginaScattaFoto.qml" //"PaginaSceltaAvatar.qml"//impostazioni_utente.foto="avatar1.png" //
                 Testo
                 {
                     text: "SCEGLI FOTO\nPROFILO"
@@ -104,7 +106,7 @@ Item {
                 radius: width*0.5
                 MouseArea{
                     anchors.fill: parent
-                    onPressed: pageLoader.source= "PaginaSceltaAvatar.qml"
+                    onPressed: pageLoader.source= "PaginaScattaFoto.qml"
                 }
 
                 Image {
@@ -214,7 +216,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 width: 100
                 z: 3
-                visible: (lista_utente.currentIndex>0)
+                //visible: (lista_utente.currentIndex>0)
                 Testo
                 {
                     text: "INDIETRO"
@@ -231,6 +233,10 @@ Item {
                     {
                         lista_utente.currentIndex--;
                         tastiera.testo=avanti.dati[lista_utente.currentIndex]
+                    }
+                    else
+                    {
+                        pageLoader.source="PaginaLogin.qml"
                     }
                 }
             }
@@ -312,4 +318,26 @@ Item {
         }
 
     }
+
+    Item {
+        anchors
+        {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+            top: icona_foto.bottom
+        }
+        visible: link_foto.visible
+
+
+        FrecceSxDx
+        {
+
+
+            onPressSx: pageLoader.source=  "PaginaLogin.qml"
+            dx_visible: false
+            z:5
+        }
+    }
+
 }

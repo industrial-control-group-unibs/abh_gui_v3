@@ -1,5 +1,6 @@
 #include <UdpVideoStream.h>
 #include <QDebug>
+#include <QFile>
 #include <unistd.h>
 #define BUF_LEN 65536 // Larger than maximum UDP packet size
 
@@ -67,7 +68,20 @@ void UdpVideoStream::slotTick()
   }
 }
 
-
+void UdpVideoStream::saveImage(QString filename)
+{
+  QImage image;
+  m_mtx.lock();
+  image=*mImage;
+  m_mtx.unlock();
+  QFile file(filename);
+  if(file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+      image.save(&file, "PNG");
+  }
+  else {
+      qDebug() << "Can't open file: " << filename;
+  }
+}
 
 void UdpVideoStream::startSurface()
 {

@@ -38,6 +38,7 @@ signals:
 public slots:
   void slotTick();
   void receiverThread();
+  void saveImage(QString filename);
 
 private:
   void startSurface();

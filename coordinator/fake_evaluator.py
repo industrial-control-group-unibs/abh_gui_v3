@@ -23,6 +23,7 @@ if __name__ == '__main__':
 
 
     repetition_udp = UdpBinarySenderThread("exercise_name_eval",abh.ABH_VISION,abh.REP_COUNT_PORT)
+    motor_feedback = UdpBinarySenderThread("motor_feedback",abh.ABH_CONTROL,abh.MOTOR_FEEDBACK_PORT)
     try:
         itrial=0
         while (not stop):
@@ -41,6 +42,8 @@ if __name__ == '__main__':
         percentage=0
         inc=1
         rep=0
+        abs_position=0
+        fb_velocity=0
         while True:
            if stop:
                exercise_client.stopThread()
@@ -59,6 +62,7 @@ if __name__ == '__main__':
                rep=0
            stringa=str(rep)+","+str(percentage)
            repetition_udp.sendData([rep,percentage,inc])
+           motor_feedback.sendData([abs_position,fb_velocity])
            time.sleep(0.003)
 
         exercise_client.join()

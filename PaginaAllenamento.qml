@@ -11,6 +11,12 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
+    Component.onCompleted:
+    {
+        if (impostazioni_utente.nome ==="")
+            pageLoader.source="PaginaLogin.qml"
+    }
+
     Barra_superiore{}
 
     QuattroImmagini

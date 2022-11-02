@@ -5,7 +5,7 @@ import QtQuick.Shapes 1.12
 
 Rectangle
 {
-    height: 80
+    height: 100
     width: height
     radius: width*0.5
     border.color: parametri_generali.coloreBordo
