@@ -148,7 +148,7 @@ ApplicationWindow {
         // @disable-check M16
         host: "localhost"
         // @disable-check M16
-        string: selected_exercise.power
+        data: selected_exercise.power
     }
 
     StringSender {
