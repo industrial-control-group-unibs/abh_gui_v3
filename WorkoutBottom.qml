@@ -28,6 +28,7 @@ Item
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height*0.25
         value: selected_exercise.power
+        progressColor: parametri_generali.coloreUtente
         onValueChanged: {
             selected_exercise.power=value
         }
@@ -79,6 +80,7 @@ Item
         anchors.horizontalCenterOffset: parent.width*0.20
         anchors.verticalCenter: parent.verticalCenter
         width: power_settings.width
+        colore: parametri_generali.coloreUtente
         id: time
         value: timer_tempo.value/1000/60-Math.floor(timer_tempo.value/1000/60)
         tempo: timer_tempo.value
@@ -101,6 +103,7 @@ Item
         anchors.horizontalCenterOffset: -parent.width*0.20
         anchors.verticalCenter: parent.verticalCenter
         width: power_settings.width
+        colore: parametri_generali.coloreUtente
         id: tut
         value: timer_tut.value/1000/60-Math.floor(timer_tut.value/1000/60)
         tempo: timer_tut.value

@@ -216,6 +216,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 width: 100
                 z: 3
+                id: icona_cerchio_indietro
                 //visible: (lista_utente.currentIndex>0)
                 Testo
                 {
@@ -319,22 +320,22 @@ Item {
 
     }
 
-    Item {
+    Item
+    {
         anchors
         {
             left: parent.left
             right: parent.right
             bottom: parent.bottom
-            top: icona_foto.bottom
         }
-        visible: link_foto.visible
-
-
+        height: parent.height*0.3
         FrecceSxDx
         {
-
-
-            onPressSx: pageLoader.source=  "PaginaLogin.qml"
+            id: freccia
+            onPressSx:
+            {
+                pageLoader.source="PaginaLogin.qml"
+            }
             dx_visible: false
             z:5
         }

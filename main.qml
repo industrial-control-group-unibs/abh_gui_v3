@@ -30,6 +30,7 @@ ApplicationWindow {
         property string coloreBordo: "#D4C9BD"
         property string coloreBarra: "#473729"
         property string coloreIcona: "#ff9f9181"
+        property string coloreUtente: "#8c177b"
         property int larghezza_barra: 172
         property int offset_icone4x3: 400
         property int logo_time: 2000
@@ -62,6 +63,12 @@ ApplicationWindow {
         {
             value+=interval
         }
+        signal resetValue
+        onResetValue:
+        {
+            value=0
+            console.log("valore resettato ",value)
+        }
     }
 
     Timer
@@ -76,6 +83,12 @@ ApplicationWindow {
         {
             value+=interval
         }
+        signal resetValue
+        onResetValue:
+        {
+            value=0
+        }
+
     }
 
     Item {

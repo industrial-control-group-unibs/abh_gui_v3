@@ -94,7 +94,7 @@ void AreaChart::paint(QPainter *painter)
 
   /* Painting areachart path*/
   painter->setRenderHints(QPainter::Antialiasing, true);
-  painter->setPen(QPen(m_color, 3, Qt::SolidLine,
+  painter->setPen(QPen(m_color, 6, Qt::SolidLine,
                        Qt::RoundCap, Qt::RoundJoin));
   //    painter->setBrush(QColor("red"));
   painter->setOpacity(1.0);
@@ -104,7 +104,7 @@ void AreaChart::paint(QPainter *painter)
   areapath2.moveTo(x.at(x.size()-2),y.at(x.size()-2));
   areapath2.lineTo(x.back(),y.back());
   painter->setRenderHints(QPainter::Antialiasing, true);
-  painter->setPen(QPen(m_color, 10, Qt::SolidLine,
+  painter->setPen(QPen(m_color, 20, Qt::SolidLine,
                        Qt::RoundCap, Qt::RoundJoin));
   painter->setOpacity(1.0);
   painter->drawPath(areapath2);

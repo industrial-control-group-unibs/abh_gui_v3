@@ -15,8 +15,11 @@ Rectangle {
     clip: true
 
     Component.onCompleted: parametri_generali.login_page=true
-//    Component.onDestruction: parametri_generali.login_page=false
-
+    Component.onDestruction:
+    {
+        timer_tempo.resetValue()
+        timer_tut.resetValue()
+    }
     Barra_superiore{}
 
     Item {

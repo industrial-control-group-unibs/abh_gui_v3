@@ -59,5 +59,6 @@
         <file>PaginaConfermaFoto.qml</file>
         <file>PaginaOpzioniImpostazioni.qml</file>
         <file>BarraVolume.qml</file>
+        <file>WorkoutSkip.qml</file>
     </qresource>
 </RCC>

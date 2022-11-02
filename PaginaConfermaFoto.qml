@@ -16,12 +16,6 @@ Item {
     implicitWidth: 1080/2
 
     id: component
-    property var locale: Qt.locale()
-    property string dateTimeString: "Tue 2013-09-17 10:56:06"
-
-    Component.onCompleted: {
-        print(Date.fromLocaleString(locale, dateTimeString, "ddd yyyy-MM-dd hh:mm:ss"));
-    }
     Barra_superiore{}
 
 
@@ -29,17 +23,13 @@ Item {
     {
         id: chiamata_sistema
     }
-    FrecceSxDx
-    {
-        onPressSx: pageLoader.source=  "DefinizioneUtente1.qml"
-        onPressDx: pageLoader.source=  "PaginaWorkout.qml"
-        z:5
-    }
+
 
     Rectangle   {
-        width: 0.9*parent.width
+        width: 0.8*parent.width
         height: width
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.top: parent.top
+        anchors.topMargin: parametri_generali.larghezza_barra+30
         anchors.horizontalCenter: parent.horizontalCenter
         id: rect_utente
         visible: true
@@ -88,17 +78,28 @@ Item {
 
 
 
+    Item
+    {
+        anchors
+        {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        height: parent.height*0.3
 
-    Item   {
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: rect_utente.bottom
-        anchors.topMargin: 100*parent.width/1080
-        width: 436*parent.width/1080
-        height: 581*parent.width/1080
+        Testo
+        {
+            text: "CONFERMI?"
+            font.pixelSize: 30
+            anchors
+            {
+                horizontalCenter: parent.horizontalCenter
+                top: parent.top
+                topMargin: 5
 
-
-
-
+            }
+        }
         SiNo
         {
             onPressNo:
@@ -110,7 +111,7 @@ Item {
             }
             onPressYes: pageLoader.source="DefinizioneUtente1.qml"
         }
-
-
     }
+
+
 }

@@ -73,7 +73,13 @@ Item {
                 sotto.visible=false
                 early_stop.visible=true
             }
-            dx_visible: false
+            dx_visible: true
+            onPressDx:
+            {
+                sx_visible= false
+                sotto.visible=false
+                skip.visible=true
+            }
             z:5
         }
     }
@@ -119,6 +125,18 @@ Item {
                 early_stop.visible=false
             }
             onExit: pageLoader.source= "PaginaAllenamento.qml"
+        }
+
+        WorkoutSkip
+        {
+            id: skip
+            visible: false
+            onCancel: {
+                freccia.sx_visible=true
+                sotto.visible=true
+                skip.visible=false
+            }
+            onExit: pageLoader.source=  "PaginaRiposo.qml"
         }
     }
 }

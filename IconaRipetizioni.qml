@@ -53,7 +53,7 @@ Item {
                 verticalCenter: parent.verticalCenter
                 horizontalCenter: parent.horizontalCenter
             }
-            color: parametri_generali.coloreSfondo
+            color: parametri_generali.coloreUtente
             wrapMode: TextEdit.WordWrap
             font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
 

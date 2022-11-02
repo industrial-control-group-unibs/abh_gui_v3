@@ -15,6 +15,7 @@ Item
         timer_tempo.start()
         //            timer_tut.start()
     }
+    Component.onDestruction: timer_tempo.stop()
 
     implicitWidth: 1080
     implicitHeight: 1920*.5
@@ -217,7 +218,7 @@ Item
             height: parent.height-2*parent.radius
 
             max: 100
-            color:parametri_generali.coloreBordo
+            color:parametri_generali.coloreUtente
             chdata: show_motor? (fb_udp.data[2]) : (fb_udp.data[3])
 
             MouseArea{

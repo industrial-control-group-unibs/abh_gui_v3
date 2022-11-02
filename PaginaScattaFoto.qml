@@ -30,21 +30,22 @@ Item {
     Barra_superiore{}
 
 
-    Item {
+    Item
+    {
         anchors
         {
             left: parent.left
             right: parent.right
             bottom: parent.bottom
-            top: rect_utente.bottom
         }
-
-
+        height: parent.height*0.3
         FrecceSxDx
         {
-
-
-            onPressSx: pageLoader.source=  "DefinizioneUtente1.qml"
+            id: freccia
+            onPressSx:
+            {
+                pageLoader.source="DefinizioneUtente1.qml"
+            }
             dx_visible: false
             z:5
         }
