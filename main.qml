@@ -141,7 +141,7 @@ ApplicationWindow {
         // @disable-check M16
         string: selected_exercise.code
     }
-    StringSender {
+    BinarySender {
         id: power_udp
         // @disable-check M16
         port: "21002"
@@ -202,7 +202,6 @@ ApplicationWindow {
                 timer_tut.stop()
             }
         }
-
 
     }
 
