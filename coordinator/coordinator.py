@@ -146,7 +146,8 @@ def exercise_thread():
         time.sleep(0.001)
 
         if (power_client.isNewDataAvailable()):
-            power_level=min(20,max(1,int(esercizio[1])))
+            power_array=power_client.getLastDataAndClearQueue()
+            power_level=min(20,max(1,int(power_array[0])))
             parametri_forza=df_forza[df_forza.power==power_level]
             exercise["force"]=parametri_forza.force.iloc[0]
             exercise["force_return"]=parametri_forza.force_return.iloc[0]
