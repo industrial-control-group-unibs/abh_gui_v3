@@ -19,9 +19,13 @@ Item {
     id: component
     property var locale: Qt.locale()
     property string dateTimeString: "Tue 2013-09-17 10:56:06"
-
+    property date currentDate: new Date();
     Component.onCompleted: {
-        print(Date.fromLocaleString(locale, dateTimeString, "ddd yyyy-MM-dd hh:mm:ss"));
+
+        dateTimeString = currentDate.toLocaleDateString( locale,"yyyyMMdd")+Qt.formatTime(new Date(),"hhmmss");
+        console.log(dateTimeString)
+        console.log(Qt.formatTime(new Date(),"hh:mm:ss"))
+//        console.log(Date.fromLocaleString(locale, dateTimeString, "ddd yyyy-MM-dd hh:mm:ss"));
     }
     Barra_superiore{}
 
@@ -47,9 +51,10 @@ Item {
     }
 
     Rectangle   {
-        width: 0.9*parent.width
+        width: 0.8*parent.width
         height: width
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.top: parent.top
+        anchors.topMargin: parametri_generali.larghezza_barra+30
         anchors.horizontalCenter: parent.horizontalCenter
         id: rect_utente
         visible: true
@@ -119,9 +124,9 @@ Item {
     Item   {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: rect_utente.bottom
-        anchors.topMargin: 100*parent.width/1080
-        width: 436*parent.width/1080
-        height: 581*parent.width/1080
+        anchors.topMargin: 50*parent.width/1080
+        width: parent.width
+        height: 0.3*parent.height
 
 
 
@@ -132,27 +137,27 @@ Item {
                 horizontalCenter: parent.horizontalCenter
                 verticalCenter: parent.verticalCenter
             }
-            width: parent.width
+            width: 0.3*parent.width
             height: width
             tacche: 120
             value: 1-conto_alla_rovescia.position/conto_alla_rovescia.duration
             tempo: (conto_alla_rovescia.duration-conto_alla_rovescia.position) //timerino.remaining_time
             colore: parametri_generali.coloreBordo
-
-
-        }
-        Testo
-        {
-            text: "PREPARATI"
-            font.pixelSize: 30
-            anchors
+            Testo
             {
-                horizontalCenter: parent.horizontalCenter
-                top: parent.bottom
-                topMargin: 5
+                text: "PREPARATI"
+                font.pixelSize: 30
+                anchors
+                {
+                    horizontalCenter: parent.horizontalCenter
+                    top: parent.bottom
+                    topMargin: 5
 
+                }
             }
+
         }
+
 
 
     }
