@@ -5,12 +5,13 @@ import QtQuick 2.12
 import QtQuick.Shapes 1.12
 
 import QtQuick.Layouts 1.1
+Item {
+    id: component
+    anchors.fill: parent
 
+    property string titolo: "IMPOSTAZIONI"
 
-PaginaOpzioniImpostazioni
-{
-    titolo: "IMPOSTAZIONI"
-    internalModel: ListModel {
+    property variant internalModel: ListModel {
         ListElement {
             nome: "LOGOUT"
             link: "PaginaLogin.qml"
@@ -41,76 +42,81 @@ PaginaOpzioniImpostazioni
             link: "PaginaLogin.qml"
         }
     }
+
+    implicitHeight: 1920/2
+    implicitWidth: 1080/2
+
+    Barra_superiore{}
+
+    Item{
+        anchors.fill: parent
+        anchors.topMargin: parametri_generali.larghezza_barra
+        clip: true
+
+
+        Titolo
+        {
+            text: component.titolo
+            height: parent.height*0.1
+            fontSize: 40
+            id: titolo
+        }
+
+
+
+        Column
+        {
+            anchors {
+                top: titolo.bottom
+                topMargin: parametri_generali.larghezza_barra
+                bottom: parent.bottom
+                left: parent.left
+                right: parent.right
+            }
+            id: lista_opzioni
+            Repeater
+            {
+                model: component.internalModel
+                delegate:
+                    Item   {
+
+
+
+                    width: component.width-2 //lista_zona.cellWidth-2
+                    height: component.height*0.1
+                    anchors.left: lista_opzioni.left
+                    anchors.leftMargin: lista_opzioni.width*0.1
+                    id: opzione
+                    implicitWidth: 800
+                    implicitHeight: 225
+                    MouseArea
+                    {
+                        anchors.fill: parent
+                        onClicked: pageLoader.source=link
+                        z: 40
+                    }
+
+                    IconaPiu
+                    {
+                        id: icona_pid
+                        height: 0.8*opzione.height
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    Testo
+                    {
+                        anchors.left: icona_pid.right
+                        anchors.leftMargin: lista_opzioni.width*0.05
+                        anchors.verticalCenter: parent.verticalCenter
+                        height: icona_pid.height
+                        font.pixelSize: 0.5*height
+                        verticalAlignment: Text.AlignVCenter
+                        text: nome
+                    }
+
+                }
+            }
+        }
+
+    }
 }
-
-
-
-//Item {
-//    anchors.fill: parent
-
-//    implicitHeight: 1920/2
-//    implicitWidth: 1080/2
-
-//    Barra_superiore{}
-
-//    Rectangle{
-//        anchors.fill: parent
-//        anchors.topMargin: parametri_generali.larghezza_barra
-//        color: "transparent"//parametri_generali.coloreSfondo
-//        clip: true
-
-
-//        Titolo
-//        {
-//            text: "IMPOSTAZIONI"
-//            height: parent.height*0.1
-////            anchors.top: parent.top
-//        }
-//    }
-
-//    QuattroImmagini
-//    {
-//        immagine11: "impostazioni1.png"
-//        testo11: "UTENTE\n"
-//        link11: "PaginaLogin.qml"
-//        immagine12: "impostazioni2.png"
-//        testo12: "CONNETIVITÀ\n"
-//        link12: "PaginaExit.qml"
-//        immagine21: "impostazioni3.png"
-//        testo21: "SCHERMO-AUDIO\n"
-//        link21: "TestPage.qml"
-//        immagine22: "impostazioni4.png"
-//        testo22: "LOG OUT\n"
-//        link22: "PaginaLogin.qml"
-//    }
-
-////    Rectangle{
-////        anchors.fill: parent
-////        anchors.topMargin: parametri_generali.larghezza_barra
-////        color:parametri_generali.coloreSfondo
-////        clip: true
-
-////        Text {
-////            text: "IMPOSTAZIONI"
-////            id: testo_utente
-////            anchors
-////            {
-////                horizontalCenter: parent.horizontalCenter
-////                top: parent.top
-////                topMargin: 20
-////            }
-////            color: parametri_generali.coloreBordo
-////            font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
-
-////            font.italic: false
-////            font.letterSpacing: 0
-////            font.pixelSize: 70
-////            font.weight: Font.Normal
-////            horizontalAlignment: Text.AlignHCenter
-////            verticalAlignment: Text.AlignTop
-
-////        }
-
-
-////    }
-//}
