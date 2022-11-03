@@ -17,11 +17,6 @@ Item {
             link: "PaginaLogin.qml"
         }
         ListElement {
-            nome: "ALLENAMENTO"
-            link: "PaginaAllenamento.qml"
-        }
-
-        ListElement {
             nome: "CONNESSIONI"
             link: "PaginaLogin.qml"
         }
