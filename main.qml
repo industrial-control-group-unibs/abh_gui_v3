@@ -219,28 +219,28 @@ ApplicationWindow {
     }
 
 
-    BinaryReceiver
-    {
-        id: comando_vocale_udp
-        // @disable-check M16
-        name: "comando vocale"
-        // @disable-check M16
-        port: "21006"
-        // @disable-check M16
-        data: [0.0]
-        // @disable-check M16
-        size: 1
-        // @disable-check M16
+//    BinaryReceiver
+//    {
+//        id: comando_vocale_udp
+//        // @disable-check M16
+//        name: "comando vocale"
+//        // @disable-check M16
+//        port: "21006"
+//        // @disable-check M16
+//        data: [0.0]
+//        // @disable-check M16
+//        size: 1
+//        // @disable-check M16
 
-        property int counter: 0
-        onDataChanged:
-        {
-            console.log(data)
+//        property int counter: 0
+//        onDataChanged:
+//        {
+//            console.log(data)
 
-        }
+//        }
 
 
-    }
+//    }
 
 
     Timer
