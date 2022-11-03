@@ -156,7 +156,7 @@ def exercise_thread():
 
         if (exercise_client.isNewStringAvailable()):
             esercizio=exercise_client.getLastStringAndClearQueue()
-            if (esercizio==="photo"):
+            if (esercizio=="photo"):
                 exercise_name_eval.sendString(esercizio)
                 continue
 
