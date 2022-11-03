@@ -43,6 +43,29 @@ Item {
 
     Barra_superiore{}
 
+
+    Item
+    {
+        anchors
+        {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        height: parent.height*0.3
+        FrecceSxDx
+        {
+            id: freccia
+            onPressSx:
+            {
+                pageLoader.source=pageLoader.last_source
+            }
+            dx_visible: false
+            z:5
+        }
+    }
+
+
     Item{
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
@@ -78,7 +101,7 @@ Item {
 
 
                     width: component.width-2 //lista_zona.cellWidth-2
-                    height: component.height*0.1
+                    height: 120/1920*component.height
                     anchors.left: lista_opzioni.left
                     anchors.leftMargin: lista_opzioni.width*0.1
                     id: opzione
@@ -94,7 +117,7 @@ Item {
                     IconaPiu
                     {
                         id: icona_pid
-                        height: 111/1920*component.height
+                        height: 74/1920*component.height
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
@@ -104,7 +127,7 @@ Item {
                         anchors.leftMargin: lista_opzioni.width*0.05
                         anchors.verticalCenter: parent.verticalCenter
                         height: icona_pid.height
-                        font.pixelSize: 60/1920*component.height
+                        font.pixelSize: 35/1920*component.height
                         verticalAlignment: Text.AlignVCenter
                         text: nome
                     }

@@ -71,6 +71,7 @@ Item {
             {
                 sx_visible= false
                 sotto.visible=false
+                freccia.visible=false
                 early_stop.visible=true
             }
             dx_visible: true
@@ -78,6 +79,7 @@ Item {
             {
                 sx_visible= false
                 sotto.visible=false
+                freccia.visible=false
                 skip.visible=true
             }
             z:5
@@ -94,6 +96,7 @@ Item {
         {
             video_top.state="workout"
         }
+        visible: freccia.visible
         state: "sx"
     }
 
@@ -122,6 +125,7 @@ Item {
             onCancel: {
                 freccia.sx_visible=true
                 sotto.visible=true
+                freccia.visible=true
                 early_stop.visible=false
             }
             onExit: pageLoader.source= "PaginaAllenamento.qml"
@@ -134,6 +138,7 @@ Item {
             onCancel: {
                 freccia.sx_visible=true
                 sotto.visible=true
+                freccia.visible=true
                 skip.visible=false
             }
             onExit: pageLoader.source=  "PaginaRiposo.qml"

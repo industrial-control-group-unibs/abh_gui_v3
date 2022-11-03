@@ -119,7 +119,11 @@ Item
             MouseArea
             {
                 anchors.fill: parent
-                onClicked: pageLoader.source=  "PaginaImpostazioni.qml"
+                onClicked:
+                {
+                    pageLoader.last_source=pageLoader.source
+                    pageLoader.source=  "PaginaImpostazioni.qml"
+                }
             }
 
             source:  "file://"+PATH+"/utenti/"+impostazioni_utente.foto//"pic_foto.jpg"
