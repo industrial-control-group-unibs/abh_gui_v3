@@ -7,6 +7,7 @@ BinarySender::BinarySender(QObject *parent)
   : QObject(parent)
 {
   connect( this, &BinarySender::hostChanged, this, &BinarySender::createSocket, Qt::ConnectionType::QueuedConnection );
+  createSocket();
 }
 
 QString BinarySender::host() const
@@ -37,9 +38,11 @@ QVector<qreal> BinarySender::data() const
 void BinarySender::setData(QVector<qreal> data)
 {
   data_=data;
+  std::cout << ("QUI") << std::endl;
   if (socket_)
   {
     std::vector<double> v=data_.toStdVector(); //QVector<double>::toStdVector(data_);
+    std::cout << ("QUA  ")<< v[0] << std::endl;
     socket_->sendData(v);
     emit dataChanged();
   }

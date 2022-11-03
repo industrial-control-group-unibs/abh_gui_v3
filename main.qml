@@ -112,7 +112,7 @@ ApplicationWindow {
         property string video_preparati: _esercizi.getVideoPrep(name)
         property string video_workout: _esercizi.getVideoWorkout(name)
         property string immagine: _esercizi.getImage(name)
-        property int power: 3
+        property int power: -1
         property int reps: 12
         property int sets: 3
         property int current_set: 0
@@ -201,7 +201,7 @@ ApplicationWindow {
         property int counter: 0
         onDataChanged:
         {
-            if (counter++>1000)
+            if (counter++>100000)
             {
                 counter=0
                 console.log(data)

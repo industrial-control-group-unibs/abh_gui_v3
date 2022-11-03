@@ -59,8 +59,9 @@ args = parser.parse_args(remaining)
 
 dict_frasi={}
 
+path=os.path.dirname(os.path.realpath(__file__))
 comando_vocale = UdpBinarySenderThread("exercise_name_eval",abh.ABH_VISION,abh.COMANDI_VOCALI_PORT)
-with open('frasi.csv') as csv_file:
+with open(path+'/frasi.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     line_count = 0
 

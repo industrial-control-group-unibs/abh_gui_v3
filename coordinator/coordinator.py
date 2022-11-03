@@ -147,6 +147,7 @@ def exercise_thread():
 
         if (power_client.isNewDataAvailable()):
             power_array=power_client.getLastDataAndClearQueue()
+            print(power_array)
             power_level=min(20,max(1,int(power_array[0])))
             parametri_forza=df_forza[df_forza.power==power_level]
             exercise["force"]=parametri_forza.force.iloc[0]
@@ -155,6 +156,10 @@ def exercise_thread():
 
         if (exercise_client.isNewStringAvailable()):
             esercizio=exercise_client.getLastStringAndClearQueue()
+            if (esercizio==="photo"):
+                exercise_name_eval.sendString(esercizio)
+                continue
+
             try:
                 es_data=df[(df.Name==esercizio)]
             except:
