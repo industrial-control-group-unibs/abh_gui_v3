@@ -34,7 +34,7 @@ Item {
         }
         ListElement {
             nome: "ASSISTENZA"
-            link: "PaginaLogin.qml"
+            link: "PaginaUbuntu.qml"
         }
     }
 

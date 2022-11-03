@@ -60,5 +60,6 @@
         <file>PaginaOpzioniImpostazioni.qml</file>
         <file>BarraVolume.qml</file>
         <file>WorkoutSkip.qml</file>
+        <file>PaginaUbuntu.qml</file>
     </qresource>
 </RCC>
