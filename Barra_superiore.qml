@@ -218,7 +218,7 @@ Item
         MouseArea
         {
             anchors.fill: parent
-            onClicked: pageLoader.source=  "PaginaImpostazioni.qml"
+            onClicked: pageLoader.source=  "PaginaAllenamento.qml"
         }
 
     }

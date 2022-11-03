@@ -57,7 +57,7 @@ Item {
         Titolo
         {
             text: component.titolo
-            height: parent.height*0.1
+            height: 130/1920*component.height
             fontSize: 40
             id: titolo
         }
@@ -99,7 +99,7 @@ Item {
                     IconaPiu
                     {
                         id: icona_pid
-                        height: 0.8*opzione.height
+                        height: 111/1920*component.height
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
@@ -109,7 +109,7 @@ Item {
                         anchors.leftMargin: lista_opzioni.width*0.05
                         anchors.verticalCenter: parent.verticalCenter
                         height: icona_pid.height
-                        font.pixelSize: 0.5*height
+                        font.pixelSize: 60/1920*component.height
                         verticalAlignment: Text.AlignVCenter
                         text: nome
                     }

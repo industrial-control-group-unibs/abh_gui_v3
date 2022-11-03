@@ -142,6 +142,7 @@ def exercise_thread():
 
     motor_speed=0.0
 
+    resend=False
     while (not stop):
         time.sleep(0.001)
 
@@ -153,6 +154,8 @@ def exercise_thread():
             exercise["force"]=parametri_forza.force.iloc[0]
             exercise["force_return"]=parametri_forza.force_return.iloc[0]
             exercise["velocity"]=parametri_forza.velocity.iloc[0]
+            print(exercise)
+            resend=True
 
         if (exercise_client.isNewStringAvailable()):
             esercizio=exercise_client.getLastStringAndClearQueue()
@@ -261,7 +264,8 @@ def exercise_thread():
 
         repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage])
 
-        if (last_state != state):
+        if (last_state != state or resend):
+            resend=False
             if (state == Status.FORWARD):
                 motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time]
                 logging.debug("Forward")
