@@ -11,10 +11,10 @@ Rectangle {
     color:parametri_generali.coloreSfondo
     clip: true 
 
-    Timer {
-        interval: parametri_generali.logo_time; running: true; repeat: false
-        onTriggered: pageLoader.source=  "PaginaLogin.qml"
-    }
+//    Timer {
+//        interval: parametri_generali.logo_time; running: true; repeat: false
+//        onTriggered: pageLoader.source=  "PaginaLogin.qml"
+//    }
 
     Item {
         id: figma_2_456
@@ -44,6 +44,12 @@ Rectangle {
             mipmap: true
             anchors.fill:parent
             source: "file://"+PATH+"/loghi/LogoABIntro.png"
+
+            MouseArea
+            {
+                anchors.fill: parent
+                onClicked: pageLoader.source=  "PaginaLogin.qml"
+            }
         }
     } 
 }
