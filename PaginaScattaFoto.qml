@@ -25,6 +25,7 @@ Item {
         dateTimeString = currentDate.toLocaleDateString( locale,"yyyyMMdd")+Qt.formatTime(new Date(),"hhmmss");
         console.log(dateTimeString)
         console.log(Qt.formatTime(new Date(),"hh:mm:ss"))
+        selected_exercise.name="photo"
 //        console.log(Date.fromLocaleString(locale, dateTimeString, "ddd yyyy-MM-dd hh:mm:ss"));
     }
     Barra_superiore{}
