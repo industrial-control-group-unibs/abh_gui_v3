@@ -34,7 +34,7 @@ Item {
 
     Item {
         id: ricevi_comando_vocale
-        property real data: comando_vocale_udp.data[0]
+        property real data: fb_udp.data[4]
         onDataChanged:
         {
             console.log("data = ",data)

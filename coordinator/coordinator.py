@@ -71,6 +71,11 @@ def exercise_thread():
             power_client = UdpBinaryReceiverThread("power_client_d",abh.ABH_CONTROL,abh.POWER_NAME_DM_PORT)
             power_client.bufferLength(1)
             power_client.start()
+
+            vosk_client = UdpBinaryReceiverThread("vosk_client_d",abh.ABH_CONTROL,abh.COMANDI_VOCALI_PORT)
+            vosk_client.bufferLength(1)
+            vosk_client.start()
+
             repetition_udp = UdpBinaryReceiverThread("repetition_udp",abh.ABH_VISION,abh.REP_COUNT_PORT)
             repetition_udp.bufferLength(3)
             repetition_udp.start()
@@ -143,8 +148,14 @@ def exercise_thread():
     motor_speed=0.0
 
     resend=False
+
+    vosk_command=0
+
     while (not stop):
         time.sleep(0.001)
+
+        if (vosk_client.isNewDataAvailable()):
+            vosk_command=vosk_client.getLastDataAndClearQueue()[0]
 
         if (power_client.isNewDataAvailable()):
             power_array=power_client.getLastDataAndClearQueue()
@@ -262,7 +273,8 @@ def exercise_thread():
             direction=0.0
 
 
-        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage])
+        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command])
+        vosk_command=0
 
         if (last_state != state or resend):
             resend=False

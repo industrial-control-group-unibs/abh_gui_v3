@@ -194,9 +194,9 @@ ApplicationWindow {
         // @disable-check M16
         port: "99999"
         // @disable-check M16
-        data: [0.0,0.0,0.0]
+        data: [0.0,0.0,0.0,0.0]
         // @disable-check M16
-        size: 4
+        size: 5
         // @disable-check M16
 
         property int counter: 0
