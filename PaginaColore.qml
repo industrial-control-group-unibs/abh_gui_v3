@@ -180,7 +180,7 @@ Item {
 
                     font.pixelSize: 35/1920*component.height
                     verticalAlignment: Text.AlignVCenter
-                    text: "SFONDO"
+                    text: "COLORE PRINCIPALE"
                 }
 
                 ColorDialog {

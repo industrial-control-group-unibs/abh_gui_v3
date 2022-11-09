@@ -58,9 +58,20 @@ Item {
         FrecceSxDx
         {
             id: freccia
+            property url this_source:"PaginaImpostazioni.qml"
             onPressSx:
             {
-                pageLoader.source=pageLoader.last_source
+                console.log(pageLoader.last_source)
+
+                if (pageLoader.last_source===freccia.this_source)
+                {
+                    pageLoader.source="PaginaAllenamento.qml"
+                }
+                else
+                {
+                    console.log("qui?")
+                    pageLoader.source=pageLoader.last_source
+                }
             }
             dx_visible: false
             z:5

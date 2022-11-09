@@ -79,11 +79,13 @@ Item {
                 anchors.left: parent.left
                 anchors.leftMargin: 20
                 anchors.right: parent.right
-                height: 80
+                height: 150
                 Testo
                 {
                     text: nome
                     font.bold:  lista_wifi.currentIndex === index
+                    font.pixelSize: 0.5*parent.height
+                    verticalAlignment: Text.AlignVCenter
                 }
                 MouseArea
                 {
