@@ -9,34 +9,20 @@ Item {
     id: component
     anchors.fill: parent
 
-    Component.onDestruction: pageLoader.last_source="PaginaImpostazioni.qml"
-
-    property string titolo: "IMPOSTAZIONI"
+    property string titolo: "IMPOSTAZIONI GENERALI"
 
     property variant internalModel: ListModel {
         ListElement {
-            nome: "LOGOUT"
-            link: "PaginaSceltaLogout.qml"
+            nome: "LINGUA"
+            link: "PaginaImpostazioni.qml"
         }
         ListElement {
-            nome: "CONNESSIONI"
-            link: "PaginaConnessioni.qml"
+            nome: "VERSIONE SOFTWARE"
+            link: "PaginaImpostazioni.qml"
         }
         ListElement {
-            nome: "AUDIO"
-            link: "BarraVolume.qml"
-        }
-        ListElement {
-            nome: "SCHERMO"
-            link: "PaginaSchermo.qml"
-        }
-        ListElement {
-            nome: "GENERALI"
-            link: "PaginaGenerali.qml"
-        }
-        ListElement {
-            nome: "ASSISTENZA"
-            link: "PaginaUbuntu.qml"
+            nome: "AGGIORNAMENTO SOFTWARE"
+            link: "PaginaImpostazioni.qml"
         }
     }
 

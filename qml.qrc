@@ -61,5 +61,9 @@
         <file>BarraVolume.qml</file>
         <file>WorkoutSkip.qml</file>
         <file>PaginaUbuntu.qml</file>
+        <file>PaginaSceltaLogout.qml</file>
+        <file>PaginaConnessioni.qml</file>
+        <file>PaginaSchermo.qml</file>
+        <file>PaginaGenerali.qml</file>
     </qresource>
 </RCC>

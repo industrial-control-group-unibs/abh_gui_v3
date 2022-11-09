@@ -15,6 +15,27 @@ Item {
 
     Barra_superiore{}
 
+    Item
+    {
+        anchors
+        {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        height: parent.height*0.3
+        FrecceSxDx
+        {
+            id: freccia
+            onPressSx:
+            {
+                pageLoader.source=pageLoader.last_source
+            }
+            dx_visible: false
+            z:5
+        }
+    }
+
     Item{
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
@@ -91,22 +112,7 @@ Item {
             }
 
         }
-        Item
-        {
-            anchors.top: volume.bottom
-            anchors.left: parent.left
-            anchors.right: parent.right
-            height: 0.3*parent.height
 
-            FrecceSxDx
-            {
-
-
-                onPressSx: pageLoader.source=  "PaginaImpostazioni.qml"
-                dx_visible: false
-                z:5
-            }
-        }
 
     }
 }
