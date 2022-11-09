@@ -35,6 +35,7 @@ ApplicationWindow {
         property int offset_icone4x3: 400
         property int logo_time: 2000
         property bool login_page: false
+        property string wifi_name
 
         state: "SABBIA"
 

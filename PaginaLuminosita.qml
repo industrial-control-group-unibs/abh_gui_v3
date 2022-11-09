@@ -6,7 +6,7 @@ Item {
     id: component
     anchors.fill: parent
 
-    property string titolo: "VOLUME"
+    property string titolo: "LUMINOSITÀ"
 
     signal pressYes
     signal pressNo
@@ -70,7 +70,7 @@ Item {
 //                anchors.top: parent.top
                 onPressed:
                 {
-                    chiamata_sistema.string="pactl set-sink-volume @DEFAULT_SINK@ -5%"
+                    chiamata_sistema.string="light -U 5"
                     chiamata_sistema.call()
                 }
             }
@@ -84,32 +84,32 @@ Item {
 //                anchors.top: parent.top
                 onPressed:
                 {
-                    chiamata_sistema.string="pactl set-sink-volume @DEFAULT_SINK@ +5%"
+                    chiamata_sistema.string="light -A 5"
                     chiamata_sistema.call()
                 }
             }
 
-            IconaCerchio
-            {
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
-                width: parent.height
-                onPressed:
-                {
-                    chiamata_sistema.string="pactl set-sink-mute @DEFAULT_SINK@ toggle"
-                    chiamata_sistema.call()
+//            IconaCerchio
+//            {
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                anchors.verticalCenter: parent.verticalCenter
+//                width: parent.height
+//                onPressed:
+//                {
+//                    chiamata_sistema.string="pactl set-sink-mute @DEFAULT_SINK@ toggle"
+//                    chiamata_sistema.call()
 
-                }
+//                }
 
-                Testo
-                {
-                    text: "MUTE"
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
-                    verticalAlignment: Text.AlignVCenter
-                    horizontalAlignment: Text.AlignHCenter
-                }
-            }
+//                Testo
+//                {
+//                    text: "MUTE"
+//                    anchors.horizontalCenter: parent.horizontalCenter
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    verticalAlignment: Text.AlignVCenter
+//                    horizontalAlignment: Text.AlignHCenter
+//                }
+//            }
 
         }
 

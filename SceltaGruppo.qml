@@ -45,7 +45,7 @@ Item {
 
         ListView {
             snapMode: ListView.SnapOneItem
-            highlightRangeMode: ListView.StrictlyEnforceRange
+//            highlightRangeMode: ListView.StrictlyEnforceRange
             id: lista_zona
             anchors {
                 top: parent.top

@@ -9,8 +9,22 @@ Item {
     id: component
     anchors.fill: parent
 
-    property string titolo: "SCHERMO"
+    property string titolo: "IMPOSTAZIONI GENERALI"
 
+    property variant internalModel: ListModel {
+        ListElement {
+            nome: "LUMINOSITÀ"
+            link: "PaginaLuminosita.qml"
+        }
+        ListElement {
+            nome: "BLOCCO TOUCH SCREEN"
+            link: "PaginaBloccoTouch.qml"
+        }
+        ListElement {
+            nome: "IMPOSTAZIONE COLORI"
+            link: "PaginaColore.qml"
+        }
+    }
 
     implicitHeight: 1920/2
     implicitWidth: 1080/2
@@ -39,4 +53,76 @@ Item {
         }
     }
 
+
+    Item{
+        anchors.fill: parent
+        anchors.topMargin: parametri_generali.larghezza_barra
+        clip: true
+
+
+        Titolo
+        {
+            text: component.titolo
+            height: 130/1920*component.height
+            fontSize: 40
+            id: titolo
+        }
+
+
+
+        Column
+        {
+            anchors {
+                top: titolo.bottom
+                topMargin: parametri_generali.larghezza_barra
+                bottom: parent.bottom
+                left: parent.left
+                right: parent.right
+            }
+            id: lista_opzioni
+            Repeater
+            {
+                model: component.internalModel
+                delegate:
+                    Item   {
+
+
+
+                    width: component.width-2 //lista_zona.cellWidth-2
+                    height: 120/1920*component.height
+                    anchors.left: lista_opzioni.left
+                    anchors.leftMargin: lista_opzioni.width*0.1
+                    id: opzione
+                    implicitWidth: 800
+                    implicitHeight: 225
+                    MouseArea
+                    {
+                        anchors.fill: parent
+                        onClicked: pageLoader.source=link
+                        z: 40
+                    }
+
+                    IconaPiu
+                    {
+                        id: icona_pid
+                        height: 74/1920*component.height
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    Testo
+                    {
+                        anchors.left: icona_pid.right
+                        anchors.leftMargin: lista_opzioni.width*0.05
+                        anchors.verticalCenter: parent.verticalCenter
+                        height: icona_pid.height
+                        font.pixelSize: 35/1920*component.height
+                        verticalAlignment: Text.AlignVCenter
+                        text: nome
+                    }
+
+                }
+            }
+        }
+
+    }
 }

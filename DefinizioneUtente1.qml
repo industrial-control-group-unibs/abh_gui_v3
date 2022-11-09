@@ -320,25 +320,25 @@ Item {
 
     }
 
-    Item
-    {
-        anchors
-        {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
-        height: parent.height*0.3
-        FrecceSxDx
-        {
-            id: freccia
-            onPressSx:
-            {
-                pageLoader.source="PaginaLogin.qml"
-            }
-            dx_visible: false
-            z:5
-        }
-    }
+//    Item
+//    {
+//        anchors
+//        {
+//            left: parent.left
+//            right: parent.right
+//            bottom: parent.bottom
+//        }
+//        height: parent.height*0.3
+//        FrecceSxDx
+//        {
+//            id: freccia
+//            onPressSx:
+//            {
+//                pageLoader.source="PaginaLogin.qml"
+//            }
+//            dx_visible: false
+//            z:5
+//        }
+//    }
 
 }

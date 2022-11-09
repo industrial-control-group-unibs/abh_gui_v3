@@ -22,8 +22,15 @@
 #include "areachart.h"
 #include "ChiamataSistema.h"
 
+#include <listwifi.h>
+
+
 int main(int argc, char *argv[])
 {
+
+
+
+
   qmlRegisterType<UdpCom::StringReceiver>("StringReceiver", 1, 0, "StringReceiver");
   qmlRegisterType<UdpCom::StringSender>  ("StringSender",   1, 0, "StringSender");
   qmlRegisterType<UdpCom::BinaryReceiver>("BinaryReceiver", 1, 0, "BinaryReceiver");
@@ -70,6 +77,8 @@ int main(int argc, char *argv[])
   abh::ProgrammaAllenamento workout(data_path+"/allenamento_programmato");
   abh::DescrizioneEsercizi esercizi(data_path);
 
+  ListaWifi wifi;
+
   zone.readFile("Zone");
   workout_list.readFile("lista_workout");
   workout.readFile("workout1_facile_1");
@@ -88,6 +97,7 @@ int main(int argc, char *argv[])
   context->setContextProperty("_fullscreen", fs);
   context->setContextProperty("_esercizi",&esercizi);
   context->setContextProperty("_workout", &workout);
+  context->setContextProperty("_wifi", &wifi);
   engine->rootContext()->setContextProperty("PATH", data_path);
 
 

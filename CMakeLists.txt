@@ -26,10 +26,12 @@ set(CMAKE_BUILD_TYPE Release)
 #    endif()
 #endif()
 
-find_package(Qt5 COMPONENTS Core Quick Multimedia Widgets Qml  REQUIRED)
+find_package(Qt5 COMPONENTS Core Quick Multimedia Widgets Qml DBus Network REQUIRED)
 find_package(Boost 1.40.0 REQUIRED system thread regex)
 find_package( OpenCV REQUIRED )
 
+
+#QtDBus QtNetwork
 
 include_directories(
    ${Boost_INCLUDE_DIRS}
@@ -51,6 +53,7 @@ SET(APP_FILES
   DescrizioneEsercizi.cpp
   areachart.cpp
   ChiamataSistema.cpp
+  listwifi.cpp
   )
 
 if(ANDROID)
@@ -66,4 +69,4 @@ endif()
 target_compile_definitions(abh_gui_v3
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(abh_gui_v3
-  PRIVATE Qt5::Core Qt5::Quick  Qt5::Multimedia Qt5::Widgets Qt5::Qml  ${Boost_LIBRARIES} ${OpenCV_LIBS} )
+  PRIVATE Qt5::Core Qt5::Quick  Qt5::Multimedia Qt5::Widgets Qt5::Qml  Qt5::DBus Qt5::Network  ${Boost_LIBRARIES} ${OpenCV_LIBS} )

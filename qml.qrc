@@ -65,5 +65,9 @@
         <file>PaginaConnessioni.qml</file>
         <file>PaginaSchermo.qml</file>
         <file>PaginaGenerali.qml</file>
+        <file>PaginaConnessioni2.qml</file>
+        <file>PaginaLuminosita.qml</file>
+        <file>PaginaBloccoTouch.qml</file>
+        <file>PaginaColore.qml</file>
     </qresource>
 </RCC>
