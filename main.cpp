@@ -23,6 +23,7 @@
 #include "ChiamataSistema.h"
 
 #include <listwifi.h>
+#include <stringquee.h>
 
 
 int main(int argc, char *argv[])
@@ -77,11 +78,13 @@ int main(int argc, char *argv[])
   abh::ProgrammaAllenamento workout(data_path+"/allenamento_programmato");
   abh::DescrizioneEsercizi esercizi(data_path);
 
+  StringQuee queue;
+
   ListaWifi wifi;
 
   zone.readFile("Zone");
   workout_list.readFile("lista_workout");
-  workout.readFile("workout1_facile_1");
+//  workout.readFile("workout1_level_1");
 
 
   std::shared_ptr<QGuiApplication> app=std::make_shared<QGuiApplication>(argc, argv);
@@ -98,6 +101,7 @@ int main(int argc, char *argv[])
   context->setContextProperty("_esercizi",&esercizi);
   context->setContextProperty("_workout", &workout);
   context->setContextProperty("_wifi", &wifi);
+  context->setContextProperty("_queue", &queue);
   engine->rootContext()->setContextProperty("PATH", data_path);
 
 

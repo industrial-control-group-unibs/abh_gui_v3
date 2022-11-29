@@ -33,7 +33,6 @@ Rectangle   {
 
 
             lista_workout.currentIndex=index
-            console.log(lista_workout.currentIndex, index,parent.border.color)
         }
     }
 

@@ -128,12 +128,10 @@ Item {
                     title: "SELEZIONA COLORE"
                     id: colorDialog
                     onAccepted: {
-                        console.log("You chose: " + colorDialog.color)
                         parametri_generali.coloreSfondo=colorDialog.color
                         visible: false
                     }
                     onRejected: {
-                        console.log("Canceled")
                         visible: false
                     }
                     visible: false
@@ -187,12 +185,10 @@ Item {
                     title: "SELEZIONA COLORE"
                     id: colorDialog2
                     onAccepted: {
-                        console.log("You chose: " + colorDialog2.color)
                         parametri_generali.coloreBordo=colorDialog2.color
                         visible: false
                     }
                     onRejected: {
-                        console.log("Canceled")
                         visible: false
                     }
                     visible: false

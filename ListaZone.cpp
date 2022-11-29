@@ -59,7 +59,6 @@ void ListaZona::readFile(QString string)
 {
 
   std::string nome_file=dir_path_+"/"+string.toStdString()+".csv";
-  std::cout << nome_file<<std::endl;
   rapidcsv::Document doc(nome_file);
 
   std::vector<std::string> col = doc.GetColumn<std::string>("ex_name");
@@ -69,7 +68,6 @@ void ListaZona::readFile(QString string)
   data_.clear();
   for (size_t idx=0;idx<elements;idx++)
   {
-    std::cout << doc.GetCell<std::string>(0,idx) <<std::endl;
     QString ex_name=QString::fromStdString(doc.GetCell<std::string>(0,idx));
     QString image=QString::fromStdString(doc.GetCell<std::string>(1,idx));
     data_ << Zona(ex_name,image);

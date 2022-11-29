@@ -10,6 +10,8 @@ import BinarySender 1.0
 import UdpVideoStream 1.0
 import QtGraphicalEffects 1.12
 
+
+
 ApplicationWindow {
     visible: true
     width: 1080/2
@@ -68,7 +70,6 @@ ApplicationWindow {
         onResetValue:
         {
             value=0
-            console.log("valore resettato ",value)
         }
     }
 
@@ -95,6 +96,7 @@ ApplicationWindow {
     Item {
         id: impostazioni_utente
         property string nome: ""
+        property string identifier: ""
         property string foto: ""
         onNomeChanged:
         {
@@ -107,12 +109,12 @@ ApplicationWindow {
 
     Item {
         id: selected_exercise
-        property string name: "unselected"
-        property string code: _esercizi.getCode(name)
-        property string video_intro: _esercizi.getVideoIntro(name)
-        property string video_preparati: _esercizi.getVideoPrep(name)
-        property string video_workout: _esercizi.getVideoWorkout(name)
-        property string immagine: _esercizi.getImage(name)
+        property string code: "unselected"
+        property string name: _esercizi.getName(code)
+        property string video_intro: _esercizi.getVideoIntro(code)
+        property string video_preparati: _esercizi.getVideoPrep(code)
+        property string video_workout: _esercizi.getVideoWorkout(code)
+        property string immagine: _esercizi.getImage(code)
         property int power: -1
         property int reps: 12
         property int sets: 3
@@ -124,25 +126,25 @@ ApplicationWindow {
 
         property string difficulty: "Facile"  // TO BE REMOVED
 
-        onNameChanged:
+        onCodeChanged:
         {
-            code= _esercizi.getCode(name)
-            video_intro= _esercizi.getVideoIntro(name)
-            video_preparati= _esercizi.getVideoPrep(name)
-            video_workout= _esercizi.getVideoWorkout(name)
-            immagine= _esercizi.getImage(name)
+            name= _esercizi.getName(code)
+            video_intro= _esercizi.getVideoIntro(code)
+            video_preparati= _esercizi.getVideoPrep(code)
+            video_workout= _esercizi.getVideoWorkoutcode
+            immagine= _esercizi.getImage(code)
             if (workout==="")
             {
-                reps=_esercizi.getRepetition(name)
-                max_pos_speed=_esercizi.getMaxPosVel(name)
-                max_neg_speed=_esercizi.getMaxNegVel(name)
+                reps=_esercizi.getRepetition(code)
+                max_pos_speed=_esercizi.getMaxPosVel(code)
+                max_neg_speed=_esercizi.getMaxNegVel(code)
             }
         }
     }
 
     Item {
         id: zona_allenamento
-        property string gruppo: "Braccia"
+        property string gruppo: ""
         onGruppoChanged: _myModel.readFile(gruppo)
     }
 
@@ -220,29 +222,6 @@ ApplicationWindow {
     }
 
 
-//    BinaryReceiver
-//    {
-//        id: comando_vocale_udp
-//        // @disable-check M16
-//        name: "comando vocale"
-//        // @disable-check M16
-//        port: "21006"
-//        // @disable-check M16
-//        data: [0.0]
-//        // @disable-check M16
-//        size: 1
-//        // @disable-check M16
-
-//        property int counter: 0
-//        onDataChanged:
-//        {
-//            console.log(data)
-
-//        }
-
-
-//    }
-
 
     Timer
     {
@@ -276,10 +255,11 @@ ApplicationWindow {
         anchors.fill: parent
         property url last_source
 
-        sourceComponent: PaginaLogo{}
-//                        sourceComponent: PaginaOpzioniImpostazioni{}
-//        sourceComponent: PaginaConfEsercizioSingolo{}
+
+        source:  "PaginaLogo.qml"
+
     }
+
 
 
 

@@ -24,10 +24,8 @@ PaginaVideoSingolo
         property real data: fb_udp.data[4]
         onDataChanged:
         {
-            console.log("data = ",data)
             if (data==1)
             {
-                console.log("qui")
                 pageLoader.source="PaginaWorkout.qml"
             }
         }

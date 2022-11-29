@@ -48,7 +48,10 @@ Rectangle {
             MouseArea
             {
                 anchors.fill: parent
-                onClicked: pageLoader.source=  "PaginaLogin.qml"
+                onClicked:
+                {
+                    pageLoader.source=  "PaginaLogin.qml"
+                }
             }
         }
     } 

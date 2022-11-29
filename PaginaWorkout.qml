@@ -37,10 +37,8 @@ Item {
         property real data: fb_udp.data[4]
         onDataChanged:
         {
-            console.log("data = ",data)
             if (data==2)
             {
-                console.log("qui")
                 pageLoader.source = "PaginaRiposo.qml"
             }
         }

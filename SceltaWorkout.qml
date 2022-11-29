@@ -22,6 +22,7 @@ Item {
     {
         onPressSx: pageLoader.source= "PaginaAllenamento.qml"
         onPressDx: pageLoader.source=  "PaginaConfWorkout.qml"
+        dx_visible: lista_workout.currentIndex>=0
         colore: parametri_generali.coloreBordo
     }
     Rectangle{
@@ -43,7 +44,7 @@ Item {
 
         ListView {
             snapMode: ListView.SnapOneItem
-            highlightRangeMode: ListView.StrictlyEnforceRange
+//            highlightRangeMode: ListView.StrictlyEnforceRange
             id: lista_workout
             anchors {
                 top: parent.top
@@ -51,6 +52,7 @@ Item {
                 left: parent.left
                 right: parent.right
             }
+            currentIndex:-1
 
             model: _workout_list
 

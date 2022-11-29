@@ -11,8 +11,8 @@ namespace abh {
 class DescrizioneEsercizi : public QObject
 {
   Q_OBJECT
-  Q_PROPERTY(QString         name                MEMBER name                 WRITE setName()  NOTIFY nameChanged               )
-  Q_PROPERTY(QString         code                MEMBER code                 NOTIFY codeChanged               )
+  Q_PROPERTY(QString         name                MEMBER name                 NOTIFY nameChanged               )
+  Q_PROPERTY(QString         code                MEMBER code                 WRITE setCode() NOTIFY codeChanged               )
   Q_PROPERTY(QString         image               MEMBER image                NOTIFY imageChanged              )
   Q_PROPERTY(QString         video_intro         MEMBER video_intro          NOTIFY video_introChanged        )
   Q_PROPERTY(QString         video_preparazione  MEMBER video_preparazione   NOTIFY video_preparazioneChanged )
@@ -21,13 +21,14 @@ class DescrizioneEsercizi : public QObject
 public:
   explicit DescrizioneEsercizi(QString path, QObject *parent = nullptr);
 
-  void setName(QString new_name);
+  void setCode(QString new_code);
 
 public slots:
   void readFile();
 
   QString getImage(QString nome);
   QString getCode(QString nome);
+  QString getName(QString nome);
   QString getVideoIntro(QString nome);
   QString getVideoPrep(QString nome);
   QString getVideoWorkout(QString nome);

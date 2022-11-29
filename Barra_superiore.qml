@@ -53,8 +53,6 @@ Item
         }
         onReleased:
         {
-            console.log("release ", pageLoader.source)
-
             if (parametri_generali.login_page)
                 startstop_udp.string="stop"
         }

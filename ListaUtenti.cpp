@@ -75,7 +75,6 @@ void ListaUtenti::addUser(std::vector<QString> dati)
   for (size_t ifield=0;ifield<dati.size();ifield++)
   {
     row[ifield]=dati.at(ifield).toStdString();
-    std::cout<<row[ifield];
   }
   row[12]=std::to_string(doc.GetRowCount())+"_"+row[0]+"_"+row[1];
   doc.InsertRow(doc.GetRowCount(),row);
@@ -84,7 +83,6 @@ void ListaUtenti::addUser(std::vector<QString> dati)
   std::vector<QString> fields(roles_);
   data_ << Utente(fields);
 
-  std::cout << "dati: " << dati.size()<< std::endl;
 }
 
 QHash<int, QByteArray> ListaUtenti::roleNames() const
@@ -119,7 +117,6 @@ void ListaUtenti::removeUser(QString name)
   {
     if (!col.at(ifield).compare(nome))
     {
-      std::cout << "removed " << nome << std::endl;
       doc.RemoveRow(ifield);
       break;
     }
@@ -140,7 +137,6 @@ void ListaUtenti::readFile()
   data_.clear();
   for (size_t idx=0;idx<elements;idx++)
   {
-    std::cout << doc.GetCell<std::string>(0,idx) <<std::endl;
     std::vector<QString> fields(roles_);
     for (size_t ifield=0;ifield<fields.size();ifield++)
       fields.at(ifield)=QString::fromStdString(doc.GetCell<std::string>(ifield,idx));

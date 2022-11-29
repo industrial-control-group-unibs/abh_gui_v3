@@ -16,12 +16,6 @@ void DescrizioneEsercizi::readFile()
 
   try {
     doc_.reset(new rapidcsv::Document(nome_file));
-
-    int r=doc_->GetRowCount();
-    int c=doc_->GetColumnCount();
-
-    std::cout << "read " << r << " x " << c << std::endl;
-
   }
   catch (...)
   {
@@ -30,19 +24,16 @@ void DescrizioneEsercizi::readFile()
   }
 }
 
-void DescrizioneEsercizi::setName(QString new_name)
+void DescrizioneEsercizi::setCode(QString new_code)
 {
-  name=new_name;
+  code=new_code;
   std::string n=name.toStdString();
-  std::vector<std::string> col = doc_->GetColumn<std::string>("nome");
+  std::vector<std::string> col = doc_->GetColumn<std::string>("codice");
   size_t elements=col.size();
 
-  std::cout <<"XXXttt "<< elements << std::endl;
   size_t idx;
   for (idx=0;idx<elements;idx++)
   {
-    std::cout <<"XXX "<< col.at(idx) << std::endl;
-    std::cout <<"YYY "<< doc_->GetCell<std::string>(1,idx) << std::endl;
     if (!n.compare(col.at(idx)))
     {
       code=getCode(name);
@@ -54,7 +45,7 @@ void DescrizioneEsercizi::setName(QString new_name)
     }
   }
 
-  code="";
+  name="";
   video_intro="";
   video_preparazione="";
   video_workout="";
@@ -73,6 +64,12 @@ QString DescrizioneEsercizi::getCode(QString nome)
 {
   return getInfo(nome,"codice");
 }
+
+QString DescrizioneEsercizi::getName(QString nome)
+{
+  return getInfo(nome,"nome");
+}
+
 QString DescrizioneEsercizi::getVideoIntro(QString nome)
 {
   QString s=getInfo(nome,"video_breve");
@@ -107,7 +104,7 @@ int DescrizioneEsercizi::getMaxNegVel(QString nome)
 QString DescrizioneEsercizi::getInfo(QString nome,std::string field)
 {
   std::string n=nome.toStdString();
-  std::vector<std::string> col = doc_->GetColumn<std::string>("nome");
+  std::vector<std::string> col = doc_->GetColumn<std::string>("codice");
   std::vector<std::string> col2 = doc_->GetColumn<std::string>(field);
   size_t elements=col.size();
   QString out;
@@ -124,7 +121,7 @@ QString DescrizioneEsercizi::getInfo(QString nome,std::string field)
 double DescrizioneEsercizi::getValue(QString nome, std::string field)
 {
   std::string n=nome.toStdString();
-  std::vector<std::string> col = doc_->GetColumn<std::string>("nome");
+  std::vector<std::string> col = doc_->GetColumn<std::string>("codice");
   std::vector<double> col2 = doc_->GetColumn<double>(field);
   size_t elements=col.size();
   double out;

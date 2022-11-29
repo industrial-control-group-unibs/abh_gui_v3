@@ -16,21 +16,36 @@ Item {
     implicitWidth: 1080/2
 
     id: component
-    property int difficolta: 1
-    property string nome_livello: livello.state
+
+    property int giorni: 3
+    property int settimane: 4
+
+    state: "esordiente"
+    states: [
+        State {
+            name: "esordiente"
+            PropertyChanges { target: esordiente; z: 3}
+            PropertyChanges { target: intermedio; z: 2}
+            PropertyChanges { target: esperto;    z: 1}
+        },
+        State {
+            name: "intermedio"
+            PropertyChanges { target: esordiente; z: 2}
+            PropertyChanges { target: intermedio; z: 3}
+            PropertyChanges { target: esperto;    z: 1}
+        },
+        State {
+            name: "esperto"
+            PropertyChanges { target: esordiente; z: 1}
+            PropertyChanges { target: intermedio; z: 2}
+            PropertyChanges { target: esperto;    z: 3}
+        }
+
+    ]
 
     Component.onDestruction:
     {
         pageLoader.last_source="PaginaConfWorkout.qml"
-        _workout.readFile(selected_exercise.workout+"_"+nome_livello+"_"+String(difficolta))
-        selected_exercise.name=_workout.name
-        selected_exercise.reps=_workout.reps
-        selected_exercise.rest_time=_workout.rest
-        selected_exercise.sets=_workout.sets
-        selected_exercise.max_pos_speed=_workout.maxPosSpeed
-        selected_exercise.max_neg_speed=_workout.maxNegSpeed
-        selected_exercise.current_set=0
-        selected_exercise.power=_workout.power
 
         timer_tempo.start()
     }
@@ -41,220 +56,416 @@ Item {
             text: selected_exercise.workout
         }
     }
-    FrecceSxDx
-    {
-        onPressSx: pageLoader.source= "SceltaWorkout.qml"
-        onPressDx: pageLoader.source=  "PaginaPreparati.qml"
-    }
 
-    Rectangle{
-        anchors.fill: parent
+
+    Item{
+        anchors
+        {
+            left:parent.left
+            right:parent.right
+            top:parent.top
+        }
+        height: parent.height*0.7
         anchors.topMargin: parametri_generali.larghezza_barra
-        color: "transparent"//parametri_generali.coloreSfondo
         clip: true
 
-
-
-
-
-        Item
-        {
-            id: livello
-
-            state: "facile"
-            states: [
-                State {
-                    name: "facile"
-                    PropertyChanges { target: facile;    width: livello.width*0.30}
-                    PropertyChanges { target: medio;     width: livello.width*0.25}
-                    PropertyChanges { target: difficile; width: livello.width*0.25}
-                },
-                State {
-                    name: "medio"
-                    PropertyChanges { target: facile;    width: livello.width*0.25}
-                    PropertyChanges { target: medio;     width: livello.width*0.30}
-                    PropertyChanges { target: difficile; width: livello.width*0.25}
-                },
-                State {
-                    name: "difficile"
-                    PropertyChanges { target: facile;    width: livello.width*0.25}
-                    PropertyChanges { target: medio;     width: livello.width*0.25}
-                    PropertyChanges { target: difficile; width: livello.width*0.30}
-                }
-            ]
-
+        Item {
             anchors
             {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-                topMargin: parent.height*0.2
+                left:parent.left
+                right:parent.right
+                top:parent.top
             }
-            height: parent.height*0.3
+            id: s1
+            height: parent.height*0.33
 
-            Testo
-            {
-                anchors.left: parent.left
-                anchors.top: parent.top
-                anchors.leftMargin: 30
-//                anchors.topMargin: 30
-                font.pixelSize: 30
-                text: "LIVELLO"
-            }
-            Row
-            {
+            Rectangle{
+                color: parametri_generali.coloreBordo
+                radius: 20
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                spacing: 2
+                anchors.horizontalCenterOffset: -width*0.8
+                width: parent.width/3.0
+                height: 0.8*width
+                id: esordiente
 
-                Rectangle{
-                    id: facile
-                    color: parametri_generali.coloreBordo
-                    radius: 20
-                    anchors.verticalCenter: parent.verticalCenter
-                    width: livello.width*0.25
-                    height: 0.66*width
-                    Testo
-                    {
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        text: "ESORDIENTE"
-                        font.pixelSize: 20
-                        color: parametri_generali.coloreSfondo
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onPressed: livello.state="facile"
-                    }
+                border.color: parametri_generali.coloreSfondo
+                MouseArea
+                {
+                    anchors.fill: parent
+                    onClicked: component.state="esordiente"
                 }
+                Testo
+                {
 
-                Rectangle{
-                    id: medio
-                    color: parametri_generali.coloreBordo
-                    radius: 20
                     anchors.verticalCenter: parent.verticalCenter
-                    width: livello.width*0.25
-                    height: 0.66*width
-                    Testo
-                    {
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        text: "INTERMEDIO"
-                        font.pixelSize: 20
-                        color: parametri_generali.coloreSfondo
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onPressed: livello.state="medio"
-                    }
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: "ESORDIENTE"
+                    font.pixelSize: parent.height*0.2
+                    font.bold: parent.z>2
+                    color: parametri_generali.coloreSfondo
+
                 }
-
-                Rectangle{
-                    id: difficile
-                    color: parametri_generali.coloreBordo
-                    anchors.verticalCenter: parent.verticalCenter
-                    radius: 20
-                    width: livello.width*0.25
-                    height: 0.66*width
-                    Testo
-                    {
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        text: "ESPERTO"
-                        font.pixelSize: 20
-                        color: parametri_generali.coloreSfondo
-                    }
-                    MouseArea{
-                        anchors.fill: parent
-                        onPressed: livello.state="difficile"
-                    }
-                }
-
-
             }
+
+            Rectangle{
+                color: parametri_generali.coloreBordo
+                radius: 20
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: parent.width/3.0
+                height: 0.8*width
+                id: intermedio
+                border.color: parametri_generali.coloreSfondo
+                MouseArea
+                {
+                    anchors.fill: parent
+                    onClicked: component.state="intermedio"
+                }
+                Testo
+                {
+
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: "INTERMEDIO"
+                    font.pixelSize: parent.height*0.2
+                    font.bold: parent.z>2
+                    color: parametri_generali.coloreSfondo
+
+                }
+                Testo
+                {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.top
+                    width: 300
+                    anchors.bottomMargin: 10
+                    text: "LIVELLO"
+                    font.pixelSize: 20
+                    color: parametri_generali.coloreBordo
+                }
+            }
+
+            Rectangle{
+                color: parametri_generali.coloreBordo
+                radius: 20
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenterOffset: width*0.8
+                width: parent.width/3.0
+                height: 0.8*width
+                id: esperto
+                border.color: parametri_generali.coloreSfondo
+
+                MouseArea
+                {
+                    anchors.fill: parent
+                    onClicked: component.state="esperto"
+                }
+                Testo
+                {
+
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: "ESPERTO"
+                    font.pixelSize: parent.height*0.2
+                    font.bold: parent.z>2
+                    color: parametri_generali.coloreSfondo
+
+                }
+            }
+
         }
 
-        Item
-        {
-
+        Item {
             anchors
             {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-                topMargin: parent.height*0.5
+                left:parent.left
+                right:parent.right
+                top:s1.bottom
             }
-            height: parent.height*0.3
+            id: s2
+            height: parent.height*0.33
 
-            Testo
+
+            Rectangle{
+                //                id: medio
+                color: parametri_generali.coloreBordo
+                radius: 20
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: parent.width/3.0
+                height: 0.8*width
+                Testo
+                {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: component.giorni
+                    font.pixelSize: 40
+                    color: parametri_generali.coloreSfondo
+                }
+                Testo
+                {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.top
+                    width: 300
+                    anchors.bottomMargin: 10
+                    text: "FREQUENZA (N° allenamenti/settimana)"
+                    font.pixelSize: 20
+                    color: parametri_generali.coloreBordo
+                }
+            }
+
+
+            IconaMeno
             {
-                anchors.left: parent.left
-                anchors.top: parent.top
-                anchors.leftMargin: 30
-//                anchors.topMargin: 30
-                font.pixelSize: 30
-                text: "DIFFICOLTÀ"
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenterOffset: -parent.width*0.25
+                anchors.verticalCenter: parent.verticalCenter
+                //                height: parent.height/3.0
+                onPressed: {
+                    if (component.giorni>1)
+                        component.giorni--
+                }
             }
 
-
-            ListView {
-                snapMode: ListView.SnapPosition
-                highlightRangeMode: ListView.StrictlyEnforceRange
-                highlightFollowsCurrentItem: true
-                orientation: ListView.Horizontal
-                id: lista_difficolta
-                anchors {
-                    fill: parent
+            IconaPiu
+            {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenterOffset: parent.width*0.25
+                anchors.verticalCenter: parent.verticalCenter
+                //                height: parent.height/3.0
+                onPressed: {
+                    if (component.giorni<7)
+                        component.giorni++;
                 }
-                spacing: 2
-                clip: true
-
-                model: ListModel {
-                    ListElement { valore:  1;}
-                    ListElement { valore:  2;}
-                    ListElement { valore:  3;}
-                    ListElement { valore:  4;}
-                    ListElement { valore:  5;}
-                    ListElement { valore:  6;}
-                    ListElement { valore:  7;}
-                    ListElement { valore:  8;}
-                    ListElement { valore:  9;}
-                    ListElement { valore: 10;}
-                }
-
-
-                delegate:
-
-                    Rectangle
-                    {
-                        anchors.verticalCenter: parent.verticalCenter
-                        radius: 20
-                        color: parametri_generali.coloreBordo
-                        width: lista_difficolta.currentIndex===index?livello.width*0.3: livello.width*0.25
-                        height: 0.66*width
-                        MouseArea{
-                            anchors.fill: parent
-                            onPressed:
-                            {
-                                lista_difficolta.currentIndex=index
-                                component.difficolta=valore
-                            }
-
-                        }
-                        Testo
-                        {
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            text: valore
-                            font.pixelSize: 20
-                            color: parametri_generali.coloreSfondo
-                        }
-                    }
-
-
-
             }
         }
 
+        Item {
+            anchors
+            {
+                left:parent.left
+                right:parent.right
+                top:s2.bottom
+            }
+            id: s3
+            height: parent.height*0.33
+
+            Rectangle{
+                //                id: medio
+                color: parametri_generali.coloreBordo
+                radius: 20
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: parent.width/3.0
+                height: 0.8*width
+                Testo
+                {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    text: component.settimane
+                    font.pixelSize: 40
+                    color: parametri_generali.coloreSfondo
+                }
+                Testo
+                {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.top
+                    width: 300
+                    anchors.bottomMargin: 10
+                    text: "DURATA (N° settimana)"
+                    font.pixelSize: 20
+                    color: parametri_generali.coloreBordo
+                }
+            }
+
+
+            IconaMeno
+            {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenterOffset: -parent.width*0.25
+                anchors.verticalCenter: parent.verticalCenter
+                //                height: parent.height/3.0
+                onPressed: {
+                    if (component.settimane>1)
+                        component.settimane--;
+                }
+            }
+
+            IconaPiu
+            {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenterOffset: parent.width*0.25
+                anchors.verticalCenter: parent.verticalCenter
+                //                height: parent.height/3.0
+                onPressed: {
+                    if (component.settimane<12)
+                        component.settimane++;
+                }
+            }
+        }
+
+    }
+
+//    Item
+//    {
+//        id: ripetizioni
+//        anchors
+//        {
+//            top: serie.bottom
+//            left: parent.left
+//            right: parent.right
+//        }
+//        height: parent.height/3.0
+
+//        Rectangle{
+////                id: medio
+//            color: parametri_generali.coloreBordo
+//            radius: 20
+//            anchors.verticalCenter: parent.verticalCenter
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            width: parent.width/3.0
+//            height: 0.8*width
+//            Testo
+//            {
+//                anchors.verticalCenter: parent.verticalCenter
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                text: selected_exercise.reps
+//                font.pixelSize: 40
+//                color: parametri_generali.coloreSfondo
+//            }
+//            Testo
+//            {
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                anchors.bottom: parent.top
+//                width: 300
+//                anchors.bottomMargin: 10
+//                text: "N° RIPETIZIONI"
+//                font.pixelSize: 20
+//                color: parametri_generali.coloreBordo
+//            }
+//        }
+
+
+//        IconaMeno
+//        {
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            anchors.horizontalCenterOffset: -parent.width*0.25
+//            anchors.verticalCenter: parent.verticalCenter
+////                height: parent.height/3.0
+//            onPressed: {
+//                if (selected_exercise.reps>1)
+//                    selected_exercise.reps--
+//            }
+//        }
+
+//        IconaPiu
+//        {
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            anchors.horizontalCenterOffset: parent.width*0.25
+//            anchors.verticalCenter: parent.verticalCenter
+////                height: parent.height/3.0
+//            onPressed: selected_exercise.reps++
+//        }
+//    }
+
+//    Item
+//    {
+//        id: difficolta
+//        anchors
+//        {
+//            top: ripetizioni.bottom
+//            left: parent.left
+//            right: parent.right
+//        }
+//        height: parent.height/3.0
+
+//        Rectangle{
+////                id: medio
+//            color: parametri_generali.coloreBordo
+//            radius: 20
+//            anchors.verticalCenter: parent.verticalCenter
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            width: parent.width/3.0
+//            height: 0.8*width
+//            Testo
+//            {
+//                anchors.verticalCenter: parent.verticalCenter
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                text: selected_exercise.power
+//                font.pixelSize: 40
+//                color: parametri_generali.coloreSfondo
+//            }
+//            Testo
+//            {
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                anchors.bottom: parent.top
+//                width: 300
+//                anchors.bottomMargin: 10
+//                text: "DIFFICOLTA’"
+//                font.pixelSize: 20
+//                color: parametri_generali.coloreBordo
+//            }
+//        }
+
+//        IconaMeno
+//        {
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            anchors.horizontalCenterOffset: -parent.width*0.25
+//            anchors.verticalCenter: parent.verticalCenter
+////                height: parent.height/3.0
+//            onPressed: {
+//                if (selected_exercise.power>1)
+//                    selected_exercise.power--
+//            }
+//        }
+
+//        IconaPiu
+//        {
+//            anchors.horizontalCenter: parent.horizontalCenter
+//            anchors.horizontalCenterOffset: parent.width*0.25
+//            anchors.verticalCenter: parent.verticalCenter
+////                height: parent.height/3.0
+//            onPressed:
+//            {
+//                if (selected_exercise.power<20)
+//                    selected_exercise.power++
+//            }
+//        }
+//    }
+
+    Item
+    {
+        anchors
+        {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        height: parent.height*0.2
+        FrecceSxDx
+        {
+            id: freccia
+            onPressSx:
+            {
+                pageLoader.source=pageLoader.last_source
+            }
+            dx_visible: true
+            onPressDx:
+            {
+                pageLoader.source="PaginaIstruzioni.qml"
+                _workout.createWorkout(impostazioni_utente.identifier,selected_exercise.workout+"_"+component.state,component.giorni*component.settimane)
+//                _workout.readFile(selected_exercise.workout+"_"+state)
+                selected_exercise.name=_workout.name
+                selected_exercise.reps=_workout.reps
+                selected_exercise.rest_time=_workout.rest
+                selected_exercise.sets=_workout.sets
+                selected_exercise.current_set=0
+                selected_exercise.power=_workout.power
+
+            }
+
+            z:5
+        }
     }
 }

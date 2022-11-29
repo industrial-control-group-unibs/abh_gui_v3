@@ -61,15 +61,12 @@ Item {
             property url this_source:"PaginaImpostazioni.qml"
             onPressSx:
             {
-                console.log(pageLoader.last_source)
-
                 if (pageLoader.last_source===freccia.this_source)
                 {
                     pageLoader.source="PaginaAllenamento.qml"
                 }
                 else
                 {
-                    console.log("qui?")
                     pageLoader.source=pageLoader.last_source
                 }
             }
@@ -123,7 +120,11 @@ Item {
                     MouseArea
                     {
                         anchors.fill: parent
-                        onClicked: pageLoader.source=link
+                        onClicked:
+                        {
+                            pageLoader.source=link
+                            _queue.push(link)
+                        }
                         z: 40
                     }
 

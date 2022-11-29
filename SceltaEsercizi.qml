@@ -132,7 +132,6 @@ Item {
                     autoLoad: true
 
                     source: "file://"+PATH+"/video_brevi_esercizi/"+selected_exercise.video_intro
-                    onSourceChanged: console.log(source)
 
                     onPlaybackStateChanged: {
                         if(playbackState==1){

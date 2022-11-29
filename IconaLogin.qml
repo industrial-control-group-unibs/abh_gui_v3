@@ -23,6 +23,7 @@ Item
             if(identifier !== "") {
                 impostazioni_utente.nome=nome
                 impostazioni_utente.foto=foto
+                impostazioni_utente.identifier=identifier
                 pageLoader.source=  "PaginaCancellaUtente.qml"
             }
         }
@@ -37,6 +38,7 @@ Item
             {
                 impostazioni_utente.nome=nome
                 impostazioni_utente.foto=foto
+                impostazioni_utente.identifier=identifier
                 pageLoader.source=  "PaginaAllenamento.qml" //"PaginaMondi.qml"
             }
 

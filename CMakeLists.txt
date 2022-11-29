@@ -54,6 +54,7 @@ SET(APP_FILES
   areachart.cpp
   ChiamataSistema.cpp
   listwifi.cpp
+  stringquee.cpp
   )
 
 if(ANDROID)
