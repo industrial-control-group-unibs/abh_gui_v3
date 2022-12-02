@@ -290,7 +290,7 @@ Item {
                 Testo
                 {
                     anchors.top: parent.top
-                    anchors.left: rect.right
+                    anchors.left: rect4.right
                     anchors.right: right.right
                     anchors.leftMargin: 30
                     height: parent.height
