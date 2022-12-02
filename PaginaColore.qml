@@ -253,6 +253,59 @@ Item {
                 }
             }
 
+
+            Item
+            {
+                width: parent.width
+                height: parent.height*0.15
+                MouseArea
+                {
+                    anchors.fill: parent
+                    onPressed: {
+                        parametri_generali.coloreTesto       =  "#473729"
+                        parametri_generali.coloreTestoChiaro =  "#ffd4c9bd"
+                        parametri_generali.coloreSfondo      =  "#2A211B"
+                        parametri_generali.coloreBordo       =  "#D4C9BD"
+                        parametri_generali.coloreBarra       =  "#2A211B"
+                        parametri_generali.coloreIcona       =  "#ff9f9181"
+                    }
+                }
+
+                Rectangle {
+                    id:rect4
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.leftMargin: 30
+                    anchors.margins: 2
+                    height: parent.height
+                    width: height
+                    radius: width*0.5
+
+                    border.color: parametri_generali.coloreBordo
+                    border.width: 5
+                    color: parametri_generali.coloreSfondo
+
+                }
+
+                Testo
+                {
+                    anchors.top: parent.top
+                    anchors.left: rect.right
+                    anchors.right: right.right
+                    anchors.leftMargin: 30
+                    height: parent.height
+
+
+                    font.pixelSize: 35/1920*component.height
+                    verticalAlignment: Text.AlignVCenter
+                    text: "RIPRISTINA COLORE"
+                }
+
+
+            }
+
+
+
         }
 
     }
