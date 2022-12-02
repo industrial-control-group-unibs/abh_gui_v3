@@ -76,6 +76,7 @@ Item {
                 top: titolo.bottom
                 topMargin: parametri_generali.larghezza_barra
                 bottom: parent.bottom
+                bottomMargin: parametri_generali.larghezza_barra
                 left: parent.left
                 right: parent.right
             }
