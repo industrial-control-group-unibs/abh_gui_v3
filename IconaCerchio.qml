@@ -4,7 +4,7 @@ import QtGraphicalEffects 1.12
 Item {
     id: component
     signal pressed
-    property color colore: parametri_generali.coloreSfondo
+    property color colore: parametri_generali.coloreBordo
     property bool pieno: true
 
     state: "vuoto"
