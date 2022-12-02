@@ -36,7 +36,7 @@ Rectangle
         running: false
         onTriggered:
         {
-            icona_piu.pressed()
+            icona_meno.pressed()
         }
     }
 
