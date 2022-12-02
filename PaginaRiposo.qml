@@ -55,24 +55,29 @@ Item {
                 }
                 else
                 {
+                    console.log("fine timer");
                     selected_exercise.current_set++
                     if (selected_exercise.current_set<selected_exercise.sets)
                     {
+                        console.log("rinvia nome");
                         exercise_udp.send()
                         pageLoader.source="PaginaWorkout.qml"
                     }
                     else
                     {
+                        console.log("è finito");
                         if (selected_exercise.workout==="" || _workout.completed)
                         {
+                            console.log("vai al riepilogo");
                             pageLoader.source="PaginaRiepilogo.qml"
                             selected_exercise.current_set=0
                         }
                         else
                         {
+                            console.log("vai al prossimo esercizio");
                             _workout.next();
 
-                            selected_exercise.name=_workout.name
+                            selected_exercise.code=_workout.code
                             selected_exercise.reps=_workout.reps
                             selected_exercise.rest_time=_workout.rest
                             selected_exercise.sets=_workout.sets
@@ -83,6 +88,7 @@ Item {
                             pageLoader.source="PaginaPreparati.qml"
                         }
                     }
+                    console.log("fatto");
                 }
             }
         }
