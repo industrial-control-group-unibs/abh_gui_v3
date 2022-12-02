@@ -22,7 +22,7 @@ Item {
         }
         ListElement {
             nome: "AGGIORNAMENTO SOFTWARE"
-            link: "PaginaImpostazioni.qml"
+            link: "PaginaAggiornaSoftware.qml"
         }
     }
 

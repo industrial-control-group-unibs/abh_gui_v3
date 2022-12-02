@@ -10,7 +10,7 @@ Item
 {
     width: 100
     height: width
-    property color colore: "#D4C9BD"
+    property color colore: parametri_generali.coloreBordo
     state: "play"
 
     signal pressPause

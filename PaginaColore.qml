@@ -169,7 +169,7 @@ Item {
 
                     border.color: parametri_generali.coloreBordo
                     border.width: 5
-                    color: parametri_generali.coloreSfondo
+                    color: parametri_generali.coloreBordo
 
                 }
 
@@ -226,7 +226,7 @@ Item {
 
                     border.color: parametri_generali.coloreBordo
                     border.width: 5
-                    color: parametri_generali.coloreSfondo
+                    color: parametri_generali.coloreUtente
 
                 }
 

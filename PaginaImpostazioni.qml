@@ -15,8 +15,13 @@ Item {
 
     property variant internalModel: ListModel {
         ListElement {
-            nome: "LOGOUT"
+            nome: "CAMBIA UTENTE"
             link: "PaginaSceltaLogout.qml"
+        }
+
+        ListElement {
+            nome: "MODIFICA UTENTE"
+            link: "DefinizioneUtente1.qml"
         }
         ListElement {
             nome: "CONNESSIONI"
