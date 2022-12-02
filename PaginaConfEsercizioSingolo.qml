@@ -24,8 +24,6 @@ Item {
         pageLoader.last_source="PaginaConfEsercizioSingolo.qml"
         selected_exercise.power=difficolta
         selected_exercise.difficulty=nome_livello
-
-        timer_tempo.start()
     }
 
     Component.onCompleted:

@@ -46,8 +46,6 @@ Item {
     Component.onDestruction:
     {
         pageLoader.last_source="PaginaConfWorkout.qml"
-
-        timer_tempo.start()
     }
 
     Barra_superiore{

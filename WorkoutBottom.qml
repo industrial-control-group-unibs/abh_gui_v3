@@ -3,9 +3,7 @@ import QtQuick 2.12
 Item
 {
     Component.onCompleted: {
-        //timer_tempo.start()
         power_settings.value= selected_exercise.power
-        //            timer_tut.start()
     }
 
     anchors

@@ -13,7 +13,6 @@ Item
 {
     Component.onCompleted: {
         timer_tempo.start()
-        //            timer_tut.start()
     }
     Component.onDestruction: timer_tempo.stop()
 
