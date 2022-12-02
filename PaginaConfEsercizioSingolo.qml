@@ -122,6 +122,7 @@ Item {
                     if (selected_exercise.sets>1)
                         selected_exercise.sets--
                 }
+
             }
 
             IconaPiu

@@ -13,6 +13,7 @@ Rectangle
     id: icona_piu
 
     signal pressed
+
     Shape {
         anchors.fill: parent
 
@@ -34,9 +35,31 @@ Rectangle
 
     }
 
+    Timer
+    {
+        id: repeater_timer
+        interval: 200
+        repeat: true
+        running: false
+        onTriggered:
+        {
+            icona_piu.pressed()
+        }
+    }
+
     MouseArea
     {
         anchors.fill: parent
-        onPressed: icona_piu.pressed()
+
+        onPressed:
+        {
+            icona_piu.pressed()
+
+        }
+        onPressAndHold: repeater_timer.running=true
+        onReleased:
+        {
+            repeater_timer.running=false
+        }
     }
 }
