@@ -65,27 +65,34 @@ Item {
                     }
                     else
                     {
+                        selected_exercise.current_set=0
                         console.log("è finito");
-                        if (selected_exercise.workout==="" || _workout.completed)
+                        if (selected_exercise.workout==="")
                         {
                             console.log("vai al riepilogo");
+
                             pageLoader.source="PaginaRiepilogo.qml"
-                            selected_exercise.current_set=0
                         }
                         else
                         {
-                            console.log("vai al prossimo esercizio");
+                            selected_exercise.reps
                             _workout.next();
-
-                            selected_exercise.code=_workout.code
-                            selected_exercise.reps=_workout.reps
-                            selected_exercise.rest_time=_workout.rest
-                            selected_exercise.sets=_workout.sets
-                            selected_exercise.max_pos_speed=_workout.maxPosSpeed
-                            selected_exercise.max_neg_speed=_workout.maxNegSpeed
-                            selected_exercise.current_set=0
-                            selected_exercise.power=_workout.power
-                            pageLoader.source="PaginaPreparati.qml"
+                            if (_workout.endSession)
+                            {
+                                console.log("vai al riepilogo");
+                                pageLoader.source="PaginaRiepilogoWorkout.qml"
+                            }
+                            else
+                            {
+                                console.log("vai al prossimo esercizio");
+                                selected_exercise.code=_workout.code
+                                selected_exercise.reps=_workout.reps
+                                selected_exercise.rest_time=_workout.rest
+                                selected_exercise.sets=_workout.sets
+                                selected_exercise.rest_set_time=_workout.restSet
+                                selected_exercise.power=_workout.power
+                                pageLoader.source="PaginaRiepilogoSetWorkout.qml"
+                            }
                         }
                     }
                     console.log("fatto");

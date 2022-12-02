@@ -70,5 +70,6 @@
         <file>PaginaBloccoTouch.qml</file>
         <file>PaginaColore.qml</file>
         <file>PaginaAggiornaSoftware.qml</file>
+        <file>PaginaRiepilogoSetWorkout.qml</file>
     </qresource>
 </RCC>

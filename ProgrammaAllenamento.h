@@ -16,11 +16,12 @@ class ProgrammaAllenamento : public QObject
   Q_OBJECT
   Q_PROPERTY(bool            completed      READ    completed                        NOTIFY completedChanged)
   Q_PROPERTY(bool            endSession     READ    endSession                       NOTIFY endSessionChanged)
-  Q_PROPERTY(QString         name           READ    name                             NOTIFY nameChanged)
+  Q_PROPERTY(QString         code           READ    code                             NOTIFY codeChanged)
   Q_PROPERTY(QString         image          READ    image                            NOTIFY imageChanged)
   Q_PROPERTY(int             power          READ    power                            NOTIFY powerChanged)
   Q_PROPERTY(int             reps           READ    reps                             NOTIFY repsChanged)
   Q_PROPERTY(int             rest           READ    rest                             NOTIFY restChanged)
+  Q_PROPERTY(int             restSet        READ    restSet                          NOTIFY restSetChanged)
   Q_PROPERTY(int             sets           READ    sets                             NOTIFY setsChanged)
   Q_PROPERTY(int             session        READ    session                          NOTIFY sessionChanged)
   Q_PROPERTY(int             actSession     READ    actSession     WRITE setSession  NOTIFY actSessionChanged)
@@ -34,11 +35,12 @@ public:
 
   bool    completed  () const {return completed_    ;}
   bool    endSession () const {return end_session_  ;}
-  QString name       () const {return name_         ;}
+  QString code       () const {return code_         ;}
   QString image      () const {return image_        ;}
   int     power      () const {return power_        ;}
   int     reps       () const {return reps_         ;}
   int     rest       () const {return rest_         ;}
+  int     restSet    () const {return rest_set_     ;}
   int     sets       () const {return sets_         ;}
   int     session    () const {return session_      ;}
   int     actSession () const {return act_session_  ;}
@@ -56,11 +58,12 @@ public:
 signals:
   void completedChanged();
   void endSessionChanged();
-  void nameChanged();
+  void codeChanged();
   void imageChanged();
   void powerChanged();
   void repsChanged();
   void restChanged();
+  void restSetChanged();
   void setsChanged();
   void sessionChanged();
   void scoreChanged();
@@ -71,13 +74,14 @@ protected:
 
   bool            completed_    ;
   bool            end_session_  ;
-  QString         name_         ;
+  QString         code_         ;
   QString         image_        ;
   int             session_      ;
   int             act_session_  ;
   int             power_        ;
   int             reps_         ;
   int             rest_         ;
+  int             rest_set_         ;
   int             sets_         ;
   double          score_        ;
   QString         dir_path_     ;

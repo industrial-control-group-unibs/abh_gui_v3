@@ -113,8 +113,10 @@ ApplicationWindow {
         property int sets: 3
         property int current_set: 0
         property int rest_time: 30
+        property int rest_set_time: 30
         property real max_pos_speed: 20
         property real max_neg_speed: -10
+        property real score: 0
         property string workout: ""
 
         property string difficulty: "Facile"  // TO BE REMOVED
@@ -250,6 +252,7 @@ ApplicationWindow {
 
 
         source:  "PaginaLogo.qml"
+//        source:  "PaginaRiepilogoSetWorkout.qml"
 
     }
 

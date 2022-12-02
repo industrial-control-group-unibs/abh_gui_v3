@@ -8,6 +8,8 @@ ProgrammaAllenamento::ProgrammaAllenamento(QString path, QObject *parent)
 {
   dir_path_=path;
   completed_=true;
+  end_session_=false;
+  act_session_=1;
 }
 void ProgrammaAllenamento::readFile(std::string file_name)
 {
@@ -22,6 +24,7 @@ void ProgrammaAllenamento::readFile(std::string file_name)
     idx_=0;
 
     completed_=false;
+    end_session_=false;
     updateField();
 
   }
@@ -34,18 +37,19 @@ void ProgrammaAllenamento::readFile(std::string file_name)
 
 void ProgrammaAllenamento::updateField()
 {
-  name_=QString::fromStdString(doc_->GetCell<std::string>(0,idx_));
+  code_=QString::fromStdString(doc_->GetCell<std::string>(0,idx_));
   power_=doc_->GetCell<int>(1,idx_);
   reps_= doc_->GetCell<int>(2,idx_);
   sets_= doc_->GetCell<int>(3,idx_);
   rest_= doc_->GetCell<int>(4,idx_);
-  session_= doc_->GetCell<int>(5,idx_);
-  score_= doc_->GetCell<double>(6,idx_);
+  rest_set_= doc_->GetCell<int>(5,idx_);
+  session_= doc_->GetCell<int>(6,idx_);
+  score_= doc_->GetCell<double>(7,idx_);
 }
 
 void ProgrammaAllenamento::setScore(double score)
 {
-  doc_->SetCell(6,idx_,score);
+  doc_->SetCell(7,idx_,score);
   score_=score;
   doc_->Save(file_name_);
 }
@@ -62,6 +66,8 @@ void ProgrammaAllenamento::next()
   else
   {
     updateField();
+    qDebug() << "codice = " << code_;
+    qDebug() << "sessione corrente = " << act_session_ <<", nuova sessione = "<<session_;
     end_session_=session_>act_session_;
   }
 }

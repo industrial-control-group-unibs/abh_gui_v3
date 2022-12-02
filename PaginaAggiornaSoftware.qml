@@ -10,7 +10,7 @@ import SysCall 1.0
 
 PaginaSiNo
 {
-    titolo: "VUOI AGGIORNARE?\nGLI AGGIORNAMENTI SARANNO\n OPERATIVI DOPO IL RIAVVIO"
+    titolo: "VUOI AGGIORNARE?\nGLI AGGIORNAMENTI SARANNO\nOPERATIVI DOPO IL RIAVVIO"
 
     signal aggiorna
     onPressNo: pageLoader.source=  "PaginaImpostazioni.qml"

@@ -59,6 +59,10 @@ Item
         ripetizioni: fb_udp.data[0]
 
         onRipetizioniChanged: {
+            if (selected_exercise.workout==="")
+            {
+                selected_exercise.score+=selected_exercise.power/_workout.power/selected_exercise.reps
+            }
             if (ripetizioni>selected_exercise.reps)
                 pageLoader.source = "PaginaRiposo.qml"
         }
