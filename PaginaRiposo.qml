@@ -63,7 +63,6 @@ Item {
                     }
                     else
                     {
-                        _workout.next();
                         if (selected_exercise.workout==="" || _workout.completed)
                         {
                             pageLoader.source="PaginaRiepilogo.qml"
@@ -71,6 +70,8 @@ Item {
                         }
                         else
                         {
+                            _workout.next();
+
                             selected_exercise.name=_workout.name
                             selected_exercise.reps=_workout.reps
                             selected_exercise.rest_time=_workout.rest
