@@ -55,13 +55,11 @@ Item
             onTriggered:
             {
                 parent.dateTimeString = Qt.formatTime(new Date(),"hh:mm");
-                print(dateTimeString)
             }
         }
 
         Component.onCompleted: {
             dateTimeString = Qt.formatTime(new Date(),"hh:mm");
-            print(dateTimeString)
         }
     }
 

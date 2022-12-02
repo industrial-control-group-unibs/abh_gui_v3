@@ -23,7 +23,7 @@ Item {
     Component.onCompleted: {
 
         dateTimeString = currentDate.toLocaleDateString( locale,"yyyyMMdd")+Qt.formatTime(new Date(),"hhmmss");
-        selected_exercise.name="photo"
+        selected_exercise.code="photo"
     }
     Barra_superiore{}
 
