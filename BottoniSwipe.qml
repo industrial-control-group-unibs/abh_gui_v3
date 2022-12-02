@@ -27,12 +27,12 @@ Item {
         State {
             name: "sx"
             PropertyChanges { target: left_circle; color: parametri_generali.coloreBordo}
-            PropertyChanges { target: right_circle; color: parametri_generali.coloreBordo+"55"}
+            PropertyChanges { target: right_circle; color: parametri_generali.coloreBordo+"80"}
         },
         State {
             name: "dx"
-            PropertyChanges { target: right_circle; color: parametri_generali.coloreBordo+"55"}
-            PropertyChanges { target: left_circle; color: parametri_generali.coloreBordo}
+            PropertyChanges { target: right_circle; color: parametri_generali.coloreBordo}
+            PropertyChanges { target: left_circle; color: parametri_generali.coloreBordo+"80"}
         }
     ]
 

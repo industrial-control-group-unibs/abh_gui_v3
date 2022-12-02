@@ -91,7 +91,7 @@ Item {
             Item
             {
                 width: parent.width
-                height: parent.height*0.15
+                height: 80
                 MouseArea
                 {
                     anchors.fill: parent
@@ -148,7 +148,7 @@ Item {
             Item
             {
                 width: parent.width
-                height: parent.height*0.15
+                height: 80
                 MouseArea
                 {
                     anchors.fill: parent
@@ -205,7 +205,7 @@ Item {
             Item
             {
                 width: parent.width
-                height: parent.height*0.15
+                height: 80
                 MouseArea
                 {
                     anchors.fill: parent
@@ -263,7 +263,7 @@ Item {
             Item
             {
                 width: parent.width
-                height: parent.height*0.15
+                height: 80
                 MouseArea
                 {
                     anchors.fill: parent
