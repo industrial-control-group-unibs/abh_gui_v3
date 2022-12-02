@@ -26,12 +26,8 @@ ApplicationWindow {
     }
     Item {
         id: parametri_generali
-        property string coloreTesto: "#473729"
-        property string coloreTestoChiaro: "#ffd4c9bd"
         property string coloreSfondo:"#F5F5F5"
         property string coloreBordo: "#D4C9BD"
-        property string coloreBarra: "#473729"
-        property string coloreIcona: "#ff9f9181"
         property string coloreUtente: "#8c177b"
         property int larghezza_barra: 172
         property int offset_icone4x3: 400
@@ -44,12 +40,9 @@ ApplicationWindow {
         states: [
             State {
                 name: "SABBIA"
-                PropertyChanges { target: parametri_generali; coloreTesto:  "#473729"}
-                PropertyChanges { target: parametri_generali; coloreTestoChiaro:  "#ffd4c9bd"}
-                PropertyChanges { target: parametri_generali; coloreSfondo: "#2A211B"}
                 PropertyChanges { target: parametri_generali; coloreBordo:  "#D4C9BD"}
-                PropertyChanges { target: parametri_generali; coloreBarra:  "#2A211B"}
-                PropertyChanges { target: parametri_generali; coloreIcona:  "#ff9f9181"}
+                PropertyChanges { target: parametri_generali; coloreSfondo: "#2A211B"}
+                PropertyChanges { target: parametri_generali; coloreUtente:  "#8c177b"}
             }
         ]
 

@@ -13,6 +13,11 @@ Item {
 
     property string titolo: "IMPOSTAZIONE COLORE"
 
+    Component.onDestruction:
+    {
+        _utenti.saveColor(impostazioni_utente.nome,parametri_generali.coloreBordo,parametri_generali.coloreSfondo,parametri_generali.coloreUtente)
+    }
+
     property variant internalModel: ListModel {
         ListElement {
             nome: "SFONDO"
@@ -263,12 +268,9 @@ Item {
                 {
                     anchors.fill: parent
                     onPressed: {
-                        parametri_generali.coloreTesto       =  "#473729"
-                        parametri_generali.coloreTestoChiaro =  "#ffd4c9bd"
                         parametri_generali.coloreSfondo      =  "#2A211B"
                         parametri_generali.coloreBordo       =  "#D4C9BD"
-                        parametri_generali.coloreBarra       =  "#2A211B"
-                        parametri_generali.coloreIcona       =  "#ff9f9181"
+                        parametri_generali.coloreUtente       =  "#8c177b"
                     }
                 }
 

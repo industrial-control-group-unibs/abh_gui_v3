@@ -10,7 +10,7 @@ Rectangle   {
     width: grid.cellWidth-2
     height: grid.cellHeight-2
     radius: 20
-    border.color:  grid.currentIndex !== index ? parametri_generali.coloreSfondo: parametri_generali.coloreIcona
+    border.color:  grid.currentIndex !== index ? parametri_generali.coloreSfondo: parametri_generali.coloreBordo
     border.width: 3
 
 

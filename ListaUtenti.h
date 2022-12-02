@@ -30,7 +30,10 @@ public:
       Role_professione    ,
       Role_social_media  ,
       Role_stato,
-      Role_foto
+      Role_foto,
+      Role_coloreBordo,
+      Role_coloreSfondo,
+      Role_coloreUtente
     };
 
     explicit ListaUtenti(QString path, QObject *parent = nullptr);
@@ -40,10 +43,12 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
 
+
 public slots:
     void readFile();
     void removeUser(QString name);
     void addUser(std::vector<QString> dati);
+    void saveColor(QString user_name, QString coloreBordo, QString coloreSfondo, QString coloreUtente);
 
 
 private: //members

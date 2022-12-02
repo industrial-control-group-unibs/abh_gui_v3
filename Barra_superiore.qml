@@ -30,7 +30,7 @@ Item
         id: barra_colore
         anchors.fill: parent
         anchors.bottomMargin: 5
-        color: parametri_generali.coloreSfondo //coloreBarra
+        color: parametri_generali.coloreSfondo
     }
 
     Testo {
@@ -116,7 +116,7 @@ Item
         radius: width*0.5
         color: "transparent"
         border{
-            color: parametri_generali.coloreIcona
+            color: parametri_generali.coloreBordo
             width: 4
         }
         layer.enabled:true

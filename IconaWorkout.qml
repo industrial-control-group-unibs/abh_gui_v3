@@ -15,7 +15,7 @@ Rectangle   {
     implicitWidth: 1080
     implicitHeight: 447
     radius: 20
-    border.color:  lista_workout.currentIndex !== index ? parametri_generali.coloreSfondo: parametri_generali.coloreIcona
+    border.color:  lista_workout.currentIndex !== index ? parametri_generali.coloreSfondo: parametri_generali.coloreBordo
     border.width: 5
 
 //    layer.enabled: true
@@ -69,7 +69,7 @@ Rectangle   {
             topMargin: 50
             //                    verticalCenter: parent.verticalCenter
         }
-        color: parametri_generali.coloreTesto
+        color: parametri_generali.coloreBordo
         wrapMode: TextEdit.WordWrap
         font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
 

@@ -39,6 +39,9 @@ Item
                 impostazioni_utente.nome=nome
                 impostazioni_utente.foto=foto
                 impostazioni_utente.identifier=identifier
+                parametri_generali.coloreSfondo      =  coloreSfondo
+                parametri_generali.coloreBordo       =  coloreBordo
+                parametri_generali.coloreUtente      =  coloreUtente
                 pageLoader.source=  "PaginaAllenamento.qml" //"PaginaMondi.qml"
             }
 
@@ -116,7 +119,7 @@ Item
         visible: identifier === ""
         border
         {
-            color: parametri_generali.coloreIcona
+            color: parametri_generali.coloreBordo
             width: 4
         }
         Shape {
@@ -132,7 +135,7 @@ Item
             ShapePath {
                 strokeColor: "transparent"
                 strokeWidth:1
-                fillColor: parametri_generali.coloreIcona
+                fillColor: parametri_generali.coloreBordo
                 id: svgpath_figma_2_468
 
                 PathSvg {

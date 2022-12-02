@@ -60,6 +60,12 @@ QVariant ListaUtenti::data(const QModelIndex &index, int role) const
     return data.fields_[11];
   else if ( role == Role_id )
     return data.fields_[12];
+  else if ( role == Role_coloreBordo )
+    return data.fields_[13];
+  else if ( role == Role_coloreSfondo )
+    return data.fields_[14];
+  else if ( role == Role_coloreUtente )
+    return data.fields_[15];
   else
     return QVariant();
 }
@@ -77,6 +83,10 @@ void ListaUtenti::addUser(std::vector<QString> dati)
     row[ifield]=dati.at(ifield).toStdString();
   }
   row[12]=std::to_string(doc.GetRowCount())+"_"+row[0]+"_"+row[1];
+  row[13]="#F5F5F5";
+  row[14]="#D4C9BD";
+  row[15]="#8c177b";
+
   doc.InsertRow(doc.GetRowCount(),row);
   doc.Save(nome_file);
 
@@ -100,7 +110,10 @@ QHash<int, QByteArray> ListaUtenti::roleNames() const
     {Role_social_media   ,"social_media"},
     {Role_stato          ,"stato"},
     {Role_id             ,"identifier"},
-    {Role_foto           ,"foto"}
+    {Role_foto           ,"foto"},
+    {Role_coloreBordo    ,"coloreBordo"},
+    {Role_coloreSfondo   ,"coloreSfondo"},
+    {Role_coloreUtente   ,"coloreUtente"}
   };
   return mapping;
 }
@@ -145,4 +158,24 @@ void ListaUtenti::readFile()
   std::vector<QString> fields(roles_);
   data_ << Utente(fields);
 
+}
+
+void ListaUtenti::saveColor(QString user_name, QString coloreBordo, QString coloreSfondo, QString coloreUtente)
+{
+  std::string nome=user_name.toStdString();
+  std::string nome_file=dir_path_+"/utenti.csv";
+  rapidcsv::Document doc(nome_file);
+
+  std::vector<std::string> col = doc.GetColumn<std::string>("nome");
+  for (size_t ifield=0;ifield<col.size();ifield++)
+  {
+    if (!col.at(ifield).compare(nome))
+    {
+      doc.SetCell<std::string>(13,ifield,coloreBordo.toStdString());
+      doc.SetCell<std::string>(14,ifield,coloreSfondo.toStdString());
+      doc.SetCell<std::string>(15,ifield,coloreUtente.toStdString());
+      break;
+    }
+  }
+  doc.Save(nome_file);
 }
