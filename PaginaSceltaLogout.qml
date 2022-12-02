@@ -20,6 +20,10 @@ PaginaSiNo
         impostazioni_utente.nome=""
         impostazioni_utente.foto=""
         pageLoader.source=  "PaginaLogin.qml"
+
+        parametri_generali.coloreSfondo      =  "#2A211B"
+        parametri_generali.coloreBordo       =  "#D4C9BD"
+        parametri_generali.coloreUtente      =  "#8c177b"
     }
 
     SysCall
