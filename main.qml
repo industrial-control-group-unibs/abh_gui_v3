@@ -26,8 +26,8 @@ ApplicationWindow {
     }
     Item {
         id: parametri_generali
-        property string coloreSfondo:"#F5F5F5"
-        property string coloreBordo: "#D4C9BD"
+        property string coloreBordo:  "#D4C9BD"
+        property string coloreSfondo: "#2A211B"
         property string coloreUtente: "#8c177b"
         property int larghezza_barra: 172
         property int offset_icone4x3: 400

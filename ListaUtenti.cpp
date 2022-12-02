@@ -83,8 +83,8 @@ void ListaUtenti::addUser(std::vector<QString> dati)
     row[ifield]=dati.at(ifield).toStdString();
   }
   row[12]=std::to_string(doc.GetRowCount())+"_"+row[0]+"_"+row[1];
-  row[13]="#F5F5F5";
-  row[14]="#D4C9BD";
+  row[13]="#D4C9BD";
+  row[14]="#2A211B";
   row[15]="#8c177b";
 
   doc.InsertRow(doc.GetRowCount(),row);
