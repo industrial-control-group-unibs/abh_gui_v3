@@ -131,7 +131,7 @@ ApplicationWindow {
             name= _esercizi.getName(code)
             video_intro= _esercizi.getVideoIntro(code)
             video_preparati= _esercizi.getVideoPrep(code)
-            video_workout= _esercizi.getVideoWorkoutcode
+            video_workout= _esercizi.getVideoWorkout(code)
             immagine= _esercizi.getImage(code)
             if (workout==="")
             {
