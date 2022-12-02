@@ -21,7 +21,7 @@ PaginaSiNo
     onAggiorna: {
 
 
-        chiamata_sistema.string="aggiorna"
+        chiamata_sistema.string=". ~/script_update.sh"
         chiamata_sistema.call()
     }
 
