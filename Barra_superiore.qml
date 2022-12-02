@@ -33,6 +33,37 @@ Item
         color: parametri_generali.coloreBarra
     }
 
+    Testo {
+        property var locale: Qt.locale()
+        property date currentDate: new Date()
+        property string dateTimeString
+        text: dateTimeString
+        anchors
+        {
+            top: barra.top
+            left: barra.left
+            leftMargin: 10
+            topMargin: 5
+        }
+
+        Timer
+        {
+            property int value: 0
+            interval: 10*1000
+            repeat: true
+            running: true
+            onTriggered:
+            {
+                parent.dateTimeString = Qt.formatTime(new Date(),"hh:mm");
+                print(dateTimeString)
+            }
+        }
+
+        Component.onCompleted: {
+            dateTimeString = Qt.formatTime(new Date(),"hh:mm");
+            print(dateTimeString)
+        }
+    }
 
     MouseArea
     {
