@@ -30,7 +30,7 @@ Item
         id: barra_colore
         anchors.fill: parent
         anchors.bottomMargin: 5
-        color: parametri_generali.coloreBarra
+        color: parametri_generali.coloreSfondo //coloreBarra
     }
 
     Testo {
