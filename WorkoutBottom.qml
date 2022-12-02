@@ -29,6 +29,8 @@ Item
         anchors.verticalCenterOffset: -parent.height*0.25
         value: selected_exercise.power
         progressColor: parametri_generali.coloreUtente
+        handleColor: parametri_generali.coloreBordo
+        trackColor: parametri_generali.coloreBordo
         onValueChanged: {
             selected_exercise.power=value
         }
@@ -55,6 +57,7 @@ Item
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenterOffset: parent.height*0.25
         anchors.verticalCenter: parent.verticalCenter
+        colore: parametri_generali.coloreBordo
         ripetizioni: fb_udp.data[0]
 
         onRipetizioniChanged: {
