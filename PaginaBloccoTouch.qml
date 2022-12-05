@@ -27,12 +27,12 @@ Item {
     }
 
     Component.onCompleted: {
-        chiamata_sistema.string="xinput disable 9"
+        chiamata_sistema.string="xinput disable 11"
         chiamata_sistema.call()
     }
     Component.onDestruction:
     {
-        chiamata_sistema.string="xinput enable 9"
+        chiamata_sistema.string="xinput enable 11"
         chiamata_sistema.call()
     }
 
