@@ -14,7 +14,7 @@ PaginaVideoSingolo
     link_sx: pageLoader.last_source
     link_dx: "PaginaPreparati.qml"
     video_folder: "video_istruzioni"
-    video_name: selected_exercise.video_preparati
+    video_name: selected_exercise.video_istruzioni
     titolo: selected_exercise.name
     timer: false
 

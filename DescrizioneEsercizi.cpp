@@ -78,6 +78,14 @@ QString DescrizioneEsercizi::getVideoIntro(QString nome)
     s="placeholver_video.mp4";
   return s;
 }
+QString DescrizioneEsercizi::getVideoIstruzioni(QString nome)
+{
+  QString s=getInfo(nome,"video_istruzioni");
+
+  if (s=="")
+    s="placeholver_video.mp4";
+  return s;
+}
 QString DescrizioneEsercizi::getVideoPrep(QString nome)
 {
   return getInfo(nome,"video_preparazione");

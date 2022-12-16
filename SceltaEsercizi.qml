@@ -84,7 +84,7 @@ Item {
             }
 
             Rectangle   {
-                color: "transparent"
+                color: "black"
                 id: video_zone
                 //anchors.right: parent.right
                 //anchors.rightMargin: 10

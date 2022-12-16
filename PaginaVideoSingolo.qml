@@ -71,7 +71,7 @@ Item {
 
 
         Rectangle   {
-            color: "transparent"
+            color: "black"
             anchors.horizontalCenter: parent.horizontalCenter
 //            anchors.verticalCenter: parent.verticalCenter
             anchors.top: parent.top

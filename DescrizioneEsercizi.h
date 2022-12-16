@@ -15,6 +15,7 @@ class DescrizioneEsercizi : public QObject
   Q_PROPERTY(QString         code                MEMBER code                 WRITE setCode() NOTIFY codeChanged               )
   Q_PROPERTY(QString         image               MEMBER image                NOTIFY imageChanged              )
   Q_PROPERTY(QString         video_intro         MEMBER video_intro          NOTIFY video_introChanged        )
+  Q_PROPERTY(QString         video_istruzioni    MEMBER video_istruzioni     NOTIFY video_istruzioniChanged        )
   Q_PROPERTY(QString         video_preparazione  MEMBER video_preparazione   NOTIFY video_preparazioneChanged )
   Q_PROPERTY(QString         video_workout       MEMBER video_workout        NOTIFY video_workoutChanged      )
 
@@ -30,6 +31,7 @@ public slots:
   QString getCode(QString nome);
   QString getName(QString nome);
   QString getVideoIntro(QString nome);
+  QString getVideoIstruzioni(QString nome);
   QString getVideoPrep(QString nome);
   QString getVideoWorkout(QString nome);
 
@@ -45,6 +47,7 @@ signals:
   void video_introChanged()       ;
   void video_preparazioneChanged();
   void video_workoutChanged()     ;
+  void video_istruzioniChanged()  ;
 protected:
 
   QString         name               ;
@@ -52,6 +55,7 @@ protected:
   QString         code               ;
   QString         video_intro        ;
   QString         video_preparazione ;
+  QString         video_istruzioni   ;
   QString         video_workout      ;
 
   QString dir_path_;
