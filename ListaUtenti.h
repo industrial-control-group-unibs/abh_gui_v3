@@ -46,8 +46,10 @@ public:
 
 public slots:
     void readFile();
-    void removeUser(QString name);
+    void removeUser(QString identifier);
     void addUser(std::vector<QString> dati);
+    void editUser(QString identifier, QVector<QString> dati);
+    QVector<QString> getUser(QString identifier);
     void saveColor(QString user_name, QString coloreBordo, QString coloreSfondo, QString coloreUtente);
 
 

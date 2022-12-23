@@ -39,6 +39,7 @@ Item {
         colore: parametri_generali.coloreBordo
         font_colore: parametri_generali.coloreSfondo
         visible: dati_utente.visible
+        testo: avanti.dati[lista_utente.currentIndex]
     }
 
 
@@ -161,6 +162,7 @@ Item {
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: parent.height*0.1
                 width: 100
+                dx: true
                 onPress:
                 {
                         pageLoader.source = "PaginaLogin.qml"
@@ -200,7 +202,19 @@ Item {
                 width: 100
                 z: 3
                 id: avanti
-                property var dati: ["",""]
+                property var dati: ["","","","","","","","","","",""]
+                Component.onCompleted:
+                {
+                    if (impostazioni_utente.identifier !=="")
+                    {
+                        dati=_utenti.getUser(impostazioni_utente.identifier)
+                        console.log("utente: ",dati)
+                    }
+                    else
+                    {
+                        dati:["","","","","","","","","","",""]
+                    }
+                }
 
                 Testo
                 {
@@ -222,7 +236,8 @@ Item {
                             lista_utente.currentItem.colore=parametri_generali.coloreBordo
                             dati[lista_utente.currentIndex]=lista_utente.currentItem.name
                             lista_utente.currentIndex++;
-                            tastiera.testo=""
+                            console.log("dato = ",avanti.dati[lista_utente.currentIndex])
+                            tastiera.testo=avanti.dati[lista_utente.currentIndex]
                         }
                         else
                         {
@@ -233,7 +248,13 @@ Item {
                     {
                         if (testo_avanti.text==="CONFERMA")
                         {
-                            _utenti.addUser(dati)
+                            if (impostazioni_utente.identifier !=="")
+                            {
+                                console.log(impostazioni_utente.identifier,avanti.dati)
+                                _utenti.editUser(impostazioni_utente.identifier,avanti.dati)
+                            }
+                            else
+                                _utenti.addUser(dati)
                             _utenti.readFile()
                             pageLoader.source="PaginaLogin.qml"
                         }

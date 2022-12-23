@@ -32,7 +32,7 @@ Rectangle {
     Shape {
         width:36
         height:22
-        rotation: compent.dx? 0: 180
+        rotation: component.dx? 0: 180
         anchors
         {
 

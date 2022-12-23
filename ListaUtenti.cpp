@@ -83,7 +83,7 @@ void ListaUtenti::addUser(std::vector<QString> dati)
     row[ifield]=dati.at(ifield).toStdString();
   }
   row[12]=std::to_string(doc.GetRowCount())+"_"+row[0]+"_"+row[1];
-  row[13]="#D4C9BD";
+  row[13]="#c6aa76";
   row[14]="#2A211B";
   row[15]="#8c177b";
 
@@ -94,6 +94,63 @@ void ListaUtenti::addUser(std::vector<QString> dati)
   data_ << Utente(fields);
 
 }
+
+void ListaUtenti::editUser(QString identifier, QVector<QString> dati)
+{
+  std::string id=identifier.toStdString();
+
+
+  std::string nome_file=dir_path_+"/utenti.csv";
+  rapidcsv::Document doc(nome_file);
+  std::vector<std::string> row(roles_);
+
+
+  std::vector<std::string> col = doc.GetColumn<std::string>("id");
+  for (size_t ifield=0;ifield<col.size();ifield++)
+  {
+
+    if (!col.at(ifield).compare(id))
+    {
+      for (long idx=0;idx<dati.size();idx++)
+      {
+        doc.SetCell(idx,ifield,dati.at(idx).toStdString());
+      }
+    }
+  }
+
+  doc.Save(nome_file);
+
+  std::vector<QString> fields(roles_);
+  data_ << Utente(fields);
+
+}
+
+QVector<QString> ListaUtenti::getUser(QString name)
+{
+  std::string nome=name.toStdString();
+  std::string nome_file=dir_path_+"/utenti.csv";
+  rapidcsv::Document doc(nome_file);
+
+
+  QVector<QString> dati;
+
+  std::vector<std::string> col = doc.GetColumn<std::string>("id");
+  for (size_t ifield=0;ifield<col.size();ifield++)
+  {
+    if (!col.at(ifield).compare(nome))
+    {
+      std::vector<std::string> row=doc.GetRow<std::string>(ifield);
+      for (int idx=0;idx<12;idx++)
+      {
+        dati.push_back(QString().fromStdString(row.at(idx)));
+      }
+
+    }
+  }
+  return dati;
+}
+
+
 
 QHash<int, QByteArray> ListaUtenti::roleNames() const
 {
@@ -125,7 +182,7 @@ void ListaUtenti::removeUser(QString name)
   std::string nome_file=dir_path_+"/utenti.csv";
   rapidcsv::Document doc(nome_file);
 
-  std::vector<std::string> col = doc.GetColumn<std::string>("nome");
+  std::vector<std::string> col = doc.GetColumn<std::string>("id");
   for (size_t ifield=0;ifield<col.size();ifield++)
   {
     if (!col.at(ifield).compare(nome))
