@@ -93,7 +93,7 @@ Item
         x: 0.5*(parent.width-width)
         y: 0.5*(parent.height-height)
         radius: 20
-        color: "transparent"
+        color: "black"
         border.color: parametri_generali.coloreBordo
         border.width: 2
         id: rect_video_centrale
@@ -327,7 +327,7 @@ Item
         id: rect_utente
         visible: true
 
-        color: "transparent"
+        color: "black"
         radius: 20
         border.color: parametri_generali.coloreBordo
         border.width: 2

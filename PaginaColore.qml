@@ -135,6 +135,7 @@ Item {
                     id: colorDialog
                     onAccepted: {
                         parametri_generali.coloreSfondo=colorDialog.color
+                        rect.color= parametri_generali.coloreSfondo
                         visible: false
                     }
                     onRejected: {
@@ -192,6 +193,7 @@ Item {
                     id: colorDialog2
                     onAccepted: {
                         parametri_generali.coloreBordo=colorDialog2.color
+                        rect2.color= parametri_generali.coloreBordo
                         visible: false
                     }
                     onRejected: {
@@ -249,6 +251,7 @@ Item {
                     id: colorDialog3
                     onAccepted: {
                         parametri_generali.coloreUtente=colorDialog3.color
+                        rect3.color= parametri_generali.coloreUtente
                         visible: false
                     }
                     onRejected: {
