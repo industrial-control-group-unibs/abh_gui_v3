@@ -146,10 +146,13 @@ def exercise_thread():
     direction=0.0
 
     motor_speed=0.0
+    max_abs_motor_speed=0.0
 
     resend=False
 
     vosk_command=0
+
+    last_rep_count_from_vision=0
 
     while (not stop):
         time.sleep(0.001)
@@ -232,19 +235,19 @@ def exercise_thread():
             motor_fb=motor_fb_udp.getLastDataAndClearQueue()
             if len(motor_fb)==2:
                 motor_speed=motor_fb[1]
+            max_abs_motor_speed=max(abs(motor_speed),max_abs_motor_speed)
         if (repetition_udp.isNewDataAvailable()):
             repetition_state=repetition_udp.getData()
             if len(repetition_state)==3:
-                repetition_count=float(repetition_state[0])
+
+                rep_count_from_vision=float(repetition_state[0])
                 direction=float(repetition_state[1])
                 percentage=float(repetition_state[2])
 
-                # if (motor_speed<motor_speed_threshold and state == Status.FORWARD and direction==-1):
-                #     state=Status.BACKWARD
-                #     #print(motor_speed)
-                # elif (motor_speed>motor_speed_threshold_return and state == Status.BACKWARD and direction==1):
-                #     state=Status.FORWARD
-                #     #print(motor_speed)
+                if ((last_rep_count_from_vision!=rep_count_from_vision) and (max_abs_motor_speed>0.1)):
+                    repetition_count=repetition_count+1
+                    max_abs_motor_speed=0.0
+                last_rep_count_from_vision=rep_count_from_vision
 
         if ( (state == Status.FORWARD) and
              ( (motor_speed<motor_speed_threshold and direction==-1) or
