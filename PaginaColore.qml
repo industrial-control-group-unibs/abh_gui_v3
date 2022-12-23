@@ -272,7 +272,7 @@ Item {
                     anchors.fill: parent
                     onPressed: {
                         parametri_generali.coloreSfondo      =  "#2A211B"
-                        parametri_generali.coloreBordo       =  "#D4C9BD"
+                        parametri_generali.coloreBordo       =  "#c6aa76" //"#D4C9BD"
                         parametri_generali.coloreUtente       =  "#8c177b"
                         rect.color= parametri_generali.coloreSfondo
                         rect2.color= parametri_generali.coloreBordo

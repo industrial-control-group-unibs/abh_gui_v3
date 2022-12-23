@@ -65,7 +65,7 @@ Item {
         width: height
         height: parent.height
         radius: width*0.5
-        color: "#D4C9BD"
+        color: parametri_generali.coloreBordo
     }
 
     Rectangle

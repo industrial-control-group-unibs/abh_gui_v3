@@ -10,7 +10,7 @@ Rectangle {
     width:80
     height: width
     radius: width*0.5
-    property color colore: "#D4C9BD"
+    property color colore: parametri_generali.coloreBordo
     property bool attivo: true
 
     border.color: colore
