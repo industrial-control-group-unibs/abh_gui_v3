@@ -244,7 +244,7 @@ def exercise_thread():
                 direction=float(repetition_state[1])
                 percentage=float(repetition_state[2])
 
-                if ((last_rep_count_from_vision!=rep_count_from_vision) and (max_abs_motor_speed>2)):
+                if ((last_rep_count_from_vision!=rep_count_from_vision) and (max_abs_motor_speed>5)):
                     repetition_count=repetition_count+1
                     max_abs_motor_speed=0.0
                 last_rep_count_from_vision=rep_count_from_vision
