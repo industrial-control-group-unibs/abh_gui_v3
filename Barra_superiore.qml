@@ -219,7 +219,7 @@ Item
         }
     }
     Item {
-        id: figma_10_664
+        id: logo_barra
         objectName:"abh Logo Trasparente 2"
         layer.enabled:true
         layer.effect: DropShadow {
@@ -238,7 +238,7 @@ Item
             rightMargin: 40
         }
         Image {
-            id: source_figma_10_664
+            id: source_logo_barra
             layer.enabled: true
             fillMode: Image.PreserveAspectCrop
             visible: true
@@ -252,6 +252,17 @@ Item
             onClicked: pageLoader.source=  "PaginaAllenamento.qml"
         }
 
+    }
+
+    Item
+    {
+        id: barra_zona_testo
+        anchors{
+            left: immagine_utente.right
+            right: logo_barra.left
+            top:parent.top
+            bottom: parent.bottom
+        }
     }
 
 }

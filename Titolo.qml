@@ -15,13 +15,14 @@ Item {
     }
     height: parent.height
     Rectangle{
-        anchors
-        {
-            left: parent.left
-            right: parent.right
-            top: parent.top
-            bottom: parent.bottom
-        }
+//        anchors
+//        {
+//            left: parent.left
+//            right: parent.right
+//            top: parent.top
+//            bottom: parent.bottom
+//        }
+        anchors.fill: parent
         color: "red"
         clip: true
 
@@ -31,13 +32,18 @@ Item {
         Testo
         {
             text: component.text
-//            font.pixelSize: component.fontSize
-            anchors
-            {
-                verticalCenter: parent.verticalCenter
-                horizontalCenter: parent.horizontalCenter
-            }
-            fontSizeMode: Text.HorizontalFit
+            font.pixelSize: component.fontSize
+//            anchors
+//            {
+//                verticalCenter: parent.verticalCenter
+//                horizontalCenter: parent.horizontalCenter
+//            }
+            anchors.fill: parent
+            anchors.margins: 10
+//            fontSizeMode: Text.HorizontalFit
+            wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
 //            onTextChanged: {
 //                console.log()
 //            }

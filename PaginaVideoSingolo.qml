@@ -25,9 +25,23 @@ Item {
 
     Barra_superiore{
         id: barra
-        Titolo
+
+        Item
         {
-            text:titolo
+            anchors
+            {
+                top: parent.top
+                bottom: parent.bottom
+                left: parent.left
+                right: parent.right
+                leftMargin: 170
+                rightMargin: 170
+            }
+            Titolo
+            {
+
+                text:titolo
+            }
         }
     }
 
