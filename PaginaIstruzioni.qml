@@ -18,7 +18,11 @@ PaginaVideoSingolo
     titolo: selected_exercise.name
     timer: false
 
-    Component.onCompleted: startstop_udp.string="rewire"
+    Component.onCompleted:
+    {
+        console.log("video_name",video_name)
+        startstop_udp.string="rewire"
+    }
     Component.onDestruction:
     {
         pageLoader.last_source="PaginaIstruzioni.qml"

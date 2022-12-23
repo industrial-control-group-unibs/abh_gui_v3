@@ -107,6 +107,7 @@ ApplicationWindow {
         property string video_intro: _esercizi.getVideoIntro(code)
         property string video_preparati: _esercizi.getVideoPrep(code)
         property string video_workout: _esercizi.getVideoWorkout(code)
+        property string video_istruzioni: _esercizi.getVideoIstruzioni(code)
         property string immagine: _esercizi.getImage(code)
         property int power: -1
         property int reps: 12
