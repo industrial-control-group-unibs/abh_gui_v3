@@ -22,9 +22,22 @@ Item {
 
     Barra_superiore{
 
-        Titolo
+        Item
         {
-            text: selected_exercise.name
+            anchors
+            {
+                top: parent.top
+                bottom: parent.bottom
+                left: parent.left
+                right: parent.right
+                leftMargin: 170
+                rightMargin: 170
+            }
+            Titolo
+            {
+
+                text:selected_exercise.name
+            }
         }
     }
 //    FrecceSxDx

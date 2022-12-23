@@ -14,7 +14,7 @@ Item {
         top: parent.top
     }
     height: parent.height
-    Rectangle{
+    Item{
 //        anchors
 //        {
 //            left: parent.left
@@ -23,7 +23,7 @@ Item {
 //            bottom: parent.bottom
 //        }
         anchors.fill: parent
-        color: "red"
+
         clip: true
 
 
@@ -40,7 +40,7 @@ Item {
 //            }
             anchors.fill: parent
             anchors.margins: 10
-//            fontSizeMode: Text.HorizontalFit
+            fontSizeMode: Text.Fit
             wrapMode: Text.WordWrap
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter

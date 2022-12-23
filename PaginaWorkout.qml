@@ -45,10 +45,22 @@ Item {
     }
 
     Barra_superiore{
-        Titolo
+        Item
         {
-            text: selected_exercise.name
-            z:20
+            anchors
+            {
+                top: parent.top
+                bottom: parent.bottom
+                left: parent.left
+                right: parent.right
+                leftMargin: 170
+                rightMargin: 170
+            }
+            Titolo
+            {
+
+                text:selected_exercise.name
+            }
         }
     }
 
