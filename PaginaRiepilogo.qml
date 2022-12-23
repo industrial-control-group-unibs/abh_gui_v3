@@ -119,7 +119,7 @@ Item {
             }
             Testo
             {
-                text: "CONTINUA PER IL\nLOG OUT"
+                text: "CONTINUA"
                 anchors
                 {
                     horizontalCenter: parent.horizontalCenter

@@ -45,7 +45,6 @@ ApplicationWindow {
                 PropertyChanges { target: parametri_generali; coloreUtente:  "#8c177b"}
             }
         ]
-
     }
 
     Timer

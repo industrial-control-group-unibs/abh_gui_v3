@@ -12,6 +12,7 @@ Rectangle {
     radius: width*0.5
     property color colore: parametri_generali.coloreBordo
     property bool attivo: true
+    property bool  dx: false
 
     border.color: colore
     border.width: 4*width/100
@@ -31,9 +32,10 @@ Rectangle {
     Shape {
         width:36
         height:22
-        rotation: 180
+        rotation: compent.dx? 0: 180
         anchors
         {
+
             horizontalCenter: parent.horizontalCenter
             verticalCenter: parent.verticalCenter
         }

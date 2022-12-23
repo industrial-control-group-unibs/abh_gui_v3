@@ -141,6 +141,45 @@ Item {
             }
         }
 
+
+        Item {
+            visible: link_foto.visible
+
+            anchors
+            {
+                left: parent.left
+                right: parent.right
+                top: parent.top
+                topMargin: parent.height*.5
+            }
+            height: parent.height*0.2
+
+
+            FrecciaButton
+            {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: parent.height*0.1
+                width: 100
+                onPress:
+                {
+                        pageLoader.source = "PaginaLogin.qml"
+
+                }
+                Testo
+                {
+                    text: "CONTINUA"
+                    anchors
+                    {
+                        horizontalCenter: parent.horizontalCenter
+                        top: parent.bottom
+                        topMargin: 5
+
+                    }
+                }
+            }
+        }
+
         Item {
             visible: !link_foto.visible
             id: dati_utente

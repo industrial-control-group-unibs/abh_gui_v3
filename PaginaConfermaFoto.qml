@@ -106,6 +106,7 @@ Item {
             {
                 chiamata_sistema.string="rm '"+PATH+"/utenti/"+impostazioni_utente.foto+"'"
                 chiamata_sistema.call()
+                impostazioni_utente.foto=""
                 pageLoader.source="PaginaScattaFoto.qml"
 
             }
