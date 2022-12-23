@@ -30,12 +30,16 @@ Item {
         Testo
         {
             text: component.text
-            font.pixelSize: component.fontSize
+//            font.pixelSize: component.fontSize
             anchors
             {
                 verticalCenter: parent.verticalCenter
                 horizontalCenter: parent.horizontalCenter
             }
+            fontSizeMode: Text.Fit
+//            onTextChanged: {
+//                console.log()
+//            }
         }
     }
 }
