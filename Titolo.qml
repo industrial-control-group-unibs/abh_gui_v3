@@ -14,7 +14,7 @@ Item {
         top: parent.top
     }
     height: parent.height
-    Item{
+    Rectangle{
         anchors
         {
             left: parent.left
@@ -22,6 +22,7 @@ Item {
             top: parent.top
             bottom: parent.bottom
         }
+        color: "red"
         clip: true
 
 
@@ -36,7 +37,7 @@ Item {
                 verticalCenter: parent.verticalCenter
                 horizontalCenter: parent.horizontalCenter
             }
-            fontSizeMode: Text.Fit
+            fontSizeMode: Text.HorizontalFit
 //            onTextChanged: {
 //                console.log()
 //            }
