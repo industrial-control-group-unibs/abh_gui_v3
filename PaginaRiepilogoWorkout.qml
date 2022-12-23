@@ -101,13 +101,13 @@ Item {
             }
         }
 
-        PlayPauseButton
+        FrecciaButton
         {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: parent.height*0.1
             width: 100
-            onPressPlay:
+            onPress:
             {
                 selected_exercise.current_set=0
                 pageLoader.source = "PaginaAllenamento.qml"
@@ -119,7 +119,7 @@ Item {
             }
             Testo
             {
-                text: "CONTINUA PER IL\nLOG OUT"
+                text: "CONTINUA"
                 anchors
                 {
                     horizontalCenter: parent.horizontalCenter

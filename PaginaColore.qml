@@ -271,6 +271,9 @@ Item {
                         parametri_generali.coloreSfondo      =  "#2A211B"
                         parametri_generali.coloreBordo       =  "#D4C9BD"
                         parametri_generali.coloreUtente       =  "#8c177b"
+                        rect.color= parametri_generali.coloreSfondo
+                        rect2.color= parametri_generali.coloreBordo
+                        rect3.color= parametri_generali.coloreUtente
                     }
                 }
 

@@ -12,27 +12,20 @@ Rectangle   {
     width: lista_workout.width-2 //lista_zona.cellWidth-2
     //height: 400
 
-    implicitWidth: 1080
-    implicitHeight: 447
+    implicitWidth: 800
+    implicitHeight: 225
     radius: 20
-    border.color:  lista_workout.currentIndex !== index ? parametri_generali.coloreSfondo: parametri_generali.coloreBordo
+    border.color:  lista_zona.currentIndex !== index ? parametri_generali.coloreSfondo: parametri_generali.coloreBordo
     border.width: 5
 
-//    layer.enabled: true
-//    layer.effect: DropShadow {
-//        verticalOffset: 2
-//        color: "#80000000"
-//        radius: 1
-//        samples: 3
-//    }
     MouseArea {
         anchors.fill: parent
         propagateComposedEvents: true
         onPressed: {
+//            mouse.accepted = false
             selected_exercise.workout=ex_name
-
-
             lista_workout.currentIndex=index
+            console.log("workout ",ex_name)
         }
     }
 
@@ -58,36 +51,17 @@ Rectangle   {
         radius: parent.radius-parent.border.width
     }
 
-    Text {
+    Testo
+    {
         text:ex_name
+        font.pixelSize: 70
         anchors
         {
-            left:parent.left
-            right:parent.right
-            leftMargin: 50
-            top: parent.top
-            topMargin: 50
-            //                    verticalCenter: parent.verticalCenter
-        }
-        color: parametri_generali.coloreBordo
-        wrapMode: TextEdit.WordWrap
-        font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
-
-        font.italic: false
-        font.letterSpacing: 0
-        font.pixelSize: 30
-        font.weight: Font.Normal
-        horizontalAlignment: Text.AlignLeft
-        verticalAlignment: Text.AlignTop
-
-        layer.enabled: true
-        layer.effect: DropShadow {
-            verticalOffset: 2
-            color: "#80000000"
-            radius: 1
-            samples: 3
+            verticalCenter: parent.verticalCenter
+            horizontalCenter: parent.horizontalCenter
         }
     }
+
 
     Image {
         id: immagine_zona
@@ -106,9 +80,3 @@ Rectangle   {
         source: "file://"+PATH+"/allenamento_programmato/"+image_name
     }
 }
-
-/*##^##
-Designer {
-    D{i:0;autoSize:true;height:480;width:640}
-}
-##^##*/

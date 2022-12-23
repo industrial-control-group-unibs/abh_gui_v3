@@ -71,5 +71,6 @@
         <file>PaginaColore.qml</file>
         <file>PaginaAggiornaSoftware.qml</file>
         <file>PaginaRiepilogoSetWorkout.qml</file>
+        <file>FrecciaButton.qml</file>
     </qresource>
 </RCC>
