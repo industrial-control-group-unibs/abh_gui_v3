@@ -149,7 +149,12 @@ Item
                 onClicked:
                 {
                     pageLoader.last_source=pageLoader.source
-                    pageLoader.source=  "PaginaImpostazioni.qml"
+
+                    if (parametri_generali.login_page)
+                    {
+                        pageLoader.source=  "PaginaImpostazioni.qml"
+                    }
+
                 }
             }
 
@@ -249,7 +254,13 @@ Item
         MouseArea
         {
             anchors.fill: parent
-            onClicked: pageLoader.source=  "PaginaAllenamento.qml"
+            onClicked:
+            {
+                if (parametri_generali.login_page)
+                {
+                    pageLoader.source=  "PaginaAllenamento.qml"
+                }
+            }
         }
 
     }
