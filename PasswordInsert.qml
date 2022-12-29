@@ -15,6 +15,8 @@ Item {
     Barra_superiore{}
 
 
+
+
     Item
     {
         anchors
@@ -159,27 +161,27 @@ Item {
         }
 
 
-//        Item
-//        {
+        Tastierino
+        {
+            id: tastierino
+            width: parent.width*0.5
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: parent.width*0.1
+            colore: parametri_generali.coloreBordo
+            font_colore: parametri_generali.coloreSfondo
 
-//            anchors
-//            {
-//                left: parent.left
-//                right: parent.right
-//                bottom: parent.bottom
-//            }
-//            height: parent.height*0.5
-            Tastierino
+            onTestoChanged:
             {
-                id: tastierino
-                width: parent.width*0.5
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: parent.width*0.1
-                colore: parametri_generali.coloreBordo
-                font_colore: parametri_generali.coloreSfondo
+                if (tastierino.testo.length>=4)
+                {
+                    if (tastierino.testo==="1111")
+                        pageLoader.source=  "PaginaAllenamento.qml"
+                    else
+                        testo=""
+                }
             }
-//        }
+        }
 
     }
 }

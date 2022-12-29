@@ -43,17 +43,13 @@ Item
                 parametri_generali.coloreSfondo      =  coloreSfondo
                 parametri_generali.coloreBordo       =  coloreBordo
                 parametri_generali.coloreUtente      =  coloreUtente
-                pageLoader.source=  "PaginaAllenamento.qml" //"PaginaMondi.qml"
+                pageLoader.source=  "PasswordInsert.qml"
             }
 
         }
     }
     Rectangle {
         color: "transparent";
-        //                    anchors{
-        //                        horizontalCenter: parent.horizontalCenter
-        //                        verticalCenter: parent.verticalCenter
-        //                    }
         width:170
         height: width
         visible: identifier !== ""
@@ -62,10 +58,6 @@ Item
         border.width: 4
         radius: width*0.5
 
-//        MouseArea{
-//            anchors.fill: parent
-//            onPressed: impostazioni_utente.foto=foto
-//        }
 
         Image {
 
@@ -143,7 +135,6 @@ Item
                     path:
                             "M23.625 41.4977C36.4354 41.4977 47.25 43.7166 47.25 52.2859C47.25 60.8552 36.366 63 23.625 63C10.8146 63 0 60.7778 0 52.2119C0 43.6426 10.8808 41.4977 23.625 41.4977ZM53.5468 16.5789C55.1099 16.5789 56.3785 17.9366 56.3785 19.6017L56.3785 23.5019L60.1682 23.5019C61.7281 23.5019 63 24.8595 63 26.5246C63 28.1897 61.7281 29.5473 60.1682 29.5473L56.3785 29.5473L56.3785 33.451C56.3785 35.116 55.1099 36.4737 53.5468 36.4737C51.9869 36.4737 50.715 35.116 50.715 33.451L50.715 29.5473L46.9318 29.5473C45.3686 29.5473 44.1 28.1897 44.1 26.5246C44.1 24.8595 45.3686 23.5019 46.9318 23.5019L50.715 23.5019L50.715 19.6017C50.715 17.9366 51.9869 16.5789 53.5468 16.5789ZM23.625 0C32.3019 0 39.2573 7.41619 39.2573 16.6679C39.2573 25.9197 32.3019 33.3359 23.625 33.3359C14.9481 33.3359 7.99271 25.9197 7.99271 16.6679C7.99271 7.41619 14.9481 0 23.625 0Z"
                 }
-
             }
         }
 
@@ -164,29 +155,3 @@ Item
 }
 
 
-
-
-// CODICE FOTO PERSONA
-//    Image {
-//        id: img
-//        property string img_name: "pic_foto.jpg"
-//        layer.enabled: true
-//        fillMode: Image.PreserveAspectCrop
-//        visible: true
-//        mipmap: true
-//        anchors.fill:parent
-//        source: "file://"+PATH+"/utenti/"+img_name
-
-//        layer.effect: OpacityMask {
-//            maskSource: Item {
-//                width: img.width
-//                height: img.height
-//                Rectangle {
-//                    anchors.centerIn: parent
-//                    width: img.adapt ? img.width : Math.min(img.width, img.height)
-//                    height: img.adapt ? img.height : width
-//                    radius: Math.min(width, height)
-//                }
-//            }
-//        }
-//    }
