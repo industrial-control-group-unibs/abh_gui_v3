@@ -1,5 +1,7 @@
 
 #include "listwifi.h"
+#include <ctime>
+#include <iostream>
 
 ListaWifi::ListaWifi(QObject *parent) :
   QAbstractListModel(parent)
@@ -53,6 +55,9 @@ void ListaWifi::readList()
   // Call ListConnections D-Bus method
   QDBusReply<QList<QDBusObjectPath> > result = interface.call("ListConnections");
 
+
+  int now = std::time(nullptr);;
+
   foreach (const QDBusObjectPath& connection, result.value()) {
     QString settingsPath=connection.path();
 
@@ -67,7 +72,8 @@ void ListaWifi::readList()
     if (connection2["connection"]["type"].toString()=="802-11-wireless")
     {
 //      qDebug() << "id: " << connection2["connection"];
-      data_.push_back(connection2["connection"]["id"].toString());
+      if (connection2["connection"]["timestamp"].toInt()> (now -60*5))
+        data_.push_back(connection2["connection"]["id"].toString());
     }
 
   }
