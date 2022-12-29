@@ -314,10 +314,19 @@ Item {
 
                 model: ModelloRichiesteUtente{}
 
+                onCurrentItemChanged:
+                {
+                    if (lista_utente.currentItem.campo_tipo==="numerico")
+                        tastiera.state="numbers"
+                    else
+                        tastiera.state="letter"
+                }
+
                 delegate: Item {
                     property alias name: input_nome.text
                     property alias colore: casella.colore
                     property bool campo_obbligatorio: obbligatorio
+                    property string campo_tipo: tipo
                     implicitWidth: 1080
                     implicitHeight: 10
                     width: dati_utente.width
