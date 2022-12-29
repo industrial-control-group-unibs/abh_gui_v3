@@ -72,5 +72,7 @@
         <file>PaginaAggiornaSoftware.qml</file>
         <file>PaginaRiepilogoSetWorkout.qml</file>
         <file>FrecciaButton.qml</file>
+        <file>Tastierino.qml</file>
+        <file>PasswordInsert.qml</file>
     </qresource>
 </RCC>

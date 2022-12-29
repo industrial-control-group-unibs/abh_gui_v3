@@ -251,8 +251,8 @@ ApplicationWindow {
         property url last_source
 
 
-        source:  "PaginaLogo.qml"
-//        source:  "PaginaRiepilogoSetWorkout.qml"
+//        source:  "PaginaLogo.qml"
+        source:  "PasswordInsert.qml"
 
     }
 

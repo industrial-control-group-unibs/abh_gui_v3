@@ -115,14 +115,6 @@ Item {
                 height: parent.height*.2
 
 
-//                Rectangle
-//                {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    anchors.horizontalCenter: parent.horizontalCenter
-//                    height: parent.height
-//                    width: parent.width//*chiamata_sistema.volume/100
-//                    color: "red"
-//                    radius: height*0.25
 
                     RadialGradient {
                         anchors.fill: parent
@@ -131,7 +123,6 @@ Item {
                             GradientStop { position: (chiamata_sistema.volume+10)/210; color: "transparent" }
                         }
                     }
-//                }
             }
 
 
