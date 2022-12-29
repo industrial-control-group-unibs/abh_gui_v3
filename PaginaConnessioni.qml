@@ -84,8 +84,9 @@ Item {
                 {
                     text: nome
                     font.bold:  lista_wifi.currentIndex === index
-                    font.pixelSize: 0.5*parent.height
+                    font.pixelSize: 20
                     verticalAlignment: Text.AlignVCenter
+
                 }
                 MouseArea
                 {
