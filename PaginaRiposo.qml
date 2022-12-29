@@ -46,6 +46,27 @@ Item {
 //        link_dx: "PaginaWorkout.qml"
 //    }
 
+
+    Item
+    {
+        id: sotto
+        anchors
+        {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        height: parent.height*0.3
+        FrecceSxDx
+        {
+            sx_visible: false
+            dx_visible: true
+            onPressDx: conto_alla_rovescia.position=conto_alla_rovescia.duration
+        }
+
+
+    }
+
     Rectangle{
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
