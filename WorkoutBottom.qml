@@ -16,6 +16,15 @@ Item
 
     property bool is_visible: true
 
+    signal timeout
+
+    Timer{
+        id: conto_alla_rovescia
+        interval: 1000*60*5
+        repeat: false
+        running: parent.visible
+        onTriggered: timeout()
+    }
 
 
     CSlider
@@ -59,6 +68,7 @@ Item
         ripetizioni: fb_udp.data[0]
 
         onRipetizioniChanged: {
+            conto_alla_rovescia.restart()
             if (selected_exercise.workout==="")
             {
                 selected_exercise.score+=selected_exercise.power/_workout.power/selected_exercise.reps

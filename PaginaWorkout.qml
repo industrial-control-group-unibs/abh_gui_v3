@@ -126,6 +126,14 @@ Item {
         }
         WorkoutBottom{
             id: sotto
+
+            onTimeout:
+            {
+                freccia.sx_visible= false
+                sotto.visible=false
+                freccia.visible=false
+                early_stop.visible=true
+            }
         }
 
         WorkoutEarlyStop

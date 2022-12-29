@@ -35,6 +35,15 @@ Item
         onPressYes: exit()
     }
 
+    Timer{
+        id: conto_alla_rovescia
+        interval: 1000*60
+        repeat: false
+        running: true
+        onTriggered: exit()
+    }
+
+
 }
 
 

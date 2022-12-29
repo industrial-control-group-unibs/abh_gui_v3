@@ -29,15 +29,11 @@ Item {
 
     onStateChanged:
     {
-        console.log("bordo rgb=",bordo.r,bordo.g,bordo.b)
-        console.log("sfondo rgb=",sfondo.r,sfondo.g,sfondo.b)
         scuro=Qt.rgba(bordo.r* (1.0-ratio) + sfondo.r*ratio,
                    bordo.g* (1.0-ratio) + sfondo.g*ratio,
                    bordo.b* (1.0-ratio) + sfondo.b*ratio,
                    1)
 
-
-        console.log("scuro rgb=",scuro.r,scuro.g,scuro.b)
     }
 
     states: [
