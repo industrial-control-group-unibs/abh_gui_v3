@@ -1,0 +1,6 @@
+
+## Luminosità
+
+sudo apt install light
+per farlo andare senza password
+sudo chmod +s /usr/bin/light
