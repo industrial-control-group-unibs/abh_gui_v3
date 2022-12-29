@@ -66,11 +66,13 @@ QVariant ListaUtenti::data(const QModelIndex &index, int role) const
     return data.fields_[14];
   else if ( role == Role_coloreUtente )
     return data.fields_[15];
+  else if ( role == Role_password )
+    return data.fields_[16];
   else
     return QVariant();
 }
 
-void ListaUtenti::addUser(std::vector<QString> dati)
+QString ListaUtenti::addUser(std::vector<QString> dati)
 {
   data_.pop_back();
   data_ << Utente(dati);
@@ -86,12 +88,14 @@ void ListaUtenti::addUser(std::vector<QString> dati)
   row[13]="#c6aa76";
   row[14]="#2A211B";
   row[15]="#8c177b";
+  row[16]="9999";
+
 
   doc.InsertRow(doc.GetRowCount(),row);
   doc.Save(nome_file);
-
   std::vector<QString> fields(roles_);
   data_ << Utente(fields);
+  return QString().fromStdString( row[12]);
 
 }
 
@@ -170,7 +174,8 @@ QHash<int, QByteArray> ListaUtenti::roleNames() const
     {Role_foto           ,"foto"},
     {Role_coloreBordo    ,"coloreBordo"},
     {Role_coloreSfondo   ,"coloreSfondo"},
-    {Role_coloreUtente   ,"coloreUtente"}
+    {Role_coloreUtente   ,"coloreUtente"},
+    {Role_password       ,"password"}
   };
   return mapping;
 }
@@ -217,13 +222,13 @@ void ListaUtenti::readFile()
 
 }
 
-void ListaUtenti::saveColor(QString user_name, QString coloreBordo, QString coloreSfondo, QString coloreUtente)
+void ListaUtenti::saveColor(QString identifier, QString coloreBordo, QString coloreSfondo, QString coloreUtente)
 {
-  std::string nome=user_name.toStdString();
+  std::string nome=identifier.toStdString();
   std::string nome_file=dir_path_+"/utenti.csv";
   rapidcsv::Document doc(nome_file);
 
-  std::vector<std::string> col = doc.GetColumn<std::string>("nome");
+  std::vector<std::string> col = doc.GetColumn<std::string>("id");
   for (size_t ifield=0;ifield<col.size();ifield++)
   {
     if (!col.at(ifield).compare(nome))
@@ -235,4 +240,47 @@ void ListaUtenti::saveColor(QString user_name, QString coloreBordo, QString colo
     }
   }
   doc.Save(nome_file);
+}
+
+
+
+void ListaUtenti::savePassword(QString identifier, QString pwd)
+{
+  std::string nome=identifier.toStdString();
+  std::string nome_file=dir_path_+"/utenti.csv";
+  rapidcsv::Document doc(nome_file);
+
+  std::vector<std::string> col = doc.GetColumn<std::string>("id");
+  for (size_t ifield=0;ifield<col.size();ifield++)
+  {
+    if (!col.at(ifield).compare(nome))
+    {
+      doc.SetCell<std::string>(16,ifield,pwd.toStdString());
+      break;
+    }
+  }
+  doc.Save(nome_file);
+}
+
+
+
+QString ListaUtenti::getPassword(QString identifier)
+{
+  std::string nome=identifier.toStdString();
+  std::string nome_file=dir_path_+"/utenti.csv";
+  rapidcsv::Document doc(nome_file);
+
+
+  QVector<QString> dati;
+
+  std::vector<std::string> col = doc.GetColumn<std::string>("id");
+  for (size_t ifield=0;ifield<col.size();ifield++)
+  {
+    if (!col.at(ifield).compare(nome))
+    {
+      std::vector<std::string> row=doc.GetRow<std::string>(ifield);
+      return QString().fromStdString(row.at(16));
+    }
+  }
+  return QString("");
 }

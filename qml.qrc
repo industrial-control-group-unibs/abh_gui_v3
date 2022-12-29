@@ -74,5 +74,6 @@
         <file>FrecciaButton.qml</file>
         <file>Tastierino.qml</file>
         <file>PasswordInsert.qml</file>
+        <file>PasswordSave.qml</file>
     </qresource>
 </RCC>

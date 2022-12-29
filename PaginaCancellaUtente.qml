@@ -12,7 +12,7 @@ PaginaSiNo
     onPressNo: pageLoader.source=  "PaginaLogin.qml"
     onPressYes:
     {
-        _utenti.removeUser(impostazioni_utente.nome)
+        _utenti.removeUser(impostazioni_utente.identifier)
         _utenti.readFile()
         impostazioni_utente.nome=""
         impostazioni_utente.foto=""

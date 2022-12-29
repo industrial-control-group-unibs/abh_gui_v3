@@ -254,9 +254,11 @@ Item {
                                 _utenti.editUser(impostazioni_utente.identifier,avanti.dati)
                             }
                             else
-                                _utenti.addUser(dati)
+                            {
+                                impostazioni_utente.identifier=_utenti.addUser(dati)
+                            }
                             _utenti.readFile()
-                            pageLoader.source="PaginaLogin.qml"
+                            pageLoader.source="PasswordSave.qml"//"PaginaLogin.qml"
                         }
                         else
                         {
@@ -388,26 +390,5 @@ Item {
         }
 
     }
-
-//    Item
-//    {
-//        anchors
-//        {
-//            left: parent.left
-//            right: parent.right
-//            bottom: parent.bottom
-//        }
-//        height: parent.height*0.3
-//        FrecceSxDx
-//        {
-//            id: freccia
-//            onPressSx:
-//            {
-//                pageLoader.source="PaginaLogin.qml"
-//            }
-//            dx_visible: false
-//            z:5
-//        }
-//    }
 
 }

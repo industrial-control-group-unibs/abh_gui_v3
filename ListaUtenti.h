@@ -33,8 +33,10 @@ public:
       Role_foto,
       Role_coloreBordo,
       Role_coloreSfondo,
-      Role_coloreUtente
+      Role_coloreUtente,
+      Role_password
     };
+
 
     explicit ListaUtenti(QString path, QObject *parent = nullptr);
 
@@ -47,11 +49,12 @@ public:
 public slots:
     void readFile();
     void removeUser(QString identifier);
-    void addUser(std::vector<QString> dati);
+    QString addUser(std::vector<QString> dati);
     void editUser(QString identifier, QVector<QString> dati);
     QVector<QString> getUser(QString identifier);
-    void saveColor(QString user_name, QString coloreBordo, QString coloreSfondo, QString coloreUtente);
-
+    void saveColor(QString identifier, QString coloreBordo, QString coloreSfondo, QString coloreUtente);
+    void savePassword(QString identifier, QString pwd);
+    QString getPassword(QString identifier);
 
 private: //members
     QVector< Utente > data_;

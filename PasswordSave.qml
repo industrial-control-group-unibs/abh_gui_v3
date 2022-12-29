@@ -6,7 +6,7 @@ Item {
     id: component
     anchors.fill: parent
 
-    property string titolo: "INSERISCI PASSWORD"
+    property string titolo: conferma? "CONFERMA PASSWORD" : "INSERISCI PASSWORD"
     signal pressYes
     signal pressNo
     implicitHeight: 1920/2
@@ -14,6 +14,13 @@ Item {
 
     Barra_superiore{}
 
+    property string password: ""
+    property bool   conferma: false
+
+    Component.onDestruction:
+    {
+
+    }
 
 
 
@@ -175,10 +182,25 @@ Item {
             {
                 if (tastierino.testo.length>=4)
                 {
-                    if (tastierino.testo===_utenti.getPassword(impostazioni_utente.identifier))
-                        pageLoader.source=  "PaginaAllenamento.qml"
+                    if (component.conferma)
+                    {
+                        if (tastierino.testo===component.password)
+                        {
+                             _utenti.savePassword(impostazioni_utente.identifier,component.password)
+                            pageLoader.source=  "PaginaLogin.qml"
+                        }
+                        else
+                        {
+                            component.conferma=false
+                            testo=""
+                        }
+                    }
                     else
+                    {
+                        component.password=tastierino.testo
+                        component.conferma=true
                         testo=""
+                    }
                 }
             }
         }
