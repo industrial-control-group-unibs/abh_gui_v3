@@ -14,8 +14,11 @@ public:
   QString string() const;
   void setString(QString string);
 
+
 public slots:
   void call();
+  int getVolume();
+  bool isMuted();
 
 signals:
   void portChanged();
@@ -23,7 +26,7 @@ signals:
   void stringChanged();
 protected:
   QString string_;
-
+  std::string execute(std::string cmd);
 };
 
 

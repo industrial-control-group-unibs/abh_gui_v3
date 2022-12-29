@@ -1,19 +1,27 @@
 import QtQuick 2.0
 import SysCall 1.0
-
+import QtGraphicalEffects 1.12
 
 Item {
     id: component
     anchors.fill: parent
 
     property string titolo: "VOLUME"
-
     signal pressYes
     signal pressNo
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
     Barra_superiore{}
+
+    SysCall
+    {
+        id: chiamata_sistema
+        property int volume: getVolume()
+        property bool muted: isMuted()
+    }
+
+
 
     Item
     {
@@ -56,10 +64,7 @@ Item {
             anchors.right: parent.right
             height: 0.1*parent.height
             id: volume
-            SysCall
-            {
-                id: chiamata_sistema
-            }
+
             IconaMeno
             {
 //                anchors.left: parent.left
@@ -70,9 +75,14 @@ Item {
 //                anchors.top: parent.top
                 onPressed:
                 {
+                    if (chiamata_sistema.volume>=0)
+                    {
                     chiamata_sistema.string="pactl set-sink-volume @DEFAULT_SINK@ -5%"
                     chiamata_sistema.call()
+                    chiamata_sistema.volume= chiamata_sistema.getVolume()
+                    }
                 }
+                id: meno
             }
             IconaPiu
             {
@@ -84,31 +94,73 @@ Item {
 //                anchors.top: parent.top
                 onPressed:
                 {
-                    chiamata_sistema.string="pactl set-sink-volume @DEFAULT_SINK@ +5%"
-                    chiamata_sistema.call()
+                    if (chiamata_sistema.volume<100)
+                    {
+                        chiamata_sistema.string="pactl set-sink-volume @DEFAULT_SINK@ +5%"
+                        chiamata_sistema.call()
+                        chiamata_sistema.volume= chiamata_sistema.getVolume()
+                    }
                 }
+                id: piu
             }
+
+            Item
+            {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.left: meno.right
+                anchors.right: piu.left
+                anchors.leftMargin: meno.width*0.1
+                anchors.rightMargin: meno.width*0.1
+                height: parent.height*.2
+
+
+//                Rectangle
+//                {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    anchors.horizontalCenter: parent.horizontalCenter
+//                    height: parent.height
+//                    width: parent.width//*chiamata_sistema.volume/100
+//                    color: "red"
+//                    radius: height*0.25
+
+                    RadialGradient {
+                        anchors.fill: parent
+                        gradient: Gradient {
+                            GradientStop { position: 0.0; color: parametri_generali.coloreBordo}
+                            GradientStop { position: (chiamata_sistema.volume+10)/210; color: "transparent" }
+                        }
+                    }
+//                }
+            }
+
+
 
             IconaCerchio
             {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
+                anchors.verticalCenterOffset: -2*piu.height
                 width: parent.height
                 onPressed:
                 {
+                    console.log("volume= ",chiamata_sistema.getVolume())
                     chiamata_sistema.string="pactl set-sink-mute @DEFAULT_SINK@ toggle"
                     chiamata_sistema.call()
+                    chiamata_sistema.volume= chiamata_sistema.getVolume()
+                    chiamata_sistema.muted= chiamata_sistema.isMuted()
 
                 }
 
                 Testo
                 {
-                    text: "MUTE"
+                    text: chiamata_sistema.muted? "UNMUTE": "MUTE"
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
                 }
+
             }
 
         }
