@@ -40,10 +40,13 @@ Item
         text: dateTimeString
         anchors
         {
-            top: barra.top
-            left: barra.left
-            leftMargin: 10
+            top: immagine_utente.bottom
+            bottom: parent.bottom
+            left: immagine_utente.left
+            right: immagine_utente.right
+            //leftMargin: 10
             topMargin: 5
+            bottomMargin: 10
         }
 
         Timer
@@ -110,6 +113,7 @@ Item
         anchors
         {
             verticalCenter: barra.verticalCenter
+            verticalCenterOffset: -10
             left: parent.left
             leftMargin: 40
         }
