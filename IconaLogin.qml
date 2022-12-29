@@ -33,6 +33,7 @@ Item
                 pageLoader.source=  "DefinizioneUtente1.qml"
                 impostazioni_utente.nome=""
                 impostazioni_utente.foto=""
+                impostazioni_utente.identifier=""
             }
             else
             {

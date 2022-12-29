@@ -28,8 +28,8 @@ Rectangle {
             color: "#40000000"
         }
 
-        width:1019
-        height:855
+        width:1019*0.7
+        height:855*0.7
         anchors
         {
             horizontalCenter: parent.horizontalCenter
