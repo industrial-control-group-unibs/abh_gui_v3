@@ -54,7 +54,7 @@ int SysCall::getVolume()
 bool SysCall::isMuted()
 {
 
-  std::string cmd="pactl list sinks | grep Mute | grep yes";
+  std::string cmd="pactl list sinks | grep 'Mute\\|Muto' | grep 'yes\\|sì'";
   std::string cmd_out=execute(cmd);
 
   qDebug() << "cmd out="  << cmd_out.c_str();
