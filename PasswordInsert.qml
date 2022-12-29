@@ -57,17 +57,21 @@ Item {
             {
                 top: titolo.bottom
                 bottom: tastierino.top
-                left: parent.left
-                right: parent.right
+                horizontalCenter: parent.horizontalCenter
             }
+
+            width: tastierino.width
+            property real spacing: 5
+            property real key_width: (width-3*spacing)/4
 
             Row
             {
-                spacing: 10
+                spacing: parent.spacing
                 anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
                 Rectangle
                 {
-                    height: display.height*0.6
+                    height: display.key_width
                     width: height
                     radius: 0.1*height
                     color: parametri_generali.coloreBordo
@@ -88,7 +92,7 @@ Item {
 
                 Rectangle
                 {
-                    height: display.height*0.6
+                    height: display.key_width
                     width: height
                     radius: 0.1*height
                     color: parametri_generali.coloreBordo
@@ -109,7 +113,7 @@ Item {
 
                 Rectangle
                 {
-                    height: display.height*0.6
+                    height: display.key_width
                     width: height
                     radius: 0.1*height
                     color: parametri_generali.coloreBordo
@@ -130,7 +134,7 @@ Item {
 
                 Rectangle
                 {
-                    height: display.height*0.6
+                    height: display.key_width
                     width: height
                     radius: 0.1*height
                     color: parametri_generali.coloreBordo
@@ -168,9 +172,10 @@ Item {
             Tastierino
             {
                 id: tastierino
-                width: parent.width*0.75
+                width: parent.width*0.5
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottom: parent.bottom
+                anchors.bottomMargin: parent.width*0.1
                 colore: parametri_generali.coloreBordo
                 font_colore: parametri_generali.coloreSfondo
             }
