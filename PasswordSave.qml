@@ -24,26 +24,7 @@ Item {
 
 
 
-    Item
-    {
-        anchors
-        {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
-        height: parent.height*0.3
-        FrecceSxDx
-        {
-            id: freccia
-            onPressSx:
-            {
-                pageLoader.source=pageLoader.last_source
-            }
-            dx_visible: false
-            z:5
-        }
-    }
+
 
     Item{
         anchors.fill: parent
@@ -71,107 +52,45 @@ Item {
 
             width: tastierino.width
             property real spacing: 5
-            property real key_width: (width-3*spacing)/4
+            property int pwd_lenght: 8
+            property real key_width: (width-(pwd_lenght-1)*spacing)/pwd_lenght
 
             Row
             {
                 spacing: parent.spacing
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
-                Rectangle
-                {
-                    height: display.key_width
-                    width: height
-                    radius: 0.1*height
-                    color: parametri_generali.coloreBordo
+
+                Repeater {
+                    model: display.pwd_lenght
 
                     Rectangle
                     {
-                        visible: tastierino.testo.length>=1
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.verticalCenter: parent.verticalCenter
-                        height: parent.height*0.5
+                        height: display.key_width
                         width: height
-                        radius: 0.5*height
-                        color: parametri_generali.coloreSfondo
+                        radius: 0.1*height
+                        color: parametri_generali.coloreBordo
 
+                        Rectangle
+                        {
+                            visible: tastierino.testo.length>index
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.verticalCenter: parent.verticalCenter
+                            height: parent.height*0.5
+                            width: height
+                            radius: 0.5*height
+                            color: parametri_generali.coloreSfondo
+                        }
                     }
-
                 }
-
-                Rectangle
-                {
-                    height: display.key_width
-                    width: height
-                    radius: 0.1*height
-                    color: parametri_generali.coloreBordo
-
-                    Rectangle
-                    {
-                        visible: tastierino.testo.length>=2
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.verticalCenter: parent.verticalCenter
-                        height: parent.height*0.5
-                        width: height
-                        radius: 0.5*height
-                        color: parametri_generali.coloreSfondo
-
-                    }
-
-                }
-
-                Rectangle
-                {
-                    height: display.key_width
-                    width: height
-                    radius: 0.1*height
-                    color: parametri_generali.coloreBordo
-
-                    Rectangle
-                    {
-                        visible: tastierino.testo.length>=3
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.verticalCenter: parent.verticalCenter
-                        height: parent.height*0.5
-                        width: height
-                        radius: 0.5*height
-                        color: parametri_generali.coloreSfondo
-
-                    }
-
-                }
-
-                Rectangle
-                {
-                    height: display.key_width
-                    width: height
-                    radius: 0.1*height
-                    color: parametri_generali.coloreBordo
-
-                    Rectangle
-                    {
-                        visible: tastierino.testo.length>=4
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.verticalCenter: parent.verticalCenter
-                        height: parent.height*0.5
-                        width: height
-                        radius: 0.5*height
-                        color: parametri_generali.coloreSfondo
-
-                    }
-
-                }
-
-
             }
-
         }
 
 
-        Tastierino
+        Tastiera
         {
             id: tastierino
-            width: parent.width*0.5
+            width: parent.width
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: parent.width*0.1
@@ -180,7 +99,7 @@ Item {
 
             onTestoChanged:
             {
-                if (tastierino.testo.length>=4)
+                if (tastierino.testo.length>=display.pwd_lenght)
                 {
                     if (component.conferma)
                     {
@@ -206,8 +125,25 @@ Item {
         }
 
     }
+
+    Item
+    {
+        anchors
+        {
+            left: parent.left
+            right: parent.right
+            bottom: tastierino.top
+        }
+        height: 200
+        FrecceSxDx
+        {
+            id: freccia
+            onPressSx:
+            {
+                pageLoader.source=pageLoader.last_source
+            }
+            dx_visible: false
+            z:5
+        }
+    }
 }
-
-
-
-
