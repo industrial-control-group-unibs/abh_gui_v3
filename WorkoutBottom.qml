@@ -69,9 +69,9 @@ Item
 
         onRipetizioniChanged: {
             conto_alla_rovescia.restart()
-            if (selected_exercise.workout==="")
+            if (selected_exercise.workout!=="")
             {
-                selected_exercise.score+=selected_exercise.power/_workout.power/selected_exercise.reps
+                selected_exercise.score+=selected_exercise.power*(1.0/_workout.power*selected_exercise.reps)
             }
             if (ripetizioni>selected_exercise.reps)
                 pageLoader.source = "PaginaRiposo.qml"
@@ -120,7 +120,7 @@ Item
         width: power_settings.width
         colore: parametri_generali.coloreUtente
         id: tut
-        value: timer_tut.value/1000/60-Math.floor(timer_tut.value/1000/60)
+        value: timer_tut.value/1000.0/60.0-Math.floor(timer_tut.value/1000.0/60.0)
         tempo: timer_tut.value
         visible: parent.is_visible
         Testo
