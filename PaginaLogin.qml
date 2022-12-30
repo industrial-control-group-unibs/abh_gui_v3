@@ -14,7 +14,13 @@ Rectangle {
     color:parametri_generali.coloreSfondo
     clip: true
 
-    Component.onCompleted: parametri_generali.login_page=true
+    Component.onCompleted:
+    {
+        impostazioni_utente.nome=""
+        impostazioni_utente.foto=""
+        impostazioni_utente.identifier=""
+        parametri_generali.login_page=true
+    }
     Component.onDestruction:
     {
         timer_tempo.resetValue()

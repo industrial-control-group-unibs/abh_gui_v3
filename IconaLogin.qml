@@ -45,9 +45,9 @@ Item
                 parametri_generali.coloreUtente      =  coloreUtente
                 pageLoader.source=  "PasswordInsert.qml"
             }
-
         }
     }
+
     Rectangle {
         color: "transparent";
         width:170
@@ -60,7 +60,6 @@ Item
 
 
         Image {
-
             fillMode: Image.PreserveAspectCrop
             visible: false
             mipmap: true
@@ -98,7 +97,6 @@ Item
                 horizontalCenter: parent.horizontalCenter
                 top: parent.bottom
                 topMargin: 5
-
             }
         }
     }

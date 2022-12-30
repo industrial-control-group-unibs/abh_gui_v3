@@ -16,7 +16,14 @@ Item {
 
 
 
-
+    Component.onCompleted:
+    {
+        parametri_generali.login_page=false
+    }
+    Component.onDestruction:
+    {
+        parametri_generali.login_page=true
+    }
 
 
     Item{
@@ -40,7 +47,7 @@ Item {
                 id: freccia
                 onPressSx:
                 {
-                    pageLoader.source=pageLoader.last_source
+                    pageLoader.source="PaginaLogin.qml"
                 }
                 dx_visible: false
                 z:5
@@ -95,16 +102,10 @@ Item {
                             width: height
                             radius: 0.5*height
                             color: parametri_generali.coloreSfondo
-
                         }
-
                     }
                 }
-
-
-
             }
-
         }
 
 
