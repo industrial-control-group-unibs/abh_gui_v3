@@ -75,5 +75,6 @@
         <file>Tastierino.qml</file>
         <file>PasswordInsert.qml</file>
         <file>PasswordSave.qml</file>
+        <file>PaginaPrivacy.qml</file>
     </qresource>
 </RCC>

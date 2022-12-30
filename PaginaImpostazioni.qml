@@ -40,6 +40,10 @@ Item {
             link: "PaginaGenerali.qml"
         }
         ListElement {
+            nome: "PRIVACY"
+            link: "PaginaPrivacy.qml"
+        }
+        ListElement {
             nome: "ASSISTENZA"
             link: "PaginaUbuntu.qml"
         }

@@ -39,7 +39,6 @@ Item {
                 left: parent.left
                 right: parent.right
                 bottom: tastierino.top
-                //top: parent.top
             }
             height: 200
             FrecceSxDx

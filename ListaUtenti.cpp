@@ -89,6 +89,7 @@ QString ListaUtenti::addUser(std::vector<QString> dati)
   row[14]="#2A211B";
   row[15]="#8c177b";
   row[16]="9999";
+  row[17]="false";
 
 
   doc.InsertRow(doc.GetRowCount(),row);
@@ -175,7 +176,8 @@ QHash<int, QByteArray> ListaUtenti::roleNames() const
     {Role_coloreBordo    ,"coloreBordo"},
     {Role_coloreSfondo   ,"coloreSfondo"},
     {Role_coloreUtente   ,"coloreUtente"},
-    {Role_password       ,"password"}
+    {Role_password       ,"password"},
+    {Role_storePwd       ,"store_pwd"}
   };
   return mapping;
 }
@@ -284,3 +286,48 @@ QString ListaUtenti::getPassword(QString identifier)
   }
   return QString("");
 }
+
+
+
+void ListaUtenti::saveStorePassword(QString identifier, QString store_pwd)
+{
+  std::string nome=identifier.toStdString();
+  std::string nome_file=dir_path_+"/utenti.csv";
+  rapidcsv::Document doc(nome_file);
+
+  std::vector<std::string> col = doc.GetColumn<std::string>("id");
+  for (size_t ifield=0;ifield<col.size();ifield++)
+  {
+    if (!col.at(ifield).compare(nome))
+    {
+      doc.SetCell<std::string>(17,ifield,store_pwd.toStdString());
+      break;
+    }
+  }
+  doc.Save(nome_file);
+}
+
+
+
+bool ListaUtenti::getStorePassword(QString identifier)
+{
+  std::string nome=identifier.toStdString();
+  std::string nome_file=dir_path_+"/utenti.csv";
+  rapidcsv::Document doc(nome_file);
+
+
+  QVector<QString> dati;
+
+  std::vector<std::string> col = doc.GetColumn<std::string>("id");
+  for (size_t ifield=0;ifield<col.size();ifield++)
+  {
+    if (!col.at(ifield).compare(nome))
+    {
+      std::vector<std::string> row=doc.GetRow<std::string>(ifield);
+      std::string store_pwd=row.at(17);
+      return (!store_pwd.compare("true"));
+    }
+  }
+  return false;
+}
+

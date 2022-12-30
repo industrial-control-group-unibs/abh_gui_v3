@@ -34,7 +34,8 @@ public:
       Role_coloreBordo,
       Role_coloreSfondo,
       Role_coloreUtente,
-      Role_password
+      Role_password,
+      Role_storePwd
     };
 
 
@@ -55,6 +56,9 @@ public slots:
     void saveColor(QString identifier, QString coloreBordo, QString coloreSfondo, QString coloreUtente);
     void savePassword(QString identifier, QString pwd);
     QString getPassword(QString identifier);
+
+    void saveStorePassword(QString identifier, QString store_pwd);
+    bool getStorePassword(QString identifier);
 
 private: //members
     QVector< Utente > data_;

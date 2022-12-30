@@ -17,9 +17,13 @@ Item {
     property string password: ""
     property bool   conferma: false
 
+    Component.onCompleted:
+    {
+        parametri_generali.login_page=false
+    }
     Component.onDestruction:
     {
-
+        parametri_generali.login_page=true
     }
 
 
@@ -31,6 +35,27 @@ Item {
         anchors.topMargin: parametri_generali.larghezza_barra
         clip: true
 
+
+        Item
+        {
+            anchors
+            {
+                left: parent.left
+                right: parent.right
+                bottom: tastierino.top
+            }
+            height: 200
+            FrecceSxDx
+            {
+                id: freccia
+                onPressSx:
+                {
+                    pageLoader.source=pageLoader.last_source
+                }
+                dx_visible: false
+                z:5
+            }
+        }
 
         Titolo
         {
@@ -126,24 +151,8 @@ Item {
 
     }
 
-    Item
-    {
-        anchors
-        {
-            left: parent.left
-            right: parent.right
-            bottom: tastierino.top
-        }
-        height: 200
-        FrecceSxDx
-        {
-            id: freccia
-            onPressSx:
-            {
-                pageLoader.source=pageLoader.last_source
-            }
-            dx_visible: false
-            z:5
-        }
-    }
+
+
+
+
 }
