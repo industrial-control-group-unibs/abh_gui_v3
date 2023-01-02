@@ -15,10 +15,14 @@ Item {
     implicitWidth: 1080/2
 
 
+    Component.onCompleted:
+    {
+
+    }
+
     Component.onDestruction:
     {
-        pageLoader.last_source="SceltaEsercizi.qml"
-        selected_exercise.workout=""
+        pageLoader.last_source="ListaEserciziWorkout.qml"
     }
 
 
@@ -26,9 +30,9 @@ Item {
 
     FrecceSxDx
     {
-        onPressSx: pageLoader.source= "SceltaGruppo.qml"
-        onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
-        dx_visible: grid.currentIndex>=0
+        onPressSx: pageLoader.source= "PaginaAllenamento.qml"
+        onPressDx: pageLoader.source=  "PaginaIstruzioni.qml"
+        dx_visible: true
         colore: parametri_generali.coloreBordo
     }
 
@@ -54,7 +58,7 @@ Item {
 
             Text {
                 id: nome_titolo
-                text:selected_exercise.name==="unselected"? zona_allenamento.gruppo : selected_exercise.name
+                text:selected_exercise.name==="unselected"? "" : selected_exercise.name
                 anchors
                 {
                     horizontalCenter: parent.horizontalCenter
@@ -167,9 +171,9 @@ Item {
             snapMode: GridView.SnapToRow
             focus: true
 
-            Component.onCompleted: {currentIndex=-1}
+//            Component.onCompleted: {currentIndex=-1}
 
-            model: _myModel //zona_allenamento.lista //Lista_pettorali {}
+            model: _myModel
             delegate:IconaEsercizi{}
 
             onCurrentIndexChanged: {

@@ -13,6 +13,16 @@ Item {
 
     Barra_superiore{}
 
+    Component.onCompleted:
+    {
+        selected_exercise.workout=_utenti.getWorkout(impostazioni_utente.identifier)
+        if (selected_exercise.workout!=="")
+        {
+            _workout.loadWorkout(impostazioni_utente.identifier,selected_exercise.workout)
+            pageLoader.source="PaginaConfermaWorkout.qml"
+        }
+    }
+
     Component.onDestruction:
     {
         pageLoader.last_source="SceltaWorkout.qml"
@@ -44,7 +54,6 @@ Item {
 
         ListView {
             snapMode: ListView.SnapOneItem
-//            highlightRangeMode: ListView.StrictlyEnforceRange
             id: lista_workout
             anchors {
                 top: parent.top

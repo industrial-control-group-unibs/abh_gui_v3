@@ -52,6 +52,8 @@ def exercise_thread():
     exercise_client=-1
     startstop_client=-1
     user_client=-1
+    power_client=-1
+    type_client=-1
     exercise_name_eval=-1
     motor_target=-1
     repetition_udp=-1
@@ -71,7 +73,9 @@ def exercise_thread():
             power_client = UdpBinaryReceiverThread("power_client_d",abh.ABH_CONTROL,abh.POWER_NAME_DM_PORT)
             power_client.bufferLength(1)
             power_client.start()
-
+            type_client = UdpBinaryReceiverThread("type_client_d",abh.ABH_CONTROL,abh.TYPE_PORT)
+            type_client.bufferLength(1)
+            type_client.start()
             vosk_client = UdpBinaryReceiverThread("vosk_client_d",abh.ABH_CONTROL,abh.COMANDI_VOCALI_PORT)
             vosk_client.bufferLength(1)
             vosk_client.start()
@@ -134,6 +138,7 @@ def exercise_thread():
     motor_speed_threshold=1.0
     motor_speed_threshold_return=-1.0
     torque_change_time=0.5
+    exercise_type=1
 
     motor_speed_early_stop=0.1
     percentage_early_stop=90
@@ -146,7 +151,8 @@ def exercise_thread():
     direction=0.0
 
     motor_speed=0.0
-    max_abs_motor_speed=0.0
+    max_pos_motor_speed=0.0
+    max_neg_motor_speed=0.0
 
     resend=False
 
@@ -159,6 +165,9 @@ def exercise_thread():
 
         if (vosk_client.isNewDataAvailable()):
             vosk_command=vosk_client.getLastDataAndClearQueue()[0]
+
+        if (type_client.isNewDataAvailable()):
+            exercise_type=type_client.getLastDataAndClearQueue()[0]
 
         if (power_client.isNewDataAvailable()):
             power_array=power_client.getLastDataAndClearQueue()
@@ -235,7 +244,8 @@ def exercise_thread():
             motor_fb=motor_fb_udp.getLastDataAndClearQueue()
             if len(motor_fb)==2:
                 motor_speed=motor_fb[1]
-            max_abs_motor_speed=max(abs(motor_speed),max_abs_motor_speed)
+            max_pos_motor_speed=max(motor_speed,max_pos_motor_speed)
+            max_neg_motor_speed=min(motor_speed,max_neg_motor_speed)
         if (repetition_udp.isNewDataAvailable()):
             repetition_state=repetition_udp.getData()
             if len(repetition_state)==3:
@@ -244,9 +254,12 @@ def exercise_thread():
                 direction=float(repetition_state[1])
                 percentage=float(repetition_state[2])
 
-                if ((last_rep_count_from_vision!=rep_count_from_vision) and (max_abs_motor_speed>10)):
+                if (exercise_type>1):
+                    repetition_count=rep_count_from_vision
+                elif ((last_rep_count_from_vision!=rep_count_from_vision) and (max_pos_motor_speed>10) and (max_neg_motor_speed<-10)):
                     repetition_count=repetition_count+1
-                    max_abs_motor_speed=0.0
+                    max_pos_motor_speed=0.0
+                    max_neg_motor_speed=0.0
                 last_rep_count_from_vision=rep_count_from_vision
 
         if ( (state == Status.FORWARD) and

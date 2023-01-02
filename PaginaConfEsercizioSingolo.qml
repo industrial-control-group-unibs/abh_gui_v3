@@ -181,7 +181,7 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: "N° RIPETIZIONI"
+                    text: selected_exercise.type===3? "DURATA [SECONDI]" : "N° RIPETIZIONI"
                     font.pixelSize: 20
                     color: parametri_generali.coloreBordo
                 }

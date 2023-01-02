@@ -46,14 +46,20 @@ public:
   int     actSession () const {return act_session_  ;}
   double  score      () const {return score_        ;}
 
-  void setScore(double score);
-  void setSession(int session);
 
   void readFile(std::string file_name);
   public slots:
-    void createWorkout(QString user_id, QString workout_name, int number_of_session);
+    QString createWorkout(QString user_id, QString workout_name, int number_of_session);
+    void loadWorkout(QString user_id, QString workout_name);
 
     void next();
+
+    void updateStatFile(QString id, QString workout_name, int time, int tut);
+    void readStatFile(QString id);
+
+    QStringList listSessionExercise();
+    void setScore(double score);
+    void setSession(int session);
 
 signals:
   void completedChanged();
@@ -72,26 +78,30 @@ signals:
   void actSessionChanged();
 protected:
 
-  bool            completed_    ;
-  bool            end_session_  ;
-  QString         code_         ;
-  QString         image_        ;
-  int             session_      ;
-  int             act_session_  ;
-  int             power_        ;
-  int             reps_         ;
-  int             rest_         ;
-  int             rest_set_         ;
-  int             sets_         ;
-  double          score_        ;
-  QString         dir_path_     ;
-  QString         workoutName_;
-  int             idx_;
-  std::string     file_name_;
+  bool            completed_     ;
+  bool            end_session_   ;
+  QString         code_          ;
+  QString         image_         ;
+  int             session_       ;
+  int             act_session_   ;
+  int             power_         ;
+  int             reps_          ;
+  int             rest_          ;
+  int             rest_set_      ;
+  int             sets_          ;
+  double          score_         ;
+  QString         dir_path_      ;
+  QString         workoutName_   ;
+  int             idx_           ;
+  std::string     file_name_     ;
+  std::string     stat_file_name_;
 
   std::unique_ptr<rapidcsv::Document> doc_;
+  std::unique_ptr<rapidcsv::Document> stat_doc_;
 
   void updateField();
+
+
 };
 
 }

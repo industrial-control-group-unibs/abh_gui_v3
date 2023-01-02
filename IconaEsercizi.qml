@@ -19,10 +19,8 @@ Rectangle   {
         propagateComposedEvents: true
         onPressed: {
             mouse.accepted = false
-            selected_exercise.workout=""
             selected_exercise.code= ex_name
             selected_exercise.sets=1
-//            selected_exercise.reps=5000
             grid.currentIndex=index
         }
     }

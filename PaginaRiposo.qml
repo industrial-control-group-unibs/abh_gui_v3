@@ -115,6 +115,8 @@ Item {
                             {
                                 console.log("vai al riepilogo");
                                 pageLoader.source="PaginaRiepilogoWorkout.qml"
+
+                                _workout.updateStatFile(impostazioni_utente.identifier,_utenti.getWorkout(impostazioni_utente.identifier),timer_tempo.value,timer_tut.value);
                             }
                             else
                             {

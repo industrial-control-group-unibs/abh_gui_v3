@@ -118,6 +118,7 @@ ApplicationWindow {
         property real max_neg_speed: -10
         property real score: 0
         property string workout: ""
+        property int type: 1
 
         property string difficulty: "Facile"  // TO BE REMOVED
 
@@ -128,9 +129,10 @@ ApplicationWindow {
             video_preparati= _esercizi.getVideoPrep(code)
             video_workout= _esercizi.getVideoWorkout(code)
             immagine= _esercizi.getImage(code)
+            type=_esercizi.getType(code)
+            console.log(name," has type ",type)
             if (workout==="")
             {
-                reps=_esercizi.getRepetition(code)
                 max_pos_speed=_esercizi.getMaxPosVel(code)
                 max_neg_speed=_esercizi.getMaxNegVel(code)
             }
@@ -160,6 +162,15 @@ ApplicationWindow {
         host: "localhost"
         // @disable-check M16
         data: [selected_exercise.power]
+    }
+    BinarySender {
+        id: type_udp
+        // @disable-check M16
+        port: "21007"
+        // @disable-check M16
+        host: "localhost"
+        // @disable-check M16
+        data: [selected_exercise.type]
     }
 
     StringSender {

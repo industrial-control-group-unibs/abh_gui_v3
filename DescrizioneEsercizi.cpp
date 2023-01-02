@@ -96,10 +96,12 @@ QString DescrizioneEsercizi::getVideoWorkout(QString nome)
 }
 
 
-int DescrizioneEsercizi::getRepetition(QString nome)
+int DescrizioneEsercizi::getType(QString nome)
 {
-  return getValue(nome,"ripetizioni");
+  return getValue(nome,"tipologia");
 }
+
+
 int DescrizioneEsercizi::getMaxPosVel(QString nome)
 {
   return getValue(nome,"max_vel_positiva");

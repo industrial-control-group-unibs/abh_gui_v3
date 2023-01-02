@@ -76,5 +76,7 @@
         <file>PasswordInsert.qml</file>
         <file>PasswordSave.qml</file>
         <file>PaginaPrivacy.qml</file>
+        <file>PaginaConfermaWorkout.qml</file>
+        <file>ListaEserciziWorkout.qml</file>
     </qresource>
 </RCC>

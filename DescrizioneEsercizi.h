@@ -14,6 +14,7 @@ class DescrizioneEsercizi : public QObject
   Q_PROPERTY(QString         name                MEMBER name                 NOTIFY nameChanged               )
   Q_PROPERTY(QString         code                MEMBER code                 WRITE setCode() NOTIFY codeChanged               )
   Q_PROPERTY(QString         image               MEMBER image                NOTIFY imageChanged              )
+  Q_PROPERTY(QString         type                MEMBER type                 NOTIFY typeChanged              )
   Q_PROPERTY(QString         video_intro         MEMBER video_intro          NOTIFY video_introChanged        )
   Q_PROPERTY(QString         video_istruzioni    MEMBER video_istruzioni     NOTIFY video_istruzioniChanged        )
   Q_PROPERTY(QString         video_preparazione  MEMBER video_preparazione   NOTIFY video_preparazioneChanged )
@@ -35,13 +36,15 @@ public slots:
   QString getVideoPrep(QString nome);
   QString getVideoWorkout(QString nome);
 
-  int getRepetition(QString nome);
+
+  int getType(QString nome);
   int getMaxPosVel(QString nome);
   int getMaxNegVel(QString nome);
 
 
 signals:
   void nameChanged()              ;
+  void typeChanged()              ;
   void codeChanged()              ;
   void imageChanged()             ;
   void video_introChanged()       ;
@@ -57,6 +60,7 @@ protected:
   QString         video_preparazione ;
   QString         video_istruzioni   ;
   QString         video_workout      ;
+  QString         type               ;
 
   QString dir_path_;
   std::unique_ptr<rapidcsv::Document> doc_;

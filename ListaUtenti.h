@@ -4,7 +4,7 @@
 
 #include <QAbstractListModel>
 #include <QColor>
-
+#include <memory>
 struct Utente {
     Utente() {}
     Utente( const std::vector<QString>& fields)
@@ -35,7 +35,8 @@ public:
       Role_coloreSfondo,
       Role_coloreUtente,
       Role_password,
-      Role_storePwd
+      Role_storePwd,
+      Role_Workout
     };
 
 
@@ -60,6 +61,11 @@ public slots:
     void saveStorePassword(QString identifier, QString store_pwd);
     bool getStorePassword(QString identifier);
 
+
+    void saveWorkout(QString identifier, QString workout);
+    QString getWorkout(QString identifier);
+
+    void createStatFile(QString user_id);
 private: //members
     QVector< Utente > data_;
     std::string dir_path_;

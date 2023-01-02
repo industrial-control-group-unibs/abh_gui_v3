@@ -4,6 +4,10 @@ Item
 {
     Component.onCompleted: {
         power_settings.value= selected_exercise.power
+        if (selected_exercise.type===3)
+        {
+            icona_rep.ripetizioni=selected_exercise.reps
+        }
     }
 
     anchors
@@ -24,6 +28,24 @@ Item
         repeat: false
         running: parent.visible
         onTriggered: timeout()
+    }
+
+
+    Timer
+    {
+        property int value: 0
+        interval: 500
+        id: timer_esercizio
+        repeat: true
+        running: selected_exercise.type===3
+        onTriggered:
+        {
+            value+=interval
+            if (selected_exercise.type===3)
+            {
+                icona_rep.ripetizioni=selected_exercise.reps-value*0.001
+            }
+        }
     }
 
 
@@ -60,6 +82,8 @@ Item
 
     IconaRipetizioni
     {
+        id: icona_rep
+
         width: power_settings.width
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenterOffset: parent.height*0.25
@@ -69,12 +93,22 @@ Item
 
         onRipetizioniChanged: {
             conto_alla_rovescia.restart()
-            if (selected_exercise.workout!=="")
+            if (selected_exercise.type<3)
             {
-                selected_exercise.score+=selected_exercise.power*(1.0/_workout.power*selected_exercise.reps)
+                if (selected_exercise.workout!=="")
+                {
+                    selected_exercise.score+=selected_exercise.power*(1.0/_workout.power*selected_exercise.reps)
+                }
+                if (ripetizioni>selected_exercise.reps)
+                    pageLoader.source = "PaginaRiposo.qml"
             }
-            if (ripetizioni>selected_exercise.reps)
-                pageLoader.source = "PaginaRiposo.qml"
+            else
+            {
+                if (ripetizioni<=0)
+                {
+                    pageLoader.source = "PaginaRiposo.qml"
+                }
+            }
         }
         visible: parent.is_visible
         Testo

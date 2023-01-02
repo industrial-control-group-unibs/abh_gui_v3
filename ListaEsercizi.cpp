@@ -31,14 +31,11 @@ QVariant ListaEsercizi::data(const QModelIndex &index, int role) const
   if ( !index.isValid() )
     return QVariant();
 
-  const Data &data = data_.at(index.row());
+  const EsData &data = data_.at(index.row());
+  qDebug() << "name = " << data.ex_name_;
   if ( role == NameRole ){
     return data.ex_name_;
   }
-//  else if ( role == CodeRole )
-//    return data.ex_code_;
-//  else if ( role == ImageRole )
-//    return data.image_name_;
   else if ( role == PathRole )
     return path_;
   else
@@ -50,8 +47,6 @@ QHash<int, QByteArray> ListaEsercizi::roleNames() const
 {
   static QHash<int, QByteArray> mapping {
     {NameRole, "ex_name"},
-//    {CodeRole, "ex_code"},
-//    {ImageRole, "image_name"},
     {PathRole, "path"}
   };
   return mapping;
@@ -73,7 +68,22 @@ void ListaEsercizi::readFile(QString string)
   {
 
     QString ex_name=QString::fromStdString(doc.GetCell<std::string>(0,idx));
-    data_ << Data(ex_name/*,ex_code,image*/);
+    data_ << EsData(ex_name);
   }
   qDebug() <<"load " <<string;
+}
+
+
+void ListaEsercizi::fromList(QStringList list)
+{
+  qDebug() << list;
+  data_.clear();
+  for (int idx=0;idx<list.size();idx++)
+  {
+
+    QString ex_name=list.at(idx);
+    qDebug() << ex_name;
+    data_ << EsData(ex_name);
+  }
+   qDebug() << data_.count();;
 }

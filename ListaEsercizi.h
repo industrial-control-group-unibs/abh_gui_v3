@@ -5,14 +5,16 @@
 #include <QAbstractListModel>
 #include <QColor>
 
-struct Data {
-    Data() {}
-    Data( const QString& ex_name/*, const QString& ex_code, const QString& image_name*/)
-        : ex_name_(ex_name)/*, ex_code_(ex_code), image_name_(image_name)*/ {}
+struct EsData {
+    EsData() {}
+    EsData( const QString& ex_name)
+        : ex_name_(ex_name) {}
     QString ex_name_;
-    QString ex_code_;
-    QString image_name_;
 };
+
+
+
+
 
 class ListaEsercizi : public QAbstractListModel
 {
@@ -21,8 +23,6 @@ class ListaEsercizi : public QAbstractListModel
 public:
     enum Roles {
         NameRole = Qt::UserRole,
-//        CodeRole,
-//        ImageRole,
         PathRole
     };
 
@@ -36,9 +36,10 @@ public:
 public slots:
     void readFile(QString string);
 
+    void fromList(QStringList list);
 
 private: //members
-    QVector< Data > data_;
+    QVector< EsData > data_;
     std::string dir_path_;
     QString path_;
 };

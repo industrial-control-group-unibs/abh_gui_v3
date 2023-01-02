@@ -68,6 +68,10 @@ QVariant ListaUtenti::data(const QModelIndex &index, int role) const
     return data.fields_[15];
   else if ( role == Role_password )
     return data.fields_[16];
+  else if ( role == Role_storePwd )
+    return data.fields_[17];
+  else if ( role == Role_Workout )
+    return data.fields_[18];
   else
     return QVariant();
 }
@@ -90,12 +94,16 @@ QString ListaUtenti::addUser(std::vector<QString> dati)
   row[15]="#8c177b";
   row[16]="9999";
   row[17]="false";
+  row[18]="";
 
 
   doc.InsertRow(doc.GetRowCount(),row);
   doc.Save(nome_file);
   std::vector<QString> fields(roles_);
   data_ << Utente(fields);
+
+
+  createStatFile(QString().fromStdString( row[12]));
   return QString().fromStdString( row[12]);
 
 }
@@ -177,7 +185,8 @@ QHash<int, QByteArray> ListaUtenti::roleNames() const
     {Role_coloreSfondo   ,"coloreSfondo"},
     {Role_coloreUtente   ,"coloreUtente"},
     {Role_password       ,"password"},
-    {Role_storePwd       ,"store_pwd"}
+    {Role_storePwd       ,"store_pwd"},
+    {Role_Workout       ,"workout"}
   };
   return mapping;
 }
@@ -331,3 +340,58 @@ bool ListaUtenti::getStorePassword(QString identifier)
   return false;
 }
 
+
+
+
+
+void ListaUtenti::saveWorkout(QString identifier, QString workout)
+{
+  std::string nome=identifier.toStdString();
+  std::string nome_file=dir_path_+"/utenti.csv";
+  rapidcsv::Document doc(nome_file);
+
+  std::vector<std::string> col = doc.GetColumn<std::string>("id");
+  for (size_t ifield=0;ifield<col.size();ifield++)
+  {
+    if (!col.at(ifield).compare(nome))
+    {
+      doc.SetCell<std::string>(18,ifield,workout.toStdString());
+      break;
+    }
+  }
+  doc.Save(nome_file);
+
+}
+
+
+
+QString ListaUtenti::getWorkout(QString identifier)
+{
+  std::string nome=identifier.toStdString();
+  std::string nome_file=dir_path_+"/utenti.csv";
+  rapidcsv::Document doc(nome_file);
+
+
+  QVector<QString> dati;
+
+  std::vector<std::string> col = doc.GetColumn<std::string>("id");
+  for (size_t ifield=0;ifield<col.size();ifield++)
+  {
+    if (!col.at(ifield).compare(nome))
+    {
+      std::vector<std::string> row=doc.GetRow<std::string>(ifield);
+      return QString().fromStdString(row.at(18));
+    }
+  }
+  return QString("");
+}
+
+
+void ListaUtenti::createStatFile(QString user_id)
+{
+  std::string stat_file_name_=dir_path_+"/../utenti/stat_"+user_id.toStdString()+".csv";
+  std::unique_ptr<rapidcsv::Document> stat_doc;
+  stat_doc.reset(new rapidcsv::Document(dir_path_+"/../utenti/stat_template.csv"));
+  stat_doc->Save(stat_file_name_);
+
+}

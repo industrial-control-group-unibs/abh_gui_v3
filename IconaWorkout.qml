@@ -9,13 +9,13 @@ Rectangle   {
 
     //id: esercizio
     color: "transparent"
-    width: lista_workout.width-2 //lista_zona.cellWidth-2
+    width: lista_workout.width-2 //lista_workout.cellWidth-2
     //height: 400
 
     implicitWidth: 800
     implicitHeight: 225
     radius: 20
-    border.color:  lista_zona.currentIndex !== index ? parametri_generali.coloreSfondo: parametri_generali.coloreBordo
+    border.color:  lista_workout.currentIndex !== index ? parametri_generali.coloreSfondo: parametri_generali.coloreBordo
     border.width: 5
 
     MouseArea {

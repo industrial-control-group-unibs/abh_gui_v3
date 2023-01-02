@@ -337,17 +337,28 @@ Item {
                 pageLoader.source=pageLoader.last_source
             }
             dx_visible: true
+
+            property string workout_id: ""
             onPressDx:
             {
-                pageLoader.source="PaginaIstruzioni.qml"
-                _workout.createWorkout(impostazioni_utente.identifier,selected_exercise.workout+"_"+component.state,component.giorni*component.settimane)
-                selected_exercise.code=_workout.code
-                selected_exercise.reps=_workout.reps
-                selected_exercise.rest_time=_workout.rest
-                selected_exercise.rest_set_time=_workout.restSet
-                selected_exercise.sets=_workout.sets
-                selected_exercise.current_set=0
-                selected_exercise.power=_workout.power
+                workout_id=_workout.createWorkout(impostazioni_utente.identifier,selected_exercise.workout+"_"+component.state,component.giorni*component.settimane)
+
+                if (workout_id!=="")
+                {
+                    _utenti.saveWorkout(impostazioni_utente.identifier,workout_id)
+                    _workout.updateStatFile(impostazioni_utente.identifier,_utenti.getWorkout(impostazioni_utente.identifier),timer_tempo.value,timer_tut.value);
+                    selected_exercise.code=_workout.code
+                    selected_exercise.reps=_workout.reps
+                    selected_exercise.rest_time=_workout.rest
+                    selected_exercise.rest_set_time=_workout.restSet
+                    selected_exercise.sets=_workout.sets
+                    selected_exercise.current_set=0
+                    selected_exercise.power=_workout.power
+                    _myModel.fromList(_workout.listSessionExercise())
+                    pageLoader.source="ListaEserciziWorkout.qml"
+                }
+                else
+                    pageLoader.source="SceltaWorkout.qml"
 
             }
 
