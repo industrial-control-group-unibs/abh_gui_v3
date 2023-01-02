@@ -205,7 +205,7 @@ def exercise_thread():
 
             if (not isinstance(exercise_name_eval,int)):
                 exercise_name_eval.sendString(esercizio)
-                print("send ", esercizio)
+                print("send to vision the code  =  ", esercizio)
 
         if (user_client.isNewStringAvailable()):
             stringa=user_client.getLastStringAndClearQueue()
@@ -314,7 +314,7 @@ def exercise_thread():
             motor_target.sendData(motor_target_data)
             last_state=state
 
-    print(isinstance(exercise_client,int))
+
     if not isinstance(exercise_client,type):
         exercise_client.stopThread()
         exercise_client.join()
