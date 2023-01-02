@@ -254,7 +254,7 @@ def exercise_thread():
                 direction=float(repetition_state[1])
                 percentage=float(repetition_state[2])
 
-                print("vel =",max_pos_motor_speed,",",max_neg_motor_speed)
+
                 if (exercise_type>1):
                     repetition_count=rep_count_from_vision
                 elif ((last_rep_count_from_vision!=rep_count_from_vision) and (max_pos_motor_speed>10) and (max_neg_motor_speed<-2)):
@@ -314,7 +314,7 @@ def exercise_thread():
             motor_target.sendData(motor_target_data)
             last_state=state
 
-
+    print(isinstance(exercise_client,int))
     if not isinstance(exercise_client,type):
         exercise_client.stopThread()
         exercise_client.join()
