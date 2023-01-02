@@ -254,12 +254,14 @@ def exercise_thread():
                 direction=float(repetition_state[1])
                 percentage=float(repetition_state[2])
 
+                print("vel =",max_pos_motor_speed,",",max_neg_motor_speed)
                 if (exercise_type>1):
                     repetition_count=rep_count_from_vision
-                elif ((last_rep_count_from_vision!=rep_count_from_vision) and (max_pos_motor_speed>10) and (max_neg_motor_speed<-10)):
+                elif ((last_rep_count_from_vision!=rep_count_from_vision) and (max_pos_motor_speed>10) and (max_neg_motor_speed<-2)):
                     repetition_count=repetition_count+1
                     max_pos_motor_speed=0.0
                     max_neg_motor_speed=0.0
+
                 last_rep_count_from_vision=rep_count_from_vision
 
         if ( (state == Status.FORWARD) and
