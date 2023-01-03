@@ -20,27 +20,17 @@ Item {
     property int giorni: 3
     property int settimane: 4
 
-    state: "esordiente"
+    state: "ESORDIENTE"
     states: [
         State {
-            name: "esordiente"
-            PropertyChanges { target: esordiente; z: 3}
-            PropertyChanges { target: intermedio; z: 2}
-            PropertyChanges { target: esperto;    z: 1}
+            name: "ESORDIENTE"
         },
         State {
-            name: "intermedio"
-            PropertyChanges { target: esordiente; z: 2}
-            PropertyChanges { target: intermedio; z: 3}
-            PropertyChanges { target: esperto;    z: 1}
+            name: "INTERMEDIO"
         },
         State {
-            name: "esperto"
-            PropertyChanges { target: esordiente; z: 1}
-            PropertyChanges { target: intermedio; z: 2}
-            PropertyChanges { target: esperto;    z: 3}
+            name: "ESPERTO"
         }
-
     ]
 
     Component.onDestruction:
@@ -90,34 +80,6 @@ Item {
             id: s1
             height: parent.height*0.33
 
-            Rectangle{
-                color: parametri_generali.coloreBordo
-                radius: 20
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: -width*0.8
-                width: parent.width/3.0
-                height: 0.8*width
-                id: esordiente
-
-                border.color: parametri_generali.coloreSfondo
-                MouseArea
-                {
-                    anchors.fill: parent
-                    onClicked: component.state="esordiente"
-                }
-                Testo
-                {
-
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    text: "ESORDIENTE"
-                    font.pixelSize: parent.height*0.2
-                    font.bold: parent.z>2
-                    color: parametri_generali.coloreSfondo
-
-                }
-            }
 
             Rectangle{
                 color: parametri_generali.coloreBordo
@@ -126,23 +88,13 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: parent.width/3.0
                 height: 0.8*width
-                id: intermedio
-                border.color: parametri_generali.coloreSfondo
-                MouseArea
-                {
-                    anchors.fill: parent
-                    onClicked: component.state="intermedio"
-                }
                 Testo
                 {
-
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.horizontalCenter: parent.horizontalCenter
-                    text: "INTERMEDIO"
-                    font.pixelSize: parent.height*0.2
-                    font.bold: parent.z>2
+                    text: component.state
+                    font.pixelSize: 20
                     color: parametri_generali.coloreSfondo
-
                 }
                 Testo
                 {
@@ -156,34 +108,33 @@ Item {
                 }
             }
 
-            Rectangle{
-                color: parametri_generali.coloreBordo
-                radius: 20
-                anchors.verticalCenter: parent.verticalCenter
+
+            IconaMeno
+            {
                 anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: width*0.8
-                width: parent.width/3.0
-                height: 0.8*width
-                id: esperto
-                border.color: parametri_generali.coloreSfondo
-
-                MouseArea
-                {
-                    anchors.fill: parent
-                    onClicked: component.state="esperto"
-                }
-                Testo
-                {
-
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    text: "ESPERTO"
-                    font.pixelSize: parent.height*0.2
-                    font.bold: parent.z>2
-                    color: parametri_generali.coloreSfondo
-
+                anchors.horizontalCenterOffset: -parent.width*0.25
+                anchors.verticalCenter: parent.verticalCenter
+                onPressed: {
+                    if (component.state=="ESPERTO")
+                        component.state="INTERMEDIO"
+                    else if (component.state=="INTERMEDIO")
+                        component.state="ESORDIENTE"
                 }
             }
+
+            IconaPiu
+            {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.horizontalCenterOffset: parent.width*0.25
+                anchors.verticalCenter: parent.verticalCenter
+                onPressed: {
+                    if (component.state=="INTERMEDIO")
+                        component.state="ESPERTO"
+                    else if (component.state=="ESORDIENTE")
+                        component.state="INTERMEDIO"
+                }
+            }
+
 
         }
 
@@ -358,7 +309,10 @@ Item {
                     pageLoader.source="ListaEserciziWorkout.qml"
                 }
                 else
+                {
+                    console.log("qualcosa non va")
                     pageLoader.source="SceltaWorkout.qml"
+                }
 
             }
 

@@ -12,15 +12,15 @@ class StringQuee: public QObject
 
 public:
   StringQuee();
-  QString top       () const {return front_;}
+  QString top       () const {return data.front();}
 public slots:
   void push(QString string);
-  void pop();
+  QString pop();
 
 signals:
   void topChanged();
 protected:
-  std::queue<QString> queue_;
-  QString front_;
+  QStringList data;
+  int max_size=10;
 };
 #endif

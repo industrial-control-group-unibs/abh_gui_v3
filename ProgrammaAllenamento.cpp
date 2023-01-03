@@ -89,6 +89,21 @@ void ProgrammaAllenamento::setSession(int session)
       break;
     }
   }
+
+  while (true)
+  {
+    updateField();
+    if (score_<0)
+      break;
+    idx_++;
+    if (idx_>=(int)doc_->GetRowCount())
+    {
+      qDebug("this section do not exist");
+      idx_=0;
+      updateField();
+      break;
+    }
+  }
 }
 
 
@@ -161,6 +176,13 @@ QString ProgrammaAllenamento::createWorkout(QString user_id, QString workout_nam
   }
 
   file_name_=dir_path_.toStdString()+"/../utenti/"+user_id.toStdString()+"_"+workout_name.toStdString()+".csv";
+
+
+  for  (int idx=0;idx<(int)doc_->GetRowCount();idx++)
+  {
+    doc_->SetCell(7,idx,-1);
+  }
+
   doc_->Save(file_name_);
   readFile(file_name_);
 

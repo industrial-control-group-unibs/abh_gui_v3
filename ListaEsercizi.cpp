@@ -70,7 +70,6 @@ void ListaEsercizi::readFile(QString string)
     QString ex_name=QString::fromStdString(doc.GetCell<std::string>(0,idx));
     data_ << EsData(ex_name);
   }
-  qDebug() <<"load " <<string;
 }
 
 
@@ -85,5 +84,4 @@ void ListaEsercizi::fromList(QStringList list)
     qDebug() << ex_name;
     data_ << EsData(ex_name);
   }
-   qDebug() << data_.count();;
 }

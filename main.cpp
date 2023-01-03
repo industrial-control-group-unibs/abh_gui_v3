@@ -91,6 +91,7 @@ int main(int argc, char *argv[])
   std::shared_ptr<QQmlApplicationEngine> engine=std::make_shared<QQmlApplicationEngine>();
 
 
+  StringQuee page_history;
 
   QQmlContext *context = engine->rootContext();
   context->setContextProperty("_myModel", &model);
@@ -102,6 +103,7 @@ int main(int argc, char *argv[])
   context->setContextProperty("_workout", &workout);
   context->setContextProperty("_wifi", &wifi);
   context->setContextProperty("_queue", &queue);
+  context->setContextProperty("_history", &page_history);
   engine->rootContext()->setContextProperty("PATH", data_path);
 
 

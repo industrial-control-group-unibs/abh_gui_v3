@@ -109,7 +109,8 @@ Item {
                         }
                         else
                         {
-                            selected_exercise.reps
+                            //selected_exercise.reps
+                            _workout.setScore(selected_exercise.score)
                             _workout.next();
                             if (_workout.endSession)
                             {

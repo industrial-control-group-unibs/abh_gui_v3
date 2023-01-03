@@ -215,7 +215,7 @@ ApplicationWindow {
                 counter=0
                 console.log(data)
             }
-            if (data[1]===1 && timer_tut.active)
+            if ((data[1]===1 || data[1]===-1 || selected_exercise.type===3) && timer_tut.active)
             {
                 timer_tut.start()
             }
@@ -260,7 +260,10 @@ ApplicationWindow {
         id: pageLoader
         anchors.fill: parent
         property url last_source
-
+        onSourceChanged:
+        {
+            _history.push(source)
+        }
 
         source:  "PaginaLogo.qml"
 //        source:  "PasswordSave.qml"

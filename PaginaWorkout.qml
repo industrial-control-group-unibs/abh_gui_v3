@@ -146,7 +146,13 @@ Item {
                 freccia.visible=true
                 early_stop.visible=false
             }
-            onExit: pageLoader.source= "PaginaAllenamento.qml"
+            onExit:
+            {
+                if (selected_exercise.workout==="")
+                    pageLoader.source = "SceltaGruppo.qml"
+                else
+                    pageLoader.source = "ListaEserciziWorkout.qml"
+            }
         }
 
         WorkoutSkip
