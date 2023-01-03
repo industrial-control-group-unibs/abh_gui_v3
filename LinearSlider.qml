@@ -74,5 +74,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         text: (component.value)
         color: parametri_generali.coloreUtente
+
+        font.pixelSize: component.height
     }
 }

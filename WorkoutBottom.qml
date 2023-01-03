@@ -63,7 +63,6 @@ Item
         }
         Testo
         {
-            font.pixelSize: 50//component.height
             text: "POWER"
             anchors
             {
