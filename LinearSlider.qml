@@ -75,6 +75,6 @@ Item {
         text: (component.value)
         color: parametri_generali.coloreUtente
 
-        font.pixelSize: component.height
+        font.pixelSize: 50// component.height
     }
 }
