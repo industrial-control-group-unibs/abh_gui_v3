@@ -64,7 +64,7 @@ Item {
         anchors.rightMargin: meno.width*0.1
         height: parent.height
 
-        color: "white"
+        //color: "white"
 
 
         RadialGradient {
@@ -77,6 +77,7 @@ Item {
 
         MouseArea
         {
+            anchors.fill: parent
             onReleased: {
                 if (mouse.x>width*0.5)
                 {
@@ -99,6 +100,6 @@ Item {
         text: (component.value)
         color: parametri_generali.coloreUtente
 
-        font.pixelSize: 100// component.height
+        font.pixelSize: 70// component.height
     }
 }
