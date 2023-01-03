@@ -18,6 +18,21 @@ Item {
     property color inner_color: parametri_generali.coloreSfondo
 
 
+    signal increase
+    signal decrease
+
+    onIncrease: {
+        component.value+=component.increment
+        if (component.value>=component.max)
+            component.value=component.max
+    }
+
+    onDecrease: {
+        component.value-=component.increment
+        if (component.value<=component.min)
+            component.value=component.min
+    }
+
     IconaMeno
     {
         color: parent.color
@@ -26,11 +41,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         id: meno
-        onPressed: {
-            component.value-=component.increment
-            if (component.value<=component.min)
-                component.value=component.min
-        }
+        onPressed: component.decrease()
     }
     IconaPiu
     {
@@ -39,15 +50,11 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         height: parent.height
-        onPressed: {
-            component.value+=component.increment
-            if (component.value>=component.max)
-                component.value=component.max
-        }
+        onPressed: component.increase()
         id: piu
     }
 
-    Item
+    Rectangle
     {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
@@ -57,6 +64,7 @@ Item {
         anchors.rightMargin: meno.width*0.1
         height: parent.height
 
+        color: "white"
 
 
         RadialGradient {
@@ -64,6 +72,22 @@ Item {
             gradient: Gradient {
                 GradientStop { position: 0.0; color: component.color}
                 GradientStop { position: (component.value+component.max*0.1)/(component.max*2.0); color: "transparent" }
+            }
+        }
+
+        MouseArea
+        {
+            onReleased: {
+                if (mouse.x>width*0.5)
+                {
+                    component.increase()
+                    console.log("più")
+                }
+                else
+                {
+                    component.decrease()
+                    console.log("meno")
+                }
             }
         }
     }
@@ -75,6 +99,6 @@ Item {
         text: (component.value)
         color: parametri_generali.coloreUtente
 
-        font.pixelSize: 150// component.height
+        font.pixelSize: 100// component.height
     }
 }
