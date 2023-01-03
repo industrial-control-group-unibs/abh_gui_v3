@@ -156,14 +156,13 @@ Item {
             height: parent.height*0.2
 
 
-            FrecciaButton
+            IconaPlus
             {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: parent.height*0.1
                 width: 100
-                dx: true
-                onPress:
+                onPressed:
                 {
                         pageLoader.source = "PaginaLogin.qml"
 

@@ -276,12 +276,12 @@ Item {
                 topMargin: 10
             }
 
-            FrecciaButton
+            IconaPlus
             {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
                 width: 100
-                onPress:
+                onPressed:
                 {
                     selected_exercise.current_set=0
                     pageLoader.source = "PaginaPreparati.qml"

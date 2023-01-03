@@ -101,13 +101,13 @@ Item {
             }
         }
 
-        FrecciaButton
+        IconaPlus
         {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: parent.height*0.1
             width: 100
-            onPress:
+            onPressed:
             {
                 selected_exercise.current_set=0
 

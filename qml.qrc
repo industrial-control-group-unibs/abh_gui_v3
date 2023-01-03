@@ -71,12 +71,12 @@
         <file>PaginaColore.qml</file>
         <file>PaginaAggiornaSoftware.qml</file>
         <file>PaginaRiepilogoSetWorkout.qml</file>
-        <file>FrecciaButton.qml</file>
         <file>Tastierino.qml</file>
         <file>PasswordInsert.qml</file>
         <file>PasswordSave.qml</file>
         <file>PaginaPrivacy.qml</file>
         <file>PaginaConfermaWorkout.qml</file>
         <file>ListaEserciziWorkout.qml</file>
+        <file>IconaPlus.qml</file>
     </qresource>
 </RCC>
