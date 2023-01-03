@@ -54,7 +54,7 @@ Item {
         id: piu
     }
 
-    Rectangle
+    Item
     {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
