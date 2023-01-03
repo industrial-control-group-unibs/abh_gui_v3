@@ -21,6 +21,7 @@ Item
     property bool is_visible: true
 
     signal timeout
+    id: component
 
     Timer{
         id: conto_alla_rovescia
@@ -62,7 +63,7 @@ Item
         }
         Testo
         {
-            font.pixelSize: parent.height
+            font.pixelSize: component.height
             text: "POWER"
             anchors
             {
