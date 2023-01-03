@@ -15,7 +15,6 @@ Item {
 
     Component.onDestruction:
     {
-        pageLoader.last_source="SceltaGruppo.qml"
     }
 
     FrecceSxDx

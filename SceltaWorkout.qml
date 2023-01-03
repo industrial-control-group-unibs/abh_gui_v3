@@ -25,7 +25,6 @@ Item {
 
     Component.onDestruction:
     {
-        pageLoader.last_source="SceltaWorkout.qml"
     }
 
     FrecceSxDx

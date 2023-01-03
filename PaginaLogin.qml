@@ -25,7 +25,6 @@ Rectangle {
     {
         timer_tempo.resetValue()
         timer_tut.resetValue()
-        pageLoader.last_source="PaginaLogin.qml"
     }
     Barra_superiore{}
 

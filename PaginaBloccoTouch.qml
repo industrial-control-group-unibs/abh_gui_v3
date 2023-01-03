@@ -50,7 +50,8 @@ Item {
             }
             else
             {
-                pageLoader.source=pageLoader.last_source
+                _history.pop()
+                pageLoader.source=_history.pop()
             }
         }
     }

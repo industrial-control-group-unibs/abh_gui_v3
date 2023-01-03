@@ -17,7 +17,6 @@ Item {
 
     Component.onDestruction:
     {
-        pageLoader.last_source="SceltaEsercizi.qml"
         selected_exercise.workout=""
     }
 

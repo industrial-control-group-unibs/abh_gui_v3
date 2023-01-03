@@ -35,7 +35,6 @@ Item {
 
     Component.onDestruction:
     {
-        pageLoader.last_source="PaginaConfWorkout.qml"
     }
 
     Barra_superiore{
@@ -285,7 +284,8 @@ Item {
             id: freccia
             onPressSx:
             {
-                pageLoader.source=pageLoader.last_source
+                _history.pop()
+                pageLoader.source=_history.pop()
             }
             dx_visible: true
 

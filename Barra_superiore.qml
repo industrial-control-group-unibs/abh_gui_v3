@@ -152,8 +152,6 @@ Item
                 anchors.fill: parent
                 onClicked:
                 {
-                    pageLoader.last_source=pageLoader.source
-
                     if (parametri_generali.login_page)
                     {
                         pageLoader.source=  "PaginaImpostazioni.qml"

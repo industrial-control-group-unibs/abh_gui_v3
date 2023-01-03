@@ -5,9 +5,6 @@ import QtQuick.Layouts 1.1
 
 Item {
 
-//    property string link_sx: "PaginaMondi.qml"
-//    property string link_dx: "PaginaMondi.qml"
-
     signal pressSx
     signal pressDx
     property bool dx_visible: true
@@ -28,6 +25,7 @@ Item {
 
     IconaPlus
     {
+        visible: component.sx_visible
         anchors
         {
             verticalCenter: parent.verticalCenter
@@ -40,6 +38,7 @@ Item {
 
     IconaPlus
     {
+        visible: component.dx_visible
         anchors
         {
             verticalCenter: parent.verticalCenter

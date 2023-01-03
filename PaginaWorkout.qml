@@ -23,14 +23,45 @@ Item {
     }
     Component.onDestruction:
     {
-//        selected_exercise.name="unselected"
-//        selected_exercise.code="unselected"
         timer_tut.active=false
         startstop_udp.string="stop"
         parametri_generali.login_page=true
-
-        pageLoader.last_source="PaginaWorkout.qml"
     }
+    id: component
+    state: "sotto"
+
+    states: [
+        State {
+            name: "sotto"
+            PropertyChanges { target: sotto;      visible: true}
+            PropertyChanges { target: early_stop; visible: false}
+            PropertyChanges { target: skip;       visible: false}
+            PropertyChanges { target: sotto;      z: 5}
+            PropertyChanges { target: early_stop; z: 1}
+            PropertyChanges { target: skip;       z: 1}
+
+        },
+        State {
+            name: "early_stop"
+            PropertyChanges { target: sotto;      visible: false}
+            PropertyChanges { target: early_stop; visible: true}
+            PropertyChanges { target: skip;       visible: false}
+            PropertyChanges { target: sotto;      z: 1}
+            PropertyChanges { target: early_stop; z: 5}
+            PropertyChanges { target: skip;       z: 1}
+        },
+        State {
+            name: "skip"
+            PropertyChanges { target: sotto;      visible: false}
+            PropertyChanges { target: early_stop; visible: false}
+            PropertyChanges { target: skip;       visible: true}
+            PropertyChanges { target: sotto;      z: 1}
+            PropertyChanges { target: early_stop; z: 1}
+            PropertyChanges { target: skip;       z: 5}
+        }
+    ]
+
+    onStateChanged: console.log("ehi!!!", state)
 
     Item {
         id: ricevi_comando_vocale
@@ -77,20 +108,29 @@ Item {
         FrecceSxDx
         {
             id: freccia
+            visible: component.state==="sotto"
             onPressSx:
             {
-                sx_visible= false
-                sotto.visible=false
-                freccia.visible=false
-                early_stop.visible=true
+//                sx_visible= false
+//                dx_visible= false
+//                sotto.visible=false
+//                freccia.visible=false
+//                early_stop.visible=true
+                component.state="early_stop"
+
+                console.log("qua!!!", component.state)
             }
             dx_visible: true
             onPressDx:
             {
-                sx_visible= false
-                sotto.visible=false
-                freccia.visible=false
-                skip.visible=true
+                component.state="skip"
+//                sx_visible= false
+//                dx_visible= false
+//                sotto.visible=false
+//                freccia.visible=false
+//                skip.visible=true
+
+                console.log("qua!!!", component.state)
             }
             z:5
         }
@@ -129,10 +169,11 @@ Item {
 
             onTimeout:
             {
-                freccia.sx_visible= false
-                sotto.visible=false
-                freccia.visible=false
-                early_stop.visible=true
+//                freccia.sx_visible= false
+//                sotto.visible=false
+//                freccia.visible=false
+//                early_stop.visible=true
+                component.state="early_stop"
             }
         }
 
@@ -141,10 +182,8 @@ Item {
             id: early_stop
             visible: false
             onCancel: {
-                freccia.sx_visible=true
-                sotto.visible=true
-                freccia.visible=true
-                early_stop.visible=false
+
+                component.state="sotto"
             }
             onExit:
             {
@@ -160,10 +199,11 @@ Item {
             id: skip
             visible: false
             onCancel: {
-                freccia.sx_visible=true
-                sotto.visible=true
-                freccia.visible=true
-                skip.visible=false
+//                freccia.sx_visible=true
+//                sotto.visible=true
+//                freccia.visible=true
+//                skip.visible=false
+                component.state="sotto"
             }
             onExit: pageLoader.source=  "PaginaRiposo.qml"
         }

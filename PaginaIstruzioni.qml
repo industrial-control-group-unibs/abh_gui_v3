@@ -11,7 +11,6 @@ import QtMultimedia 5.0
 
 PaginaVideoSingolo
 {
-    link_sx: pageLoader.last_source
     link_dx: "PaginaPreparati.qml"
     video_folder: "video_istruzioni"
     video_name: selected_exercise.video_istruzioni
@@ -20,12 +19,10 @@ PaginaVideoSingolo
 
     Component.onCompleted:
     {
-        console.log("video_name",video_name)
         startstop_udp.string="rewire"
     }
     Component.onDestruction:
     {
-        pageLoader.last_source="PaginaIstruzioni.qml"
         startstop_udp.string="stop_rewire"
     }
 }

@@ -28,11 +28,6 @@ Item {
     }
 
     Barra_superiore{}
-//        FrecceSxDx
-//        {
-//            link_sx: "PaginaAllenamento.qml"
-//            dx_visible: false;
-//        }
 
     Rectangle{
         anchors.fill: parent

@@ -31,3 +31,10 @@ QString StringQuee::pop()
   return str;
 
 }
+
+QString StringQuee::front() const
+{
+  QString str= data.front();
+  qDebug() << " this is front " << str;
+  return str;
+}

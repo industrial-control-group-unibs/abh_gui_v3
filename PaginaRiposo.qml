@@ -40,12 +40,6 @@ Item {
             }
         }
     }
-//    FrecceSxDx
-//    {
-//        link_sx: pageLoader.last_source
-//        link_dx: "PaginaWorkout.qml"
-//    }
-
 
     Item
     {

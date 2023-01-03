@@ -58,6 +58,19 @@ Rectangle
         }
     }
 
+    onVisibleChanged:
+    {
+        if (!visible)
+        {
+            repeater_timer.running=false
+            repeater_timer.repeat=false
+        }
+        else
+        {
+            repeater_timer.repeat=true
+        }
+    }
+
     MouseArea
     {
         anchors.fill: parent
@@ -66,10 +79,18 @@ Rectangle
         {
             component.pressed()
         }
-        onPressAndHold: repeater_timer.running=true
+        onPressAndHold:
+        {
+            if (parent.visible)
+            {
+                repeater_timer.repeat=true
+                repeater_timer.running=true
+            }
+        }
         onReleased:
         {
             repeater_timer.running=false
+            repeater_timer.repeat=false
         }
     }
 }

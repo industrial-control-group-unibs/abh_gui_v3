@@ -16,12 +16,17 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
-    property string link_sx: pageLoader.last_source
     property string link_dx: "PaginaPreparati.qml"
     property string video_folder: "video_istruzioni"
     property string video_name: selected_exercise.video_preparati
     property string titolo: selected_exercise.name
     property bool timer: true
+
+
+    Component.onCompleted:
+    {
+
+    }
 
     Barra_superiore{
         id: barra
@@ -57,7 +62,11 @@ Item {
         height: parent.height*0.3
         FrecceSxDx
         {
-            onPressSx: pageLoader.source= link_sx
+            onPressSx:
+            {
+                _history.pop()
+                pageLoader.source= _history.front()
+            }
             onPressDx: pageLoader.source= link_dx
         }
 
@@ -87,7 +96,6 @@ Item {
         Rectangle   {
             color: "black"
             anchors.horizontalCenter: parent.horizontalCenter
-//            anchors.verticalCenter: parent.verticalCenter
             anchors.top: parent.top
             anchors.topMargin: 30
             width: 786/1396.61*height
@@ -113,11 +121,6 @@ Item {
                         mp_esercizio_preparati.play()
                     }
                 }
-
-                //                onPressPlay:
-                //                {
-                //                    mp_esercizio_preparati.play()
-                //                }
             }
 
             Rectangle
@@ -148,7 +151,6 @@ Item {
                 autoPlay: true
                 autoLoad: true
 
-//                loops: MediaPlayer.Infinite
                 source: "file://"+PATH+"/"+ video_folder +"/"+video_name
                 onStopped: play() //"play"
 
@@ -163,25 +165,6 @@ Item {
                 visible: false
             }
 
-//            PlayPauseButton
-//            {
-//                id: tasto_video
-//                width: 100
-//                anchors
-//                {
-//                    horizontalCenter: parent.horizontalCenter
-//                    top: video_preparatorio.bottom
-//                    topMargin: 5
-//                }
-//                z:2
-//                state: "pause"
-
-//                onPressPause: mp_esercizio_preparati.pause()
-//                onPressPlay:
-//                {
-//                    mp_esercizio_preparati.play()
-//                }
-//            }
 
 
 

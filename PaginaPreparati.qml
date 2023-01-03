@@ -13,11 +13,12 @@ import QtMultimedia 5.0
 
 PaginaVideoSingolo
 {
-    link_sx: pageLoader.last_source
     link_dx: "PaginaWorkout.qml"
     video_folder: "video_preparazione_esercizi"
     video_name: selected_exercise.video_preparati
     titolo: selected_exercise.name
+
+
 
     Item {
         id: ricevi_comando_vocale
@@ -33,7 +34,8 @@ PaginaVideoSingolo
 
     Component.onDestruction:
     {
-        pageLoader.last_source="PaginaPreparati.qml"
+        //_history.pop()
+        //link_sx=_history.pop()
 
         if (selected_exercise.workout==="" || _workout.completed)
         {

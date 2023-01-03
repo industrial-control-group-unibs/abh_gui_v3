@@ -17,11 +17,9 @@ Item {
 
     id: component
     property int difficolta: 1
-//    property string nome_livello: livello.state
 
     Component.onDestruction:
     {
-        pageLoader.last_source="PaginaConfEsercizioSingolo.qml"
         selected_exercise.power=difficolta
         selected_exercise.difficulty=nome_livello
     }
@@ -95,7 +93,6 @@ Item {
             height: parent.height/3.0
 
             Rectangle{
-//                id: medio
                 color: parametri_generali.coloreBordo
                 radius: 20
                 anchors.verticalCenter: parent.verticalCenter
@@ -128,7 +125,7 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenterOffset: -parent.width*0.25
                 anchors.verticalCenter: parent.verticalCenter
-//                height: parent.height/3.0
+
                 onPressed: {
                     if (selected_exercise.sets>1)
                         selected_exercise.sets--
@@ -141,7 +138,6 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenterOffset: parent.width*0.25
                 anchors.verticalCenter: parent.verticalCenter
-//                height: parent.height/3.0
                 onPressed: selected_exercise.sets++
             }
 
@@ -160,7 +156,6 @@ Item {
             height: parent.height/3.0
 
             Rectangle{
-//                id: medio
                 color: parametri_generali.coloreBordo
                 radius: 20
                 anchors.verticalCenter: parent.verticalCenter
@@ -193,7 +188,6 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenterOffset: -parent.width*0.25
                 anchors.verticalCenter: parent.verticalCenter
-//                height: parent.height/3.0
                 onPressed: {
                     if (selected_exercise.reps>1)
                         selected_exercise.reps--
@@ -205,7 +199,6 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenterOffset: parent.width*0.25
                 anchors.verticalCenter: parent.verticalCenter
-//                height: parent.height/3.0
                 onPressed: selected_exercise.reps++
             }
         }
@@ -222,7 +215,6 @@ Item {
             height: parent.height/3.0
 
             Rectangle{
-//                id: medio
                 color: parametri_generali.coloreBordo
                 radius: 20
                 anchors.verticalCenter: parent.verticalCenter
@@ -254,7 +246,6 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenterOffset: -parent.width*0.25
                 anchors.verticalCenter: parent.verticalCenter
-//                height: parent.height/3.0
                 onPressed: {
                     if (selected_exercise.power>1)
                         selected_exercise.power--
@@ -266,7 +257,6 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenterOffset: parent.width*0.25
                 anchors.verticalCenter: parent.verticalCenter
-//                height: parent.height/3.0
                 onPressed:
                 {
                     if (selected_exercise.power<20)

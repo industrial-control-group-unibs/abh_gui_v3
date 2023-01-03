@@ -259,14 +259,14 @@ ApplicationWindow {
     Loader {
         id: pageLoader
         anchors.fill: parent
-        property url last_source
+
         onSourceChanged:
         {
             _history.push(source)
         }
 
         source:  "PaginaLogo.qml"
-//        source:  "PasswordSave.qml"
+//        source:  "PaginaWorkout.qml"
 
     }
 

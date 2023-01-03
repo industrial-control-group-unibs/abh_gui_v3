@@ -6,19 +6,19 @@
 class StringQuee: public QObject
 {
   Q_OBJECT
-  Q_PROPERTY(QString         top           READ    top                             NOTIFY topChanged)
+  //Q_PROPERTY(QString         top           READ    front                             NOTIFY topChanged)
 
 
 
 public:
   StringQuee();
-  QString top       () const {return data.front();}
 public slots:
+  QString front       () const ;
   void push(QString string);
   QString pop();
 
-signals:
-  void topChanged();
+//signals:
+//  void topChanged();
 protected:
   QStringList data;
   int max_size=10;

@@ -9,7 +9,7 @@ Item {
     id: component
     anchors.fill: parent
 
-    Component.onDestruction: pageLoader.last_source="PaginaImpostazioni.qml"
+    //Component.onDestruction: pageLoader.last_source="PaginaImpostazioni.qml"
 
     property string titolo: "IMPOSTAZIONI"
 
@@ -70,14 +70,8 @@ Item {
             property url this_source:"PaginaImpostazioni.qml"
             onPressSx:
             {
-                if (pageLoader.last_source===freccia.this_source)
-                {
-                    pageLoader.source="PaginaAllenamento.qml"
-                }
-                else
-                {
-                    pageLoader.source=pageLoader.last_source
-                }
+                _history.pop()
+                pageLoader.source=_history.pop()
             }
             dx_visible: false
             z:5

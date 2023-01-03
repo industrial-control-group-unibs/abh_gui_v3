@@ -22,7 +22,6 @@ Item {
 
     Component.onDestruction:
     {
-        pageLoader.last_source="ListaEserciziWorkout.qml"
         selected_exercise.code=_workout.code
         selected_exercise.reps=_workout.reps
         selected_exercise.rest_time=_workout.rest

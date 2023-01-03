@@ -115,7 +115,8 @@ Item {
             id: freccia
             onPressSx:
             {
-                pageLoader.source=pageLoader.last_source
+                _history.pop()
+                pageLoader.source=_history.pop()
             }
 
             onPressDx:

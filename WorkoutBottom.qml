@@ -49,23 +49,17 @@ Item
     }
 
 
-    CSlider
+    LinearSlider
     {
-        id: power_settings
-        width: parent.height*0.35
+        height: parent.height*0.10
+        width: parent.width*0.3
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: -parent.height*0.25
+        anchors.verticalCenterOffset: parent.height*0.1
         value: selected_exercise.power
-        progressColor: parametri_generali.coloreUtente
-        handleColor: parametri_generali.coloreBordo
-        trackColor: parametri_generali.coloreBordo
         onValueChanged: {
             selected_exercise.power=value
         }
-
-        z:10
-        visible: parent.is_visible
         Testo
         {
             text: "POWER"
@@ -77,8 +71,39 @@ Item
 
             }
         }
-
     }
+
+
+//    CSlider
+//    {
+//        id: power_settings
+//        width: parent.height*0.35
+//        anchors.horizontalCenter: parent.horizontalCenter
+//        anchors.verticalCenter: parent.verticalCenter
+//        anchors.verticalCenterOffset: -parent.height*0.25
+//        value: selected_exercise.power
+//        progressColor: parametri_generali.coloreUtente
+//        handleColor: parametri_generali.coloreBordo
+//        trackColor: parametri_generali.coloreBordo
+//        onValueChanged: {
+//            selected_exercise.power=value
+//        }
+
+//        z:10
+//        visible: parent.is_visible
+//        Testo
+//        {
+//            text: "POWER"
+//            anchors
+//            {
+//                horizontalCenter: parent.horizontalCenter
+//                top: parent.bottom
+//                topMargin: 5
+
+//            }
+//        }
+
+//    }
 
     IconaRipetizioni
     {
@@ -86,7 +111,7 @@ Item
 
         width: power_settings.width
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenterOffset: parent.height*0.25
+        anchors.verticalCenterOffset: -parent.height*0.25
         anchors.verticalCenter: parent.verticalCenter
         colore: parametri_generali.coloreBordo
         ripetizioni: fb_udp.data[0]
@@ -169,6 +194,7 @@ Item
             }
         }
     }
+
 
 }
 
