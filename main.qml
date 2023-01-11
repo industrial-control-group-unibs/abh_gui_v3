@@ -27,6 +27,7 @@ ApplicationWindow {
     Item {
         id: parametri_generali
         property string coloreBordo:  "#c6aa76"
+        property string coloreBordoTrasparent:  "#c6aa7640"
         property string coloreSfondo: "#2A211B"
         property string coloreUtente: "#8c177b"
         property int larghezza_barra: 172
@@ -34,6 +35,13 @@ ApplicationWindow {
         property int logo_time: 2000
         property bool login_page: false
         property string wifi_name
+
+
+
+        onColoreBordoChanged:
+        {
+            coloreBordoTrasparent=Qt.rgba(coloreBordo.r, coloreBordo.g, coloreBordo.b, 0.440)
+        }
 
         state: "SABBIA"
 

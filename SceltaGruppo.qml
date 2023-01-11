@@ -56,7 +56,13 @@ Item {
             model: _zona
             currentIndex:-1
             delegate: IconaZona{
-                highlighted: lista_zona.currentIndex === index
+                highlighted:
+                {
+                    if (lista_zona.currentIndex>=0)
+                        lista_zona.currentIndex !== index
+                    else
+                        false;
+                }
             }
 
 

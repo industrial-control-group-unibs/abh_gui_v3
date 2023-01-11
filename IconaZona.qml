@@ -53,7 +53,7 @@ Rectangle   {
         radius: parent.radius-parent.border.width
         anchors.fill: parent
         z: immagine_zona.z+1
-        color: "#c6aa7640"
+        color: parametri_generali.coloreBordoTrasparent
 
     }
 
