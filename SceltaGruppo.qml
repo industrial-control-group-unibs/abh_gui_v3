@@ -59,7 +59,7 @@ Item {
                 highlighted:
                 {
                     if (lista_zona.currentIndex>=0)
-                        lista_zona.currentIndex !== index
+                        lista_zona.currentIndex === index
                     else
                         false;
                 }
