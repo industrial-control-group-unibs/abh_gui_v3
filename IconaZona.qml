@@ -4,27 +4,35 @@ import QtQuick.Shapes 1.12
 import QtQuick.Layouts 1.1
 
 
+Item {
+    width: lista_zona.width-2 //lista_zona.cellWidth-2
+    implicitWidth: 800
+    implicitHeight: 225
+    property bool highlighted: false //lista_zona.currentIndex === index
+
+    id: component
+
+
 Rectangle   {
 
 
     //id: esercizio
     color: "transparent"
-    width: lista_zona.width-2 //lista_zona.cellWidth-2
+    //width: lista_zona.width-2 //lista_zona.cellWidth-2
     //height: 400
+
+    anchors.fill: parent
+    anchors.margins: 2
+
+
 
     implicitWidth: 800
     implicitHeight: 225
     radius: 20
-    border.color:  lista_zona.currentIndex !== index ? parametri_generali.coloreSfondo: parametri_generali.coloreBordo
-    border.width: 5
+    border.color: parametri_generali.coloreBordo
+    border.width: component.highlighted? 5: 2
 
-//    layer.enabled: true
-//    layer.effect: DropShadow {
-//        verticalOffset: 2
-//        color: "#80000000"
-//        radius: 1
-//        samples: 3
-//    }
+
     MouseArea {
         anchors.fill: parent
         propagateComposedEvents: true
@@ -37,11 +45,27 @@ Rectangle   {
         }
     }
 
+
+
+    Rectangle
+    {
+        visible: component.highlighted
+        radius: parent.radius-parent.border.width
+        anchors.fill: parent
+        z: immagine_zona.z+1
+        color: "#c6aa7640"
+
+    }
+
+
     OpacityMask {
         anchors.fill:zona_mask
         source: immagine_zona
         maskSource: zona_mask
     }
+
+
+
 
     Rectangle
     {
@@ -87,4 +111,5 @@ Rectangle   {
         }
         source: "file://"+PATH+"/zone/"+image_name
     }
+}
 }

@@ -41,7 +41,11 @@ Item
         interval: 1000*60
         repeat: false
         running: true
-        onTriggered: exit()
+        onTriggered:
+        {
+            console.log("early stop time out")
+            exit()
+        }
     }
 
 }

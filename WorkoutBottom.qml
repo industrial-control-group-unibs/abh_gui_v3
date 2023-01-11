@@ -28,7 +28,11 @@ Item
         interval: 1000*60*5
         repeat: false
         running: parent.visible
-        onTriggered: timeout()
+        onTriggered:
+        {
+            console.log("bottom time out")
+            timeout()
+        }
     }
 
 

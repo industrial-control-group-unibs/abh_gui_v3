@@ -15,7 +15,8 @@ ListaEsercizi::ListaEsercizi(QString path, QObject *parent) :
   path_=path;
   dir_path_=path_.toStdString();
 
-  readFile("Gambe");
+//  readFile("Gambe");
+  data_.clear();
 }
 
 int ListaEsercizi::rowCount( const QModelIndex& parent) const

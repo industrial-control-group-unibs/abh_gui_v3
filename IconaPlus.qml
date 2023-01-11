@@ -10,8 +10,8 @@ Rectangle
     height: 100
     width: height
     radius: width*0.5
-    color: parametri_generali.coloreBordo
-    property color inner_color: parametri_generali.coloreSfondo
+
+
     id: component
 
 
@@ -23,7 +23,12 @@ Rectangle
 
     property real sign: reverse? -1.0: 1.0
 
+    property bool black: false
 
+    color: black? parametri_generali.coloreSfondo: parametri_generali.coloreBordo
+    property color inner_color: black? parametri_generali.coloreBordo: parametri_generali.coloreSfondo
+    border.color: parametri_generali.coloreBordo
+    border.width: 5
 
     signal pressed
 

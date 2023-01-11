@@ -42,6 +42,8 @@ Rectangle   {
         radius: parent.radius-parent.border.width
     }
 
+
+
     OpacityMask {
         anchors.fill:esercizio_mask
         source: immagine_esercizio
@@ -57,4 +59,6 @@ Rectangle   {
         anchors.fill: parent
         source: "file://"+PATH+"/immagini_esercizi/"+_esercizi.getImage(ex_name)
     }
+
+
 }

@@ -39,8 +39,11 @@ Item
         id: conto_alla_rovescia
         interval: 1000*60
         repeat: false
-        running: true
-        onTriggered: exit()
+        running: parent.visible
+        onTriggered: {
+         console.log("skip time out")
+            exit()
+        }
     }
 
 
