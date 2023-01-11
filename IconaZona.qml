@@ -30,7 +30,7 @@ Rectangle   {
     implicitHeight: 225
     radius: 20
     border.color: parametri_generali.coloreBordo
-    border.width: component.highlighted? 5: 2
+    border.width: component.highlighted? 8: 2
 
 
     MouseArea {

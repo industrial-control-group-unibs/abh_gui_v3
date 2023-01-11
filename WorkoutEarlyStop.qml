@@ -40,7 +40,7 @@ Item
         id: conto_alla_rovescia
         interval: 1000*60
         repeat: false
-        running: true
+        running: parent.visible
         onTriggered:
         {
             console.log("early stop time out")
