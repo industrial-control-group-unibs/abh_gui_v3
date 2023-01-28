@@ -57,9 +57,12 @@ public:
     void updateStatFile(QString id, QString workout_name, int time, int tut);
     void readStatFile(QString id);
 
-    QStringList listSessionExercise();
+    QVariant listSessionExercise(int session);
     void setScore(double score);
     void setSession(int session);
+
+    int getActiveSession(){return act_session_;}
+    QVariant listSessionsNumber();
 
 signals:
   void completedChanged();

@@ -11,6 +11,9 @@ Item {
     property bool sx_visible: true
 
     property string colore: parametri_generali.coloreBordo
+
+    property bool black: false
+
     id: component
 
     anchors
@@ -32,6 +35,7 @@ Item {
             left: parent.left
             leftMargin: 113/1080*parent.width
         }
+        black: component.black
         reverse: true
         onPressed: component.pressSx()
     }
@@ -45,6 +49,7 @@ Item {
             right: parent.right
             rightMargin: 113/1080*parent.width
         }
+        black: component.black
         onPressed: component.pressDx()
     }
 

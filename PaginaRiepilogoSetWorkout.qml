@@ -146,10 +146,8 @@ Item {
                         }
                         else
                         {
-                            console.log("fine timer");
                             selected_exercise.current_set=0
                             pageLoader.source = "PaginaPreparati.qml"
-                            console.log("fatto");
                         }
                     }
                 }

@@ -83,22 +83,17 @@ Item {
                 }
                 else
                 {
-                    console.log("fine timer");
                     selected_exercise.current_set++
                     if (selected_exercise.current_set<selected_exercise.sets)
                     {
-                        console.log("rinvia nome");
                         exercise_udp.send()
                         pageLoader.source="PaginaWorkout.qml"
                     }
                     else
                     {
                         selected_exercise.current_set=0
-                        console.log("è finito");
                         if (selected_exercise.workout==="")
                         {
-                            console.log("vai al riepilogo");
-
                             pageLoader.source="PaginaRiepilogo.qml"
                         }
                         else
@@ -108,14 +103,12 @@ Item {
                             _workout.next();
                             if (_workout.endSession)
                             {
-                                console.log("vai al riepilogo");
                                 pageLoader.source="PaginaRiepilogoWorkout.qml"
 
                                 _workout.updateStatFile(impostazioni_utente.identifier,_utenti.getWorkout(impostazioni_utente.identifier),timer_tempo.value,timer_tut.value);
                             }
                             else
                             {
-                                console.log("vai al prossimo esercizio");
                                 selected_exercise.code=_workout.code
                                 selected_exercise.reps=_workout.reps
                                 selected_exercise.rest_time=_workout.rest
@@ -126,7 +119,6 @@ Item {
                             }
                         }
                     }
-                    console.log("fatto");
                 }
             }
         }

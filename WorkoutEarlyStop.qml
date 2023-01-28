@@ -43,7 +43,6 @@ Item
         running: parent.visible
         onTriggered:
         {
-            console.log("early stop time out")
             exit()
         }
     }

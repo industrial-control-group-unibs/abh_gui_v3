@@ -207,7 +207,6 @@ Item {
                     if (impostazioni_utente.identifier !=="")
                     {
                         dati=_utenti.getUser(impostazioni_utente.identifier)
-                        console.log("utente: ",dati)
                     }
                     else
                     {
@@ -235,7 +234,6 @@ Item {
                             lista_utente.currentItem.colore=parametri_generali.coloreBordo
                             dati[lista_utente.currentIndex]=lista_utente.currentItem.name
                             lista_utente.currentIndex++;
-                            console.log("dato = ",avanti.dati[lista_utente.currentIndex])
                             tastiera.testo=avanti.dati[lista_utente.currentIndex]
                         }
                         else
@@ -249,7 +247,6 @@ Item {
                         {
                             if (impostazioni_utente.identifier !=="")
                             {
-                                console.log(impostazioni_utente.identifier,avanti.dati)
                                 _utenti.editUser(impostazioni_utente.identifier,avanti.dati)
                             }
                             else

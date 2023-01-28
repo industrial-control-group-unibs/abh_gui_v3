@@ -44,7 +44,6 @@ Item {
 
         ListView {
             snapMode: ListView.SnapOneItem
-//            highlightRangeMode: ListView.StrictlyEnforceRange
             id: lista_zona
             anchors {
                 top: parent.top
@@ -55,15 +54,27 @@ Item {
 
             model: _zona
             currentIndex:-1
-            delegate: IconaZona{
+
+            delegate: IconaImmagine{
+                color: parametri_generali.coloreBordo
                 highlighted:
                 {
                     if (lista_zona.currentIndex>=0)
                         lista_zona.currentIndex === index
                     else
                         false;
+
+                }
+                text: ex_name
+                image: "file://"+PATH+"/zone/"+image_name
+                width: lista_zona.width-2
+                onPressed: {
+                    selected_exercise.name="unselected"
+                    zona_allenamento.gruppo=ex_name
+                    lista_zona.currentIndex=index
                 }
             }
+
 
 
 

@@ -30,7 +30,6 @@ Item
         running: parent.visible
         onTriggered:
         {
-            console.log("bottom time out")
             timeout()
         }
     }
@@ -56,6 +55,7 @@ Item
 
     LinearSlider
     {
+        id: power_settings
         height: parent.height*0.10
         width: parent.width*0.3
         anchors.horizontalCenter: parent.horizontalCenter
@@ -114,7 +114,7 @@ Item
     {
         id: icona_rep
 
-        width: power_settings.width
+        width: parent.height*0.35
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenterOffset: -parent.height*0.25
         anchors.verticalCenter: parent.verticalCenter
@@ -158,7 +158,7 @@ Item
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: parent.width*0.20
         anchors.verticalCenter: parent.verticalCenter
-        width: power_settings.width
+        width: icona_rep.width
         colore: parametri_generali.coloreUtente
         id: time
         value: timer_tempo.value/1000/60-Math.floor(timer_tempo.value/1000/60)
@@ -181,7 +181,7 @@ Item
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: -parent.width*0.20
         anchors.verticalCenter: parent.verticalCenter
-        width: power_settings.width
+        width: icona_rep.width
         colore: parametri_generali.coloreUtente
         id: tut
         value: timer_tut.value/1000.0/60.0-Math.floor(timer_tut.value/1000.0/60.0)

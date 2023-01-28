@@ -24,7 +24,6 @@ void SysCall::setString(QString string)
 
 void SysCall::call()
 {
-//  qDebug() << "chiamata = " <<system(string_.toStdString().c_str());
   qDebug() << "chiamata = " << execute(string_.toStdString()).c_str();
 }
 

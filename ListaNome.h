@@ -1,30 +1,32 @@
-#ifndef LISTAZONE_H
-#define LISTAZONE_H
+#ifndef LISTAESERCIZI_H
+#define LISTAESERCIZI_H
 
 
 #include <QAbstractListModel>
 #include <QColor>
 
-struct Zona {
-    Zona() {}
-    Zona( const QString& ex_name, const QString& image_name)
-        : ex_name_(ex_name), image_name_(image_name) {}
+struct EsData {
+    EsData() {}
+    EsData( const QString& ex_name)
+        : ex_name_(ex_name) {}
     QString ex_name_;
-    QString image_name_;
 };
 
-class ListaZona : public QAbstractListModel
+
+
+
+
+class ListaNome : public QAbstractListModel
 {
     Q_OBJECT
 
 public:
     enum Roles {
         NameRole = Qt::UserRole,
-        ImageRole,
         PathRole
     };
 
-    explicit ListaZona(QString path, QObject *parent = nullptr);
+    explicit ListaNome(QString path, QObject *parent = nullptr);
 
     int rowCount(const QModelIndex& parent) const override;
     QVariant data( const QModelIndex& index, int role = Qt::DisplayRole ) const override;
@@ -34,12 +36,13 @@ public:
 public slots:
     void readFile(QString string);
 
+    void fromList(QStringList list);
 
 private: //members
-    QVector< Zona > data_;
+    QVector< EsData > data_;
     std::string dir_path_;
     QString path_;
 };
 
 
-#endif // LISTAZONE_H
+#endif // LISTAESERCIZI_H

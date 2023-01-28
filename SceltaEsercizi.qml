@@ -169,7 +169,29 @@ Item {
             Component.onCompleted: {currentIndex=-1}
 
             model: _myModel //zona_allenamento.lista //Lista_pettorali {}
-            delegate:IconaEsercizi{}
+            //delegate:IconaEsercizi{}
+
+            delegate: IconaImmagine{
+                color: parametri_generali.coloreBordo
+                highlighted:
+                {
+                    if (grid.currentIndex>=0)
+                        grid.currentIndex === index
+                    else
+                        false;
+                }
+                text: ""
+                image:"file://"+PATH+"/immagini_esercizi/"+_esercizi.getImage(ex_name)
+
+                width: grid.cellWidth-2
+                height: grid.cellHeight-2
+
+                onPressed: {
+                    selected_exercise.code= ex_name
+                    selected_exercise.sets=1
+                    grid.currentIndex=index
+                }
+            }
 
             onCurrentIndexChanged: {
                 if (currentIndex>=0)

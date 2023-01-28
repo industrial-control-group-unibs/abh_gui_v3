@@ -25,7 +25,6 @@ Rectangle   {
 //            mouse.accepted = false
             selected_exercise.workout=ex_name
             lista_workout.currentIndex=index
-            console.log("workout ",ex_name)
         }
     }
 

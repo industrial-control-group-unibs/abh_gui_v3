@@ -41,7 +41,6 @@ Rectangle   {
             selected_exercise.name="unselected"
             zona_allenamento.gruppo=ex_name
             lista_zona.currentIndex=index
-            console.log("zona ",ex_name)
         }
     }
 

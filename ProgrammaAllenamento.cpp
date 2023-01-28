@@ -2,6 +2,7 @@
 #include <QDebug>
 #include <iostream>
 #include <ctime>
+#include "ListStringQueue.h"
 
 namespace abh {
 
@@ -19,7 +20,7 @@ void ProgrammaAllenamento::readFile(std::string file_name)
 
   try {
     doc_.reset(new rapidcsv::Document(file_name));
-
+    act_session_=1;
     idx_=0;
 
     completed_=false;
@@ -32,6 +33,19 @@ void ProgrammaAllenamento::readFile(std::string file_name)
     std::cerr<< "file does not exist :"<<file_name<<std::endl;
 
   }
+  std::vector<int> session = doc_->GetColumn<int>("session");
+  std::vector<int> score = doc_->GetColumn<int>("score");
+  for (size_t idx=0;idx<session.size();idx++)
+  {
+    if (score.at(idx)<0)
+    {
+      act_session_=session.at(idx);
+      idx_=idx;
+      break;
+    }
+  }
+  updateField();
+  //setSession(act_session_);
 }
 
 void ProgrammaAllenamento::updateField()
@@ -107,19 +121,56 @@ void ProgrammaAllenamento::setSession(int session)
 }
 
 
-QStringList ProgrammaAllenamento::listSessionExercise()
+QVariant ProgrammaAllenamento::listSessionExercise(int session)
 {
-  QStringList  lista;
+  QList<QStringList> vec;
+  for (int idx=idx_;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    if (s==session)
+    {
+      QStringList  lista;
+      QString code=QString::fromStdString(doc_->GetCell<std::string>(0,idx));
+      lista.push_back(code);
 
+      QString rep=QString::fromStdString(doc_->GetCell<std::string>(2,idx));
+      lista.push_back(rep);
+
+      QString set=QString::fromStdString(doc_->GetCell<std::string>(3,idx));
+      lista.push_back(set);
+
+      QString power=QString::fromStdString(doc_->GetCell<std::string>(1,idx));
+      lista.push_back(power);
+
+      vec.push_back(lista);
+    }
+  }
+  return QVariant::fromValue(vec);
+}
+
+
+QVariant ProgrammaAllenamento::listSessionsNumber()
+{
+
+  int session=0;
   for (int idx=idx_;idx<(int)doc_->GetRowCount();idx++)
   {
     QString code=QString::fromStdString(doc_->GetCell<std::string>(0,idx));
-    int session= doc_->GetCell<int>(6,idx);
-    if (session>act_session_)
-      break;
-    lista.push_back(code);
+    int s= doc_->GetCell<int>(6,idx);
+    session=std::max(session,s);
   }
-  return lista;
+
+  QList<QStringList> vec;
+  for (int idx=1;idx<=session;idx++)
+  {
+    QStringList lista;
+    lista.push_back(QString::number(idx));
+    lista.push_back(QString::number(0.1));
+    lista.push_back(QString::number(0.2));
+    lista.push_back(QString::number(0.3));
+    vec.push_back(lista);
+  }
+  return QVariant::fromValue(vec);
 }
 
 
@@ -198,6 +249,7 @@ void ProgrammaAllenamento::loadWorkout(QString user_id, QString workout_name)
   file_name_=dir_path_.toStdString()+"/../utenti/"+user_id.toStdString()+"_"+workout_name.toStdString()+".csv";
   readFile(file_name_);
   readStatFile(user_id);
+
 }
 
 
@@ -206,6 +258,7 @@ void ProgrammaAllenamento::updateStatFile(QString user_id, QString workout_name,
   stat_file_name_=dir_path_.toStdString()+"/../utenti/stat_"+user_id.toStdString()+".csv";
   std::unique_ptr<rapidcsv::Document> stat_doc;
   stat_doc.reset(new rapidcsv::Document(stat_file_name_));
+
 
   int now = std::time(nullptr);;
   std::vector<std::string> row;
@@ -226,12 +279,12 @@ void ProgrammaAllenamento::readStatFile(QString user_id)
   std::unique_ptr<rapidcsv::Document> stat_doc;
   stat_doc.reset(new rapidcsv::Document(stat_file_name_));
 
-  std::vector<std::string> col = stat_doc->GetColumn<std::string>("current_session");
-  if (col.size()>0)
-    act_session_=std::stoi(col.back());
-  else
-    act_session_=1;
-  setSession(act_session_);
+//  std::vector<std::string> col = stat_doc->GetColumn<std::string>("current_session");
+//  if (col.size()>0)
+//    act_session_=std::stoi(col.back());
+//  else
+//    act_session_=1;
+//  setSession(act_session_);
 }
 
 

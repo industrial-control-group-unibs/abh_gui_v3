@@ -41,7 +41,6 @@ Item
         repeat: false
         running: parent.visible
         onTriggered: {
-         console.log("skip time out")
             exit()
         }
     }

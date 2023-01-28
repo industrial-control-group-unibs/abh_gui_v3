@@ -12,9 +12,11 @@
 
 #include <UdpVideoStream.h>
 
-#include "ListaEsercizi.h"
-#include "ListaZone.h"
+#include "ListaNome.h"
+#include "ListaImmagini.h"
 #include "ListaUtenti.h"
+#include "ListStringCSV.h"
+
 #include "ProgrammaAllenamento.h"
 #include "DescrizioneEsercizi.h"
 #include <iostream>
@@ -71,14 +73,20 @@ int main(int argc, char *argv[])
 
   QString data_path=QString::fromStdString(dir_path);
 
-  ListaEsercizi model(data_path);
-  ListaZona zone(data_path+"/zone");
-  ListaZona workout_list(data_path+"/allenamento_programmato");
+  ListaNome model(data_path);
+  ListString ls;
+  ListaImmagini zone(data_path+"/zone");
   ListaUtenti utenti(data_path+"/utenti");
   abh::ProgrammaAllenamento workout(data_path+"/allenamento_programmato");
   abh::DescrizioneEsercizi esercizi(data_path);
 
   StringQuee queue;
+
+  ListStringCSV active_workouts(data_path+"/utenti");
+  active_workouts.appendIcon(true);
+
+  ListStringCSV workout_list(data_path+"/allenamento_programmato");
+
 
   ListaWifi wifi;
 
@@ -95,6 +103,7 @@ int main(int argc, char *argv[])
 
   QQmlContext *context = engine->rootContext();
   context->setContextProperty("_myModel", &model);
+  context->setContextProperty("_list_string", &ls);
   context->setContextProperty("_workout_list", &workout_list);
   context->setContextProperty("_utenti", &utenti);
   context->setContextProperty("_zona", &zone);
@@ -104,6 +113,7 @@ int main(int argc, char *argv[])
   context->setContextProperty("_wifi", &wifi);
   context->setContextProperty("_queue", &queue);
   context->setContextProperty("_history", &page_history);
+  context->setContextProperty("_active_workouts", &active_workouts);
   engine->rootContext()->setContextProperty("PATH", data_path);
 
 

@@ -79,5 +79,11 @@
         <file>ListaEserciziWorkout.qml</file>
         <file>IconaPlus.qml</file>
         <file>LinearSlider.qml</file>
+        <file>IconaRettangolo.qml</file>
+        <file>IconaImmagine.qml</file>
+        <file>IconaInformazioni.qml</file>
+        <file>SceltaNuovoWorkout.qml</file>
+        <file>ListaWorkoutSessioni.qml</file>
+        <file>IconaDescrizioneEsercizi.qml</file>
     </qresource>
 </RCC>

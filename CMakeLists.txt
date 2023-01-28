@@ -46,8 +46,10 @@ SET(APP_FILES
   QmlBinaryUdpSender.cpp
   UdpVideoStream.cpp
   PracticalSocket.cpp
-  ListaEsercizi.cpp
-  ListaZone.cpp
+  ListaNome.cpp
+  ListaImmagini.cpp
+  ListStringCSV.cpp
+  ListStringQueue.cpp
   ListaUtenti.cpp
   ProgrammaAllenamento.cpp
   DescrizioneEsercizi.cpp

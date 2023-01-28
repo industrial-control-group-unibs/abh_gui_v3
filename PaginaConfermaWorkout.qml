@@ -12,8 +12,6 @@ PaginaSiNo
 {
     titolo: "VUOI CONTINUARE IL WORKOUT\n"+selected_exercise.workout.replace("_", " ")+"?"
 
-//    Component.onCompleted: console.log("lista = ",_workout.listSessionExercise())
-
     onPressNo: {
         _utenti.saveWorkout(impostazioni_utente.identifier,"")
         pageLoader.source=  "SceltaWorkout.qml"
@@ -26,7 +24,7 @@ PaginaSiNo
         selected_exercise.sets=_workout.sets
         selected_exercise.current_set=0
         selected_exercise.power=_workout.power
-        _myModel.fromList(_workout.listSessionExercise())
+        _list_string.fromList(_workout.listSessionExercise())
         pageLoader.source="ListaEserciziWorkout.qml"
     }
 

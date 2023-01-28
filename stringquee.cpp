@@ -8,9 +8,9 @@ void StringQuee::push(QString string)
 {
   data.push_front(string);
 
-  qDebug() << " List of pages";
-  for (int idx=0;idx<data.size();idx++)
-    qDebug()<< "- " << data.at(idx);
+//  qDebug() << " List of pages";
+//  for (int idx=0;idx<data.size();idx++)
+//    qDebug()<< "- " << data.at(idx);
 
   while (data.size()>max_size)
   {
@@ -37,4 +37,16 @@ QString StringQuee::front() const
   QString str= data.front();
   qDebug() << " this is front " << str;
   return str;
+}
+
+QString StringQuee::popIfMe(QString string)
+{
+  while (true)
+  {
+    QString str= data.front();
+    if (str==string)
+      pop();
+    else
+      return str;
+  }
 }

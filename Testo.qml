@@ -11,4 +11,5 @@ Text {
     font.weight: Font.Normal
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignTop
+    //verticalAlignment: Text.AlignVCenter
 }

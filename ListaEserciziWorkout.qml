@@ -31,15 +31,30 @@ Item {
     }
 
 
+    Item
+    {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        z:parent.z+2
+        height:274+50
+        FrecceSxDx
+        {
+            onPressSx:{
+                _history.pop();
+                 _list_string.fromList(_workout.listSessionsNumber())
+                pageLoader.source=_history.popIfMe(pageLoader.source)
+            }
+
+            onPressDx: pageLoader.source=  "PaginaIstruzioni.qml"
+            dx_visible: selected_exercise.selected_session===_workout.getActiveSession()
+            colore: parametri_generali.coloreBordo
+        }
+    }
+
     Barra_superiore{}
 
-    FrecceSxDx
-    {
-        onPressSx: pageLoader.source= "PaginaAllenamento.qml"
-        onPressDx: pageLoader.source=  "PaginaIstruzioni.qml"
-        dx_visible: true
-        colore: parametri_generali.coloreBordo
-    }
+
 
 
     Rectangle
@@ -47,18 +62,17 @@ Item {
         id: rect_grid
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
-        color:parametri_generali.coloreSfondo
+        color: parametri_generali.coloreSfondo
         clip: true
 
-        Rectangle
+        Item
         {
             id: header
-            height: video_zone.height+nome_titolo.height+20
+            height: video_zone.height+nome_titolo.height
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top
-            color: rect_grid.color
-            z: 1
+            z: 5
 
 
             Text {
@@ -97,7 +111,7 @@ Item {
 
 
 
-                width: grid.cellWidth
+                width: parent.width*0.33 //grid.cellWidth
                 height: width
                 radius: 20
                 border.color: selected_exercise.immagine? parametri_generali.coloreBordo: "transparent"
@@ -140,7 +154,7 @@ Item {
                             durTrig.stop();
                             durTrig.interval=duration-100;
                             durTrig.restart();
-                         }
+                        }
                     }
                 }
                 Timer{
@@ -148,7 +162,7 @@ Item {
                     running:false
                     repeat: false
                     onTriggered:{
-                       mp_esercizio.pause();
+                        mp_esercizio.pause();
                     }
                 }
 
@@ -166,29 +180,76 @@ Item {
             }
         }
 
+        ListView {
+            snapMode: ListView.SnapOneItem
+            id: lista_workout
+            anchors {
+                top: header.bottom
+                bottom: parent.bottom
+                left: parent.left
+                right: parent.right
+            }
+            currentIndex: -1
 
-        GridView {
+            model: _list_string
 
-            id: grid
-            anchors.topMargin: header.height
-            cellWidth: width*0.33; cellHeight: cellWidth
-            anchors.fill: parent
-            snapMode: GridView.SnapToRow
-            focus: true
 
-//            Component.onCompleted: {currentIndex=-1}
 
-            model: _myModel
-            delegate:IconaEsercizi{}
 
-            onCurrentIndexChanged: {
-                if (currentIndex>=0)
+            delegate: IconaDescrizioneEsercizi{
+
+
+                color: parametri_generali.coloreBordo
+                highlighted:
                 {
-                    mp_esercizio.stop()
-                    mp_esercizio.play()
+                    if (lista_workout.currentIndex>=0)
+                        lista_workout.currentIndex === index
+                    else
+                        false;
+
+                }
+                nome:  _esercizi.getName(vector[0])
+                immagine:  _esercizi.getImage(vector[0])
+                ripetizioni:parseFloat(vector[1])
+                serie: parseFloat(vector[2])
+                potenza: parseFloat(vector[3])
+
+
+
+                width: lista_workout.width-2
+
+                onPressed: {
+                    lista_workout.currentIndex=index
+                    selected_exercise.code=vector[0]
                 }
             }
+
+
         }
+
+
+//        GridView {
+
+//            id: grid
+//            anchors.topMargin: header.height
+//            cellWidth: width*0.33; cellHeight: cellWidth
+//            anchors.fill: parent
+//            snapMode: GridView.SnapToRow
+//            focus: true
+
+//            //            Component.onCompleted: {currentIndex=-1}
+
+//            model: _myModel
+//            delegate:IconaEsercizi{}
+
+//            onCurrentIndexChanged: {
+//                if (currentIndex>=0)
+//                {
+//                    mp_esercizio.stop()
+//                    mp_esercizio.play()
+//                }
+//            }
+//        }
 
     }
 

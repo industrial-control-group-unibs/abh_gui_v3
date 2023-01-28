@@ -1,5 +1,5 @@
 
-#include "ListaEsercizi.h"
+#include "ListaNome.h"
 
 #include <QByteArray>
 #include <QTimer>
@@ -7,7 +7,7 @@
 #include <rapidcsv.h>
 #include <QDebug>
 
-ListaEsercizi::ListaEsercizi(QString path, QObject *parent) :
+ListaNome::ListaNome(QString path, QObject *parent) :
   QAbstractListModel(parent)
 {
 
@@ -19,7 +19,7 @@ ListaEsercizi::ListaEsercizi(QString path, QObject *parent) :
   data_.clear();
 }
 
-int ListaEsercizi::rowCount( const QModelIndex& parent) const
+int ListaNome::rowCount( const QModelIndex& parent) const
 {
   if (parent.isValid())
     return 0;
@@ -27,13 +27,12 @@ int ListaEsercizi::rowCount( const QModelIndex& parent) const
   return data_.count();
 }
 
-QVariant ListaEsercizi::data(const QModelIndex &index, int role) const
+QVariant ListaNome::data(const QModelIndex &index, int role) const
 {
   if ( !index.isValid() )
     return QVariant();
 
   const EsData &data = data_.at(index.row());
-  qDebug() << "name = " << data.ex_name_;
   if ( role == NameRole ){
     return data.ex_name_;
   }
@@ -44,7 +43,7 @@ QVariant ListaEsercizi::data(const QModelIndex &index, int role) const
 }
 
 
-QHash<int, QByteArray> ListaEsercizi::roleNames() const
+QHash<int, QByteArray> ListaNome::roleNames() const
 {
   static QHash<int, QByteArray> mapping {
     {NameRole, "ex_name"},
@@ -54,7 +53,7 @@ QHash<int, QByteArray> ListaEsercizi::roleNames() const
 }
 
 
-void ListaEsercizi::readFile(QString string)
+void ListaNome::readFile(QString string)
 {
 
   std::string nome_file=dir_path_+"/zone/"+string.toStdString()+".csv";
@@ -74,7 +73,7 @@ void ListaEsercizi::readFile(QString string)
 }
 
 
-void ListaEsercizi::fromList(QStringList list)
+void ListaNome::fromList(QStringList list)
 {
   qDebug() << list;
   data_.clear();
@@ -82,7 +81,6 @@ void ListaEsercizi::fromList(QStringList list)
   {
 
     QString ex_name=list.at(idx);
-    qDebug() << ex_name;
     data_ << EsData(ex_name);
   }
 }

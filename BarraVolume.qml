@@ -136,7 +136,6 @@ Item {
                 width: parent.height
                 onPressed:
                 {
-                    console.log("volume= ",chiamata_sistema.getVolume())
                     chiamata_sistema.string="pactl set-sink-mute @DEFAULT_SINK@ toggle"
                     chiamata_sistema.call()
                     chiamata_sistema.volume= chiamata_sistema.getVolume()

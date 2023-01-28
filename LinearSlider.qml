@@ -41,6 +41,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         id: meno
+        black: true
         onPressed: component.decrease()
     }
     IconaPiu
@@ -51,6 +52,7 @@ Item {
         anchors.right: parent.right
         height: parent.height
         onPressed: component.increase()
+        black: true
         id: piu
     }
 
@@ -82,12 +84,10 @@ Item {
                 if (mouse.x>width*0.5)
                 {
                     component.increase()
-                    console.log("più")
                 }
                 else
                 {
                     component.decrease()
-                    console.log("meno")
                 }
             }
         }

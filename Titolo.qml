@@ -44,9 +44,7 @@ Item {
             wrapMode: Text.WordWrap
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-//            onTextChanged: {
-//                console.log()
-//            }
+
         }
     }
 }

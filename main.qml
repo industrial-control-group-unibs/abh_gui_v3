@@ -127,6 +127,7 @@ ApplicationWindow {
         property real score: 0
         property string workout: ""
         property int type: 1
+        property int  selected_session: 1
 
         property string difficulty: "Facile"  // TO BE REMOVED
 
@@ -138,7 +139,6 @@ ApplicationWindow {
             video_workout= _esercizi.getVideoWorkout(code)
             immagine= _esercizi.getImage(code)
             type=_esercizi.getType(code)
-            console.log(name," has type ",type)
             if (workout==="")
             {
                 max_pos_speed=_esercizi.getMaxPosVel(code)

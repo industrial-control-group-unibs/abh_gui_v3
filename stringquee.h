@@ -14,6 +14,7 @@ public:
   StringQuee();
 public slots:
   QString front       () const ;
+  QString popIfMe(QString string);
   void push(QString string);
   QString pop();
 

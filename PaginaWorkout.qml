@@ -20,6 +20,7 @@ Item {
         timer_tut.active=true
         startstop_udp.string="start"
         parametri_generali.login_page=false
+        _active_workouts.readFile("ACTIVEWORKOUT_"+impostazioni_utente.identifier)
     }
     Component.onDestruction:
     {
@@ -60,8 +61,6 @@ Item {
             PropertyChanges { target: skip;       z: 5}
         }
     ]
-
-    onStateChanged: console.log("ehi!!!", state)
 
     Item {
         id: ricevi_comando_vocale
@@ -118,7 +117,6 @@ Item {
 //                early_stop.visible=true
                 component.state="early_stop"
 
-                console.log("qua!!!", component.state)
             }
             dx_visible: true
             onPressDx:
@@ -130,7 +128,6 @@ Item {
 //                freccia.visible=false
 //                skip.visible=true
 
-                console.log("qua!!!", component.state)
             }
             z:5
         }
