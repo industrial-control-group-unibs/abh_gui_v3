@@ -25,10 +25,12 @@ Rectangle
 
     property bool black: false
 
-    color: black? parametri_generali.coloreSfondo: parametri_generali.coloreBordo
-    property color inner_color: black? parametri_generali.coloreBordo: parametri_generali.coloreSfondo
+    color: component.black? parametri_generali.coloreSfondo: parametri_generali.coloreBordo
+    property color inner_color: component.black? parametri_generali.coloreBordo: parametri_generali.coloreSfondo
     border.color: parametri_generali.coloreBordo
     border.width: 5
+
+
 
     signal pressed
 
@@ -60,6 +62,7 @@ Rectangle
         onTriggered:
         {
             component.pressed()
+
         }
     }
 
@@ -83,7 +86,10 @@ Rectangle
         onPressed:
         {
             component.pressed()
+
+            console.log("black",component.black,"colore 1 ",component.color)
         }
+
         onPressAndHold:
         {
             if (parent.visible)
@@ -92,6 +98,7 @@ Rectangle
                 repeater_timer.running=true
             }
         }
+
         onReleased:
         {
             repeater_timer.running=false

@@ -177,6 +177,26 @@ bool ListStringCSV::checkIfExistColumn(QString filename, int col_idx, QString va
   std::vector<std::string> col=doc.GetColumn<std::string>(col_idx);
 
   return (std::find(col.begin(),col.end(),value.toStdString())!=col.end());
-
-
 }
+
+int ListStringCSV::getRowIndex(QString filename,int col_idx,QString value)
+{
+  std::string nome_file=dir_path_+"/"+filename.toStdString()+".csv";
+  rapidcsv::Document doc(nome_file);
+
+  if (col_idx<0)
+    return -1;
+  if (col_idx>=(int)doc.GetColumnCount())
+    return -1;
+  if (!checkIfExistColumn(filename,col_idx,value))
+    return -1;
+
+  std::vector<std::string> col=doc.GetColumn<std::string>(col_idx);
+  for (int idx=0;idx<(int)col.size();idx++)
+  {
+    if (!col.at(idx).compare(value.toStdString()))
+      return idx;
+  }
+  return -1;
+}
+

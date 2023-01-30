@@ -74,6 +74,7 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenterOffset: -parent.width*0.25
 //                anchors.top: parent.top
+                black: true
                 onPressed:
                 {
                     if (chiamata_sistema.volume>=0)
@@ -92,6 +93,7 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenterOffset: parent.width*0.25
                 height: parent.height
+                black: true
 //                anchors.top: parent.top
                 onPressed:
                 {

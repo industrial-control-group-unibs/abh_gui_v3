@@ -92,7 +92,7 @@ IconaRettangolo
 
             Testo
             {
-                visible: component.date!==""
+                visible: component.tempo!==""
                 id: tempo_txt
                 text:"TEMPO IMPIEGATO"
                 font.pixelSize: component.fontSize*0.3
@@ -108,7 +108,7 @@ IconaRettangolo
 
             Testo
             {
-                visible: component.date!==""
+                visible: component.tempo!==""
                 id: tempo_txt2
                 text:component.tempo
                 font.pixelSize: component.fontSize*0.3
@@ -166,7 +166,7 @@ IconaRettangolo
 
                 Testo
                 {
-                    text:component.progress*100
+                    text: (component.progress*100).toFixed(0).toString()
                     font.pixelSize: component.fontSize*0.3
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
@@ -224,7 +224,7 @@ IconaRettangolo
 
                 Testo
                 {
-                    text:component.punteggio
+                    text: (component.punteggio).toFixed(1).toString()
                     font.pixelSize: component.fontSize*0.3
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter

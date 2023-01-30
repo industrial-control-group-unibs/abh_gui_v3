@@ -24,6 +24,8 @@ PaginaVideoSingolo
     Component.onDestruction:
     {
         startstop_udp.string="stop_rewire"
+        selected_exercise.time_esercizio = 0.0
+        selected_exercise.tut_esercizio  = 0.0
     }
 }
 

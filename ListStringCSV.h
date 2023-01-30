@@ -32,6 +32,9 @@ public slots:
     QString getValue(QString filename, int row_idx,int col_idx);
 
     bool checkIfExistColumn(QString filename, int col_idx, QString value);
+
+    // return row index
+    int getRowIndex(QString filename,int col_idx,QString value);
 private: //members
     QVector< QStringList > data_;
     std::string dir_path_;

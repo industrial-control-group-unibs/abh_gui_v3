@@ -122,10 +122,12 @@ Item {
 
                 tempo: vector[3]
 
+
                 width: lista_workout.width-2
 
                 onPressed: {
                     lista_workout.currentIndex=index
+                    console.log("tempo=",vector[3])
                 }
             }
 

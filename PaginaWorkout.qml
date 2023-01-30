@@ -15,8 +15,14 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
+    property real time_ex: 0
+    property real tut_ex: 0
+
     Component.onCompleted:
     {
+        time_ex=timer_tempo.value*0.001
+        tut_ex=timer_tut.value*0.001
+
         timer_tut.active=true
         startstop_udp.string="start"
         parametri_generali.login_page=false
@@ -27,6 +33,9 @@ Item {
         timer_tut.active=false
         startstop_udp.string="stop"
         parametri_generali.login_page=true
+
+        selected_exercise.time_esercizio+=(timer_tempo.value*0.001-time_ex)
+        selected_exercise.tut_esercizio+=(timer_tut.value*0.001-tut_ex)
     }
     id: component
     state: "sotto"

@@ -41,9 +41,10 @@ Item {
         FrecceSxDx
         {
             onPressSx:{
-                _history.pop();
-                 _list_string.fromList(_workout.listSessionsNumber())
-                pageLoader.source=_history.popIfMe(pageLoader.source)
+                //_history.pop();
+                // _list_string.fromList(_workout.listSessionsNumber())
+                //pageLoader.source=_history.popIfMe(pageLoader.source)
+                pageLoader.source="ListaWorkoutSessioni.qml"
             }
 
             onPressDx: pageLoader.source=  "PaginaIstruzioni.qml"

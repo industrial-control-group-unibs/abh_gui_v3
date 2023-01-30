@@ -129,6 +129,9 @@ ApplicationWindow {
         property int type: 1
         property int  selected_session: 1
 
+        property real time_esercizio: 0
+        property real tut_esercizio: 0
+
         property string difficulty: "Facile"  // TO BE REMOVED
 
         onCodeChanged:

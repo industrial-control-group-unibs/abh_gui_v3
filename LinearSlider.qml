@@ -14,8 +14,8 @@ Item {
 
 
 
-    property color color: parametri_generali.coloreBordo
-    property color inner_color: parametri_generali.coloreSfondo
+    //property color color: parametri_generali.coloreBordo
+    //property color inner_color: parametri_generali.coloreSfondo
 
 
     signal increase
@@ -35,8 +35,8 @@ Item {
 
     IconaMeno
     {
-        color: parent.color
-        inner_color: parent.inner_color
+        //color: parent.color
+        //inner_color: parent.inner_color
         height: parent.height
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
@@ -44,10 +44,11 @@ Item {
         black: true
         onPressed: component.decrease()
     }
-    IconaPiu
+
+    IconaPlus
     {
-        color: parent.color
-        inner_color: parent.inner_color
+        //color: parent.color
+        //inner_color: parent.inner_color
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         height: parent.height
@@ -58,16 +59,12 @@ Item {
 
     Item
     {
-        anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: meno.right
         anchors.right: piu.left
         anchors.leftMargin: meno.width*0.1
         anchors.rightMargin: meno.width*0.1
         height: parent.height
-
-        //color: "white"
-
 
         RadialGradient {
             anchors.fill: parent

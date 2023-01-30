@@ -28,6 +28,8 @@ class ProgrammaAllenamento : public QObject
   Q_PROPERTY(QString         dir_path       MEMBER  dir_path_                        NOTIFY dirPathChanged)
   Q_PROPERTY(QString         workoutName    MEMBER  workoutName_                     NOTIFY workoutNameChanged)
   Q_PROPERTY(double          score          READ    score          WRITE setScore    NOTIFY scoreChanged)
+  Q_PROPERTY(double          time           READ    time           WRITE setTime     NOTIFY timeChanged)
+  Q_PROPERTY(double          tut            READ    tut            WRITE setTut      NOTIFY tutChanged)
 
 public:
   explicit ProgrammaAllenamento(QString path, QObject *parent = nullptr);
@@ -45,6 +47,8 @@ public:
   int     session    () const {return session_      ;}
   int     actSession () const {return act_session_  ;}
   double  score      () const {return score_        ;}
+  double  time       () const {return time_         ;}
+  double  tut        () const {return tut_          ;}
 
 
   void readFile(std::string file_name);
@@ -59,10 +63,21 @@ public:
 
     QVariant listSessionExercise(int session);
     void setScore(double score);
+    void setTime(double time);
+    void setTut(double tut);
     void setSession(int session);
 
     int getActiveSession(){return act_session_;}
     QVariant listSessionsNumber();
+
+    double getSessionProgess(int session);
+    double getSessionScore  (int session);
+    double getSessionTime   (int session);
+    double getSessionTut    (int session);
+
+    double getProgess();
+    double getScore  ();
+    QString getTime();
 
 signals:
   void completedChanged();
@@ -79,6 +94,8 @@ signals:
   void dirPathChanged();
   void workoutNameChanged();
   void actSessionChanged();
+  void timeChanged();
+  void tutChanged();
 protected:
 
   bool            completed_     ;
@@ -93,6 +110,8 @@ protected:
   int             rest_set_      ;
   int             sets_          ;
   double          score_         ;
+  double          time_          ;
+  double          tut_           ;
   QString         dir_path_      ;
   QString         workoutName_   ;
   int             idx_           ;
@@ -103,6 +122,7 @@ protected:
   std::unique_ptr<rapidcsv::Document> stat_doc_;
 
   void updateField();
+
 
 
 };

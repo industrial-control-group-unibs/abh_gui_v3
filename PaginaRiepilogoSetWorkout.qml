@@ -21,7 +21,6 @@ Item {
         timer_tut.active=false
         timer_tempo.stop()
         startstop_udp.string="rewire"
-//        _workout.setScore(selected_exercise.score)
     }
     Component.onDestruction:
     {
