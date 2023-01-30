@@ -102,7 +102,7 @@ IconaRettangolo
                     top: parent.top
                 }
                 height: 0.33*parent.height
-                font.pixelSize: 70
+                font.pixelSize: 40
                 verticalAlignment: Text.AlignTop
                 horizontalAlignment: Text.AlignHCenter
             }
@@ -120,7 +120,7 @@ IconaRettangolo
                 Testo
                 {
                     anchors.fill: parent
-                    font.pixelSize: 35
+                    font.pixelSize: 20
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignLeft
                     text: "RIPETIZIONI\nSERIE\nPOTENZA"
@@ -128,7 +128,7 @@ IconaRettangolo
                 Testo
                 {
                     anchors.fill: parent
-                    font.pixelSize: 35
+                    font.pixelSize: 20
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignRight
                     text: component.ripetizioni+"\n"+component.serie+"\n"+component.potenza
