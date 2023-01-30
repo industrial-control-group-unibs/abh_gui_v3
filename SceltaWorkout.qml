@@ -55,7 +55,6 @@ Item {
                     selected_exercise.sets=_workout.sets
                     selected_exercise.current_set=0
                     selected_exercise.power=_workout.power
-                    console.log("workout=",_workout.listSessionsNumber())
                      _list_string.fromList(_workout.listSessionsNumber())
                     pageLoader.source="ListaWorkoutSessioni.qml"
                 }

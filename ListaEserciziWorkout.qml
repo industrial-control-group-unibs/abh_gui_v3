@@ -44,7 +44,9 @@ Item {
                 //_history.pop();
                 // _list_string.fromList(_workout.listSessionsNumber())
                 //pageLoader.source=_history.popIfMe(pageLoader.source)
+                _list_string.fromList(_workout.listSessionsNumber())
                 pageLoader.source="ListaWorkoutSessioni.qml"
+
             }
 
             onPressDx: pageLoader.source=  "PaginaIstruzioni.qml"
