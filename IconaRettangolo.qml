@@ -14,7 +14,7 @@ Item {
     property real bordo: component.highlighted? 8: 2
     property real radius: 20
 
-    property color color: "red" //parametri_generali.coloreBordo
+    property color color: parametri_generali.coloreBordo
     property color colorTransparent: Qt.rgba(color.r, color.g, color.b, 0.440)
     id: component
 
@@ -23,12 +23,36 @@ Item {
 
     property string text: ""
 
+    Item {
+        visible: component.text==="+"
+        anchors.fill: parent
+        Rectangle
+        {
+            color: component.color
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: 0.5*parent.height
+            width: 0.1*height
+            radius: width*0.5
+        }
+        Rectangle
+        {
+            color: component.color
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: 0.5*parent.height
+            height: 0.1*width
+            radius: width*0.5
+        }
+    }
+
     Testo
     {
+        visible: component.text!=="+"
         text:component.text
-        font.pixelSize: text==="+"?150:70
+        font.pixelSize: 70
         verticalAlignment: Text.AlignVCenter
-
+        horizontalAlignment: Text.AlignHCenter
         anchors
         {
             //verticalCenter: parent.verticalCenter

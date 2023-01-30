@@ -87,7 +87,6 @@ Rectangle
         {
             component.pressed()
 
-            console.log("black",component.black,"colore 1 ",component.color)
         }
 
         onPressAndHold:
