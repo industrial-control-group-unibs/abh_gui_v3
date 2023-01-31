@@ -17,8 +17,8 @@ Item {
 
     id: component
 
-    property int giorni: 3
-    property int settimane: 4
+    property int giorni: frequenza.value
+    property int settimane: durata.value
 
     state: "ESORDIENTE"
     states: [
@@ -76,6 +76,8 @@ Item {
         anchors.topMargin: parametri_generali.larghezza_barra
         clip: true
 
+
+        // LIVELLO
         Item {
             anchors
             {
@@ -145,6 +147,8 @@ Item {
 
         }
 
+
+        // FREQUENZA
         Item {
             anchors
             {
@@ -156,60 +160,43 @@ Item {
             height: parent.height*0.33
 
 
-            Rectangle{
-                //                id: medio
-                color: parametri_generali.coloreBordo
-                radius: 20
+            LinearSlider
+            {
+                id: frequenza
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                width: parent.width/3.0
-                height: 0.8*width
-                Testo
-                {
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    text: component.giorni
-                    font.pixelSize: 40
-                    color: parametri_generali.coloreSfondo
-                }
+                width: 0.8*parent.width
+                height: 0.1*width
+
+                value: 3
+                min: 1
+                max: 7
+
                 Testo
                 {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: "FREQUENZA (N° allenamenti/settimana)"
-                    font.pixelSize: 20
+                    text: "FREQUENZA"
+                    font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }
-            }
-
-
-            IconaMeno
-            {
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: -parent.width*0.25
-                anchors.verticalCenter: parent.verticalCenter
-                //                height: parent.height/3.0
-                onPressed: {
-                    if (component.giorni>1)
-                        component.giorni--
-                }
-            }
-
-            IconaPiu
-            {
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: parent.width*0.25
-                anchors.verticalCenter: parent.verticalCenter
-                //                height: parent.height/3.0
-                onPressed: {
-                    if (component.giorni<7)
-                        component.giorni++;
+                Testo
+                {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.bottom
+                    width: 300
+                    anchors.topMargin: 10
+                    text: "(N° allenamenti/settimana)"
+                    font.pixelSize: 30
+                    color: parametri_generali.coloreBordo
                 }
             }
         }
 
+
+        // DURATA
         Item {
             anchors
             {
@@ -220,59 +207,105 @@ Item {
             id: s3
             height: parent.height*0.33
 
-            Rectangle{
-                //                id: medio
-                color: parametri_generali.coloreBordo
-                radius: 20
+
+            LinearSlider
+            {
+                id: durata
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                width: parent.width/3.0
-                height: 0.8*width
-                Testo
-                {
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    text: component.settimane
-                    font.pixelSize: 40
-                    color: parametri_generali.coloreSfondo
-                }
+                width: 0.8*parent.width
+                height: 0.1*width
+
+                value: 4
+                min: 1
+                max: 12
+
                 Testo
                 {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: "DURATA (N° settimane)"
-                    font.pixelSize: 20
+                    text: "DURATA"
+                    font.pixelSize: 70
+                    color: parametri_generali.coloreBordo
+                }
+                Testo
+                {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.bottom
+                    width: 300
+                    anchors.topMargin: 30
+                    text: "(N° settimane)"
+                    font.pixelSize: 10
                     color: parametri_generali.coloreBordo
                 }
             }
-
-
-            IconaMeno
-            {
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: -parent.width*0.25
-                anchors.verticalCenter: parent.verticalCenter
-                //                height: parent.height/3.0
-                onPressed: {
-                    if (component.settimane>1)
-                        component.settimane--;
-                }
-            }
-
-            IconaPiu
-            {
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: parent.width*0.25
-                anchors.verticalCenter: parent.verticalCenter
-                //                height: parent.height/3.0
-                onPressed: {
-                    if (component.settimane<12)
-                        component.settimane++;
-                }
-            }
         }
+
+//        Item {
+//            anchors
+//            {
+//                left:parent.left
+//                right:parent.right
+//                top:s2.bottom
+//            }
+//            id: s3
+//            height: parent.height*0.33
+
+//            Rectangle{
+//                //                id: medio
+//                color: parametri_generali.coloreBordo
+//                radius: 20
+//                anchors.verticalCenter: parent.verticalCenter
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                width: parent.width/3.0
+//                height: 0.8*width
+//                Testo
+//                {
+//                    anchors.verticalCenter: parent.verticalCenter
+//                    anchors.horizontalCenter: parent.horizontalCenter
+//                    text: component.settimane
+//                    font.pixelSize: 40
+//                    color: parametri_generali.coloreSfondo
+//                }
+//                Testo
+//                {
+//                    anchors.horizontalCenter: parent.horizontalCenter
+//                    anchors.bottom: parent.top
+//                    width: 300
+//                    anchors.bottomMargin: 10
+//                    text: "DURATA (N° settimane)"
+//                    font.pixelSize: 20
+//                    color: parametri_generali.coloreBordo
+//                }
+//            }
+
+
+//            IconaMeno
+//            {
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                anchors.horizontalCenterOffset: -parent.width*0.25
+//                anchors.verticalCenter: parent.verticalCenter
+//                //                height: parent.height/3.0
+//                onPressed: {
+//                    if (component.settimane>1)
+//                        component.settimane--;
+//                }
+//            }
+
+//            IconaPiu
+//            {
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                anchors.horizontalCenterOffset: parent.width*0.25
+//                anchors.verticalCenter: parent.verticalCenter
+//                //                height: parent.height/3.0
+//                onPressed: {
+//                    if (component.settimane<12)
+//                        component.settimane++;
+//                }
+//            }
+//        }
 
     }
 
