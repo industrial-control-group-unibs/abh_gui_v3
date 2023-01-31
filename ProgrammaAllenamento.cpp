@@ -219,7 +219,8 @@ double ProgrammaAllenamento::getSessionTime(int session)
       time+=t;
     }
   }
-  return time;
+return time;
+
 }
 
 double ProgrammaAllenamento::getSessionTut(int session)
@@ -237,6 +238,35 @@ double ProgrammaAllenamento::getSessionTut(int session)
   return tut;
 }
 
+QString ProgrammaAllenamento::getSessionTimeString(int session)
+{
+  double time=getSessionTime(session);
+
+  int secondi=int(time)%60;
+  int minuti=int(std::floor(time/60.0))%60;
+  int ore=int(std::floor(time/3600.0));
+
+  std::string tempo_stringa;
+  if (ore>0)
+    tempo_stringa= std::to_string(ore)+" h ";
+  tempo_stringa+=std::to_string(minuti)+" m "+std::to_string(secondi)+" s";
+  return QString().fromStdString(tempo_stringa);
+
+}
+
+QString ProgrammaAllenamento::getSessionTutString(int session)
+{
+  double tut=getSessionTut(session);
+  int secondi=int(tut)%60;
+  int minuti=int(std::floor(tut/60.0))%60;
+  int ore=int(std::floor(tut/3600.0));
+
+  std::string tempo_stringa;
+  if (ore>0)
+    tempo_stringa= std::to_string(ore)+" h ";
+  tempo_stringa+=std::to_string(minuti)+" m "+std::to_string(secondi)+" s";
+  return QString().fromStdString(tempo_stringa);
+}
 
 double ProgrammaAllenamento::getProgess()
 {

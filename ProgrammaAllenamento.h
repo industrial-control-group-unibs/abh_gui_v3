@@ -74,6 +74,8 @@ public:
     double getSessionScore  (int session);
     double getSessionTime   (int session);
     double getSessionTut    (int session);
+    QString getSessionTimeString   (int session);
+    QString getSessionTutString    (int session);
 
     double getProgess();
     double getScore  ();

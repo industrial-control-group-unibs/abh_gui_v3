@@ -277,7 +277,7 @@ ApplicationWindow {
         }
 
         source:  "PaginaLogo.qml"
-//        source:  "PaginaWorkout.qml"
+//        source:  "PaginaRiepilogoWorkout.qml"
 
     }
 

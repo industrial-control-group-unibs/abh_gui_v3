@@ -45,59 +45,201 @@ Item {
                 topMargin: 10
             }
             height: parent.height*0.2
+            id: titolo
             Titolo
             {
-                text: "BEN FATTO!"
+                text: selected_exercise.workout.replace("_", " ")
             }
-
         }
 
-        CircularTimer {
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: parent.width*0.25
-            anchors.verticalCenter: parent.verticalCenter
-            width: 400/1080*parent.width
-            id: time
-            value: timer_tempo.value/1000/60-Math.floor(timer_tempo.value/1000/60)
-            tempo: timer_tempo.value
-
-            Testo
+        Item {
+            anchors
             {
-                text: "TEMPO\nGLOBALE"
-                anchors
-                {
-                    horizontalCenter: parent.horizontalCenter
-                    top: parent.bottom
-                    topMargin: 5
+                left: parent.left
+                right: parent.right
+                top:titolo.bottom
+                bottom: avanti.top
+                bottomMargin: 10
+            }
 
+            id: indicatori
+            property real spacing: 10
+            property real h:  (height-spacing*3)/3
+            property real w: width
+
+            Column {
+                spacing: indicatori.spacing
+                Item {
+                    width: indicatori.w;
+                    height: indicatori.h
+
+                    CircularIndicator
+                    {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
+                        height: parent.height*0.7
+                        width: height
+
+                        stepSize: 0.01
+                        trackColor: parametri_generali.coloreBordo
+                        trackWidth: 0.1*width
+                        progressWidth: trackWidth
+                        handleColor: "transparent"
+                        progressColor: parametri_generali.coloreUtente
+                        value: _workout.getSessionScore(selected_exercise.selected_session)
+
+
+                        Testo
+                        {
+                            text: (parent.value*10).toFixed(0.1).toString()
+                            font.pixelSize: 30
+                            verticalAlignment: Text.AlignVCenter
+                            horizontalAlignment: Text.AlignHCenter
+                            color: parametri_generali.coloreBordo
+                            anchors
+                            {
+                                fill:parent
+                            }
+                        }
+                    }
+                    Testo
+                    {
+                        anchors
+                        {
+                            top: parent.top
+                            left: parent.left
+                            right: parent.right
+                        }
+                        height: 0.15*parent.height
+                        text: "PUNTEGGIO"
+                    }
+                }
+                Item {
+                    width: indicatori.w;
+                    height: indicatori.h
+
+                    CircularIndicator
+                    {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
+                        height: parent.height*0.7
+                        width: height
+
+                        stepSize: 0.01
+                        trackColor: parametri_generali.coloreBordo
+                        trackWidth: 0.1*width
+                        progressWidth: trackWidth
+                        handleColor: "transparent"
+                        progressColor: parametri_generali.coloreUtente
+                        value: _workout.getProgess()
+
+
+                        Testo
+                        {
+                            text: (parent.value*100).toFixed(0).toString()+"%"
+                            font.pixelSize: 30
+                            verticalAlignment: Text.AlignVCenter
+                            horizontalAlignment: Text.AlignHCenter
+                            color: parametri_generali.coloreBordo
+                            anchors
+                            {
+                                fill:parent
+                            }
+                        }
+                    }
+                    Testo
+                    {
+                        anchors
+                        {
+                            top: parent.top
+                            left: parent.left
+                            right: parent.right
+                        }
+                        height: 0.15*parent.height
+                        text: "COMPLETAMENTO"
+                    }
+                }
+                Item {
+                    width: indicatori.w;
+                    height: indicatori.h*0.5
+
+                    Testo
+                    {
+                        anchors
+                        {
+                            top: parent.top
+                            left: parent.left
+                            right: parent.right
+                        }
+                        height: 0.5*parent.height
+                        text: "DURATA SESSIONE"
+                    }
+                    Rectangle
+                    {
+                        anchors
+                        {
+                            bottom: parent.bottom
+                            horizontalCenter: parent.horizontalCenter
+                        }
+                        height: 0.5*parent.height
+                        radius: 0.5*height
+                        width: parent.width*0.8
+                        color: parametri_generali.coloreUtente
+                        Testo
+                        {
+                            anchors.fill: parent
+                            font.pixelSize: 30
+                            text: _workout.getSessionTimeString(selected_exercise.selected_session)
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                        }
+                    }
+                }
+                Item {
+                    width: indicatori.w;
+                    height: indicatori.h*0.5
+
+                    Testo
+                    {
+                        anchors
+                        {
+                            top: parent.top
+                            left: parent.left
+                            right: parent.right
+                        }
+                        height: 0.5*parent.height
+                        text: "TUT"
+                    }
+
+                    Rectangle
+                    {
+                        anchors
+                        {
+                            bottom: parent.bottom
+                            horizontalCenter: parent.horizontalCenter
+                        }
+                        height: 0.5*parent.height
+                        radius: 0.5*height
+                        width: parent.width*0.8
+                        color: parametri_generali.coloreUtente
+                        Testo
+                        {
+                            anchors.fill: parent
+                            font.pixelSize: 30
+                            text: _workout.getSessionTutString(selected_exercise.selected_session)
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                        }
+                    }
                 }
             }
         }
 
-        CircularTimer {
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.horizontalCenterOffset: -parent.width*0.25
-            anchors.verticalCenter: parent.verticalCenter
-            width: 400/1080*parent.width
-            id: tut
-            value: timer_tut.value/1000/60-Math.floor(timer_tut.value/1000/60)
-            tempo: timer_tut.value
 
-            Testo
-            {
-                text: "TEMPO\nESERCIZIO"
-                anchors
-                {
-                    horizontalCenter: parent.horizontalCenter
-                    top: parent.bottom
-                    topMargin: 5
-
-                }
-            }
-        }
 
         IconaPlus
         {
+            id: avanti
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: parent.height*0.1
@@ -106,23 +248,18 @@ Item {
             {
                 selected_exercise.current_set=0
                 pageLoader.source = "PaginaAllenamento.qml"
-//                if (selected_exercise.workout==="")
-//                    pageLoader.source = "SceltaGruppo.qml"
-//                else
-//                    pageLoader.source = "SceltaWorkout.qml"
-
             }
-            Testo
-            {
-                text: "CONTINUA"
-                anchors
-                {
-                    horizontalCenter: parent.horizontalCenter
-                    top: parent.bottom
-                    topMargin: 5
+//            Testo
+//            {
+//                text: "CONTINUA"
+//                anchors
+//                {
+//                    horizontalCenter: parent.horizontalCenter
+//                    top: parent.bottom
+//                    topMargin: 5
 
-                }
-            }
+//                }
+//            }
         }
 
 
