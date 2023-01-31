@@ -205,7 +205,7 @@ Item {
                     width: 300
                     anchors.topMargin: 30
                     text: "(N° settimane)"
-                    font.pixelSize: 10
+                    font.pixelSize: 30
                     color: parametri_generali.coloreBordo
                 }
             }
