@@ -20,7 +20,7 @@ Item {
     property int giorni: frequenza.value
     property int settimane: durata.value
 
-    state: "ESORDIENTE"
+    state: livello.value
     states: [
         State {
             name: "ESORDIENTE"
@@ -78,6 +78,7 @@ Item {
 
 
         // LIVELLO
+
         Item {
             anchors
             {
@@ -88,23 +89,20 @@ Item {
             id: s1
             height: parent.height*0.33
 
-
-            Rectangle{
-                color: parametri_generali.coloreBordo
-                radius: 20
+            StringLinearSlider
+            {
+                id: livello
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                width: parent.width/3.0
-                height: 0.8*width
-                Testo
-                {
-                    anchors.verticalCenter: parent.verticalCenter
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    text:  component.state
-                    font.pixelSize: 20
-                    color: component.duplicato? parametri_generali.coloreBordoTrasparent: parametri_generali.coloreSfondo
+                width: 0.8*parent.width
+                height: 0.1*width
 
-                }
+                color: component.duplicato? parametri_generali.coloreBordoTrasparent: parametri_generali.coloreUtente
+                text_color: component.duplicato? parametri_generali.coloreUtente: parametri_generali.coloreBordo
+
+                lista: ["ESORDIENTE", "INTERMEDIO", "ESPERTO"]
+
+
                 Testo
                 {
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -112,41 +110,11 @@ Item {
                     width: 300
                     anchors.bottomMargin: 10
                     text: "LIVELLO"
-                    font.pixelSize: 20
+                    font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }
             }
-
-
-            IconaMeno
-            {
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: -parent.width*0.25
-                anchors.verticalCenter: parent.verticalCenter
-                onPressed: {
-                    if (component.state=="ESPERTO")
-                        component.state="INTERMEDIO"
-                    else if (component.state=="INTERMEDIO")
-                        component.state="ESORDIENTE"
-                }
-            }
-
-            IconaPiu
-            {
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.horizontalCenterOffset: parent.width*0.25
-                anchors.verticalCenter: parent.verticalCenter
-                onPressed: {
-                    if (component.state=="INTERMEDIO")
-                        component.state="ESPERTO"
-                    else if (component.state=="ESORDIENTE")
-                        component.state="INTERMEDIO"
-                }
-            }
-
-
         }
-
 
         // FREQUENZA
         Item {
@@ -243,70 +211,6 @@ Item {
             }
         }
 
-//        Item {
-//            anchors
-//            {
-//                left:parent.left
-//                right:parent.right
-//                top:s2.bottom
-//            }
-//            id: s3
-//            height: parent.height*0.33
-
-//            Rectangle{
-//                //                id: medio
-//                color: parametri_generali.coloreBordo
-//                radius: 20
-//                anchors.verticalCenter: parent.verticalCenter
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                width: parent.width/3.0
-//                height: 0.8*width
-//                Testo
-//                {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    anchors.horizontalCenter: parent.horizontalCenter
-//                    text: component.settimane
-//                    font.pixelSize: 40
-//                    color: parametri_generali.coloreSfondo
-//                }
-//                Testo
-//                {
-//                    anchors.horizontalCenter: parent.horizontalCenter
-//                    anchors.bottom: parent.top
-//                    width: 300
-//                    anchors.bottomMargin: 10
-//                    text: "DURATA (N° settimane)"
-//                    font.pixelSize: 20
-//                    color: parametri_generali.coloreBordo
-//                }
-//            }
-
-
-//            IconaMeno
-//            {
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                anchors.horizontalCenterOffset: -parent.width*0.25
-//                anchors.verticalCenter: parent.verticalCenter
-//                //                height: parent.height/3.0
-//                onPressed: {
-//                    if (component.settimane>1)
-//                        component.settimane--;
-//                }
-//            }
-
-//            IconaPiu
-//            {
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                anchors.horizontalCenterOffset: parent.width*0.25
-//                anchors.verticalCenter: parent.verticalCenter
-//                //                height: parent.height/3.0
-//                onPressed: {
-//                    if (component.settimane<12)
-//                        component.settimane++;
-//                }
-//            }
-//        }
-
     }
 
 
@@ -328,7 +232,7 @@ Item {
                 _history.pop()
                 pageLoader.source=_history.pop()
             }
-            dx_visible: true
+            dx_visible: !component.duplicato
 
             property string workout_id: ""
             onPressDx:
