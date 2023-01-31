@@ -108,7 +108,7 @@ Item
         width:108
         height:108
 
-        visible: impostazioni_utente.nome !==""
+
 
         anchors
         {
@@ -133,10 +133,11 @@ Item
         }
 
         Image {
+            visible: impostazioni_utente.nome !==""
             id: img_barra
             layer.enabled: true
             fillMode: Image.PreserveAspectCrop
-            visible: true
+            //visible: true
             mipmap: true
             anchors
             {
@@ -189,7 +190,7 @@ Item
         }
         width:38
         height:40
-        visible: impostazioni_utente.nome !==""
+        //visible: impostazioni_utente.nome !==""
 
         anchors
         {
