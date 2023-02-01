@@ -396,7 +396,7 @@ Item
             horizontalCenter: parent.horizontalCenter
         }
         z:5
-        width: 0.6*component.width
+        width: 0.4*component.width
         onPressRight:
         {
             component.state="stats"

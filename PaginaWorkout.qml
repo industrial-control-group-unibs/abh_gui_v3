@@ -112,7 +112,7 @@ Item {
             right: parent.right
             bottom: parent.bottom
         }
-        height: 100//210
+        height: 140//210
         FrecceSxDx
         {
             id: freccia
