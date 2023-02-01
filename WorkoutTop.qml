@@ -16,7 +16,7 @@ Item
     }
     Component.onDestruction: timer_tempo.stop()
 
-    implicitWidth: 1080
+    implicitWidth: 1080*.5
     implicitHeight: 1920*.5
 
 
@@ -216,8 +216,11 @@ Item
             width: parent.width
             height: parent.height-2*parent.radius
 
+            // @disable-check M16
             max: 100
+            // @disable-check M16
             color:parametri_generali.coloreUtente
+            // @disable-check M16
             chdata: show_motor? (fb_udp.data[2]) : (fb_udp.data[3])
 
             MouseArea{
@@ -382,6 +385,29 @@ Item
         }
     }
 
+
+
+    BottoniSwipe{
+
+        anchors
+        {
+            top: component.bottom
+            topMargin: 0
+            horizontalCenter: parent.horizontalCenter
+        }
+        z:5
+        width: 0.6*component.width
+        onPressRight:
+        {
+            component.state="stats"
+        }
+        onPressLeft:
+        {
+            component.state="workout"
+        }
+        visible: true
+        state: "sx"
+    }
 
 }
 

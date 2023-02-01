@@ -201,55 +201,6 @@ Item {
             }
 
 
-//            Rectangle{
-//                color: parametri_generali.coloreBordo
-//                radius: 20
-//                anchors.verticalCenter: parent.verticalCenter
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                width: parent.width/3.0
-//                height: 0.8*width
-//                Testo
-//                {
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    anchors.horizontalCenter: parent.horizontalCenter
-//                    text: selected_exercise.power
-//                    font.pixelSize: 40
-//                    color: parametri_generali.coloreSfondo
-//                }
-//                Testo
-//                {
-//                    anchors.horizontalCenter: parent.horizontalCenter
-//                    anchors.bottom: parent.top
-//                    width: 300
-//                    anchors.bottomMargin: 10
-//                    text: "DIFFICOLTA’"
-//                    font.pixelSize: 20
-//                    color: parametri_generali.coloreBordo
-//                }
-//            }
-
-//            IconaMeno
-//            {
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                anchors.horizontalCenterOffset: -parent.width*0.25
-//                anchors.verticalCenter: parent.verticalCenter
-//                onPressed: {
-//                    if (selected_exercise.power>1)
-//                        selected_exercise.power--
-//                }
-//            }
-
-//            IconaPiu
-//            {
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                anchors.horizontalCenterOffset: parent.width*0.25
-//                anchors.verticalCenter: parent.verticalCenter
-//                onPressed:
-//                {
-//                    if (selected_exercise.power<20)
-//                        selected_exercise.power++
-//                }
-//            }
         }
 
 

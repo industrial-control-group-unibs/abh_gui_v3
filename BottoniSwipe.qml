@@ -13,12 +13,7 @@ Item {
     id: component
 
     z: 10
-    anchors
-    {
-        bottom: parent.bottom
-        bottomMargin: 35
-        horizontalCenter: parent.horizontalCenter
-    }
+
     width: 220+height*2
     height: 60
 

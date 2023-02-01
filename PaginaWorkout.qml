@@ -112,18 +112,13 @@ Item {
             right: parent.right
             bottom: parent.bottom
         }
-        height: parent.height*0.3
+        height: 100//210
         FrecceSxDx
         {
             id: freccia
             visible: component.state==="sotto"
             onPressSx:
             {
-//                sx_visible= false
-//                dx_visible= false
-//                sotto.visible=false
-//                freccia.visible=false
-//                early_stop.visible=true
                 component.state="early_stop"
 
             }
@@ -131,30 +126,12 @@ Item {
             onPressDx:
             {
                 component.state="skip"
-//                sx_visible= false
-//                dx_visible= false
-//                sotto.visible=false
-//                freccia.visible=false
-//                skip.visible=true
-
             }
             z:5
         }
     }
 
-    BottoniSwipe{
 
-        onPressRight:
-        {
-            video_top.state="stats"
-        }
-        onPressLeft:
-        {
-            video_top.state="workout"
-        }
-        visible: freccia.visible
-        state: "sx"
-    }
 
     Rectangle{
         anchors.fill: parent
@@ -175,10 +152,6 @@ Item {
 
             onTimeout:
             {
-//                freccia.sx_visible= false
-//                sotto.visible=false
-//                freccia.visible=false
-//                early_stop.visible=true
                 component.state="early_stop"
             }
         }
@@ -205,10 +178,6 @@ Item {
             id: skip
             visible: false
             onCancel: {
-//                freccia.sx_visible=true
-//                sotto.visible=true
-//                freccia.visible=true
-//                skip.visible=false
                 component.state="sotto"
             }
             onExit: pageLoader.source=  "PaginaRiposo.qml"

@@ -53,6 +53,7 @@ Item
     }
 
 
+
     LinearSlider
     {
         id: power_settings
@@ -60,7 +61,7 @@ Item
         width: parent.width*0.3
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: parent.height*0.1
+        anchors.verticalCenterOffset: parent.height*0.3
         value: selected_exercise.power
         onValueChanged: {
             selected_exercise.power=value
@@ -79,36 +80,6 @@ Item
     }
 
 
-//    CSlider
-//    {
-//        id: power_settings
-//        width: parent.height*0.35
-//        anchors.horizontalCenter: parent.horizontalCenter
-//        anchors.verticalCenter: parent.verticalCenter
-//        anchors.verticalCenterOffset: -parent.height*0.25
-//        value: selected_exercise.power
-//        progressColor: parametri_generali.coloreUtente
-//        handleColor: parametri_generali.coloreBordo
-//        trackColor: parametri_generali.coloreBordo
-//        onValueChanged: {
-//            selected_exercise.power=value
-//        }
-
-//        z:10
-//        visible: parent.is_visible
-//        Testo
-//        {
-//            text: "POWER"
-//            anchors
-//            {
-//                horizontalCenter: parent.horizontalCenter
-//                top: parent.bottom
-//                topMargin: 5
-
-//            }
-//        }
-
-//    }
 
     IconaRipetizioni
     {
