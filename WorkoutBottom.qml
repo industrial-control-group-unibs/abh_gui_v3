@@ -57,11 +57,11 @@ Item
     LinearSlider
     {
         id: power_settings
-        height: parent.height*0.10
-        width: parent.width*0.3
+        height: parent.height*0.20
+        width: parent.width*0.5
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: parent.height*0.3
+        anchors.verticalCenterOffset: parent.height*0.2
         value: selected_exercise.power
         onValueChanged: {
             selected_exercise.power=value
@@ -127,8 +127,9 @@ Item
 
     CircularTimer {
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.horizontalCenterOffset: parent.width*0.20
+        anchors.horizontalCenterOffset: parent.width*0.35
         anchors.verticalCenter: parent.verticalCenter
+        anchors.verticalCenterOffset: -parent.height*0.1
         width: icona_rep.width
         colore: parametri_generali.coloreUtente
         id: time
@@ -150,8 +151,9 @@ Item
 
     CircularTimer {
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.horizontalCenterOffset: -parent.width*0.20
+        anchors.horizontalCenterOffset: -parent.width*0.35
         anchors.verticalCenter: parent.verticalCenter
+        anchors.verticalCenterOffset: -parent.height*0.1
         width: icona_rep.width
         colore: parametri_generali.coloreUtente
         id: tut

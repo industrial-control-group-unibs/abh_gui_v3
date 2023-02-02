@@ -21,6 +21,9 @@ Item
 
 
     id: component
+
+    property bool swipe: true
+
     state: "workout"
     states: [
         State {
@@ -170,6 +173,7 @@ Item
 
         PlayPauseButton
         {
+            visible: false
             id: tasto_video
             width: 20
             anchors
@@ -405,7 +409,7 @@ Item
         {
             component.state="workout"
         }
-        visible: true
+        visible: component.swipe
         state: "sx"
     }
 

@@ -146,6 +146,7 @@ Item {
 
         WorkoutTop{
             id: video_top
+            swipe: component.state==="sotto"
         }
         WorkoutBottom{
             id: sotto

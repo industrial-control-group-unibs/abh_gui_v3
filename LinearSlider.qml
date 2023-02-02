@@ -8,6 +8,7 @@ Item {
     property real min: 0.0
     property real max: 20.0
     property real increment: 1.0
+    property real offset: 0.5*max
 
     implicitHeight: 10
     implicitWidth: 800
@@ -65,7 +66,7 @@ Item {
             anchors.fill: parent
             gradient: Gradient {
                 GradientStop { position: 0.0; color: component.color}
-                GradientStop { position: (component.value+component.max*0.1)/(component.max*2.0); color: "transparent" }
+                GradientStop { position: (component.value+component.offset)/(component.max*2.0+component.offset); color: "transparent" }
             }
         }
 
