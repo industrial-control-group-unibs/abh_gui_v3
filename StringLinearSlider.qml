@@ -63,13 +63,13 @@ Item {
         anchors.right: piu.left
         anchors.leftMargin: meno.width*0.1
         anchors.rightMargin: meno.width*0.1
-        height: parent.height
+        height: parent.height*0.75
 
         RadialGradient {
             anchors.fill: parent
             gradient: Gradient {
                 GradientStop { position: 0.0; color: component.color}
-                GradientStop { position: (component.index+1 +component.lista.length*0.1)/(component.lista.length*2.0); color: "transparent" }
+                GradientStop { position: (component.index+1 +component.lista.length*0.1)/(component.lista.length*3.0); color: "transparent" }
             }
         }
 
