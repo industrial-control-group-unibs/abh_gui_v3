@@ -69,7 +69,7 @@ Item {
             anchors.fill: parent
             gradient: Gradient {
                 GradientStop { position: 0.0; color: component.color}
-                GradientStop { position: (component.index+1 +component.lista.length*0.1)/(component.lista.length*3.0); color: "transparent" }
+                GradientStop { position: (component.index+1 +component.lista.length*0.7)/(component.lista.length*3.0); color: "transparent" }
             }
         }
 
