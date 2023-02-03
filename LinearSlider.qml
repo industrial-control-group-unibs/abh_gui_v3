@@ -60,7 +60,7 @@ Item {
         anchors.right: piu.left
         anchors.leftMargin: meno.width*0.1
         anchors.rightMargin: meno.width*0.1
-        height: parent.height*0.5
+        height: parent.height*0.75
 
         RadialGradient {
             anchors.fill: parent
