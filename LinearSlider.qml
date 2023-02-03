@@ -60,13 +60,13 @@ Item {
         anchors.right: piu.left
         anchors.leftMargin: meno.width*0.1
         anchors.rightMargin: meno.width*0.1
-        height: parent.height
+        height: parent.height*0.5
 
         RadialGradient {
             anchors.fill: parent
             gradient: Gradient {
                 GradientStop { position: 0.0; color: component.color}
-                GradientStop { position: (component.value+component.offset)/(component.max*2.0+component.offset); color: "transparent" }
+                GradientStop { position: (component.value+component.offset)/(component.max*2.7+component.offset); color: "transparent" }
             }
         }
 
