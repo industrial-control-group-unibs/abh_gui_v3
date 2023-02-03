@@ -81,6 +81,8 @@ Item {
             id: tempo
             value: mp_esercizio_preparati.position/mp_esercizio_preparati.duration
             tempo: (mp_esercizio_preparati.duration-mp_esercizio_preparati.position) //timerino.remaining_time
+            colore: parametri_generali.coloreUtente
+            coloreTesto: colore
         }
     }
 

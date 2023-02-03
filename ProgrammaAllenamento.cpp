@@ -139,7 +139,7 @@ void ProgrammaAllenamento::setSession(int session)
 QVariant ProgrammaAllenamento::listSessionExercise(int session)
 {
   QList<QStringList> vec;
-  for (int idx=idx_;idx<(int)doc_->GetRowCount();idx++)
+  for (int idx=0;idx<(int)doc_->GetRowCount();idx++)
   {
     int s= doc_->GetCell<int>(6,idx);
     if (s==session)

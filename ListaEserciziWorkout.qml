@@ -68,7 +68,7 @@ Item {
         color: parametri_generali.coloreSfondo
         clip: true
 
-        Item
+        Rectangle
         {
             id: header
             height: video_zone.height+nome_titolo.height
@@ -76,7 +76,7 @@ Item {
             anchors.right: parent.right
             anchors.top: parent.top
             z: 5
-
+            color: parametri_generali.coloreSfondo
 
             Text {
                 id: nome_titolo
@@ -186,6 +186,7 @@ Item {
         ListView {
             snapMode: ListView.SnapOneItem
             id: lista_workout
+            clip: true
             anchors {
                 top: header.bottom
                 bottom: parent.bottom
@@ -194,6 +195,8 @@ Item {
             }
             currentIndex: -1
 
+
+
             model: _list_string
 
 
@@ -201,6 +204,7 @@ Item {
 
             delegate: IconaDescrizioneEsercizi{
 
+                Component.onCompleted: console.log("nome = ",nome," immagine = ",immagine, " code = ",vector[0])
 
                 color: parametri_generali.coloreBordo
                 highlighted:
@@ -209,10 +213,16 @@ Item {
                         lista_workout.currentIndex === index
                     else
                         false;
-
                 }
+                onHighlightedChanged:
+                {
+                    if (highlighted)
+                        selected_exercise.video_intro=_esercizi.getVideoIntro(vector[0])
+                }
+
                 nome:  _esercizi.getName(vector[0])
                 immagine:  _esercizi.getImage(vector[0])
+
                 ripetizioni:parseFloat(vector[1])
                 serie: parseFloat(vector[2])
                 potenza: parseFloat(vector[3])

@@ -185,7 +185,7 @@ Item {
                 min: 1
                 max: 20
 
-                onValueChanged: selected_exercise.reps=value
+                onValueChanged: selected_exercise.power=value
 
                 Testo
                 {

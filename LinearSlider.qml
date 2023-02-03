@@ -8,7 +8,7 @@ Item {
     property real min: 0.0
     property real max: 20.0
     property real increment: 1.0
-    property real offset: 0.5*max
+    property real offset: 0.8*max
 
     implicitHeight: 10
     implicitWidth: 800

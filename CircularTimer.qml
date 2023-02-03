@@ -12,6 +12,7 @@ CircularSlider {
     height: width
 
     property color colore: parametri_generali.coloreBordo
+    property color coloreTesto: parametri_generali.coloreBordo
 
 
     interactive: false
@@ -35,12 +36,12 @@ CircularSlider {
             horizontalCenter: parent.horizontalCenter
             verticalCenter: parent.verticalCenter
         }
-        color:  parametri_generali.coloreBordo
+        color:  progressIndicator.coloreTesto
         font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
 
         font.italic: false
         font.letterSpacing: 0
-        font.pixelSize: 30
+        font.pixelSize: 30/120*progressIndicator.width
         font.weight: Font.Normal
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignTop

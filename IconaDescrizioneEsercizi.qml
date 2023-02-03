@@ -74,7 +74,7 @@ IconaRettangolo
                 visible: false
                 mipmap: true
                 anchors.fill: parent
-                source: "file://"+PATH+"/immagini_esercizi/"+_esercizi.getImage(immagine)
+                source: "file://"+PATH+"/immagini_esercizi/"+immagine
             }
         }
 

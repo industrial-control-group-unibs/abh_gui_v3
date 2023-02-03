@@ -173,6 +173,7 @@ Item {
                         }
                         height: 0.5*parent.height
                         text: "DURATA SESSIONE"
+                        font.pixelSize: 50
                     }
                     Rectangle
                     {
@@ -188,7 +189,8 @@ Item {
                         Testo
                         {
                             anchors.fill: parent
-                            font.pixelSize: 30
+                            font.pixelSize: 50
+                            font.bold: true
                             text: _workout.getSessionTimeString(selected_exercise.selected_session)
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
@@ -209,6 +211,7 @@ Item {
                         }
                         height: 0.5*parent.height
                         text: "TUT"
+                        font.pixelSize: 50
                     }
 
                     Rectangle
@@ -225,7 +228,8 @@ Item {
                         Testo
                         {
                             anchors.fill: parent
-                            font.pixelSize: 30
+                            font.pixelSize: 50
+                            font.bold: true
                             text: _workout.getSessionTutString(selected_exercise.selected_session)
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter

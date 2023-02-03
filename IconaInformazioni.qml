@@ -16,7 +16,7 @@ IconaRettangolo
     property real progress: 0.5
     property real punteggio: 8.5
 
-    property real fontSize: 35
+    property real fontSize: 50
     text: titolo==="+"?titolo:""
 
     Item {
@@ -154,10 +154,10 @@ IconaRettangolo
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 height: parent.height*0.5
-                width: height*0.5
+                //width: height*0.5
                 stepSize: 0.01
                 trackColor: component.color
-                trackWidth: 0.1*width
+                trackWidth: 0.05*width
                 progressWidth: trackWidth
                 handleColor: "transparent"
                 progressColor: component.color2
@@ -211,11 +211,11 @@ IconaRettangolo
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 height: parent.height*0.5
-                width: height*0.5
+                //width: height*0.5
                 stepSize: 0.01
                 maxValue: 10
                 trackColor: component.color
-                trackWidth: 0.1*width
+                trackWidth: 0.05*width
                 progressWidth: trackWidth
                 handleColor: "transparent"
                 progressColor: component.color2

@@ -177,8 +177,8 @@ Item {
                 tacche: 120
                 value: 1-conto_alla_rovescia.position/conto_alla_rovescia.duration
                 tempo: (conto_alla_rovescia.duration-conto_alla_rovescia.position) //timerino.remaining_time
-                colore: (tempo<5000)?"red":parametri_generali.coloreBordo
-
+                colore: (tempo<5000)?"red":parametri_generali.coloreUtente
+                coloreTesto: colore
                 MouseArea
                 {
                     anchors.fill: parent
@@ -190,7 +190,7 @@ Item {
             Testo
             {
                 text: "SERIE "+(selected_exercise.current_set+1)+" DI "+selected_exercise.sets
-                font.pixelSize: 30
+                font.pixelSize: 60
                 anchors
                 {
                     horizontalCenter: parent.horizontalCenter
