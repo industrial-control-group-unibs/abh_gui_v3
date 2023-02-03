@@ -147,7 +147,7 @@ Item {
 
                 MediaPlayer {
                     id: mp_esercizio
-                    autoPlay: false
+                    autoPlay: true
                     autoLoad: true
 
                     source: "file://"+PATH+"/video_brevi_esercizi/"+selected_exercise.video_intro
@@ -217,7 +217,10 @@ Item {
                 onHighlightedChanged:
                 {
                     if (highlighted)
+                    {
                         selected_exercise.video_intro=_esercizi.getVideoIntro(vector[0])
+                        console.log("video_intro = ",selected_exercise.video_intro)
+                    }
                 }
 
                 nome:  _esercizi.getName(vector[0])
