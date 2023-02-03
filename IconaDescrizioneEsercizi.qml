@@ -27,7 +27,7 @@ IconaRettangolo
 
 
         Rectangle {
-            id: immagine
+            id: immagine_id
             anchors
             {
                 left: parent.left
