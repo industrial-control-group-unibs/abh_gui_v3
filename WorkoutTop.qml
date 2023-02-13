@@ -225,11 +225,23 @@ Item
             // @disable-check M16
             color:parametri_generali.coloreUtente
             // @disable-check M16
-            chdata: show_motor? (fb_udp.data[2]) : (fb_udp.data[3])
+            chdata: show_motor? (fb_udp.data[2]) : 2.0*(fb_udp.data[3]-50.0)
 
             MouseArea{
                 anchors.fill: parent
                 onPressed: parent.show_motor=!(parent.show_motor)
+            }
+
+            Testo
+            {
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: parent.height*0.1
+                font.pixelSize: 50
+                verticalAlignment: Text.AlignTop
+                text: chrt_areachart.show_motor? "VELOCITA' ISTANTANEA": "VISIONE"
+                color: parametri_generali.coloreUtente
             }
 
             Shape {
@@ -238,8 +250,117 @@ Item
                 property real up: chrt_areachart.height*0.5*(1-(selected_exercise.max_pos_speed/chrt_areachart.max))
                 property real down: chrt_areachart.height*0.5*(1-(selected_exercise.max_neg_speed/chrt_areachart.max))
 
+                Testo
+                {
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.leftMargin: parent.width*0.1
+                    anchors.topMargin: limiti.up-height
+                    anchors.right: parent.right
+                    height: parent.height*0.1
+                    font.pixelSize: 30
+                    horizontalAlignment: Text.AlignLeft
+                    verticalAlignment: Text.AlignVCenter
+                    text: "LIMITE SUPERIORE"
+                    color: parametri_generali.coloreUtente
+                    visible: chrt_areachart.show_motor
+                }
+
+                Testo
+                {
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.leftMargin: parent.width*0.1
+                    anchors.topMargin: limiti.down
+                    anchors.right: parent.right
+                    height: parent.height*0.1
+                    font.pixelSize: 30
+                    horizontalAlignment: Text.AlignLeft
+                    verticalAlignment: Text.AlignVCenter
+                    text: "LIMITE INFERIORE"
+                    color: parametri_generali.coloreUtente
+                    visible: chrt_areachart.show_motor
+                }
+
+                Testo
+                {
+                    anchors.top: parent.top
+                    anchors.leftMargin: parent.width*0.1
+                    anchors.topMargin: -height*0.5
+                    anchors.right: parent.left
+                    anchors.rightMargin: parent.width*0.02
+                    height: parent.height*0.1
+                    width: parent.width*0.1
+                    font.pixelSize: 20
+                    horizontalAlignment: Text.AlignRight
+                    verticalAlignment: Text.AlignVCenter
+                    text: "100"
+                    color: parametri_generali.coloreUtente
+                }
+                Testo
+                {
+                    anchors.top: parent.top
+                    anchors.leftMargin: parent.width*0.1
+                    anchors.topMargin: parent.height*0.25-height*0.5
+                    anchors.right: parent.left
+                    anchors.rightMargin: parent.width*0.02
+                    height: parent.height*0.1
+                    width: parent.width*0.1
+                    font.pixelSize: 20
+                    horizontalAlignment: Text.AlignRight
+                    verticalAlignment: Text.AlignVCenter
+                    text: chrt_areachart.show_motor? "50": "75"
+                    color: parametri_generali.coloreUtente
+                }
+                Testo
+                {
+                    anchors.top: parent.top
+                    anchors.leftMargin: parent.width*0.1
+                    anchors.topMargin: parent.height*0.5-height*0.5
+                    anchors.right: parent.left
+                    anchors.rightMargin: parent.width*0.02
+                    height: parent.height*0.1
+                    width: parent.width*0.1
+                    font.pixelSize: 20
+                    horizontalAlignment: Text.AlignRight
+                    verticalAlignment: Text.AlignVCenter
+                    text: chrt_areachart.show_motor? "0": "50"
+                    color: parametri_generali.coloreUtente
+                }
+                Testo
+                {
+                    anchors.top: parent.top
+                    anchors.leftMargin: parent.width*0.1
+                    anchors.topMargin: parent.height*0.75-height*0.5
+                    anchors.right: parent.left
+                    anchors.rightMargin: parent.width*0.02
+                    height: parent.height*0.1
+                    width: parent.width*0.1
+                    font.pixelSize: 20
+                    horizontalAlignment: Text.AlignRight
+                    verticalAlignment: Text.AlignVCenter
+                    text: chrt_areachart.show_motor? "-50": "25"
+                    color: parametri_generali.coloreUtente
+                }
+                Testo
+                {
+                    anchors.top: parent.top
+                    anchors.leftMargin: parent.width*0.1
+                    anchors.topMargin: parent.height*1.0-height*0.5
+                    anchors.right: parent.left
+                    anchors.rightMargin: parent.width*0.02
+                    height: parent.height*0.1
+                    width: parent.width*0.1
+                    font.pixelSize: 20
+                    horizontalAlignment: Text.AlignRight
+                    verticalAlignment: Text.AlignVCenter
+                    text: chrt_areachart.show_motor? "-100": "0"
+                    color: parametri_generali.coloreUtente
+                }
+
+
                 ShapePath {
-                    strokeColor: chrt_areachart.chdata>selected_exercise.max_pos_speed?"red": parametri_generali.coloreBordo
+                    strokeColor: chrt_areachart.show_motor? (chrt_areachart.chdata>selected_exercise.max_pos_speed?"red": parametri_generali.coloreBordo) : "transparent"
                     strokeWidth: 2
                     strokeStyle: ShapePath.DashLine
                     //startY: parent.width*0.5*(1.0+selected_exercise.max_pos_speed/max)
@@ -249,7 +370,7 @@ Item
                     PathLine { x: chrt_areachart.width; y: limiti.up }
                 }
                 ShapePath {
-                    strokeColor: chrt_areachart.chdata<selected_exercise.max_neg_speed?"red": parametri_generali.coloreBordo
+                    strokeColor: chrt_areachart.show_motor? (chrt_areachart.chdata<selected_exercise.max_neg_speed?"red": parametri_generali.coloreBordo) : "transparent"
                     strokeWidth: 2
                     strokeStyle: ShapePath.DashLine
                     //startY: parent.width*0.5*(1.0+selected_exercise.max_pos_speed/max)

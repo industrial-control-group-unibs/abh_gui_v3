@@ -98,7 +98,7 @@ Item
             {
                 if (selected_exercise.workout!=="")
                 {
-                    selected_exercise.score+=selected_exercise.power*(1.0/_workout.power*selected_exercise.reps)
+                    selected_exercise.score+=selected_exercise.power/(_workout.power*selected_exercise.reps*selected_exercise.sets)
                 }
                 if (ripetizioni>selected_exercise.reps)
                     pageLoader.source = "PaginaRiposo.qml"
