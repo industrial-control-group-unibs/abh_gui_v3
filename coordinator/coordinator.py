@@ -147,7 +147,7 @@ def exercise_thread():
 
     state=Status.STOP
     last_state=Status.UNDEFINED
-    repetition_count=0.0
+    repetition_count=1.0
     direction=0.0
 
     motor_speed=0.0
@@ -217,9 +217,10 @@ def exercise_thread():
             stringa=startstop_client.getLastStringAndClearQueue()
             print(stringa)
             if stringa[0:5]=="start" :
-                state=Status.FORWARD
-                change_direction=True
-                motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time]
+                if (exercise_type!=2):
+                    state=Status.FORWARD
+                    change_direction=True
+                    motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time]
                 if not isinstance(exercise_name_eval,int):
                     exercise_name_eval.sendString("start")
 
@@ -287,7 +288,7 @@ def exercise_thread():
             #print(motor_speed)
 
         if (state == Status.STOP):
-            repetition_count=0.0
+            repetition_count=1.0
             direction=0.0
 
 

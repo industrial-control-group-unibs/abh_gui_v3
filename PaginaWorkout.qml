@@ -24,8 +24,7 @@ Item {
         tut_ex=timer_tut.value*0.001
 
         timer_tut.active=true
-        if (selected_exercise.type!==2)
-            startstop_udp.string="start"
+        startstop_udp.string="start"
         parametri_generali.login_page=false
         _active_workouts.readFile("ACTIVEWORKOUT_"+impostazioni_utente.identifier)
     }
