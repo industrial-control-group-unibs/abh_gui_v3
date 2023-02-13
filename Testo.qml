@@ -12,4 +12,5 @@ Text {
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignTop
     //verticalAlignment: Text.AlignVCenter
+    //fontSizeMode: Text.Fit
 }

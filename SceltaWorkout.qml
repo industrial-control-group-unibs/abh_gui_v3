@@ -146,6 +146,14 @@ Item {
                 }
                 onPressAndHold:
                 {
+                    erase=true
+                }
+                onEraseNo:
+                {
+                    erase=false
+                }
+                onEraseYes:
+                {
                     _active_workouts.removeRow("ACTIVEWORKOUT_"+impostazioni_utente.identifier,index);
                     lista_workout.reload()
                 }

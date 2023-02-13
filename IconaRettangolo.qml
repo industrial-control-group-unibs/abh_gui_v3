@@ -20,8 +20,81 @@ Item {
 
     signal pressed
     signal pressAndHold
+    signal eraseYes
+    signal eraseNo
 
     property string text: ""
+
+    property bool erase: false
+
+    Rectangle
+    {
+        id: erase_rectange
+        visible: component.erase
+        anchors.fill: parent
+        color: parametri_generali.coloreSfondo
+        z: parent.z+20
+        radius: parent.radius
+        anchors.margins: component.margin
+
+        border.color: component.color
+        border.width: component.bordo
+        Testo
+        {
+            anchors.fill: parent
+            anchors.leftMargin: parent.height
+            anchors.rightMargin: parent.height
+            font.pixelSize: 100
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            text: "CANCELLARE?"
+            fontSizeMode: Text.Fit
+        }
+        IconaCerchio
+        {
+            anchors.left: parent.left
+            anchors.leftMargin: parent.height*0.5-width*0.5
+            anchors.verticalCenter: parent.verticalCenter
+            width: parent.height*0.5
+            state: "pieno"
+            onPressed: component.eraseYes()
+            Testo
+            {
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.top: parent.bottom
+                height: parent.width*0.5
+                font.pixelSize: 100
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                text: "SI"
+                fontSizeMode: Text.Fit
+            }
+        }
+        IconaCerchio
+        {
+            anchors.right: parent.right
+            anchors.rightMargin: parent.height*0.5-width*0.5
+            anchors.verticalCenter: parent.verticalCenter
+            width: parent.height*0.5
+            state: "vuoto"
+            onPressed: component.eraseNo()
+
+            Testo
+            {
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.top: parent.bottom
+                height: parent.width*0.5
+                font.pixelSize: 100
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                text: "NO"
+                fontSizeMode: Text.Fit
+            }
+        }
+    }
+
 
     Item {
         visible: component.text==="+"
@@ -62,7 +135,7 @@ Item {
     }
 
     Rectangle   {
-
+        visible: !component.erase
         id: icona
         color: "transparent"
         anchors.fill: parent

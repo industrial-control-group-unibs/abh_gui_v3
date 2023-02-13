@@ -261,7 +261,7 @@ Item
                     height: parent.height*0.1
                     font.pixelSize: 20
                     horizontalAlignment: Text.AlignLeft
-                    verticalAlignment: Text.AlignVCenter
+                    verticalAlignment: Text.AlignBottom
                     text: "LIMITE SUPERIORE"
                     color: parametri_generali.coloreUtente
                     visible: chrt_areachart.show_motor
@@ -277,7 +277,7 @@ Item
                     height: parent.height*0.1
                     font.pixelSize: 20
                     horizontalAlignment: Text.AlignLeft
-                    verticalAlignment: Text.AlignVCenter
+                    verticalAlignment: Text.AlignTop
                     text: "LIMITE INFERIORE"
                     color: parametri_generali.coloreUtente
                     visible: chrt_areachart.show_motor
@@ -383,35 +383,35 @@ Item
 
                 ShapePath {
                     strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 1.0
+                    strokeWidth: 2.0
                     startX: 0
                     startY: chrt_areachart.height*0.5
                     PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.5 }
                 }
                 ShapePath {
                     strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 0.25
+                    strokeWidth: 1
                     startX: 0
                     startY: chrt_areachart.height*0.25
                     PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.25 }
                 }
                 ShapePath {
                     strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 0.25
+                    strokeWidth: 1
                     startX: 0
                     startY: chrt_areachart.height*0.75
                     PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.75 }
                 }
                 ShapePath {
                     strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 0.25
+                    strokeWidth: 1
                     startX: 0
                     startY: chrt_areachart.height*1
                     PathLine { x: chrt_areachart.width; y: chrt_areachart.height*1 }
                 }
                 ShapePath {
                     strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 0.25
+                    strokeWidth: 1
                     startX: 0
                     startY: chrt_areachart.height*0
                     PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0 }
@@ -419,7 +419,7 @@ Item
 
                 ShapePath {
                     strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 0.25
+                    strokeWidth: 1
                     startX:  chrt_areachart.width*.5
                     startY: 0
                     PathLine { x: chrt_areachart.width*.5; y: chrt_areachart.height }
@@ -428,7 +428,7 @@ Item
 
                 ShapePath {
                     strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 0.25
+                    strokeWidth: 1
                     startX:  chrt_areachart.width*.75
                     startY: 0
                     PathLine { x: chrt_areachart.width*.75; y: chrt_areachart.height }
@@ -436,7 +436,7 @@ Item
 
                 ShapePath {
                     strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 0.25
+                    strokeWidth: 1
                     startX:  chrt_areachart.width*.25
                     startY: 0
                     PathLine { x: chrt_areachart.width*.25; y: chrt_areachart.height }
