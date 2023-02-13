@@ -86,6 +86,7 @@ Item {
             anchors.bottom: avanti.top
             anchors.left: parent.left
             anchors.right: parent.right
+            anchors.margins: parent.width*0.1
 
               AnimatedImage {
                   anchors.fill: parent
