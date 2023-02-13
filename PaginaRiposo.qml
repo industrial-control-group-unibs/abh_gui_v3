@@ -94,63 +94,16 @@ Item {
                         selected_exercise.current_set=0
                         if (selected_exercise.workout==="")
                         {
-                            pageLoader.source="PaginaRiepilogo.qml"
                         }
                         else
                         {
-                            //selected_exercise.reps
+
                             _workout.setScore(selected_exercise.score)
                             _workout.setTime(selected_exercise.time_esercizio)
                             _workout.setTut(selected_exercise.tut_esercizio)
-
-                            _active_workouts
-                            _workout.next();
-
-                            console.log( _workout.getSessionProgess(selected_exercise.selected_session))
-                            _active_workouts.changeValue(
-                                        "ACTIVEWORKOUT_"+impostazioni_utente.identifier,
-                                        _active_workouts.getRowIndex("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
-                                                                     0,
-                                                                     selected_exercise.workout),
-                                        1,
-                                        _workout.getProgess()
-                                        )
-
-                            _active_workouts.changeValue(
-                                        "ACTIVEWORKOUT_"+impostazioni_utente.identifier,
-                                        _active_workouts.getRowIndex("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
-                                                                     0,
-                                                                     selected_exercise.workout),
-                                        2,
-                                        _workout.getScore()
-                                        )
-
-                            _active_workouts.changeValue(
-                                        "ACTIVEWORKOUT_"+impostazioni_utente.identifier,
-                                        _active_workouts.getRowIndex("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
-                                                                     0,
-                                                                     selected_exercise.workout),
-                                        4,
-                                        _workout.getTime()
-                                        )
-
-                            if (_workout.endSession)
-                            {
-                                pageLoader.source="PaginaRiepilogoWorkout.qml"
-
-                                _workout.updateStatFile(impostazioni_utente.identifier,_utenti.getWorkout(impostazioni_utente.identifier),timer_tempo.value,timer_tut.value);
-                            }
-                            else
-                            {
-                                selected_exercise.code=_workout.code
-                                selected_exercise.reps=_workout.reps
-                                selected_exercise.rest_time=_workout.rest
-                                selected_exercise.sets=_workout.sets
-                                selected_exercise.rest_set_time=_workout.restSet
-                                selected_exercise.power=_workout.power
-                                pageLoader.source="PaginaRiepilogoSetWorkout.qml"
-                            }
                         }
+                        pageLoader.source="PaginaRiepilogo.qml"
+
                     }
                 }
             }

@@ -20,8 +20,6 @@ Item {
 
     Component.onDestruction:
     {
-        selected_exercise.power=difficolta
-        selected_exercise.difficulty=nome_livello
     }
 
     Component.onCompleted:

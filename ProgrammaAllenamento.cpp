@@ -10,6 +10,7 @@ ProgrammaAllenamento::ProgrammaAllenamento(QString path, QObject* /*parent*/)
 {
   dir_path_=path;
   completed_=true;
+  end_workout_=false;
   end_session_=false;
   act_session_=1;
 }
@@ -35,15 +36,22 @@ void ProgrammaAllenamento::readFile(std::string file_name)
   }
   std::vector<int> session = doc_->GetColumn<int>("session");
   std::vector<int> score = doc_->GetColumn<int>("score");
+
+  end_workout_=true;
   for (size_t idx=0;idx<session.size();idx++)
   {
     if (score.at(idx)<0)
     {
       act_session_=session.at(idx);
+      end_workout_=false;
       idx_=idx;
       break;
     }
   }
+  if (end_workout_)
+    qDebug() << "workout finito\n";
+  else
+    qDebug() << "workout non finito\n";
   updateField();
   //setSession(act_session_);
 }
@@ -88,6 +96,7 @@ void ProgrammaAllenamento::next()
     idx_=0;
     completed_=true;
     end_session_=true;
+    end_workout_=true;
   }
   else
   {
@@ -321,6 +330,23 @@ QString ProgrammaAllenamento::getTime()
   return QString().fromStdString(tempo_stringa);
 }
 
+QString ProgrammaAllenamento::getTut()
+{
+
+  double time=0.0;
+  for (int idx=0;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int t=doc_->GetCell<double>(9,idx);
+    time+=t;
+  }
+
+  int secondi=int(time)%60;
+  int minuti=int(std::floor(time/60.0))%60;
+  int ore=int(std::floor(time/3600.0));
+
+  std::string tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m";
+  return QString().fromStdString(tempo_stringa);
+}
 
 
 QVariant ProgrammaAllenamento::listSessionsNumber()

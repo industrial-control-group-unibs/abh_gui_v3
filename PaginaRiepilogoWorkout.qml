@@ -86,7 +86,7 @@ Item {
                         progressWidth: trackWidth
                         handleColor: "transparent"
                         progressColor: parametri_generali.coloreUtente
-                        value: _workout.getSessionScore(selected_exercise.selected_session)
+                        value: _workout.getScore()
 
 
                         Testo
@@ -191,7 +191,7 @@ Item {
                             anchors.fill: parent
                             font.pixelSize: 50
                             font.bold: true
-                            text: _workout.getSessionTimeString(selected_exercise.selected_session)
+                            text: _workout.getTime()
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
                         }
@@ -230,7 +230,7 @@ Item {
                             anchors.fill: parent
                             font.pixelSize: 50
                             font.bold: true
-                            text: _workout.getSessionTutString(selected_exercise.selected_session)
+                            text: _workout.getTut()
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
                         }

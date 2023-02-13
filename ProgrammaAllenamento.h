@@ -16,6 +16,7 @@ class ProgrammaAllenamento : public QObject
   Q_OBJECT
   Q_PROPERTY(bool            completed      READ    completed                        NOTIFY completedChanged)
   Q_PROPERTY(bool            endSession     READ    endSession                       NOTIFY endSessionChanged)
+  Q_PROPERTY(bool            endWorkout     READ    endWorkout                       NOTIFY endWorkoutChanged)
   Q_PROPERTY(QString         code           READ    code                             NOTIFY codeChanged)
   Q_PROPERTY(QString         image          READ    image                            NOTIFY imageChanged)
   Q_PROPERTY(int             power          READ    power                            NOTIFY powerChanged)
@@ -37,6 +38,7 @@ public:
 
   bool    completed  () const {return completed_    ;}
   bool    endSession () const {return end_session_  ;}
+  bool    endWorkout () const {return end_workout_  ;}
   QString code       () const {return code_         ;}
   QString image      () const {return image_        ;}
   int     power      () const {return power_        ;}
@@ -77,13 +79,16 @@ public:
     QString getSessionTimeString   (int session);
     QString getSessionTutString    (int session);
 
+
     double getProgess();
     double getScore  ();
     QString getTime();
+    QString getTut();
 
 signals:
   void completedChanged();
   void endSessionChanged();
+  void endWorkoutChanged();
   void codeChanged();
   void imageChanged();
   void powerChanged();
@@ -102,6 +107,7 @@ protected:
 
   bool            completed_     ;
   bool            end_session_   ;
+  bool            end_workout_   ;
   QString         code_          ;
   QString         image_         ;
   int             session_       ;

@@ -126,12 +126,13 @@ ApplicationWindow {
         property real max_neg_speed: -10
         property real score: 0
         property string workout: ""
+        property bool workout_finito: false
         property int type: 1
         property int  selected_session: 1
 
         property real time_esercizio: 0
         property real tut_esercizio: 0
-
+        property real completamento: 0
         property string difficulty: "Facile"  // TO BE REMOVED
 
         onCodeChanged:

@@ -86,5 +86,6 @@
         <file>ListaWorkoutSessioni.qml</file>
         <file>IconaDescrizioneEsercizi.qml</file>
         <file>StringLinearSlider.qml</file>
+        <file>PaginaCoppa.qml</file>
     </qresource>
 </RCC>

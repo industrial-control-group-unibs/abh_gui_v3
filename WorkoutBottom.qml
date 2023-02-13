@@ -96,10 +96,8 @@ Item
             conto_alla_rovescia.restart()
             if (selected_exercise.type<3)
             {
-                if (selected_exercise.workout!=="")
-                {
-                    selected_exercise.score+=selected_exercise.power/(_workout.power*selected_exercise.reps*selected_exercise.sets)
-                }
+                selected_exercise.completamento+=1.0/(selected_exercise.reps*selected_exercise.sets)
+                selected_exercise.score+=selected_exercise.power/(_workout.power*selected_exercise.reps*selected_exercise.sets)
                 if (ripetizioni>selected_exercise.reps)
                     pageLoader.source = "PaginaRiposo.qml"
             }
@@ -108,6 +106,11 @@ Item
                 if (ripetizioni<=0)
                 {
                     pageLoader.source = "PaginaRiposo.qml"
+                }
+                else
+                {
+                    selected_exercise.score+=1.0/(selected_exercise.reps*selected_exercise.sets)
+                    selected_exercise.completamento+=1.0/(selected_exercise.reps*selected_exercise.sets)
                 }
             }
         }

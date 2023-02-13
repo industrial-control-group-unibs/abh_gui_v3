@@ -50,7 +50,7 @@ Item {
             }
 
             onPressDx: pageLoader.source=  "PaginaIstruzioni.qml"
-            dx_visible: selected_exercise.selected_session===_workout.getActiveSession()
+            dx_visible: !_workout.endWorkout && selected_exercise.selected_session===_workout.getActiveSession()
             colore: parametri_generali.coloreBordo
         }
     }
