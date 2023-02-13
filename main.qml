@@ -222,7 +222,7 @@ ApplicationWindow {
         property int counter: 0
         onDataChanged:
         {
-            if (counter++>100000)
+            if (counter++>10000)
             {
                 counter=0
                 console.log(data)
