@@ -238,7 +238,8 @@ Item
                 anchors.left: parent.left
                 anchors.right: parent.right
                 height: parent.height*0.1
-                font.pixelSize: 50
+                font.pixelSize: 40
+                fontSizeMode: Text.Fit
                 verticalAlignment: Text.AlignTop
                 text: chrt_areachart.show_motor? "VELOCITA' ISTANTANEA": "VISIONE"
                 color: parametri_generali.coloreUtente
@@ -258,7 +259,7 @@ Item
                     anchors.topMargin: limiti.up-height
                     anchors.right: parent.right
                     height: parent.height*0.1
-                    font.pixelSize: 30
+                    font.pixelSize: 20
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
                     text: "LIMITE SUPERIORE"
@@ -274,7 +275,7 @@ Item
                     anchors.topMargin: limiti.down
                     anchors.right: parent.right
                     height: parent.height*0.1
-                    font.pixelSize: 30
+                    font.pixelSize: 20
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
                     text: "LIMITE INFERIORE"
