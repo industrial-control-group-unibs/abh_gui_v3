@@ -98,6 +98,7 @@ Item
             {
                 selected_exercise.completamento+=1.0/(selected_exercise.reps*selected_exercise.sets)
                 selected_exercise.score+=selected_exercise.power/(_workout.power*selected_exercise.reps*selected_exercise.sets)
+                console.log("score=",selected_exercise.completamento,"completamento",selected_exercise.completamento)
                 if (ripetizioni>selected_exercise.reps)
                     pageLoader.source = "PaginaRiposo.qml"
             }
