@@ -163,7 +163,7 @@ Item {
 
                         Testo
                         {
-                            text: (parent.value*10).toFixed(0.1).toString()
+                            text: (parent.value*10).toFixed(1).toString()
                             font.pixelSize: 30
                             verticalAlignment: Text.AlignVCenter
                             horizontalAlignment: Text.AlignHCenter
@@ -263,7 +263,7 @@ Item {
                             anchors.fill: parent
                             font.pixelSize: 50
                             font.bold: true
-                            text: selected_exercise.time_esercizio
+                            text: selected_exercise.time_esercizio+" s"
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
                         }
@@ -302,7 +302,7 @@ Item {
                             anchors.fill: parent
                             font.pixelSize: 50
                             font.bold: true
-                            text: selected_exercise.tut_esercizio
+                            text: selected_exercise.tut_esercizio+" s"
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
                         }

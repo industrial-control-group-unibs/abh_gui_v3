@@ -96,9 +96,12 @@ Item
             conto_alla_rovescia.restart()
             if (selected_exercise.type<3)
             {
-                selected_exercise.completamento+=1.0/(selected_exercise.reps*selected_exercise.sets)
-                selected_exercise.score+=selected_exercise.power/(_workout.power*selected_exercise.reps*selected_exercise.sets)
-                console.log("score=",selected_exercise.completamento,"completamento",selected_exercise.completamento)
+                if (ripetizioni>1)
+                {
+                    selected_exercise.completamento+=1.0/(selected_exercise.reps*selected_exercise.sets)
+                    selected_exercise.score+=selected_exercise.power/(_workout.power*selected_exercise.reps*selected_exercise.sets)
+                    console.log("score=",selected_exercise.completamento,"completamento",selected_exercise.completamento)
+                }
                 if (ripetizioni>selected_exercise.reps)
                     pageLoader.source = "PaginaRiposo.qml"
             }
@@ -175,6 +178,15 @@ Item
 
             }
         }
+    }
+
+    Testo
+    {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        height: 30
+        text: "completamento = "+selected_exercise.completamento+" score ="+selected_exercise.score
     }
 
 

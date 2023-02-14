@@ -27,6 +27,7 @@ PaginaVideoSingolo
         selected_exercise.time_esercizio = 0.0
         selected_exercise.tut_esercizio  = 0.0
         selected_exercise.completamento  = 0.0
+        selected_exercise.score          = 0.0
     }
 }
 

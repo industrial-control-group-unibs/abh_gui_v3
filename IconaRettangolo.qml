@@ -63,7 +63,7 @@ Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.top: parent.bottom
-                height: parent.width*0.5
+                height: parent.width*0.4
                 font.pixelSize: 100
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -85,7 +85,7 @@ Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.top: parent.bottom
-                height: parent.width*0.5
+                height: parent.width*0.40
                 font.pixelSize: 100
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
