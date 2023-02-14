@@ -2,8 +2,11 @@ import QtQuick 2.12
 
 Item
 {
+
+    property real default_power: 0
     Component.onCompleted: {
         power_settings.value= selected_exercise.power
+        default_power=selected_exercise.power
         if (selected_exercise.type===3)
         {
             icona_rep.ripetizioni=selected_exercise.reps
@@ -99,7 +102,7 @@ Item
                 if (ripetizioni>1)
                 {
                     selected_exercise.completamento+=1.0/(selected_exercise.reps*selected_exercise.sets)
-                    selected_exercise.score+=selected_exercise.power/(_workout.power*selected_exercise.reps*selected_exercise.sets)
+                    selected_exercise.score+=selected_exercise.power/(component.default_power*selected_exercise.reps*selected_exercise.sets)
                     console.log("score=",selected_exercise.completamento,"completamento",selected_exercise.completamento)
                 }
                 if (ripetizioni>selected_exercise.reps)
