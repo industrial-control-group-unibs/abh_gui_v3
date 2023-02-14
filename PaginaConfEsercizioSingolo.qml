@@ -20,6 +20,7 @@ Item {
 
     Component.onDestruction:
     {
+        selected_exercise.default_power=selected_exercise.power
     }
 
     Component.onCompleted:

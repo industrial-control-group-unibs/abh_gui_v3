@@ -297,10 +297,10 @@ def exercise_thread():
 
         if (last_state != state or resend):
             resend=False
-            if (state == Status.FORWARD):
+            if (state == Status.FORWARD and exercise_type!=2):
                 motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time]
                 logging.debug("Forward")
-            elif (state == Status.BACKWARD):
+            elif (state == Status.BACKWARD and exercise_type!=2):
                 motor_target_data=[0,exercise["force_return"]/100,exercise["velocity"]/100,torque_change_time]
                 logging.debug("Backward")
             elif (state == Status.STOP):
