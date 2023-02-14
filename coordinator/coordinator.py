@@ -216,7 +216,7 @@ def exercise_thread():
         if (startstop_client.isNewStringAvailable()):
             stringa=startstop_client.getLastStringAndClearQueue()
             print(stringa)
-            if stringa[0:5]=="start" :
+            if stringa[0:5]=="start":
                 if (exercise_type!=2):
                     state=Status.FORWARD
                     change_direction=True
