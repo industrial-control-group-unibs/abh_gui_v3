@@ -33,8 +33,10 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
+    property int sessione: 0
     Component.onCompleted:
     {
+        sessione=_workout.getActiveSession()
         timer_tut.stop()
         timer_tut.active=false
         timer_tempo.stop()
@@ -104,12 +106,12 @@ Item {
                         progressWidth: trackWidth
                         handleColor: "transparent"
                         progressColor: parametri_generali.coloreUtente
-                        value: _workout.getSessionScore(selected_exercise.selected_session)
+                        value: _workout.getSessionScore(_workout.getActiveSession())
 
 
                         Testo
                         {
-                            text: (parent.value*10).toFixed(0.1).toString()
+                            text: (parent.value*10).toFixed(1).toString()
                             font.pixelSize: 30
                             verticalAlignment: Text.AlignVCenter
                             horizontalAlignment: Text.AlignHCenter
@@ -209,7 +211,7 @@ Item {
                             anchors.fill: parent
                             font.pixelSize: 50
                             font.bold: true
-                            text: _workout.getSessionTimeString(selected_exercise.selected_session)
+                            text: _workout.getSessionTimeString(_workout.getActiveSession())
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
                         }
@@ -248,7 +250,7 @@ Item {
                             anchors.fill: parent
                             font.pixelSize: 50
                             font.bold: true
-                            text: _workout.getSessionTutString(selected_exercise.selected_session)
+                            text: _workout.getSessionTutString(_workout.getActiveSession())
                             horizontalAlignment: Text.AlignHCenter
                             verticalAlignment: Text.AlignVCenter
                         }

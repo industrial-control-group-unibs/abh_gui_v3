@@ -123,7 +123,7 @@ Item {
                 }
                 titolo: vector[0]
                 progress: parseFloat(vector[1])
-                punteggio: parseFloat(vector[2])
+                punteggio: 10.0*parseFloat(vector[2])
 
 
                 date: Qt.formatDate(new Date(1000*parseFloat(vector[3])),"dd/MM/yyyy")

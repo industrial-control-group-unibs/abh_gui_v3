@@ -116,7 +116,7 @@ Item {
                 }
                 titolo: "SESSIONE "+vector[0]
                 progress: parseFloat(vector[1])
-                punteggio: parseFloat(vector[2])
+                punteggio: parseFloat(10*vector[2])
 
 
                 date: ""

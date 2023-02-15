@@ -305,10 +305,15 @@ double ProgrammaAllenamento::getScore()
   for (int idx=0;idx<(int)doc_->GetRowCount();idx++)
   {
     int sc=doc_->GetCell<double>(7,idx);
-    nesercizi++;
-    score+=std::max(0.0,double(sc));
+    if (sc>=0)
+    {
+      nesercizi++;
+      score+=sc;
+    }
   }
-  score/=nesercizi;
+  if (nesercizi>0)
+    score/=nesercizi;
+
   return score;
 }
 

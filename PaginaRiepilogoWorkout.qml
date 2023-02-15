@@ -91,7 +91,7 @@ Item {
 
                         Testo
                         {
-                            text: (parent.value*10).toFixed(0.1).toString()
+                            text: (parent.value*10).toFixed(1).toString()
                             font.pixelSize: 30
                             verticalAlignment: Text.AlignVCenter
                             horizontalAlignment: Text.AlignHCenter
