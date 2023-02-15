@@ -207,7 +207,19 @@ Item
         border.color: parametri_generali.coloreBordo
         visible: !rect_video_centrale.visible
 
-
+        Testo
+        {
+            anchors.bottom: rect_grafici.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: parent.height*0.1
+            font.pixelSize: 40
+            fontSizeMode: Text.Fit
+            verticalAlignment: Text.AlignBottom
+            text: chrt_areachart.show_motor? "VELOCITA' ISTANTANEA": "VISIONE"
+            onTextChanged: chrt_areachart.clear()
+            color: parametri_generali.coloreUtente
+        }
         AreaChart{
             id: chrt_areachart
 //            anchors.fill: parent
@@ -232,19 +244,7 @@ Item
                 onPressed: parent.show_motor=!(parent.show_motor)
             }
 
-            Testo
-            {
-                anchors.top: parent.top
-                anchors.left: parent.left
-                anchors.right: parent.right
-                height: parent.height*0.1
-                font.pixelSize: 40
-                fontSizeMode: Text.Fit
-                verticalAlignment: Text.AlignTop
-                text: chrt_areachart.show_motor? "VELOCITA' ISTANTANEA": "VISIONE"
-                onTextChanged: chrt_areachart.clear()
-                color: parametri_generali.coloreUtente
-            }
+
 
             Shape {
                 anchors.fill: parent
