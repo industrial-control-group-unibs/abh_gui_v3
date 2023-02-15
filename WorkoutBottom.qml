@@ -63,7 +63,7 @@ Item
     LinearSlider
     {
         id: power_settings
-        height: parent.height*0.20
+        height: parent.height*0.20*0.66
         width: parent.width*0.5
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
@@ -191,8 +191,7 @@ Item
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        height: 30
-        text: "completamento = "+selected_exercise.completamento+" score ="+selected_exercise.score
+        text: "SERIE "+(selected_exercise.current_set+1)+" DI "+selected_exercise.sets
     }
 
 
