@@ -53,6 +53,10 @@ void AreaChart::setColor(const QColor& c)
   m_color=c;
 }
 
+void AreaChart::clear()
+{
+  recompute();
+}
 
 void AreaChart::setchdata(const qreal &chdata)
 {

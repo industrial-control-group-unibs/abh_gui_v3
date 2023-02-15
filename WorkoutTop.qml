@@ -242,6 +242,7 @@ Item
                 fontSizeMode: Text.Fit
                 verticalAlignment: Text.AlignTop
                 text: chrt_areachart.show_motor? "VELOCITA' ISTANTANEA": "VISIONE"
+                onTextChanged: chrt_areachart.clear()
                 color: parametri_generali.coloreUtente
             }
 
