@@ -266,14 +266,14 @@ def exercise_thread():
                 last_rep_count_from_vision=rep_count_from_vision
 
         if ( (state == Status.FORWARD) and
-             ( (motor_speed<motor_speed_threshold and direction==-1 and exercise["force"]<=20) or
+             ( (motor_speed<motor_speed_threshold and direction==-1 and exercise["force"]<20) or
                ((motor_speed<motor_speed_early_stop) and  (percentage>percentage_early_stop))
              )
            ):
             state=Status.BACKWARD
             #print(motor_speed)
         elif ( (state == Status.BACKWARD) and
-             ( (motor_speed>motor_speed_threshold_return and direction==1 and exercise["force"]<=20) or
+             ( (motor_speed>motor_speed_threshold_return and direction==1 and exercise["force"]<20) or
                ((motor_speed>motor_speed_early_stop_return) and  (percentage<percentage_early_stop_return))
              )
            ):
