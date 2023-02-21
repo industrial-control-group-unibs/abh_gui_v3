@@ -54,6 +54,7 @@ SET(APP_FILES
   ProgrammaAllenamento.cpp
   DescrizioneEsercizi.cpp
   areachart.cpp
+  statchart.cpp
   ChiamataSistema.cpp
   listwifi.cpp
   stringquee.cpp

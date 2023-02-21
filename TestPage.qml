@@ -10,6 +10,7 @@ import QtQuick.VirtualKeyboard 2.4
 import QtQuick.Controls 2.3
 
 
+import Charts 1.0
 
 Item {
     anchors.fill: parent
@@ -20,25 +21,28 @@ Item {
     Barra_superiore{id:barra}
 
 
-    Tastiera
+    Rectangle
     {
-        z: 4
-        id: tastiera
-        anchors.left: parent.left
-        anchors.top: barra.bottom
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        colore: parametri_generali.coloreBordo
-        font_colore: parametri_generali.coloreSfondo
-    }
+        color: "white" //"transparent"
+        border.color: "blue"
+        anchors.fill: parent
+        anchors.margins: 60
 
-    Testo
-    {
-        id: testo
+        StatChart
+        {
+            id: stat
 
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
-        text: tastiera.testo
+            anchors.fill: parent
+            Component.onCompleted:
+            {
+                setYmax(10)
+                addLine([0, 1, 2, 3, 3.5],[1, 5, 4, 5, 8],parametri_generali.coloreUtente,parametri_generali.coloreUtenteTrasparent)
+                addLine([0, 1, 2, 3, 4],[3, 2, 1, 2, 2],"red","blue")
+                addLine([0, 1, 2, 3, 4],[1, 2, 3, 4, 3],"yellow","transparent")
+
+            }
+        }
+
     }
 
 

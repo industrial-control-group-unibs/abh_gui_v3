@@ -20,6 +20,7 @@ AreaChart::AreaChart(QQuickItem *parent)
   y.resize(1000);
 
   recompute();
+  m_fill_color=Qt::transparent;
 
 }
 
@@ -51,6 +52,15 @@ QColor AreaChart::color() const
 void AreaChart::setColor(const QColor& c)
 {
   m_color=c;
+}
+
+QColor AreaChart::fillColor() const
+{
+  return m_fill_color;
+}
+void AreaChart::setFillColor(const QColor& c)
+{
+  m_fill_color=c;
 }
 
 void AreaChart::clear()
@@ -93,8 +103,9 @@ void AreaChart::paint(QPainter *painter)
   areapath.moveTo(x.at(0),y.at(0));
   for(size_t i=1; i < x.size(); i++)
   {
-    areapath.lineTo(x.at(i)/*+X_SHIFT*/,y.at(i));
+    areapath.lineTo(x.at(i),y.at(i));
   }
+
 
   /* Painting areachart path*/
   painter->setRenderHints(QPainter::Antialiasing, true);
@@ -104,7 +115,21 @@ void AreaChart::paint(QPainter *painter)
   painter->setOpacity(1.0);
   painter->drawPath(areapath);
 
+  QPolygon polygon;
+  polygon << QPoint(x.at(0), y.at(0));
+  for(size_t i=1; i < x.size(); i++)
+  {
+    polygon << QPoint(x.at(i),y.at(i));
+  }
+  polygon << QPoint(x.back(), height());
+  polygon << QPoint(x.at(0), height());
+  painter->setBrush(QBrush(m_fill_color));
+  painter->setPen(QPen(Qt::transparent, 1, Qt::SolidLine,
+                       Qt::RoundCap, Qt::RoundJoin));
+  painter->drawPolygon(polygon,Qt::WindingFill);
+
   QPainterPath areapath2;
+
   areapath2.moveTo(x.at(x.size()-2),y.at(x.size()-2));
   areapath2.lineTo(x.back(),y.back());
   painter->setRenderHints(QPainter::Antialiasing, true);

@@ -30,6 +30,7 @@ ApplicationWindow {
         property string coloreBordoTrasparent:  "#c6aa7640"
         property string coloreSfondo: "#2A211B"
         property string coloreUtente: "#8c177b"
+        property string coloreUtenteTrasparent: "#c6aa7640"
         property int larghezza_barra: 172
         property int offset_icone4x3: 400
         property int logo_time: 2000
@@ -41,6 +42,11 @@ ApplicationWindow {
         onColoreBordoChanged:
         {
             coloreBordoTrasparent=Qt.rgba(coloreBordo.r, coloreBordo.g, coloreBordo.b, 0.440)
+        }
+
+        onColoreUtenteChanged:
+        {
+            coloreUtenteTrasparent=Qt.rgba(coloreUtente.r, coloreUtente.g, coloreUtente.b, 0.440)
         }
 
         state: "SABBIA"
@@ -144,11 +150,11 @@ ApplicationWindow {
             video_workout= _esercizi.getVideoWorkout(code)
             immagine= _esercizi.getImage(code)
             type=_esercizi.getType(code)
-            if (workout==="")
-            {
+            //if (workout==="")
+            //{
                 max_pos_speed=_esercizi.getMaxPosVel(code)
                 max_neg_speed=_esercizi.getMaxNegVel(code)
-            }
+            //}
         }
     }
 
@@ -279,7 +285,7 @@ ApplicationWindow {
         }
 
         source:  "PaginaLogo.qml"
-//        source:  "PaginaRiepilogoWorkout.qml"
+//        source:  "TestPage.qml"
 
     }
 

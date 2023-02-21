@@ -228,7 +228,7 @@ Item {
                             right: parent.right
                         }
                         height: 0.15*parent.height
-                        text: "COMPLETAMENTO"
+                        text: "AVANZAMENTO"
                     }
                 }
                 Item {

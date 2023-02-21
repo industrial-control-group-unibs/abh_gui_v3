@@ -22,6 +22,7 @@
 #include <iostream>
 
 #include "areachart.h"
+#include "statchart.h"
 #include "ChiamataSistema.h"
 
 #include <listwifi.h>
@@ -40,6 +41,7 @@ int main(int argc, char *argv[])
   qmlRegisterType<UdpCom::BinarySender>  ("BinarySender",   1, 0, "BinarySender");
   qmlRegisterType<UdpCom::UdpVideoStream>("UdpVideoStream", 1, 0, "UdpVideoStream");
   qmlRegisterType<AreaChart>("Charts",1,0,"AreaChart");
+  qmlRegisterType<StatChart>("Charts",1,0,"StatChart");
   qmlRegisterType<SysCall>("SysCall",1,0,"SysCall");
   QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
