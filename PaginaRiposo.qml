@@ -20,6 +20,15 @@ Item {
 //        pageLoader.last_source="PaginaPreparati.qml"
 //    }
 
+    Component.onCompleted:
+    {
+        startstop_udp.string="rewire"
+    }
+    Component.onDestruction:
+    {
+        startstop_udp.string="stop_rewire"
+    }
+
     Barra_superiore{
 
         Item

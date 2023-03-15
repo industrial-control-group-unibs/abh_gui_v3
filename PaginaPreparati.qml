@@ -32,11 +32,17 @@ PaginaVideoSingolo
         }
     }
 
+
+    Component.onCompleted:
+    {
+        startstop_udp.string="rewire"
+    }
     Component.onDestruction:
     {
         //_history.pop()
         //link_sx=_history.pop()
 
+        startstop_udp.string="stop_rewire"
         if (selected_exercise.workout==="" || _workout.completed)
         {
             selected_exercise.current_set=0
