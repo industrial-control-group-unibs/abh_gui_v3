@@ -293,7 +293,7 @@ def exercise_thread():
             direction=0.0
 
 
-        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,float(state)])
+        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,float(state.value)])
         vosk_command=0
 
         if (last_state != state or resend):
