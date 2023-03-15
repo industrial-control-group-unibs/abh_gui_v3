@@ -229,10 +229,13 @@ ApplicationWindow {
         property int counter: 0
         onDataChanged:
         {
-            if (counter++>10000)
+            if (counter===0)
+            {
+                console.log(data)
+            }
+            if (counter++>1000)
             {
                 counter=0
-                console.log(data)
             }
             if ((data[1]===1 || data[1]===-1 || selected_exercise.type===3) && timer_tut.active)
             {
