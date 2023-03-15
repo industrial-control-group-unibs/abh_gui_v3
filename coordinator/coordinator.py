@@ -161,7 +161,7 @@ def exercise_thread():
     last_rep_count_from_vision=0
 
     switch_timer=0
-    switch_timer_th=0.2
+    switch_timer_th=1
     while (not stop):
         time.sleep(0.001)
         switch_timer+=0.001
