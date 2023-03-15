@@ -190,8 +190,28 @@ Item
     {
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.bottom: parent.bottom
+        anchors.top: parent.top
         text: "SERIE "+(selected_exercise.current_set+1)+" DI "+selected_exercise.sets
+    }
+
+    Testo
+    {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        text:
+        {
+            if (fb_udp.data[5]===0)
+                return "STOP"
+            else if (fb_udp.data[5]===1)
+                return "FORWARD"
+            else if (fb_udp.data[5]===-1)
+                return "BACKWARD"
+            else if (fb_udp.data[5]===2)
+                return "NONE"
+            else if (fb_udp.data[5]===3)
+                return "REWIRE"
+        }
     }
 
 

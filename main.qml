@@ -223,7 +223,7 @@ ApplicationWindow {
         // @disable-check M16
         data: [0.0,0.0,0.0,0.0]
         // @disable-check M16
-        size: 5
+        size: 6
         // @disable-check M16
 
         property int counter: 0

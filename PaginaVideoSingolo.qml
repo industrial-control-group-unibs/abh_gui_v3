@@ -22,6 +22,7 @@ Item {
     property string titolo: selected_exercise.name
     property bool timer: true
 
+    signal endVideo
 
     Component.onCompleted:
     {
@@ -154,7 +155,11 @@ Item {
                 autoLoad: true
 
                 source: "file://"+PATH+"/"+ video_folder +"/"+video_name
-                onStopped: play() //"play"
+                onStopped:
+                {
+                    component.endVideo()
+                    play() //"play"
+                }
 
             }
 

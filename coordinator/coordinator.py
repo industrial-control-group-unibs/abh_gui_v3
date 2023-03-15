@@ -217,6 +217,7 @@ def exercise_thread():
             stringa=startstop_client.getLastStringAndClearQueue()
             print(stringa)
             if stringa[0:5]=="start":
+                repetition_count=1
                 if (exercise_type!=2):
                     state=Status.FORWARD
                     change_direction=True
@@ -292,7 +293,7 @@ def exercise_thread():
             direction=0.0
 
 
-        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command])
+        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,state])
         vosk_command=0
 
         if (last_state != state or resend):

@@ -80,6 +80,10 @@ public:
     QString getSessionTutString    (int session);
 
 
+    QVector<double> getSessionScores();
+    QVector<double> getSessionNumbers();
+
+
     double getProgess();
     double getScore  ();
     QString getTime();

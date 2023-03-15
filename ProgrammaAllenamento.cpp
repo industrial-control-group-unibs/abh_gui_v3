@@ -354,6 +354,38 @@ QString ProgrammaAllenamento::getTut()
 }
 
 
+QVector<double> ProgrammaAllenamento::getSessionScores()
+{
+  int session=0;
+  for (int idx=idx_;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    session=std::max(session,s);
+  }
+  QVector<double> scores(session);
+  for (int is=0;is<session;is++)
+  {
+    scores[is]=std::max(0.0,getSessionScore(is+1));
+  }
+  return scores;
+}
+QVector<double> ProgrammaAllenamento::getSessionNumbers()
+{
+  int session=0;
+  for (int idx=idx_;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    session=std::max(session,s);
+  }
+  QVector<double> v(session);
+  for (int is=0;is<session;is++)
+  {
+    v[is]=(is+1);
+  }
+  return v;
+}
+
+
 QVariant ProgrammaAllenamento::listSessionsNumber()
 {
 

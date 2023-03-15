@@ -18,7 +18,7 @@ PaginaVideoSingolo
     video_name: selected_exercise.video_preparati
     titolo: selected_exercise.name
 
-
+    onEndVideo: pageLoader.source="PaginaWorkout.qml"
 
     Item {
         id: ricevi_comando_vocale

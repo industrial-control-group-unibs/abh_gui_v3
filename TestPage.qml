@@ -23,8 +23,8 @@ Item {
 
     Rectangle
     {
-        color: "white" //"transparent"
-        border.color: "blue"
+        color: "transparent"
+        border.color: parametri_generali.coloreBordo
         anchors.fill: parent
         anchors.margins: 60
 

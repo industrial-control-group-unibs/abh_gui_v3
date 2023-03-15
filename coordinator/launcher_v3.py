@@ -49,3 +49,5 @@ try:
 except KeyboardInterrupt:
     for proc in p:
         proc.send_signal(signal.SIGINT)
+os.system("pkill abh_gui_v3")
+os.system("pkill python")
