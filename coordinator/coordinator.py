@@ -260,7 +260,7 @@ def exercise_thread():
 
                 rep_count_from_vision=float(repetition_state[0])
                 direction=float(repetition_state[1])
-                percentage=float(repetition_state[2])
+                percentage=max(0.0,float(repetition_state[2]))
 
 
                 if (exercise_type>1):
