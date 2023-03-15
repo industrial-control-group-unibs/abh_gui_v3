@@ -160,8 +160,11 @@ def exercise_thread():
 
     last_rep_count_from_vision=0
 
+    switch_timer=0
+    switch_timer_th=0.2
     while (not stop):
         time.sleep(0.001)
+        switch_timer+=0.001
 
         if (vosk_client.isNewDataAvailable()):
             vosk_command=vosk_client.getLastDataAndClearQueue()[0]
@@ -270,18 +273,20 @@ def exercise_thread():
                 last_rep_count_from_vision=rep_count_from_vision
 
         if ( (state == Status.FORWARD) and
-             ( (motor_speed<motor_speed_threshold and direction==-1 and exercise["force"]<20) or
+             ( (motor_speed<motor_speed_threshold and direction==-1 and exercise["force"]<20  and (switch_timer>switch_timer_th)) or
                ((motor_speed<motor_speed_early_stop) and  (percentage>percentage_early_stop))
              )
            ):
             state=Status.BACKWARD
             print("vel =", motor_speed, ", th = ",motor_speed_early_stop_return, " perc = ", percentage, " th = ",percentage_early_stop_return, " force = ",exercise["force"])
+            switch_timer=0
         elif ( (state == Status.BACKWARD) and
-             ( (motor_speed>motor_speed_threshold_return and direction==1 and exercise["force"]<20) or
+             ( (motor_speed>motor_speed_threshold_return and direction==1 and exercise["force"]<20 and (switch_timer>switch_timer_th)) or
                ((motor_speed>motor_speed_early_stop_return) and  (percentage<percentage_early_stop_return))
              )
            ):
             state=Status.FORWARD
+            switch_timer=0
             print("vel =", motor_speed, ", th = ",motor_speed_early_stop_return, " perc = ", percentage, " th = ",percentage_early_stop_return, " force = ",exercise["force"])
         elif (state == Status.UNDEFINED and direction==1):
             state=Status.FORWARD
