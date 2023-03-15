@@ -218,6 +218,9 @@ def exercise_thread():
             print(stringa)
             if stringa[0:5]=="start":
                 repetition_count=1
+                max_pos_motor_speed=0.0
+                max_neg_motor_speed=0.0
+
                 if (exercise_type!=2):
                     state=Status.FORWARD
                     change_direction=True

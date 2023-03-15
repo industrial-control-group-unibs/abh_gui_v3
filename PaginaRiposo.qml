@@ -22,7 +22,7 @@ Item {
 
     Component.onCompleted:
     {
-        startstop_udp.string="rewire"
+//        startstop_udp.string="rewire"
     }
     Component.onDestruction:
     {
@@ -139,7 +139,13 @@ Item {
                 tacche: 120
                 value: 1-conto_alla_rovescia.position/conto_alla_rovescia.duration
                 tempo: (conto_alla_rovescia.duration-conto_alla_rovescia.position) //timerino.remaining_time
-                colore: (tempo<5000)?"red":parametri_generali.coloreUtente
+                onTempoChanged:
+                {
+                    if (tempo<10000)
+                        startstop_udp.string="rewire"
+                }
+
+                colore: (tempo<10000)?"red":parametri_generali.coloreUtente
                 coloreTesto: colore
                 MouseArea
                 {
