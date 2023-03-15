@@ -272,14 +272,14 @@ def exercise_thread():
              )
            ):
             state=Status.BACKWARD
-            print("vel =", motor_speed, ", th = ",motor_speed_early_stop, " perc = ", percentage, " th = ",percentage_early_stop)
+            print("vel =", motor_speed, ", th = ",motor_speed_early_stop_return, " perc = ", percentage, " th = ",percentage_early_stop_return, " force = ",exercise["force"])
         elif ( (state == Status.BACKWARD) and
              ( (motor_speed>motor_speed_threshold_return and direction==1 and exercise["force"]<20) or
                ((motor_speed>motor_speed_early_stop_return) and  (percentage<percentage_early_stop_return))
              )
            ):
             state=Status.FORWARD
-            print("vel =", motor_speed, ", th = ",motor_speed_early_stop_return, " perc = ", percentage, " th = ",percentage_early_stop_return)
+            print("vel =", motor_speed, ", th = ",motor_speed_early_stop_return, " perc = ", percentage, " th = ",percentage_early_stop_return, " force = ",exercise["force"])
         elif (state == Status.UNDEFINED and direction==1):
             state=Status.FORWARD
         elif (state == Status.UNDEFINED and direction==-1):
