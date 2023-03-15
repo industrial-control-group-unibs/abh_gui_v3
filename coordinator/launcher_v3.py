@@ -5,6 +5,8 @@ import time
 import getpass
 
 path=os.path.dirname(os.path.realpath(__file__))
+os.system("pkill abh_gui_v3")
+
 user=getpass.getuser()
 if user=='jacobi':
     pycmd="python3"
