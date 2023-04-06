@@ -71,8 +71,8 @@ Item {
             Component.onCompleted:
             {
                 xvalues  =_workout.getSessionNumbers()
-                yvalues  =_workout.getSessionTimes()
-                yvalues2 =_workout.getSessionTuts()
+                yvalues2 =_workout.getSessionTimes()
+                yvalues  =_workout.getSessionTuts()
                 ymax = 0
                 ystep = 0.5
                 update()

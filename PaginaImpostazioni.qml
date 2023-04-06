@@ -93,7 +93,7 @@ Item {
             }
             height: parent.height*0.2
 
-            IconaPiu
+            IconaUtente
             {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -101,8 +101,10 @@ Item {
                 onPressed: pageLoader.source="PaginaSceltaLogout.qml"
             }
 
+
             IconaOff
             {
+                id: iconaoff
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenterOffset: parent.width*0.25
