@@ -151,7 +151,11 @@ Item {
             onPressed: {
                 component.pressed()
             }
-            onPressAndHold: component.pressAndHold()
+            onPressAndHold:
+            {
+                console.log("mouse area press and hold")
+                component.pressAndHold()
+            }
         }
 
         Rectangle

@@ -6,6 +6,7 @@
 #include "ListStringQueue.h"
 #include <QColor>
 
+#include <QDebug>
 
 class ListStringCSV : public QAbstractListModel
 {
@@ -18,7 +19,6 @@ public:
 
     explicit ListStringCSV(QString path, QObject *parent = nullptr);
 
-    void appendIcon(bool flag){append_=flag;}
     int rowCount(const QModelIndex& parent) const override;
     QVariant data( const QModelIndex& index, int role = Qt::DisplayRole ) const override;
     QHash<int, QByteArray> roleNames() const override;
@@ -26,6 +26,7 @@ public:
 
 public slots:
     void readFile(QString filename);
+    void appendIcon(bool flag){      append_=flag;    }
     void addRow(QString filename, QStringList row);
     void removeRow(QString filename, int row_idx);
     void changeValue(QString filename, int row_idx,int col_idx, QString value);

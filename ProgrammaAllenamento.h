@@ -64,6 +64,8 @@ public:
     void readStatFile(QString id);
 
     QVariant listSessionExercise(int session);
+    QVariant listSessionExerciseStat(int session);
+
     void setScore(double score);
     void setTime(double time);
     void setTut(double tut);
@@ -81,7 +83,16 @@ public:
 
 
     QVector<double> getSessionScores();
+    QVector<double> getSessionMeanScores();
+    QVector<double> getSessionTimes();
+    QVector<double> getSessionTuts();
     QVector<double> getSessionNumbers();
+
+    QVector<double> getSelectedSessionScores    (int session);
+    QVector<double> getSelectedSessionMeanScores(int session);
+    QVector<double> getSelectedSessionTimes     (int session);
+    QVector<double> getSelectedSessionTuts      (int session);
+    QVector<double> getSelectedSessionNumbers   (int session);
 
 
     double getProgess();

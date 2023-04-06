@@ -32,46 +32,7 @@ Item {
         link12: "PaginaAllenamento.qml"
         immagine22: "statistiche.jpg"
         testo22: "STATISTICHE\n"
-        link22: "PaginaRiepilogoWorkout.qml"
+        link22: "SceltaStatisticheWorkout.qml"
     }
 
-//    Rectangle{
-//        anchors.fill: parent
-//        anchors.topMargin: parametri_generali.larghezza_barra
-//        color:parametri_generali.coloreSfondo
-//        clip: true
-
-//        GridLayout {
-//            anchors.left: parent.left
-//            anchors.right: parent.right
-
-//            anchors.verticalCenter: parent.verticalCenter
-//            columns: 2
-
-//            Icona_4_3{
-//                nome: "PROGRAMMA\n DI ALLENAMENTO"
-//                link: "SceltaGruppo.qml"
-//                immagine: "place_holder_4_3.png"
-//            }
-
-//            Icona_4_3{
-//                nome: "SFIDA\n"
-//                link: "PaginaLogin.qml"
-//                immagine: "place_holder_4_3.png"
-//            }
-
-//            Icona_4_3{
-//                nome: "EXTRA\n"
-//                link: "PaginaLogin.qml"
-//                immagine: "place_holder_4_3.png"
-//            }
-
-//            Icona_4_3{
-//                nome: "ALLENAMENTO SINGOLO\n"
-//                link: "SceltaGruppo.qml"
-//                immagine: "place_holder_4_3.png"
-//            }
-//        }
-
-//    }
 }

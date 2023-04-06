@@ -22,7 +22,10 @@ Item {
     property bool new_workout: false
     Component.onCompleted:
     {
-        _active_workouts.readFile("ACTIVEWORKOUT_"+impostazioni_utente.identifier)
+        _active_workouts.appendIcon(false);
+        _active_workouts.readFile("ACTIVEWORKOUT_"+impostazioni_utente.identifier);
+         lista_workout.reload()
+        _active_workouts.appendIcon(false);
     }
 
     Component.onDestruction:
@@ -38,7 +41,7 @@ Item {
         height:274+50
         FrecceSxDx
         {
-            onPressSx: pageLoader.source= "PaginaAllenamento.qml"
+            onPressSx: pageLoader.source= "SceltaStatisticheWorkout.qml"
             onPressDx:
             {
                 if (component.new_workout)
@@ -55,8 +58,9 @@ Item {
                     selected_exercise.sets=_workout.sets
                     selected_exercise.current_set=0
                     selected_exercise.power=_workout.power
-                     _list_string.fromList(_workout.listSessionsNumber())
-                    pageLoader.source="ListaWorkoutSessioni.qml"
+                    selected_exercise.selected_session=lista_workout.currentIndex+1
+                    _list_string.fromList(_workout.listSessionExerciseStat(selected_exercise.selected_session))
+                    pageLoader.source="ListaStatisticheEserciziWorkout.qml"
                 }
             }
 
@@ -91,24 +95,15 @@ Item {
                 left: parent.left
                 right: parent.right
             }
-            currentIndex:-1
+            currentIndex: _workout.getActiveSession()-1
 
-            model: _active_workouts
+            model: _list_string
 
-            onCurrentIndexChanged:
-            {
-            }
 
             signal reload;
-            onReload:
-            {
-                lista_workout.model=[]
-                lista_workout.model= _active_workouts
-                lista_workout.forceLayout()
-                pageLoader.source="SceltaWorkout.qml"
-            }
 
-            delegate: IconaInformazioni{
+
+            delegate: IconaStat{
 
 
                 color: parametri_generali.coloreBordo
@@ -121,44 +116,31 @@ Item {
                         false;
 
                 }
-                titolo: vector[0]
+                titolo: "SESSIONE "+vector[0]
                 progress: parseFloat(vector[1])
-                punteggio: 10.0*parseFloat(vector[2])
+                punteggio: parseFloat(10*vector[2])
 
 
-                date: Qt.formatDate(new Date(1000*parseFloat(vector[3])),"dd/MM/yyyy")
+                date: ""
 
-                tempo: vector[4]
+                tempo: vector[3]
+                tut: vector[4]
 
                 width: lista_workout.width-2
 
                 onPressed: {
                     lista_workout.currentIndex=index
-                    if (vector[0]==="+")
-                    {
-                        component.new_workout=true
-                    }
-                    else
-                    {
-                        component.new_workout=false
-                        selected_exercise.workout=vector[0]
-                    }
+                    selected_exercise.selected_session=lista_workout.currentIndex+1
                 }
-                onPressAndHold:
+
+                onSeeStat:
                 {
-                    console.log("press and hold workout")
-                    erase=true
-                }
-                onEraseNo:
-                {
-                    erase=false
-                }
-                onEraseYes:
-                {
-                    _active_workouts.removeRow("ACTIVEWORKOUT_"+impostazioni_utente.identifier,index);
-                    lista_workout.reload()
+                    _workout.loadWorkout(impostazioni_utente.identifier,selected_exercise.workout)
+                    pageLoader.source= "PaginaStatisticheSessione.qml"
+
                 }
             }
+
 
         }
 

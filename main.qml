@@ -38,6 +38,11 @@ ApplicationWindow {
         property string wifi_name
 
 
+        Component.onCompleted:
+        {
+            coloreBordoTrasparent=Qt.rgba(coloreBordo.r, coloreBordo.g, coloreBordo.b, 0.440)
+            coloreUtenteTrasparent=Qt.rgba(coloreUtente.r, coloreUtente.g, coloreUtente.b, 0.440)
+        }
 
         onColoreBordoChanged:
         {

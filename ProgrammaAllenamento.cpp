@@ -48,10 +48,6 @@ void ProgrammaAllenamento::readFile(std::string file_name)
       break;
     }
   }
-  if (end_workout_)
-    qDebug() << "workout finito\n";
-  else
-    qDebug() << "workout non finito\n";
   updateField();
   //setSession(act_session_);
 }
@@ -165,6 +161,55 @@ QVariant ProgrammaAllenamento::listSessionExercise(int session)
 
       QString power=QString::fromStdString(doc_->GetCell<std::string>(1,idx));
       lista.push_back(power);
+
+      vec.push_back(lista);
+    }
+  }
+  return QVariant::fromValue(vec);
+}
+
+QVariant ProgrammaAllenamento::listSessionExerciseStat(int session)
+{
+  QList<QStringList> vec;
+  for (int idx=0;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    if (s==session)
+    {
+      QStringList  lista;
+      QString code=QString::fromStdString(doc_->GetCell<std::string>(0,idx));
+      lista.push_back(code);
+
+
+
+
+
+      double score=std::max(0.0,(double)doc_->GetCell<double>(7,idx));
+      std::string str = score>=0?"1":"0";
+      lista.push_back(QString().fromStdString(str));
+
+      std::stringstream stream;
+      stream << std::fixed << std::setprecision(1) << score;
+      str = stream.str();
+      lista.push_back(QString().fromStdString(str));
+
+
+      double tempo=std::round(doc_->GetCell<double>(8,idx));
+      int secondi=int(tempo)%60;
+      int minuti=int(std::floor(tempo/60.0))%60;
+      int ore=int(std::floor(tempo/3600.0));
+      std::string tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m";
+
+
+      lista.push_back(QString::fromStdString(tempo_stringa));
+
+      tempo=std::round(doc_->GetCell<double>(9,idx));
+      secondi=int(tempo)%60;
+      minuti=int(std::floor(tempo/60.0))%60;
+      ore=int(std::floor(tempo/3600.0));
+      tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m";
+      lista.push_back(QString::fromStdString(tempo_stringa));
+
 
       vec.push_back(lista);
     }
@@ -353,6 +398,29 @@ QString ProgrammaAllenamento::getTut()
   return QString().fromStdString(tempo_stringa);
 }
 
+QVector<double> ProgrammaAllenamento::getSessionMeanScores()
+{
+  int session=0;
+
+  for (int idx=idx_;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    session=std::max(session,s);
+  }
+  QVector<double> scores(session);
+  double value=0;
+  for (int is=0;is<session;is++)
+  {
+    value+=std::max(0.0,getSessionScore(is+1));
+  }
+  double mean=value/session;
+  for (int is=0;is<session;is++)
+  {
+    scores[is]=mean;
+  }
+
+  return scores;
+}
 
 QVector<double> ProgrammaAllenamento::getSessionScores()
 {
@@ -369,6 +437,7 @@ QVector<double> ProgrammaAllenamento::getSessionScores()
   }
   return scores;
 }
+
 QVector<double> ProgrammaAllenamento::getSessionNumbers()
 {
   int session=0;
@@ -385,6 +454,106 @@ QVector<double> ProgrammaAllenamento::getSessionNumbers()
   return v;
 }
 
+QVector<double> ProgrammaAllenamento::getSessionTimes()
+{
+  int session=0;
+  for (int idx=idx_;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    session=std::max(session,s);
+  }
+  QVector<double> values(session);
+  for (int is=0;is<session;is++)
+  {
+    values[is]=std::max(0.0,getSessionTime(is+1)/3600.0);
+  }
+  return values;
+}
+QVector<double> ProgrammaAllenamento::getSessionTuts()
+{
+  int session=0;
+  for (int idx=idx_;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    session=std::max(session,s);
+  }
+  QVector<double> values(session);
+  for (int is=0;is<session;is++)
+  {
+    values[is]=std::max(0.0,getSessionTut(is+1)/3600.0);
+  }
+  return values;
+}
+
+QVector<double> ProgrammaAllenamento::getSelectedSessionScores    (int session)
+{
+  QVector<double> values;
+  for (int idx=0;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    int t=std::max(0.0,doc_->GetCell<double>(7,idx));
+    if (s==session)
+    {
+      values.append(t);
+    }
+  }
+  return values;
+}
+QVector<double> ProgrammaAllenamento::getSelectedSessionMeanScores(int session)
+{
+  QVector<double> values;
+  for (int idx=0;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    if (s==session)
+    {
+      values.append(getSessionScore(session));
+    }
+  }
+  return values;
+}
+QVector<double> ProgrammaAllenamento::getSelectedSessionTimes     (int session)
+{
+  QVector<double> values;
+  for (int idx=0;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    int t=doc_->GetCell<double>(8,idx)/60.0;
+    if (s==session)
+    {
+      values.append(t);
+    }
+  }
+  return values;
+}
+QVector<double> ProgrammaAllenamento::getSelectedSessionTuts      (int session)
+{
+  QVector<double> values;
+  for (int idx=0;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    int t=doc_->GetCell<double>(9,idx)/60.0;
+    if (s==session)
+    {
+      values.append(t);
+    }
+  }
+  return values;
+}
+QVector<double> ProgrammaAllenamento::getSelectedSessionNumbers   (int session)
+{
+  QVector<double> values;
+  double v=0.0;
+  for (int idx=0;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    if (s==session)
+    {
+      values.append(++v);
+    }
+  }
+  return values;
+}
 
 QVariant ProgrammaAllenamento::listSessionsNumber()
 {
@@ -422,16 +591,23 @@ QVariant ProgrammaAllenamento::listSessionsNumber()
     lista.push_back(QString::number(score.at(idx)));
 
     double tempo=std::round(time.at(idx));
-
     int secondi=int(tempo)%60;
     int minuti=int(std::floor(tempo/60.0))%60;
     int ore=int(std::floor(tempo/3600.0));
-
     std::string tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m";
 
 
     lista.push_back(QString::fromStdString(tempo_stringa));
+
+    tempo=std::round(tut.at(idx));
+    secondi=int(tempo)%60;
+    minuti=int(std::floor(tempo/60.0))%60;
+    ore=int(std::floor(tempo/3600.0));
+    tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m";
+    lista.push_back(QString::fromStdString(tempo_stringa));
+
     vec.push_back(lista);
+
   }
   return QVariant::fromValue(vec);
 }

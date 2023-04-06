@@ -18,8 +18,13 @@ Item {
         }
         ListElement {
             nome: "VERSIONE SOFTWARE"
+            link: "PaginaPrivacy.qml"
+        }
+        ListElement {
+            nome: "VERSIONE SOFTWARE"
             link: "PaginaImpostazioni.qml"
         }
+
         ListElement {
             nome: "AGGIORNAMENTO SOFTWARE"
             link: "PaginaAggiornaSoftware.qml"

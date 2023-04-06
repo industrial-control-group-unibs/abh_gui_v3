@@ -1,70 +1,107 @@
+import QtQuick 2.0
+
 import QtGraphicalEffects 1.12
 import QtQuick 2.12
 import QtQuick.Shapes 1.12
+import QtQuick.Layouts 1.1
 
-IconaPlus
+Rectangle
 {
+    height: 100
+    width: height
+    radius: width*0.5
 
+
+    id: component
+
+
+
+
+
+    property real size: height*0.2
+    property bool reverse: false
+
+    property real sign: reverse? -1.0: 1.0
+
+    property bool black: true
+
+    color: component.black? parametri_generali.coloreSfondo: parametri_generali.coloreBordo
+    property color inner_color: component.black? parametri_generali.coloreBordo: parametri_generali.coloreSfondo
+    border.color: parametri_generali.coloreBordo
+    border.width: 5
+
+
+
+    signal pressed
+
+    Shape {
+        anchors.fill: parent
+
+        ShapePath {
+            strokeColor: component.inner_color
+            strokeWidth: 5
+            startX: component.height*0.25
+            startY: component.height*0.5
+            PathLine { x: component.height*0.75; y: component.height*0.5}
+        }
+        ShapePath {
+            strokeColor: component.inner_color
+            strokeWidth: 5
+            startX: component.height*0.5
+            startY: component.height*0.25
+            PathLine { x: component.height*0.5; y: component.height*0.75}
+        }
+    }
+
+    Timer
+    {
+        id: repeater_timer
+        interval: 200
+        repeat: true
+        running: false
+        onTriggered:
+        {
+            component.pressed()
+
+        }
+    }
+
+    onVisibleChanged:
+    {
+        if (!visible)
+        {
+            repeater_timer.running=false
+            repeater_timer.repeat=false
+        }
+        else
+        {
+            repeater_timer.repeat=true
+        }
+    }
+
+    MouseArea
+    {
+        anchors.fill: parent
+
+        onPressed:
+        {
+            component.pressed()
+
+        }
+
+        onPressAndHold:
+        {
+            if (parent.visible)
+            {
+                repeater_timer.repeat=true
+                repeater_timer.running=true
+            }
+        }
+
+        onReleased:
+        {
+            repeater_timer.running=false
+            repeater_timer.repeat=false
+        }
+    }
 }
-
-//Rectangle
-//{
-//    height: 100
-//    width: height
-//    radius: width*0.5
-//    border.color: parametri_generali.coloreBordo
-//    color: "transparent"
-//    border.width: 5
-//    id: icona_piu
-
-//    signal pressed
-
-//    Shape {
-//        anchors.fill: parent
-
-
-//        ShapePath {
-//            strokeColor: parametri_generali.coloreBordo
-//            strokeWidth: 5
-//            startX: icona_piu.width*0.3
-//            startY: icona_piu.height*0.5
-//            PathLine { x: icona_piu.width*0.7; y: icona_piu.height*0.5 }
-//        }
-//        ShapePath {
-//            strokeColor: parametri_generali.coloreBordo
-//            strokeWidth: 5
-//            startX: icona_piu.width*0.5
-//            startY: icona_piu.height*0.3
-//            PathLine { x: icona_piu.width*0.5; y: icona_piu.height*0.7 }
-//        }
-
-//    }
-
-//    Timer
-//    {
-//        id: repeater_timer
-//        interval: 200
-//        repeat: true
-//        running: false
-//        onTriggered:
-//        {
-//            icona_piu.pressed()
-//        }
-//    }
-
-//    MouseArea
-//    {
-//        anchors.fill: parent
-
-//        onPressed:
-//        {
-//            icona_piu.pressed()
-
-//        }
-//        onPressAndHold: repeater_timer.running=true
-//        onReleased:
-//        {
-//            repeater_timer.running=false
-//        }
-//    }
-//}

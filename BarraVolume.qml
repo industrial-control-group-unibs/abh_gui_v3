@@ -86,7 +86,7 @@ Item {
                 }
                 id: meno
             }
-            IconaPiu
+            IconaPlus
             {
 //                anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter

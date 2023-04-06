@@ -87,5 +87,12 @@
         <file>IconaDescrizioneEsercizi.qml</file>
         <file>StringLinearSlider.qml</file>
         <file>PaginaCoppa.qml</file>
+        <file>PaginaStatistiche.qml</file>
+        <file>Statistiche.qml</file>
+        <file>SceltaStatisticheWorkout.qml</file>
+        <file>ListaStatisticheWorkoutSessioni.qml</file>
+        <file>PaginaStatisticheSessione.qml</file>
+        <file>ListaStatisticheEserciziWorkout.qml</file>
+        <file>IconaStat.qml</file>
     </qresource>
 </RCC>

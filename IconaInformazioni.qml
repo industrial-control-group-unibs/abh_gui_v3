@@ -19,6 +19,8 @@ IconaRettangolo
     property real fontSize: 50
     text: titolo==="+"?titolo:""
 
+
+
     Item {
         anchors.fill: parent
         visible: titolo!=="+"

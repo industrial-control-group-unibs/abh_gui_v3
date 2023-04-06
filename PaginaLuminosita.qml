@@ -75,7 +75,7 @@ Item {
                     chiamata_sistema.call()
                 }
             }
-            IconaPiu
+            IconaPlus
             {
 //                anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter

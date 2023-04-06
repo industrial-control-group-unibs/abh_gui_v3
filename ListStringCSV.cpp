@@ -5,13 +5,10 @@
 #include <QTimer>
 #include <cstdlib>
 #include <rapidcsv.h>
-#include <QDebug>
 
 ListStringCSV::ListStringCSV(QString path, QObject *parent) :
   QAbstractListModel(parent)
 {
-
-
   path_=path;
   dir_path_=path_.toStdString();
 
@@ -69,9 +66,9 @@ void ListStringCSV::readFile(QString filename)
     }
     data_ << lista;
   }
-
   if (append_)
   {
+    qDebug() << "append the row";
     QStringList lista;
     lista.push_back("+");
     for (size_t ic=1;ic<doc.GetColumnCount();ic++)
