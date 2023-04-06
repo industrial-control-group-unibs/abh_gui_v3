@@ -133,8 +133,8 @@ void StatChart::paint(QPainter *painter)
       m_y_max=std::max(m_y_max,y[idx]);
       polygon << conv((x.at(i)-m_x_min)/(m_x_max-m_x_min),(y.at(i)-m_y_min)/(m_y_max-m_y_min));
     }
-    polygon << conv(x.back()/(m_x_max-m_x_min),0);
-    polygon << conv(x.at(0)/(m_x_max-m_x_min),0);
+    polygon << conv((x.back()-m_x_min)/(m_x_max-m_x_min),0);
+    polygon << conv((x.at(0)-m_x_min)/(m_x_max-m_x_min),0);
     polygon << conv((x.at(0)-m_x_min)/(m_x_max-m_x_min),(y.at(0)-m_y_min)/(m_y_max-m_y_min));
     painter->setBrush(QBrush(fill_color));
     painter->setPen(QPen(Qt::transparent, 1, Qt::SolidLine,
