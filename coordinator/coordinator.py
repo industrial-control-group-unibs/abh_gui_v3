@@ -294,7 +294,7 @@ def exercise_thread():
             state=Status.BACKWARD
         elif (direction==5):
             state=Status.UNDEFINED
-            print("\n\n\n\n ===== UNDEFINED ===== \n\n\n\n")
+
 
         if (state == Status.STOP):
             repetition_count=1.0

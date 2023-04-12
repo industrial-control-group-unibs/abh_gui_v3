@@ -80,6 +80,7 @@ void ListStringCSV::readFile(QString filename)
   }
   } catch (...) {
     qDebug() << "the file does not exist = " << nome_file.c_str();
+    data_.clear();
   }
 }
 

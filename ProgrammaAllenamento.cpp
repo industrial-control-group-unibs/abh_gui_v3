@@ -28,12 +28,7 @@ void ProgrammaAllenamento::readFile(std::string file_name)
     end_session_=false;
     updateField();
 
-  }
-  catch (...)
-  {
-    std::cerr<< "file does not exist :"<<file_name<<std::endl;
 
-  }
   std::vector<int> session = doc_->GetColumn<int>("session");
   std::vector<int> score = doc_->GetColumn<int>("score");
 
@@ -49,6 +44,12 @@ void ProgrammaAllenamento::readFile(std::string file_name)
     }
   }
   updateField();
+  }
+  catch (...)
+  {
+    std::cerr<< "file does not exist :"<<file_name<<std::endl;
+
+  }
   //setSession(act_session_);
 }
 

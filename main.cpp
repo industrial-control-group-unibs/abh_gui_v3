@@ -28,6 +28,8 @@
 #include <listwifi.h>
 #include <stringquee.h>
 
+#include <rapidcsv.h>
+#include <rapidcsv.h>
 
 int main(int argc, char *argv[])
 {
@@ -89,6 +91,34 @@ int main(int argc, char *argv[])
 
   ListStringCSV workout_list(data_path+"/allenamento_programmato");
 
+  ListStringCSV dati_list(data_path);
+
+  std::string coloreBordo="#c6aa76";
+  std::string coloreSfondo="#2A211B";
+  std::string coloreUtente="#8c177b";
+  std::string coloreLed="#8c177b";
+  std::string coloreLedEsercizioInizio="#ff0000";
+  std::string coloreLedEsercizioFine="#00ff00";
+  try {
+    rapidcsv::Document doc(dir_path+"/default.csv");
+    coloreBordo=doc.GetCell<std::string>(1,0);
+    coloreSfondo=doc.GetCell<std::string>(1,1);
+    coloreUtente=doc.GetCell<std::string>(1,2);
+    coloreLed=doc.GetCell<std::string>(1,3);
+    coloreLedEsercizioInizio=doc.GetCell<std::string>(1,4);
+    coloreLedEsercizioFine=doc.GetCell<std::string>(1,5);
+
+  } catch (...) {
+    std::cout << "error loading default"<<"std::endl";
+  }
+  QStringList default_values;
+  default_values.push_back(QString().fromStdString(coloreBordo             ));
+  default_values.push_back(QString().fromStdString(coloreSfondo            ));
+  default_values.push_back(QString().fromStdString(coloreUtente            ));
+  default_values.push_back(QString().fromStdString(coloreLed               ));
+  default_values.push_back(QString().fromStdString(coloreLedEsercizioInizio));
+  default_values.push_back(QString().fromStdString(coloreLedEsercizioFine  ));
+
 
   ListaWifi wifi;
 
@@ -116,6 +146,9 @@ int main(int argc, char *argv[])
   context->setContextProperty("_queue", &queue);
   context->setContextProperty("_history", &page_history);
   context->setContextProperty("_active_workouts", &active_workouts);
+
+  context->setContextProperty("_default", default_values);
+
   engine->rootContext()->setContextProperty("PATH", data_path);
 
 

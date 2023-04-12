@@ -2,27 +2,51 @@ import urllib.request
 import urllib.parse
 import urllib.request
 import time
+from python_binary_udp_helper import UdpBinarySenderThread, UdpBinaryReceiverThread
 
 from pyShelly import pyShelly
 from urllib3 import request
+from signal import signal, SIGINT
 
+from threading import Thread
+
+import abh_constants as abh
+
+stop=False
+def handler(signal_received, frame):
+    global stop
+    stop=True
 
 
 def device_added(dev,code):
   print (dev," ",code)
 
-shelly = pyShelly()
-print("version:",shelly.version())
 
-shelly.cb_device_added.append(device_added)
-shelly.start()
-shelly.discover()
+def led_thread():
 
-try:
+    global stop
+    shelly = pyShelly()
+    print("version:",shelly.version())
+
+    led_client = UdpBinaryReceiverThread("led_client_d",abh.ABH_CONTROL,abh.LED_PORT)
+    led_client.bufferLength(3)
+    led_client.start()
+
+    shelly.cb_device_added.append(device_added)
+    shelly.start()
+    shelly.discover()
+
     waiting=True
     while waiting:
-        time.sleep(1)
+        time.sleep(2)
+        if (led_client.isNewDataAvailable()):
+            led_color=led_client.getLastDataAndClearQueue()
+            print("color = ", led_color)
         print("waiting")
+        if (stop):
+            led_client.stopThread()
+            led_client.join()
+            return
         for dev in shelly.devices:
             print(dev.device_type)
             if (dev.device_type=="RGBLIGHT"):
@@ -33,38 +57,34 @@ try:
 
     if not led.turn_off():
         led.turn_off()
-
-    time.sleep(1)
+    time.sleep(0.5)
     led.turn_on()
 
-    colore=[255,0,0]
-    colore2=[255,0,0]
-    inc=+20
-    power=0
-    power=1
-    power_inc=0.05
-    while True:
-        colore[0]-=inc
-        colore[2]+=inc
-        if (colore[0]<0 or colore[2]>255):
-            rgb=[0,0,255]
-            inc*=-1
-        elif (colore[2]<0 or colore[0]>255):
-            colore=[255,0,0]
-            inc*=-1
-        power+=power_inc
-        if (power>1):
-            power=1.0
-            power_inc*=-1
-        elif (power<0):
-            power=.0
-            power_inc*=-1
-
-        colore2[0]=int(colore[0]*power)
-        colore2[1]=int(colore[1]*power)
-        colore2[2]=int(colore[2]*power)
-        led.set_values(rgb=colore2)
+    led_color=[255,0,0]
+    while (not stop):
         time.sleep(0.1)
-except KeyboardInterrupt:
-    pass
 
+        if (led_client.isNewDataAvailable()):
+            led_color=led_client.getLastDataAndClearQueue()
+
+        colore[0]=led_color[0]*255.0
+        colore[1]=led_color[1]*255.0
+        colore[2]=led_color[2]*255.0
+        led.set_values(rgb=colore)
+
+        if (stop):
+            led_client.stopThread()
+            led_client.join()
+            return
+
+
+if __name__ == '__main__':
+    #global stop
+    ex_thread = Thread(target=led_thread, args=())
+    signal(SIGINT, handler)
+    ex_thread.start()
+    while (not stop):
+        time.sleep(0.1)
+
+    if ex_thread.is_alive():
+        ex_thread.join(timeout=10)

@@ -80,9 +80,9 @@ Item {
         {
             anchors {
                 top: titolo.bottom
-                topMargin: parametri_generali.larghezza_barra
+                topMargin: 0.5*parametri_generali.larghezza_barra
                 bottom: parent.bottom
-                bottomMargin: parametri_generali.larghezza_barra
+                bottomMargin: 0.5*parametri_generali.larghezza_barra
                 left: parent.left
                 right: parent.right
             }
@@ -263,6 +263,64 @@ Item {
                 }
             }
 
+
+            Item
+            {
+                width: parent.width
+                height: 80
+                MouseArea
+                {
+                    anchors.fill: parent
+                    onPressed: {
+                        colorDialogLed.visible=true
+                    }
+                }
+
+                Rectangle {
+                    id:rect_led
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.leftMargin: 30
+                    anchors.margins: 2
+                    height: parent.height
+                    width: height
+                    radius: width*0.5
+
+                    border.color: parametri_generali.coloreBordo
+                    border.width: 5
+                    color: parametri_generali.coloreUtente
+
+                }
+
+                Testo
+                {
+                    anchors.top: parent.top
+                    anchors.left: rect_led.right
+                    anchors.right: right.right
+                    anchors.leftMargin: 30
+                    height: parent.height
+
+
+                    font.pixelSize: 35/1920*component.height
+                    verticalAlignment: Text.AlignVCenter
+                    text: "COLORE SECONDARIO"
+                }
+
+                ColorDialog {
+                    title: "SELEZIONA COLORE"
+                    id: colorDialogLed
+                    onAccepted: {
+                        parametri_generali.coloreLed=colorDialogLed.color
+                        rect_led.color= parametri_generali.coloreLed
+                        visible: false
+                    }
+                    onRejected: {
+                        visible: false
+                    }
+                    visible: false
+
+                }
+            }
 
             Item
             {

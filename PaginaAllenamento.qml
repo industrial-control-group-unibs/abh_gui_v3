@@ -15,6 +15,8 @@ Item {
     {
         if (impostazioni_utente.nome ==="")
             pageLoader.source="PaginaLogin.qml"
+
+        led_udp.data=[parametri_generali.coloreLed.r, parametri_generali.coloreLed.g, parametri_generali.coloreLed.b]
     }
 
     Barra_superiore{}

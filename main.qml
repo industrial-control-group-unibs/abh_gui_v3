@@ -26,11 +26,15 @@ ApplicationWindow {
     }
     Item {
         id: parametri_generali
-        property string coloreBordo:  "#c6aa76"
-        property string coloreBordoTrasparent:  "#c6aa7640"
-        property string coloreSfondo: "#2A211B"
-        property string coloreUtente: "#8c177b"
-        property string coloreUtenteTrasparent: "#c6aa7640"
+        property color coloreBordo:  _default[0]
+        property color coloreBordoTrasparent:  "#c6aa7640"
+        property color coloreSfondo: "#2A211B"
+        property color coloreUtente: "#8c177b"
+        property color coloreUtenteTrasparent: "#c6aa7640"
+        property color coloreLed: "#8c177b"
+        property color coloreLedInizio: "#ff0000"
+        property color coloreLedFine: "#00ff00"
+
         property int larghezza_barra: 172
         property int offset_icone4x3: 400
         property int logo_time: 2000
@@ -52,6 +56,11 @@ ApplicationWindow {
         onColoreUtenteChanged:
         {
             coloreUtenteTrasparent=Qt.rgba(coloreUtente.r, coloreUtente.g, coloreUtente.b, 0.440)
+        }
+
+        onColoreLedChanged:
+        {
+            led_udp.data=[coloreLed.r, coloreLed.g, coloreLed.b]
         }
 
         state: "SABBIA"
@@ -186,6 +195,16 @@ ApplicationWindow {
         host: "localhost"
         // @disable-check M16
         data: [selected_exercise.power]
+    }
+
+    BinarySender {
+        id: led_udp
+        // @disable-check M16
+        port: "21051"
+        // @disable-check M16
+        host: "localhost"
+        // @disable-check M16
+        data: [coloreLed.r, coloreLed.g, coloreLed.b]
     }
     BinarySender {
         id: type_udp
