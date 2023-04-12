@@ -68,9 +68,10 @@ ApplicationWindow {
         states: [
             State {
                 name: "SABBIA"
-                PropertyChanges { target: parametri_generali; coloreBordo:  "#c6aa76"} //"#D4C9BD"
-                PropertyChanges { target: parametri_generali; coloreSfondo: "#2A211B"}
-                PropertyChanges { target: parametri_generali; coloreUtente:  "#8c177b"}
+                PropertyChanges { target: parametri_generali; coloreBordo:  _default[0]} //"#c6aa76"
+                PropertyChanges { target: parametri_generali; coloreSfondo: _default[1]}
+                PropertyChanges { target: parametri_generali; coloreUtente: _default[2]}
+                PropertyChanges { target: parametri_generali; coloreLed:    _default[3]}
             }
         ]
     }

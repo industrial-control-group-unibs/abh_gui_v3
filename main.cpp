@@ -118,7 +118,7 @@ int main(int argc, char *argv[])
   default_values.push_back(QString().fromStdString(coloreLed               ));
   default_values.push_back(QString().fromStdString(coloreLedEsercizioInizio));
   default_values.push_back(QString().fromStdString(coloreLedEsercizioFine  ));
-
+  utenti.setDefaultColor(default_values);
 
   ListaWifi wifi;
 

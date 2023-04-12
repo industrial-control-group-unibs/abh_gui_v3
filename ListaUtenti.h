@@ -46,6 +46,7 @@ public:
     QVariant data( const QModelIndex& index, int role = Qt::DisplayRole ) const override;
     QHash<int, QByteArray> roleNames() const override;
 
+    void setDefaultColor(QStringList default_colors);
 
 
 public slots:
@@ -71,6 +72,7 @@ private: //members
     std::string dir_path_;
     QString path_;
     int roles_;
+    QStringList default_colors_;
 };
 
 

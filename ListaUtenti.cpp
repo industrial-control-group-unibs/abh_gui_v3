@@ -76,6 +76,13 @@ QVariant ListaUtenti::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
+void ListaUtenti::setDefaultColor(QStringList default_colors)
+{
+  default_colors_=default_colors;
+}
+
+
+
 QString ListaUtenti::addUser(std::vector<QString> dati)
 {
   data_.pop_back();
@@ -89,9 +96,9 @@ QString ListaUtenti::addUser(std::vector<QString> dati)
     row[ifield]=dati.at(ifield).toStdString();
   }
   row[12]=std::to_string(doc.GetRowCount())+"_"+row[0]+"_"+row[1];
-  row[13]="#c6aa76";
-  row[14]="#2A211B";
-  row[15]="#8c177b";
+  row[13]=default_colors_[0].toStdString();
+  row[14]=default_colors_[1].toStdString();
+  row[15]=default_colors_[2].toStdString();
   row[16]="9999";
   row[17]="false";
   row[18]="";
