@@ -105,7 +105,9 @@ Item
                 if (ripetizioni>1)
                 {
                     selected_exercise.completamento+=1.0/(selected_exercise.reps*selected_exercise.sets)
-                    selected_exercise.score+=selected_exercise.power/(component.default_power*selected_exercise.reps*selected_exercise.sets)
+                    if (component.default_power*selected_exercise.reps*selected_exercise.sets>0)
+                        selected_exercise.score+=selected_exercise.power/(component.default_power*selected_exercise.reps*selected_exercise.sets)
+
                     console.log("score=",selected_exercise.completamento,"completamento",selected_exercise.completamento)
                 }
                 if (ripetizioni>selected_exercise.reps)

@@ -50,13 +50,8 @@ int main(int argc, char *argv[])
   std::string Username = getlogin();
   std::cout << Username << std::endl;
   bool fs=true;
-  if (!Username.compare("abhorizon"))
+  if (Username.compare("jacobi"))
   {
-
-  }
-  else
-  {
-
     fs=false;
   }
 
@@ -68,7 +63,7 @@ int main(int argc, char *argv[])
 
   if (fs)
   {
-    dir_path="/home/abhorizon/Scrivania/abh_data";
+    dir_path="/home/"+Username+"/Scrivania/abh_data";
   }
   else
   {

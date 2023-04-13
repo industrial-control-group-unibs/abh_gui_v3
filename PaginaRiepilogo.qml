@@ -93,6 +93,11 @@ Item {
         timer_tut.active=false
         timer_tempo.stop()
         startstop_udp.string="rewire"
+
+        if (selected_exercise.score>1.0)
+            selected_exercise.score=1.0;
+        else if  (selected_exercise.score<0.0)
+            selected_exercise.score=0.0;
     }
     Component.onDestruction:
     {
