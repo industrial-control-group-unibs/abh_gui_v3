@@ -55,20 +55,25 @@ QHash<int, QByteArray> ListaNome::roleNames() const
 
 void ListaNome::readFile(QString string)
 {
-
   std::string nome_file=dir_path_+"/zone/"+string.toStdString()+".csv";
-  rapidcsv::Document doc(nome_file);
 
-  std::vector<std::string> col = doc.GetColumn<std::string>("ex_name");
-  size_t elements=col.size();
+  try {
+    rapidcsv::Document doc(nome_file);
+
+    std::vector<std::string> col = doc.GetColumn<std::string>("ex_name");
+    size_t elements=col.size();
 
 
-  data_.clear();
-  for (size_t idx=0;idx<elements;idx++)
-  {
+    data_.clear();
+    for (size_t idx=0;idx<elements;idx++)
+    {
 
-    QString ex_name=QString::fromStdString(doc.GetCell<std::string>(0,idx));
-    data_ << EsData(ex_name);
+      QString ex_name=QString::fromStdString(doc.GetCell<std::string>(0,idx));
+      data_ << EsData(ex_name);
+    }
+
+  } catch (std::exception& ex) {
+    std::cout << "expection " << ex.what() << " while reading file " << nome_file << std::endl;
   }
 }
 
