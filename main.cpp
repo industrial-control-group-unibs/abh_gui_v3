@@ -70,6 +70,7 @@ int main(int argc, char *argv[])
     dir_path="/home/jacobi/projects/abh_data";
   }
 
+  std::cout << "reading file from " << dir_path <<std::endl;
   QString data_path=QString::fromStdString(dir_path);
 
   ListaNome model(data_path);

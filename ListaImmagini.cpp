@@ -54,20 +54,27 @@ QHash<int, QByteArray> ListaImmagini::roleNames() const
 void ListaImmagini::readFile(QString string)
 {
   std::string nome_file=dir_path_+"/"+string.toStdString()+".csv";
-  rapidcsv::Document doc(nome_file);
 
-  std::vector<std::string> col = doc.GetColumn<std::string>("ex_name");
-  size_t elements=col.size();
+  try {
 
-  data_.clear();
-  for (size_t idx=0;idx<elements;idx++)
-  {
-    QString ex_name=QString::fromStdString(doc.GetCell<std::string>(0,idx));
-    QString image=QString::fromStdString(doc.GetCell<std::string>(1,idx));
-    data_ << Immagine(ex_name,image);
+    rapidcsv::Document doc(nome_file);
+
+    std::vector<std::string> col = doc.GetColumn<std::string>("ex_name");
+    size_t elements=col.size();
+
+    data_.clear();
+    for (size_t idx=0;idx<elements;idx++)
+    {
+      QString ex_name=QString::fromStdString(doc.GetCell<std::string>(0,idx));
+      QString image=QString::fromStdString(doc.GetCell<std::string>(1,idx));
+      data_ << Immagine(ex_name,image);
+    }
+    if (append_)
+    {
+      data_ << Immagine("+","");
+    }
+  } catch (std::exception& ex) {
+    std::cout << "expection " << ex.what() << " while reading file " << nome_file << std::endl;
   }
-  if (append_)
-  {
-    data_ << Immagine("+","");
-  }
+
 }
