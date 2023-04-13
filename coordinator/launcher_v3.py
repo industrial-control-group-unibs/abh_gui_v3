@@ -15,7 +15,7 @@ else:
 try:
     p=[]
     if (user!='jacobi'):
-        p.append(subprocess.Popen([pycmd, "/home/abhorizon/ABHORIZON_PC_VISION/AB_main_PC.py"], cwd=r'/home/abhorizon/ABHORIZON_PC_VISION'))
+        p.append(subprocess.Popen([pycmd, "/home/"+user+"/ABHORIZON_PC_VISION/AB_main_PC.py"], cwd=r'/home/abhorizon/ABHORIZON_PC_VISION'))
         p[-1].name="vision"
         time.sleep(0.5)
 
