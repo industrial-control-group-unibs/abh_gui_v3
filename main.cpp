@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
   std::string Username = getlogin();
   std::cout << Username << std::endl;
   bool fs=true;
-  if (Username.compare("jacobi"))
+  if (!Username.compare("jacobi"))
   {
     fs=false;
   }
@@ -80,6 +80,7 @@ int main(int argc, char *argv[])
   abh::ProgrammaAllenamento workout(data_path+"/allenamento_programmato");
   abh::DescrizioneEsercizi esercizi(data_path);
 
+  std::cout << "reading file from " << dir_path <<std::endl;
   StringQuee queue;
 
   ListStringCSV active_workouts(data_path+"/utenti");
