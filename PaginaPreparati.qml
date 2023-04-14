@@ -42,6 +42,12 @@ PaginaVideoSingolo
         //_history.pop()
         //link_sx=_history.pop()
 
+        if (selected_exercise.workout==="")
+        {
+            time_ex.resetValue()
+            timer_tut.resetValue()
+        }
+
         startstop_udp.string="stop_rewire"
         if (selected_exercise.workout==="" || _workout.completed)
         {

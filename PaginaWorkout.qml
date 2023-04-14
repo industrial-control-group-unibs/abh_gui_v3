@@ -20,6 +20,8 @@ Item {
 
     Component.onCompleted:
     {
+        time_ex.active=true
+
         time_ex=timer_tempo.value*0.001
         tut_ex=timer_tut.value*0.001
 
@@ -31,11 +33,13 @@ Item {
     Component.onDestruction:
     {
         timer_tut.active=false
+        time_ex.active=false
         startstop_udp.string="stop"
         parametri_generali.login_page=true
 
         selected_exercise.time_esercizio+=(timer_tempo.value*0.001-time_ex)
         selected_exercise.tut_esercizio+=(timer_tut.value*0.001-tut_ex)
+        console.log("time = ",selected_exercise.time_esercizio," tut = ",selected_exercise.tut_esercizio)
     }
     id: component
     state: "sotto"

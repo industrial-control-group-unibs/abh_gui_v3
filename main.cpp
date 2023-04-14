@@ -33,6 +33,7 @@
 
 int main(int argc, char *argv[])
 {
+ std::string prev_loc = std::setlocale(LC_ALL, nullptr);
 
 
 

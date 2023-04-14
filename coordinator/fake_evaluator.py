@@ -30,11 +30,11 @@ if __name__ == '__main__':
             try:
                 exercise_client = UdpReceiverThread("exercise_name_eval",abh.ABH_VISION,abh.EXERCISE_NAME_PORT)
                 exercise_client.start()
-                logging.debug("connected with coordinator")
+                print("connected with coordinator")
                 break
             except:
                 if itrial % 60==0:
-                    logging.debug("waiting for connection with coordinator for exercise name.")
+                    print("waiting for connection with coordinator for exercise name.")
                 itrial+=1
                 time.sleep(1)
 
@@ -61,7 +61,7 @@ if __name__ == '__main__':
            if rep>21:
                rep=0
            stringa=str(rep)+","+str(percentage)
-           repetition_udp.sendData([rep,percentage,inc])
+           repetition_udp.sendData([rep,inc,percentage])
            motor_feedback.sendData([abs_position,fb_velocity])
            time.sleep(0.003)
 

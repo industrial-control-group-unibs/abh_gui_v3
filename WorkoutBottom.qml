@@ -97,16 +97,22 @@ Item
         anchors.verticalCenter: parent.verticalCenter
         colore: parametri_generali.coloreBordo
         ripetizioni: fb_udp.data[0]
-
+        property real ratio: 1.0
         onRipetizioniChanged: {
             conto_alla_rovescia.restart()
             if (selected_exercise.type<3)
             {
+                ratio=ripetizioni/(1.0*selected_exercise.reps)
+
+                led_udp.data=[parametri_generali.coloreLedInizio.r*(1.0-ratio)+parametri_generali.coloreLedFine.r*ratio,
+                              parametri_generali.coloreLedInizio.g*(1.0-ratio)+parametri_generali.coloreLedFine.g*ratio,
+                              parametri_generali.coloreLedInizio.b*(1.0-ratio)+parametri_generali.coloreLedFine.b*ratio]
+
                 if (ripetizioni>1)
                 {
-                    selected_exercise.completamento+=1.0/(selected_exercise.reps*selected_exercise.sets)
+                    selected_exercise.completamento+=1.0/(1.0*selected_exercise.reps*selected_exercise.sets)
                     if (component.default_power*selected_exercise.reps*selected_exercise.sets>0)
-                        selected_exercise.score+=selected_exercise.power/(component.default_power*selected_exercise.reps*selected_exercise.sets)
+                        selected_exercise.score+=selected_exercise.power/(1.0*component.default_power*selected_exercise.reps*selected_exercise.sets)
 
                     console.log("score=",selected_exercise.completamento,"completamento",selected_exercise.completamento)
                 }
@@ -115,6 +121,12 @@ Item
             }
             else
             {
+                ratio=1.0-ripetizioni/(1.0*selected_exercise.reps)
+
+                led_udp.data=[parametri_generali.coloreLedInizio.r*(1.0-ratio)+parametri_generali.coloreLedFine.r*ratio,
+                              parametri_generali.coloreLedInizio.g*(1.0-ratio)+parametri_generali.coloreLedFine.g*ratio,
+                              parametri_generali.coloreLedInizio.b*(1.0-ratio)+parametri_generali.coloreLedFine.b*ratio]
+
                 if (ripetizioni<=0)
                 {
                     pageLoader.source = "PaginaRiposo.qml"
@@ -122,7 +134,7 @@ Item
                 else
                 {
                     selected_exercise.score+=1.0/(selected_exercise.reps*selected_exercise.sets)
-                    selected_exercise.completamento+=1.0/(selected_exercise.reps*selected_exercise.sets)
+                    selected_exercise.completamento+=1.0/(1.0*selected_exercise.reps*selected_exercise.sets)
                 }
             }
         }
