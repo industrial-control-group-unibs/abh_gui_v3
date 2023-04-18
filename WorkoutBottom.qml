@@ -14,6 +14,10 @@ Item
         {
             icona_rep.ripetizioni=selected_exercise.reps
         }
+        else
+        {
+            icona_rep.ripetizioni=1
+        }
     }
 
     anchors
