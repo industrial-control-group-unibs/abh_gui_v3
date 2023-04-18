@@ -60,7 +60,9 @@ def led_thread():
     time.sleep(0.5)
     led.turn_on()
 
-    led_color=[255,0,0]
+
+    colore=[255,0,0]
+    led_color=[1,0,0]
     while (not stop):
         time.sleep(0.1)
 
