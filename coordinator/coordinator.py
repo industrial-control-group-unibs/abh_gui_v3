@@ -59,6 +59,8 @@ def exercise_thread():
     repetition_udp=-1
     repetition_udp_repetiter=-1
     percentage=0
+    calibrating=False
+    initializing=False
 
 
 
@@ -261,7 +263,8 @@ def exercise_thread():
                 rep_count_from_vision=float(repetition_state[0])
                 direction=float(repetition_state[1])
                 percentage=max(0.0,float(repetition_state[2]))
-
+                initializing=repetition_state[2]==-30
+                calibrating=repetition_state[2]==-50
 
                 if (exercise_type>1):
                     repetition_count=rep_count_from_vision
@@ -301,7 +304,13 @@ def exercise_thread():
             direction=0.0
 
 
-        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,float(state.value)])
+        stato_macchina=float(state.value)
+        if (calibrating):
+          stato_macchina=10
+        elif (initializing):
+          stato_macchina=11
+
+        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina])
         vosk_command=0
 
         if (last_state != state or resend):

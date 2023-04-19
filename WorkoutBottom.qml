@@ -229,6 +229,10 @@ Item
                 return "NONE"
             else if (fb_udp.data[5]===3)
                 return "REWIRE"
+            else if (fb_udp.data[5]===10)
+                return "CALIBRATING"
+            else if (fb_udp.data[5]===11)
+                return "INITIALIZING"
         }
     }
 
