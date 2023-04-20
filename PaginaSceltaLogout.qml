@@ -13,7 +13,11 @@ PaginaSiNo
     titolo: "EFFETTUARE IL LOGOUT?"
 
     signal spegni
-    onPressNo: pageLoader.source=  "PaginaImpostazioni.qml"
+    onPressNo:
+    {
+        _history.pop()
+        pageLoader.source=_history.pop()
+    }
     onPressYes:
     {
         pageLoader.source=  "DefinizioneUtente1.qml"
