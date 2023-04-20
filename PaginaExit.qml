@@ -13,7 +13,12 @@ PaginaSiNo
     titolo: "VUOI USCIRE?"
 
     signal spegni
-    onPressNo: pageLoader.source=  "PaginaLogin.qml"
+    onPressNo:
+    {
+        _history.pop()
+        pageLoader.source=_history.pop()
+    }
+    //pageLoader.source=  "PaginaLogin.qml"
     onPressYes: {
         spegni()
 

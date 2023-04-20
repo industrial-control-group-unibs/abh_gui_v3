@@ -13,9 +13,14 @@ PaginaSiNo
     titolo: "VUOI AGGIORNARE?\nGLI AGGIORNAMENTI SARANNO OPERATIVI DOPO IL RIAVVIO"
 
     signal aggiorna
-    onPressNo: pageLoader.source=  "PaginaImpostazioni.qml"
+    onPressNo:
+    {
+        _history.pop()
+        pageLoader.source=  "PaginaImpostazioni.qml"
+    }
     onPressYes: {
         aggiorna()
+        _history.pop()
         pageLoader.source=  "PaginaImpostazioni.qml"
    }
     onAggiorna: {
