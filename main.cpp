@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
   std::string coloreLedPausa="#ffff00";
   std::string coloreLedFinePausa="#ff0000";
 
-  std::string pausaRiposo="5";
+  std::string pausaRiposo="30";
   try {
     rapidcsv::Document doc(dir_path+"/default.csv");
     coloreBordo=doc.GetCell<std::string>(1,0);
