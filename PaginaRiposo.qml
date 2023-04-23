@@ -22,7 +22,7 @@ Item {
 
     Component.onCompleted:
     {
-//        startstop_udp.string="rewire"
+        led_udp.data=[parametri_generali.coloreLedPausa.r, parametri_generali.coloreLedPausa.g, parametri_generali.coloreLedPausa.b]
     }
     Component.onDestruction:
     {
@@ -100,6 +100,7 @@ Item {
                     }
                     else
                     {
+                        led_udp.data=[parametri_generali.coloreLed.r, parametri_generali.coloreLed.g, parametri_generali.coloreLed.b]
                         selected_exercise.current_set=0
                         if (selected_exercise.workout==="")
                         {
@@ -142,7 +143,10 @@ Item {
                 onTempoChanged:
                 {
                     if (tempo<10000)
+                    {
                         startstop_udp.string="rewire"
+                        led_udp.data=[parametri_generali.coloreLedFinePausa.r, parametri_generali.coloreLedFinePausa.g, parametri_generali.coloreLedFinePausa.b]
+                    }
                 }
 
                 colore: (tempo<10000)?"red":parametri_generali.coloreUtente

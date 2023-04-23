@@ -16,7 +16,7 @@ Item
         }
         else
         {
-            icona_rep.ripetizioni=1
+            //icona_rep.ripetizioni=1
         }
     }
 
@@ -103,6 +103,7 @@ Item
         ripetizioni: fb_udp.data[0]
         property real ratio: 1.0
         onRipetizioniChanged: {
+
             conto_alla_rovescia.restart()
             if (selected_exercise.type<3)
             {

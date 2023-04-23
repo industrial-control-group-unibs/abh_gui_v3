@@ -14,6 +14,7 @@ Item {
 
     signal press
 
+
     onPress:
     {
         selected_exercise.current_set=0
@@ -89,6 +90,7 @@ Item {
 
     Component.onCompleted:
     {
+        led_udp.data=[parametri_generali.coloreLed.r, parametri_generali.coloreLed.g, parametri_generali.coloreLed.b]
         timer_tut.stop()
         timer_tut.active=false
         timer_tempo.stop()

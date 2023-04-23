@@ -267,7 +267,7 @@ def exercise_thread():
                 calibrating=repetition_state[2]==-50
 
                 if (exercise_type>1):
-                    repetition_count=rep_count_from_vision
+                    repetition_count=max(1,rep_count_from_vision)
                 elif ((last_rep_count_from_vision!=rep_count_from_vision) and (max_pos_motor_speed>10) and (max_neg_motor_speed<-2)):
                     repetition_count=repetition_count+1
                     max_pos_motor_speed=0.0

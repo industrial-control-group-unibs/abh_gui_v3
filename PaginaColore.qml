@@ -288,7 +288,7 @@ Item {
 
                     border.color: parametri_generali.coloreBordo
                     border.width: 5
-                    color: parametri_generali.coloreUtente
+                    color: parametri_generali.coloreLed
 
                 }
 
@@ -303,7 +303,7 @@ Item {
 
                     font.pixelSize: 35/1920*component.height
                     verticalAlignment: Text.AlignVCenter
-                    text: "COLORE SECONDARIO"
+                    text: "COLORE LED"
                 }
 
                 ColorDialog {

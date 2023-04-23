@@ -34,6 +34,8 @@ ApplicationWindow {
         property color coloreLed: "#8c177b"
         property color coloreLedInizio: "#ff0000"
         property color coloreLedFine: "#00ff00"
+        property color coloreLedPausa: "#ffff00"
+        property color coloreLedFinePausa: "#ff0000"
 
         property int larghezza_barra: 172
         property int offset_icone4x3: 400
@@ -72,6 +74,10 @@ ApplicationWindow {
                 PropertyChanges { target: parametri_generali; coloreSfondo: _default[1]}
                 PropertyChanges { target: parametri_generali; coloreUtente: _default[2]}
                 PropertyChanges { target: parametri_generali; coloreLed:    _default[3]}
+                PropertyChanges { target: parametri_generali; coloreLedInizio:    _default[4]}
+                PropertyChanges { target: parametri_generali; coloreLedFine:      _default[5]}
+                PropertyChanges { target: parametri_generali; coloreLedPausa:     _default[6]}
+                PropertyChanges { target: parametri_generali; coloreLedFinePausa: _default[7]}
             }
         ]
     }
@@ -256,7 +262,7 @@ ApplicationWindow {
         {
             if (counter===0)
             {
-                console.log(data)
+                console.log("data from coordinator = ",data)
             }
             if (counter++>1000)
             {

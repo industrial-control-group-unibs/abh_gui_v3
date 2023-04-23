@@ -95,16 +95,26 @@ int main(int argc, char *argv[])
   std::string coloreSfondo="#2A211B";
   std::string coloreUtente="#8c177b";
   std::string coloreLed="#8c177b";
+
   std::string coloreLedEsercizioInizio="#ff0000";
   std::string coloreLedEsercizioFine="#00ff00";
+  std::string coloreLedPausa="#ffff00";
+  std::string coloreLedFinePausa="#ff0000";
+
+  std::string pausaRiposo="5";
   try {
     rapidcsv::Document doc(dir_path+"/default.csv");
     coloreBordo=doc.GetCell<std::string>(1,0);
     coloreSfondo=doc.GetCell<std::string>(1,1);
     coloreUtente=doc.GetCell<std::string>(1,2);
     coloreLed=doc.GetCell<std::string>(1,3);
+
     coloreLedEsercizioInizio=doc.GetCell<std::string>(1,4);
     coloreLedEsercizioFine=doc.GetCell<std::string>(1,5);
+    coloreLedPausa=doc.GetCell<std::string>(1,6);
+    coloreLedFinePausa=doc.GetCell<std::string>(1,7);
+
+    pausaRiposo=doc.GetCell<std::string>(1,8);
 
   } catch (...) {
     std::cout << "error loading default"<<"std::endl";
@@ -114,8 +124,14 @@ int main(int argc, char *argv[])
   default_values.push_back(QString().fromStdString(coloreSfondo            ));
   default_values.push_back(QString().fromStdString(coloreUtente            ));
   default_values.push_back(QString().fromStdString(coloreLed               ));
+
   default_values.push_back(QString().fromStdString(coloreLedEsercizioInizio));
   default_values.push_back(QString().fromStdString(coloreLedEsercizioFine  ));
+  default_values.push_back(QString().fromStdString(coloreLedPausa          ));
+  default_values.push_back(QString().fromStdString(coloreLedFinePausa      ));
+
+  default_values.push_back(QString().fromStdString(pausaRiposo             ));
+
   utenti.setDefaultColor(default_values);
 
   ListaWifi wifi;

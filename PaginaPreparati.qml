@@ -44,8 +44,10 @@ PaginaVideoSingolo
 
         if (selected_exercise.workout==="")
         {
-            time_ex.resetValue()
+            timer_tempo.resetValue()
             timer_tut.resetValue()
+            console.log("default[8]",_default[8]," to float = ", parseFloat(_default[8]))
+            selected_exercise.rest_time= parseFloat(_default[8])
         }
 
         startstop_udp.string="stop_rewire"
