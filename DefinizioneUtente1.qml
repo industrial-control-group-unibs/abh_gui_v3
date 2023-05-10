@@ -164,6 +164,9 @@ Item {
                 width: 100
                 onPressed:
                 {
+                    if (impostazioni_utente.identifier !=="")
+                        pageLoader.source = "PaginaAllenamento.qml"
+                    else
                         pageLoader.source = "PaginaLogin.qml"
 
                 }
@@ -295,7 +298,10 @@ Item {
                     }
                     else
                     {
-                        pageLoader.source="PaginaLogin.qml"
+                        if (impostazioni_utente.identifier !=="")
+                            pageLoader.source = "PaginaAllenamento.qml"
+                        else
+                            pageLoader.source = "PaginaLogin.qml"
                     }
                 }
             }

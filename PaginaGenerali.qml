@@ -17,14 +17,13 @@ Item {
             link: "PaginaImpostazioni.qml"
         }
         ListElement {
-            nome: "VERSIONE SOFTWARE"
+            nome: "PRIVACY"
             link: "PaginaPrivacy.qml"
         }
         ListElement {
-            nome: "VERSIONE SOFTWARE"
-            link: "PaginaImpostazioni.qml"
+            nome: "INFORMAZIONI SU HORIZON ONE"
+            link: "PaginaPrivacy.qml"
         }
-
         ListElement {
             nome: "AGGIORNAMENTO SOFTWARE"
             link: "PaginaAggiornaSoftware.qml"

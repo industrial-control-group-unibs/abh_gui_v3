@@ -16,6 +16,7 @@ Item {
 
     property string password: ""
     property bool   conferma: false
+    property bool   salva_pwd: false
 
     Component.onCompleted:
     {
@@ -65,6 +66,49 @@ Item {
             fontSize: 40
             id: titolo
         }
+        Item
+        {
+            //visible: component.conferma
+            anchors
+            {
+                top: titolo.bottom
+                topMargin: titolo.height*0.1
+                left: titolo.left
+                right: titolo.right
+                leftMargin: 113/1080*parent.width
+                rightMargin: 113/1080*parent.width
+            }
+            height: titolo.height
+            IconaCerchio
+            {
+                id: icona_salva_pwd
+                onPressed: {
+                    component.salva_pwd=true
+                    pieno=!pieno
+                }
+            }
+
+
+            Testo
+            {
+                text: "SALVA PASSWORD"
+                anchors
+                {
+                    top: parent.top
+                    bottom: parent.bottom
+                    left: icona_salva_pwd.right
+                    right: parent.right
+                }
+                anchors.margins: 10
+                fontSizeMode: Text.Fit
+                wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+
+            }
+
+        }
+
 
         Item
         {
@@ -132,6 +176,10 @@ Item {
                         if (tastierino.testo===component.password)
                         {
                              _utenti.savePassword(impostazioni_utente.identifier,component.password)
+                            if (component.salva_pwd)
+                                _utenti.saveStorePassword(impostazioni_utente.identifier,"true")
+                            else
+                                _utenti.saveStorePassword(impostazioni_utente.identifier,"false")
                             pageLoader.source=  "PaginaLogin.qml"
                         }
                         else

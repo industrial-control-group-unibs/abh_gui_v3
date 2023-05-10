@@ -14,6 +14,22 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
+    id: component
+
+    property bool first_time: true
+
+    property string nomeEsercizio: selected_exercise.video_intro
+    onNomeEsercizioChanged:
+    {
+        if (first_time)
+            first_time=false
+        else
+            video_source="file://"+PATH+"/video_brevi_esercizi/"+nomeEsercizio
+    }
+
+    property string video_source: "file://"+PATH+"/allenamento_programmato/"+selected_exercise.workout
+
+
 
     Component.onCompleted:
     {
@@ -150,7 +166,7 @@ Item {
                     autoPlay: true
                     autoLoad: true
 
-                    source: "file://"+PATH+"/video_brevi_esercizi/"+selected_exercise.video_intro
+                    source:  component.video_source //"file://"+PATH+"/video_brevi_esercizi/"+selected_exercise.video_intro
 
                     onPlaybackStateChanged: {
                         if(playbackState==1){

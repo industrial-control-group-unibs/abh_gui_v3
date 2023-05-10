@@ -193,8 +193,11 @@ Item {
                     title: "SELEZIONA COLORE"
                     id: colorDialog2
                     onAccepted: {
-                        parametri_generali.coloreBordo=colorDialog2.color
-                        rect2.color= parametri_generali.coloreBordo
+                        if (colorDialog2.color!==parametri_generali.coloreSfondo)
+                        {
+                            parametri_generali.coloreBordo=colorDialog2.color
+                            rect2.color= parametri_generali.coloreBordo
+                        }
                         visible: false
                     }
                     onRejected: {
@@ -251,8 +254,11 @@ Item {
                     title: "SELEZIONA COLORE"
                     id: colorDialog3
                     onAccepted: {
-                        parametri_generali.coloreUtente=colorDialog3.color
-                        rect3.color= parametri_generali.coloreUtente
+                        if (colorDialog3.color!==parametri_generali.coloreSfondo)
+                        {
+                            parametri_generali.coloreUtente=colorDialog3.color
+                            rect3.color= parametri_generali.coloreUtente
+                        }
                         visible: false
                     }
                     onRejected: {

@@ -289,7 +289,7 @@ Item {
                             right: parent.right
                         }
                         height: 0.5*parent.height
-                        text: "TUT"
+                        text: "TU"
                         font.pixelSize: 50
                     }
 

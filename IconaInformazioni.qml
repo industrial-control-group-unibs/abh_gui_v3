@@ -103,8 +103,10 @@ IconaRettangolo
                 anchors
                 {
                     left: date_txt.left
-                    bottom: barra_tempo.top
-                    bottomMargin: parent.height*0.1
+                    top: barra_tempo.top
+                    bottom: barra_tempo.bottom
+                    //bottom: barra_tempo.top
+                    //bottomMargin: parent.height*0.1
                 }
             }
 
@@ -119,8 +121,11 @@ IconaRettangolo
                 anchors
                 {
                     right: barra_tempo.right
-                    bottom: barra_tempo.top
-                    bottomMargin: parent.height*0.1
+                    top: barra_tempo.top
+                    bottom: barra_tempo.bottom
+                    //bottom: barra_tempo.top
+                    //bottomMargin: parent.height*0.1
+
                 }
             }
         }

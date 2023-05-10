@@ -156,7 +156,7 @@ IconaRettangolo
             Testo
             {
                 visible: component.tempo!==""
-                text:"TUT"
+                text:"TU"
                 font.pixelSize: component.fontSize*0.3
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter

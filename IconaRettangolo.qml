@@ -41,17 +41,22 @@ Item {
         border.width: component.bordo
         Testo
         {
-            anchors.fill: parent
-            anchors.leftMargin: parent.height
-            anchors.rightMargin: parent.height
-            font.pixelSize: 100
+            id: testo_erase
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            anchors.left: cerchio_sx.right
+            anchors.right: cerchio_dx.left
+            //anchors.leftMargin: parent.height
+            //anchors.rightMargin: parent.height
+            //font.pixelSize: 100
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            text: "CANCELLARE?"
+            text: "VUOI ELIMINARE IL PROGRAMMA DI ALLENAMENTO?"
             fontSizeMode: Text.Fit
         }
         IconaCerchio
         {
+            id: cerchio_sx
             anchors.left: parent.left
             anchors.leftMargin: parent.height*0.5-width*0.5
             anchors.verticalCenter: parent.verticalCenter
@@ -73,6 +78,7 @@ Item {
         }
         IconaCerchio
         {
+            id: cerchio_dx
             anchors.right: parent.right
             anchors.rightMargin: parent.height*0.5-width*0.5
             anchors.verticalCenter: parent.verticalCenter

@@ -57,7 +57,8 @@ Item {
                 yvalues2=_workout.getSessionMeanScores()
                 update()
             }
-
+            legend_1: "PUNTEGGIO"
+            legend_2: "PUNTEGGIO MEDIO"
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top
@@ -71,8 +72,8 @@ Item {
             Component.onCompleted:
             {
                 xvalues  =_workout.getSessionNumbers()
-                yvalues2 =_workout.getSessionTimes()
-                yvalues  =_workout.getSessionTuts()
+                yvalues =_workout.getSessionTimes()
+                yvalues2  =_workout.getSessionTuts()
                 ymax = 0
                 ystep = 0.5
                 update()
@@ -85,7 +86,9 @@ Item {
             anchors.margins: 10
             xlabel: "SESSIONI"
             ylabel: "TEMPO (H)"
-            title: "TEMPO/TUT"
+            title: "TEMPO/TU"
+            legend_2: "TU"
+            legend_1: "TEMPO"
         }
     }
 

@@ -20,6 +20,10 @@ Item
     property string xlabel: "SESSIONI"
     property string ylabel: "PUNTEGGIO"
     property string title: "PUNTEGGIO"
+    property string legend_1: "TEMPO"
+    property string legend_2: "TU"
+    property color color_legend_2: parametri_generali.coloreBordo
+    property color color_legend_1: parametri_generali.coloreUtente
     property real xmin: 1.0
     property real xmax: 1.0
     property real ymin: 0.0
@@ -68,6 +72,44 @@ Item
             height: 0.05*parent*width
             id: ylab
             font.pixelSize: xlab.font.pixelSize
+        }
+        Testo
+        {
+            anchors.bottom: parent.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: +parent.width*0.35
+            text: component.legend_1
+            height: 0.05*parent*width
+            id: leg1
+            font.pixelSize: xlab.font.pixelSize
+            color: component.color_legend_1
+            Rectangle
+            {
+                width: parent.width
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: parent.bottom
+                height: 5
+                color: parent.color
+            }
+        }
+        Testo
+        {
+            anchors.bottom: parent.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset: -parent.width*0.35
+            text: component.legend_2
+            height: 0.05*parent*width
+            id: leg2
+            font.pixelSize: xlab.font.pixelSize
+            color: component.color_legend_2
+            Rectangle
+            {
+                width: parent.width
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: parent.bottom
+                height: 5
+                color: parent.color
+            }
         }
 
         StatChart

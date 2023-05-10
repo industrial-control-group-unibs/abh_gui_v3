@@ -55,7 +55,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             anchors.right: parent.right
-            height: 0.1*parent.height
+            height: 100
             id: volume
             SysCall
             {

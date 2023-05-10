@@ -230,7 +230,7 @@ Item {
                             right: parent.right
                         }
                         height: 0.5*parent.height
-                        text: "TUT"
+                        text: "TU"
                         font.pixelSize: 50
                     }
 
@@ -473,7 +473,7 @@ Item {
 
 //                Testo
 //                {
-//                    text: "TUT"
+//                    text: "TU"
 
 
 //                    anchors

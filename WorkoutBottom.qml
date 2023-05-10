@@ -194,7 +194,7 @@ Item
         visible: parent.is_visible
         Testo
         {
-            text: "TUT"
+            text: "TU"
             anchors
             {
                 horizontalCenter: parent.horizontalCenter

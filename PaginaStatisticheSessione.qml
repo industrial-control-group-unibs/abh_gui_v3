@@ -64,6 +64,8 @@ Item {
             height: parent.height*0.45
             anchors.margins: 10
             xlabel: "ESERCIZI"
+            legend_1: "PUNTEGGIO"
+            legend_2: "PUNTEGGIO MEDIO"
         }
 
 
@@ -87,7 +89,9 @@ Item {
             anchors.margins: 10
             xlabel: "ESERCIZI"
             ylabel: "TEMPO (MIN)"
-            title: "TEMPO/TUT"
+            title: "TEMPO/TU"
+            legend_2: "TU"
+            legend_1: "TEMPO"
         }
     }
 

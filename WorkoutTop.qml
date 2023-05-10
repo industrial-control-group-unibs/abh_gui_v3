@@ -421,11 +421,51 @@ Item
                 ShapePath {
                     strokeColor: parametri_generali.coloreBordo
                     strokeWidth: 1
+                    startX: 0
+                    startY: chrt_areachart.height*0.125
+                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.125 }
+                }
+
+                ShapePath {
+                    strokeColor: parametri_generali.coloreBordo
+                    strokeWidth: 1
+                    startX: 0
+                    startY: chrt_areachart.height*0.375
+                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.375 }
+                }
+
+
+                ShapePath {
+                    strokeColor: parametri_generali.coloreBordo
+                    strokeWidth: 1
+                    startX: 0
+                    startY: chrt_areachart.height*0.625
+                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.625 }
+                }
+
+                ShapePath {
+                    strokeColor: parametri_generali.coloreBordo
+                    strokeWidth: 1
+                    startX: 0
+                    startY: chrt_areachart.height*0.875
+                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.875 }
+                }
+
+                ShapePath {
+                    strokeColor: parametri_generali.coloreBordo
+                    strokeWidth: 1
+                    startX: 0
+                    startY: chrt_areachart.height*0.125
+                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.125 }
+                }
+
+                ShapePath {
+                    strokeColor: parametri_generali.coloreBordo
+                    strokeWidth: 1
                     startX:  chrt_areachart.width*.5
                     startY: 0
                     PathLine { x: chrt_areachart.width*.5; y: chrt_areachart.height }
                 }
-
 
                 ShapePath {
                     strokeColor: parametri_generali.coloreBordo

@@ -93,13 +93,64 @@ Item {
             }
             height: parent.height*0.2
 
-            IconaUtente
+
+            Rectangle
             {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenterOffset: -parent.width*0.25
-                onPressed: pageLoader.source="PaginaSceltaLogout.qml"
+                height: 100
+                width: height
+                radius: width*0.5
+
+                color: "transparent"
+                border.color: parametri_generali.coloreBordo
+                border.width: 5
+                Image {
+                    fillMode: Image.PreserveAspectCrop
+                    visible: false
+                    mipmap: true
+                    anchors.fill:parent
+                    source: "file://"+PATH+"/utenti/"+impostazioni_utente.foto
+                    id: allenamento_icona
+                }
+
+                Rectangle {
+                    id: allenamento_mask
+                    anchors
+                    {
+                        fill: parent
+                        topMargin: parent.border.width
+                        bottomMargin: parent.border.width
+                        leftMargin: parent.border.width
+                        rightMargin: parent.border.width
+                    }
+                    visible: false
+                    color: "blue"
+                    radius: parent.radius-parent.border.width
+                }
+                OpacityMask {
+                    anchors.fill: allenamento_mask
+                    source: allenamento_icona
+                    maskSource: allenamento_mask
+                }
+
+                MouseArea
+                {
+                    anchors.fill: parent
+
+                    onPressed: pageLoader.source="PaginaSceltaLogout.qml"
+                }
             }
+
+
+//            IconaUtente
+//            {
+//                anchors.verticalCenter: parent.verticalCenter
+//                anchors.horizontalCenter: parent.horizontalCenter
+//                anchors.horizontalCenterOffset: -parent.width*0.25
+//                onPressed: pageLoader.source="PaginaSceltaLogout.qml"
+//            }
 
 
             IconaOff

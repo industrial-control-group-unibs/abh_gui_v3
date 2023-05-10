@@ -63,7 +63,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             anchors.left: parent.left
             anchors.right: parent.right
-            height: 0.1*parent.height
+            height: 100
             id: volume
 
             IconaMeno
@@ -123,7 +123,7 @@ Item {
                         anchors.fill: parent
                         gradient: Gradient {
                             GradientStop { position: 0.0; color: parametri_generali.coloreBordo}
-                            GradientStop { position: (chiamata_sistema.volume+10)/210; color: "transparent" }
+                            GradientStop { position: (0.8*chiamata_sistema.volume+80)/300; color: "transparent" }
                         }
                     }
             }
