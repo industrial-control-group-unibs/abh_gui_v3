@@ -80,6 +80,13 @@ Item {
             color: "white"
         }
 
+        MouseArea
+        {
+            anchors.fill: parent
+            onPressed:    conto_alla_rovescia.running=true
+
+        }
+
 
 
         OpacityMask {
@@ -103,7 +110,7 @@ Item {
         id: conto_alla_rovescia
         interval: 500
         repeat: true
-        running: true
+        running: false
         property int position: 0
         property int duration: 10000
         onTriggered: {
@@ -144,7 +151,7 @@ Item {
             colore: parametri_generali.coloreBordo
             Testo
             {
-                text: "PREPARATI"
+                text: conto_alla_rovescia.running? "PREPARATI": "PREMI PER INIZIARE"
                 font.pixelSize: 30
                 anchors
                 {
@@ -154,6 +161,7 @@ Item {
 
                 }
             }
+
 
         }
 

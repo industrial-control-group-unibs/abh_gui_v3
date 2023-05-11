@@ -97,8 +97,10 @@ Item {
                 width: 0.8*parent.width
                 height: 0.1*width
 
-                color: component.duplicato? parametri_generali.coloreBordoTrasparent: parametri_generali.coloreUtente
-                text_color: component.duplicato? parametri_generali.coloreUtente: parametri_generali.coloreBordo
+                //color: component.duplicato? parametri_generali.coloreBordoTrasparent: parametri_generali.coloreUtente
+                //text_color: component.duplicato? parametri_generali.coloreUtente: parametri_generali.coloreBordo
+                color: parametri_generali.coloreUtente
+                text_color: parametri_generali.coloreBordo
 
                 lista: ["ESORDIENTE", "INTERMEDIO", "ESPERTO"]
 

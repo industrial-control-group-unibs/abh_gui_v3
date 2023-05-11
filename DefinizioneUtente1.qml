@@ -376,10 +376,10 @@ Item {
 
                             font.italic: false
                             font.letterSpacing: 0
-                            font.pixelSize: 20
+                            font.pixelSize: 25
                             font.weight: Font.Normal
                             horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignTop
+                            verticalAlignment: Text.AlignVCenter
 
                         }
                     }
