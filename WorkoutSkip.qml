@@ -27,8 +27,8 @@ Item
             horizontalCenter: parent.horizontalCenter
             verticalCenter: parent.verticalCenter
             topMargin: 5
-            font.pixelSize: 40
         }
+        font.pixelSize: 40
     }
     SiNo
     {
