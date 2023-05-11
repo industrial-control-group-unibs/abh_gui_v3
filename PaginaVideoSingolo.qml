@@ -73,6 +73,7 @@ Item {
 
         CircularTimer {
             visible: component.timer
+            width: parent.height*0.35
             anchors
             {
                 horizontalCenter: parent.horizontalCenter
