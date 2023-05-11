@@ -25,8 +25,9 @@ Item
         anchors
         {
             horizontalCenter: parent.horizontalCenter
-            top: parent.top
+            verticalCenter: parent.verticalCenter
             topMargin: 5
+            font.pixelSize: 40
         }
     }
     SiNo
