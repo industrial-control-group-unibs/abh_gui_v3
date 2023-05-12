@@ -91,7 +91,7 @@ Item {
 
             Testo
             {
-                text: "SALVA PASSWORD"
+                text: "RICORDA PASSWORD"
                 anchors
                 {
                     verticalCenter: icona_salva_pwd.verticalCenter

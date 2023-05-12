@@ -21,8 +21,12 @@ Item {
             link: "PaginaPrivacy.qml"
         }
         ListElement {
+            nome: "PASSWORD"
+            link: "PaginaRicordaPassword.qml"
+        }
+        ListElement {
             nome: "INFORMAZIONI SU HORIZON ONE"
-            link: "PaginaPrivacy.qml"
+            link: "PaginaInfoHorizon.qml"
         }
         ListElement {
             nome: "AGGIORNAMENTO SOFTWARE"

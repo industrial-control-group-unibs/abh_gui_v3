@@ -15,6 +15,15 @@ Item {
     Barra_superiore{}
 
 
+    property bool   salva_pwd: false
+
+    onSalva_pwdChanged:
+    {
+        if (salva_pwd)
+            _utenti.saveStorePassword(impostazioni_utente.identifier,"true")
+        else
+            _utenti.saveStorePassword(impostazioni_utente.identifier,"false")
+    }
 
     Component.onCompleted:
     {
@@ -51,6 +60,48 @@ Item {
                 dx_visible: false
                 z:5
             }
+        }
+
+        Item
+        {
+            //visible: component.conferma
+            anchors
+            {
+                top: titolo.bottom
+                topMargin: titolo.height*0.1
+                left: titolo.left
+                right: titolo.right
+                leftMargin: 113/1080*parent.width
+                rightMargin: 113/1080*parent.width
+            }
+            height: titolo.height
+            IconaCerchio
+            {
+                id: icona_salva_pwd
+                onPressed: {
+                    component.salva_pwd=true
+                    pieno=!pieno
+                }
+            }
+
+
+            Testo
+            {
+                text: "RICORDA PASSWORD"
+                anchors
+                {
+                    verticalCenter: icona_salva_pwd.verticalCenter
+                    left: icona_salva_pwd.right
+                    right: parent.right
+                }
+                anchors.margins: 10
+                fontSizeMode: Text.Fit
+                wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+
+            }
+
         }
 
         Titolo

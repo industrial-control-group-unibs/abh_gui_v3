@@ -12,7 +12,7 @@ Item {
     id: component
     anchors.fill: parent
 
-    property string titolo: selected_exercise.name
+    property string titolo: "PRIVACY"
 
     signal pressYes
     signal pressNo
@@ -57,6 +57,7 @@ Item {
             text: component.titolo
             height: parent.height*0.1
             fontSize: 40
+            id: titolo
         }
 
         Item
@@ -132,7 +133,7 @@ Item {
             {
                 left: parent.left
                 right: parent.right
-                top: parent.top
+                top: titolo.bottom
                 bottom: icone.top
             }
 

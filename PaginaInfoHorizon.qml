@@ -12,7 +12,7 @@ Item {
     id: component
     anchors.fill: parent
 
-    property string titolo: "PRIVACY"
+    property string titolo: "INFORMAZIONI"
 
     implicitHeight: 1920/2
     implicitWidth: 1080/2
@@ -82,7 +82,7 @@ Item {
                     anchors.right: parent.right
                     fontSizeMode: Text.VerticalFit
                     wrapMode: Text.WordWrap
-                    text: _privacy
+                    text: _info
                 }
             }
         }

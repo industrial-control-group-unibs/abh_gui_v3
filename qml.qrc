@@ -96,5 +96,7 @@
         <file>IconaStat.qml</file>
         <file>IconaUtente.qml</file>
         <file>PaginaSceltaPrivacy.qml</file>
+        <file>PaginaRicordaPassword.qml</file>
+        <file>PaginaInfoHorizon.qml</file>
     </qresource>
 </RCC>
