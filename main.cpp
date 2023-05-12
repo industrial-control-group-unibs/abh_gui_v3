@@ -158,7 +158,7 @@ int main(int argc, char *argv[])
 
   std::stringstream strStream2;
   strStream2 << inFile2.rdbuf(); //read the file
-  strStream.str(); //str holds the content of the file
+  str=strStream2.str(); //str holds the content of the file
   QString info=QString::fromStdString(str);
 
   StringQuee page_history;
