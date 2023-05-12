@@ -145,6 +145,14 @@ int main(int argc, char *argv[])
   std::shared_ptr<QQmlApplicationEngine> engine=std::make_shared<QQmlApplicationEngine>();
 
 
+  std::ifstream inFile;
+  inFile.open(dir_path+"/privacy.txt"); //open the input file
+
+  std::stringstream strStream;
+  strStream << inFile.rdbuf(); //read the file
+  std::string str = strStream.str(); //str holds the content of the file
+  QString privacy=QString::fromStdString(str);
+
   StringQuee page_history;
 
   QQmlContext *context = engine->rootContext();
@@ -164,6 +172,7 @@ int main(int argc, char *argv[])
   context->setContextProperty("_default", default_values);
 
   engine->rootContext()->setContextProperty("PATH", data_path);
+  engine->rootContext()->setContextProperty("_privacy", privacy);
 
 
   const QUrl url(QStringLiteral("qrc:/main.qml"));

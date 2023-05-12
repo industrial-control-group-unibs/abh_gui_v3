@@ -125,6 +125,7 @@ Item {
                 pageLoader.source="PaginaConfermaFoto.qml"
             }
         }
+
     }
 
     Item   {
@@ -160,6 +161,12 @@ Item {
                     topMargin: 5
 
                 }
+            }
+
+            MouseArea
+            {
+                anchors.fill: parent
+                onPressed: conto_alla_rovescia.running=true
             }
 
 

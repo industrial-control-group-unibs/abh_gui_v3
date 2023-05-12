@@ -94,7 +94,7 @@ Item {
                 text: "SALVA PASSWORD"
                 anchors
                 {
-                    horizontalCenter: icona_salva_pwd.horizontalCenter
+                    verticalCenter: icona_salva_pwd.verticalCenter
                     left: icona_salva_pwd.right
                     right: parent.right
                 }

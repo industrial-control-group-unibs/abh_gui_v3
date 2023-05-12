@@ -95,5 +95,6 @@
         <file>ListaStatisticheEserciziWorkout.qml</file>
         <file>IconaStat.qml</file>
         <file>IconaUtente.qml</file>
+        <file>PaginaSceltaPrivacy.qml</file>
     </qresource>
 </RCC>

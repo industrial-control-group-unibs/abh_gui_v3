@@ -103,6 +103,7 @@ IconaRettangolo
                 anchors
                 {
                     left: date_txt.left
+                    leftMargin: barra_tempo.radius
                     top: barra_tempo.top
                     bottom: barra_tempo.bottom
                     //bottom: barra_tempo.top
@@ -121,6 +122,7 @@ IconaRettangolo
                 anchors
                 {
                     right: barra_tempo.right
+                    rightMargin: barra_tempo.radius
                     top: barra_tempo.top
                     bottom: barra_tempo.bottom
                     //bottom: barra_tempo.top

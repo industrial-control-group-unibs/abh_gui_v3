@@ -318,7 +318,8 @@ ApplicationWindow {
             _history.push(source)
         }
 
-        source:  "PaginaLogo.qml"
+//        source:  "PaginaLogo.qml"
+        source:  "PaginaSceltaPrivacy.qml"
 //        source:  "TestPage.qml"
 
     }

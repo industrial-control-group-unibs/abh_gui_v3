@@ -257,7 +257,7 @@ Item {
                                 impostazioni_utente.identifier=_utenti.addUser(dati)
                             }
                             _utenti.readFile()
-                            pageLoader.source="PasswordSave.qml"//"PaginaLogin.qml"
+                            pageLoader.source="PaginaSceltaPrivacy.qml"//"PaginaLogin.qml"
                         }
                         else
                         {
