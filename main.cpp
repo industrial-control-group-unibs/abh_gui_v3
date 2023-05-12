@@ -145,20 +145,33 @@ int main(int argc, char *argv[])
   std::shared_ptr<QQmlApplicationEngine> engine=std::make_shared<QQmlApplicationEngine>();
 
 
+  std::string str;
   std::ifstream inFile;
   inFile.open(dir_path+"/privacy.txt"); //open the input file
-
-  std::stringstream strStream;
-  strStream << inFile.rdbuf(); //read the file
-  std::string str = strStream.str(); //str holds the content of the file
+  if ( inFile.fail() )
+  {
+    str="file "+dir_path+"/privacy.txt mancante";
+  }
+  else
+  {
+    std::stringstream strStream;
+    strStream << inFile.rdbuf(); //read the file
+    str = strStream.str(); //str holds the content of the file
+  }
   QString privacy=QString::fromStdString(str);
 
   std::ifstream inFile2;
   inFile2.open(dir_path+"/info.txt"); //open the input file
-
-  std::stringstream strStream2;
-  strStream2 << inFile2.rdbuf(); //read the file
-  str=strStream2.str(); //str holds the content of the file
+  if ( inFile2.fail() )
+  {
+    str="file "+dir_path+"/info.txt mancante";
+  }
+  else
+  {
+    std::stringstream strStream;
+    strStream << inFile2.rdbuf(); //read the file
+    str = strStream.str(); //str holds the content of the file
+  }
   QString info=QString::fromStdString(str);
 
   StringQuee page_history;
@@ -181,7 +194,7 @@ int main(int argc, char *argv[])
 
   engine->rootContext()->setContextProperty("PATH", data_path);
   engine->rootContext()->setContextProperty("_privacy", privacy);
-  engine->rootContext()->setContextProperty("_info", privacy);
+  engine->rootContext()->setContextProperty("_info", info);
 
 
   const QUrl url(QStringLiteral("qrc:/main.qml"));
