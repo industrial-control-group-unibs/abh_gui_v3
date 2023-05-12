@@ -141,6 +141,15 @@ Item {
 
                     onPressed: pageLoader.source="PaginaSceltaLogout.qml"
                 }
+
+                Testo
+                {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.bottom
+                    verticalAlignment: Text.AlignVCenter
+                    text: "LOGOUT"
+                }
+
             }
 
 
@@ -160,6 +169,14 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenterOffset: parent.width*0.25
                 onPressed: pageLoader.source=  "PaginaExit.qml"
+
+                Testo
+                {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.top: parent.bottom
+                    verticalAlignment: Text.AlignVCenter
+                    text: "SPEGNI"
+                }
             }
         }
 
