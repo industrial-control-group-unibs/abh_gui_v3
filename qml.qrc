@@ -98,5 +98,6 @@
         <file>PaginaSceltaPrivacy.qml</file>
         <file>PaginaRicordaPassword.qml</file>
         <file>PaginaInfoHorizon.qml</file>
+        <file>RigaGrafico.qml</file>
     </qresource>
 </RCC>

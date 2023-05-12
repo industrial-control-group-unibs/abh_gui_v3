@@ -222,7 +222,7 @@ Item
         }
         AreaChart{
             id: chrt_areachart
-//            anchors.fill: parent
+            //            anchors.fill: parent
             anchors
             {
                 horizontalCenter: parent.horizontalCenter
@@ -244,6 +244,130 @@ Item
                 onPressed: parent.show_motor=!(parent.show_motor)
             }
 
+            RigaGrafico
+            {
+                value: 1.0
+                motore: chrt_areachart.show_motor
+                larghezza: chrt_areachart.width
+                altezza: chrt_areachart.height
+                anchors.fill: parent
+            }
+            RigaGrafico
+            {
+                value: 0.9
+                motore: chrt_areachart.show_motor
+                larghezza: chrt_areachart.width
+                altezza: chrt_areachart.height
+                anchors.fill: parent
+            }
+            RigaGrafico
+            {
+                value: 0.8
+                motore: chrt_areachart.show_motor
+                larghezza: chrt_areachart.width
+                altezza: chrt_areachart.height
+                anchors.fill: parent
+            }
+            RigaGrafico
+            {
+                value: 0.7
+                motore: chrt_areachart.show_motor
+                larghezza: chrt_areachart.width
+                altezza: chrt_areachart.height
+                anchors.fill: parent
+            }
+            RigaGrafico
+            {
+                value: 0.6
+                motore: chrt_areachart.show_motor
+                larghezza: chrt_areachart.width
+                altezza: chrt_areachart.height
+                anchors.fill: parent
+            }
+            RigaGrafico
+            {
+                value: 0.5
+                motore: chrt_areachart.show_motor
+                larghezza: chrt_areachart.width
+                altezza: chrt_areachart.height
+                anchors.fill: parent
+            }
+            RigaGrafico
+            {
+                value: 0.4
+                motore: chrt_areachart.show_motor
+                larghezza: chrt_areachart.width
+                altezza: chrt_areachart.height
+                anchors.fill: parent
+            }
+            RigaGrafico
+            {
+                value: 0.3
+                motore: chrt_areachart.show_motor
+                larghezza: chrt_areachart.width
+                altezza: chrt_areachart.height
+                anchors.fill: parent
+            }
+            RigaGrafico
+            {
+                value: 0.2
+                motore: chrt_areachart.show_motor
+                larghezza: chrt_areachart.width
+                altezza: chrt_areachart.height
+                anchors.fill: parent
+            }
+            RigaGrafico
+            {
+                value: 0.1
+                motore: chrt_areachart.show_motor
+                larghezza: chrt_areachart.width
+                altezza: chrt_areachart.height
+                anchors.fill: parent
+            }
+            RigaGrafico
+            {
+                value: 0.0
+                motore: chrt_areachart.show_motor
+                larghezza: chrt_areachart.width
+                altezza: chrt_areachart.height
+                anchors.fill: parent
+            }
+
+//            Item {
+//                id: riga
+//                property real value: 0.8
+//                property real label: riga.motore? 100.0*riga.value:100.0*(-1+2*riga.value)
+//                property bool motore: chrt_areachart.show_motor
+//                property real larghezza: chrt_areachart.width
+//                property real altezza: chrt_areachart.height
+//                anchors.fill: parent
+//                Testo
+//                {
+//                    anchors.top: parent.top
+//                    anchors.leftMargin: parent.width*0.1
+//                    anchors.topMargin: parent.height*(1-riga.value)-height*0.5
+//                    anchors.right: parent.left
+//                    anchors.rightMargin: parent.width*0.02
+//                    height: parent.height*0.1
+//                    width: parent.width*0.1
+//                    font.pixelSize: 20
+//                    horizontalAlignment: Text.AlignRight
+//                    verticalAlignment: Text.AlignVCenter
+//                    text: riga.label.toFixed(0).toString()
+//                    color: parametri_generali.coloreUtente
+//                }
+
+//                Shape {
+//                    anchors.fill: parent
+//                    ShapePath {
+//                        strokeColor: parametri_generali.coloreBordo
+//                        strokeWidth: 2.0
+//                        startX: 0
+//                        startY: riga.altezza*(1.0-riga.value)
+//                        PathLine { x: riga.larghezza; y: riga.altezza*(1.0-riga.value) }
+//                    }
+//                }
+//            }
 
 
             Shape {
@@ -284,81 +408,6 @@ Item
                     visible: chrt_areachart.show_motor
                 }
 
-                Testo
-                {
-                    anchors.top: parent.top
-                    anchors.leftMargin: parent.width*0.1
-                    anchors.topMargin: -height*0.5
-                    anchors.right: parent.left
-                    anchors.rightMargin: parent.width*0.02
-                    height: parent.height*0.1
-                    width: parent.width*0.1
-                    font.pixelSize: 20
-                    horizontalAlignment: Text.AlignRight
-                    verticalAlignment: Text.AlignVCenter
-                    text: "100"
-                    color: parametri_generali.coloreUtente
-                }
-                Testo
-                {
-                    anchors.top: parent.top
-                    anchors.leftMargin: parent.width*0.1
-                    anchors.topMargin: parent.height*0.25-height*0.5
-                    anchors.right: parent.left
-                    anchors.rightMargin: parent.width*0.02
-                    height: parent.height*0.1
-                    width: parent.width*0.1
-                    font.pixelSize: 20
-                    horizontalAlignment: Text.AlignRight
-                    verticalAlignment: Text.AlignVCenter
-                    text: chrt_areachart.show_motor? "50": "75"
-                    color: parametri_generali.coloreUtente
-                }
-                Testo
-                {
-                    anchors.top: parent.top
-                    anchors.leftMargin: parent.width*0.1
-                    anchors.topMargin: parent.height*0.5-height*0.5
-                    anchors.right: parent.left
-                    anchors.rightMargin: parent.width*0.02
-                    height: parent.height*0.1
-                    width: parent.width*0.1
-                    font.pixelSize: 20
-                    horizontalAlignment: Text.AlignRight
-                    verticalAlignment: Text.AlignVCenter
-                    text: chrt_areachart.show_motor? "0": "50"
-                    color: parametri_generali.coloreUtente
-                }
-                Testo
-                {
-                    anchors.top: parent.top
-                    anchors.leftMargin: parent.width*0.1
-                    anchors.topMargin: parent.height*0.75-height*0.5
-                    anchors.right: parent.left
-                    anchors.rightMargin: parent.width*0.02
-                    height: parent.height*0.1
-                    width: parent.width*0.1
-                    font.pixelSize: 20
-                    horizontalAlignment: Text.AlignRight
-                    verticalAlignment: Text.AlignVCenter
-                    text: chrt_areachart.show_motor? "-50": "25"
-                    color: parametri_generali.coloreUtente
-                }
-                Testo
-                {
-                    anchors.top: parent.top
-                    anchors.leftMargin: parent.width*0.1
-                    anchors.topMargin: parent.height*1.0-height*0.5
-                    anchors.right: parent.left
-                    anchors.rightMargin: parent.width*0.02
-                    height: parent.height*0.1
-                    width: parent.width*0.1
-                    font.pixelSize: 20
-                    horizontalAlignment: Text.AlignRight
-                    verticalAlignment: Text.AlignVCenter
-                    text: chrt_areachart.show_motor? "-100": "0"
-                    color: parametri_generali.coloreUtente
-                }
 
 
                 ShapePath {
@@ -382,82 +431,6 @@ Item
                     PathLine { x: chrt_areachart.width; y: limiti.down }
                 }
 
-                ShapePath {
-                    strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 2.0
-                    startX: 0
-                    startY: chrt_areachart.height*0.5
-                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.5 }
-                }
-                ShapePath {
-                    strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 1
-                    startX: 0
-                    startY: chrt_areachart.height*0.25
-                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.25 }
-                }
-                ShapePath {
-                    strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 1
-                    startX: 0
-                    startY: chrt_areachart.height*0.75
-                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.75 }
-                }
-                ShapePath {
-                    strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 1
-                    startX: 0
-                    startY: chrt_areachart.height*1
-                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*1 }
-                }
-                ShapePath {
-                    strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 1
-                    startX: 0
-                    startY: chrt_areachart.height*0
-                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0 }
-                }
-
-                ShapePath {
-                    strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 1
-                    startX: 0
-                    startY: chrt_areachart.height*0.125
-                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.125 }
-                }
-
-                ShapePath {
-                    strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 1
-                    startX: 0
-                    startY: chrt_areachart.height*0.375
-                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.375 }
-                }
-
-
-                ShapePath {
-                    strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 1
-                    startX: 0
-                    startY: chrt_areachart.height*0.625
-                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.625 }
-                }
-
-                ShapePath {
-                    strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 1
-                    startX: 0
-                    startY: chrt_areachart.height*0.875
-                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.875 }
-                }
-
-                ShapePath {
-                    strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 1
-                    startX: 0
-                    startY: chrt_areachart.height*0.125
-                    PathLine { x: chrt_areachart.width; y: chrt_areachart.height*0.125 }
-                }
 
                 ShapePath {
                     strokeColor: parametri_generali.coloreBordo
