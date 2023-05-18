@@ -332,6 +332,16 @@ Item {
             {
                 width: parent.width
                 height: 80
+                property color sfondo: parametri_generali.coloreSfondo
+                property color colore: Qt.rgba(1.0-sfondo.r, 1.0-sfondo.g, 1.0-sfondo.b)
+
+                Component.onCompleted: colore=Qt.rgba(1.0-sfondo.r, 1.0-sfondo.g, 1.0-sfondo.b,0.5)
+
+                onSfondoChanged:
+                {
+                    colore=Qt.rgba(1.0-sfondo.r, 1.0-sfondo.g, 1.0-sfondo.b,0.5)
+                }
+
                 MouseArea
                 {
                     anchors.fill: parent
@@ -357,7 +367,7 @@ Item {
 
                     border.color: parametri_generali.coloreBordo
                     border.width: 5
-                    color: parametri_generali.coloreSfondo
+                    color: parent.colore
 
                 }
 
@@ -368,6 +378,7 @@ Item {
                     anchors.right: right.right
                     anchors.leftMargin: 30
                     height: parent.height
+                    color: parent.colore
 
 
                     font.pixelSize: 35/1920*component.height
