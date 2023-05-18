@@ -18,6 +18,23 @@ Item {
     property real time_ex: 0
     property real tut_ex: 0
 
+    property real calibrazione: fb_udp.data[5]
+    property bool end_calibration: false
+
+    onCalibrazioneChanged:
+    {
+         if (fb_udp.data[5]===10)
+         {
+             end_calibration=true
+             state= "calibration"
+         }
+         else if (end_calibration)
+         {
+             state="sotto"
+             end_calibration=true
+         }
+    }
+
     Component.onCompleted:
     {
         time_ex.active=true
@@ -50,6 +67,7 @@ Item {
             PropertyChanges { target: sotto;      visible: true}
             PropertyChanges { target: early_stop; visible: false}
             PropertyChanges { target: skip;       visible: false}
+            PropertyChanges { target: calibrazione;  visible: false}
             PropertyChanges { target: sotto;      z: 5}
             PropertyChanges { target: early_stop; z: 1}
             PropertyChanges { target: skip;       z: 1}
@@ -60,6 +78,7 @@ Item {
             PropertyChanges { target: sotto;      visible: false}
             PropertyChanges { target: early_stop; visible: true}
             PropertyChanges { target: skip;       visible: false}
+            PropertyChanges { target: calibrazione;  visible: false}
             PropertyChanges { target: sotto;      z: 1}
             PropertyChanges { target: early_stop; z: 5}
             PropertyChanges { target: skip;       z: 1}
@@ -69,6 +88,17 @@ Item {
             PropertyChanges { target: sotto;      visible: false}
             PropertyChanges { target: early_stop; visible: false}
             PropertyChanges { target: skip;       visible: true}
+            PropertyChanges { target: calibrazione;  visible: false}
+            PropertyChanges { target: sotto;      z: 1}
+            PropertyChanges { target: early_stop; z: 1}
+            PropertyChanges { target: skip;       z: 5}
+        },
+        State {
+            name: "calibration"
+            PropertyChanges { target: sotto;      visible: false}
+            PropertyChanges { target: early_stop; visible: false}
+            PropertyChanges { target: skip;       visible: false}
+            PropertyChanges { target: calibrazione;  visible: true}
             PropertyChanges { target: sotto;      z: 1}
             PropertyChanges { target: early_stop; z: 1}
             PropertyChanges { target: skip;       z: 5}
@@ -186,6 +216,12 @@ Item {
                 component.state="sotto"
             }
             onExit: pageLoader.source=  "PaginaRiposo.qml"
+        }
+
+        WorkoutCalibration
+        {
+            id: calibrazione
+            visible: false
         }
     }
 }

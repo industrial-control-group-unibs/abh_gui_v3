@@ -99,5 +99,6 @@
         <file>PaginaRicordaPassword.qml</file>
         <file>PaginaInfoHorizon.qml</file>
         <file>RigaGrafico.qml</file>
+        <file>WorkoutCalibration.qml</file>
     </qresource>
 </RCC>
