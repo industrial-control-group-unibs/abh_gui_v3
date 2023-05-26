@@ -7,7 +7,7 @@ import QtQuick.Shapes 1.12
 Item {
     id: riga
     property real value: 0.8
-    property real label: riga.motore? 100.0*riga.value:100.0*(-1+2*riga.value)
+    property real label: riga.motore? 100.0*(-1+2*riga.value):100.0*riga.value
     property bool motore: false
     property real larghezza: 100
     property real altezza: 100

@@ -340,7 +340,6 @@ Item {
 
                 onSfondoChanged:
                 {
-                    console.log("aaa")
                     colore=Qt.rgba(1.0-sfondo.r, 1.0-sfondo.g, 1.0-sfondo.b,1.0)
                 }
 
