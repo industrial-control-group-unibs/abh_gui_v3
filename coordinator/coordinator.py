@@ -265,6 +265,7 @@ def exercise_thread():
                 percentage=max(0.0,float(repetition_state[2]))
                 initializing=repetition_state[2]==-30
                 calibrating=repetition_state[2]==-50
+                #print(rep_count_from_vision,exercise_type)
 
                 if (exercise_type>1):
                     repetition_count=max(1,rep_count_from_vision)
@@ -299,7 +300,7 @@ def exercise_thread():
             state=Status.UNDEFINED
 
 
-        if (state == Status.STOP):
+        if (state == Status.STOP and exercise_type==1):
             repetition_count=1.0
             direction=0.0
 
