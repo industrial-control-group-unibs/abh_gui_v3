@@ -22,13 +22,18 @@ Item
     Testo
     {
         text: "PASSARE ALLA SERIE SUCCESSIVA?"
+        verticalAlignment: Text.AlignVCenter
+        font.pixelSize: 40
         anchors
         {
+            //horizontalCenter: parent.horizontalCenter
+            //verticalCenter: parent.verticalCenter
+            //topMargin: 5
+
             horizontalCenter: parent.horizontalCenter
-            verticalCenter: parent.verticalCenter
+            top: parent.top
             topMargin: 5
         }
-        font.pixelSize: 20
     }
     SiNo
     {

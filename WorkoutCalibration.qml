@@ -23,6 +23,7 @@ Item
     {
         text: "CALIBRAZIONE IN CORSO\nCONTINUA A ESEGUIRE L'ESERCIZIO"
         verticalAlignment: Text.AlignVCenter
+        font.pixelSize: 40
         anchors
         {
             horizontalCenter: parent.horizontalCenter

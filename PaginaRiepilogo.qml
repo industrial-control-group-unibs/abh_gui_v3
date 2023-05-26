@@ -191,6 +191,7 @@ Item {
                         }
                         height: 0.15*parent.height
                         text: "PUNTEGGIO"
+                        font.pixelSize: 50
                     }
                 }
                 Item {
@@ -236,6 +237,7 @@ Item {
                         }
                         height: 0.15*parent.height
                         text: "AVANZAMENTO"
+                        font.pixelSize: 50
                     }
                 }
                 Item {
@@ -325,7 +327,7 @@ Item {
             id: avanti
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: parent.height*0.1
+            anchors.bottomMargin: parent.height*0.03
             width: 100
             onPressed: component.press()
 

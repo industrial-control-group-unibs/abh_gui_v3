@@ -109,13 +109,13 @@ Item {
 
             Item
             {
-                anchors.horizontalCenter: parent.horizontalCenter
+//                anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: meno.right
                 anchors.right: piu.left
                 anchors.leftMargin: meno.width*0.1
                 anchors.rightMargin: meno.width*0.1
-                height: parent.height*.2
+                height: parent.height*.5
 
 
 

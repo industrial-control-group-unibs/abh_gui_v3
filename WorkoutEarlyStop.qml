@@ -22,6 +22,8 @@ Item
     Testo
     {
         text: "INTERROMPERE?"
+        verticalAlignment: Text.AlignVCenter
+        font.pixelSize: 40
         anchors
         {
             horizontalCenter: parent.horizontalCenter

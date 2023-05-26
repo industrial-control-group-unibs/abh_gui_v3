@@ -330,28 +330,33 @@ Item {
 
             Item
             {
+                id: ripristina
                 width: parent.width
                 height: 80
-                property color sfondo: parametri_generali.coloreSfondo
+                property color sfondo: rect.color
                 property color colore: Qt.rgba(1.0-sfondo.r, 1.0-sfondo.g, 1.0-sfondo.b)
 
-                Component.onCompleted: colore=Qt.rgba(1.0-sfondo.r, 1.0-sfondo.g, 1.0-sfondo.b,0.5)
+                Component.onCompleted: colore=Qt.rgba(1.0-sfondo.r, 1.0-sfondo.g, 1.0-sfondo.b,1.0)
 
                 onSfondoChanged:
                 {
-                    colore=Qt.rgba(1.0-sfondo.r, 1.0-sfondo.g, 1.0-sfondo.b,0.5)
+                    console.log("aaa")
+                    colore=Qt.rgba(1.0-sfondo.r, 1.0-sfondo.g, 1.0-sfondo.b,1.0)
                 }
 
                 MouseArea
                 {
                     anchors.fill: parent
                     onPressed: {
-                        parametri_generali.coloreSfondo      =  "#2A211B"
-                        parametri_generali.coloreBordo       =  "#c6aa76" //"#D4C9BD"
-                        parametri_generali.coloreUtente       =  "#8c177b"
-                        rect.color= parametri_generali.coloreSfondo
-                        rect2.color= parametri_generali.coloreBordo
-                        rect3.color= parametri_generali.coloreUtente
+                        parametri_generali.coloreSfondo    = _default[0]
+                        parametri_generali.coloreBordo     = _default[1]
+                        parametri_generali.coloreUtente    = _default[2]
+                        parametri_generali.coloreLed       = _default[3]
+
+                        rect.color     = parametri_generali.coloreSfondo
+                        rect2.color    = parametri_generali.coloreBordo
+                        rect3.color    = parametri_generali.coloreUtente
+                        rect_led.color = parametri_generali.coloreLed
                     }
                 }
 
@@ -365,9 +370,9 @@ Item {
                     width: height
                     radius: width*0.5
 
-                    border.color: parametri_generali.coloreBordo
+                    border.color:  parametri_generali.coloreBordo
                     border.width: 5
-                    color: parent.colore
+                    color: ripristina.colore
 
                 }
 
@@ -385,13 +390,7 @@ Item {
                     verticalAlignment: Text.AlignVCenter
                     text: "RIPRISTINA COLORI"
                 }
-
-
             }
-
-
-
         }
-
     }
 }
