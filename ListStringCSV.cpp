@@ -55,29 +55,28 @@ void ListStringCSV::readFile(QString filename)
     rapidcsv::Document doc(nome_file);
 
 
-  data_.clear();
-  for (size_t idx=0;idx<doc.GetRowCount();idx++)
-  {
-    QStringList lista;
-    for (size_t ic=0;ic<doc.GetColumnCount();ic++)
+    data_.clear();
+    for (size_t idx=0;idx<doc.GetRowCount();idx++)
     {
-      QString str=QString::fromStdString(doc.GetCell<std::string>(ic,idx));
-      lista.push_back(str);
+      QStringList lista;
+      for (size_t ic=0;ic<doc.GetColumnCount();ic++)
+      {
+        QString str=QString::fromStdString(doc.GetCell<std::string>(ic,idx));
+        lista.push_back(str);
+      }
+      data_ << lista;
     }
-    data_ << lista;
-  }
-  if (append_)
-  {
-    qDebug() << "append the row";
-    QStringList lista;
-    lista.push_back("+");
-    for (size_t ic=1;ic<doc.GetColumnCount();ic++)
+    if (append_)
     {
-      QString str("");
-      lista.push_back(str);
+      QStringList lista;
+      lista.push_back("+");
+      for (size_t ic=1;ic<doc.GetColumnCount();ic++)
+      {
+        QString str("");
+        lista.push_back(str);
+      }
+      data_ << lista;
     }
-    data_ << lista;
-  }
   } catch (...) {
     qDebug() << "the file does not exist = " << nome_file.c_str();
     data_.clear();
@@ -103,6 +102,19 @@ void ListStringCSV::addRow(QString filename, QStringList row)
   readFile(filename);
 }
 
+void ListStringCSV::rename(QString oldname, QString newname)
+{
+  std::string oldfile=dir_path_+"/"+oldname.toStdString()+".csv";
+  std::string newfile=dir_path_+"/"+newname.toStdString()+".csv";
+  qDebug() << "oldfile "<< oldname;
+  qDebug() << "newfile "<< newname;
+
+  std::cout << oldfile<<std::endl;
+  rapidcsv::Document doc(oldfile);
+
+  doc.Save(newfile);
+  readFile(newname);
+}
 
 void ListStringCSV::removeRow(QString filename, int row_idx)
 {
@@ -140,6 +152,24 @@ void ListStringCSV::changeValue(QString filename, int row_idx, int col_idx, QStr
 
 }
 
+QStringList ListStringCSV::uniqueElementsOfColumn(QString filename, QString col_name)
+{
+  std::string nome_file=dir_path_+"/"+filename.toStdString()+".csv";
+  rapidcsv::Document doc(nome_file);
+  std::vector<std::string> lista=doc.GetColumn<std::string>(col_name.toStdString());
+  std::vector<std::string>::iterator it;
+  it = std::unique (lista.begin(), lista.end());
+  lista.resize( std::distance(lista.begin(),it) );
+  if (append_)
+    lista.push_back("+");
+  QStringList qmllista;
+  for (size_t ic=0;ic<lista.size();ic++)
+  {
+    QString str=QString::fromStdString(lista.at(ic));
+    qmllista.push_back(str);
+  }
+  return qmllista;
+}
 
 QString ListStringCSV::getValue(QString filename, int row_idx,int col_idx)
 {

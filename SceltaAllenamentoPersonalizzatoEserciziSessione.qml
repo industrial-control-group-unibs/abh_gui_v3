@@ -14,24 +14,60 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
+    id: component
+
+    property bool first_time: true
+    property bool nuovo: true
+
+    property string nomeEsercizio: selected_exercise.video_intro
+//    onNomeEsercizioChanged:
+//    {
+//        video_source="file://"+PATH+"/video_brevi_esercizi/"+nomeEsercizio
+//    }
+    property string video_source: "file://"+PATH+"/video_brevi_esercizi/"+nomeEsercizio
+
+
+
+    Component.onCompleted:
+    {
+
+    }
 
     Component.onDestruction:
     {
-        selected_exercise.workout=""
     }
 
 
-    Barra_superiore{
-       titolo: zona_allenamento.gruppo
-    }
-
-    FrecceSxDx
+    Item
     {
-        onPressSx: pageLoader.source= "SceltaGruppo.qml"
-        onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
-        dx_visible: grid.currentIndex>=0
-        colore: parametri_generali.coloreBordo
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        z:parent.z+2
+        height:274+50
+        FrecceSxDx
+        {
+            onPressSx:{
+                pageLoader.source="SceltaAllenamentoPersonalizzatoSessioni.qml"
+            }
+            onPressDx:
+            {
+                if (component.nuovo)
+                    pageLoader.source="SceltaAllenamentoPersonalizzatoGruppo.qml"
+                else
+                {
+
+                }
+            }
+
+            dx_visible: true
+            colore: parametri_generali.coloreBordo
+        }
     }
+
+    Barra_superiore{titolo: "SESSIONE "+programma_personalizzato.sessione}
+
+
 
 
     Rectangle
@@ -39,23 +75,22 @@ Item {
         id: rect_grid
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
-        color:parametri_generali.coloreSfondo
+        color: parametri_generali.coloreSfondo
         clip: true
 
         Rectangle
         {
             id: header
-            height: video_zone.height+nome_titolo.height+20
+            height: video_zone.height+nome_titolo.height
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top
-            color: rect_grid.color
-            z: 1
-
+            z: 5
+            color: parametri_generali.coloreSfondo
 
             Text {
                 id: nome_titolo
-                text:selected_exercise.name==="unselected"? zona_allenamento.gruppo : selected_exercise.name
+                text:selected_exercise.name==="unselected"? "" : selected_exercise.name
                 anchors
                 {
                     horizontalCenter: parent.horizontalCenter
@@ -89,7 +124,7 @@ Item {
 
 
 
-                width: grid.cellWidth
+                width: parent.width*0.33 //grid.cellWidth
                 height: width
                 radius: 20
                 border.color: selected_exercise.immagine? parametri_generali.coloreBordo: "transparent"
@@ -122,17 +157,17 @@ Item {
 
                 MediaPlayer {
                     id: mp_esercizio
-                    autoPlay: false
+                    autoPlay: true
                     autoLoad: true
 
-                    source: "file://"+PATH+"/video_brevi_esercizi/"+selected_exercise.video_intro
+                    source:  component.video_source //"file://"+PATH+"/video_brevi_esercizi/"+selected_exercise.video_intro
 
                     onPlaybackStateChanged: {
                         if(playbackState==1){
                             durTrig.stop();
                             durTrig.interval=duration-100;
                             durTrig.restart();
-                         }
+                        }
                     }
                 }
                 Timer{
@@ -140,7 +175,7 @@ Item {
                     running:false
                     repeat: false
                     onTriggered:{
-                       mp_esercizio.pause();
+                        mp_esercizio.pause();
                     }
                 }
 
@@ -158,52 +193,73 @@ Item {
             }
         }
 
+        ListView {
+            snapMode: ListView.SnapOneItem
+            id: lista_workout
+            clip: true
+            anchors {
+                top: header.bottom
+                bottom: parent.bottom
+                left: parent.left
+                right: parent.right
+            }
+            currentIndex: -1
 
-        GridView {
 
-            id: grid
-            anchors.topMargin: header.height
-            cellWidth: width*0.33; cellHeight: cellWidth
-            anchors.fill: parent
-            snapMode: GridView.SnapToRow
-            focus: true
 
-            Component.onCompleted: {currentIndex=-1}
+            model: _list_string
 
-            model: _myModel //zona_allenamento.lista //Lista_pettorali {}
-            //delegate:IconaEsercizi{}
+            Component.onCompleted:
+            {
+                console.log(model)
+                console.log(count)
+            }
 
-            delegate: IconaImmagine{
-                name: _esercizi.getName(ex_name)
+
+            delegate: IconaDescrizioneEsercizi{
+
+                Component.onCompleted: console.log("nome = ",nome," immagine = ",immagine, " code = ",vector[0])
+//                visible: vector[0]===""
                 color: parametri_generali.coloreBordo
                 highlighted:
                 {
-                    if (grid.currentIndex>=0)
-                        grid.currentIndex === index
+                    if (lista_workout.currentIndex>=0)
+                        lista_workout.currentIndex === index
                     else
                         false;
                 }
-                text: ""
-                image:"file://"+PATH+"/immagini_esercizi/"+_esercizi.getImage(ex_name)
+                onHighlightedChanged:
+                {
+                    if (highlighted)
+                    {
+                        selected_exercise.video_intro=_esercizi.getVideoIntro(vector[0])
+                        console.log("video_intro = ",selected_exercise.video_intro)
+                    }
+                }
 
-                width: grid.cellWidth-2
-                height: grid.cellHeight-2
+                nome:  _esercizi.getName(vector[0])
+                immagine: vector[0]==="+"?"+": _esercizi.getImage(vector[0])
+
+                ripetizioni:parseFloat(vector[1])
+                serie: parseFloat(vector[2])
+                potenza: parseFloat(vector[3])
+
+
+
+                width: lista_workout.width-2
 
                 onPressed: {
-                    selected_exercise.code= ex_name
-                    selected_exercise.sets=1
-                    grid.currentIndex=index
+                    lista_workout.currentIndex=index
+                    selected_exercise.code=vector[0]
+
+                    component.nuovo=vector[0]==="+"
                 }
             }
 
-            onCurrentIndexChanged: {
-                if (currentIndex>=0)
-                {
-                    mp_esercizio.stop()
-                    mp_esercizio.play()
-                }
-            }
+
         }
+
+
 
     }
 

@@ -87,6 +87,14 @@ int main(int argc, char *argv[])
   ListStringCSV active_workouts(data_path+"/utenti");
   active_workouts.appendIcon(true);
 
+  ListStringCSV custom_workouts(data_path+"/utenti");
+  custom_workouts.appendIcon(true);
+
+  ListStringCSV custom_sessions(data_path+"/utenti");
+  custom_sessions.appendIcon(true);
+
+
+
   ListStringCSV workout_list(data_path+"/allenamento_programmato");
 
   ListStringCSV dati_list(data_path);
@@ -189,6 +197,9 @@ int main(int argc, char *argv[])
   context->setContextProperty("_queue", &queue);
   context->setContextProperty("_history", &page_history);
   context->setContextProperty("_active_workouts", &active_workouts);
+  context->setContextProperty("_custom_workouts", &custom_workouts);
+  context->setContextProperty("_custom_sessions", &custom_sessions);
+
 
   context->setContextProperty("_default", default_values);
 

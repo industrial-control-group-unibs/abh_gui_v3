@@ -27,6 +27,7 @@ Rectangle {
         timer_tempo.resetValue()
         timer_tut.resetValue()
         _active_workouts.readFile("ACTIVEWORKOUT_"+impostazioni_utente.identifier)
+        _custom_workouts.readFile("CUSTOMWORKOUT_"+impostazioni_utente.identifier)
     }
     Barra_superiore{}
 

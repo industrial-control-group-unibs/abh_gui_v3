@@ -7,6 +7,9 @@ import QtQuick.Shapes 1.12
 Item
 {
     id: barra
+
+    property string titolo: ""
+
     anchors
     {
         left:parent.left
@@ -276,6 +279,12 @@ Item
             right: logo_barra.left
             top:parent.top
             bottom: parent.bottom
+        }
+
+        Titolo
+        {
+
+            text:barra.titolo
         }
     }
 

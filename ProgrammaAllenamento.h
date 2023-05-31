@@ -56,8 +56,10 @@ public:
   void readFile(std::string file_name);
   public slots:
     QString createWorkout(QString user_id, QString workout_name, int number_of_session);
+    bool createEmptyWorkout(QString user_id, QString workout_name);
     void loadWorkout(QString user_id, QString workout_name);
 
+    void addRow(int session, QStringList dati);
     void next();
 
     void updateStatFile(QString id, QString workout_name, int time, int tut);

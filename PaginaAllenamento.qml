@@ -31,7 +31,7 @@ Item {
         link21: "SceltaGruppo.qml"
         immagine12: "sfida.jpg"
         testo12: "ALLENAMENTO\n PERSONALIZZATO"
-        link12: "PaginaAllenamento.qml"
+        link12: "SceltaAllenamentoPersonalizzato.qml"
         immagine22: "statistiche.jpg"
         testo22: "STATISTICHE\n"
         link22: "SceltaStatisticheWorkout.qml"

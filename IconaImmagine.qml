@@ -10,7 +10,12 @@ IconaRettangolo
 
     property string image
 
+    property string name: ""
 
+    Titolo
+    {
+        text:component.name
+    }
     Image {
         id: immagine
         fillMode: Image.Stretch

@@ -17,7 +17,6 @@ public:
 
     explicit ListString(QObject *parent = nullptr);
 
-    void appendIcon(bool flag){append_=flag;}
     int rowCount(const QModelIndex& parent) const override;
     QVariant data( const QModelIndex& index, int role = Qt::DisplayRole ) const override;
     QHash<int, QByteArray> roleNames() const override;
@@ -28,6 +27,7 @@ public slots:
     void addRow(    QStringList row);
     void removeRow(  int row_idx);
     void changeValue(int row_idx,int col_idx, QString value);
+    void appendIcon(bool flag){append_=flag;}
     QString getValue(int row_idx,int col_idx);
     bool checkIfExistColumn(int col_idx, QString value);
 private: //members

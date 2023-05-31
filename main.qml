@@ -24,6 +24,14 @@ ApplicationWindow {
     onVisibilityChanged: {
         visibility="FullScreen"
     }
+
+    Item
+    {
+        id: programma_personalizzato
+        property string name: "UNDEFINED"
+        property int sessione: 0
+    }
+
     Item {
         id: parametri_generali
         property color coloreBordo:  _default[0]

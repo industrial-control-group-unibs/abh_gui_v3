@@ -27,8 +27,8 @@ Item {
 
     FrecceSxDx
     {
-        onPressSx: pageLoader.source= "SceltaGruppo.qml"
-        onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
+        onPressSx: pageLoader.source= "SceltaAllenamentoPersonalizzatoGruppo.qml"
+        onPressDx: pageLoader.source=  "SceltaAllenamentoPersonalizzatoConfEsercizio.qml"
         dx_visible: grid.currentIndex>=0
         colore: parametri_generali.coloreBordo
     }

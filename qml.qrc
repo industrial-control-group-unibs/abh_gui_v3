@@ -100,5 +100,15 @@
         <file>PaginaInfoHorizon.qml</file>
         <file>RigaGrafico.qml</file>
         <file>WorkoutCalibration.qml</file>
+        <file>TemplateListaAggiungile.qml</file>
+        <file>SceltaAllenamentoPersonalizzato.qml</file>
+        <file>SceltaAllenamentoPersonalizzatoTitolo.qml</file>
+        <file>TemplateInserimentoTesto.qml</file>
+        <file>SceltaAllenamentoPersonalizzatoSessioni.qml</file>
+        <file>TemplateListaAggiungileTesto.qml</file>
+        <file>SceltaAllenamentoPersonalizzatoEserciziSessione.qml</file>
+        <file>SceltaAllenamentoPersonalizzatoGruppo.qml</file>
+        <file>SceltaAllenamentoPersonalizzatoEsercizi.qml</file>
+        <file>SceltaAllenamentoPersonalizzatoConfEsercizio.qml</file>
     </qresource>
 </RCC>

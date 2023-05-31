@@ -141,7 +141,31 @@ void ProgrammaAllenamento::setSession(int session)
     }
   }
 }
+void ProgrammaAllenamento::addRow(int session, QStringList dati)
+{
+  qDebug() << "qui";
+  int idx=0;
+  for (;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s = doc_->GetCell<int>(6,idx);
+    if (s>session)
+    {
+      break;
+    }
+  }
 
+  if (dati.size()!=10)
+  {
+    qDebug()<< "errore di dimensone dati. " << dati.size() <<" invece di 10";
+    return;
+  }
+  std::vector<std::string> row;
+   for (const QString& s : dati)
+    row.push_back(s.toStdString());
+
+  doc_->InsertRow(idx,row);
+  doc_->Save(file_name_);
+}
 
 QVariant ProgrammaAllenamento::listSessionExercise(int session)
 {
@@ -636,6 +660,27 @@ QVariant ProgrammaAllenamento::listSessionsNumber()
   return QVariant::fromValue(vec);
 }
 
+
+bool ProgrammaAllenamento::createEmptyWorkout(QString user_id, QString workout_name)
+{
+  std::string workout_file=dir_path_.toStdString()+"/WORKOUT_TEMPLATE.csv";
+  std::unique_ptr<rapidcsv::Document> doc;
+  try {
+    doc.reset(new rapidcsv::Document(workout_file));
+
+  }
+  catch (...)
+  {
+    std::cerr<<"Workout non disponibile" <<workout_file<<std::endl;
+    completed_=true;
+    return false;
+  }
+
+  std::string file=dir_path_.toStdString()+"/"+user_id.toStdString()+"_"+workout_name.toStdString()+".csv";
+  doc_->Save(file);
+  readFile(file);
+  return true;
+}
 
 QString ProgrammaAllenamento::createWorkout(QString user_id, QString workout_name, int number_of_session)
 {

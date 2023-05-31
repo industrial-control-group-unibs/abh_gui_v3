@@ -26,10 +26,12 @@ public:
 
 public slots:
     void readFile(QString filename);
+    void rename(QString oldname, QString newname);
     void appendIcon(bool flag){      append_=flag;    }
     void addRow(QString filename, QStringList row);
     void removeRow(QString filename, int row_idx);
     void changeValue(QString filename, int row_idx,int col_idx, QString value);
+    QStringList uniqueElementsOfColumn(QString filename, QString col_name);
     QString getValue(QString filename, int row_idx,int col_idx);
 
     bool checkIfExistColumn(QString filename, int col_idx, QString value);
