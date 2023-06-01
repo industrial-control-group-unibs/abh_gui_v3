@@ -14,6 +14,7 @@ TemplateInserimentoTesto
                                 [text,0,0,Math.round(new Date().getTime()*0.001),0,0])
 
 //        _workout.createEmptyWorkout(impostazioni_utente.identifier,programma_personalizzato.name)
+        _workout.loadWorkout(impostazioni_utente.identifier,programma_personalizzato.name)
 
         pageLoader.source="SceltaAllenamentoPersonalizzatoSessioni.qml"
     }
