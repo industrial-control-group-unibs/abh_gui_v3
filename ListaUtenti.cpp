@@ -412,4 +412,10 @@ void ListaUtenti::createStatFile(QString user_id)
   std::unique_ptr<rapidcsv::Document> aw_doc;
   stat_doc.reset(new rapidcsv::Document(dir_path_+"/../utenti/ACTIVEWORKOUT_template.csv"));
   stat_doc->Save(aw_file_name_);
+
+  std::string custom_file_name_=dir_path_+"/../utenti/ACTIVEWORKOUT_"+user_id.toStdString()+".csv";
+  std::unique_ptr<rapidcsv::Document> custom_doc;
+  custom_doc.reset(new rapidcsv::Document(dir_path_+"/../utenti/CUSTOMWORKOUT_template.csv"));
+  custom_doc->Save(aw_file_name_);
+
 }
