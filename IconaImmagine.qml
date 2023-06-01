@@ -15,6 +15,7 @@ IconaRettangolo
     Titolo
     {
         text:component.name
+        fontSize: 30
     }
     Image {
         id: immagine
