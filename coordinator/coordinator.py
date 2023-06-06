@@ -262,7 +262,11 @@ def exercise_thread():
 
                 rep_count_from_vision=float(repetition_state[0])
                 direction=float(repetition_state[1])
-                percentage=max(0.0,float(repetition_state[2]))
+                #percentage=max(0.0,float(repetition_state[2]))
+                if  (state == Status.FORWARD):
+                    percentage=max(percentage,max(0,float(repetition_state[2])))
+                elif (state == Status.BACKWARD):
+                    percentage=min(percentage,max(0,float(repetition_state[2])))
                 initializing=repetition_state[2]==-30
                 calibrating=repetition_state[2]==-50
                 #print(rep_count_from_vision,exercise_type)
