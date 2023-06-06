@@ -64,7 +64,7 @@ void ListStringCSV::readFile(QString filename)
         QString str=QString::fromStdString(doc.GetCell<std::string>(ic,idx));
         lista.push_back(str);
       }
-      data_ << lista;
+      data_ .push_front( lista);
     }
     if (append_)
     {
@@ -125,7 +125,7 @@ void ListStringCSV::removeRow(QString filename, int row_idx)
     return;
   if (row_idx>=(int)doc.GetRowCount())
     return;
-  doc.RemoveRow(row_idx);
+  doc.RemoveRow(doc.GetRowCount()-row_idx-1);
   doc.Save(nome_file);
   readFile(filename);
 }

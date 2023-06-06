@@ -20,6 +20,11 @@ Item {
     property int riposo: 40
     property int riposo_finale: 40
 
+    property int sets: 40
+    property int reps: 40
+    property int power: 40
+
+
     Component.onDestruction:
     {
         selected_exercise.default_power=selected_exercise.power
@@ -28,9 +33,26 @@ Item {
 
     Component.onCompleted:
     {
-        selected_exercise.sets= 3
-        selected_exercise.reps= 12
-        selected_exercise.power=3
+        if (programma_personalizzato.nuovo_esercizio)
+        {
+            console.log("QUI?")
+            component.sets= 3
+            component.reps= 12
+            component.power=3
+        }
+        else
+        {
+            component.sets=_workout.getValue(programma_personalizzato.sessione,
+                              programma_personalizzato.indice_esercizio,
+                              "set")
+
+            component.reps=_workout.getValue(programma_personalizzato.sessione,
+                              programma_personalizzato.indice_esercizio,
+                              "ripetizioni")
+            component.power=_workout.getValue(programma_personalizzato.sessione,
+                              programma_personalizzato.indice_esercizio,
+                              "power")
+        }
     }
 
     Barra_superiore{
@@ -70,7 +92,36 @@ Item {
             onPressSx: pageLoader.source= "SceltaAllenamentoPersonalizzatoEsercizi.qml"
             onPressDx:
             {
-                _workout.addRow(programma_personalizzato.sessione,[selected_exercise.code,selected_exercise.power,selected_exercise.reps,selected_exercise.sets,component.riposo,component.riposo_finale,programma_personalizzato.sessione,-1,0,0])
+                if (programma_personalizzato.nuovo_esercizio)
+                    _workout.addRow(programma_personalizzato.sessione,[selected_exercise.code,selected_exercise.power,selected_exercise.reps,selected_exercise.sets,component.riposo,component.riposo_finale,programma_personalizzato.sessione,-1,0,0])
+                else
+                {
+
+                    _workout.setValue(programma_personalizzato.sessione,
+                                      programma_personalizzato.indice_esercizio,
+                                      "set",
+                                      selected_exercise.sets)
+
+                    _workout.setValue(programma_personalizzato.sessione,
+                                      programma_personalizzato.indice_esercizio,
+                                      "ripetizioni",
+                                      selected_exercise.reps)
+                    _workout.setValue(programma_personalizzato.sessione,
+                                      programma_personalizzato.indice_esercizio,
+                                      "power",
+                                      selected_exercise.power)
+
+                    _workout.setValue(programma_personalizzato.sessione,
+                                      programma_personalizzato.indice_esercizio,
+                                      "riposo",
+                                      component.riposo)
+
+                    _workout.setValue(programma_personalizzato.sessione,
+                                      programma_personalizzato.indice_esercizio,
+                                      "riposo_set",
+                                      component.riposo_set)
+                }
+
                 pageLoader.source=  "SceltaAllenamentoPersonalizzatoEsercizi.qml"
             }
         }
@@ -105,7 +156,7 @@ Item {
                 width: 0.8*parent.width
                 height: 0.1*width
 
-                value: 3
+                value: component.sets
                 min: 1
                 max: 10
 
@@ -146,7 +197,7 @@ Item {
                 width: 0.8*parent.width
                 height: 0.1*width
 
-                value: 10
+                value: component.reps
                 min: 1
                 max: 50
 
@@ -187,7 +238,7 @@ Item {
                 width: 0.8*parent.width
                 height: 0.1*width
 
-                value: 3
+                value: component.power
                 min: 1
                 max: 20
 
@@ -228,7 +279,7 @@ Item {
                 width: 0.8*parent.width
                 height: 0.1*width
 
-                value: 30
+                value: component.riposo
                 min: 0
                 max: 900
                 increment: 5
@@ -270,7 +321,7 @@ Item {
                 width: 0.8*parent.width
                 height: 0.1*width
 
-                value: 30
+                value: component.riposo_finale
                 min: 0
                 max: 900
                 increment: 5

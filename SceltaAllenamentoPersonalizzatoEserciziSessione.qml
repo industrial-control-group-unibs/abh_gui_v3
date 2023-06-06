@@ -30,11 +30,14 @@ Item {
 
     Component.onCompleted:
     {
+        console.log("session=",programma_personalizzato.sessione)
 
     }
 
     Component.onDestruction:
     {
+        console.log("session=",programma_personalizzato.sessione)
+
     }
 
 
@@ -52,11 +55,15 @@ Item {
             }
             onPressDx:
             {
+                programma_personalizzato.indice_esercizio=lista_workout.currentIndex
+                programma_personalizzato.nuovo_esercizio=component.nuovo
                 if (component.nuovo)
+                {
                     pageLoader.source="SceltaAllenamentoPersonalizzatoGruppo.qml"
+                }
                 else
                 {
-
+                    pageLoader.source="SceltaAllenamentoPersonalizzatoConfEsercizio.qml"
                 }
             }
 

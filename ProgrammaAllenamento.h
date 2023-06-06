@@ -61,6 +61,8 @@ public:
 
     void addRow(int session, QStringList dati);
     void next();
+    int getValue(int session, int index, QString field);
+    void setValue(int session, int index, QString field, int value);
 
     void updateStatFile(QString id, QString workout_name, int time, int tut);
     void readStatFile(QString id);

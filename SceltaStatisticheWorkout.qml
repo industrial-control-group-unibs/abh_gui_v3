@@ -17,6 +17,7 @@ Item {
     implicitWidth: 1080/2
 
     property bool selected: false
+    property bool personalizato: false
     Barra_superiore{}
 
     id: component
@@ -25,6 +26,7 @@ Item {
     {
         _active_workouts.appendIcon(false);
         _active_workouts.readFile("ACTIVEWORKOUT_"+impostazioni_utente.identifier);
+        _custom_workouts.readFile("CUSTOMWORKOUT_"+impostazioni_utente.identifier);
          lista_workout.reload()
     }
 
@@ -63,6 +65,27 @@ Item {
             dx_visible: lista_workout.currentIndex>=0
             colore: parametri_generali.coloreBordo
         }
+        IconaCerchio
+        {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            width: 100
+
+            onPressed: {
+                component.personalizato=!component.personalizato
+                lista_workout.reload()
+            }
+            Testo
+            {
+                text: component.personalizato?"ALLENAMENTO\nGUIDATO":"ALLENAMENTO\nPERSONALIZZATO"
+                anchors
+                {
+                    horizontalCenter: parent.horizontalCenter
+                    top: parent.bottom
+                    topMargin: 5
+                }
+            }
+        }
     }
 
     Rectangle{
@@ -91,6 +114,7 @@ Item {
                 left: parent.left
                 right: parent.right
             }
+
             currentIndex:-1
 
             model: _active_workouts
@@ -104,7 +128,10 @@ Item {
             onReload:
             {
                 lista_workout.model=[]
-                lista_workout.model= _active_workouts
+                if (component.personalizato)
+                    lista_workout.model= _active_workouts
+                else
+                    lista_workout.model= _custom_workouts
                 lista_workout.forceLayout()
 //                lista_workout.currentIndex=-1
                 pageLoader.source="SceltaStatisticheWorkout.qml"

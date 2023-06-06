@@ -30,6 +30,8 @@ ApplicationWindow {
         id: programma_personalizzato
         property string name: "UNDEFINED"
         property int sessione: 0
+        property bool nuovo_esercizio: false
+        property int indice_esercizio: 0
     }
 
     Item {

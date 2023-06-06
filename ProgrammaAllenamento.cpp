@@ -103,6 +103,78 @@ void ProgrammaAllenamento::next()
   }
 }
 
+int ProgrammaAllenamento::getValue(int session, int index, QString field)
+{
+  int idx=0;
+  bool found=false;
+  for (;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    if (s==session)
+    {
+      found=true;
+      break;
+    }
+  }
+  if (!found)
+  {
+    qDebug() << " session not found";
+    return -100;
+  }
+  int idx2=idx+index;
+  if (idx2>=doc_->GetRowCount())
+  {
+    qDebug() << " index is too big";
+    return -100;
+  }
+
+  int s= doc_->GetCell<int>(6,idx2);
+  if (s!=session)
+  {
+    qDebug() << " index is too big";
+    return  -100;
+  }
+
+  int value= doc_->GetCell<int>(field.toStdString(),idx2);
+  return value;
+
+}
+void ProgrammaAllenamento::setValue(int session, int index, QString field, int value)
+{
+  int idx=0;
+  bool found=false;
+  for (;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    if (s==session)
+    {
+      found=true;
+      break;
+    }
+  }
+  if (!found)
+  {
+    qDebug() << " session not found";
+  }
+  int idx2=idx+index;
+  if (idx2>=doc_->GetRowCount())
+  {
+    qDebug() << " index is too big";
+  }
+
+  int s= doc_->GetCell<int>(6,idx2);
+  if (s!=session)
+  {
+    qDebug() << " index is too big";
+  }
+
+  const ssize_t columnIdx = doc_->GetColumnIdx(field.toStdString());
+
+  doc_->SetCell<int>(columnIdx,idx2,value);
+  qDebug()<< " colonna" << field << " value = "<< value;
+  doc_->Save(file_name_);
+}
+
 
 
 void ProgrammaAllenamento::setSession(int session)

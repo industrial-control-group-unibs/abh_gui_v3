@@ -25,6 +25,7 @@ Item {
     property string titolo: ""
     property int elements: lista_workout.count
     property int index: lista_workout.currentIndex
+    property int count: lista_workout.count
     signal pressSx
     signal pressDx
     signal erase

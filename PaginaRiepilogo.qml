@@ -32,32 +32,65 @@ Item {
 
 
             console.log( _workout.getSessionProgess(selected_exercise.selected_session))
-            _active_workouts.changeValue(
-                        "ACTIVEWORKOUT_"+impostazioni_utente.identifier,
-                        _active_workouts.getRowIndex("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
-                                                     0,
-                                                     selected_exercise.workout),
-                        1,
-                        _workout.getProgess()
-                        )
 
-            _active_workouts.changeValue(
-                        "ACTIVEWORKOUT_"+impostazioni_utente.identifier,
-                        _active_workouts.getRowIndex("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
-                                                     0,
-                                                     selected_exercise.workout),
-                        2,
-                        _workout.getScore()
-                        )
+            if (selected_exercise.personalizzato)
+            {
+                _active_workouts.changeValue(
+                            "CUSTOMWORKOUT_"+impostazioni_utente.identifier,
+                            _active_workouts.getRowIndex("CUSTOMWORKOUT_"+impostazioni_utente.identifier,
+                                                         0,
+                                                         selected_exercise.workout),
+                            1,
+                            _workout.getProgess()
+                            )
 
-            _active_workouts.changeValue(
-                        "ACTIVEWORKOUT_"+impostazioni_utente.identifier,
-                        _active_workouts.getRowIndex("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
-                                                     0,
-                                                     selected_exercise.workout),
-                        4,
-                        _workout.getTime()
-                        )
+                _active_workouts.changeValue(
+                            "CUSTOMWORKOUT_"+impostazioni_utente.identifier,
+                            _active_workouts.getRowIndex("CUSTOMWORKOUT_"+impostazioni_utente.identifier,
+                                                         0,
+                                                         selected_exercise.workout),
+                            2,
+                            _workout.getScore()
+                            )
+
+                _active_workouts.changeValue(
+                            "CUSTOMWORKOUT_"+impostazioni_utente.identifier,
+                            _active_workouts.getRowIndex("CUSTOMWORKOUT_"+impostazioni_utente.identifier,
+                                                         0,
+                                                         selected_exercise.workout),
+                            4,
+                            _workout.getTime()
+                            )
+            }
+            else
+            {
+                _active_workouts.changeValue(
+                            "CUSTOMWORKOUT_"+impostazioni_utente.identifier,
+                            _active_workouts.getRowIndex("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
+                                                         0,
+                                                         selected_exercise.workout),
+                            1,
+                            _workout.getProgess()
+                            )
+
+                _active_workouts.changeValue(
+                            "ACTIVEWORKOUT_"+impostazioni_utente.identifier,
+                            _active_workouts.getRowIndex("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
+                                                         0,
+                                                         selected_exercise.workout),
+                            2,
+                            _workout.getScore()
+                            )
+
+                _active_workouts.changeValue(
+                            "ACTIVEWORKOUT_"+impostazioni_utente.identifier,
+                            _active_workouts.getRowIndex("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
+                                                         0,
+                                                         selected_exercise.workout),
+                            4,
+                            _workout.getTime()
+                            )
+            }
 
             _workout.next()
             if (_workout.endSession)

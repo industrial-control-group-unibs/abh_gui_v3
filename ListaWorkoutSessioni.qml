@@ -38,7 +38,13 @@ Item {
         height:274+50
         FrecceSxDx
         {
-            onPressSx: pageLoader.source= "SceltaWorkout.qml"
+            onPressSx:
+            {
+                if (selected_exercise.personalizzato)
+                    pageLoader.source= "SceltaAllenamentoPersonalizzato.qml"
+                else
+                    pageLoader.source= "SceltaWorkout.qml"
+            }
             onPressDx:
             {
                 if (component.new_workout)

@@ -4,12 +4,13 @@ TemplateListaAggiungileTesto
 {
     model: _custom_sessions.uniqueElementsOfColumn(impostazioni_utente.identifier+"_"+programma_personalizzato.name,"session")
     titolo: programma_personalizzato.name
-
+    id: component
     property var empty_list: ["+", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
     onPressSx: pageLoader.source= "SceltaAllenamentoPersonalizzato.qml"
     onPressDx:
     {
         programma_personalizzato.sessione= index+1
+        console.log("session=",programma_personalizzato.sessione)
         _list_string.fromList(_workout.listSessionExercise(programma_personalizzato.sessione))
         _list_string.addRow(empty_list)
 
@@ -31,6 +32,7 @@ TemplateListaAggiungileTesto
 
         IconaCerchio
         {
+            visible: component.count>1
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             width: 100
@@ -49,7 +51,7 @@ TemplateListaAggiungileTesto
             }
             Testo
             {
-                text: "COMINCIA"
+                text: "INIZIA\nL'ALLENAMENTO"
                 anchors
                 {
                     horizontalCenter: parent.horizontalCenter
