@@ -19,9 +19,14 @@ Item {
 
     FrecceSxDx
     {
+        property var empty_list: ["+", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
+
         onPressSx:
         {
             _workout.loadWorkout(impostazioni_utente.identifier,programma_personalizzato.name)
+
+            _list_string.fromList(_workout.listSessionExercise(programma_personalizzato.sessione))
+            _list_string.addRow(empty_list)
             pageLoader.source= "SceltaAllenamentoPersonalizzatoEserciziSessione.qml"
         }
         onPressDx: pageLoader.source=  "SceltaAllenamentoPersonalizzatoEsercizi.qml"

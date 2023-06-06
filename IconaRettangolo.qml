@@ -16,6 +16,8 @@ Item {
 
     property color color: parametri_generali.coloreBordo
     property color colorTransparent: Qt.rgba(color.r, color.g, color.b, 0.440)
+
+    property string testo_elimina: "VUOI ELIMINARE IL PROGRAMMA DI ALLENAMENTO?"
     id: component
 
     signal pressed
@@ -51,7 +53,7 @@ Item {
             //font.pixelSize: 100
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            text: "VUOI ELIMINARE IL PROGRAMMA DI ALLENAMENTO?"
+            text: component.testo_elimina
             fontSizeMode: Text.Fit
         }
         IconaCerchio

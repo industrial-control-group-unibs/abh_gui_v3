@@ -23,6 +23,7 @@ Item {
     Component.onCompleted:
     {
         _active_workouts.readFile("ACTIVEWORKOUT_"+impostazioni_utente.identifier)
+        selected_exercise.personalizzato=false;
     }
 
     Component.onDestruction:

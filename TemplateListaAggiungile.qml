@@ -129,7 +129,8 @@ Item {
                 }
                 onPressAndHold:
                 {
-                    erase=true
+                    if (vector[0]!=="+")
+                        erase=true
                 }
                 onEraseNo:
                 {

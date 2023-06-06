@@ -162,6 +162,7 @@ ApplicationWindow {
         property real max_neg_speed: -10
         property real score: 0
         property string workout: ""
+        property bool personalizzato: false
         property bool workout_finito: false
         property int type: 1
         property int  selected_session: 1

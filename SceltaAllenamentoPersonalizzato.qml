@@ -5,6 +5,7 @@ TemplateListaAggiungile
     Component.onCompleted:
     {
         _custom_workouts.readFile("CUSTOMWORKOUT_"+impostazioni_utente.identifier)
+        selected_exercise.personalizzato=true
         reload()
     }
     model: _custom_workouts
@@ -21,8 +22,12 @@ TemplateListaAggiungile
         {
             programma_personalizzato.name=text
             _workout.loadWorkout(impostazioni_utente.identifier,programma_personalizzato.name)
+            if (_workout.getProgess()===0)
+                pageLoader.source="SceltaAllenamentoPersonalizzatoSessioni.qml"
+            else
+            {
 
-            pageLoader.source="SceltaAllenamentoPersonalizzatoSessioni.qml"
+            }
         }
     }
     onErase:

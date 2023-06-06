@@ -125,7 +125,11 @@ Item {
                 }
                 onPressAndHold:
                 {
-                    erase=true
+                    if (modelData!=="+")
+                    {
+                        testo_elimina="VUOI ELIMINARE LA SESSIONE?"
+                        erase=true
+                    }
                 }
                 onEraseNo:
                 {

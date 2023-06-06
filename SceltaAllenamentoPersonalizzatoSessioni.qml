@@ -21,4 +21,43 @@ TemplateListaAggiungileTesto
     }
 
 
+    Item
+    {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        z:parent.z+2
+        height:274+50
+
+        IconaCerchio
+        {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            width: 100
+
+            onPressed: {
+                selected_exercise.code=_workout.code
+                selected_exercise.reps=_workout.reps
+                selected_exercise.rest_time=_workout.rest
+                selected_exercise.rest_set_time=_workout.restSet
+                selected_exercise.sets=_workout.sets
+                selected_exercise.current_set=0
+                selected_exercise.power=_workout.power
+                _list_string.fromList(_workout.listSessionExercise(1))
+                selected_exercise.workout=programma_personalizzato.name
+                pageLoader.source="ListaEserciziWorkout.qml"
+            }
+            Testo
+            {
+                text: "COMINCIA"
+                anchors
+                {
+                    horizontalCenter: parent.horizontalCenter
+                    top: parent.bottom
+                    topMargin: 5
+                }
+            }
+        }
+
+    }
 }

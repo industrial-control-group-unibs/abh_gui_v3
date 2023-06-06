@@ -205,7 +205,21 @@ Item {
             }
             currentIndex: -1
 
+            signal reload;
+            property var empty_list: ["+", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
 
+            onReload:
+            {
+                lista_workout.model=[]
+
+                _list_string.fromList(_workout.listSessionExercise(programma_personalizzato.sessione))
+                _list_string.addRow(empty_list)
+
+                lista_workout.model= _list_string
+                lista_workout.forceLayout()
+                pageLoader.source=pageLoader.source
+                currentIndex:-1
+            }
 
             model: _list_string
 
@@ -253,6 +267,21 @@ Item {
                     selected_exercise.code=vector[0]
 
                     component.nuovo=vector[0]==="+"
+                }
+                onPressAndHold:
+                {
+                    if (vector[0]!=="+")
+                    {
+                        testo_elimina="VUOI ELIMINARE L'ESERCIZIO?"
+                        erase=true
+                    }
+
+                }
+                onEraseNo: erase=false
+                onEraseYes:
+                {
+                    erase=false
+                    lista_workout.reload()
                 }
             }
 
