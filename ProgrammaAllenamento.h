@@ -60,6 +60,8 @@ public:
     void loadWorkout(QString user_id, QString workout_name);
 
     void addRow(int session, QStringList dati);
+    void removeRow(int session, int index);
+    void removeSession(int session);
     void next();
     int getValue(int session, int index, QString field);
     void setValue(int session, int index, QString field, int value);

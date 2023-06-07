@@ -288,6 +288,8 @@ Item {
                 onEraseYes:
                 {
                     erase=false
+                    _workout.removeRow(programma_personalizzato.sessione,
+                                       index)
                     lista_workout.reload()
                 }
             }

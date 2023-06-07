@@ -102,10 +102,15 @@ void ListStringCSV::addRow(QString filename, QStringList row)
   readFile(filename);
 }
 
-void ListStringCSV::rename(QString oldname, QString newname)
+bool ListStringCSV::rename(QString oldname, QString newname)
 {
   std::string oldfile=dir_path_+"/"+oldname.toStdString()+".csv";
   std::string newfile=dir_path_+"/"+newname.toStdString()+".csv";
+
+  std::ifstream f(newfile.c_str());
+  if (f.good())
+    return false;
+
   qDebug() << "oldfile "<< oldname;
   qDebug() << "newfile "<< newname;
 
@@ -114,6 +119,7 @@ void ListStringCSV::rename(QString oldname, QString newname)
 
   doc.Save(newfile);
   readFile(newname);
+  return true;
 }
 
 void ListStringCSV::removeRow(QString filename, int row_idx)

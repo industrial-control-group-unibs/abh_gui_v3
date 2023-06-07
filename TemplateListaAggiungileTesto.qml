@@ -29,7 +29,9 @@ Item {
     signal pressSx
     signal pressDx
     signal erase
+    signal reload
 
+    onReload: lista_workout.reload()
     Barra_superiore{titolo: component.titolo}
 
     Component.onCompleted:

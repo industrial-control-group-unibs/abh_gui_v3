@@ -20,6 +20,7 @@ Item {
     property bool link_dx_visible: false
     property string text: tastierino.testo
     property string titolo: ""
+    property string messaggio: ""
     signal pressSx
     signal pressDx
 
@@ -45,6 +46,17 @@ Item {
         anchors.topMargin: parametri_generali.larghezza_barra
         clip: true
 
+        Item {
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: parametri_generali.larghezza_barra
+            Titolo
+            {
+                text: component.messaggio
+            }
+
+        }
         Tastiera
         {
             id: tastierino

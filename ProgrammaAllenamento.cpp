@@ -122,7 +122,7 @@ int ProgrammaAllenamento::getValue(int session, int index, QString field)
     return -100;
   }
   int idx2=idx+index;
-  if (idx2>=doc_->GetRowCount())
+  if (idx2>=(int)doc_->GetRowCount())
   {
     qDebug() << " index is too big";
     return -100;
@@ -157,7 +157,7 @@ void ProgrammaAllenamento::setValue(int session, int index, QString field, int v
     qDebug() << " session not found";
   }
   int idx2=idx+index;
-  if (idx2>=doc_->GetRowCount())
+  if (idx2>=(int)doc_->GetRowCount())
   {
     qDebug() << " index is too big";
   }
@@ -172,6 +172,63 @@ void ProgrammaAllenamento::setValue(int session, int index, QString field, int v
 
   doc_->SetCell<int>(columnIdx,idx2,value);
   qDebug()<< " colonna" << field << " value = "<< value;
+  doc_->Save(file_name_);
+}
+
+void ProgrammaAllenamento::removeRow(int session, int index)
+{
+  int idx=0;
+  bool found=false;
+  for (;idx<(int)doc_->GetRowCount();idx++)
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    if (s==session)
+    {
+      found=true;
+      break;
+    }
+  }
+  if (!found)
+  {
+    qDebug() << " session not found";
+  }
+  int idx2=idx+index;
+  if (idx2>=(int)doc_->GetRowCount())
+  {
+    qDebug() << " index is too big";
+  }
+
+  int s= doc_->GetCell<int>(6,idx2);
+  if (s!=session)
+  {
+    qDebug() << " index is too big";
+  }
+
+  doc_->RemoveRow(idx2);
+  doc_->Save(file_name_);
+}
+
+void ProgrammaAllenamento::removeSession(int session)
+{
+  int idx=0;
+  bool found=false;
+  while (idx<(int)doc_->GetRowCount())
+  {
+    int s= doc_->GetCell<int>(6,idx);
+    if (s<session)
+    {
+      idx++;
+    }
+    else if (s==session)
+    {
+      doc_->RemoveRow(idx);
+    }
+    else
+    {
+      doc_->SetCell(6,idx,s-1);
+      idx++;
+    }
+  }
   doc_->Save(file_name_);
 }
 

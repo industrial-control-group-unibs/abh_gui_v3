@@ -18,7 +18,8 @@ TemplateListaAggiungileTesto
     }
     onErase:
     {
-
+        _workout.removeSession(index+1)
+        component.model=_custom_sessions.uniqueElementsOfColumn(impostazioni_utente.identifier+"_"+programma_personalizzato.name,"session")
     }
 
 
