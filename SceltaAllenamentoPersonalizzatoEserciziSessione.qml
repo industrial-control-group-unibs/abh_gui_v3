@@ -251,6 +251,7 @@ Item {
                 }
 
                 nome:  _esercizi.getName(vector[0])
+                type:  _esercizi.getType(vector[0])
                 immagine: vector[0]==="+"?"+": _esercizi.getImage(vector[0])
 
                 ripetizioni:parseFloat(vector[1])

@@ -10,7 +10,7 @@ IconaRettangolo
 
     property string immagine: "biceps_curl.jpeg"
     property string nome: "NOME"
-
+    property int type: 10
     property int ripetizioni: 10
     property int serie: 4
     property int potenza: 10
@@ -123,7 +123,7 @@ IconaRettangolo
                     font.pixelSize: 20
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignLeft
-                    text: selected_exercise.type===3? "TEMPO\nSERIE\nPOTENZA" :"RIPETIZIONI\nSERIE\nPOTENZA"
+                    text: type===3? "TEMPO\nSERIE\nPOTENZA" :"RIPETIZIONI\nSERIE\nPOTENZA"
                 }
                 Testo
                 {
