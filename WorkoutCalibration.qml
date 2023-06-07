@@ -25,7 +25,7 @@ Item
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
-        height: parent.height*0.5
+        height: parent.height*0.3
 
         text: "ANALISI IN CORSO"
         color: parametri_generali.coloreUtente
