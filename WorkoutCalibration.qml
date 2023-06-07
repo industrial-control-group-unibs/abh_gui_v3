@@ -45,7 +45,7 @@ Item
         anchors.left: parent.left
         anchors.right: parent.right
         height: parent.height*0.5
-        text: "CONTINUA AD ESEGUIRE\n L'ESERCIZIO " +fb_udp.data[0]
+        text: "CONTINUA AD ESEGUIRE\n L'ESERCIZIO"
         color: parametri_generali.coloreUtente
         verticalAlignment: Text.AlignVCenter
         font.pixelSize: 40
