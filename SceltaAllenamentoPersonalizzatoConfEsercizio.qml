@@ -209,6 +209,7 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
+                    textFormat: Text.RichText
                     text: selected_exercise.type===3? ("<span style='font-size: 70px;'>DURATA </span>"
                         + "<span style='font-size: 30px'>sec.</span>") : "N° RIPETIZIONI"
                     font.pixelSize: 70
