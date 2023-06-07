@@ -280,8 +280,8 @@ Item
             horizontalCenter: parent.horizontalCenter
             top:parent.top
             bottom: parent.bottom
-            width: parent.width*0.6
         }
+        width: parent.width*0.6
 
         Titolo
         {
