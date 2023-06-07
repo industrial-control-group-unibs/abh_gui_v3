@@ -198,7 +198,7 @@ Item {
 
                 value: component.reps
                 min: 1
-                increment: selected_exercise.type===3? (value>=10?5:1)   : 1
+                increment: selected_exercise.type===3? (value>=30?5:1)   : 1
                 max: selected_exercise.type===3? 600 : 50
 
                 onValueChanged: selected_exercise.reps=value
