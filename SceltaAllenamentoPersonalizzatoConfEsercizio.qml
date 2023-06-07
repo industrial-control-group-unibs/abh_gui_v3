@@ -36,7 +36,7 @@ Item {
         if (programma_personalizzato.nuovo_esercizio)
         {
             component.sets= 3
-            component.reps= 12
+            component.reps= selected_exercise.type===3? 30: 12
             component.power=3
         }
         else
@@ -198,7 +198,7 @@ Item {
 
                 value: component.reps
                 min: 1
-                increment: selected_exercise.type===3? 5   : 1
+                increment: selected_exercise.type===3? (value>=10?5:1)   : 1
                 max: selected_exercise.type===3? 600 : 50
 
                 onValueChanged: selected_exercise.reps=value
