@@ -30,7 +30,7 @@ Item
         text: "ANALISI IN CORSO"
         color: parametri_generali.coloreUtente
         verticalAlignment: Text.AlignVCenter
-        font.pixelSize: 40
+        font.pixelSize: 60
 //        anchors
 //        {
 //            horizontalCenter: parent.horizontalCenter
@@ -48,7 +48,7 @@ Item
         text: "CONTINUA AD ESEGUIRE\n L'ESERCIZIO"
         color: parametri_generali.coloreUtente
         verticalAlignment: Text.AlignVCenter
-        font.pixelSize: 20
+        font.pixelSize: 40
 //        anchors
 //        {
 //            horizontalCenter: parent.horizontalCenter
