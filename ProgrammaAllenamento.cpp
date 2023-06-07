@@ -22,6 +22,8 @@ void ProgrammaAllenamento::readFile(std::string file_name)
 
   try {
     doc_.reset(new rapidcsv::Document(file_name));
+    if (isEmpty())
+        return;
     act_session_=1;
     idx_=0;
 
@@ -485,6 +487,8 @@ QString ProgrammaAllenamento::getSessionTutString(int session)
 
 double ProgrammaAllenamento::getProgess()
 {
+  if (isEmpty())
+    return 0;
   double score=0.0;
   double avanzamento=0.0;
   double nesercizi=0.0;

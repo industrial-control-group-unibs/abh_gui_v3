@@ -209,7 +209,8 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: selected_exercise.type===3? "DURATA (SECONDI)" : "N° RIPETIZIONI"
+                    text: selected_exercise.type===3? ("<span style='font-size: 70px;'>DURATA </span>"
+                        + "<span style='font-size: 30px'>sec.</span>") : "N° RIPETIZIONI"
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }
@@ -292,7 +293,11 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: "RIPOSO"
+
+                    textFormat: Text.RichText
+                    text: "<span style='font-size: 70px;'>RIPOSO FINE SET </span>"
+                        + "<span style='font-size: 30px'>sec.</span>"
+
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }
@@ -334,7 +339,10 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: "RIPOSO FINALE"
+                    textFormat: Text.RichText
+                    text: "<span style='font-size: 70px;'>RIPOSO FINE SERIE </span>"
+                        + "<span style='font-size: 30px'>sec.</span>"
+
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }

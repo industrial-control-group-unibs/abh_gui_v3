@@ -2,6 +2,7 @@ import QtQuick 2.12
 
 TemplateListaAggiungileTesto
 {
+    Component.onCompleted: console.log("QUI: ",_custom_sessions.uniqueElementsOfColumn(impostazioni_utente.identifier+"_"+programma_personalizzato.name,"session"))
     model: _custom_sessions.uniqueElementsOfColumn(impostazioni_utente.identifier+"_"+programma_personalizzato.name,"session")
     titolo: programma_personalizzato.name
     id: component

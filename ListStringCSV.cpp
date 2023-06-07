@@ -188,6 +188,7 @@ QStringList ListStringCSV::uniqueElementsOfColumn(QString filename, QString col_
   QStringList qmllista;
   for (size_t ic=0;ic<lista.size();ic++)
   {
+    qDebug() << QString::fromStdString(lista.at(ic));
     QString str=QString::fromStdString(lista.at(ic));
     qmllista.push_back(str);
   }
