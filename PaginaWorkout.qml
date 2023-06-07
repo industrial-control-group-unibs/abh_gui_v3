@@ -154,13 +154,13 @@ Item {
         FrecceSxDx
         {
             id: freccia
-            visible: component.state==="sotto"
+            visible: (component.state==="sotto" ||component.state==="calibration")
             onPressSx:
             {
                 component.state="early_stop"
 
             }
-            dx_visible: true
+            dx_visible: component.state==="sotto"
             onPressDx:
             {
                 component.state="skip"
