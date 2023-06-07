@@ -33,6 +33,7 @@ Item {
              state="sotto"
              end_calibration=true
          }
+         console.log("stato = ",state)
     }
 
     onCalibrazioneChanged:
