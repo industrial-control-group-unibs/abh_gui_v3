@@ -36,6 +36,7 @@ TemplateListaAggiungileTesto
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             width: 100
+            colore: parametri_generali.coloreUtente
 
             onPressed: {
 //                selected_exercise.code=_workout.code
@@ -52,7 +53,8 @@ TemplateListaAggiungileTesto
             }
             Testo
             {
-                text: "INIZIA\nL'ALLENAMENTO"
+                text: "COMPLETA\nIL PROGRAMMA"
+                color: parametri_generali.coloreUtente
                 anchors
                 {
                     horizontalCenter: parent.horizontalCenter

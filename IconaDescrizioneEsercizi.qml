@@ -123,7 +123,7 @@ IconaRettangolo
                     font.pixelSize: 20
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignLeft
-                    text: "RIPETIZIONI\nSERIE\nPOTENZA"
+                    text: selected_exercise.type===3? "TEMPO\nSERIE\nPOTENZA" :"RIPETIZIONI\nSERIE\nPOTENZA"
                 }
                 Testo
                 {

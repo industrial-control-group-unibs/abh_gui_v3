@@ -194,7 +194,7 @@ Item {
                 selected_exercise.power=_workout.power
                 _list_string.fromList(_workout.listSessionExercise(1))
                 selected_exercise.workout=programma_personalizzato.name
-                pageLoader.source="ListaEserciziWorkout.qml"
+                pageLoader.source="SceltaAllenamentoPersonalizzatoSessioni.qml"
 
             }
 

@@ -904,6 +904,8 @@ void ProgrammaAllenamento::extend(int number_of_session)
     {
       doc_->RemoveRow(doc_->GetRowCount()-1);
     }
+    doc_->Save(file_name_);
+    readFile(file_name_);
   }
   else
   {

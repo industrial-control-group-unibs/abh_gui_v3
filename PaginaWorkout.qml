@@ -19,7 +19,22 @@ Item {
     property real tut_ex: 0
 
     property real calibrazione: fb_udp.data[5]
+    property real ripetizioni:  fb_udp.data[0]
     property bool end_calibration: false
+
+    onRipetizioniChanged:
+    {
+         if (fb_udp.data[5]===10)
+         {
+             end_calibration=true
+             state= "calibration"
+         }
+         else if (end_calibration && fb_udp.data[0]>=3)
+         {
+             state="sotto"
+             end_calibration=true
+         }
+    }
 
     onCalibrazioneChanged:
     {
@@ -62,6 +77,8 @@ Item {
         selected_exercise.time_esercizio+=(timer_tempo.value*0.001-time_ex)
         selected_exercise.tut_esercizio+=(timer_tut.value*0.001-tut_ex)
     }
+
+
     id: component
     state: "sotto"
 
@@ -200,12 +217,10 @@ Item {
             id: early_stop
             visible: false
             onCancel: {
-                console.log("qui")
                 if (selected_exercise.current_set>0)
                     component.state="sotto"
                 else
                 {
-                    console.log("quaaa")
                      component.state="calibration"
                 }
 //                component.state="sotto"
