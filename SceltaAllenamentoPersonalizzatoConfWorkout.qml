@@ -192,7 +192,8 @@ Item {
                 selected_exercise.sets=_workout.sets
                 selected_exercise.current_set=0
                 selected_exercise.power=_workout.power
-                _list_string.fromList(_workout.listSessionExercise(1))
+                _list_string.fromList(_workout.listSessionsNumber())
+                //_list_string.fromList(_workout.listSessionExercise(1))
                 selected_exercise.workout=programma_personalizzato.name
                 pageLoader.source="ListaWorkoutSessioni.qml"
 
