@@ -36,8 +36,8 @@ Item
     Component.onCompleted:
     {
         xvalues  = [0, 1, 2, 3, 4, 5, 6]
-        yvalues  = [7, 8, 6, 7, 8, 8, 7]
-        yvalues2 = [7, 7, 7, 7, 7, 7, 7]
+        yvalues  = [7, 0, 6, 0, 8, 0, 7]
+        yvalues2 = [7, 0, 7, 0, 7, 0, 7]
     }
 
     Testo

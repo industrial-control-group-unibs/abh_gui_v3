@@ -722,6 +722,7 @@ QVector<double> ProgrammaAllenamento::getSelectedSessionTuts      (int session)
     double t=QString().fromStdString(doc_->GetCell<std::string>(9,idx)).toDouble()/60.0;
     if (s==session)
     {
+
       values.append(t);
     }
   }

@@ -74,7 +74,7 @@ Item {
                 xvalues  =_workout.getSessionNumbers()
                 yvalues =_workout.getSessionTimes()
                 yvalues2  =_workout.getSessionTuts()
-                ymax = 0
+                ymax = 0.5
                 ystep = 0.5
                 update()
             }

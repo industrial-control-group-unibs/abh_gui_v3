@@ -122,7 +122,7 @@ Item {
                     RadialGradient {
                         anchors.fill: parent
                         gradient: Gradient {
-                            GradientStop { position: 0.0; color: parametri_generali.coloreBordo}
+                            GradientStop { position: 0.0; color: parametri_generali.coloreUtente}
                             GradientStop { position: (0.8*chiamata_sistema.volume+80)/300; color: "transparent" }
                         }
                     }

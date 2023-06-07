@@ -76,7 +76,7 @@ Item {
                 xvalues  =_workout.getSelectedSessionNumbers(selected_exercise.selected_session)
                 yvalues  =_workout.getSelectedSessionTimes(selected_exercise.selected_session)
                 yvalues2 =_workout.getSelectedSessionTuts(selected_exercise.selected_session)
-                ymax = 1
+                ymax = 0.5
                 xmax=0
                 ystep = 0.5
                 update()
