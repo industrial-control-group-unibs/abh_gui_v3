@@ -21,15 +21,40 @@ Item
 
     Testo
     {
-        text: "CALIBRAZIONE IN CORSO\nCONTINUA A ESEGUIRE L'ESERCIZIO"
+        id: testo1
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: parent.height*0.5
+
+        text: "ANALISI IN CORSO"
+        color: parametri_generali.coloreUtente
         verticalAlignment: Text.AlignVCenter
         font.pixelSize: 40
-        anchors
-        {
-            horizontalCenter: parent.horizontalCenter
-            verticalCenter: parent.verticalCenter
+//        anchors
+//        {
+//            horizontalCenter: parent.horizontalCenter
+//            verticalCenter: parent.verticalCenter
 
-        }
+//        }
+    }
+
+    Testo
+    {
+        anchors.top: testo1.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: parent.height*0.5
+        text: "CONTINUA AD ESEGUIRE\n L'ESERCIZIO"
+        color: parametri_generali.coloreUtente
+        verticalAlignment: Text.AlignVCenter
+        font.pixelSize: 20
+//        anchors
+//        {
+//            horizontalCenter: parent.horizontalCenter
+//            verticalCenter: parent.verticalCenter
+
+//        }
     }
 
 

@@ -28,7 +28,7 @@ Item {
              end_calibration=true
              state= "calibration"
          }
-         else if (end_calibration)
+         else if (end_calibration && fb_udp.data[0]>=3)
          {
              state="sotto"
              end_calibration=true
@@ -46,6 +46,11 @@ Item {
         startstop_udp.string="start"
         parametri_generali.login_page=false
         _active_workouts.readFile("ACTIVEWORKOUT_"+impostazioni_utente.identifier)
+
+        if (selected_exercise.current_set>0)
+            state="sotto"
+        else
+            state="calibration"
     }
     Component.onDestruction:
     {
