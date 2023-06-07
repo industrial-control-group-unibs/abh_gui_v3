@@ -310,7 +310,7 @@ Item {
                     anchors.bottomMargin: 10
 
                     textFormat: Text.RichText
-                    text: "<span style='font-size: 70px;'>RIPOSO FINE SET </span>"
+                    text: "<span style='font-size: 70px;'>PAUSA </span>"
                         + "<span style='font-size: 30px'>sec.</span>"
 
                     font.pixelSize: 70
@@ -355,7 +355,7 @@ Item {
                     width: 300
                     anchors.bottomMargin: 10
                     textFormat: Text.RichText
-                    text: "<span style='font-size: 70px;'>RIPOSO FINE SERIE </span>"
+                    text: "<span style='font-size: 70px;'>RIPOSO </span>"
                         + "<span style='font-size: 30px'>sec.</span>"
 
                     font.pixelSize: 70
