@@ -200,8 +200,15 @@ Item {
             id: early_stop
             visible: false
             onCancel: {
-
-                component.state="sotto"
+                console.log("qui")
+                if (selected_exercise.current_set>0)
+                    component.state="sotto"
+                else
+                {
+                    console.log("quaaa")
+                     component.state="calibration"
+                }
+//                component.state="sotto"
             }
             onExit:
             {
@@ -218,6 +225,7 @@ Item {
             visible: false
             onCancel: {
                 component.state="sotto"
+
             }
             onExit: pageLoader.source=  "PaginaRiposo.qml"
         }
