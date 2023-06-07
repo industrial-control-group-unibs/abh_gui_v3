@@ -88,6 +88,7 @@ Item {
         height: parent.height*0.2
         FrecceSxDx
         {
+            property var empty_list: ["+", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
             onPressSx:
             {
                 _list_string.fromList(_workout.listSessionExercise(programma_personalizzato.sessione))
