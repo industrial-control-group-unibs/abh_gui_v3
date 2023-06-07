@@ -93,7 +93,10 @@ Item {
             {
                 _list_string.fromList(_workout.listSessionExercise(programma_personalizzato.sessione))
                 _list_string.addRow(empty_list)
-                pageLoader.source= "SceltaAllenamentoPersonalizzatoEsercizi.qml"
+                if (!programma_personalizzato.nuovo_esercizio)
+                    pageLoader.source= "SceltaAllenamentoPersonalizzatoEserciziSessione.qml"
+                else
+                    pageLoader.source= "SceltaAllenamentoPersonalizzatoEsercizi.qml"
             }
             onPressDx:
             {
@@ -129,7 +132,10 @@ Item {
                 }
                 _list_string.fromList(_workout.listSessionExercise(programma_personalizzato.sessione))
                 _list_string.addRow(empty_list)
-                pageLoader.source=  "SceltaAllenamentoPersonalizzatoEsercizi.qml"
+                if (!programma_personalizzato.nuovo_esercizio)
+                    pageLoader.source= "SceltaAllenamentoPersonalizzatoEserciziSessione.qml"
+                else
+                    pageLoader.source= "SceltaAllenamentoPersonalizzatoEsercizi.qml"
             }
         }
     }
