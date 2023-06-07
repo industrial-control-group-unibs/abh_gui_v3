@@ -279,6 +279,8 @@ Item
             right: logo_barra.left
             top:parent.top
             bottom: parent.bottom
+            leftMargin: width*0.1
+            rightMargin: width*0.1
         }
 
         Titolo

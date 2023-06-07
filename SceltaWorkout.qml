@@ -16,7 +16,7 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
-    Barra_superiore{titolo: "ALLENAMENTO GUIDATA"}
+    Barra_superiore{titolo: "ALLENAMENTO GUIDATO"}
 
     id: component
     property bool new_workout: false
