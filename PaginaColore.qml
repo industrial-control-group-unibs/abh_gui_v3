@@ -347,8 +347,8 @@ Item {
                 {
                     anchors.fill: parent
                     onPressed: {
-                        parametri_generali.coloreSfondo    = _default[0]
-                        parametri_generali.coloreBordo     = _default[1]
+                        parametri_generali.coloreBordo     = _default[0]
+                        parametri_generali.coloreSfondo    = _default[1]
                         parametri_generali.coloreUtente    = _default[2]
                         parametri_generali.coloreLed       = _default[3]
 
