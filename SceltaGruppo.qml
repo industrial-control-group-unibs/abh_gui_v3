@@ -11,8 +11,7 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
-    Barra_superiore{}
-
+    Barra_superiore{titolo: "ESERCIZI"}
     Component.onDestruction:
     {
     }

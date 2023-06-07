@@ -9,7 +9,7 @@ TemplateListaAggiungile
         reload()
     }
     model: _custom_workouts
-    titolo: "PROGRAMMI PERSONALIZZATI"
+    titolo: "ALLENAMENTO PERSONALIZZATO"
 
     onPressSx: pageLoader.source= "PaginaAllenamento.qml"
     onPressDx:

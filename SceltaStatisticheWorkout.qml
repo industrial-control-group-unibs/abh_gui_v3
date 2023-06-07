@@ -18,8 +18,7 @@ Item {
 
     property bool selected: false
     property bool personalizato: false
-    Barra_superiore{}
-
+    Barra_superiore{titolo: "STATISTICHE"}
     id: component
     property bool new_workout: false
     Component.onCompleted:
@@ -64,7 +63,7 @@ Item {
             dx_visible: lista_workout.currentIndex>=0
             colore: parametri_generali.coloreBordo
         }
-        IconaCerchio
+        IconaBottone
         {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
@@ -77,6 +76,7 @@ Item {
             Testo
             {
                 text: !component.personalizato?"ALLENAMENTO\nGUIDATO":"ALLENAMENTO\nPERSONALIZZATO"
+                color: parametri_generali.coloreUtente
                 anchors
                 {
                     horizontalCenter: parent.horizontalCenter

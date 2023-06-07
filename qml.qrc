@@ -111,5 +111,6 @@
         <file>SceltaAllenamentoPersonalizzatoEsercizi.qml</file>
         <file>SceltaAllenamentoPersonalizzatoConfEsercizio.qml</file>
         <file>SceltaAllenamentoPersonalizzatoConfWorkout.qml</file>
+        <file>IconaBottone.qml</file>
     </qresource>
 </RCC>

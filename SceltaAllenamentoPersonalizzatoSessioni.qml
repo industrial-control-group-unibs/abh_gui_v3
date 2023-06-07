@@ -31,13 +31,13 @@ TemplateListaAggiungileTesto
         z:parent.z+2
         height:274+50
 
-        IconaCerchio
+        IconaBottone
         {
             visible: component.count>1
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             width: 100
-            colore: parametri_generali.coloreUtente
+            colore: parametri_generali.coloreBordo
 
             onPressed: {
 //                selected_exercise.code=_workout.code

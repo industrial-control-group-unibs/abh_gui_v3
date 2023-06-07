@@ -26,10 +26,9 @@ Item {
     {
          if (fb_udp.data[5]===10)
          {
-             end_calibration=true
              state= "calibration"
          }
-         else if (end_calibration && fb_udp.data[0]>=3)
+         else if (fb_udp.data[0]>=3)
          {
              state="sotto"
              end_calibration=true
@@ -40,13 +39,11 @@ Item {
     {
          if (fb_udp.data[5]===10)
          {
-             end_calibration=true
              state= "calibration"
          }
-         else if (end_calibration && fb_udp.data[0]>=3)
+         else if (fb_udp.data[0]>=3)
          {
              state="sotto"
-             end_calibration=true
          }
     }
 
