@@ -30,21 +30,21 @@ void ProgrammaAllenamento::readFile(std::string file_name)
     updateField();
 
 
-  std::vector<int> session = doc_->GetColumn<int>("session");
-  std::vector<int> score = doc_->GetColumn<int>("score");
+    std::vector<int> session = doc_->GetColumn<int>("session");
+    std::vector<int> score = doc_->GetColumn<int>("score");
 
-  end_workout_=true;
-  for (size_t idx=0;idx<session.size();idx++)
-  {
-    if (score.at(idx)<0)
+    end_workout_=true;
+    for (size_t idx=0;idx<session.size();idx++)
     {
-      act_session_=session.at(idx);
-      end_workout_=false;
-      idx_=idx;
-      break;
+      if (score.at(idx)<0)
+      {
+        act_session_=session.at(idx);
+        end_workout_=false;
+        idx_=idx;
+        break;
+      }
     }
-  }
-  updateField();
+    updateField();
   }
   catch (...)
   {
@@ -139,6 +139,12 @@ int ProgrammaAllenamento::getValue(int session, int index, QString field)
   return value;
 
 }
+
+bool ProgrammaAllenamento::isEmpty()
+{
+  return doc_->GetRowCount()==0;
+}
+
 void ProgrammaAllenamento::setValue(int session, int index, QString field, int value)
 {
   int idx=0;
@@ -289,7 +295,7 @@ void ProgrammaAllenamento::addRow(int session, QStringList dati)
     return;
   }
   std::vector<std::string> row;
-   for (const QString& s : dati)
+  for (const QString& s : dati)
     row.push_back(s.toStdString());
 
   doc_->InsertRow(idx,row);
@@ -428,7 +434,7 @@ double ProgrammaAllenamento::getSessionTime(int session)
       time+=t;
     }
   }
-return time;
+  return time;
 
 }
 
@@ -886,6 +892,55 @@ QString ProgrammaAllenamento::createWorkout(QString user_id, QString workout_nam
 
 }
 
+
+void ProgrammaAllenamento::extend(int number_of_session)
+{
+  int workout_rows=doc_->GetRowCount();
+  int workout_session=doc_->GetCell<int>("session",doc_->GetRowCount()-1); // numero sessioni nel workout
+
+  if (workout_session>number_of_session)
+  {
+    while (doc_->GetCell<int>("session",doc_->GetRowCount()-1)>number_of_session)
+    {
+      doc_->RemoveRow(doc_->GetRowCount()-1);
+    }
+  }
+  else
+  {
+    int idx=0;
+
+    int offset=workout_session;
+    std::unique_ptr<rapidcsv::Document> doc;
+    doc.reset(new rapidcsv::Document(file_name_));
+
+    while(doc_->GetCell<int>("session",doc_->GetRowCount()-1)<=number_of_session)
+    {
+      if ((doc->GetCell<int>("session",idx)+offset)>number_of_session)
+        break;
+      doc_->InsertRow(doc_->GetRowCount(),doc->GetRow<std::string>(idx));
+
+      int session=doc_->GetCell<int>("session",doc_->GetRowCount()-1);
+
+      doc_->SetCell(6,doc_->GetRowCount()-1,session+offset);
+      idx++;
+      if (idx>=workout_rows)
+      {
+        idx=0;
+        offset+=workout_session;
+      }
+    }
+
+
+    for  (int idx=0;idx<(int)doc_->GetRowCount();idx++)
+    {
+      doc_->SetCell(7,idx,-1);
+    }
+    doc_->Save(file_name_);
+    readFile(file_name_);
+
+  }
+}
+
 void ProgrammaAllenamento::loadWorkout(QString user_id, QString workout_name)
 {
   file_name_=dir_path_.toStdString()+"/../utenti/"+user_id.toStdString()+"_"+workout_name.toStdString()+".csv";
@@ -921,12 +976,12 @@ void ProgrammaAllenamento::readStatFile(QString user_id)
   std::unique_ptr<rapidcsv::Document> stat_doc;
   stat_doc.reset(new rapidcsv::Document(stat_file_name_));
 
-//  std::vector<std::string> col = stat_doc->GetColumn<std::string>("current_session");
-//  if (col.size()>0)
-//    act_session_=std::stoi(col.back());
-//  else
-//    act_session_=1;
-//  setSession(act_session_);
+  //  std::vector<std::string> col = stat_doc->GetColumn<std::string>("current_session");
+  //  if (col.size()>0)
+  //    act_session_=std::stoi(col.back());
+  //  else
+  //    act_session_=1;
+  //  setSession(act_session_);
 }
 
 

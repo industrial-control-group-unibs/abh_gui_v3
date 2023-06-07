@@ -10,7 +10,6 @@ TemplateListaAggiungileTesto
     onPressDx:
     {
         programma_personalizzato.sessione= index+1
-        console.log("session=",programma_personalizzato.sessione)
         _list_string.fromList(_workout.listSessionExercise(programma_personalizzato.sessione))
         _list_string.addRow(empty_list)
 
@@ -39,16 +38,17 @@ TemplateListaAggiungileTesto
             width: 100
 
             onPressed: {
-                selected_exercise.code=_workout.code
-                selected_exercise.reps=_workout.reps
-                selected_exercise.rest_time=_workout.rest
-                selected_exercise.rest_set_time=_workout.restSet
-                selected_exercise.sets=_workout.sets
-                selected_exercise.current_set=0
-                selected_exercise.power=_workout.power
-                _list_string.fromList(_workout.listSessionExercise(1))
-                selected_exercise.workout=programma_personalizzato.name
-                pageLoader.source="ListaEserciziWorkout.qml"
+//                selected_exercise.code=_workout.code
+//                selected_exercise.reps=_workout.reps
+//                selected_exercise.rest_time=_workout.rest
+//                selected_exercise.rest_set_time=_workout.restSet
+//                selected_exercise.sets=_workout.sets
+//                selected_exercise.current_set=0
+//                selected_exercise.power=_workout.power
+//                _list_string.fromList(_workout.listSessionExercise(1))
+//                selected_exercise.workout=programma_personalizzato.name
+//                pageLoader.source="ListaEserciziWorkout.qml"
+                pageLoader.source="SceltaAllenamentoPersonalizzatoConfWorkout.qml"
             }
             Testo
             {

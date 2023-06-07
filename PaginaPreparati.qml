@@ -46,7 +46,6 @@ PaginaVideoSingolo
         {
             timer_tempo.resetValue()
             timer_tut.resetValue()
-            console.log("default[8]",_default[8]," to float = ", parseFloat(_default[8]))
             selected_exercise.rest_time= parseFloat(_default[8])
         }
 

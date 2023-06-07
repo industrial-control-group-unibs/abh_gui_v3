@@ -88,6 +88,8 @@ Item {
                 lista_workout.model= component.model
                 lista_workout.forceLayout()
                 pageLoader.source=pageLoader.source
+                currentIndex=-1
+                component.link_dx_visible=false
             }
 
             delegate: IconaInformazioni{

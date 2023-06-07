@@ -20,7 +20,6 @@ Item {
 
         if (_workout.endWorkout)
         {
-            console.log("qui")
             selected_exercise.workout_finito=true
             pageLoader.source = "PaginaCoppa.qml"
         }

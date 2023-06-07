@@ -110,5 +110,6 @@
         <file>SceltaAllenamentoPersonalizzatoGruppo.qml</file>
         <file>SceltaAllenamentoPersonalizzatoEsercizi.qml</file>
         <file>SceltaAllenamentoPersonalizzatoConfEsercizio.qml</file>
+        <file>SceltaAllenamentoPersonalizzatoConfWorkout.qml</file>
     </qresource>
 </RCC>

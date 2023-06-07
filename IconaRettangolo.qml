@@ -161,7 +161,6 @@ Item {
             }
             onPressAndHold:
             {
-                console.log("mouse area press and hold")
                 component.pressAndHold()
             }
         }

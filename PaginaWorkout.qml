@@ -56,7 +56,6 @@ Item {
 
         selected_exercise.time_esercizio+=(timer_tempo.value*0.001-time_ex)
         selected_exercise.tut_esercizio+=(timer_tut.value*0.001-tut_ex)
-        console.log("time = ",selected_exercise.time_esercizio," tut = ",selected_exercise.tut_esercizio)
     }
     id: component
     state: "sotto"

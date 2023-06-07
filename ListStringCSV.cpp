@@ -102,13 +102,13 @@ void ListStringCSV::addRow(QString filename, QStringList row)
   readFile(filename);
 }
 
-bool ListStringCSV::rename(QString oldname, QString newname)
+bool ListStringCSV::rename(QString oldname, QString newname, bool replace)
 {
   std::string oldfile=dir_path_+"/"+oldname.toStdString()+".csv";
   std::string newfile=dir_path_+"/"+newname.toStdString()+".csv";
 
   std::ifstream f(newfile.c_str());
-  if (f.good())
+  if (f.good() && !replace)
     return false;
 
   qDebug() << "oldfile "<< oldname;
@@ -134,6 +134,23 @@ void ListStringCSV::removeRow(QString filename, int row_idx)
   doc.RemoveRow(doc.GetRowCount()-row_idx-1);
   doc.Save(nome_file);
   readFile(filename);
+}
+
+void ListStringCSV::removeRowByName(QString filename, QString name)
+{
+  std::string nome_file=dir_path_+"/"+filename.toStdString()+".csv";
+  rapidcsv::Document doc(nome_file);
+
+  std::string n=name.toStdString();
+  for (int idx=0;idx<(int)doc.GetRowCount();idx++)
+  {
+    if (!doc.GetCell<std::string>(0,idx).compare(n))
+    {
+      doc.RemoveRow(idx);
+      doc.Save(nome_file);
+      return;
+    }
+  }
 }
 
 void ListStringCSV::changeValue(QString filename, int row_idx, int col_idx, QString value)

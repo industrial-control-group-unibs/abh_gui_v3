@@ -62,7 +62,6 @@ Item {
                     selected_exercise.current_set=0
                     selected_exercise.power=_workout.power
                     selected_exercise.selected_session=lista_workout.currentIndex+1
-                    console.log("session=",selected_exercise.selected_session)
                     _list_string.fromList(_workout.listSessionExercise(selected_exercise.selected_session))
                     pageLoader.source="ListaEserciziWorkout.qml"
                 }

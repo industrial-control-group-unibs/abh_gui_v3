@@ -35,7 +35,6 @@ Item {
     {
         if (programma_personalizzato.nuovo_esercizio)
         {
-            console.log("QUI?")
             component.sets= 3
             component.reps= 12
             component.power=3

@@ -26,7 +26,10 @@ Item {
     {
         _active_workouts.appendIcon(false);
         _active_workouts.readFile("ACTIVEWORKOUT_"+impostazioni_utente.identifier);
+        _custom_workouts.appendIcon(false)
         _custom_workouts.readFile("CUSTOMWORKOUT_"+impostazioni_utente.identifier);
+        _custom_workouts.appendIcon(true)
+        _active_workouts.appendIcon(true);
          lista_workout.reload()
     }
 
@@ -51,15 +54,11 @@ Item {
             onPressDx:
             {
                 _workout.loadWorkout(impostazioni_utente.identifier,selected_exercise.workout)
-//                selected_exercise.code=_workout.code
-//                selected_exercise.reps=_workout.reps
-//                selected_exercise.rest_time=_workout.rest
-//                selected_exercise.rest_set_time=_workout.restSet
-//                selected_exercise.sets=_workout.sets
-//                selected_exercise.current_set=0
-//                selected_exercise.power=_workout.power
-                 _list_string.fromList(_workout.listSessionsNumber())
-                pageLoader.source="ListaStatisticheWorkoutSessioni.qml"
+                if (!_workout.isEmpty())
+                {
+                    _list_string.fromList(_workout.listSessionsNumber())
+                    pageLoader.source="ListaStatisticheWorkoutSessioni.qml"
+                }
             }
 
             dx_visible: lista_workout.currentIndex>=0
@@ -77,7 +76,7 @@ Item {
             }
             Testo
             {
-                text: component.personalizato?"ALLENAMENTO\nGUIDATO":"ALLENAMENTO\nPERSONALIZZATO"
+                text: !component.personalizato?"ALLENAMENTO\nGUIDATO":"ALLENAMENTO\nPERSONALIZZATO"
                 anchors
                 {
                     horizontalCenter: parent.horizontalCenter
@@ -121,19 +120,17 @@ Item {
 
             onCurrentIndexChanged:
             {
-                console.log("qui!!! ", currentIndex)
             }
 
             signal reload;
             onReload:
             {
                 lista_workout.model=[]
-                if (component.personalizato)
+                if (!component.personalizato)
                     lista_workout.model= _active_workouts
                 else
                     lista_workout.model= _custom_workouts
                 lista_workout.forceLayout()
-//                lista_workout.currentIndex=-1
                 pageLoader.source="SceltaStatisticheWorkout.qml"
             }
 
@@ -175,7 +172,8 @@ Item {
                 onSeeStat:
                 {
                     _workout.loadWorkout(impostazioni_utente.identifier,selected_exercise.workout)
-                    pageLoader.source= "PaginaStatistiche.qml"
+                    if (!_workout.isEmpty())
+                        pageLoader.source= "PaginaStatistiche.qml"
                 }
 
             }

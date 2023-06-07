@@ -57,6 +57,9 @@ public:
   public slots:
     QString createWorkout(QString user_id, QString workout_name, int number_of_session);
     bool createEmptyWorkout(QString user_id, QString workout_name);
+
+    void extend(int number_of_session);
+    bool isEmpty();
     void loadWorkout(QString user_id, QString workout_name);
 
     void addRow(int session, QStringList dati);

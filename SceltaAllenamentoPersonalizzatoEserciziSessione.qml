@@ -30,14 +30,10 @@ Item {
 
     Component.onCompleted:
     {
-        console.log("session=",programma_personalizzato.sessione)
-
     }
 
     Component.onDestruction:
     {
-        console.log("session=",programma_personalizzato.sessione)
-
     }
 
 
@@ -232,15 +228,11 @@ Item {
 
             Component.onCompleted:
             {
-                console.log(model)
-                console.log(count)
             }
 
 
             delegate: IconaDescrizioneEsercizi{
 
-                Component.onCompleted: console.log("nome = ",nome," immagine = ",immagine, " code = ",vector[0])
-//                visible: vector[0]===""
                 color: parametri_generali.coloreBordo
                 highlighted:
                 {

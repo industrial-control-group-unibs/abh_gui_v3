@@ -220,7 +220,6 @@ Item {
 
             delegate: IconaDescrizioneEsercizi{
 
-                Component.onCompleted: console.log("nome = ",nome," immagine = ",immagine, " code = ",vector[0])
 
                 color: parametri_generali.coloreBordo
                 highlighted:
@@ -235,7 +234,6 @@ Item {
                     if (highlighted)
                     {
                         selected_exercise.video_intro=_esercizi.getVideoIntro(vector[0])
-                        console.log("video_intro = ",selected_exercise.video_intro)
                     }
                 }
 

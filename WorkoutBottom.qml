@@ -119,7 +119,6 @@ Item
                     if (component.default_power*selected_exercise.reps*selected_exercise.sets>0)
                         selected_exercise.score+=selected_exercise.power/(1.0*component.default_power*selected_exercise.reps*selected_exercise.sets)
 
-                    console.log("score=",selected_exercise.completamento,"completamento",selected_exercise.completamento)
                 }
                 if (ripetizioni>selected_exercise.reps)
                     pageLoader.source = "PaginaRiposo.qml"

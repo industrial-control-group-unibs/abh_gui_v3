@@ -42,8 +42,8 @@ TemplateListaAggiungile
     }
     onErase:
     {
-
         _custom_workouts.removeRow("CUSTOMWORKOUT_"+impostazioni_utente.identifier,index);
+        _custom_sessions.removeRowByName("CUSTOMWORKOUT_"+impostazioni_utente.identifier,text);
     }
 
 

@@ -31,7 +31,6 @@ Item {
 
 
 
-            console.log( _workout.getSessionProgess(selected_exercise.selected_session))
 
             if (selected_exercise.personalizzato)
             {

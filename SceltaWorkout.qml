@@ -147,7 +147,6 @@ Item {
                 }
                 onPressAndHold:
                 {
-                    console.log("press and hold workout")
                     erase=true
                 }
                 onEraseNo:
