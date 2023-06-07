@@ -123,7 +123,7 @@ IconaRettangolo
                     font.pixelSize: 20
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignLeft
-                    text: type===3? "TEMPO\nSERIE\nPOTENZA" :"RIPETIZIONI\nSERIE\nPOTENZA"
+                    text: component.type===3? "TEMPO\nSERIE\nPOTENZA" :"RIPETIZIONI\nSERIE\nPOTENZA"
                 }
                 Testo
                 {
