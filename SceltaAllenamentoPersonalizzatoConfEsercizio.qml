@@ -88,9 +88,15 @@ Item {
         height: parent.height*0.2
         FrecceSxDx
         {
-            onPressSx: pageLoader.source= "SceltaAllenamentoPersonalizzatoEsercizi.qml"
+            onPressSx:
+            {
+                _list_string.fromList(_workout.listSessionExercise(programma_personalizzato.sessione))
+                _list_string.addRow(empty_list)
+                pageLoader.source= "SceltaAllenamentoPersonalizzatoEsercizi.qml"
+            }
             onPressDx:
             {
+
                 if (programma_personalizzato.nuovo_esercizio)
                     _workout.addRow(programma_personalizzato.sessione,[selected_exercise.code,selected_exercise.power,selected_exercise.reps,selected_exercise.sets,component.riposo,component.riposo_finale,programma_personalizzato.sessione,-1,0,0])
                 else
@@ -120,7 +126,8 @@ Item {
                                       "riposo_set",
                                       component.riposo_set)
                 }
-
+                _list_string.fromList(_workout.listSessionExercise(programma_personalizzato.sessione))
+                _list_string.addRow(empty_list)
                 pageLoader.source=  "SceltaAllenamentoPersonalizzatoEsercizi.qml"
             }
         }
