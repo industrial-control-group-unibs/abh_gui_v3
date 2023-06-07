@@ -275,12 +275,12 @@ Item
     {
         id: barra_zona_testo
         anchors{
-            left: immagine_utente.right
-            right: logo_barra.left
+//            left: immagine_utente.right
+//            right: logo_barra.left
+            horizontalCenter: parent.horizontalCenter
             top:parent.top
             bottom: parent.bottom
-            leftMargin: width*0.1
-            rightMargin: width*0.1
+            width: parent.width*0.6
         }
 
         Titolo
