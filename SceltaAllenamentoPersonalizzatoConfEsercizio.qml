@@ -209,7 +209,7 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: selected_exercise.type===3? "DURATA [SECONDI]" : "N° RIPETIZIONI"
+                    text: selected_exercise.type===3? "DURATA (SECONDI)" : "N° RIPETIZIONI"
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }

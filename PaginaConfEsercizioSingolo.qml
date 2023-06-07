@@ -141,8 +141,10 @@ Item {
                 height: 0.1*width
 
                 value: 10
+
                 min: 1
-                max: 50
+                increment: selected_exercise.type===3? (value>=30?5:1)   : 1
+                max: selected_exercise.type===3? 600 : 50
 
                 onValueChanged: selected_exercise.reps=value
 
@@ -152,7 +154,7 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: selected_exercise.type===3? "DURATA [SECONDI]" : "N° RIPETIZIONI"
+                    text: selected_exercise.type===3? "DURATA (SECONDI)" : "N° RIPETIZIONI"
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }
