@@ -31,6 +31,8 @@
 #include <rapidcsv.h>
 #include <rapidcsv.h>
 
+#include <QTranslator>
+
 int main(int argc, char *argv[])
 {
  std::string prev_loc = std::setlocale(LC_ALL, nullptr);
@@ -150,6 +152,11 @@ int main(int argc, char *argv[])
 
 
   std::shared_ptr<QGuiApplication> app=std::make_shared<QGuiApplication>(argc, argv);
+  QTranslator translator;
+  translator.load(":/abh");
+
+  app->installTranslator(&translator);
+
   std::shared_ptr<QQmlApplicationEngine> engine=std::make_shared<QQmlApplicationEngine>();
 
 

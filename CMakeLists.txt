@@ -26,11 +26,12 @@ set(CMAKE_BUILD_TYPE Release)
 #    endif()
 #endif()
 
-find_package(Qt5 COMPONENTS Core Quick Multimedia Widgets Qml DBus Network REQUIRED)
+find_package(Qt5 COMPONENTS Core Quick Multimedia Widgets Qml DBus Network LinguistTools REQUIRED)
 find_package(Boost 1.40.0 REQUIRED system thread regex)
 find_package( OpenCV REQUIRED )
 
-
+qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR}  abh.ts)
+configure_file(${QM_FILES} ${CMAKE_SOURCE_DIR} COPYONLY)
 #QtDBus QtNetwork
 
 include_directories(
@@ -63,10 +64,12 @@ SET(APP_FILES
 if(ANDROID)
     add_library(abh_gui_v3 SHARED
         ${APP_FILES}
+        ${QM_FILES}
     )
 else()
     add_executable(abh_gui_v3
         ${APP_FILES}
+        ${QM_FILES}
     )
 endif()
 

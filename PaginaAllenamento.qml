@@ -27,7 +27,7 @@ Item {
         testo11: "ALLENAMENTO\n GUIDATO"
         link11: "SceltaWorkout.qml"
         immagine21: "allenamento_singolo.jpg"
-        testo21: "ESERCIZI\n"
+        testo21: "ALLENAMENTO\n LIBERO\n"
         link21: "SceltaGruppo.qml"
         immagine12: "sfida.jpg"
         testo12: "ALLENAMENTO\n PERSONALIZZATO"

@@ -11,7 +11,7 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
-    Barra_superiore{titolo: "ESERCIZI"}
+    Barra_superiore{titolo: "ALLENAMENTO LIBERO"}
     Component.onDestruction:
     {
     }

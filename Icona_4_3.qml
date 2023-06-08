@@ -58,7 +58,7 @@ Item {
 
         Testo
         {
-            text: component.nome
+            text: qsTr(component.nome)
             font.pixelSize: 33
             anchors
             {

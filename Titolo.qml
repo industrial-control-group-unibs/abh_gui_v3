@@ -31,13 +31,8 @@ Item {
 
         Testo
         {
-            text: component.text
+            text: qsTr(component.text)
             font.pixelSize: component.fontSize
-//            anchors
-//            {
-//                verticalCenter: parent.verticalCenter
-//                horizontalCenter: parent.horizontalCenter
-//            }
             anchors.fill: parent
             anchors.margins: 10
             fontSizeMode: Text.Fit

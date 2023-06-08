@@ -112,5 +112,7 @@
         <file>SceltaAllenamentoPersonalizzatoConfEsercizio.qml</file>
         <file>SceltaAllenamentoPersonalizzatoConfWorkout.qml</file>
         <file>IconaBottone.qml</file>
+        <file>ListaParole.qml</file>
+        <file>abh.ts</file>
     </qresource>
 </RCC>
