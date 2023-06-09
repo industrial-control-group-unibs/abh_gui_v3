@@ -3,7 +3,7 @@ import QtQuick 2.12
 
 TemplateInserimentoTesto
 {
-    titolo: "NUOVO PROGRAMMA"
+    titolo: qsTr("NUOVO PROGRAMMA")
     onPressSx: pageLoader.source= "SceltaAllenamentoPersonalizzato.qml"
     property bool replace: false
     onPressDx:
@@ -24,7 +24,7 @@ TemplateInserimentoTesto
         }
         else
         {
-            messaggio="NOME ESISTENTE\nSOSTITUIRE?"
+            messaggio=qsTr("NOME ESISTENTE\nSOSTITUIRE?")
             replace=true
         }
     }

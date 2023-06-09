@@ -10,7 +10,7 @@ import SysCall 1.0
 
 PaginaSiNo
 {
-    titolo: "VUOI AGGIORNARE?\nGLI AGGIORNAMENTI SARANNO OPERATIVI DOPO IL RIAVVIO"
+    titolo: qsTr("VUOI AGGIORNARE?\nGLI AGGIORNAMENTI SARANNO OPERATIVI DOPO IL RIAVVIO")
 
     signal aggiorna
     onPressNo:

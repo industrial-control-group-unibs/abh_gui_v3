@@ -10,7 +10,7 @@ import SysCall 1.0
 
 PaginaSiNo
 {
-    titolo: "VUOI SALVARE LA PASSWORD?"
+    titolo: qsTr("VUOI SALVARE LA PASSWORD?")
 
 
     onPressNo: {

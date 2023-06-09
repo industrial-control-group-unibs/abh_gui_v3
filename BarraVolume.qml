@@ -6,7 +6,7 @@ Item {
     id: component
     anchors.fill: parent
 
-    property string titolo: "VOLUME"
+    property string titolo: qsTr("VOLUME")
     signal pressYes
     signal pressNo
     implicitHeight: 1920/2
@@ -147,7 +147,7 @@ Item {
 
                 Testo
                 {
-                    text: chiamata_sistema.muted? "UNMUTE": "MUTE"
+                    text: chiamata_sistema.muted? qsTr("UNMUTE"): qsTr("MUTE")
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                     verticalAlignment: Text.AlignVCenter

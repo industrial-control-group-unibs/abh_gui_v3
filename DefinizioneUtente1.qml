@@ -52,7 +52,7 @@ Item {
 
         Titolo
         {
-            text: "UTENTE"
+            text: qsTr("UTENTE")
             height: parent.height*0.1
         }
 
@@ -81,7 +81,7 @@ Item {
                 onPressed: pageLoader.source= "PaginaScattaFoto.qml" //"PaginaSceltaAvatar.qml"//impostazioni_utente.foto="avatar1.png" //
                 Testo
                 {
-                    text: "SCEGLI FOTO\nPROFILO"
+                    text: qsTr("SCEGLI FOTO\nPROFILO")
                     anchors
                     {
                         horizontalCenter: parent.horizontalCenter
@@ -172,7 +172,7 @@ Item {
                 }
                 Testo
                 {
-                    text: "CONTINUA"
+                    text: qsTr("CONTINUA")
                     anchors
                     {
                         horizontalCenter: parent.horizontalCenter
@@ -220,7 +220,8 @@ Item {
                 Testo
                 {
                     id: testo_avanti
-                    text: "AVANTI"
+                    text: conferma? qsTr("CONFERMA"):qsTr("AVANTI")
+                    property bool conferma: true
                     anchors
                     {
                         horizontalCenter: parent.horizontalCenter
@@ -246,7 +247,7 @@ Item {
                     }
                     else
                     {
-                        if (testo_avanti.text==="CONFERMA")
+                        if (testo_avanti.conferma)
                         {
                             if (impostazioni_utente.identifier !=="")
                             {
@@ -261,7 +262,7 @@ Item {
                         }
                         else
                         {
-                            testo_avanti.text="CONFERMA"
+                            testo_avanti.conferma=true
                             lista_utente.currentItem.colore=parametri_generali.coloreBordo
                             dati[lista_utente.currentIndex]=lista_utente.currentItem.name
                             dati[lista_utente.currentIndex+1]=impostazioni_utente.foto
@@ -281,7 +282,7 @@ Item {
                 //visible: (lista_utente.currentIndex>0)
                 Testo
                 {
-                    text: "INDIETRO"
+                    text: qsTr("INDIETRO")
                     anchors
                     {
                         horizontalCenter: parent.horizontalCenter

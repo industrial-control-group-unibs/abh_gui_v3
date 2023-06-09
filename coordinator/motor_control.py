@@ -88,7 +88,7 @@ def comunicationThread():
         while motor_target_client.isNewDataAvailable():
             cmd=motor_target_client.getData()
             off=int(cmd[0])
-            stiffness_cmd=min(1,max(0,float(cmd[1])))
+            stiffness_cmd=min(3,max(0,float(cmd[1])))
             velocity_cmd=min(1,max(0,float(cmd[2])))
             torque_change_time=max(0.01,float(cmd[3]))
             logging.info("received torque_perc = "+ str(stiffness_cmd) + ", velocity_perc = " + str(velocity_cmd) + ", off ="+ str(off) )

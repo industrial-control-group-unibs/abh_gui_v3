@@ -8,7 +8,7 @@ import QtQuick.Layouts 1.1
 
 PaginaSiNo
 {
-    titolo: "VUOI CANCELLARE L'UTENTE?"
+    titolo: qsTr("VUOI CANCELLARE L'UTENTE?")
     onPressNo: pageLoader.source=  "PaginaLogin.qml"
     onPressYes:
     {

@@ -13,15 +13,15 @@ Item {
 
     property variant internalModel: ListModel {
         ListElement {
-            nome: "LUMINOSITÀ"
+            nome: qsTr("LUMINOSITÀ")
             link: "PaginaLuminosita.qml"
         }
         ListElement {
-            nome: "BLOCCO TOUCH SCREEN"
+            nome: qsTr("BLOCCO TOUCH SCREEN")
             link: "PaginaBloccoTouch.qml"
         }
         ListElement {
-            nome: "IMPOSTAZIONE COLORI"
+            nome: qsTr("IMPOSTAZIONE COLORI")
             link: "PaginaColore.qml"
         }
     }

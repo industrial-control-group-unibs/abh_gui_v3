@@ -68,7 +68,7 @@ Item {
         }
     }
 
-    Barra_superiore{titolo: "SESSIONE "+programma_personalizzato.sessione}
+    Barra_superiore{titolo: qsTr("SESSIONE")+" "+programma_personalizzato.sessione}
 
 
 
@@ -272,7 +272,7 @@ Item {
                 {
                     if (vector[0]!=="+")
                     {
-                        testo_elimina="VUOI ELIMINARE L'ESERCIZIO?"
+                        testo_elimina=qsTr("VUOI ELIMINARE L'ESERCIZIO?")
                         erase=true
                     }
 

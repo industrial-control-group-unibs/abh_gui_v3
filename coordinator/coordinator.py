@@ -295,7 +295,6 @@ def exercise_thread():
            ):
             state=Status.FORWARD
             switch_timer=0
-            print("vel =", motor_speed, ", th = ",motor_speed_early_stop_return, " perc = ", percentage, " th = ",percentage_early_stop_return, " force = ",exercise["force"])
         elif (state == Status.UNDEFINED and direction==1):
             state=Status.FORWARD
         elif (state == Status.UNDEFINED and direction==-1):

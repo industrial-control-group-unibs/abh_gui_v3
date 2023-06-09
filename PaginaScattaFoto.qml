@@ -152,7 +152,7 @@ Item {
             colore: parametri_generali.coloreBordo
             Testo
             {
-                text: conto_alla_rovescia.running? "PREPARATI": "PREMI PER INIZIARE"
+                text: conto_alla_rovescia.running? qsTr("PREPARATI"): qsTr("PREMI PER INIZIARE")
                 font.pixelSize: 30
                 anchors
                 {

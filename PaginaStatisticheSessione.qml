@@ -63,9 +63,9 @@ Item {
             anchors.top: parent.top
             height: parent.height*0.45
             anchors.margins: 10
-            xlabel: "ESERCIZI"
-            legend_1: "PUNTEGGIO"
-            legend_2: "PUNTEGGIO MEDIO"
+            xlabel: qsTr("ESERCIZI")
+            legend_1: qsTr("PUNTEGGIO")
+            legend_2: qsTr("PUNTEGGIO MEDIO")
         }
 
 
@@ -87,11 +87,11 @@ Item {
             anchors.bottom: parent.bottom
             height: parent.height*0.45
             anchors.margins: 10
-            xlabel: "ESERCIZI"
-            ylabel: "TEMPO (MIN)"
-            title: "TEMPO/TU"
-            legend_2: "TU"
-            legend_1: "TEMPO"
+            xlabel: qsTr("ESERCIZI")
+            ylabel: qsTr("TEMPO (MIN)")
+            title: qsTr("TEMPO/TU")
+            legend_2: qsTr("TU")
+            legend_1: qsTr("TEMPO")
         }
     }
 

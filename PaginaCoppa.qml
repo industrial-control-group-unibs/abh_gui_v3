@@ -65,7 +65,7 @@ Item {
             height: parent.height*0.4
             Titolo
             {
-                text:"BEN FATTO!\n\n"+(selected_exercise.workout_finito?"PROGRAMMA COMPLETATO!":"ALLENAMENTO COMPLETATO!")
+                text:qsTr("BEN FATTO!")+"\n\n"+(selected_exercise.workout_finito?qsTr("PROGRAMMA COMPLETATO!"):qsTr("ALLENAMENTO COMPLETATO!"))
                 fontSize: 60
             }
         }

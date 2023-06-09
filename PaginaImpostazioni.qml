@@ -11,7 +11,7 @@ Item {
 
     //Component.onDestruction: pageLoader.last_source="PaginaImpostazioni.qml"
 
-    property string titolo: "IMPOSTAZIONI"
+    property string titolo: qsTr("IMPOSTAZIONI")
 
     property variant internalModel: ListModel {
         //        ListElement {
@@ -20,23 +20,23 @@ Item {
         //        }
 
         ListElement {
-            nome: "MODIFICA UTENTE"
+            nome: qsTr("MODIFICA UTENTE")
             link: "DefinizioneUtente1.qml"
         }
         ListElement {
-            nome: "CONNESSIONI"
+            nome: qsTr("CONNESSIONI")
             link: "PaginaConnessioni.qml"
         }
         ListElement {
-            nome: "AUDIO"
+            nome: qsTr("AUDIO")
             link: "BarraVolume.qml"
         }
         ListElement {
-            nome: "SCHERMO"
+            nome: qsTr("SCHERMO")
             link: "PaginaSchermo.qml"
         }
         ListElement {
-            nome: "GENERALI"
+            nome: qsTr("GENERALI")
             link: "PaginaGenerali.qml"
         }
         //        ListElement {
@@ -44,7 +44,7 @@ Item {
         //            link: "PaginaPrivacy.qml"
         //        }
         ListElement {
-            nome: "ASSISTENZA"
+            nome: qsTr("ASSISTENZA")
             link: "PaginaUbuntu.qml"
         }
     }
@@ -147,19 +147,11 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.bottom
                     verticalAlignment: Text.AlignVCenter
-                    text: "LOGOUT"
+                    text: qsTr("LOGOUT")
                 }
 
             }
 
-
-//            IconaUtente
-//            {
-//                anchors.verticalCenter: parent.verticalCenter
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                anchors.horizontalCenterOffset: -parent.width*0.25
-//                onPressed: pageLoader.source="PaginaSceltaLogout.qml"
-//            }
 
 
             IconaOff
@@ -175,7 +167,7 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.bottom
                     verticalAlignment: Text.AlignVCenter
-                    text: "SPEGNI"
+                    text: qsTr("SPEGNI")
                 }
             }
         }

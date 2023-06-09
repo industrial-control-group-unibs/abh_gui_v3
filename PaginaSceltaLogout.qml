@@ -10,7 +10,7 @@ import SysCall 1.0
 
 PaginaSiNo
 {
-    titolo: "EFFETTUARE IL LOGOUT?"
+    titolo: qsTr("EFFETTUARE IL LOGOUT?")
 
     signal spegni
     onPressNo:

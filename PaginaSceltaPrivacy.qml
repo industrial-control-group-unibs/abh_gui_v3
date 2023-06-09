@@ -12,7 +12,7 @@ Item {
     id: component
     anchors.fill: parent
 
-    property string titolo: "PRIVACY"
+    property string titolo: qsTr("PRIVACY")
 
     signal pressYes
     signal pressNo
@@ -80,7 +80,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                text: rifiuto?"CANCELLARE\nUTENTE" :"ACCETTARE?"
+                text: rifiuto?qsTr("CANCELLARE\nUTENTE") :qsTr("ACCETTARE?")
             }
 
             IconaCerchio
@@ -94,7 +94,7 @@ Item {
                 onPressed: component.pressYes()
                 Testo
                 {
-                    text: "SI"
+                    text: qsTr("SI")
                     anchors
                     {
                         horizontalCenter: parent.horizontalCenter
@@ -116,7 +116,7 @@ Item {
                 onPressed: component.pressNo()
                 Testo
                 {
-                    text: "NO"
+                    text: qsTr("NO")
                     anchors
                     {
                         horizontalCenter: parent.horizontalCenter

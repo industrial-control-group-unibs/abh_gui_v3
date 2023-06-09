@@ -30,7 +30,7 @@ Item {
 
         Titolo
         {
-            text: "SCEGLI L'AVATAR"
+            text: qsTr("SCEGLI L'AVATAR")
         }
 
         Item {

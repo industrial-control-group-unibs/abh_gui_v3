@@ -216,7 +216,7 @@ Item
             font.pixelSize: 40
             fontSizeMode: Text.Fit
             verticalAlignment: Text.AlignBottom
-            text: chrt_areachart.show_motor? "VELOCITA' ISTANTANEA": "VISIONE"
+            text: chrt_areachart.show_motor? qsTr("VELOCITA' ISTANTANEA"): qsTr("VISIONE")
             onTextChanged: chrt_areachart.clear()
             color: parametri_generali.coloreUtente
         }
@@ -387,7 +387,7 @@ Item
                     font.pixelSize: 20
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignBottom
-                    text: "LIMITE SUPERIORE"
+                    text: qsTr("LIMITE SUPERIORE")
                     color: parametri_generali.coloreUtente
                     visible: chrt_areachart.show_motor
                 }
@@ -403,7 +403,7 @@ Item
                     font.pixelSize: 20
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignTop
-                    text: "LIMITE INFERIORE"
+                    text: qsTr("LIMITE INFERIORE")
                     color: parametri_generali.coloreUtente
                     visible: chrt_areachart.show_motor
                 }

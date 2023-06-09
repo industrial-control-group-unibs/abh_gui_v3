@@ -57,8 +57,8 @@ Item {
                 yvalues2=_workout.getSessionMeanScores()
                 update()
             }
-            legend_1: "PUNTEGGIO"
-            legend_2: "PUNTEGGIO MEDIO"
+            legend_1: qsTr("PUNTEGGIO")
+            legend_2: qsTr("PUNTEGGIO MEDIO")
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top
@@ -84,11 +84,11 @@ Item {
             anchors.bottom: parent.bottom
             height: parent.height*0.45
             anchors.margins: 10
-            xlabel: "SESSIONI"
-            ylabel: "TEMPO (H)"
-            title: "TEMPO/TU"
-            legend_2: "TU"
-            legend_1: "TEMPO"
+            xlabel: qsTr("SESSIONI")
+            ylabel: qsTr("TEMPO (H)")
+            title: qsTr("TEMPO/TU")
+            legend_2: qsTr("TU")
+            legend_1: qsTr("TEMPO")
         }
     }
 

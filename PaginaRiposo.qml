@@ -161,7 +161,7 @@ Item {
             }
             Testo
             {
-                text: "SERIE "+(selected_exercise.current_set+1)+" DI "+selected_exercise.sets
+                text: qsTr("SERIE")+" "+(selected_exercise.current_set+1)+" "+qsTr("DI")+" "+selected_exercise.sets
                 font.pixelSize: 60
                 anchors
                 {

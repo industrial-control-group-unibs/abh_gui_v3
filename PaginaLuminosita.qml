@@ -6,7 +6,7 @@ Item {
     id: component
     anchors.fill: parent
 
-    property string titolo: "LUMINOSITÀ"
+    property string titolo: qsTr("LUMINOSITÀ")
 
     signal pressYes
     signal pressNo

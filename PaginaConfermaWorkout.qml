@@ -10,7 +10,7 @@ import SysCall 1.0
 
 PaginaSiNo
 {
-    titolo: "VUOI CONTINUARE IL WORKOUT\n"+selected_exercise.workout.replace("_", " ")+"?"
+    titolo: qsTr("VUOI CONTINUARE IL WORKOUT")+"\n"+selected_exercise.workout.replace("_", " ")+"?"
 
     onPressNo: {
         _utenti.saveWorkout(impostazioni_utente.identifier,"")

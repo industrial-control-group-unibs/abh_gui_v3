@@ -111,7 +111,7 @@ IconaRettangolo
             {
                 visible: component.tempo!==""
                 id: tempo_txt
-                text:"DURATA SESSIONE"
+                text:qsTr("DURATA SESSIONE")
                 font.pixelSize: component.fontSize*0.3
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -156,7 +156,7 @@ IconaRettangolo
             Testo
             {
                 visible: component.tempo!==""
-                text:"TU"
+                text:qsTr("TU")
                 font.pixelSize: component.fontSize*0.3
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -186,7 +186,7 @@ IconaRettangolo
 
             Testo
             {
-                text:"AVANZAMENTO"
+                text:qsTr("AVANZAMENTO")
                 font.pixelSize: component.fontSize*0.5
                 verticalAlignment: Text.AlignVCenter
 
@@ -243,7 +243,7 @@ IconaRettangolo
 
             Testo
             {
-                text:"PUNTEGGIO"
+                text:qsTr("PUNTEGGIO")
                 font.pixelSize: component.fontSize*0.5
                 verticalAlignment: Text.AlignVCenter
 
@@ -299,7 +299,7 @@ IconaRettangolo
 
             Testo
             {
-                text:"GRAFICI"
+                text:qsTr("GRAFICI")
                 font.pixelSize: component.fontSize*0.5
                 verticalAlignment: Text.AlignVCenter
 

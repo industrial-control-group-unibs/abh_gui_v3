@@ -96,7 +96,7 @@ IconaRettangolo
             {
                 visible: component.tempo!==""
                 id: tempo_txt
-                text:"TEMPO IMPIEGATO"
+                text:qsTr("TEMPO IMPIEGATO")
                 font.pixelSize: component.fontSize*0.3
                 verticalAlignment: Text.AlignVCenter
 
@@ -146,7 +146,7 @@ IconaRettangolo
 
             Testo
             {
-                text:"AVANZAMENTO"
+                text:qsTr("AVANZAMENTO")
                 font.pixelSize: component.fontSize*0.5
                 verticalAlignment: Text.AlignVCenter
 
@@ -203,7 +203,7 @@ IconaRettangolo
 
             Testo
             {
-                text:"PUNTEGGIO"
+                text:qsTr("PUNTEGGIO")
                 font.pixelSize: component.fontSize*0.5
                 verticalAlignment: Text.AlignVCenter
 

@@ -144,7 +144,7 @@ Item
 
         Testo
         {
-            text: "NUOVO UTENTE"
+            text: qsTr("NUOVO UTENTE")
             font.pixelSize: 20
             anchors
             {

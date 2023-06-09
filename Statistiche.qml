@@ -17,11 +17,11 @@ Item
 
     id: component
 
-    property string xlabel: "SESSIONI"
-    property string ylabel: "PUNTEGGIO"
-    property string title: "PUNTEGGIO"
-    property string legend_1: "TEMPO"
-    property string legend_2: "TU"
+    property string xlabel: qsTr("SESSIONI")
+    property string ylabel: qsTr("PUNTEGGIO")
+    property string title: qsTr("PUNTEGGIO")
+    property string legend_1: qsTr("TEMPO")
+    property string legend_2: qsTr("TU")
     property color color_legend_2: parametri_generali.coloreBordo
     property color color_legend_1: parametri_generali.coloreUtente
     property real xmin: 1.0

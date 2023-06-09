@@ -9,27 +9,27 @@ Item {
     id: component
     anchors.fill: parent
 
-    property string titolo: "IMPOSTAZIONI GENERALI"
+    property string titolo: qsTr("IMPOSTAZIONI GENERALI")
 
     property variant internalModel: ListModel {
         ListElement {
-            nome: "LINGUA"
-            link: "PaginaImpostazioni.qml"
+            nome: qsTr("LINGUA")
+            link: "PaginaLingue.qml"
         }
         ListElement {
-            nome: "PRIVACY"
+            nome: qsTr("PRIVACY")
             link: "PaginaPrivacy.qml"
         }
         ListElement {
-            nome: "PASSWORD"
+            nome: qsTr("PASSWORD")
             link: "PaginaRicordaPassword.qml"
         }
         ListElement {
-            nome: "INFORMAZIONI SU HORIZON ONE"
+            nome: qsTr("INFORMAZIONI SU HORIZON ONE")
             link: "PaginaInfoHorizon.qml"
         }
         ListElement {
-            nome: "AGGIORNAMENTO SOFTWARE"
+            nome: qsTr("AGGIORNAMENTO SOFTWARE")
             link: "PaginaAggiornaSoftware.qml"
         }
     }

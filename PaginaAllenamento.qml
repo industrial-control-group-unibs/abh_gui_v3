@@ -19,21 +19,22 @@ Item {
         led_udp.data=[parametri_generali.coloreLed.r, parametri_generali.coloreLed.g, parametri_generali.coloreLed.b]
     }
 
+
     Barra_superiore{}
 
     QuattroImmagini
     {
         immagine11: "workout.jpg"
-        testo11: "ALLENAMENTO\n GUIDATO"
+        testo11: qsTr("ALLENAMENTO\n GUIDATO")
         link11: "SceltaWorkout.qml"
         immagine21: "allenamento_singolo.jpg"
-        testo21: "ALLENAMENTO\n LIBERO\n"
+        testo21: qsTr("ALLENAMENTO\n LIBERO")
         link21: "SceltaGruppo.qml"
         immagine12: "sfida.jpg"
-        testo12: "ALLENAMENTO\n PERSONALIZZATO"
+        testo12: qsTr("ALLENAMENTO\n PERSONALIZZATO")
         link12: "SceltaAllenamentoPersonalizzato.qml"
         immagine22: "statistiche.jpg"
-        testo22: "STATISTICHE\n"
+        testo22: qsTr("STATISTICHE\n")
         link22: "SceltaStatisticheWorkout.qml"
     }
 

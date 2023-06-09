@@ -12,7 +12,7 @@ Item {
     id: component
     anchors.fill: parent
 
-    property string titolo: "INFORMAZIONI"
+    property string titolo: qsTr("INFORMAZIONI")
 
     implicitHeight: 1920/2
     implicitWidth: 1080/2

@@ -10,7 +10,7 @@ import SysCall 1.0
 
 PaginaSiNo
 {
-    titolo: "VUOI USCIRE?"
+    titolo: qsTr("VUOI USCIRE?")
 
     signal spegni
     onPressNo: pageLoader.source=  "PaginaLogin.qml"

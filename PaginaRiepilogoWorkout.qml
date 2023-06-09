@@ -111,7 +111,7 @@ Item {
                             right: parent.right
                         }
                         height: 0.15*parent.height
-                        text: "PUNTEGGIO"
+                        text: qsTr("PUNTEGGIO")
                     }
                 }
                 Item {
@@ -156,7 +156,7 @@ Item {
                             right: parent.right
                         }
                         height: 0.15*parent.height
-                        text: "AVANZAMENTO"
+                        text: qsTr("AVANZAMENTO")
                     }
                 }
                 Item {
@@ -210,7 +210,7 @@ Item {
                             right: parent.right
                         }
                         height: 0.5*parent.height
-                        text: "TU"
+                        text: qsTr("TU")
                         font.pixelSize: 50
                     }
 

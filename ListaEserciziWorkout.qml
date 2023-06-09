@@ -259,29 +259,6 @@ Item {
         }
 
 
-//        GridView {
-
-//            id: grid
-//            anchors.topMargin: header.height
-//            cellWidth: width*0.33; cellHeight: cellWidth
-//            anchors.fill: parent
-//            snapMode: GridView.SnapToRow
-//            focus: true
-
-//            //            Component.onCompleted: {currentIndex=-1}
-
-//            model: _myModel
-//            delegate:IconaEsercizi{}
-
-//            onCurrentIndexChanged: {
-//                if (currentIndex>=0)
-//                {
-//                    mp_esercizio.stop()
-//                    mp_esercizio.play()
-//                }
-//            }
-//        }
-
     }
 
 

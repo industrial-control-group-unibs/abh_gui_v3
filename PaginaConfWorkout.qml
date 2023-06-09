@@ -102,7 +102,7 @@ Item {
                 color: parametri_generali.coloreUtente
                 text_color: parametri_generali.coloreBordo
 
-                lista: ["ESORDIENTE", "INTERMEDIO", "ESPERTO"]
+                lista: [qsTr("ESORDIENTE"), qsTr("INTERMEDIO"), qsTr("ESPERTO")]
 
 
                 Testo
@@ -111,7 +111,7 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: "LIVELLO"
+                    text: qsTr("LIVELLO")
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }
@@ -148,7 +148,7 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: "FREQUENZA"
+                    text: qsTr("FREQUENZA")
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }
@@ -158,7 +158,7 @@ Item {
                     anchors.top: parent.bottom
                     width: 300
                     anchors.topMargin: 10
-                    text: "(N° allenamenti/settimana)"
+                    text: qsTr("(N° allenamenti/settimana)")
                     font.pixelSize: 30
                     color: parametri_generali.coloreBordo
                 }
@@ -196,7 +196,7 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: "DURATA"
+                    text: qsTr("DURATA")
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }
@@ -206,7 +206,7 @@ Item {
                     anchors.top: parent.bottom
                     width: 300
                     anchors.topMargin: 30
-                    text: "(N° settimane)"
+                    text: qsTr("(N° settimane)")
                     font.pixelSize: 30
                     color: parametri_generali.coloreBordo
                 }

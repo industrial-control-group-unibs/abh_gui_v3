@@ -119,7 +119,7 @@ Item {
                         false;
 
                 }
-                titolo: "SESSIONE "+vector[0]
+                titolo: qsTr("SESSIONE")+" "+vector[0]
                 progress: parseFloat(vector[1])
                 punteggio: parseFloat(10*vector[2])
 

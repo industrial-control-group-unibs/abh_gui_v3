@@ -6,7 +6,7 @@ Item {
     id: component
     anchors.fill: parent
 
-    property string titolo: "INSERISCI PASSWORD"
+    property string titolo: qsTr("INSERISCI PASSWORD")
     signal pressYes
     signal pressNo
     implicitHeight: 1920/2
@@ -87,7 +87,7 @@ Item {
 
             Testo
             {
-                text: "RICORDA PASSWORD"
+                text: qsTr("RICORDA PASSWORD")
                 anchors
                 {
                     verticalCenter: icona_salva_pwd.verticalCenter

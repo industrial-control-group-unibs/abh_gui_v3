@@ -21,7 +21,7 @@ Item
 
     Testo
     {
-        text: "PASSARE ALLA SERIE SUCCESSIVA?"
+        text: qsTr("PASSARE ALLA SERIE SUCCESSIVA?")
         verticalAlignment: Text.AlignVCenter
         font.pixelSize: 40
         anchors

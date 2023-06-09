@@ -11,7 +11,7 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
-    Barra_superiore{titolo: "ALLENAMENTO LIBERO"}
+    Barra_superiore{titolo: qsTr("ALLENAMENTO LIBERO")}
     Component.onDestruction:
     {
     }
@@ -22,7 +22,6 @@ Item {
         onPressDx: pageLoader.source=  "SceltaEsercizi.qml"
         dx_visible: lista_zona.currentIndex>=0
         colore: parametri_generali.coloreBordo
-
     }
     Rectangle{
         anchors.fill: parent

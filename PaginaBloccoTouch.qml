@@ -64,7 +64,7 @@ Item {
 
         Titolo
         {
-            text:  "BLOCCO TOUCHSCREEN"
+            text:  qsTr("BLOCCO TOUCHSCREEN")
             height: parent.height*0.1
             fontSize: 40
         }

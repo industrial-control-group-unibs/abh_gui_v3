@@ -31,7 +31,7 @@ Item {
 
         Testo
         {
-            text: qsTr(component.text)
+            text: component.text
             font.pixelSize: component.fontSize
             anchors.fill: parent
             anchors.margins: 10

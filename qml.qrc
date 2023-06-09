@@ -7,7 +7,6 @@
         <file>PaginaLogo.qml</file>
         <file>PaginaLogin.qml</file>
         <file>IconaLogin.qml</file>
-        <file>ModelloUtenteTml.qml</file>
         <file>PaginaMondi.qml</file>
         <file>Icona_4_3.qml</file>
         <file>PaginaAllenamento.qml</file>
@@ -112,7 +111,10 @@
         <file>SceltaAllenamentoPersonalizzatoConfEsercizio.qml</file>
         <file>SceltaAllenamentoPersonalizzatoConfWorkout.qml</file>
         <file>IconaBottone.qml</file>
-        <file>ListaParole.qml</file>
-        <file>abh.ts</file>
+        <file>abh_it.qm</file>
+        <file>abh_en.qm</file>
+        <file>abh_en.ts</file>
+        <file>abh_it.ts</file>
+        <file>PaginaLingue.qml</file>
     </qresource>
 </RCC>

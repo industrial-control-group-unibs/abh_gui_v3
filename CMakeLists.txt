@@ -30,8 +30,10 @@ find_package(Qt5 COMPONENTS Core Quick Multimedia Widgets Qml DBus Network Lingu
 find_package(Boost 1.40.0 REQUIRED system thread regex)
 find_package( OpenCV REQUIRED )
 
-qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR}  abh.ts)
-configure_file(${QM_FILES} ${CMAKE_SOURCE_DIR} COPYONLY)
+qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR}  abh_en.ts abh_it.ts abh_ar.ts abh_de.ts abh_fr.ts abh_es.ts)
+
+message(INFO ${QM_FILES})
+#configure_file(${QM_FILES} ${CMAKE_SOURCE_DIR} COPYONLY)
 #QtDBus QtNetwork
 
 include_directories(
@@ -59,6 +61,7 @@ SET(APP_FILES
   ChiamataSistema.cpp
   listwifi.cpp
   stringquee.cpp
+  Settings.cpp
   )
 
 if(ANDROID)

@@ -21,7 +21,7 @@ Item
 
     Testo
     {
-        text: "INTERROMPERE?"
+        text: qsTr("INTERROMPERE?")
         verticalAlignment: Text.AlignVCenter
         font.pixelSize: 40
         anchors

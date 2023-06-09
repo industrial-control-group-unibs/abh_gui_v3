@@ -16,7 +16,7 @@
 #include "ListaImmagini.h"
 #include "ListaUtenti.h"
 #include "ListStringCSV.h"
-
+#include "Settings.h"
 #include "ProgrammaAllenamento.h"
 #include "DescrizioneEsercizi.h"
 #include <iostream>
@@ -152,12 +152,17 @@ int main(int argc, char *argv[])
 
 
   std::shared_ptr<QGuiApplication> app=std::make_shared<QGuiApplication>(argc, argv);
-  QTranslator translator;
-  translator.load(":/abh");
-
-  app->installTranslator(&translator);
+  std::shared_ptr<QTranslator> translator=std::make_shared<QTranslator>();
+  if (!translator->load("abh_en"))
+    std::cerr << "unable to load translation" <<std::endl;
+  if (!app->installTranslator(translator.get()))
+    std::cerr << "unable to install translation" <<std::endl;
 
   std::shared_ptr<QQmlApplicationEngine> engine=std::make_shared<QQmlApplicationEngine>();
+
+  Settings settings(engine,app,translator,"abh_en");
+
+//  engine->retranslate();
 
 
   std::string str;
@@ -206,6 +211,7 @@ int main(int argc, char *argv[])
   context->setContextProperty("_active_workouts", &active_workouts);
   context->setContextProperty("_custom_workouts", &custom_workouts);
   context->setContextProperty("_custom_sessions", &custom_sessions);
+  context->setContextProperty("_settings", &settings);
 
 
   context->setContextProperty("_default", default_values);

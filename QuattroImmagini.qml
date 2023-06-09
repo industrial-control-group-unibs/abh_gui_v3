@@ -19,7 +19,7 @@ Item {
     property string testo12: "ALLENAMENTO2\n"
     property string link12: "PaginaAllenamento.qml"
     property string immagine21: "place_holder_4_3.png"
-    property string testo21: "ALLENAMENTO3\n"
+    property string testo21: "ALLENAMENTO\n LIBERO"
     property string link21: "PaginaAllenamento.qml"
     property string immagine22: "place_holder_4_3.png"
     property string testo22: "ALLENAMENTO\n"

@@ -130,7 +130,7 @@ Item {
                             right: parent.right
                         }
                         height: 0.15*parent.height
-                        text: "PUNTEGGIO"
+                        text: qsTr("PUNTEGGIO")
                     }
                 }
                 Item {
@@ -175,7 +175,7 @@ Item {
                             right: parent.right
                         }
                         height: 0.15*parent.height
-                        text: "AVANZAMENTO"
+                        text: qsTr("AVANZAMENTO")
                     }
                 }
                 Item {
@@ -191,7 +191,7 @@ Item {
                             right: parent.right
                         }
                         height: 0.5*parent.height
-                        text: "DURATA SESSIONE"
+                        text: qsTr("DURATA SESSIONE")
                         font.pixelSize: 50
                     }
                     Rectangle

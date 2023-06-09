@@ -7,7 +7,7 @@ Item {
     property real min: 0.0
     property real max: 20.0
 
-    property var lista: ["ESORDIENTE", "INTERMEDIO", "ESPERTO"]
+    property var lista: [qsTr("ESORDIENTE"), qsTr("INTERMEDIO"), qsTr("ESPERTO")]
     property int index: 0
     property string value: lista[index]
 

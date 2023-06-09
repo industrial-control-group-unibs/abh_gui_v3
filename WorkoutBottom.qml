@@ -78,7 +78,7 @@ Item
         }
         Testo
         {
-            text: "POWER"
+            text: qsTr("POWER")
             anchors
             {
                 horizontalCenter: parent.horizontalCenter
@@ -145,7 +145,7 @@ Item
         visible: parent.is_visible
         Testo
         {
-            text: "RIPETIZIONI"
+            text: qsTr("RIPETIZIONI")
             anchors
             {
                 horizontalCenter: parent.horizontalCenter
@@ -169,7 +169,7 @@ Item
         visible: parent.is_visible
         Testo
         {
-            text: "TIME"
+            text: qsTr("TIME")
             anchors
             {
                 horizontalCenter: parent.horizontalCenter
@@ -193,7 +193,7 @@ Item
         visible: parent.is_visible
         Testo
         {
-            text: "TU"
+            text: qsTr("TU")
             anchors
             {
                 horizontalCenter: parent.horizontalCenter
@@ -209,7 +209,7 @@ Item
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
-        text: "SERIE "+(selected_exercise.current_set+1)+" DI "+selected_exercise.sets
+        text: qsTr("SERIE")+" "+(selected_exercise.current_set+1)+" "+qsTr("DI")+" "+selected_exercise.sets
     }
 
     Testo

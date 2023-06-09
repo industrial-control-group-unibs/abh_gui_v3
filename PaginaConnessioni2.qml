@@ -11,7 +11,7 @@ Item {
     id: component
     anchors.fill: parent
 
-    property string titolo: "CONNESSIONI"
+    property string titolo: qsTr("CONNESSIONI")
 
     Component.onCompleted:
     {

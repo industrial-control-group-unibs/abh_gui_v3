@@ -181,7 +181,7 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: "N° SERIE"
+                    text: qsTr("N° SERIE")
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }
@@ -224,8 +224,8 @@ Item {
                     width: 300
                     anchors.bottomMargin: 10
                     textFormat: Text.RichText
-                    text: selected_exercise.type===3? ("<span style='font-size: 70px;'>DURATA </span>"
-                        + "<span style='font-size: 30px'>sec.</span>") : "N° RIPETIZIONI"
+                    text: selected_exercise.type===3? (qsTr("<span style='font-size: 70px;'>DURATA </span>")
+                        + qsTr("<span style='font-size: 30px'>sec.</span>")) : qsTr("N° RIPETIZIONI")
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }
@@ -266,7 +266,7 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: "DIFFICOLTA’"
+                    text: qsTr("DIFFICOLTA’")
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }
@@ -310,8 +310,8 @@ Item {
                     anchors.bottomMargin: 10
 
                     textFormat: Text.RichText
-                    text: "<span style='font-size: 70px;'>PAUSA </span>"
-                        + "<span style='font-size: 30px'>sec.</span>"
+                    text: qsTr("<span style='font-size: 70px;'>PAUSA </span>")
+                        + qsTr("<span style='font-size: 30px'>sec.</span>")
 
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
@@ -355,8 +355,8 @@ Item {
                     width: 300
                     anchors.bottomMargin: 10
                     textFormat: Text.RichText
-                    text: "<span style='font-size: 70px;'>RIPOSO </span>"
-                        + "<span style='font-size: 30px'>sec.</span>"
+                    text: qsTr("<span style='font-size: 70px;'>RIPOSO </span>")
+                        + qsTr("<span style='font-size: 30px'>sec.</span>")
 
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo

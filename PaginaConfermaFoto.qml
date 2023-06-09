@@ -90,7 +90,7 @@ Item {
 
         Testo
         {
-            text: "CONFERMI?"
+            text: qsTr("CONFERMI?")
             font.pixelSize: 30
             anchors
             {

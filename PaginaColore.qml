@@ -18,17 +18,17 @@ Item {
         _utenti.saveColor(impostazioni_utente.identifier,parametri_generali.coloreBordo,parametri_generali.coloreSfondo,parametri_generali.coloreUtente)
     }
 
-    property variant internalModel: ListModel {
-        ListElement {
-            nome: "SFONDO"
-        }
-        ListElement {
-            nome: "COLORE PRINCIPALE"
-        }
-        ListElement {
-            nome: "COLORE SECONDARIO"
-        }
-    }
+//    property variant internalModel: ListModel {
+//        ListElement {
+//            nome: "SFONDO"
+//        }
+//        ListElement {
+//            nome: "COLORE PRINCIPALE"
+//        }
+//        ListElement {
+//            nome: "COLORE SECONDARIO"
+//        }
+//    }
 
     implicitHeight: 1920/2
     implicitWidth: 1080/2
@@ -128,11 +128,11 @@ Item {
 
                     font.pixelSize: 35/1920*component.height
                     verticalAlignment: Text.AlignVCenter
-                    text: "SFONDO"
+                    text: qsTr("SFONDO")
                 }
 
                 ColorDialog {
-                    title: "SELEZIONA COLORE"
+                    title: qsTr("SELEZIONA COLORE")
                     id: colorDialog
                     onAccepted: {
                         parametri_generali.coloreSfondo=colorDialog.color
@@ -190,7 +190,7 @@ Item {
                 }
 
                 ColorDialog {
-                    title: "SELEZIONA COLORE"
+                    title: qsTr("SELEZIONA COLORE")
                     id: colorDialog2
                     onAccepted: {
                         if (colorDialog2.color!==parametri_generali.coloreSfondo)
@@ -247,11 +247,11 @@ Item {
 
                     font.pixelSize: 35/1920*component.height
                     verticalAlignment: Text.AlignVCenter
-                    text: "COLORE SECONDARIO"
+                    text: qsTr("COLORE SECONDARIO")
                 }
 
                 ColorDialog {
-                    title: "SELEZIONA COLORE"
+                    title: qsTr("SELEZIONA COLORE")
                     id: colorDialog3
                     onAccepted: {
                         if (colorDialog3.color!==parametri_generali.coloreSfondo)
@@ -309,11 +309,11 @@ Item {
 
                     font.pixelSize: 35/1920*component.height
                     verticalAlignment: Text.AlignVCenter
-                    text: "COLORE LED"
+                    text: qsTr("COLORE LED")
                 }
 
                 ColorDialog {
-                    title: "SELEZIONA COLORE"
+                    title: qsTr("SELEZIONA COLORE")
                     id: colorDialogLed
                     onAccepted: {
                         parametri_generali.coloreLed=colorDialogLed.color
@@ -387,7 +387,7 @@ Item {
 
                     font.pixelSize: 35/1920*component.height
                     verticalAlignment: Text.AlignVCenter
-                    text: "RIPRISTINA COLORI"
+                    text: qsTr("RIPRISTINA COLORI")
                 }
             }
         }

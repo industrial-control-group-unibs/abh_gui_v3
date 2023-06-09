@@ -131,7 +131,7 @@ Item {
                 {
                     if (modelData!=="+")
                     {
-                        testo_elimina="VUOI ELIMINARE LA SESSIONE?"
+                        testo_elimina=qsTr("VUOI ELIMINARE LA SESSIONE?")
                         erase=true
                     }
                 }

@@ -18,7 +18,7 @@ Item {
 
     property bool selected: false
     property bool personalizato: false
-    Barra_superiore{titolo: "STATISTICHE"}
+    Barra_superiore{titolo: qsTr("STATISTICHE")}
     id: component
     property bool new_workout: false
     Component.onCompleted:
@@ -75,7 +75,7 @@ Item {
             }
             Testo
             {
-                text: !component.personalizato?"ALLENAMENTO\nGUIDATO":"ALLENAMENTO\nPERSONALIZZATO"
+                text: !component.personalizato?qsTr("ALLENAMENTO\nGUIDATO"):qsTr("ALLENAMENTO\nPERSONALIZZATO")
                 color: parametri_generali.coloreUtente
                 anchors
                 {

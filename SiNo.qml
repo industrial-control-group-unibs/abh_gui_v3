@@ -23,7 +23,7 @@ Item {
         onPressed: pressYes()
         Testo
         {
-            text: "SI"
+            text: qsTr("SI")
             anchors
             {
                 horizontalCenter: parent.horizontalCenter
@@ -44,7 +44,7 @@ Item {
         onPressed: pressNo()
         Testo
         {
-            text: "NO"
+            text: qsTr("NO")
             anchors
             {
                 horizontalCenter: parent.horizontalCenter

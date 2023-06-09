@@ -186,7 +186,7 @@ Column {
         Rectangle {
 
 
-            property string text: "CANCELLA"
+            property string text: qsTr("CANCELLA")
             color: component.colore;
             radius: height*0.1
             width: component.keysize*5+4*component.spacing;

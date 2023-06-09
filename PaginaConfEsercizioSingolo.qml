@@ -111,7 +111,7 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: "N° SERIE"
+                    text: qsTr("N° SERIE")
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }
@@ -154,7 +154,7 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: selected_exercise.type===3? "DURATA (SECONDI)" : "N° RIPETIZIONI"
+                    text: selected_exercise.type===3? qsTr("DURATA (SECONDI)") : qsTr("N° RIPETIZIONI")
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }
@@ -195,7 +195,7 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: "DIFFICOLTA’"
+                    text: qsTr("DIFFICOLTA’")
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }

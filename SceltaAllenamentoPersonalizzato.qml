@@ -9,7 +9,7 @@ TemplateListaAggiungile
         reload()
     }
     model: _custom_workouts
-    titolo: "ALLENAMENTO PERSONALIZZATO"
+    titolo: qsTr("ALLENAMENTO PERSONALIZZATO")
 
     onPressSx: pageLoader.source= "PaginaAllenamento.qml"
     onPressDx:
@@ -22,11 +22,8 @@ TemplateListaAggiungile
         {
             programma_personalizzato.name=text
             _workout.loadWorkout(impostazioni_utente.identifier,programma_personalizzato.name)
-            console.log("QUI: ",_workout.getProgess())
             if (_workout.getProgess()===0)
             {
-                console.log("QUI: ")
-                console.log("QUI: ",_custom_sessions.uniqueElementsOfColumn(impostazioni_utente.identifier+"_"+programma_personalizzato.name,"session"))
                 pageLoader.source="SceltaAllenamentoPersonalizzatoSessioni.qml"
             }
             else

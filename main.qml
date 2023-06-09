@@ -311,8 +311,6 @@ ApplicationWindow {
         port: "5000"
     }
 
-
-
     Rectangle
     {
         anchors.fill: parent

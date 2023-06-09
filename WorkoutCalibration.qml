@@ -27,7 +27,7 @@ Item
         anchors.right: parent.right
         height: parent.height*0.3
 
-        text: "ANALISI IN CORSO"
+        text: qsTr("ANALISI IN CORSO")
         color: parametri_generali.coloreUtente
         verticalAlignment: Text.AlignVCenter
         font.pixelSize: 60
@@ -45,7 +45,7 @@ Item
         anchors.left: parent.left
         anchors.right: parent.right
         height: parent.height*0.5
-        text: "CONTINUA AD ESEGUIRE\n L'ESERCIZIO"
+        text: qsTr("CONTINUA AD ESEGUIRE\n L'ESERCIZIO")
         color: parametri_generali.coloreUtente
         verticalAlignment: Text.AlignVCenter
         font.pixelSize: 40
