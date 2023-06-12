@@ -39,7 +39,6 @@ Item {
 
 
 
-
         ListView {
             snapMode: ListView.SnapOneItem
             id: lista_zona
@@ -49,6 +48,8 @@ Item {
                 left: parent.left
                 right: parent.right
             }
+
+            Component.onCompleted: console.log(model.length)
 
             model: _zona
             currentIndex:-1

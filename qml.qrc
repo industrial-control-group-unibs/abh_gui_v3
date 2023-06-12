@@ -117,5 +117,6 @@
         <file>abh_it.ts</file>
         <file>PaginaLingue.qml</file>
         <file>PaginaSanificazione.qml</file>
+        <file>SceltaEserciziNew.qml</file>
     </qresource>
 </RCC>

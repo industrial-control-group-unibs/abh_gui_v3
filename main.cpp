@@ -160,7 +160,7 @@ int main(int argc, char *argv[])
 
   ListaWifi wifi;
 
-  zone.readFile("Zon  e");
+  zone.readFile("Zone");
   workout_list.readFile("lista_workout");
 //  workout.readFile("workout1_level_1");
 

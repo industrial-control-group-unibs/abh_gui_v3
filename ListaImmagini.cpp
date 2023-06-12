@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <cstdlib>
 #include <rapidcsv.h>
+#include <QDebug>
 
 ListaImmagini::ListaImmagini(QString path, QObject *parent) :
   QAbstractListModel(parent)
@@ -68,6 +69,7 @@ void ListaImmagini::readFile(QString string)
       QString ex_name=QString::fromStdString(doc.GetCell<std::string>(0,idx));
       QString image=QString::fromStdString(doc.GetCell<std::string>(1,idx));
       data_ << Immagine(ex_name,image);
+      qDebug() << "zone " << ex_name;
     }
     if (append_)
     {
@@ -76,5 +78,7 @@ void ListaImmagini::readFile(QString string)
   } catch (std::exception& ex) {
     std::cout << "expection " << ex.what() << " while reading file " << nome_file << std::endl;
   }
+
+
 
 }
