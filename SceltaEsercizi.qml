@@ -33,6 +33,26 @@ Item {
         colore: parametri_generali.coloreBordo
     }
 
+    BottoniSwipe{
+
+        anchors
+        {
+            bottom: parent.bottom
+            horizontalCenter: parent.horizontalCenter
+        }
+        z:5
+        width: 0.4*parent.width
+        onPressRight:
+        {
+            pageLoader.source=  "SceltaEserciziNew.qml"
+        }
+        onPressLeft:
+        {
+        }
+        visible: component.swipe
+        state: "sx"
+    }
+
 
     Rectangle
     {

@@ -94,6 +94,7 @@ IconaRettangolo
 
             Testo {
                 id: titolo_esercizio
+                visible: component.ripetizioni>=0
                 text: component.nome
                 anchors
                 {
@@ -101,13 +102,32 @@ IconaRettangolo
                     right: parent.right
                     top: parent.top
                 }
+                fontSizeMode: Text.Fit
                 height: 0.33*parent.height
                 font.pixelSize: 40
                 verticalAlignment: Text.AlignTop
                 horizontalAlignment: Text.AlignHCenter
             }
+            Testo {
+                visible: component.ripetizioni<0
+                text: component.nome
+                anchors
+                {
+                    left: parent.left
+                    right: parent.right
+                    top: parent.top
+                    bottom: parent.bottom
+                }
+                fontSizeMode: Text.Fit
+                wrapMode: Text.WordWrap
+
+                font.pixelSize: 40
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+            }
 
             Item {
+                visible: component.ripetizioni>=0
                 anchors
                 {
                     left: parent.left

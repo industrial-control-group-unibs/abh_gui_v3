@@ -29,10 +29,30 @@ Item {
     {
         onPressSx: pageLoader.source= "SceltaGruppo.qml"
         onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
-        dx_visible: grid.currentIndex>=0
+        dx_visible: lista_workout.currentIndex>=0
         colore: parametri_generali.coloreBordo
     }
 
+    BottoniSwipe{
+
+        anchors
+        {
+            bottom: parent.bottom
+            horizontalCenter: parent.horizontalCenter
+        }
+        z:5
+        width: 0.4*parent.width
+        onPressRight:
+        {
+//            component.state="stats"
+        }
+        onPressLeft:
+        {
+            pageLoader.source=  "SceltaEsercizi.qml"
+        }
+        visible: component.swipe
+        state: "dx"
+    }
 
     Rectangle
     {
@@ -89,7 +109,7 @@ Item {
 
 
 
-                width: grid.cellWidth
+                width: lista_workout.width*0.33
                 height: width
                 radius: 20
                 border.color: selected_exercise.immagine? parametri_generali.coloreBordo: "transparent"
@@ -163,51 +183,56 @@ Item {
             id: lista_workout
             anchors {
                 top: parent.top
+                topMargin: header.height
                 bottom: parent.bottom
                 left: parent.left
                 right: parent.right
             }
             currentIndex: _workout.getActiveSession()-1
 
-            model: _list_string
-
+            model: _myModel
 
             signal reload;
 
 
-            delegate: IconaInformazioni{
+            delegate: IconaDescrizioneEsercizi{
 
 
                 color: parametri_generali.coloreBordo
-                color2: parametri_generali.coloreUtente
                 highlighted:
                 {
                     if (lista_workout.currentIndex>=0)
                         lista_workout.currentIndex === index
                     else
                         false;
-
                 }
-                titolo: qsTr("SESSIONE")+" "+vector[0]
-                progress: parseFloat(vector[1])
-                punteggio: parseFloat(10*vector[2])
+                onHighlightedChanged:
+                {
+                    if (highlighted)
+                    {
+                        selected_exercise.video_intro=_esercizi.getVideoIntro(vector[0])
+                    }
+                }
 
+                nome:  _esercizi.getName(ex_name)
+                type:  _esercizi.getType(ex_name)
+                immagine:  _esercizi.getImage(ex_name)
 
-                date: ""
+                ripetizioni:-1
+                serie: -1
+                potenza: -1
 
-                tempo: vector[3]
 
 
                 width: lista_workout.width-2
-
 
                 onPressed: {
                     selected_exercise.code= ex_name
                     selected_exercise.sets=1
                     lista_workout.currentIndex=index
                 }
-
             }
+
             onCurrentIndexChanged: {
                 if (currentIndex>=0)
                 {
@@ -217,52 +242,6 @@ Item {
             }
 
         }
-//        GridView {
-
-//            id: grid
-//            anchors.topMargin: header.height
-//            cellWidth: width*0.33; cellHeight: cellWidth
-//            anchors.fill: parent
-//            snapMode: GridView.SnapToRow
-//            focus: true
-
-//            Component.onCompleted: {currentIndex=-1}
-
-//            model: _myModel //zona_allenamento.lista //Lista_pettorali {}
-//            //delegate:IconaEsercizi{}
-
-//            delegate: IconaImmagine{
-//                name: _esercizi.getName(ex_name)
-//                color: parametri_generali.coloreBordo
-//                highlighted:
-//                {
-//                    if (grid.currentIndex>=0)
-//                        grid.currentIndex === index
-//                    else
-//                        false;
-//                }
-//                text: ""
-//                image:"file://"+PATH+"/immagini_esercizi/"+_esercizi.getImage(ex_name)
-
-//                width: grid.cellWidth-2
-//                height: grid.cellHeight-2
-
-//                onPressed: {
-//                    selected_exercise.code= ex_name
-//                    selected_exercise.sets=1
-//                    grid.currentIndex=index
-//                }
-//            }
-
-//            onCurrentIndexChanged: {
-//                if (currentIndex>=0)
-//                {
-//                    mp_esercizio.stop()
-//                    mp_esercizio.play()
-//                }
-//            }
-//        }
-
     }
 
 

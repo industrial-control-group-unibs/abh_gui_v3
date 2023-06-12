@@ -983,14 +983,6 @@ SOSTITUIRE?</source>
     </message>
 </context>
 <context>
-    <name>SceltaEserciziNew</name>
-    <message>
-        <location filename="SceltaEserciziNew.qml" line="191"/>
-        <source>SESSIONE</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>SceltaGruppo</name>
     <message>
         <location filename="SceltaGruppo.qml" line="14"/>
