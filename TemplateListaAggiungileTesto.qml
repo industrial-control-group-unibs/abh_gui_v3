@@ -109,7 +109,7 @@ Item {
                     if (modelData==="+")
                         modelData
                     else
-                        "SESSIONE "+modelData
+                        qsTr("SESSIONE")+" "+modelData
                 }
 
                 width: lista_workout.width-2
