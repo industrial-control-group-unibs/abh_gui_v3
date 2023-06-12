@@ -31,7 +31,7 @@ Item {
 
     Timer
     {
-        interval: 5000
+        interval: 10000
         id: timer_scan
         repeat: true
         running: true
@@ -62,48 +62,125 @@ Item {
             id: titolo
         }
 
-        ListView {
-//            snapMode: ListView.SnapOneItem
-//            highlightRangeMode: ListView.StrictlyEnforceRange
-            id: lista_wifi
-            clip: true
+        Item {
+
             anchors {
                 top: titolo.bottom
+                bottom: parent.bottom
                 left: parent.left
                 right: parent.right
+                topMargin: parent.width*0.1
+                leftMargin: parent.width*0.1
+                rightMargin: parent.width*0.1
             }
-            height: parent.height*0.5
-            model: _wifi
-            currentIndex:-1
-            delegate: Item {
-                anchors.left: parent.left
-                anchors.leftMargin: 20
-                anchors.right: parent.right
-                height: 150
-                Testo
-                {
-                    text: nome
-                    font.bold:  lista_wifi.currentIndex === index
-                    font.pixelSize: 20
-                    verticalAlignment: Text.AlignVCenter
 
-                }
-                MouseArea
+            Item {
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: parent.height*0.2
+                id: spegni
+
+                property bool acceso: true
+                IconaCerchio
                 {
-                    anchors.fill: parent
-                    onClicked:
-                    {
-                        lista_wifi.currentIndex = index
-                        parametri_generali.wifi_name=nome
+                    id: icona_salva_pwd
+                    onPressed: {
+                        pieno=!pieno
+                        spegni=pieno
+                        if (spegni)
+                        {
+                            chiamata_sistema.string="nmcli radio wifi on"
+                            chiamata_sistema.call()
+                        }
+                        else
+                        {
+                            chiamata_sistema.string="nmcli radio wifi off"
+                            chiamata_sistema.call()
+                        }
+
                     }
                 }
 
+
+                Testo
+                {
+                    text: parent.acceso?qsTr("DISATTIVA RETI"):qsTr("ATTIVA RETI")
+                    anchors
+                    {
+                        verticalCenter: icona_salva_pwd.verticalCenter
+                        left: icona_salva_pwd.right
+                        right: parent.right
+                    }
+                    anchors.margins: 10
+                    fontSizeMode: Text.Fit
+                    wrapMode: Text.WordWrap
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+
+                }
             }
 
+            Item {
+                anchors {
+                    top: spegni.bottom
+                    left: parent.left
+                    right: parent.right
+                    bottom: parent.bottom
+                }
+                z:10
+
+                ListView {
+                    //            snapMode: ListView.SnapOneItem
+                    //            highlightRangeMode: ListView.StrictlyEnforceRange
+                    id: lista_wifi
+                    clip: true
+                    anchors.fill: parent
+                    height: parent.height*0.5
+                    model: _wifi
+                    currentIndex:-1
+                    delegate:
+                        IconaRettangolo{
 
 
+                        color: parametri_generali.coloreBordo
+                        highlighted:
+                        {
+                            if (lista_wifi.currentIndex>=0)
+                                lista_wifi.currentIndex === index
+                            else
+                                false;
+
+                        }
+                        text: nome
+
+                        width: lista_wifi.width-2
+
+                        onPressed: {
+                            lista_wifi.currentIndex = index
+                            parametri_generali.wifi_name=nome
+                        }
+                        onPressAndHold:
+                        {
+                            testo_elimina=qsTr("VUOI DIMENTICARE LA CONNESSIONE?")
+                            erase=true
+                        }
+                        onEraseNo:
+                        {
+                            erase=false
+                        }
+                        onEraseYes:
+                        {
+                            chiamata_sistema.string= "nmcli connection delete "+uuid
+                            chiamata_sistema.call()
+                            lista_wifi.reload()
+                        }
+                    }
+                }
+            }
         }
     }
+
     Item
     {
         anchors

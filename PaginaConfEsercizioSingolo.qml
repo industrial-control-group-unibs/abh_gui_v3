@@ -185,7 +185,7 @@ Item {
 
                 value: 3
                 min: 1
-                max: 20
+                max: 25
 
                 onValueChanged: selected_exercise.power=value
 

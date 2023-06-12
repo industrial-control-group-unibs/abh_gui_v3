@@ -79,4 +79,4 @@ endif()
 target_compile_definitions(abh_gui_v3
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(abh_gui_v3
-  PRIVATE Qt5::Core Qt5::Quick  Qt5::Multimedia Qt5::Widgets Qt5::Qml  Qt5::DBus Qt5::Network  ${Boost_LIBRARIES} ${OpenCV_LIBS} )
+  PRIVATE Qt5::Core Qt5::Quick  Qt5::Multimedia Qt5::Widgets Qt5::Qml  Qt5::DBus Qt5::Network ${Boost_LIBRARIES} ${OpenCV_LIBS} )

@@ -39,14 +39,15 @@ Item {
             nome: qsTr("GENERALI")
             link: "PaginaGenerali.qml"
         }
-        //        ListElement {
-        //            nome: "PRIVACY"
-        //            link: "PaginaPrivacy.qml"
-        //        }
+        ListElement {
+            nome: qsTr("SANIFICAZIONE")
+            link: "PaginaSanificazione.qml"
+        }
         ListElement {
             nome: qsTr("ASSISTENZA")
             link: "PaginaUbuntu.qml"
         }
+
     }
 
     implicitHeight: 1920/2
@@ -146,6 +147,7 @@ Item {
                 {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.bottom
+                    anchors.topMargin: parent.height*0.1
                     verticalAlignment: Text.AlignVCenter
                     text: qsTr("LOGOUT")
                 }
@@ -166,6 +168,7 @@ Item {
                 {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.bottom
+                    anchors.topMargin: parent.height*0.1
                     verticalAlignment: Text.AlignVCenter
                     text: qsTr("SPEGNI")
                 }

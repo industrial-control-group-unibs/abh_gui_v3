@@ -116,5 +116,6 @@
         <file>abh_en.ts</file>
         <file>abh_it.ts</file>
         <file>PaginaLingue.qml</file>
+        <file>PaginaSanificazione.qml</file>
     </qresource>
 </RCC>

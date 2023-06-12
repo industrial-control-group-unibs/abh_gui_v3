@@ -23,8 +23,12 @@ QVariant ListaWifi::data(const QModelIndex &index, int role) const
     return QString();
 
   const QString &data = data_.at(index.row());
+  const QString &uuid = uuid_.at(index.row());
   if ( role == Role_nome ){
     return data;
+  }
+  else if ( role == Role_uuid ){
+    return uuid;
   }
   else
     return QString();
@@ -34,8 +38,10 @@ QVariant ListaWifi::data(const QModelIndex &index, int role) const
 QHash<int, QByteArray> ListaWifi::roleNames() const
 {
   static QHash<int, QByteArray> mapping {
-    {Role_nome,"nome"}
+    {Role_nome,"nome"},
+    {Role_uuid,"uuid"}
   };
+
   return mapping;
 }
 
@@ -55,10 +61,10 @@ void ListaWifi::readList()
   // Call ListConnections D-Bus method
   QDBusReply<QList<QDBusObjectPath> > result = interface.call("ListConnections");
 
-
   int now = std::time(nullptr);;
 
   foreach (const QDBusObjectPath& connection, result.value()) {
+
     QString settingsPath=connection.path();
 
     QDBusInterface setting(NM_DBUS_SERVICE, settingsPath,
@@ -67,16 +73,23 @@ void ListaWifi::readList()
     const QDBusArgument &dbusArg = result.arguments().at(0).value<QDBusArgument>();
     Connection connection2;
     dbusArg >> connection2;
+//    for (const QString s: connection2["connection"].keys())
+//    {
+//      qDebug() << s << " " <<connection2["connection"][s].toString();
+//    }
 
-    //    qDebug() << "id: " << connection2["connection"]["id"].toString();
     if (connection2["connection"]["type"].toString()=="802-11-wireless")
     {
-//      qDebug() << "id: " << connection2["connection"];
       if (connection2["connection"]["timestamp"].toInt()> (now -60*5))
+      {
         data_.push_back(connection2["connection"]["id"].toString());
+        uuid_.push_back(connection2["connection"]["uuid"].toString());
+      }
     }
 
   }
+
+
 
 }
 

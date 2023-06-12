@@ -5,7 +5,7 @@ import QtQuick.Shapes 1.12
 
 Item
 {
-    height: 80
+    height: 100
     width: height
     property color colore: parametri_generali.coloreBordo
     id: component

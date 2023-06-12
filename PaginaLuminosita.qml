@@ -1,19 +1,26 @@
 import QtQuick 2.0
 import SysCall 1.0
-
+import QtGraphicalEffects 1.12
 
 Item {
     id: component
     anchors.fill: parent
 
     property string titolo: qsTr("LUMINOSITÀ")
-
     signal pressYes
     signal pressNo
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
     Barra_superiore{}
+
+    SysCall
+    {
+        id: chiamata_sistema
+        property int luminosita: _light
+    }
+
+
 
     Item
     {
@@ -57,10 +64,7 @@ Item {
             anchors.right: parent.right
             height: 100
             id: volume
-            SysCall
-            {
-                id: chiamata_sistema
-            }
+
             IconaMeno
             {
 //                anchors.left: parent.left
@@ -69,11 +73,17 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenterOffset: -parent.width*0.25
 //                anchors.top: parent.top
+                black: true
                 onPressed:
                 {
-                    chiamata_sistema.string="light -U 5"
-                    chiamata_sistema.call()
+                    if (chiamata_sistema.luminosita>0)
+                    {
+                        chiamata_sistema.string="light -U 5"
+                        chiamata_sistema.call()
+                        chiamata_sistema.luminosita-=5
+                    }
                 }
+                id: meno
             }
             IconaPlus
             {
@@ -82,35 +92,42 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.horizontalCenterOffset: parent.width*0.25
                 height: parent.height
+                black: true
 //                anchors.top: parent.top
                 onPressed:
                 {
-                    chiamata_sistema.string="light -A 5"
-                    chiamata_sistema.call()
+                    if (chiamata_sistema.luminosita<100)
+                    {
+                        chiamata_sistema.string="light -A 5"
+                        chiamata_sistema.call()
+                        chiamata_sistema.luminosita+=5
+                    }
                 }
+                id: piu
             }
 
-//            IconaCerchio
-//            {
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                anchors.verticalCenter: parent.verticalCenter
-//                width: parent.height
-//                onPressed:
-//                {
-//                    chiamata_sistema.string="pactl set-sink-mute @DEFAULT_SINK@ toggle"
-//                    chiamata_sistema.call()
+            Item
+            {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.left: meno.right
+                anchors.right: piu.left
+                anchors.leftMargin: meno.width*0.1
+                anchors.rightMargin: meno.width*0.1
+                height: parent.height*.5
 
-//                }
 
-//                Testo
-//                {
-//                    text: "MUTE"
-//                    anchors.horizontalCenter: parent.horizontalCenter
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    verticalAlignment: Text.AlignVCenter
-//                    horizontalAlignment: Text.AlignHCenter
-//                }
-//            }
+
+                    RadialGradient {
+                        anchors.fill: parent
+                        gradient: Gradient {
+                            GradientStop { position: 0.0; color: parametri_generali.coloreUtente}
+                            GradientStop { position: (0.8*chiamata_sistema.luminosita+80)/300; color: "transparent" }
+                        }
+                    }
+            }
+
+
 
         }
 

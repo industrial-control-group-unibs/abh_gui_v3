@@ -64,7 +64,7 @@ IconaRettangolo
             {
                 visible: component.date!==""
                 id: date_txt
-                text:"INIZIO: "+component.date
+                text:qsTr("INIZIO")+" : "+component.date
                 font.pixelSize: component.fontSize*0.3
                 verticalAlignment: Text.AlignVCenter
 
@@ -139,6 +139,7 @@ IconaRettangolo
             {
                 left: primo_terzo.right
                 top: parent.top
+                topMargin: parent.height*0.1
                 bottom: parent.bottom
             }
             width: parent.width*0.3
@@ -198,6 +199,7 @@ IconaRettangolo
                 left: secondo_terzo.right
                 right: parent.right
                 top: parent.top
+                topMargin: parent.height*0.1
                 bottom: parent.bottom
             }
 

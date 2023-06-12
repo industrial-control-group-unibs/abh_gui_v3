@@ -56,17 +56,22 @@ PROFILO</source>
 <context>
     <name>IconaInformazioni</name>
     <message>
+        <location filename="IconaInformazioni.qml" line="67"/>
+        <source>INIZIO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="IconaInformazioni.qml" line="99"/>
         <source>TEMPO IMPIEGATO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="IconaInformazioni.qml" line="149"/>
+        <location filename="IconaInformazioni.qml" line="150"/>
         <source>AVANZAMENTO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="IconaInformazioni.qml" line="206"/>
+        <location filename="IconaInformazioni.qml" line="208"/>
         <source>PUNTEGGIO</source>
         <translation type="unfinished"></translation>
     </message>
@@ -160,7 +165,8 @@ PROFILO</source>
     </message>
     <message>
         <location filename="ModelloRichiesteUtente.qml" line="9"/>
-        <source>MAIL</source>
+        <source>E-MAIL</source>
+        <oldsource>MAIL</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -361,6 +367,21 @@ GLI AGGIORNAMENTI SARANNO OPERATIVI DOPO IL RIAVVIO</source>
         <source>CONNESSIONI</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="PaginaConnessioni.qml" line="108"/>
+        <source>DISATTIVA RETI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PaginaConnessioni.qml" line="108"/>
+        <source>ATTIVA RETI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PaginaConnessioni.qml" line="165"/>
+        <source>VUOI DIMENTICARE LA CONNESSIONE?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PaginaConnessioni2</name>
@@ -467,12 +488,17 @@ GLI AGGIORNAMENTI SARANNO OPERATIVI DOPO IL RIAVVIO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PaginaImpostazioni.qml" line="150"/>
+        <location filename="PaginaImpostazioni.qml" line="43"/>
+        <source>SANIFICAZIONE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PaginaImpostazioni.qml" line="152"/>
         <source>LOGOUT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PaginaImpostazioni.qml" line="170"/>
+        <location filename="PaginaImpostazioni.qml" line="173"/>
         <source>SPEGNI</source>
         <translation type="unfinished"></translation>
     </message>
@@ -611,6 +637,45 @@ GLI AGGIORNAMENTI SARANNO OPERATIVI DOPO IL RIAVVIO</source>
     <message>
         <location filename="PaginaRiposo.qml" line="164"/>
         <source>DI</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PaginaSanificazione</name>
+    <message>
+        <location filename="PaginaSanificazione.qml" line="9"/>
+        <source>SANIFICAZIONE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PaginaSanificazione.qml" line="9"/>
+        <source>SANIFICAZIONE  IN CORSO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PaginaSanificazione.qml" line="135"/>
+        <source>TEMPO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PaginaSanificazione.qml" line="180"/>
+        <source>&lt;span style=&apos;font-size: 70px;&apos;&gt;AVVIA SANIFICAZIONE &lt;/span&gt; &lt;br /&gt;</source>
+        <oldsource>&lt;span style=&apos;font-size: 70px;&apos;&gt;AVVIA SANIFICAZIONE &lt;/span&gt;</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PaginaSanificazione.qml" line="180"/>
+        <source>&lt;span style=&apos;font-size: 30px&apos;&gt;LA MACCHINA SI SPEGNERÀ AL TERMINE&lt;/span&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PaginaSanificazione.qml" line="181"/>
+        <source>&lt;span style=&apos;font-size: 70px;&apos;&gt;IMPOSTA DURATA &lt;/span&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PaginaSanificazione.qml" line="181"/>
+        <source>&lt;span style=&apos;font-size: 30px&apos;&gt;min.&lt;/span&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

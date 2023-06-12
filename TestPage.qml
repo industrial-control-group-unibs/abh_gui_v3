@@ -11,6 +11,7 @@ import QtQuick.Controls 2.3
 
 
 import Charts 1.0
+import QtWebKit 3.0
 
 Item {
     anchors.fill: parent
@@ -28,21 +29,12 @@ Item {
         anchors.fill: parent
         anchors.margins: 60
 
-        StatChart
-        {
-            id: stat
 
+        WebView {
+            id: webView
             anchors.fill: parent
-            Component.onCompleted:
-            {
-                setYmax(10)
-                addLine([0, 1, 2, 3, 3.5],[1, 5, 4, 5, 8],parametri_generali.coloreUtente,parametri_generali.coloreUtenteTrasparent)
-                addLine([0, 1, 2, 3, 4],[3, 2, 1, 2, 2],"red","blue")
-                addLine([0, 1, 2, 3, 4],[1, 2, 3, 4, 3],"yellow","transparent")
-
-            }
+            url: "www.google.it"
         }
-
     }
 
 

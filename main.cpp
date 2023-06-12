@@ -33,6 +33,20 @@
 
 #include <QTranslator>
 
+
+std::string exec(const char* cmd) {
+    std::array<char, 128> buffer;
+    std::string result;
+    std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "r"), pclose);
+    if (!pipe) {
+        throw std::runtime_error("popen() failed!");
+    }
+    while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+        result += buffer.data();
+    }
+    return result;
+}
+
 int main(int argc, char *argv[])
 {
  std::string prev_loc = std::setlocale(LC_ALL, nullptr);
@@ -146,21 +160,21 @@ int main(int argc, char *argv[])
 
   ListaWifi wifi;
 
-  zone.readFile("Zone");
+  zone.readFile("Zon  e");
   workout_list.readFile("lista_workout");
 //  workout.readFile("workout1_level_1");
 
 
   std::shared_ptr<QGuiApplication> app=std::make_shared<QGuiApplication>(argc, argv);
   std::shared_ptr<QTranslator> translator=std::make_shared<QTranslator>();
-  if (!translator->load("abh_en"))
+  if (!translator->load("abh_it"))
     std::cerr << "unable to load translation" <<std::endl;
   if (!app->installTranslator(translator.get()))
     std::cerr << "unable to install translation" <<std::endl;
 
   std::shared_ptr<QQmlApplicationEngine> engine=std::make_shared<QQmlApplicationEngine>();
 
-  Settings settings(engine,app,translator,"abh_en");
+  Settings settings(engine,app,translator,"abh_it");
 
 //  engine->retranslate();
 
@@ -219,6 +233,10 @@ int main(int argc, char *argv[])
   engine->rootContext()->setContextProperty("PATH", data_path);
   engine->rootContext()->setContextProperty("_privacy", privacy);
   engine->rootContext()->setContextProperty("_info", info);
+
+  double light=std::stod(exec("light"));
+  std::cout << "light = " << light <<std::endl;
+  engine->rootContext()->setContextProperty("_light", light);
 
 
   const QUrl url(QStringLiteral("qrc:/main.qml"));

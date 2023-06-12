@@ -36,7 +36,8 @@ class ListaWifi : public QAbstractListModel
 
 public:
     enum Roles {
-      Role_nome = Qt::UserRole
+      Role_nome = Qt::UserRole,
+      Role_uuid
     };
 
     explicit ListaWifi(QObject *parent = nullptr);
@@ -52,6 +53,7 @@ public slots:
 
 private: //members
     QVector< QString > data_;
+    QVector< QString > uuid_;
     int roles_;
 };
 
