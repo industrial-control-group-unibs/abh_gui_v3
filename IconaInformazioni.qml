@@ -155,7 +155,7 @@ IconaRettangolo
                 {
                     horizontalCenter: parent.horizontalCenter
                     top: parent.top
-                    topMargin: parent.height*0.1
+                    topMargin: parent.height*0.05
                 }
             }
 
@@ -213,7 +213,7 @@ IconaRettangolo
                 {
                     horizontalCenter: parent.horizontalCenter
                     top: parent.top
-                    topMargin: parent.height*0.1
+                    topMargin: parent.height*0.05
                 }
             }
 

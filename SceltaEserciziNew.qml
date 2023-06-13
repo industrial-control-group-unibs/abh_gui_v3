@@ -190,7 +190,7 @@ Item {
                 left: parent.left
                 right: parent.right
             }
-            currentIndex: _workout.getActiveSession()-1
+            currentIndex: -1
 
             model: _myModel
 
