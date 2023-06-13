@@ -38,10 +38,12 @@ Item {
         anchors
         {
             bottom: parent.bottom
+            bottomMargin: parent.height*0.05
             horizontalCenter: parent.horizontalCenter
         }
         z:5
         width: 0.4*parent.width
+        bordo: parametri_generali.coloreUtente
         onPressRight:
         {
 //            component.state="stats"

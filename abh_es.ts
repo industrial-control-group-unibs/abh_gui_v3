@@ -6,17 +6,17 @@
     <message>
         <location filename="BarraVolume.qml" line="9"/>
         <source>VOLUME</source>
-        <translation type="unfinished"></translation>
+        <translation>VOLUME</translation>
     </message>
     <message>
         <location filename="BarraVolume.qml" line="150"/>
         <source>UNMUTE</source>
-        <translation type="unfinished"></translation>
+        <translation>UNMUTE</translation>
     </message>
     <message>
         <location filename="BarraVolume.qml" line="150"/>
         <source>MUTE</source>
-        <translation type="unfinished"></translation>
+        <translation>MUTA</translation>
     </message>
 </context>
 <context>
@@ -432,7 +432,7 @@ GLI AGGIORNAMENTI SARANNO OPERATIVI DOPO IL RIAVVIO</source>
     <message>
         <location filename="PaginaGenerali.qml" line="16"/>
         <source>LINGUA</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">LENGUA</translation>
     </message>
     <message>
         <location filename="PaginaGenerali.qml" line="20"/>
@@ -460,7 +460,7 @@ GLI AGGIORNAMENTI SARANNO OPERATIVI DOPO IL RIAVVIO</source>
     <message>
         <location filename="PaginaImpostazioni.qml" line="14"/>
         <source>IMPOSTAZIONI</source>
-        <translation type="unfinished"></translation>
+        <translation>OPCIONES</translation>
     </message>
     <message>
         <location filename="PaginaImpostazioni.qml" line="23"/>
@@ -498,12 +498,12 @@ GLI AGGIORNAMENTI SARANNO OPERATIVI DOPO IL RIAVVIO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PaginaImpostazioni.qml" line="152"/>
+        <location filename="PaginaImpostazioni.qml" line="154"/>
         <source>LOGOUT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PaginaImpostazioni.qml" line="173"/>
+        <location filename="PaginaImpostazioni.qml" line="175"/>
         <source>SPEGNI</source>
         <translation type="unfinished"></translation>
     </message>
@@ -521,7 +521,7 @@ GLI AGGIORNAMENTI SARANNO OPERATIVI DOPO IL RIAVVIO</source>
     <message>
         <location filename="PaginaLingue.qml" line="14"/>
         <source>LINGUA</source>
-        <translation type="unfinished"></translation>
+        <translation>LENGUA</translation>
     </message>
     <message>
         <location filename="PaginaLingue.qml" line="19"/>

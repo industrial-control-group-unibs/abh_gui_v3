@@ -38,9 +38,11 @@ Item {
         anchors
         {
             bottom: parent.bottom
+            bottomMargin: parent.height*0.05
             horizontalCenter: parent.horizontalCenter
         }
         z:5
+        bordo: parametri_generali.coloreUtente
         width: 0.4*parent.width
         onPressRight:
         {

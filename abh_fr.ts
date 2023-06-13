@@ -498,12 +498,12 @@ GLI AGGIORNAMENTI SARANNO OPERATIVI DOPO IL RIAVVIO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PaginaImpostazioni.qml" line="152"/>
+        <location filename="PaginaImpostazioni.qml" line="154"/>
         <source>LOGOUT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PaginaImpostazioni.qml" line="173"/>
+        <location filename="PaginaImpostazioni.qml" line="175"/>
         <source>SPEGNI</source>
         <translation type="unfinished"></translation>
     </message>

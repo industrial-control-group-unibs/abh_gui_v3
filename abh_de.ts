@@ -460,7 +460,7 @@ GLI AGGIORNAMENTI SARANNO OPERATIVI DOPO IL RIAVVIO</source>
     <message>
         <location filename="PaginaImpostazioni.qml" line="14"/>
         <source>IMPOSTAZIONI</source>
-        <translation type="unfinished"></translation>
+        <translation>jggjgjgjgjgjgj</translation>
     </message>
     <message>
         <location filename="PaginaImpostazioni.qml" line="23"/>
@@ -498,12 +498,12 @@ GLI AGGIORNAMENTI SARANNO OPERATIVI DOPO IL RIAVVIO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PaginaImpostazioni.qml" line="152"/>
+        <location filename="PaginaImpostazioni.qml" line="154"/>
         <source>LOGOUT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PaginaImpostazioni.qml" line="173"/>
+        <location filename="PaginaImpostazioni.qml" line="175"/>
         <source>SPEGNI</source>
         <translation type="unfinished"></translation>
     </message>

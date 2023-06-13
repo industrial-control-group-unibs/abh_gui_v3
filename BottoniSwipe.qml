@@ -34,12 +34,12 @@ Item {
     states: [
         State {
             name: "sx"
-            PropertyChanges { target: left_circle; color: parametri_generali.coloreBordo}
+            PropertyChanges { target: left_circle; color: component.bordo}
             PropertyChanges { target: right_circle; color: component.scuro}
         },
         State {
             name: "dx"
-            PropertyChanges { target: right_circle; color: parametri_generali.coloreBordo}
+            PropertyChanges { target: right_circle; color: component.bordo}
             PropertyChanges { target: left_circle; color: component.scuro}
         }
     ]
