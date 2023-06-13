@@ -300,6 +300,11 @@ TRAINING</translation>
     </message>
     <message>
         <location filename="PaginaConfEsercizioSingolo.qml" line="198"/>
+        <source>DIFFICOLTA’ (OVERPOWER)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PaginaConfEsercizioSingolo.qml" line="198"/>
         <source>DIFFICOLTA’</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1091,6 +1096,11 @@ PERSONALIZZATO</source>
 </context>
 <context>
     <name>TemplateListaAggiungileTesto</name>
+    <message>
+        <location filename="TemplateListaAggiungileTesto.qml" line="112"/>
+        <source>SESSIONE</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <location filename="TemplateListaAggiungileTesto.qml" line="134"/>
         <source>VUOI ELIMINARE LA SESSIONE?</source>

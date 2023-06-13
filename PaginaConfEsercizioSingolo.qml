@@ -195,7 +195,7 @@ Item {
                     anchors.bottom: parent.top
                     width: 300
                     anchors.bottomMargin: 10
-                    text: qsTr("DIFFICOLTA’")
+                    text: parent.value>20? qsTr("DIFFICOLTA’ (OVERPOWER)") : qsTr("DIFFICOLTA’")
                     font.pixelSize: 70
                     color: parametri_generali.coloreBordo
                 }
