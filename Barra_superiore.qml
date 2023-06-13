@@ -9,6 +9,13 @@ Item
     id: barra
 
     property string titolo: ""
+    property color colore: parametri_generali.coloreSfondo
+    property bool nero: false
+    onColoreChanged:
+    {
+        console.log("colore rb",colore.r,colore.g,colore.b)
+        nero=(colore.r<0.05) && (colore.g<0.05) && (colore.b<0.05)
+    }
 
     anchors
     {
@@ -95,6 +102,7 @@ Item
 
 
     Image {
+        visible: !barra.nero
         id: sfumatura_barra
         anchors.fill: barra_colore
         mipmap: true
