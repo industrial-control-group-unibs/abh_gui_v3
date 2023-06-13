@@ -57,7 +57,13 @@ Item
 //        }
     }
 
-
+    Testo
+    {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        text: (selected_exercise.type<3?qsTr("RIPETIZIONI"):qsTr("TEMPO"))+" "+fb_udp.data[0]
+    }
 }
 
 

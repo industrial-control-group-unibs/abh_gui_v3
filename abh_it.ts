@@ -1151,6 +1151,17 @@ PERSONALIZZATO</source>
  L&apos;ESERCIZIO</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="WorkoutCalibration.qml" line="65"/>
+        <source>RIPETIZIONI</source>
+        <oldsource>Ripetizioni</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="WorkoutCalibration.qml" line="65"/>
+        <source>TEMPO</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WorkoutEarlyStop</name>
