@@ -91,6 +91,8 @@ Item {
                 left: parent.left
                 right: parent.right
                 bottom: freccia.top
+                bottomMargin: -parent.height*0.1
+
             }
             height: parent.height*0.2
 
