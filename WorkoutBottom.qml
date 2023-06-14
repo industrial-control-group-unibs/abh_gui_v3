@@ -69,6 +69,7 @@ Item
         id: power_settings
         height: parent.height*0.20*0.66
         width: parent.width*0.5
+        max: 25
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: parent.height*0.2
