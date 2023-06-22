@@ -239,7 +239,7 @@ void ListaUtenti::readFile()
 
 
   data_.clear();
-  for (size_t idx=0;idx<elements;idx++)
+  for (size_t idx=1;idx<nusers;idx++)
   {
     std::vector<QString> fields(roles_);
     for (size_t ifield=0;ifield<fields.size();ifield++)
