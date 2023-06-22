@@ -90,11 +90,19 @@ int main(int argc, char *argv[])
   std::cout << "reading file from " << dir_path <<std::endl;
   QString data_path=QString::fromStdString(dir_path);
 
+  std::cout << "create model" <<std::endl;
   ListaNome model(data_path);
   ListString ls;
+  std::cout << "create zone" <<std::endl;
   ListaImmagini zone(data_path+"/zone");
+
+  std::cout << "create users" <<std::endl;
   ListaUtenti utenti(data_path+"/utenti");
+
+  std::cout << "create workouts" <<std::endl;
   abh::ProgrammaAllenamento workout(data_path+"/allenamento_programmato");
+
+  std::cout << "create exercise descriptions" <<std::endl;
   abh::DescrizioneEsercizi esercizi(data_path);
 
   std::cout << "reading file from " << dir_path <<std::endl;
