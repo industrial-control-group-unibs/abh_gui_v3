@@ -1106,32 +1106,32 @@ PERSONALIZZATO</source>
 <context>
     <name>WorkoutBottom</name>
     <message>
-        <location filename="WorkoutBottom.qml" line="81"/>
+        <location filename="WorkoutBottom.qml" line="82"/>
         <source>POWER</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutBottom.qml" line="148"/>
+        <location filename="WorkoutBottom.qml" line="149"/>
         <source>RIPETIZIONI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutBottom.qml" line="172"/>
+        <location filename="WorkoutBottom.qml" line="173"/>
         <source>TIME</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutBottom.qml" line="196"/>
+        <location filename="WorkoutBottom.qml" line="197"/>
         <source>TU</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutBottom.qml" line="212"/>
+        <location filename="WorkoutBottom.qml" line="213"/>
         <source>SERIE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutBottom.qml" line="212"/>
+        <location filename="WorkoutBottom.qml" line="213"/>
         <source>DI</source>
         <translation type="unfinished"></translation>
     </message>

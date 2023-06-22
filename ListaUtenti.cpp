@@ -227,6 +227,9 @@ void ListaUtenti::readFile()
 {
 
   std::string nome_file=dir_path_+"/utenti.csv";
+
+  try {
+
   rapidcsv::Document doc(nome_file);
 
   std::vector<std::string> col = doc.GetColumn<std::string>("nome");
@@ -243,7 +246,10 @@ void ListaUtenti::readFile()
   }
   std::vector<QString> fields(roles_);
   data_ << Utente(fields);
-
+  } catch (std::exception& ex) {
+    std::cout << "expection " << ex.what() << " while reading file " << nome_file << std::endl;
+    throw ex;
+  }
 }
 
 void ListaUtenti::saveColor(QString identifier, QString coloreBordo, QString coloreSfondo, QString coloreUtente)
