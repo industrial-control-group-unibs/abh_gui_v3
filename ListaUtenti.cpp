@@ -234,6 +234,8 @@ void ListaUtenti::readFile()
 
   std::vector<std::string> col = doc.GetColumn<std::string>("nome");
   size_t elements=col.size();
+  size_t nusers=doc.GetRowCount();
+  std::cout << "there are " << nusers << " users"<< std::endl;
 
 
   data_.clear();
