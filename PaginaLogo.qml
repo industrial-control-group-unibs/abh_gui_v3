@@ -18,43 +18,59 @@ Rectangle {
 //        onTriggered: pageLoader.source=  "PaginaLogin.qml"
 //    }
 
-    Item {
-        id: figma_2_456
-        objectName:"abh Logo Trasparente 1"
-        layer.enabled:true
-        layer.effect: DropShadow {
-            horizontalOffset: 0
-            verticalOffset: 4
-            radius: 4
-            samples: 17
-            color: "#40000000"
-        }
-
-        width:1019*0.7
-        height:855*0.7
-        anchors
+    AnimatedImage {
+        anchors.fill: parent
+        fillMode: Image.PreserveAspectFit
+        id: animation;
+        source: "file://"+PATH+"/loghi/gif_intro.gif"
+        MouseArea
         {
-            horizontalCenter: parent.horizontalCenter
-            verticalCenter: parent.verticalCenter
-        }
-
-        Image {
-            id: source_figma_2_456
-            layer.enabled: true
-            fillMode: Image.PreserveAspectCrop
-            visible: true
-            mipmap: true
-            anchors.fill:parent
-            source: "file://"+PATH+"/loghi/LogoABIntro.png"
-
-            MouseArea
+            anchors.fill: parent
+            onClicked:
             {
-                anchors.fill: parent
-                onClicked:
-                {
-                    pageLoader.source=  "PaginaLogin.qml"
-                }
+                pageLoader.source=  "PaginaLogin.qml"
             }
         }
-    } 
+    }
+
+//    Item {
+//        id: figma_2_456
+//        objectName:"abh Logo Trasparente 1"
+//        layer.enabled:true
+//        layer.effect: DropShadow {
+//            horizontalOffset: 0
+//            verticalOffset: 4
+//            radius: 4
+//            samples: 17
+//            color: "#40000000"
+//        }
+
+//        width:1019*0.7
+//        height:855*0.7
+//        anchors
+//        {
+//            horizontalCenter: parent.horizontalCenter
+//            verticalCenter: parent.verticalCenter
+//        }
+
+
+//        Image {
+//            id: source_figma_2_456
+//            layer.enabled: true
+//            fillMode: Image.PreserveAspectCrop
+//            visible: true
+//            mipmap: true
+//            anchors.fill:parent
+//            source: "file://"+PATH+"/loghi/LogoABIntro.png"
+
+//            MouseArea
+//            {
+//                anchors.fill: parent
+//                onClicked:
+//                {
+//                    pageLoader.source=  "PaginaLogin.qml"
+//                }
+//            }
+//        }
+//    }
 }

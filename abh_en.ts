@@ -48,7 +48,7 @@ PROFILO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DefinizioneUtente1.qml" line="285"/>
+        <location filename="DefinizioneUtente1.qml" line="293"/>
         <source>INDIETRO</source>
         <translation type="unfinished"></translation>
     </message>
@@ -690,12 +690,12 @@ TRAINING</translation>
 <context>
     <name>PaginaScattaFoto</name>
     <message>
-        <location filename="PaginaScattaFoto.qml" line="155"/>
+        <location filename="PaginaScattaFoto.qml" line="156"/>
         <source>PREPARATI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PaginaScattaFoto.qml" line="155"/>
+        <location filename="PaginaScattaFoto.qml" line="156"/>
         <source>PREMI PER INIZIARE</source>
         <translation type="unfinished"></translation>
     </message>

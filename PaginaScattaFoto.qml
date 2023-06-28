@@ -25,6 +25,7 @@ Item {
         dateTimeString = currentDate.toLocaleDateString( locale,"yyyyMMdd")+Qt.formatTime(new Date(),"hhmmss");
         selected_exercise.code="photo"
     }
+    Component.onDestruction: startstop_udp.string="stop"
     Barra_superiore{}
 
 
@@ -166,7 +167,11 @@ Item {
             MouseArea
             {
                 anchors.fill: parent
-                onPressed: conto_alla_rovescia.running=true
+                onPressed:
+                {
+                    conto_alla_rovescia.running=true
+                    startstop_udp.string="start"
+                }
             }
 
 

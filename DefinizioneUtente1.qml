@@ -204,7 +204,7 @@ Item {
                 width: 100
                 z: 3
                 id: avanti
-                property var dati: ["","","","","","","","","","",""]
+                property var dati: ["","","","","","","","","","","",""]
                 Component.onCompleted:
                 {
                     if (impostazioni_utente.identifier !=="")
@@ -213,7 +213,7 @@ Item {
                     }
                     else
                     {
-                        dati:["","","","","","","","","","",""]
+                        dati:["","","","","","","","","","","",""]
                     }
                 }
 
@@ -221,7 +221,7 @@ Item {
                 {
                     id: testo_avanti
                     text: conferma? qsTr("CONFERMA"):qsTr("AVANTI")
-                    property bool conferma: true
+                    property bool conferma: false
                     anchors
                     {
                         horizontalCenter: parent.horizontalCenter
@@ -255,6 +255,10 @@ Item {
                             }
                             else
                             {
+                                console.log("foto = ", impostazioni_utente.foto)
+                                console.log("dati = ", dati)
+                                console.log("dati[",lista_utente.currentIndex+1,"] = ", dati[lista_utente.currentIndex+1])
+
                                 impostazioni_utente.identifier=_utenti.addUser(dati)
                             }
                             _utenti.readFile()
@@ -263,9 +267,13 @@ Item {
                         else
                         {
                             testo_avanti.conferma=true
+                            console.log("dati = ", dati)
                             lista_utente.currentItem.colore=parametri_generali.coloreBordo
                             dati[lista_utente.currentIndex]=lista_utente.currentItem.name
                             dati[lista_utente.currentIndex+1]=impostazioni_utente.foto
+                            console.log("foto = ", impostazioni_utente.foto)
+                            console.log("dati[",lista_utente.currentIndex+1,"] = ", dati[lista_utente.currentIndex+1])
+
                         }
                     }
                 }

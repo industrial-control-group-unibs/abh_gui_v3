@@ -94,6 +94,7 @@ QString ListaUtenti::addUser(std::vector<QString> dati)
   for (size_t ifield=0;ifield<dati.size();ifield++)
   {
     row[ifield]=dati.at(ifield).toStdString();
+    std::cout << "field = " << ifield << " valore = " << dati.at(ifield).toStdString() << std::endl;
   }
   row[12]=std::to_string(doc.GetRowCount())+"_"+row[0]+"_"+row[1];
   row[13]=default_colors_[0].toStdString();
