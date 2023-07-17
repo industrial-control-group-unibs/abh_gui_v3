@@ -282,7 +282,6 @@ def exercise_thread():
                     max_neg_motor_speed=0.0
 
                 last_rep_count_from_vision=rep_count_from_vision
-                print("rep_count_from_vision=", rep_count_from_vision, " repetition_count = ", repetition_count)
             else:
               print("lunghezza messaggio visione non corretta")
         else:
