@@ -255,7 +255,7 @@ def controlThread():
                 state=Status.ON
 
 
-            stiffness_cmd_local = min(1.0,max(0.0,stiffness_cmd))
+            stiffness_cmd_local = min(3.0,max(0.0,stiffness_cmd))
             velocity_cmd_local  = min(1.0,max(0.0,velocity_cmd))
 
 
