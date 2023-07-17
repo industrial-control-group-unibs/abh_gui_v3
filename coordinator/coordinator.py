@@ -290,6 +290,7 @@ def exercise_thread():
             if (vision_msg_counter>1000)
               print("no messaggi da visione")
               vision_msg_counter=0
+              rep_count_from_vision=-10
 
         if ( (state == Status.FORWARD) and
              ( (motor_speed<motor_speed_threshold and direction==-1 and exercise["force"]<20  and (switch_timer>switch_timer_th)) or
