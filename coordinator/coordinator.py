@@ -164,6 +164,8 @@ def exercise_thread():
 
     switch_timer=0
     switch_timer_th=1
+
+    vision_msg_counter=0
     while (not stop):
         time.sleep(0.001)
         switch_timer+=0.001
@@ -259,6 +261,7 @@ def exercise_thread():
         if (repetition_udp.isNewDataAvailable()):
             repetition_state=repetition_udp.getData()
             if len(repetition_state)==3:
+                vision_msg_counter=0
 
                 rep_count_from_vision=float(repetition_state[0])
                 direction=float(repetition_state[1])
@@ -283,7 +286,10 @@ def exercise_thread():
             else:
               print("lunghezza messaggio visione non corretta")
         else:
-            print("no messaggi da visione")
+            vision_msg_counter+=1
+            if (vision_msg_counter>1000)
+              print("no messaggi da visione")
+              vision_msg_counter=0
 
         if ( (state == Status.FORWARD) and
              ( (motor_speed<motor_speed_threshold and direction==-1 and exercise["force"]<20  and (switch_timer>switch_timer_th)) or
