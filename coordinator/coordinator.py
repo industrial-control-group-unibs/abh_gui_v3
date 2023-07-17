@@ -282,6 +282,8 @@ def exercise_thread():
                 print("rep_count_from_vision=", rep_count_from_vision, " repetition_count = ", repetition_count)
             else:
               print("lunghezza messaggio visione non corretta")
+        else:
+            print("no messaggi da visione")
 
         if ( (state == Status.FORWARD) and
              ( (motor_speed<motor_speed_threshold and direction==-1 and exercise["force"]<20  and (switch_timer>switch_timer_th)) or
