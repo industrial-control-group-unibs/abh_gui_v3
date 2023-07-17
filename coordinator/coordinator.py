@@ -287,7 +287,7 @@ def exercise_thread():
               print("lunghezza messaggio visione non corretta")
         else:
             vision_msg_counter+=1
-            if (vision_msg_counter>1000)
+            if (vision_msg_counter>1000):
               print("no messaggi da visione")
               vision_msg_counter=0
               rep_count_from_vision=-10
