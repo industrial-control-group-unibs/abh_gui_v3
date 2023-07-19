@@ -77,15 +77,20 @@ int main(int argc, char *argv[])
   QSurfaceFormat::setDefaultFormat(format);
 
   std::string dir_path;
+  std::string template_path;
 
   if (fs)
   {
     dir_path="/home/"+Username+"/Scrivania/abh_data";
+    template_path="/home/"+Username+"/projects/abh_data/template";
   }
   else
   {
     dir_path="/home/jacobi/projects/abh_data";
+    template_path="/home/jacobi/projects/abh/abh_gui_v3/template";
   }
+
+  QString q_template_path=QString::fromStdString(template_path);
 
   std::cout << "reading file from " << dir_path <<std::endl;
   QString data_path=QString::fromStdString(dir_path);
@@ -97,10 +102,12 @@ int main(int argc, char *argv[])
   ListaImmagini zone(data_path+"/zone");
 
   std::cout << "create users" <<std::endl;
-  ListaUtenti utenti(data_path+"/utenti");
+  ListaUtenti utenti(data_path+"/utenti",
+                     template_path);
 
   std::cout << "create workouts" <<std::endl;
-  abh::ProgrammaAllenamento workout(data_path+"/allenamento_programmato");
+  abh::ProgrammaAllenamento workout(data_path+"/allenamento_programmato",
+                                    template_path);
 
   std::cout << "create exercise descriptions" <<std::endl;
   abh::DescrizioneEsercizi esercizi(data_path);
@@ -239,6 +246,7 @@ int main(int argc, char *argv[])
   context->setContextProperty("_default", default_values);
 
   engine->rootContext()->setContextProperty("PATH", data_path);
+  engine->rootContext()->setContextProperty("_template_path", q_template_path);
   engine->rootContext()->setContextProperty("_privacy", privacy);
   engine->rootContext()->setContextProperty("_info", info);
 

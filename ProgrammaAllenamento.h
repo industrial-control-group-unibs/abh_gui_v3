@@ -33,7 +33,9 @@ class ProgrammaAllenamento : public QObject
   Q_PROPERTY(double          tut            READ    tut            WRITE setTut      NOTIFY tutChanged)
 
 public:
-  explicit ProgrammaAllenamento(QString path, QObject *parent = nullptr);
+  explicit ProgrammaAllenamento(QString path,
+                                std::string template_path,
+                                QObject *parent = nullptr);
 //  virtual ~ProgrammaAllenamento();
 
   bool    completed  () const {return completed_    ;}
@@ -149,6 +151,7 @@ protected:
   int             idx_           ;
   std::string     file_name_     ;
   std::string     stat_file_name_;
+  std::string     template_path_;
 
   std::unique_ptr<rapidcsv::Document> doc_;
   std::unique_ptr<rapidcsv::Document> stat_doc_;

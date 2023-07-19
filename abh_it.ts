@@ -979,7 +979,7 @@ IL PROGRAMMA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="SceltaAllenamentoPersonalizzatoTitolo.qml" line="27"/>
+        <location filename="SceltaAllenamentoPersonalizzatoTitolo.qml" line="30"/>
         <source>NOME ESISTENTE
 SOSTITUIRE?</source>
         <translation type="unfinished"></translation>

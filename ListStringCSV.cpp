@@ -104,7 +104,7 @@ void ListStringCSV::addRow(QString filename, QStringList row)
 
 bool ListStringCSV::rename(QString oldname, QString newname, bool replace)
 {
-  std::string oldfile=dir_path_+"/"+oldname.toStdString()+".csv";
+  std::string oldfile=oldname.toStdString()+".csv";
   std::string newfile=dir_path_+"/"+newname.toStdString()+".csv";
 
   std::ifstream f(newfile.c_str());

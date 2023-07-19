@@ -40,7 +40,9 @@ public:
     };
 
 
-    explicit ListaUtenti(QString path, QObject *parent = nullptr);
+    explicit ListaUtenti(QString path,
+                         std::string template_path,
+                         QObject *parent = nullptr);
 
     int rowCount(const QModelIndex& parent) const override;
     QVariant data( const QModelIndex& index, int role = Qt::DisplayRole ) const override;
@@ -70,6 +72,7 @@ public slots:
 private: //members
     QVector< Utente > data_;
     std::string dir_path_;
+    std::string template_path_;
     QString path_;
     int roles_;
     QStringList default_colors_;

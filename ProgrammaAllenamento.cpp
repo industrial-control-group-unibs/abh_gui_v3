@@ -6,14 +6,16 @@
 
 namespace abh {
 
-ProgrammaAllenamento::ProgrammaAllenamento(QString path, QObject* /*parent*/)
+ProgrammaAllenamento::ProgrammaAllenamento(QString path,
+                                           std::string template_path,
+                                           QObject* /*parent*/)
 {
   dir_path_=path;
   completed_=true;
   end_workout_=false;
   end_session_=false;
   act_session_=1;
-
+  template_path_=template_path;
 }
 
 void ProgrammaAllenamento::readFile(std::string file_name)
@@ -803,7 +805,7 @@ QVariant ProgrammaAllenamento::listSessionsNumber()
 
 bool ProgrammaAllenamento::createEmptyWorkout(QString user_id, QString workout_name)
 {
-  std::string workout_file=dir_path_.toStdString()+"/WORKOUT_TEMPLATE.csv";
+  std::string workout_file=template_path_+"/WORKOUT_TEMPLATE.csv";
   std::unique_ptr<rapidcsv::Document> doc;
   try {
     doc.reset(new rapidcsv::Document(workout_file));
