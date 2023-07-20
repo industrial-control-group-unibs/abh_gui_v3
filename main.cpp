@@ -81,8 +81,8 @@ int main(int argc, char *argv[])
 
   if (fs)
   {
-    dir_path="/home/"+Username+"/Scrivania/abh_data";
-    template_path="/home/"+Username+"/projects/abh_data/template";
+    dir_path="/home/"+Username+"/Scrivania/abh/abh_data";
+    template_path="/home/"+Username+"/projects/abh/abh_data/template";
   }
   else
   {
