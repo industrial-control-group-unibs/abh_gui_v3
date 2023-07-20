@@ -116,7 +116,7 @@ Item {
                     visible: false
                     mipmap: true
                     anchors.fill:parent
-                    source: "file://"+PATH+"/utenti/"+impostazioni_utente.foto
+                    source: "file://"+PATH+"/../utenti/"+impostazioni_utente.foto
                     id: allenamento_icona
                 }
 

@@ -172,7 +172,7 @@ Item
                 }
             }
 
-            source:  "file://"+PATH+"/utenti/"+impostazioni_utente.foto//"pic_foto.jpg"
+            source:  "file://"+PATH+"/../utenti/"+impostazioni_utente.foto//"pic_foto.jpg"
             layer.effect: OpacityMask {
                 maskSource: Item {
                     width: img_barra.width

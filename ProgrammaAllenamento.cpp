@@ -818,7 +818,7 @@ bool ProgrammaAllenamento::createEmptyWorkout(QString user_id, QString workout_n
     return false;
   }
 
-  std::string file=dir_path_.toStdString()+"/"+user_id.toStdString()+"_"+workout_name.toStdString()+".csv";
+  std::string file=dir_path_.toStdString()+"/../../utenti/"+user_id.toStdString()+"_"+workout_name.toStdString()+".csv";
   doc_->Save(file);
   readFile(file);
   return true;
@@ -876,7 +876,7 @@ QString ProgrammaAllenamento::createWorkout(QString user_id, QString workout_nam
     }
   }
 
-  file_name_=dir_path_.toStdString()+"/../utenti/"+user_id.toStdString()+"_"+workout_name.toStdString()+".csv";
+  file_name_=dir_path_.toStdString()+"/../../utenti/"+user_id.toStdString()+"_"+workout_name.toStdString()+".csv";
 
 
   for  (int idx=0;idx<(int)doc_->GetRowCount();idx++)
@@ -952,7 +952,7 @@ void ProgrammaAllenamento::extend(int number_of_session)
 
 void ProgrammaAllenamento::loadWorkout(QString user_id, QString workout_name)
 {
-  file_name_=dir_path_.toStdString()+"/../utenti/"+user_id.toStdString()+"_"+workout_name.toStdString()+".csv";
+  file_name_=dir_path_.toStdString()+"/../../utenti/"+user_id.toStdString()+"_"+workout_name.toStdString()+".csv";
   readFile(file_name_);
   readStatFile(user_id);
 
@@ -961,7 +961,7 @@ void ProgrammaAllenamento::loadWorkout(QString user_id, QString workout_name)
 
 void ProgrammaAllenamento::updateStatFile(QString user_id, QString workout_name, int time, int tut)
 {
-  stat_file_name_=dir_path_.toStdString()+"/../utenti/stat_"+user_id.toStdString()+".csv";
+  stat_file_name_=dir_path_.toStdString()+"/../../utenti/stat_"+user_id.toStdString()+".csv";
   std::unique_ptr<rapidcsv::Document> stat_doc;
   stat_doc.reset(new rapidcsv::Document(stat_file_name_));
 
@@ -981,7 +981,7 @@ void ProgrammaAllenamento::updateStatFile(QString user_id, QString workout_name,
 
 void ProgrammaAllenamento::readStatFile(QString user_id)
 {
-  stat_file_name_=dir_path_.toStdString()+"/../utenti/stat_"+user_id.toStdString()+".csv";
+  stat_file_name_=dir_path_.toStdString()+"/../../utenti/stat_"+user_id.toStdString()+".csv";
   std::unique_ptr<rapidcsv::Document> stat_doc;
   stat_doc.reset(new rapidcsv::Document(stat_file_name_));
 

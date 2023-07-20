@@ -121,7 +121,7 @@ Item {
             }
             else
             {
-                udpStream.saveImage(PATH+"/utenti/"+component.dateTimeString+".png")
+                udpStream.saveImage(PATH+"/../utenti/"+component.dateTimeString+".png")
                 impostazioni_utente.foto=component.dateTimeString+".png"
                 pageLoader.source="PaginaConfermaFoto.qml"
             }

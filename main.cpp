@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
   }
   else
   {
-    dir_path="/home/jacobi/projects/abh_data";
+    dir_path="/home/jacobi/projects/abh/abh_data";
     template_path="/home/jacobi/projects/abh/abh_gui_v3/template";
   }
 
@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
   ListaImmagini zone(data_path+"/zone");
 
   std::cout << "create users" <<std::endl;
-  ListaUtenti utenti(data_path+"/utenti",
+  ListaUtenti utenti(data_path+"/../utenti",
                      template_path);
 
   std::cout << "create workouts" <<std::endl;
@@ -115,13 +115,13 @@ int main(int argc, char *argv[])
   std::cout << "reading file from " << dir_path <<std::endl;
   StringQuee queue;
 
-  ListStringCSV active_workouts(data_path+"/utenti");
+  ListStringCSV active_workouts(data_path+"/../utenti");
   active_workouts.appendIcon(true);
 
-  ListStringCSV custom_workouts(data_path+"/utenti");
+  ListStringCSV custom_workouts(data_path+"/../utenti");
   custom_workouts.appendIcon(true);
 
-  ListStringCSV custom_sessions(data_path+"/utenti");
+  ListStringCSV custom_sessions(data_path+"/../utenti");
   custom_sessions.appendIcon(true);
 
 

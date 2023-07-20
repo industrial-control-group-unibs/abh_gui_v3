@@ -62,7 +62,7 @@ Item {
             visible: false
             mipmap: true
             anchors.fill:parent
-            source: "file://"+PATH+"/utenti/"+impostazioni_utente.foto
+            source: "file://"+PATH+"/../utenti/"+impostazioni_utente.foto
             id: allenamento_icona
         }
 
@@ -104,7 +104,7 @@ Item {
         {
             onPressNo:
             {
-                chiamata_sistema.string="rm '"+PATH+"/utenti/"+impostazioni_utente.foto+"'"
+                chiamata_sistema.string="rm '"+PATH+"/../utenti/"+impostazioni_utente.foto+"'"
                 chiamata_sistema.call()
                 impostazioni_utente.foto=""
                 pageLoader.source="PaginaScattaFoto.qml"
