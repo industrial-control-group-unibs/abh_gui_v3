@@ -386,7 +386,18 @@ TRAINING</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="PaginaConnessioni.qml" line="165"/>
+        <location filename="PaginaConnessioni.qml" line="135"/>
+        <source>RETI DISPONIBILI</source>
+        <oldsource>RETI DISPONIBILI:</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PaginaConnessioni.qml" line="135"/>
+        <source>NESSUNA RETE WIFI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="PaginaConnessioni.qml" line="186"/>
         <source>VUOI DIMENTICARE LA CONNESSIONE?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1143,24 +1154,29 @@ PERSONALIZZATO</source>
 <context>
     <name>WorkoutCalibration</name>
     <message>
-        <location filename="WorkoutCalibration.qml" line="30"/>
+        <location filename="WorkoutCalibration.qml" line="60"/>
         <source>ANALISI IN CORSO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutCalibration.qml" line="48"/>
+        <location filename="WorkoutCalibration.qml" line="60"/>
+        <source>RIAVVIO ANALISI IN CORSO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="WorkoutCalibration.qml" line="79"/>
         <source>CONTINUA AD ESEGUIRE
  L&apos;ESERCIZIO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutCalibration.qml" line="65"/>
+        <location filename="WorkoutCalibration.qml" line="96"/>
         <source>RIPETIZIONI</source>
         <oldsource>Ripetizioni</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutCalibration.qml" line="65"/>
+        <location filename="WorkoutCalibration.qml" line="96"/>
         <source>TEMPO</source>
         <translation type="unfinished"></translation>
     </message>

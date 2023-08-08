@@ -308,7 +308,7 @@ Item {
                     else
                     {
                         if (impostazioni_utente.identifier !=="")
-                            pageLoader.source = "PaginaAllenamento.qml"
+                            pageLoader.source = "PaginaImpostazioni.qml"
                         else
                             pageLoader.source = "PaginaLogin.qml"
                     }

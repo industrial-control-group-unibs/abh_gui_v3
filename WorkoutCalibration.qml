@@ -13,11 +13,41 @@ Item
     }
     height: parent.height*0.3
 
+    id: component
     property bool is_visible: true
+    property bool is_timeout: false
 
 
     signal cancel
     signal exit
+
+    Timer
+    {
+        interval: 5000
+        id: timer_timeout
+        repeat: false
+        running: true
+        onTriggered:
+        {
+            component.is_timeout=true
+            startstop_udp.string="stop"
+            timer_restart1.running=true
+        }
+    }
+    Timer
+    {
+        interval: 400
+        id: timer_restart1
+        repeat: false
+        running: false
+        onTriggered:
+        {
+            exercise_udp.send()
+            startstop_udp.string="start"
+            component.is_timeout=false
+            timer_timeout.running=true
+        }
+    }
 
     Testo
     {
@@ -27,7 +57,7 @@ Item
         anchors.right: parent.right
         height: parent.height*0.3
 
-        text: qsTr("ANALISI IN CORSO")
+        text: component.is_timeout?qsTr("RIAVVIO ANALISI IN CORSO"):qsTr("ANALISI IN CORSO")
         color: parametri_generali.coloreUtente
         verticalAlignment: Text.AlignVCenter
         font.pixelSize: 60
@@ -41,6 +71,7 @@ Item
 
     Testo
     {
+        visible: !component.is_timeout
         anchors.top: testo1.bottom
         anchors.left: parent.left
         anchors.right: parent.right

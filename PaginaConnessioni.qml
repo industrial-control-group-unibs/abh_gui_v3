@@ -130,12 +130,33 @@ Item {
                 }
                 z:10
 
+                Testo
+                {
+                    text: lista_wifi.count>0?qsTr("RETI DISPONIBILI"):qsTr("NESSUNA RETE WIFI")
+                    id: titoletto
+                    anchors
+                    {
+                        top: parent.top
+                        left: parent.left
+                        right: parent.right
+                    }
+                    anchors.margins: 10
+                    fontSizeMode: Text.Fit
+                    wrapMode: Text.WordWrap
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+
+                }
+
                 ListView {
                     //            snapMode: ListView.SnapOneItem
                     //            highlightRangeMode: ListView.StrictlyEnforceRange
                     id: lista_wifi
                     clip: true
-                    anchors.fill: parent
+                    anchors.top: titoletto.bottom
+                    anchors.bottom: parent.bottom
+                    anchors.left: parent.left
+                    anchors.right: parent.right
                     height: parent.height*0.5
                     model: _wifi
                     currentIndex:-1
