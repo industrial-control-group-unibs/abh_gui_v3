@@ -249,7 +249,10 @@ def exercise_thread():
 
                 if not isinstance(exercise_name_eval,type):
                     exercise_name_eval.sendString("stop")
-            elif stringa=="restart_vision"
+            elif stringa=="restart_vision":
+                exercise_name_eval.sendString("stop")
+                exercise_name_eval.sendString(esercizio)
+                exercise_name_eval.sendString("start")
 
             else:
                 logging.warning("startstop_client_d should receive start or stop. received: "+stringa)

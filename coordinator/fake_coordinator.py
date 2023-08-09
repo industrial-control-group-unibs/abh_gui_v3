@@ -75,6 +75,7 @@ def exercise_thread():
                 idx=0
                 if state==Status.FORWARD:
                     repetition_count=repetition_count+1
+                    print(repetition_count)
 
 
         stato_macchina=float(state.value)
