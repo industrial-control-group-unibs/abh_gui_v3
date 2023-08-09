@@ -43,7 +43,7 @@ Item
                     stato=1
                     exercise_udp.send()
                 }
-                else if (stato==1)
+                else if (stato===1)
                 {
                     console.log("Riavvio dell'esercizio")
                     startstop_udp.string="start"
