@@ -223,7 +223,7 @@ def exercise_thread():
         if (startstop_client.isNewStringAvailable()):
             stringa=startstop_client.getLastStringAndClearQueue()
             print(stringa)
-            if stringa[0:5]=="start":
+            if stringa=="start":
                 repetition_count=1
                 max_pos_motor_speed=0.0
                 max_neg_motor_speed=0.0
@@ -249,6 +249,8 @@ def exercise_thread():
 
                 if not isinstance(exercise_name_eval,type):
                     exercise_name_eval.sendString("stop")
+            elif stringa=="restart_vision"
+
             else:
                 logging.warning("startstop_client_d should receive start or stop. received: "+stringa)
 

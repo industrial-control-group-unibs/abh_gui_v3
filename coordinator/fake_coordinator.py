@@ -56,7 +56,7 @@ def exercise_thread():
         if (startstop_client.isNewStringAvailable()):
             stringa=startstop_client.getLastStringAndClearQueue()
             print(stringa)
-            if stringa[0:5]=="start":
+            if stringa=="start" or stringa=="restart_vision":
 
                 repetition_count=1
                 idx=0
