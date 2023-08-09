@@ -42,7 +42,7 @@ Item
     }
     Timer
     {
-        interval: 400
+        interval: 2000
         id: timer_restart1
         repeat: false
         running: false
