@@ -275,7 +275,7 @@ ApplicationWindow {
             {
                 console.log("data from coordinator = ",data)
             }
-            if (counter++>1000)
+            if (counter++>10000)
             {
                 counter=0
             }
