@@ -87,8 +87,8 @@ Item {
                     id: icona_salva_pwd
                     onPressed: {
                         pieno=!pieno
-                        spegni=pieno
-                        if (spegni)
+                        spegni.acceso=pieno
+                        if (spegni.acceso)
                         {
                             chiamata_sistema.string="nmcli radio wifi on"
                             chiamata_sistema.call()
@@ -105,7 +105,7 @@ Item {
 
                 Testo
                 {
-                    text: parent.acceso?qsTr("DISATTIVA RETI"):qsTr("ATTIVA RETI")
+                    text: parent.acceso?qsTr("DISATTIVA WIFI"):qsTr("ATTIVA WIFI")
                     anchors
                     {
                         verticalCenter: icona_salva_pwd.verticalCenter

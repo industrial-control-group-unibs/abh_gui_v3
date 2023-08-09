@@ -44,8 +44,8 @@ def exercise_thread():
         df = pd.read_excel (r'/home/'+user+'/Scrivania/abh_data/esercizi.xlsx', sheet_name='ParameteriForza')
         df_forza=pd.read_csv(r'/home/'+user+'/Scrivania/abh_data/livelli_potenza.csv')
     else:
-        df = pd.read_excel (r'/home/jacobi/projects/abh_data/esercizi.xlsx', sheet_name='ParameteriForza')
-        df_forza=pd.read_csv(r'/home/jacobi/projects/abh_data/livelli_potenza.csv')
+        df = pd.read_excel (r'/home/jacobi/projects/abh//abh_data/esercizi.xlsx', sheet_name='ParameteriForza')
+        df_forza=pd.read_csv(r'/home/jacobi/projects/abh/abh_data/livelli_potenza.csv')
     logging.debug("creating client from gui")
     itrial=0
 

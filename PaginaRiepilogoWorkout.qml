@@ -251,7 +251,7 @@ Item {
             onPressed:
             {
                 selected_exercise.current_set=0
-                pageLoader.source = "PaginaAllenamento.qml"
+                pageLoader.source = "PaginaProseguiWorkout.qml"
             }
 //            Testo
 //            {

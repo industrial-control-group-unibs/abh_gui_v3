@@ -55,6 +55,7 @@ public:
   double  tut        () const {return tut_          ;}
 
 
+
   void readFile(std::string file_name);
   public slots:
     QString createWorkout(QString user_id, QString workout_name, int number_of_session);
@@ -63,14 +64,15 @@ public:
     void extend(int number_of_session);
     bool isEmpty();
     void loadWorkout(QString user_id, QString workout_name);
-
+    QString level      () const {return level_        ;}
+    QString name       () const {return name_         ;}
     void addRow(int session, QStringList dati);
     void removeRow(int session, int index);
     void removeSession(int session);
     void next();
     int getValue(int session, int index, QString field);
     void setValue(int session, int index, QString field, int value);
-
+    int     getNumberOfSession ();
     void updateStatFile(QString id, QString workout_name, int time, int tut);
     void readStatFile(QString id);
 
@@ -111,6 +113,7 @@ public:
     QString getTime();
     QString getTut();
 
+    QString getNextLevel();
 signals:
   void completedChanged();
   void endSessionChanged();
@@ -136,6 +139,8 @@ protected:
   bool            end_workout_   ;
   QString         code_          ;
   QString         image_         ;
+  QString         level_         ;
+  QString         name_          ;
   int             session_       ;
   int             act_session_   ;
   int             power_         ;

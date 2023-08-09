@@ -58,6 +58,12 @@ void ProgrammaAllenamento::readFile(std::string file_name)
   //setSession(act_session_);
 }
 
+int    ProgrammaAllenamento:: getNumberOfSession ()
+{
+  std::vector<int> session = doc_->GetColumn<int>("session");
+  return session.back();
+}
+
 void ProgrammaAllenamento::updateField()
 {
   code_=QString::fromStdString(doc_->GetCell<std::string>(0,idx_));
@@ -745,6 +751,30 @@ QVector<double> ProgrammaAllenamento::getSelectedSessionNumbers   (int session)
   return values;
 }
 
+QString ProgrammaAllenamento::getNextLevel()
+{
+  if (score_>0.9)
+  {
+    if (level_=="ESORDIENTE")
+      return "INTERMEDIO";
+    else if (level_=="INTERMEDIO")
+      return "ESPERTO";
+    else
+      return level_;
+  }
+  else if (score_<=0.9)
+  {
+    if (level_=="INTERMEDIO")
+      return "ESORDIENTE";
+    else if (level_=="ESPERTO")
+      return "INTERMEDIO";
+    else
+      return level_;
+  }
+  else
+    return level_;
+}
+
 QVariant ProgrammaAllenamento::listSessionsNumber()
 {
 
@@ -829,6 +859,20 @@ QString ProgrammaAllenamento::createWorkout(QString user_id, QString workout_nam
   qDebug() << "user_id = "  << user_id << " workout name "<<workout_name << "  number of sessions = " << number_of_session;
 
   workoutName_=workout_name;
+  if (workout_name.contains("ESORDIENTE"))
+    level_="ESORDIENTE";
+  else if (workout_name.contains("INTERMEDIO"))
+    level_="INTERMEDIO";
+  else if (workout_name.contains("ESPERTO"))
+    level_="ESPERTO";
+  else
+    level_="";
+  name_=workout_name;
+  if (!level_.isEmpty())
+    name_.chop(level_.size()+1);
+
+  qDebug() << "name_ = " << name_ << " level_ = " << level_;
+
   std::string workout_file=dir_path_.toStdString()+"/"+workout_name.toStdString()+".csv";
   std::unique_ptr<rapidcsv::Document> doc;
   try {
@@ -956,6 +1000,20 @@ void ProgrammaAllenamento::loadWorkout(QString user_id, QString workout_name)
   readFile(file_name_);
   readStatFile(user_id);
 
+  workoutName_=workout_name;
+  if (workout_name.contains("ESORDIENTE"))
+    level_="ESORDIENTE";
+  else if (workout_name.contains("INTERMEDIO"))
+    level_="INTERMEDIO";
+  else if (workout_name.contains("ESPERTO"))
+    level_="ESPERTO";
+  else
+    level_="";
+  name_=workout_name;
+  if (!level_.isEmpty())
+    name_.chop(level_.size()+1);
+
+  qDebug() << "name_ = " << name_ << " level_ = " << level_;
 }
 
 

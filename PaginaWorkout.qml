@@ -24,11 +24,7 @@ Item {
 
     onRipetizioniChanged:
     {
-         if (fb_udp.data[5]===10)
-         {
-             state= "calibration"
-         }
-         else if (fb_udp.data[0]>=3)
+         if (fb_udp.data[0]>=3)
          {
              state="sotto"
              end_calibration=true
@@ -38,11 +34,11 @@ Item {
 
     onCalibrazioneChanged:
     {
-         if (fb_udp.data[5]===10)
-         {
-             state= "calibration"
-         }
-         else if (fb_udp.data[0]>=3)
+//         if (fb_udp.data[5]===10)
+//         {
+//             state= "calibration"
+//         }
+         if (fb_udp.data[0]>=3)
          {
              state="sotto"
          }
@@ -64,6 +60,7 @@ Item {
             state="sotto"
         else
             state="calibration"
+        console.log("set = ", selected_exercise.current_set, " state = ", state)
     }
     Component.onDestruction:
     {

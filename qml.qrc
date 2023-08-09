@@ -118,5 +118,6 @@
         <file>PaginaLingue.qml</file>
         <file>PaginaSanificazione.qml</file>
         <file>SceltaEserciziNew.qml</file>
+        <file>PaginaProseguiWorkout.qml</file>
     </qresource>
 </RCC>

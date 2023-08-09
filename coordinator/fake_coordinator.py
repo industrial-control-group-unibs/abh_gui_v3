@@ -49,7 +49,7 @@ def exercise_thread():
     vosk_command=0
 
     idx=0
-    send_data=False
+    send_data=True
     while (not stop):
         time.sleep(0.001)
         idx=idx+1
@@ -57,22 +57,25 @@ def exercise_thread():
             stringa=startstop_client.getLastStringAndClearQueue()
             print(stringa)
             if stringa[0:5]=="start":
+
                 repetition_count=1
                 idx=0
                 send_data=True
                 direction=1
                 state=Status.FORWARD
-            elif stringa=="stop":
+            elif stringa=="stop" or stringa=="rewire":
                 state=Status.STOP
-                send_data=False
+                send_data=True
                 repetition_count=1
                 direction=0
                 state=Status.STOP
-
+            print(f"Next state {state}")
         if send_data:
             if idx==500:
                 idx=0
-                repetition_count=repetition_count+1
+                if state==Status.FORWARD:
+                    repetition_count=repetition_count+1
+
 
         stato_macchina=float(state.value)
         stato_macchina=11

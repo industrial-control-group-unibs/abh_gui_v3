@@ -16,8 +16,10 @@ Item
     id: component
     property bool is_visible: true
     property bool is_timeout: false
+    property double ripetizioni: fb_udp.data[0]
 
-
+    onVisibleChanged: console.log("calibration visible = ", visible)
+    onRipetizioniChanged: timer_timeout.restart()
     signal cancel
     signal exit
 
@@ -26,12 +28,16 @@ Item
         interval: 5000
         id: timer_timeout
         repeat: false
-        running: true
+        running: component.is_visible
         onTriggered:
         {
-            component.is_timeout=true
-            startstop_udp.string="stop"
-            timer_restart1.running=true
+            if (component.is_visible)
+            {
+                console.log("QUI?")
+                component.is_timeout=true
+                startstop_udp.string="stop"
+                timer_restart1.running=true
+            }
         }
     }
     Timer

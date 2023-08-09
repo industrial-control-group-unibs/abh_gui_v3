@@ -1150,29 +1150,29 @@ PERSONALIZZATO</source>
 <context>
     <name>WorkoutCalibration</name>
     <message>
-        <location filename="WorkoutCalibration.qml" line="60"/>
+        <location filename="WorkoutCalibration.qml" line="66"/>
         <source>ANALISI IN CORSO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutCalibration.qml" line="60"/>
+        <location filename="WorkoutCalibration.qml" line="66"/>
         <source>RIAVVIO ANALISI IN CORSO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutCalibration.qml" line="79"/>
+        <location filename="WorkoutCalibration.qml" line="85"/>
         <source>CONTINUA AD ESEGUIRE
  L&apos;ESERCIZIO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutCalibration.qml" line="96"/>
+        <location filename="WorkoutCalibration.qml" line="102"/>
         <source>RIPETIZIONI</source>
         <oldsource>Ripetizioni</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutCalibration.qml" line="96"/>
+        <location filename="WorkoutCalibration.qml" line="102"/>
         <source>TEMPO</source>
         <translation type="unfinished"></translation>
     </message>
