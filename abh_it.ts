@@ -375,12 +375,14 @@ GUIDATO</translation>
     </message>
     <message>
         <location filename="PaginaConnessioni.qml" line="108"/>
-        <source>DISATTIVA RETI</source>
+        <source>DISATTIVA WIFI</source>
+        <oldsource>DISATTIVA RETI</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="PaginaConnessioni.qml" line="108"/>
-        <source>ATTIVA RETI</source>
+        <source>DISATTIVA WIFI</source>
+        <oldsource>ATTIVA RETI</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>

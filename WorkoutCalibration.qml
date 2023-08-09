@@ -33,10 +33,10 @@ Item
         {
             if (component.is_visible)
             {
-                console.log("QUI?")
                 component.is_timeout=true
                 startstop_udp.string="stop"
                 timer_restart1.running=true
+                running=false
             }
         }
     }
