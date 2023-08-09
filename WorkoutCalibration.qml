@@ -33,10 +33,15 @@ Item
         {
             if (component.is_visible)
             {
+                console.log("Stop visione")
                 component.is_timeout=true
                 startstop_udp.string="stop"
                 timer_restart1.running=true
-                running=false
+                timer_timeout.running=false
+            }
+            else
+            {
+                console.log("timer attivo fuori dalla fase di calibrazione")
             }
         }
     }
@@ -48,6 +53,7 @@ Item
         running: false
         onTriggered:
         {
+            console.log("Riavvio dell'esercizio")
             exercise_udp.send()
             startstop_udp.string="start"
             component.is_timeout=false

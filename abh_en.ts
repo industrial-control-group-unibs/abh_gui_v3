@@ -383,8 +383,7 @@ TRAINING</translation>
     </message>
     <message>
         <location filename="PaginaConnessioni.qml" line="108"/>
-        <source>DISATTIVA WIFI</source>
-        <oldsource>ATTIVA RETI</oldsource>
+        <source>ATTIVA WIFI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1156,29 +1155,29 @@ PERSONALIZZATO</source>
 <context>
     <name>WorkoutCalibration</name>
     <message>
-        <location filename="WorkoutCalibration.qml" line="66"/>
+        <location filename="WorkoutCalibration.qml" line="72"/>
         <source>ANALISI IN CORSO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutCalibration.qml" line="66"/>
+        <location filename="WorkoutCalibration.qml" line="72"/>
         <source>RIAVVIO ANALISI IN CORSO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutCalibration.qml" line="85"/>
+        <location filename="WorkoutCalibration.qml" line="91"/>
         <source>CONTINUA AD ESEGUIRE
  L&apos;ESERCIZIO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutCalibration.qml" line="102"/>
+        <location filename="WorkoutCalibration.qml" line="108"/>
         <source>RIPETIZIONI</source>
         <oldsource>Ripetizioni</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutCalibration.qml" line="102"/>
+        <location filename="WorkoutCalibration.qml" line="108"/>
         <source>TEMPO</source>
         <translation type="unfinished"></translation>
     </message>
