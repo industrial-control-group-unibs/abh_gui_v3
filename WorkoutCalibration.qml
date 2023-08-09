@@ -27,37 +27,34 @@ Item
     {
         interval: 5000
         id: timer_timeout
-        repeat: false
-        running: component.is_visible
+        repeat: true
+        running: true//component.is_visible
+        property int stato: 0
         onTriggered:
         {
             if (component.is_visible)
             {
-                console.log("Stop visione")
-                component.is_timeout=true
-                startstop_udp.string="stop"
-                timer_restart1.running=true
-                timer_timeout.running=false
+                if (stato===0)
+                {
+                    console.log("Stop visione")
+                    component.is_timeout=true
+                    startstop_udp.string="stop"
+                    timer_timeout.running=false
+                    stato=1
+                    exercise_udp.send()
+                }
+                else if (stato==1)
+                {
+                    console.log("Riavvio dell'esercizio")
+                    startstop_udp.string="start"
+                    component.is_timeout=false
+                    stato=0
+                }
             }
             else
             {
                 console.log("timer attivo fuori dalla fase di calibrazione")
             }
-        }
-    }
-    Timer
-    {
-        interval: 2000
-        id: timer_restart1
-        repeat: false
-        running: false
-        onTriggered:
-        {
-            console.log("Riavvio dell'esercizio")
-            exercise_udp.send()
-            startstop_udp.string="start"
-            component.is_timeout=false
-            timer_timeout.running=true
         }
     }
 
