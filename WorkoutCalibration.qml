@@ -32,11 +32,8 @@ Item
         property int stato: 0
         onTriggered:
         {
-            console.log("triggered")
-
-            if (component.is_visible)
+            if (component.visible)
             {
-                console.log("visible")
                 if (stato===0)
                 {
                     console.log("Stop visione")
@@ -56,7 +53,6 @@ Item
             }
             else
             {
-                console.log("timer attivo fuori dalla fase di calibrazione")
             }
         }
     }
