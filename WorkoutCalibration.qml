@@ -42,7 +42,6 @@ Item
                     console.log("Stop visione")
                     component.is_timeout=true
                     startstop_udp.string="stop"
-                    timer_timeout.running=false
                     stato=1
                     exercise_udp.send()
                 }
