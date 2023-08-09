@@ -24,10 +24,11 @@ QString StringQuee::pop()
   if (data.size()>0)
   {
     str=data.front();
+
     if (data.size()>1)
       data.pop_front();
   }
-
+  qDebug() << " page after pop " << str;
   return str;
 
 }

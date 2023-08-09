@@ -76,8 +76,9 @@ Item {
                 property url this_source:"PaginaImpostazioni.qml"
                 onPressSx:
                 {
-                    _history.pop()
-                    pageLoader.source=_history.pop()
+                    pageLoader.source="PaginaAllenamento.qml"
+                    //_history.pop()
+                    //pageLoader.source=_history.pop()
                 }
                 dx_visible: false
                 z:5

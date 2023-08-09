@@ -41,8 +41,8 @@ Item
                 {
                     console.log("Stop visione")
                     component.is_timeout=true
-                    //startstop_udp.string="stop"
-                    interval=1000
+                    startstop_udp.string="restart_vision"
+                    interval=2000
                     stato=1
                     exercise_udp.send()
                 }
@@ -50,7 +50,6 @@ Item
                 {
                     console.log("Riavvio dell'esercizio")
                     interval=5000
-                    startstop_udp.string="start"
                     component.is_timeout=false
                     stato=0
                 }
