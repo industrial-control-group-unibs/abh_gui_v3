@@ -12,6 +12,12 @@ Item {
     implicitWidth: 1080/2
 
     Barra_superiore{titolo: qsTr("ALLENAMENTO LIBERO")}
+
+    Component.onCompleted:
+    {
+        console.log('%cEntrato!', 'color: red');
+    }
+
     Component.onDestruction:
     {
     }
