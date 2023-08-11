@@ -140,57 +140,57 @@ Item
         }
 
 
-        MediaPlayer {
-            id: mp_workout
-            autoPlay: true
-            autoLoad: true
-            loops: MediaPlayer.Infinite
-            //                loops: MediaPlayer.Infinite
-            source: "file://"+PATH+"/video_workout_esercizi/"+selected_exercise.video_workout
-            onStopped: tasto_video.state= "play"
-            onPositionChanged:
-            {
-                if (duration>0)
-                {
-                    if (duration-position<1000)
-                    {
-                        seek(0)
-                        play()
-                    }
-                }
-            }
+//        MediaPlayer {
+//            id: mp_workout
+//            autoPlay: true
+//            autoLoad: true
+//            loops: MediaPlayer.Infinite
+//            //                loops: MediaPlayer.Infinite
+//            source: "file://"+PATH+"/video_workout_esercizi/"+selected_exercise.video_workout
+//            onStopped: tasto_video.state= "play"
+//            onPositionChanged:
+//            {
+//                if (duration>0)
+//                {
+//                    if (duration-position<1000)
+//                    {
+//                        seek(0)
+//                        play()
+//                    }
+//                }
+//            }
+//        }
+
+        VideoOutput {
+            id: video_workout
+
+            source: mp_workout
+            anchors.fill: parent
+            z:0
+            visible: false
         }
 
-//        VideoOutput {
-//            id: video_workout
 
-//            source: mp_workout
-//            anchors.fill: parent
-//            z:0
-//            visible: false
-//        }
+        PlayPauseButton
+        {
+            visible: false
+            id: tasto_video
+            width: 20
+            anchors
+            {
+                horizontalCenter: parent.horizontalCenter
+                top: video_workout.bottom
+                topMargin: 5
+            }
+            z:2
+            state: "pause"
 
-
-//        PlayPauseButton
-//        {
-//            visible: false
-//            id: tasto_video
-//            width: 20
-//            anchors
-//            {
-//                horizontalCenter: parent.horizontalCenter
-//                top: video_workout.bottom
-//                topMargin: 5
-//            }
-//            z:2
-//            state: "pause"
-
-//            onPressPause: mp_workout.pause()
-//            onPressPlay:
-//            {
-//                mp_workout.play()
-//            }
-//        }
+            onPressPause: mp_workout.pause()
+            onPressPlay:
+            {
+                mp_workout.play()
+            }
+        }
     }
 
 
