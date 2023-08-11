@@ -130,6 +130,7 @@ Item {
         }
     ]
 
+    onStateChanged: titolo.text="TMP"
     Item {
         id: ricevi_comando_vocale
         property real data: fb_udp.data[4]
