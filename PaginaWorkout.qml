@@ -202,6 +202,7 @@ Item {
 
 
         WorkoutTop{
+            visible: false
             id: video_top
             swipe: component.state==="sotto"
         }
