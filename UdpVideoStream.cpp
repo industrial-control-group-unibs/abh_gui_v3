@@ -138,10 +138,8 @@ void UdpVideoStream::updateFrame(cv::Mat& frame)
     qDebug() << "video surface is not active";
     return;
   }
-  else if (!mVideoSurface)
-    qDebug() << "video surface is  null";
-  else
-    qDebug() << "video surface is  active";
+
+
   m_mtx.lock();
   if (mImage)
     *mImage=image;

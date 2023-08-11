@@ -232,7 +232,8 @@ Item {
                 if (selected_exercise.workout==="")
                 {
                     console.log("prima di andare in SceltaGruppo.qml")
-                    pageLoader.source = "SceltaGruppo.qml"
+//                    pageLoader.source = "SceltaGruppo.qml"
+                                        pageLoader.source = "PaginaAllenamento.qml"
 
                 }
                 else
