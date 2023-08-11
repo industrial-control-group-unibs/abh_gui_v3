@@ -77,7 +77,7 @@ Item {
         selected_exercise.time_esercizio+=(timer_tempo.value*0.001-time_ex)
         selected_exercise.tut_esercizio+=(timer_tut.value*0.001-tut_ex)
 
-        console.log("uscita da PaginaWorkout END")
+        console.log("%cuscita da PaginaWorkout END", 'color: red')
         titolo.text="uscita da PaginaWorkout END"
 
     }
