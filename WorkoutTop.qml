@@ -18,7 +18,7 @@ Item
     {
         console.log("\n\n\nUSCITO DA WORKOUTTOP \n\n\n")
         mp_workout.stop()
-        video2_workout.visible=false
+        video2_workout.source=""
         timer_tempo.stop()
     }
 
