@@ -236,7 +236,9 @@ Item {
                 {
                     console.log("prima di andare in SceltaGruppo.qml")
                     titolo.text="prima di andare in SceltaGruppo.qml"
-                    pageLoader.source = "SceltaGruppo.qml"
+//                    pageLoader.source = "SceltaGruppo.qml"
+
+                    pageLoader.source = "PaginaAllenamento.qml"
                 }
                 else
                     pageLoader.source = "ListaEserciziWorkout.qml"
