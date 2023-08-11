@@ -17,6 +17,7 @@ Item
     Component.onDestruction:
     {
         console.log("\n\n\nUSCITO DA WORKOUTTOP \n\n\n")
+        mp_workout.stop()
         timer_tempo.stop()
     }
 
