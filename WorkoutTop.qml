@@ -14,7 +14,11 @@ Item
     Component.onCompleted: {
         timer_tempo.start()
     }
-    Component.onDestruction: timer_tempo.stop()
+    Component.onDestruction:
+    {
+        console.log("\n\n\nUSCITO DA WORKOUTTOP \n\n\n")
+        timer_tempo.stop()
+    }
 
     implicitWidth: 1080*.5
     implicitHeight: 1920*.5
