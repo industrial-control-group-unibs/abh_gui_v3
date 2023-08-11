@@ -90,108 +90,108 @@ Item
 
 
 
-    Rectangle   {
-        height: 0.8*parent.height
-        width: 9/16*height
-        x: 0.5*(parent.width-width)
-        y: 0.5*(parent.height-height)
-        radius: 20
-        color: "black"
-        border.color: parametri_generali.coloreBordo
-        border.width: 2
-        id: rect_video_centrale
+//    Rectangle   {
+//        height: 0.8*parent.height
+//        width: 9/16*height
+//        x: 0.5*(parent.width-width)
+//        y: 0.5*(parent.height-height)
+//        radius: 20
+//        color: "black"
+//        border.color: parametri_generali.coloreBordo
+//        border.width: 2
+//        id: rect_video_centrale
 
-        MouseArea
-        {
-            anchors.fill: parent
-            onClicked:
-            {
-                if (component.state==="workout")
-                    component.state="utente"
-                else if (component.state==="utente")
-                    component.state="uguali"
-                else if (component.state==="uguali")
-                    component.state="workout"
-                mp_workout.play()
-            }
+//        MouseArea
+//        {
+//            anchors.fill: parent
+//            onClicked:
+//            {
+//                if (component.state==="workout")
+//                    component.state="utente"
+//                else if (component.state==="utente")
+//                    component.state="uguali"
+//                else if (component.state==="uguali")
+//                    component.state="workout"
+//                mp_workout.play()
+//            }
 
-        }
+//        }
 
-        Rectangle
-        {
-            id: video_mask
-            anchors
-            {
-                fill: parent
-                topMargin: parent.border.width
-                bottomMargin: parent.border.width
-                leftMargin: parent.border.width
-                rightMargin: parent.border.width
-            }
-            visible: false
-            color: "white"
-            radius: parent.radius-parent.border.width
-        }
+//        Rectangle
+//        {
+//            id: video_mask
+//            anchors
+//            {
+//                fill: parent
+//                topMargin: parent.border.width
+//                bottomMargin: parent.border.width
+//                leftMargin: parent.border.width
+//                rightMargin: parent.border.width
+//            }
+//            visible: false
+//            color: "white"
+//            radius: parent.radius-parent.border.width
+//        }
 
-        OpacityMask {
-            anchors.fill:video_mask
-            source: video_workout
-            maskSource: video_mask
-        }
-
-
-        MediaPlayer {
-            id: mp_workout
-            autoPlay: true
-            autoLoad: true
-            loops: MediaPlayer.Infinite
-            //                loops: MediaPlayer.Infinite
-            source: "file://"+PATH+"/video_workout_esercizi/"+selected_exercise.video_workout
-            onStopped: tasto_video.state= "play"
-            onPositionChanged:
-            {
-                if (duration>0)
-                {
-                    if (duration-position<1000)
-                    {
-                        seek(0)
-                        play()
-                    }
-                }
-            }
-        }
-
-        VideoOutput {
-            id: video_workout
-
-            source: mp_workout
-            anchors.fill: parent
-            z:0
-            visible: false
-        }
+//        OpacityMask {
+//            anchors.fill:video_mask
+//            source: video_workout
+//            maskSource: video_mask
+//        }
 
 
-        PlayPauseButton
-        {
-            visible: false
-            id: tasto_video
-            width: 20
-            anchors
-            {
-                horizontalCenter: parent.horizontalCenter
-                top: video_workout.bottom
-                topMargin: 5
-            }
-            z:2
-            state: "pause"
+//        MediaPlayer {
+//            id: mp_workout
+//            autoPlay: true
+//            autoLoad: true
+//            loops: MediaPlayer.Infinite
+//            //                loops: MediaPlayer.Infinite
+//            source: "file://"+PATH+"/video_workout_esercizi/"+selected_exercise.video_workout
+//            onStopped: tasto_video.state= "play"
+//            onPositionChanged:
+//            {
+//                if (duration>0)
+//                {
+//                    if (duration-position<1000)
+//                    {
+//                        seek(0)
+//                        play()
+//                    }
+//                }
+//            }
+//        }
 
-            onPressPause: mp_workout.pause()
-            onPressPlay:
-            {
-                mp_workout.play()
-            }
-        }
-    }
+//        VideoOutput {
+//            id: video_workout
+
+//            source: mp_workout
+//            anchors.fill: parent
+//            z:0
+//            visible: false
+//        }
+
+
+//        PlayPauseButton
+//        {
+//            visible: false
+//            id: tasto_video
+//            width: 20
+//            anchors
+//            {
+//                horizontalCenter: parent.horizontalCenter
+//                top: video_workout.bottom
+//                topMargin: 5
+//            }
+//            z:2
+//            state: "pause"
+
+//            onPressPause: mp_workout.pause()
+//            onPressPlay:
+//            {
+//                mp_workout.play()
+//            }
+//        }
+//    }
 
 
     Rectangle
