@@ -51,7 +51,7 @@ Item {
         onPressLeft:
         {
         }
-        visible: component.swipe
+//        visible: component.swipe
         state: "sx"
     }
 
