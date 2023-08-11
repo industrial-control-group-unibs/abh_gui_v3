@@ -67,13 +67,16 @@ Item {
     }
     Component.onDestruction:
     {
+        console.log("uscita da PaginaWorkout INIT")
         timer_tut.active=false
         time_ex.active=false
         startstop_udp.string="stop"
         parametri_generali.login_page=true
 
         selected_exercise.time_esercizio+=(timer_tempo.value*0.001-time_ex)
-        selected_exercise.tut_esercizio+=(timer_tut.value*0.001-tut_ex)
+        selected_exercise.tut_esercizio+=(timer_tut.value*0.001-tut_ex
+
+        console.log("uscita da PaginaWorkout END")
     }
 
 
@@ -226,7 +229,10 @@ Item {
             onExit:
             {
                 if (selected_exercise.workout==="")
+                {
+                    console.log("prima di andare in SceltaGruppo.qml")
                     pageLoader.source = "SceltaGruppo.qml"
+                }
                 else
                     pageLoader.source = "ListaEserciziWorkout.qml"
             }
