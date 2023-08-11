@@ -132,6 +132,12 @@ void UdpVideoStream::updateFrame(cv::Mat& frame)
                    frame.step,
                    QImage::Format_RGB888);
   image = std::move(image).rgbSwapped().convertToFormat(QImage::Format_RGB32);
+
+  if (mVideoSurface && !mVideoSurface->isActive())
+  {
+    qDebug() << "video surface is not active";
+    return;
+  }
   m_mtx.lock();
   if (mImage)
     *mImage=image;
