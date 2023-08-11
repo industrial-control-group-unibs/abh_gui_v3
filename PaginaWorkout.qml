@@ -204,10 +204,10 @@ Item {
 
 
 
-        WorkoutTop{
-            id: video_top
-            swipe: component.state==="sotto"
-        }
+//        WorkoutTop{
+//            id: video_top
+//            swipe: component.state==="sotto"
+//        }
         WorkoutBottom{
             id: sotto
 
