@@ -16,9 +16,12 @@ Item
     }
     Component.onDestruction:
     {
-        console.log("\n\n\nUSCENDO DA WORKOUTTOP \n\n\n")
+        console.log("\n\n\nUSCENDO DA WORKOUTTOP 1\n\n\n")
         mp_workout.stop()
+        console.log("\n\n\nUSCENDO DA WORKOUTTOP 2\n\n\n")
         video2_workout.destroy()
+        console.log("\n\n\nUSCENDO DA WORKOUTTOP 3\n\n\n")
+        video_workout.destroy()
         console.log("\n\n\nUSCITO DA WORKOUTTOP \n\n\n")
         timer_tempo.stop()
     }
