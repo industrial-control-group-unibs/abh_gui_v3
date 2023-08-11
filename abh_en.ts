@@ -1184,22 +1184,22 @@ PERSONALIZZATO</source>
 <context>
     <name>WorkoutTop</name>
     <message>
-        <location filename="WorkoutTop.qml" line="219"/>
+        <location filename="WorkoutTop.qml" line="226"/>
         <source>VELOCITA&apos; ISTANTANEA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutTop.qml" line="219"/>
+        <location filename="WorkoutTop.qml" line="226"/>
         <source>VISIONE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutTop.qml" line="390"/>
+        <location filename="WorkoutTop.qml" line="397"/>
         <source>LIMITE SUPERIORE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="WorkoutTop.qml" line="406"/>
+        <location filename="WorkoutTop.qml" line="413"/>
         <source>LIMITE INFERIORE</source>
         <translation type="unfinished"></translation>
     </message>
