@@ -52,7 +52,7 @@ Item {
         {
             pageLoader.source=  "SceltaEsercizi.qml"
         }
-        visible: component.swipe
+//        visible: component.swipe
         state: "dx"
     }
 
