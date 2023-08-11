@@ -140,26 +140,27 @@ Item
         }
 
 
-//        MediaPlayer {
-//            id: mp_workout
-//            autoPlay: true
-//            autoLoad: true
-//            loops: MediaPlayer.Infinite
-//            //                loops: MediaPlayer.Infinite
-//            source: "file://"+PATH+"/video_workout_esercizi/"+selected_exercise.video_workout
-//            onStopped: tasto_video.state= "play"
-//            onPositionChanged:
-//            {
-//                if (duration>0)
-//                {
-//                    if (duration-position<1000)
-//                    {
-//                        seek(0)
-//                        play()
-//                    }
-//                }
-//            }
-//        }
+        MediaPlayer {
+            id: mp_workout
+            autoPlay: true
+            autoLoad: true
+            loops: MediaPlayer.Infinite
+            //                loops: MediaPlayer.Infinite
+            source: "file://"+PATH+"/video_workout_esercizi/"+selected_exercise.video_workout
+            onStopped: tasto_video.state= "play"
+            onPositionChanged:
+            {
+                console.log("position",position,"duration",duration)
+                if (duration>0)
+                {
+                    if (duration-position<1000)
+                    {
+                        seek(0)
+                        play()
+                    }
+                }
+            }
+        }
 
         VideoOutput {
             id: video_workout
