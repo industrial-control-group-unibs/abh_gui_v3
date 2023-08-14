@@ -20,7 +20,6 @@ PaginaSiNo
 
     Component.onCompleted:
     {
-        console.log(name,level,score,next_level)
         if (level===next_level)
             pageLoader.source="PaginaAllenamento.qml"
     }
@@ -40,7 +39,7 @@ PaginaSiNo
         {
             _utenti.saveWorkout(impostazioni_utente.identifier,workout_id)
             _workout.updateStatFile(impostazioni_utente.identifier,_utenti.getWorkout(impostazioni_utente.identifier),timer_tempo.value,timer_tut.value);
-            _active_workouts.addRow("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
+            _active_workouts.addRow(impostazioni_utente.identifier+"/ACTIVEWORKOUT",
                                     [workout_id,0,0,Math.round(new Date().getTime()*0.001),0,0])
             selected_exercise.code=_workout.code
             selected_exercise.reps=_workout.reps

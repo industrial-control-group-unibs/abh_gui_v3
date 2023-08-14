@@ -22,7 +22,7 @@ Item {
     property bool new_workout: false
     Component.onCompleted:
     {
-        _active_workouts.readFile("ACTIVEWORKOUT_"+impostazioni_utente.identifier)
+        _active_workouts.readFile((impostazioni_utente.identifier+"/ACTIVEWORKOUT"))
     }
 
     Component.onDestruction:

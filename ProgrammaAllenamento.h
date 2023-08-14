@@ -34,6 +34,7 @@ class ProgrammaAllenamento : public QObject
 
 public:
   explicit ProgrammaAllenamento(QString path,
+                                QString workout_path,
                                 std::string template_path,
                                 QObject *parent = nullptr);
 //  virtual ~ProgrammaAllenamento();
@@ -152,11 +153,13 @@ protected:
   double          time_          ;
   double          tut_           ;
   QString         dir_path_      ;
+  QString         workout_path_  ;
   QString         workoutName_   ;
   int             idx_           ;
   std::string     file_name_     ;
   std::string     stat_file_name_;
   std::string     template_path_;
+
 
   std::unique_ptr<rapidcsv::Document> doc_;
   std::unique_ptr<rapidcsv::Document> stat_doc_;

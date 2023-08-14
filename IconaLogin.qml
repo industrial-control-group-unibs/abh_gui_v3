@@ -68,7 +68,7 @@ Item
             visible: false
             mipmap: true
             anchors.fill:parent
-            source: "file://"+PATH+"/../utenti/"+foto
+            source: "file://"+PATH+"/../utenti/"+identifier+"/foto.png"
             id: allenamento_icona
         }
 

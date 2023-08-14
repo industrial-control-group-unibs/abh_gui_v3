@@ -254,7 +254,21 @@ ApplicationWindow {
         string: "stop"
     }
 
-
+    Timer
+    {
+        id: com_watchdog
+        interval: 5000
+        repeat: true
+        running: true
+        onTriggered:
+        {
+            if (!fb_udp.receivedData())
+            {
+                console.log("Unable to received data")
+                fb_udp.rebootThread()
+            }
+        }
+    }
     BinaryReceiver
     {
         id: fb_udp
@@ -268,17 +282,19 @@ ApplicationWindow {
         size: 6
         // @disable-check M16
 
+
+
         property int counter: 0
         onDataChanged:
         {
-            if (counter===0)
-            {
-                console.log("data from coordinator = ",data)
-            }
-            if (counter++>1000)
-            {
-                counter=0
-            }
+//            if (counter===0)
+//            {
+//                console.log("data from coordinator = ",data)
+//            }
+//            if (counter++>1000)
+//            {
+//                counter=0
+//            }
             if ((data[1]===1 || data[1]===-1 || selected_exercise.type===3) && timer_tut.active)
             {
                 timer_tut.start()
@@ -293,17 +309,19 @@ ApplicationWindow {
 
 
 
-    Timer
-    {
 
-        interval: 1000
-        repeat: false
-        running: true
-        onTriggered:
-        {
-            fb_udp.port="21012"
-        }
-    }
+
+//    Timer
+//    {
+
+//        interval: 1000
+//        repeat: false
+//        running: true
+//        onTriggered:
+//        {
+//            fb_udp.port="21012"
+//        }
+//    }
 
     UdpVideoStream {
         id: udpStream

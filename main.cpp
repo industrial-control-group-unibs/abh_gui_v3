@@ -79,6 +79,10 @@ int main(int argc, char *argv[])
   std::string dir_path;
   std::string template_path;
 
+
+
+
+
   if (fs)
   {
     dir_path="/home/"+Username+"/Scrivania/abh/abh_data";
@@ -106,7 +110,8 @@ int main(int argc, char *argv[])
                      template_path);
 
   std::cout << "create workouts" <<std::endl;
-  abh::ProgrammaAllenamento workout(data_path+"/allenamento_programmato",
+  abh::ProgrammaAllenamento workout(data_path+"/../utenti",
+                                    data_path+"/allenamento_programmato",
                                     template_path);
 
   std::cout << "create exercise descriptions" <<std::endl;
@@ -243,6 +248,7 @@ int main(int argc, char *argv[])
   context->setContextProperty("_settings", &settings);
 
 
+
   context->setContextProperty("_default", default_values);
 
   engine->rootContext()->setContextProperty("PATH", data_path);
@@ -263,7 +269,13 @@ int main(int argc, char *argv[])
   }, Qt::QueuedConnection);
   engine->load(url);
 
-  int output=app->exec();
+  int output;
+  try {
+    output=app->exec();
+  } catch (std::exception ex) {
+    std::cout << "exception: "<<ex.what();
+  }
+
   engine.reset();
   std::cout << "exit" << std::endl;
   return output;

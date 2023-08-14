@@ -35,7 +35,7 @@ Item {
     property bool duplicato: false
     onStateChanged:
     {
-        duplicato=_active_workouts.checkIfExistColumn("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
+        duplicato=_active_workouts.checkIfExistColumn(impostazioni_utente.identifier+"/ACTIVEWORKOUT",
                                                 0,
                                                 selected_exercise.workout+"_"+component.state);
     }
@@ -239,7 +239,7 @@ Item {
             property string workout_id: ""
             onPressDx:
             {
-                if (_active_workouts.checkIfExistColumn("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
+                if (_active_workouts.checkIfExistColumn(impostazioni_utente.identifier+"/ACTIVEWORKOUT",
                                                         0,
                                                         selected_exercise.workout+"_"+component.state))
                 {
@@ -253,7 +253,7 @@ Item {
                     {
                         _utenti.saveWorkout(impostazioni_utente.identifier,workout_id)
                         _workout.updateStatFile(impostazioni_utente.identifier,_utenti.getWorkout(impostazioni_utente.identifier),timer_tempo.value,timer_tut.value);
-                        _active_workouts.addRow("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
+                        _active_workouts.addRow(impostazioni_utente.identifier+"/ACTIVEWORKOUT",
                                                 [workout_id,0,0,Math.round(new Date().getTime()*0.001),0,0])
                         selected_exercise.code=_workout.code
                         selected_exercise.reps=_workout.reps

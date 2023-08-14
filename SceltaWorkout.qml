@@ -22,7 +22,7 @@ Item {
     property bool new_workout: false
     Component.onCompleted:
     {
-        _active_workouts.readFile("ACTIVEWORKOUT_"+impostazioni_utente.identifier)
+        _active_workouts.readFile((impostazioni_utente.identifier+"/ACTIVEWORKOUT"))
         selected_exercise.personalizzato=false;
     }
 
@@ -155,7 +155,7 @@ Item {
                 }
                 onEraseYes:
                 {
-                    _active_workouts.removeRow("ACTIVEWORKOUT_"+impostazioni_utente.identifier,index);
+                    _active_workouts.removeRow(impostazioni_utente.identifier+"/ACTIVEWORKOUT",index);
                     lista_workout.reload()
                 }
             }

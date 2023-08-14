@@ -35,8 +35,8 @@ Item {
             if (selected_exercise.personalizzato)
             {
                 _active_workouts.changeValue(
-                            "CUSTOMWORKOUT_"+impostazioni_utente.identifier,
-                            _active_workouts.getRowIndex("CUSTOMWORKOUT_"+impostazioni_utente.identifier,
+                            impostazioni_utente.identifier+"/CUSTOMWORKOUT",
+                            _active_workouts.getRowIndex(impostazioni_utente.identifier+"/CUSTOMWORKOUT",
                                                          0,
                                                          selected_exercise.workout),
                             1,
@@ -44,8 +44,8 @@ Item {
                             )
 
                 _active_workouts.changeValue(
-                            "CUSTOMWORKOUT_"+impostazioni_utente.identifier,
-                            _active_workouts.getRowIndex("CUSTOMWORKOUT_"+impostazioni_utente.identifier,
+                            impostazioni_utente.identifier+"/CUSTOMWORKOUT",
+                            _active_workouts.getRowIndex(impostazioni_utente.identifier+"/CUSTOMWORKOUT",
                                                          0,
                                                          selected_exercise.workout),
                             2,
@@ -53,8 +53,8 @@ Item {
                             )
 
                 _active_workouts.changeValue(
-                            "CUSTOMWORKOUT_"+impostazioni_utente.identifier,
-                            _active_workouts.getRowIndex("CUSTOMWORKOUT_"+impostazioni_utente.identifier,
+                            impostazioni_utente.identifier+"/CUSTOMWORKOUT",
+                            _active_workouts.getRowIndex(impostazioni_utente.identifier+"/CUSTOMWORKOUT",
                                                          0,
                                                          selected_exercise.workout),
                             4,
@@ -64,8 +64,8 @@ Item {
             else
             {
                 _active_workouts.changeValue(
-                            "CUSTOMWORKOUT_"+impostazioni_utente.identifier,
-                            _active_workouts.getRowIndex("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
+                            impostazioni_utente.identifier+"/ACTIVEWORKOUT",
+                            _active_workouts.getRowIndex(impostazioni_utente.identifier+"/ACTIVEWORKOUT",
                                                          0,
                                                          selected_exercise.workout),
                             1,
@@ -73,8 +73,8 @@ Item {
                             )
 
                 _active_workouts.changeValue(
-                            "ACTIVEWORKOUT_"+impostazioni_utente.identifier,
-                            _active_workouts.getRowIndex("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
+                            impostazioni_utente.identifier+"/ACTIVEWORKOUT",
+                            _active_workouts.getRowIndex(impostazioni_utente.identifier+"/ACTIVEWORKOUT",
                                                          0,
                                                          selected_exercise.workout),
                             2,
@@ -82,8 +82,8 @@ Item {
                             )
 
                 _active_workouts.changeValue(
-                            "ACTIVEWORKOUT_"+impostazioni_utente.identifier,
-                            _active_workouts.getRowIndex("ACTIVEWORKOUT_"+impostazioni_utente.identifier,
+                            impostazioni_utente.identifier+"/ACTIVEWORKOUT",
+                            _active_workouts.getRowIndex(impostazioni_utente.identifier+"/ACTIVEWORKOUT",
                                                          0,
                                                          selected_exercise.workout),
                             4,

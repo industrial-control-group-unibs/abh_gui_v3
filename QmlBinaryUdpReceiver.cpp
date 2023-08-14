@@ -37,6 +37,8 @@ void BinaryReceiver::setSize(int size)
   size_=size;
   data_mtx.lock();
   data_.resize(size_);
+  for (int idx=0;idx<size_;idx++)
+    data_[idx]=0.0;
   data_mtx.unlock();
   if (socket_)
     socket_->setDataSize(size);
@@ -61,6 +63,18 @@ void BinaryReceiver::setData(QVector<qreal> d)
   }
 }
 
+bool BinaryReceiver::receivedData()
+{
+  bool tmp=received_data_;
+  received_data_=false;
+  return tmp;
+}
+
+void  BinaryReceiver::rebootThread()
+{
+  createSocket();
+}
+
 void BinaryReceiver::readThread()
 {
   if (not socket_)
@@ -71,6 +85,7 @@ void BinaryReceiver::readThread()
 
     if (socket_->isUnreadDataAvailable())
     {
+      received_data_=true;
       std::vector<double> v=socket_->getData();
       if (v.size()==size_)
       {
@@ -124,6 +139,7 @@ void BinaryReceiver::createSocket()
     socket_.reset();
   }
   try {
+    qDebug() << "create udp_binary_helper::Receiver. Port: "<<port_;
     socket_=std::make_shared<udp_binary_helper::Receiver>( port_.toStdString());
     stop_flag_=false;
     connected_=true;

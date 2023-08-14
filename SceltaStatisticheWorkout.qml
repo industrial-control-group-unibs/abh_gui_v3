@@ -24,9 +24,9 @@ Item {
     Component.onCompleted:
     {
         _active_workouts.appendIcon(false);
-        _active_workouts.readFile("ACTIVEWORKOUT_"+impostazioni_utente.identifier);
+        _active_workouts.readFile((impostazioni_utente.identifier+"/ACTIVEWORKOUT"));
         _custom_workouts.appendIcon(false)
-        _custom_workouts.readFile("CUSTOMWORKOUT_"+impostazioni_utente.identifier);
+        _custom_workouts.readFile((impostazioni_utente.identifier+"/CUSTOMWORKOUT"));
         _custom_workouts.appendIcon(true)
         _active_workouts.appendIcon(true);
          lista_workout.reload()

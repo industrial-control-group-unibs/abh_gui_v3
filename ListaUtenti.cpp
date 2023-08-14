@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <cstdlib>
 #include <rapidcsv.h>
+#include <boost/filesystem.hpp>
 
 ListaUtenti::ListaUtenti(QString path, std::string template_path, QObject *parent) :
   QAbstractListModel(parent)
@@ -224,6 +225,12 @@ void ListaUtenti::removeUser(QString name)
     std::cout << "expection " << ex.what() << " while reading file " << nome_file << std::endl;
   }
 
+  try {
+    boost::filesystem::remove_all(dir_path_+"/"+name.toStdString());
+  } catch (std::exception& ex) {
+    std::cout << "expection " << ex.what() << " while removing folder " << name.toStdString() << std::endl;
+  }
+
 }
 void ListaUtenti::readFile()
 {
@@ -412,7 +419,11 @@ QString ListaUtenti::getWorkout(QString identifier)
 
 void ListaUtenti::createStatFile(QString user_id)
 {
-  std::string stat_file_name_=dir_path_+"/../utenti/stat_"+user_id.toStdString()+".csv";
+  boost::filesystem::create_directories(dir_path_+"/../utenti/"+user_id.toStdString());
+  boost::filesystem::rename(dir_path_+"/../utenti/foto.png",
+                            dir_path_+"/../utenti/"+user_id.toStdString()+"/foto.png");
+
+  std::string stat_file_name_=dir_path_+"/../utenti/"+user_id.toStdString()+"/stat.csv";
   std::cout << "create stat file: " << stat_file_name_ << std::endl;
   std::cout << "from template: " << template_path_+"/stat_template.csv" << std::endl;
 
@@ -420,7 +431,7 @@ void ListaUtenti::createStatFile(QString user_id)
   stat_doc.reset(new rapidcsv::Document(template_path_+"/stat_template.csv"));
   stat_doc->Save(stat_file_name_);
 
-  std::string aw_file_name_=dir_path_+"/../utenti/ACTIVEWORKOUT_"+user_id.toStdString()+".csv";
+  std::string aw_file_name_=dir_path_+"/../utenti/"+user_id.toStdString()+"/ACTIVEWORKOUT.csv";
   std::cout << "create stat file: " << aw_file_name_ << std::endl;
   std::cout << "from template: " << template_path_+"/ACTIVEWORKOUT_template.csv" << std::endl;
 
@@ -428,7 +439,7 @@ void ListaUtenti::createStatFile(QString user_id)
   stat_doc.reset(new rapidcsv::Document(template_path_+"/ACTIVEWORKOUT_template.csv"));
   stat_doc->Save(aw_file_name_);
 
-  std::string custom_file_name_=dir_path_+"/../utenti/CUSTOMWORKOUT_"+user_id.toStdString()+".csv";
+  std::string custom_file_name_=dir_path_+"/../utenti/"+user_id.toStdString()+"/CUSTOMWORKOUT.csv";
   std::cout << "create stat file: " << custom_file_name_ << std::endl;
   std::cout << "from template: " << template_path_+"/ACTIVEWORKOUT_template.csv" << std::endl;
 

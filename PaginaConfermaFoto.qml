@@ -104,13 +104,21 @@ Item {
         {
             onPressNo:
             {
-                chiamata_sistema.string="rm '"+PATH+"/../utenti/"+impostazioni_utente.foto+"'"
+                chiamata_sistema.string="rm '"+PATH+"/../utenti/foto.png'"
                 chiamata_sistema.call()
-                impostazioni_utente.foto=""
                 pageLoader.source="PaginaScattaFoto.qml"
 
             }
-            onPressYes: pageLoader.source="DefinizioneUtente1.qml"
+            onPressYes:
+            {
+                if (impostazioni_utente.idenfifier!=="")
+                {
+                    chiamata_sistema.string="mv '"+PATH+"/../utenti/foto.png' '" +PATH+"/../utenti/"+impostazioni_utente.identifier+"/foto.png'"
+                    chiamata_sistema.call()
+                }
+
+                pageLoader.source="DefinizioneUtente1.qml"
+            }
         }
     }
 

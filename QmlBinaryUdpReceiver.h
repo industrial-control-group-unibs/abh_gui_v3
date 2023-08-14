@@ -30,7 +30,10 @@ public:
   QVector<qreal> data();
   void setData(QVector<qreal> d);
 
-  protected slots:
+public slots:
+  bool receivedData();
+  void rebootThread();
+protected slots:
   void createSocket();
 signals:
   void portChanged();
@@ -44,6 +47,7 @@ protected:
   bool connected_=false;
   std::shared_ptr<udp_binary_helper::Receiver> socket_;
   bool stop_flag_=false;
+  bool received_data_=false;
   std::thread thread_;
   int size_;
 

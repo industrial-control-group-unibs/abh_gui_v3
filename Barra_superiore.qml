@@ -13,7 +13,6 @@ Item
     property bool nero: false
     onColoreChanged:
     {
-        console.log("colore rb",colore.r,colore.g,colore.b)
         nero=(colore.r<0.05) && (colore.g<0.05) && (colore.b<0.05)
     }
 
@@ -172,7 +171,7 @@ Item
                 }
             }
 
-            source:  "file://"+PATH+"/../utenti/"+impostazioni_utente.foto//"pic_foto.jpg"
+            source:  "file://"+PATH+"/../utenti/"+impostazioni_utente.identifier+"/"+impostazioni_utente.foto
             layer.effect: OpacityMask {
                 maskSource: Item {
                     width: img_barra.width

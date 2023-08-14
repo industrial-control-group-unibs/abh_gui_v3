@@ -24,12 +24,11 @@ Item {
 
     onRipetizioniChanged:
     {
-         if (fb_udp.data[0]>=3)
+         if (fb_udp.data[0]>=3 && state=="calibration")
          {
              state="sotto"
              end_calibration=true
          }
-         console.log("stato = ",state)
     }
 
     onCalibrazioneChanged:
@@ -38,7 +37,7 @@ Item {
 //         {
 //             state= "calibration"
 //         }
-         if (fb_udp.data[0]>=3)
+         if (fb_udp.data[0]>=3 && state=="calibration")
          {
              state="sotto"
          }
@@ -54,13 +53,12 @@ Item {
         timer_tut.active=true
         startstop_udp.string="start"
         parametri_generali.login_page=false
-        _active_workouts.readFile("ACTIVEWORKOUT_"+impostazioni_utente.identifier)
+        _active_workouts.readFile((impostazioni_utente.identifier+"/ACTIVEWORKOUT"))
 
         if (selected_exercise.current_set>0)
             state="sotto"
         else
             state="calibration"
-        console.log("set = ", selected_exercise.current_set, " state = ", state)
     }
     Component.onDestruction:
     {

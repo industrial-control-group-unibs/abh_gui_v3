@@ -246,7 +246,6 @@ Item {
                     if (highlighted)
                     {
                         selected_exercise.video_intro=_esercizi.getVideoIntro(vector[0])
-                        console.log("video_intro = ",selected_exercise.video_intro)
                     }
                 }
 

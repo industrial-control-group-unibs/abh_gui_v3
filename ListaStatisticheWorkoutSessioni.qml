@@ -23,7 +23,7 @@ Item {
     Component.onCompleted:
     {
         _active_workouts.appendIcon(false);
-        _active_workouts.readFile("ACTIVEWORKOUT_"+impostazioni_utente.identifier);
+        _active_workouts.readFile(impostazioni_utente.identifier+"/ACTIVEWORKOUT");
          lista_workout.reload()
         _active_workouts.appendIcon(false);
     }

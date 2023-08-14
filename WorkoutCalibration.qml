@@ -18,7 +18,6 @@ Item
     property bool is_timeout: false
     property double ripetizioni: fb_udp.data[0]
 
-    onVisibleChanged: console.log("calibration visible = ", visible)
     onRipetizioniChanged: timer_timeout.restart()
     signal cancel
     signal exit
@@ -36,7 +35,6 @@ Item
             {
                 if (stato===0)
                 {
-                    console.log("Stop visione")
                     component.is_timeout=true
                     startstop_udp.string="restart_vision"
                     interval=2000
@@ -45,7 +43,6 @@ Item
                 }
                 else if (stato===1)
                 {
-                    console.log("Riavvio dell'esercizio")
                     interval=5000
                     component.is_timeout=false
                     stato=0

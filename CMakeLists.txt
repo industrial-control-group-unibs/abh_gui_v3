@@ -27,7 +27,7 @@ set(CMAKE_BUILD_TYPE Release)
 #endif()
 
 find_package(Qt5 COMPONENTS Core Quick Multimedia Widgets Qml DBus Network LinguistTools REQUIRED)
-find_package(Boost 1.40.0 REQUIRED system thread regex)
+find_package(Boost 1.40.0 REQUIRED system thread regex filesystem)
 find_package( OpenCV REQUIRED )
 
 qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR}  abh_en.ts abh_it.ts abh_ar.ts abh_de.ts abh_fr.ts abh_es.ts)

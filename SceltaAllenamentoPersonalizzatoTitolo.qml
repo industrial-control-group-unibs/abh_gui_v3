@@ -15,12 +15,10 @@ TemplateInserimentoTesto
         {
             if (replace)
             {
-                console.log("replace line")
-                _custom_sessions.removeRowByName("CUSTOMWORKOUT_"+impostazioni_utente.identifier,text);
+                _custom_sessions.removeRowByName(impostazioni_utente.identifier+"/CUSTOMWORKOUT",text);
             }
-            _custom_sessions.addRow("CUSTOMWORKOUT_"+impostazioni_utente.identifier,
+            _custom_sessions.addRow(impostazioni_utente.identifier+"/CUSTOMWORKOUT",
                                     [text,0,0,Math.round(new Date().getTime()*0.001),0,0])
-            console.log("qui")
             _workout.loadWorkout(impostazioni_utente.identifier,programma_personalizzato.name)
 
             pageLoader.source="SceltaAllenamentoPersonalizzatoSessioni.qml"

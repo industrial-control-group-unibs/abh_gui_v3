@@ -12,7 +12,7 @@ UdpVideoStream::UdpVideoStream(QObject *parent)
 {
   mTimer.setInterval(50);
   connect(&mTimer, &QTimer::timeout, this, &UdpVideoStream::slotTick);
-  thread_=std::thread(&UdpVideoStream::receiverThread,this);
+  //thread_=std::thread(&UdpVideoStream::receiverThread,this);
 }
 
 UdpVideoStream::~UdpVideoStream()
@@ -51,6 +51,19 @@ void UdpVideoStream::setVideoSurface(QAbstractVideoSurface *videoSurface)
     startSurface();
 
     mTimer.start();
+    if (mVideoSurface)
+    {
+      qDebug() << "set interface";
+      stop_flag_=false;
+      thread_=std::thread(&UdpVideoStream::receiverThread,this);
+    }
+    else
+    {
+      stop_flag_=true;
+      if (thread_.joinable())
+        thread_.join();
+      qDebug() << "reset interface";
+    }
   }
 
 }

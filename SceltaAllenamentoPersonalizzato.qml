@@ -4,7 +4,7 @@ TemplateListaAggiungile
 {
     Component.onCompleted:
     {
-        _custom_workouts.readFile("CUSTOMWORKOUT_"+impostazioni_utente.identifier)
+        _custom_workouts.readFile((impostazioni_utente.identifier+"/CUSTOMWORKOUT"))
         selected_exercise.personalizzato=true
         reload()
     }
@@ -44,8 +44,8 @@ TemplateListaAggiungile
     }
     onErase:
     {
-        _custom_workouts.removeRow("CUSTOMWORKOUT_"+impostazioni_utente.identifier,index);
-        _custom_sessions.removeRowByName("CUSTOMWORKOUT_"+impostazioni_utente.identifier,text);
+        _custom_workouts.removeRow(impostazioni_utente.identifier+"/CUSTOMWORKOUT",index);
+        _custom_sessions.removeRowByName(impostazioni_utente.identifier+"/CUSTOMWORKOUT",text);
     }
 
 

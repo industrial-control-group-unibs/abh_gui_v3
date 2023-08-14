@@ -7,6 +7,7 @@
 namespace abh {
 
 ProgrammaAllenamento::ProgrammaAllenamento(QString path,
+                                           QString workout_path,
                                            std::string template_path,
                                            QObject* /*parent*/)
 {
@@ -16,6 +17,7 @@ ProgrammaAllenamento::ProgrammaAllenamento(QString path,
   end_session_=false;
   act_session_=1;
   template_path_=template_path;
+  workout_path_=workout_path;
 }
 
 void ProgrammaAllenamento::readFile(std::string file_name)
@@ -549,7 +551,7 @@ QString ProgrammaAllenamento::getTime()
   int minuti=int(std::floor(time/60.0))%60;
   int ore=int(std::floor(time/3600.0));
 
-  std::string tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m";
+  std::string tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m " + std::to_string(secondi)+" s";
   return QString().fromStdString(tempo_stringa);
 }
 
@@ -848,7 +850,7 @@ bool ProgrammaAllenamento::createEmptyWorkout(QString user_id, QString workout_n
     return false;
   }
 
-  std::string file=dir_path_.toStdString()+"/../../utenti/"+user_id.toStdString()+"_"+workout_name.toStdString()+".csv";
+  std::string file=dir_path_.toStdString()+"/"+user_id.toStdString()+"/"+workout_name.toStdString()+".csv";
   doc_->Save(file);
   readFile(file);
   return true;
@@ -873,7 +875,7 @@ QString ProgrammaAllenamento::createWorkout(QString user_id, QString workout_nam
 
   qDebug() << "name_ = " << name_ << " level_ = " << level_;
 
-  std::string workout_file=dir_path_.toStdString()+"/"+workout_name.toStdString()+".csv";
+  std::string workout_file=workout_path_.toStdString()+"/"+workout_name.toStdString()+".csv";
   std::unique_ptr<rapidcsv::Document> doc;
   try {
     doc.reset(new rapidcsv::Document(workout_file));
@@ -920,7 +922,7 @@ QString ProgrammaAllenamento::createWorkout(QString user_id, QString workout_nam
     }
   }
 
-  file_name_=dir_path_.toStdString()+"/../../utenti/"+user_id.toStdString()+"_"+workout_name.toStdString()+".csv";
+  file_name_=dir_path_.toStdString()+"/"+user_id.toStdString()+"/"+workout_name.toStdString()+".csv";
 
 
   for  (int idx=0;idx<(int)doc_->GetRowCount();idx++)
@@ -996,7 +998,7 @@ void ProgrammaAllenamento::extend(int number_of_session)
 
 void ProgrammaAllenamento::loadWorkout(QString user_id, QString workout_name)
 {
-  file_name_=dir_path_.toStdString()+"/../../utenti/"+user_id.toStdString()+"_"+workout_name.toStdString()+".csv";
+  file_name_=dir_path_.toStdString()+"/"+user_id.toStdString()+"/"+workout_name.toStdString()+".csv";
   readFile(file_name_);
   readStatFile(user_id);
 
@@ -1019,7 +1021,7 @@ void ProgrammaAllenamento::loadWorkout(QString user_id, QString workout_name)
 
 void ProgrammaAllenamento::updateStatFile(QString user_id, QString workout_name, int time, int tut)
 {
-  stat_file_name_=dir_path_.toStdString()+"/../../utenti/stat_"+user_id.toStdString()+".csv";
+  stat_file_name_=dir_path_.toStdString()+"/"+user_id.toStdString()+"/stat.csv";
   std::unique_ptr<rapidcsv::Document> stat_doc;
   stat_doc.reset(new rapidcsv::Document(stat_file_name_));
 
@@ -1039,7 +1041,7 @@ void ProgrammaAllenamento::updateStatFile(QString user_id, QString workout_name,
 
 void ProgrammaAllenamento::readStatFile(QString user_id)
 {
-  stat_file_name_=dir_path_.toStdString()+"/../../utenti/stat_"+user_id.toStdString()+".csv";
+  stat_file_name_=dir_path_.toStdString()+"/"+user_id.toStdString()+"/stat.csv";
   std::unique_ptr<rapidcsv::Document> stat_doc;
   stat_doc.reset(new rapidcsv::Document(stat_file_name_));
 

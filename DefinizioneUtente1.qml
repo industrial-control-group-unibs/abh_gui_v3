@@ -116,7 +116,7 @@ Item {
                     visible: false
                     mipmap: true
                     anchors.fill:parent
-                    source: "file://"+PATH+"/../utenti/"+impostazioni_utente.foto
+                    source: "file://"+PATH+"/../utenti/"+impostazioni_utente.identifier+"/"+impostazioni_utente.foto
                     id: allenamento_icona
                 }
 
@@ -255,10 +255,6 @@ Item {
                             }
                             else
                             {
-                                console.log("foto = ", impostazioni_utente.foto)
-                                console.log("dati = ", dati)
-                                console.log("dati[",lista_utente.currentIndex+1,"] = ", dati[lista_utente.currentIndex+1])
-
                                 impostazioni_utente.identifier=_utenti.addUser(dati)
                             }
                             _utenti.readFile()
@@ -267,12 +263,9 @@ Item {
                         else
                         {
                             testo_avanti.conferma=true
-                            console.log("dati = ", dati)
                             lista_utente.currentItem.colore=parametri_generali.coloreBordo
                             dati[lista_utente.currentIndex]=lista_utente.currentItem.name
                             dati[lista_utente.currentIndex+1]=impostazioni_utente.foto
-                            console.log("foto = ", impostazioni_utente.foto)
-                            console.log("dati[",lista_utente.currentIndex+1,"] = ", dati[lista_utente.currentIndex+1])
 
                         }
                     }
