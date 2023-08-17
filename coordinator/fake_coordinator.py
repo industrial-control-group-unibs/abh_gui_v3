@@ -15,7 +15,7 @@ from enum import Enum
 import os
 import getpass
 
-
+import psutil
 
 path=os.path.dirname(os.path.realpath(__file__))
 user=getpass.getuser()
@@ -36,6 +36,7 @@ def handler(signal_received, frame):
 
 def exercise_thread():
     global stop
+
 
     startstop_client = UdpReceiverThread("startstop_client_d",abh.ABH_CONTROL,abh.START_EXERCISE_PORT)
     startstop_client.start()
@@ -101,6 +102,25 @@ if __name__ == '__main__':
     # %% initialization
     signal(SIGINT, handler)
     # %%
+
+    pids = psutil.pids()
+    found_abh_gui=False
+    for pid in pids:
+        p=psutil.Process(pid)
+        if p.name() == "abh_gui_v3":
+            print(p)
+            if (not found_abh_gui):
+                found_abh_gui=True
+                abh_gui_time=p.create_time()
+                p_abh=p
+            else:
+                print("duplicate abh_gui_v3",p,p_abh)
+                p_abh.terminate()
+                p_abh.kill()
+                p.kill()
+
+
+
     ex_thread = Thread(target=exercise_thread, args=())
     ex_thread.start()
     while (not stop):

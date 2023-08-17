@@ -120,7 +120,6 @@ void BinaryReceiver::readThread()
     usleep(1000);
   }
   std::cout << "[" << name_.toStdString() <<": " << port_.toStdString() << "]" << " stop read thread" << std::endl;
-
   socket_.reset();
 }
 

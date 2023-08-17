@@ -94,4 +94,5 @@ class UdpBinarySenderThread (Thread):
         self.s.close()
 
     def sendData(self,data):
-        self.s.sendto(struct.pack(f'{len(data)}d', *data),(self.hostname,self.port))
+        if self.s.sendto(struct.pack(f'{len(data)}d', *data),(self.hostname,self.port)) < 0:
+            print("error sending message")

@@ -45,12 +45,7 @@ Item {
 
     Component.onCompleted:
     {
-        time_ex.active=true
 
-        time_ex=timer_tempo.value*0.001
-        tut_ex=timer_tut.value*0.001
-
-        timer_tut.active=true
         startstop_udp.string="start"
         parametri_generali.login_page=false
         _active_workouts.readFile((impostazioni_utente.identifier+"/ACTIVEWORKOUT"))
@@ -58,7 +53,15 @@ Item {
         if (selected_exercise.current_set>0)
             state="sotto"
         else
+        {
             state="calibration"
+            timer_tempo.resetValue()
+            timer_tut.resetValue()
+        }
+        time_ex.active=true
+        time_ex=timer_tempo.value*0.001
+        tut_ex=timer_tut.value*0.001
+        timer_tut.active=true
     }
     Component.onDestruction:
     {

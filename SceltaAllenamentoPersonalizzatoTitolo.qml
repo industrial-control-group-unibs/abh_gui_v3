@@ -10,7 +10,7 @@ TemplateInserimentoTesto
     {
         programma_personalizzato.name=text
         if (_custom_sessions.rename(_template_path+"/SESSION_template",
-                                    impostazioni_utente.identifier+"_"+text,
+                                    impostazioni_utente.identifier+"/"+text,
                                     replace))
         {
             if (replace)

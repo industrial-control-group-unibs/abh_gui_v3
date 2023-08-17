@@ -146,6 +146,8 @@ int main(int argc, char *argv[])
   std::string coloreLedFinePausa="#ff0000";
 
   std::string pausaRiposo="30";
+
+  double score_min,score_max;
   try {
     rapidcsv::Document doc(dir_path+"/default.csv");
     coloreBordo=doc.GetCell<std::string>(1,0);
@@ -159,10 +161,16 @@ int main(int argc, char *argv[])
     coloreLedFinePausa=doc.GetCell<std::string>(1,7);
 
     pausaRiposo=doc.GetCell<std::string>(1,8);
+    score_min=doc.GetCell<double>(1,9);
+    score_max=doc.GetCell<double>(1,10);
 
-  } catch (...) {
-    std::cout << "error loading default"<<"std::endl";
+  } catch (std::exception ex) {
+    std::cerr << "error:" << ex.what() <<std::endl;
+    std::cerr << "file " << dir_path <<"/default.csv is wrong, it should have 12 rows" << std::endl;
+    return 0;
   }
+
+  workout.setThresholds(score_min,score_max);
   QStringList default_values;
   default_values.push_back(QString().fromStdString(coloreBordo             ));
   default_values.push_back(QString().fromStdString(coloreSfondo            ));

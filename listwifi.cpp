@@ -73,10 +73,6 @@ void ListaWifi::readList()
     const QDBusArgument &dbusArg = result.arguments().at(0).value<QDBusArgument>();
     Connection connection2;
     dbusArg >> connection2;
-//    for (const QString s: connection2["connection"].keys())
-//    {
-//      qDebug() << s << " " <<connection2["connection"][s].toString();
-//    }
 
     if (connection2["connection"]["type"].toString()=="802-11-wireless")
     {

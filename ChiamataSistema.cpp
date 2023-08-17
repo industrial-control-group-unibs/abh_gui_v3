@@ -46,7 +46,7 @@ int SysCall::getVolume()
   std::string cmd="amixer -c 1 -M -D pulse get Master | grep -m 1 -o -E [[:digit:]]+% | tr -d \"%\"";
   std::string cmd_out=execute(cmd);
   int volume=std::stoi(cmd_out);
-//  qDebug() << "volume ="  << volume;
+
   return volume;
 }
 
@@ -56,7 +56,6 @@ bool SysCall::isMuted()
   std::string cmd="pactl list sinks | grep 'Mute\\|Muto' | grep 'yes\\|sì'";
   std::string cmd_out=execute(cmd);
 
-  qDebug() << "cmd out="  << cmd_out.c_str();
   return cmd_out.length()==0;
 }
 

@@ -14,17 +14,29 @@ PaginaSiNo
     property string level: _workout.level()
     property string name: _workout.name()
     property double score: _workout.score
-
+    property bool duplicato: false
     property string next_level: _workout.getNextLevel()
     property string workout_id: ""
+
 
     Component.onCompleted:
     {
         if (level===next_level)
-            pageLoader.source="PaginaAllenamento.qml"
+            state="mantieni"
+        else if (next_level==="ESORDIENTE" && level==="INTERMEDIO")
+            state="cala"
+        else if (next_level==="INTERMEDIO" && level==="ESPERTO")
+            state="cala"
+        else if (next_level==="INTERMEDIO" && level==="ESORDIENTE")
+            state="aumenta"
+        else if (next_level==="ESPERTO" && level==="INTERMEDIO")
+            state="aumenta"
+        console.log("state = ",state,level,next_level)
     }
 
-    titolo: qsTr("VUOI PROSEGUIRE IL WORKOUT CON IL LIVELLO "+next_level+"?")
+    titolo: state==="aumenta"?qsTr("COMPLIMENTI! HAI RAGGIUNTO L'OBIETTIVO ORA PUOI ACCEDERE AL LIVELLO SUCCESSIVO.\n\nVUOI PROSEGUIRE?"):
+            state==="mantieni"?qsTr("TI MANCA POCO PER RAGGIUNGERE L'OBIETTIVO.\n\nVUOI RIPETERE IL PROGRAMMA DI ALLENAMENTO?"):
+            qsTr("NON HAI RAGGIUNTO L'OBIETTIVO MA POTRESTI RIPROVARE CON UN LIVELLO PIÙ ADEGUATO.\n\nVUOI PROVARE A MIGLIORARE LE TUE PERFORMANCE?")
 
     onPressNo:
     {
@@ -33,6 +45,17 @@ PaginaSiNo
     }
 
     onPressYes: {
+
+        duplicato=_active_workouts.checkIfExistColumn(impostazioni_utente.identifier+"/ACTIVEWORKOUT",
+                                                0,
+                                                component.name+"_"+component.next_level)
+        if (duplicato)
+        {
+            console.log("Rimuovi workout", component.name+"_"+component.next_level)
+            _active_workouts.removeRowByName(impostazioni_utente.identifier+"/ACTIVEWORKOUT",
+                                              component.name+"_"+component.next_level)
+        }
+
         component.workout_id=_workout.createWorkout(impostazioni_utente.identifier,component.name+"_"+component.next_level,_workout.getNumberOfSession())
 
         if (component.workout_id!=="")

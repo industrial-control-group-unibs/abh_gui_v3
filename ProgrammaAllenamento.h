@@ -115,6 +115,8 @@ public:
     QString getTut();
 
     QString getNextLevel();
+
+    void setThresholds(double min, double max);
 signals:
   void completedChanged();
   void endSessionChanged();
@@ -160,6 +162,8 @@ protected:
   std::string     stat_file_name_;
   std::string     template_path_;
 
+  double score_min_=0.6;
+  double score_max_=0.9;
 
   std::unique_ptr<rapidcsv::Document> doc_;
   std::unique_ptr<rapidcsv::Document> stat_doc_;

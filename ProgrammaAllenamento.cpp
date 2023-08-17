@@ -130,20 +130,20 @@ int ProgrammaAllenamento::getValue(int session, int index, QString field)
   }
   if (!found)
   {
-    qDebug() << " session not found";
+    qWarning() << " session not found";
     return -100;
   }
   int idx2=idx+index;
   if (idx2>=(int)doc_->GetRowCount())
   {
-    qDebug() << " index is too big";
+    qWarning() << " index is too big";
     return -100;
   }
 
   int s= doc_->GetCell<int>(6,idx2);
   if (s!=session)
   {
-    qDebug() << " index is too big";
+    qWarning() << " index is too big";
     return  -100;
   }
 
@@ -172,24 +172,23 @@ void ProgrammaAllenamento::setValue(int session, int index, QString field, int v
   }
   if (!found)
   {
-    qDebug() << " session not found";
+    qWarning() << " session not found";
   }
   int idx2=idx+index;
   if (idx2>=(int)doc_->GetRowCount())
   {
-    qDebug() << " index is too big";
+    qWarning() << " index is too big";
   }
 
   int s= doc_->GetCell<int>(6,idx2);
   if (s!=session)
   {
-    qDebug() << " index is too big";
+    qWarning() << " index is too big";
   }
 
   const ssize_t columnIdx = doc_->GetColumnIdx(field.toStdString());
 
   doc_->SetCell<int>(columnIdx,idx2,value);
-  qDebug()<< " colonna" << field << " value = "<< value;
   doc_->Save(file_name_);
 }
 
@@ -208,18 +207,18 @@ void ProgrammaAllenamento::removeRow(int session, int index)
   }
   if (!found)
   {
-    qDebug() << " session not found";
+    qWarning() << " session not found";
   }
   int idx2=idx+index;
   if (idx2>=(int)doc_->GetRowCount())
   {
-    qDebug() << " index is too big";
+    qWarning() << " index is too big";
   }
 
   int s= doc_->GetCell<int>(6,idx2);
   if (s!=session)
   {
-    qDebug() << " index is too big";
+    qWarning() << " index is too big";
   }
 
   doc_->RemoveRow(idx2);
@@ -290,7 +289,6 @@ void ProgrammaAllenamento::setSession(int session)
 }
 void ProgrammaAllenamento::addRow(int session, QStringList dati)
 {
-  qDebug() << "qui";
   int idx=0;
   for (;idx<(int)doc_->GetRowCount();idx++)
   {
@@ -303,7 +301,7 @@ void ProgrammaAllenamento::addRow(int session, QStringList dati)
 
   if (dati.size()!=10)
   {
-    qDebug()<< "errore di dimensone dati. " << dati.size() <<" invece di 10";
+    qCritical()<< "errore di dimensone dati. " << dati.size() <<" invece di 10";
     return;
   }
   std::vector<std::string> row;
@@ -679,9 +677,6 @@ QVector<double> ProgrammaAllenamento::getSelectedSessionScores    (int session)
       values.append(t);
     }
   }
-  std::string a="1.5";
-  std::string b="1,5";
-  qDebug() << " a= " << std::stod(a) << " b = " << std::stod(b);
   return values;
 }
 QVector<double> ProgrammaAllenamento::getSelectedSessionMeanScores(int session)
@@ -755,7 +750,7 @@ QVector<double> ProgrammaAllenamento::getSelectedSessionNumbers   (int session)
 
 QString ProgrammaAllenamento::getNextLevel()
 {
-  if (score_>0.9)
+  if (score_>score_max_)
   {
     if (level_=="ESORDIENTE")
       return "INTERMEDIO";
@@ -764,7 +759,7 @@ QString ProgrammaAllenamento::getNextLevel()
     else
       return level_;
   }
-  else if (score_<=0.9)
+  else if (score_<=score_min_)
   {
     if (level_=="INTERMEDIO")
       return "ESORDIENTE";
@@ -775,6 +770,12 @@ QString ProgrammaAllenamento::getNextLevel()
   }
   else
     return level_;
+}
+
+void ProgrammaAllenamento::setThresholds(double min, double max)
+{
+  score_max_=max;
+  score_min_=min;
 }
 
 QVariant ProgrammaAllenamento::listSessionsNumber()
@@ -858,7 +859,6 @@ bool ProgrammaAllenamento::createEmptyWorkout(QString user_id, QString workout_n
 
 QString ProgrammaAllenamento::createWorkout(QString user_id, QString workout_name, int number_of_session)
 {
-  qDebug() << "user_id = "  << user_id << " workout name "<<workout_name << "  number of sessions = " << number_of_session;
 
   workoutName_=workout_name;
   if (workout_name.contains("ESORDIENTE"))
@@ -873,7 +873,6 @@ QString ProgrammaAllenamento::createWorkout(QString user_id, QString workout_nam
   if (!level_.isEmpty())
     name_.chop(level_.size()+1);
 
-  qDebug() << "name_ = " << name_ << " level_ = " << level_;
 
   std::string workout_file=workout_path_.toStdString()+"/"+workout_name.toStdString()+".csv";
   std::unique_ptr<rapidcsv::Document> doc;
@@ -1015,7 +1014,6 @@ void ProgrammaAllenamento::loadWorkout(QString user_id, QString workout_name)
   if (!level_.isEmpty())
     name_.chop(level_.size()+1);
 
-  qDebug() << "name_ = " << name_ << " level_ = " << level_;
 }
 
 

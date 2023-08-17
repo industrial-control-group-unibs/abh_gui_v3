@@ -78,7 +78,7 @@ void ListStringCSV::readFile(QString filename)
       data_ << lista;
     }
   } catch (...) {
-    qDebug() << "the file does not exist = " << nome_file.c_str();
+    qCritical() << "the file does not exist = " << nome_file.c_str();
     data_.clear();
   }
 }
@@ -111,8 +111,6 @@ bool ListStringCSV::rename(QString oldname, QString newname, bool replace)
   if (f.good() && !replace)
     return false;
 
-  qDebug() << "oldfile "<< oldname;
-  qDebug() << "newfile "<< newname;
 
   std::cout << oldfile<<std::endl;
   rapidcsv::Document doc(oldfile);
@@ -188,7 +186,6 @@ QStringList ListStringCSV::uniqueElementsOfColumn(QString filename, QString col_
   QStringList qmllista;
   for (size_t ic=0;ic<lista.size();ic++)
   {
-    qDebug() << QString::fromStdString(lista.at(ic));
     QString str=QString::fromStdString(lista.at(ic));
     qmllista.push_back(str);
   }

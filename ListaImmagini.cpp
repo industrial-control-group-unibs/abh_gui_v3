@@ -69,7 +69,6 @@ void ListaImmagini::readFile(QString string)
       QString ex_name=QString::fromStdString(doc.GetCell<std::string>(0,idx));
       QString image=QString::fromStdString(doc.GetCell<std::string>(1,idx));
       data_ << Immagine(ex_name,image);
-      qDebug() << "zone " << ex_name;
     }
     if (append_)
     {

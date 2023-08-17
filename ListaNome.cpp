@@ -80,7 +80,6 @@ void ListaNome::readFile(QString string)
 
 void ListaNome::fromList(QStringList list)
 {
-  qDebug() << list;
   data_.clear();
   for (int idx=0;idx<list.size();idx++)
   {

@@ -8,9 +8,7 @@ void StringQuee::push(QString string)
 {
   data.push_front(string);
 
-//  qDebug() << " List of pages";
-//  for (int idx=0;idx<data.size();idx++)
-//    qDebug()<< "- " << data.at(idx);
+
 
   while (data.size()>max_size)
   {
@@ -28,7 +26,6 @@ QString StringQuee::pop()
     if (data.size()>1)
       data.pop_front();
   }
-  qDebug() << " page after pop " << str;
   return str;
 
 }
@@ -36,7 +33,6 @@ QString StringQuee::pop()
 QString StringQuee::front() const
 {
   QString str= data.front();
-  qDebug() << " this is front " << str;
   return str;
 }
 

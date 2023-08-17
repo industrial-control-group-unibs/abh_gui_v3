@@ -53,7 +53,6 @@ void UdpVideoStream::setVideoSurface(QAbstractVideoSurface *videoSurface)
     mTimer.start();
     if (mVideoSurface)
     {
-      qDebug() << "set interface";
       stop_flag_=false;
       thread_=std::thread(&UdpVideoStream::receiverThread,this);
     }
@@ -62,7 +61,6 @@ void UdpVideoStream::setVideoSurface(QAbstractVideoSurface *videoSurface)
       stop_flag_=true;
       if (thread_.joinable())
         thread_.join();
-      qDebug() << "reset interface";
     }
   }
 
@@ -92,7 +90,7 @@ void UdpVideoStream::saveImage(QString filename)
       image.save(&file, "PNG");
   }
   else {
-      qDebug() << "Can't open file: " << filename;
+      qCritical() << "Can't open file: " << filename;
   }
 }
 

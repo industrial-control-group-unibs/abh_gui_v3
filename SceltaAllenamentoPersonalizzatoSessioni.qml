@@ -2,7 +2,7 @@ import QtQuick 2.12
 
 TemplateListaAggiungileTesto
 {
-    model: _custom_sessions.uniqueElementsOfColumn(impostazioni_utente.identifier+"_"+programma_personalizzato.name,"session")
+    model: _custom_sessions.uniqueElementsOfColumn(impostazioni_utente.identifier+"/"+programma_personalizzato.name,"session")
     titolo: programma_personalizzato.name
     id: component
     property var empty_list: ["+", "0", "0", "0", "0", "0", "0", "0", "0", "0"]
@@ -18,7 +18,7 @@ TemplateListaAggiungileTesto
     onErase:
     {
         _workout.removeSession(index+1)
-        component.model=_custom_sessions.uniqueElementsOfColumn(impostazioni_utente.identifier+"_"+programma_personalizzato.name,"session")
+        component.model=_custom_sessions.uniqueElementsOfColumn(impostazioni_utente.identifier+"/"+programma_personalizzato.name,"session")
     }
 
 
