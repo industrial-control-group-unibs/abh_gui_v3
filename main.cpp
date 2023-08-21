@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
   }
   else
   {
-    dir_path="/home/jacobi/projects/abh/abh_data";
+    dir_path="/home/jacobi/projects/abh/abh_data/template";
     template_path="/home/jacobi/projects/abh/abh_gui_v3/template";
   }
 
