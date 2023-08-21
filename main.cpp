@@ -86,11 +86,11 @@ int main(int argc, char *argv[])
   if (fs)
   {
     dir_path="/home/"+Username+"/Scrivania/abh/abh_data";
-    template_path="/home/"+Username+"/projects/abh/abh_data/template";
+    template_path="/home/"+Username+"/Scrivania/abh/abh_data/template";
   }
   else
   {
-    dir_path="/home/jacobi/projects/abh/abh_data/template";
+    dir_path="/home/jacobi/projects/abh/abh_data";
     template_path="/home/jacobi/projects/abh/abh_gui_v3/template";
   }
 
