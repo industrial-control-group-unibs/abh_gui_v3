@@ -17,7 +17,7 @@ for pid in pids:
     if ("ABHORIZON_PC_VISION" in p.cmdline()) or ("abh_gui_v3" in p.cmdline()):
         if "launcher_v3" in p.cmdline():
             continue
-        print(f"killing {p.cmdline())")
+        print(f"killing {p.cmdline()}")
         p.kill()
 
 
