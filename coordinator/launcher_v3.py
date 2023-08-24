@@ -14,6 +14,7 @@ pids = psutil.pids()
 found_abh_gui=False
 for pid in pids:
     p=psutil.Process(pid)
+    print(p.cmdline())
     if ("ABHORIZON_PC_VISION" in p.cmdline()) or ("abh_gui_v3" in p.cmdline()):
         if "launcher_v3" in p.cmdline():
             continue
