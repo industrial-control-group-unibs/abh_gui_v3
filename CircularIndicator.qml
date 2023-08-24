@@ -248,7 +248,7 @@ Item {
         layer.enabled: true
         layer.samples: 8
         visible: !control.hideTrack
-
+        antialiasing: true
         ShapePath {
             id: trackShapePath
 
@@ -277,7 +277,7 @@ Item {
         layer.enabled: true
         layer.samples: 8
         visible: !control.hideProgress
-
+        antialiasing: true
         ShapePath {
             id: progressShapePath
 

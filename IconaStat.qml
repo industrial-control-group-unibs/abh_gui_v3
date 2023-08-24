@@ -84,6 +84,7 @@ IconaRettangolo
                 height: parent.height*0.1
                 radius: height*0.5
                 width: parent.width*0.4
+                antialiasing: true
                 anchors
                 {
                     left: titolo_txt.left
@@ -131,6 +132,7 @@ IconaRettangolo
                 height: parent.height*0.1
                 radius: height*0.5
                 width: parent.width*0.4
+                antialiasing: true
                 anchors
                 {
                     right: parent.right
