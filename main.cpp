@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
   }
 
   QSurfaceFormat format;
-  format.setSamples(8);
+  format.setSamples(16);
   QSurfaceFormat::setDefaultFormat(format);
 
   std::string dir_path;
