@@ -4,8 +4,22 @@ import os
 import time
 import getpass
 
+import psutil
+
 path=os.path.dirname(os.path.realpath(__file__))
 os.system("pkill abh_gui_v3")
+
+
+pids = psutil.pids()
+found_abh_gui=False
+for pid in pids:
+    p=psutil.Process(pid)
+    if ("ABHORIZON_PC_VISION" in p.cmdline()) or ("abh_gui_v3" in p.cmdline()):
+        if "launcher_v3" in p.cmdline():
+            continue
+        print(f"killing {p.cmdline())")
+        p.kill()
+
 
 user=getpass.getuser()
 if user=='jacobi':
