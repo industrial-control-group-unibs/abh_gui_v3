@@ -17,9 +17,12 @@ for pid in pids:
     print(p.cmdline())
     if ("ABHORIZON_PC_VISION" in p.cmdline()) or ("abh_gui_v3" in p.cmdline()):
         if "launcher_v3" in p.cmdline():
+            print("questo è il main!")
             continue
         print(f"killing {p.cmdline()}")
         p.kill()
+    else :
+        print("lui è salvo")
 
 
 user=getpass.getuser()
