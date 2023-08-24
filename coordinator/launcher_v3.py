@@ -14,14 +14,13 @@ pids = psutil.pids()
 found_abh_gui=False
 for pid in pids:
     p=psutil.Process(pid)
-    print(p.cmdline())
     if (any('ABHORIZON_PC_VISION' in s for s in p.cmdline()) or any('abh_gui_v3' in s for s in p.cmdline())):
         if any('launcher_v3' in s for s in p.cmdline()):
             print("questo è il main!")
             continue
         print(f"killing {p.cmdline()}")
         p.kill()
-    
+
 
 user=getpass.getuser()
 if user=='jacobi':
