@@ -174,6 +174,11 @@ ApplicationWindow {
         property real completamento: 0
         property string difficulty: "Facile"  // TO BE REMOVED
 
+        property bool corde: selected_exercise===1 || selected_exercise===3
+        property bool a_tempo: selected_exercise===2 || selected_exercise===4
+        property bool movimento: false
+        property bool attivo: false
+
         onCodeChanged:
         {
             name= _esercizi.getName(code)
@@ -287,15 +292,10 @@ ApplicationWindow {
         property int counter: 0
         onDataChanged:
         {
-//            if (counter===0)
-//            {
-//                console.log("data from coordinator = ",data)
-//            }
-//            if (counter++>1000)
-//            {
-//                counter=0
-//            }
-            if ((data[1]===1 || data[1]===-1 || selected_exercise.type===3) && timer_tut.active)
+            selected_exercise.movimento = data[2]<-0.1 || data[2]>0.1
+            selected_exercise.attivo = data[1]!==5
+            if ( (!selected_exercise.corde || (selected_exercise.movimento && selected_exercise.corde))
+                    && selected_exercise.attivo && timer_tut.active)
             {
                 timer_tut.start()
             }

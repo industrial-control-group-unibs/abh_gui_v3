@@ -369,7 +369,7 @@ QVariant ProgrammaAllenamento::listSessionExerciseStat(int session)
       int secondi=int(tempo)%60;
       int minuti=int(std::floor(tempo/60.0))%60;
       int ore=int(std::floor(tempo/3600.0));
-      std::string tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m";
+      std::string tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m " + std::to_string(secondi)+" s";
 
 
       lista.push_back(QString::fromStdString(tempo_stringa));
@@ -378,7 +378,7 @@ QVariant ProgrammaAllenamento::listSessionExerciseStat(int session)
       secondi=int(tempo)%60;
       minuti=int(std::floor(tempo/60.0))%60;
       ore=int(std::floor(tempo/3600.0));
-      tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m";
+      tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m " + std::to_string(secondi)+" s";
       lista.push_back(QString::fromStdString(tempo_stringa));
 
 
@@ -567,7 +567,7 @@ QString ProgrammaAllenamento::getTut()
   int minuti=int(std::floor(time/60.0))%60;
   int ore=int(std::floor(time/3600.0));
 
-  std::string tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m";
+  std::string tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m " + std::to_string(secondi)+" s";
   return QString().fromStdString(tempo_stringa);
 }
 
@@ -817,7 +817,7 @@ QVariant ProgrammaAllenamento::listSessionsNumber()
     int secondi=int(tempo)%60;
     int minuti=int(std::floor(tempo/60.0))%60;
     int ore=int(std::floor(tempo/3600.0));
-    std::string tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m";
+    std::string tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m "+std::to_string(secondi)+ " s";
 
 
     lista.push_back(QString::fromStdString(tempo_stringa));
@@ -826,7 +826,7 @@ QVariant ProgrammaAllenamento::listSessionsNumber()
     secondi=int(tempo)%60;
     minuti=int(std::floor(tempo/60.0))%60;
     ore=int(std::floor(tempo/3600.0));
-    tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m";
+    tempo_stringa= std::to_string(ore)+" h "+std::to_string(minuti)+" m "+std::to_string(secondi)+ " s";
     lista.push_back(QString::fromStdString(tempo_stringa));
 
     vec.push_back(lista);

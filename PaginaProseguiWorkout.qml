@@ -21,7 +21,11 @@ PaginaSiNo
 
     Component.onCompleted:
     {
-        if (level===next_level)
+        if (next_level==="ESPERTO" && level===next_level)
+        {
+            pageLoader.source="PaginaAllenamento.qml"
+        }
+        else if (level===next_level)
             state="mantieni"
         else if (next_level==="ESORDIENTE" && level==="INTERMEDIO")
             state="cala"
@@ -37,6 +41,7 @@ PaginaSiNo
     titolo: state==="aumenta"?qsTr("COMPLIMENTI! HAI RAGGIUNTO L'OBIETTIVO ORA PUOI ACCEDERE AL LIVELLO SUCCESSIVO.\n\nVUOI PROSEGUIRE?"):
             state==="mantieni"?qsTr("TI MANCA POCO PER RAGGIUNGERE L'OBIETTIVO.\n\nVUOI RIPETERE IL PROGRAMMA DI ALLENAMENTO?"):
             qsTr("NON HAI RAGGIUNTO L'OBIETTIVO MA POTRESTI RIPROVARE CON UN LIVELLO PIÙ ADEGUATO.\n\nVUOI PROVARE A MIGLIORARE LE TUE PERFORMANCE?")
+
 
     onPressNo:
     {

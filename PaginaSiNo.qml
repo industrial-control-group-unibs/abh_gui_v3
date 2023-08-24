@@ -20,7 +20,7 @@ Item {
 
     Item{
         anchors.fill: parent
-        anchors.topMargin: parametri_generali.larghezza_barra
+        anchors.topMargin: parametri_generali.larghezza_barra*2
         clip: true
 
 

@@ -60,6 +60,14 @@ Item {
                             4,
                             _workout.getTime()
                             )
+                _active_workouts.changeValue(
+                            impostazioni_utente.identifier+"/CUSTOMWORKOUT",
+                            _active_workouts.getRowIndex(impostazioni_utente.identifier+"/CUSTOMWORKOUT",
+                                                         0,
+                                                         selected_exercise.workout),
+                            5,
+                            _workout.getTut()
+                            )
             }
             else
             {
@@ -88,6 +96,14 @@ Item {
                                                          selected_exercise.workout),
                             4,
                             _workout.getTime()
+                            )
+                _active_workouts.changeValue(
+                            impostazioni_utente.identifier+"/ACTIVEWORKOUT",
+                            _active_workouts.getRowIndex(impostazioni_utente.identifier+"/ACTIVEWORKOUT",
+                                                         0,
+                                                         selected_exercise.workout),
+                            5,
+                            _workout.getTut()
                             )
             }
 
