@@ -229,8 +229,9 @@ def exercise_thread():
                 percentage = 0
                 max_pos_motor_speed=0.0
                 max_neg_motor_speed=0.0
+                last_state = Status.UNDEFINED
 
-                if (exercise_type!=2):
+                if (exercise_type==1):
                     state=Status.BACKWARD
                     change_direction=True
                     motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time]
@@ -251,7 +252,7 @@ def exercise_thread():
 
                 if not isinstance(exercise_name_eval,type):
                     exercise_name_eval.sendString("stop")
-            elif stringa=="restart_vision":
+            elif stringa == "restart_vision":
                 exercise_name_eval.sendString("stop")
                 exercise_name_eval.sendString(esercizio)
                 exercise_name_eval.sendString("start")
@@ -279,8 +280,8 @@ def exercise_thread():
                     percentage=max(percentage,max(0,float(repetition_state[2])))
                 elif (state == Status.BACKWARD):
                     percentage=min(percentage,max(0,float(repetition_state[2])))
-                initializing=repetition_state[2]==-30
-                calibrating=repetition_state[2]==-50
+                initializing=repetition_state[2] == -30
+                calibrating=repetition_state[2] == -50
                 #print(rep_count_from_vision,exercise_type)
 
                 if (exercise_type>1):
@@ -336,14 +337,14 @@ def exercise_thread():
           stato_macchina=11
 
         repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina,percentage_graph])
-        vosk_command=0
+        vosk_command = 0
 
         if (last_state != state or resend):
             resend=False
-            if (state == Status.FORWARD and exercise_type!=2):
+            if (state == Status.FORWARD and exercise_type==1):
                 motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time]
                 logging.debug("Forward")
-            elif (state == Status.BACKWARD and exercise_type!=2):
+            elif (state == Status.BACKWARD and exercise_type==1):
                 motor_target_data=[0,exercise["force_return"]/100,exercise["velocity"]/100,torque_change_time]
                 logging.debug("Backward")
             elif (state == Status.STOP):
@@ -356,7 +357,7 @@ def exercise_thread():
                 motor_target_data=[0,0.20,0.2,1]
                 logging.debug("undefined")
             motor_target.sendData(motor_target_data)
-            last_state=state
+            last_state = state
 
     print(isinstance(exercise_client,int))
     if not isinstance(exercise_client,type):
