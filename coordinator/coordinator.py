@@ -179,7 +179,7 @@ def exercise_thread():
         if (power_client.isNewDataAvailable()):
             power_array=power_client.getLastDataAndClearQueue()
             print("received ",power_array)
-            power_level=min(25,max(1,int(power_array[0])))
+            power_level=min(25,max(0,int(power_array[0])))
             parametri_forza=df_forza[df_forza.power==power_level]
             exercise["force"]=parametri_forza.force.iloc[0]
             exercise["force_return"]=parametri_forza.force_return.iloc[0]
@@ -229,7 +229,7 @@ def exercise_thread():
                 max_neg_motor_speed=0.0
 
                 if (exercise_type!=2):
-                    state=Status.FORWARD
+                    state=Status.BACKWARD
                     change_direction=True
                     motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time]
                 if not isinstance(exercise_name_eval,int):
@@ -281,7 +281,8 @@ def exercise_thread():
                 #print(rep_count_from_vision,exercise_type)
 
                 if (exercise_type>1):
-                    repetition_count=max(1,rep_count_from_vision)
+                    if last_rep_count_from_vision!=rep_count_from_vision:
+                        repetition_count=repetition_count+1
                 elif ((last_rep_count_from_vision!=rep_count_from_vision) and (max_pos_motor_speed>10) and (max_neg_motor_speed<-2)):
                     repetition_count=repetition_count+1
                     max_pos_motor_speed=0.0

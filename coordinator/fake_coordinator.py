@@ -85,10 +85,16 @@ def exercise_thread():
             stato_macchina=11
         if repetition_count<=4:
             stato_macchina=10
+        if (repetition_count>10 and repetition_count<20):
+            stato_macchina=2
+
+
         motor_speed=motor_speed+0.01
         if (motor_speed>100.0):
             motor_speed=0.0
         percentage=motor_speed
+
+        print(f"rep: {repetition_count}, stato: {stato_macchina}")
 
         repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina])
 

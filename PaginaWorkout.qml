@@ -50,7 +50,7 @@ Item {
         parametri_generali.login_page=false
         _active_workouts.readFile((impostazioni_utente.identifier+"/ACTIVEWORKOUT"))
 
-        if (selected_exercise.current_set>0)
+        if (selected_exercise.current_set>0 || selected_exercise.type===3)
             state="sotto"
         else
         {

@@ -140,7 +140,7 @@ Item {
                 width: 0.8*parent.width
                 height: 0.1*width
 
-                value: 10
+                value: 12
 
                 min: 1
                 increment: selected_exercise.type===3? (value>=30?5:1)   : 1
@@ -166,6 +166,7 @@ Item {
 
         Item
         {
+            visible: selected_exercise.type===1
             id: difficolta
             anchors
             {

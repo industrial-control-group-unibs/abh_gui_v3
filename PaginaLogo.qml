@@ -2,6 +2,10 @@
 import QtGraphicalEffects 1.12
 import QtQuick 2.12
 import QtQuick.Shapes 1.12
+
+import QtMultimedia 5.12
+
+
 Rectangle {
     id: pagina_logo
     objectName:"Pag1"
@@ -18,20 +22,75 @@ Rectangle {
 //        onTriggered: pageLoader.source=  "PaginaLogin.qml"
 //    }
 
-    AnimatedImage {
+//    AnimatedImage {
+//        anchors.fill: parent
+//        fillMode: Image.PreserveAspectFit
+//        id: animation;
+//        source: "file://"+PATH+"/loghi/gif_intro.gif"
+//        MouseArea
+//        {
+//            anchors.fill: parent
+//            onClicked:
+//            {
+//                pageLoader.source=  "PaginaLogin.qml"
+//            }
+//        }
+//    }
+
+    MouseArea
+    {
         anchors.fill: parent
-        fillMode: Image.PreserveAspectFit
-        id: animation;
-        source: "file://"+PATH+"/loghi/gif_intro.gif"
-        MouseArea
+        onClicked:
         {
-            anchors.fill: parent
-            onClicked:
-            {
-                pageLoader.source=  "PaginaLogin.qml"
-            }
+            pageLoader.source=  "PaginaLogin.qml"
         }
     }
+
+    Rectangle
+    {
+        id: video_preparatorio_mask
+        anchors
+        {
+            fill: parent
+            topMargin: parent.border.width
+            bottomMargin: parent.border.width
+            leftMargin: parent.border.width
+            rightMargin: parent.border.width
+        }
+        visible: false
+        color: "white"
+        radius: parent.radius-parent.border.width
+    }
+
+    OpacityMask {
+        anchors.fill:video_preparatorio_mask
+        source: video_preparatorio
+        maskSource: video_preparatorio_mask
+    }
+
+
+    MediaPlayer {
+        id: mp_esercizio_preparati
+        autoPlay: true
+        autoLoad: true
+
+        source: "file://"+PATH+"/loghi/Logo Reveal_intro.mp4"
+        onStopped:
+        {
+            play() //"play"
+        }
+
+    }
+
+    VideoOutput {
+        id: video_preparatorio
+
+        source: mp_esercizio_preparati
+        anchors.fill: parent
+        z:0
+        visible: false
+    }
+
 
 //    Item {
 //        id: figma_2_456

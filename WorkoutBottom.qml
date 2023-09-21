@@ -55,7 +55,7 @@ Item
         onTriggered:
         {
             value+=interval
-            if (selected_exercise.type===3)
+            if (selected_exercise.type===3 && fb_udp.data[5]!==2)
             {
                 icona_rep.ripetizioni=selected_exercise.reps-value*0.001
             }
@@ -66,6 +66,7 @@ Item
 
     LinearSlider
     {
+        visible: selected_exercise.type===1
         id: power_settings
         height: parent.height*0.20*0.66
         width: parent.width*0.5
@@ -146,7 +147,7 @@ Item
         visible: parent.is_visible
         Testo
         {
-            text: qsTr("RIPETIZIONI")
+            text: selected_exercise.type===3?qsTr("DURATA"):qsTr("RIPETIZIONI")
             anchors
             {
                 horizontalCenter: parent.horizontalCenter
