@@ -16,7 +16,11 @@ Item
         }
         else
         {
-            //icona_rep.ripetizioni=1
+            if (fb_udp.data[0]>1)
+            {
+                console.log("ripetizioni non sono 0")
+                icona_rep.ripetizioni=1
+            }
         }
     }
 
