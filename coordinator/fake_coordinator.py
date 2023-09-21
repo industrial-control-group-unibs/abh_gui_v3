@@ -89,7 +89,7 @@ def exercise_thread():
             stato_macchina=2
 
 
-        motor_speed=motor_speed+0.01
+        motor_speed=motor_speed+0.03
         if (motor_speed>100.0):
             motor_speed=0.0
         percentage=motor_speed

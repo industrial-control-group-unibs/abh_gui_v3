@@ -219,7 +219,10 @@ Item
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        text:
+
+        property real perc: fb_udp.data[3].toFixed(0)
+
+        property string testo:
         {
             if (fb_udp.data[5]===0)
                 return "STOP"
@@ -236,6 +239,9 @@ Item
             else if (fb_udp.data[5]===11)
                 return "INITIALIZING"
         }
+
+        text: testo+" VISIONE: "+perc
+
     }
 
 
