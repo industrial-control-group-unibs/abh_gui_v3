@@ -276,6 +276,7 @@ def exercise_thread():
                     percentage=max(percentage,max(0,float(repetition_state[2])))
                 elif (state == Status.BACKWARD):
                     percentage=min(percentage,max(0,float(repetition_state[2])))
+                print(f'percentuale da visione: {repetition_state[2]}, sent: {percentage}')
                 initializing=repetition_state[2]==-30
                 calibrating=repetition_state[2]==-50
                 #print(rep_count_from_vision,exercise_type)
