@@ -27,7 +27,7 @@ Item {
     Component.onCompleted:
     {
         selected_exercise.sets= 3
-        selected_exercise.reps= 12
+        selected_exercise.reps= selected_exercise.type===3? 30: 12
         selected_exercise.power=3
     }
 
@@ -140,7 +140,7 @@ Item {
                 width: 0.8*parent.width
                 height: 0.1*width
 
-                value: 12
+                value: selected_exercise.type===3? 30: 12
 
                 min: 1
                 increment: selected_exercise.type===3? (value>=30?5:1)   : 1

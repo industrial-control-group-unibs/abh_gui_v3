@@ -237,6 +237,7 @@ Item {
 
         Item
         {
+            visible: selected_exercise.type===1
             id: difficolta
             anchors
             {
