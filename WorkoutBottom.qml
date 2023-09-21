@@ -224,7 +224,7 @@ Item
         anchors.right: parent.right
         anchors.bottom: parent.bottom
 
-        property real perc: fb_udp.data[3].toFixed(0)
+        property real perc: fb_udp.data[6].toFixed(0)
 
         property string testo:
         {

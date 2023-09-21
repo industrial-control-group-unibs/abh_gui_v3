@@ -237,7 +237,7 @@ Item
             // @disable-check M16
             color:parametri_generali.coloreUtente
             // @disable-check M16
-            chdata: show_motor? (fb_udp.data[2]) : 2.0*(fb_udp.data[3]-50.0)
+            chdata: show_motor? (fb_udp.data[2]) : 2.0*(fb_udp.data[6]-50.0)
 
             MouseArea{
                 anchors.fill: parent

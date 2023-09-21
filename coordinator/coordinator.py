@@ -59,6 +59,7 @@ def exercise_thread():
     repetition_udp=-1
     repetition_udp_repetiter=-1
     percentage=0
+    percentage_graph=0
     calibrating=False
     initializing=False
 
@@ -225,6 +226,7 @@ def exercise_thread():
             print(stringa)
             if stringa=="start":
                 repetition_count=1
+                percentage = 0
                 max_pos_motor_speed=0.0
                 max_neg_motor_speed=0.0
 
@@ -271,12 +273,12 @@ def exercise_thread():
 
                 rep_count_from_vision=float(repetition_state[0])
                 direction=float(repetition_state[1])
-                percentage=max(0.0,float(repetition_state[2]))
-                #if  (state == Status.FORWARD):
-                #    percentage=max(percentage,max(0,float(repetition_state[2])))
-                #elif (state == Status.BACKWARD):
-                #    percentage=min(percentage,max(0,float(repetition_state[2])))
-                print(f'percentuale da visione: {repetition_state[2]}, sent: {percentage}')
+                percentage_graph=max(0.0,float(repetition_state[2]))
+
+                if  (state == Status.FORWARD):
+                    percentage=max(percentage,max(0,float(repetition_state[2])))
+                elif (state == Status.BACKWARD):
+                    percentage=min(percentage,max(0,float(repetition_state[2])))
                 initializing=repetition_state[2]==-30
                 calibrating=repetition_state[2]==-50
                 #print(rep_count_from_vision,exercise_type)
@@ -333,7 +335,7 @@ def exercise_thread():
         elif (initializing):
           stato_macchina=11
 
-        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina])
+        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina,percentage_graph])
         vosk_command=0
 
         if (last_state != state or resend):
