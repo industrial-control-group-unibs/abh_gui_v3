@@ -74,7 +74,7 @@ Rectangle {
         autoPlay: true
         autoLoad: true
 
-        source: "file://"+PATH+"/loghi/Logo Reveal_intro.mp4"
+        source: "file://"+PATH+"/loghi/Logo Reveal.mp4"
         onStopped:
         {
             play() //"play"
