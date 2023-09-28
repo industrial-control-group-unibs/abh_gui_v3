@@ -166,10 +166,12 @@ def exercise_thread():
     switch_timer=0
     switch_timer_th=1
 
+    power_level = 1
+
     vision_msg_counter=0
     while (not stop):
         time.sleep(0.001)
-        switch_timer+=0.001
+        switch_timer += 0.001
 
         if (vosk_client.isNewDataAvailable()):
             vosk_command=vosk_client.getLastDataAndClearQueue()[0]
@@ -318,12 +320,14 @@ def exercise_thread():
             state=Status.FORWARD
             switch_timer=0
         elif (state == Status.UNDEFINED and direction==1):
-            state=Status.FORWARD
-        elif (state == Status.UNDEFINED and direction==-1):
             state=Status.BACKWARD
+        elif (state == Status.UNDEFINED and direction==-1):
+            state=Status.FORWARD
         elif (direction==5):
             state=Status.UNDEFINED
 
+        if (state == Status.FORWARD and power_level==0 and repetition_count<3):
+            state = Status.BACKWARD
 
         if (state == Status.STOP and exercise_type==1):
             repetition_count=1.0
