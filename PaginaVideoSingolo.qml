@@ -29,6 +29,20 @@ Item {
 
     }
 
+
+    Timer
+    {
+        id: pause_timer
+        property int value: 0
+        interval: 120*1000 // two minutes
+        repeat: false
+        running: true
+        onTriggered:
+        {
+            console.log("timer elapsed")
+        }
+    }
+
     Barra_superiore{
         id: barra
 
@@ -110,6 +124,7 @@ Item {
 
             MouseArea
             {
+                id: play_pause
                 anchors.fill: parent
                 property bool play: true
                 onPressed:
@@ -123,6 +138,7 @@ Item {
                     {
                         play=true
                         mp_esercizio_preparati.play()
+                        pause_timer.restart()
                     }
                 }
             }
@@ -159,7 +175,10 @@ Item {
                 onStopped:
                 {
                     component.endVideo()
-                    play() //"play"
+                    if (pause_timer.running)
+                        play() //"play"
+                    else
+                        play_pause.play=false
                 }
 
             }

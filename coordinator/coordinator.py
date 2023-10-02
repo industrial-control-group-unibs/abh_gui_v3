@@ -168,6 +168,10 @@ def exercise_thread():
 
     power_level = 1
 
+    # if power level == zero, use the the level=1 for the first repetitions
+    force_power_level_0_last_reps = 0.0
+    force_power_level_0_first_reps = 0.0
+
     vision_msg_counter=0
     while (not stop):
         time.sleep(0.001)
@@ -183,10 +187,17 @@ def exercise_thread():
             power_array=power_client.getLastDataAndClearQueue()
             print("received ",power_array)
             power_level=min(25,max(0,int(power_array[0])))
-            parametri_forza=df_forza[df_forza.power==power_level]
+            parametri_forza=df_forza[df_forza.power == power_level]
             exercise["force"]=parametri_forza.force.iloc[0]
             exercise["force_return"]=parametri_forza.force_return.iloc[0]
             exercise["velocity"]=parametri_forza.velocity.iloc[0]
+
+            if power_level == 0:
+                force_power_level_0_last_reps = exercise["force"]
+                tmp = df_forza[df_forza.power == power_level+1]
+                force_power_level_0_first_reps = tmp.force.iloc[0]
+
+
             print(exercise)
             resend=True
 
@@ -326,13 +337,17 @@ def exercise_thread():
         elif (direction==5):
             state=Status.UNDEFINED
 
-        if (state == Status.FORWARD and power_level==0 and repetition_count<3):
-            state = Status.BACKWARD
 
         if (state == Status.STOP and exercise_type==1):
             repetition_count=1.0
             direction=0.0
 
+        # if power level == zero, use the the level=1 for the first repetitions
+        if power_level == 0:
+            if repetition_count<4:
+                exercise["force"] = force_power_level_0_first_reps
+            else:
+                exercise["force"] = force_power_level_0_last_reps
 
         stato_macchina=float(state.value)
         if (calibrating):
