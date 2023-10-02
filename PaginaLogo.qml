@@ -12,6 +12,8 @@ Rectangle {
 
     anchors.fill: parent
 
+    property int reps: 0
+
     color:parametri_generali.coloreSfondo
 
     Component.onCompleted: led_udp.data=[parametri_generali.coloreLed.r, parametri_generali.coloreLed.g, parametri_generali.coloreLed.b]
@@ -77,7 +79,12 @@ Rectangle {
         source: "file://"+PATH+"/loghi/Logo Reveal.mp4"
         onStopped:
         {
-            play() //"play"
+            pagina_logo.reps++
+            if (pagina_logo.reps>3)
+                pageLoader.source=  "PaginaLogin.qml"
+            else
+                play() //"play"
+
         }
 
     }
