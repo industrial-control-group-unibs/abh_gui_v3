@@ -19,6 +19,8 @@ Item {
         led_udp.data=[parametri_generali.coloreLed.r, parametri_generali.coloreLed.g, parametri_generali.coloreLed.b]
     }
 
+    Component.onDestroyed: console.log("closing PaginaAllenamento")
+
 
     Barra_superiore{}
 

@@ -13,10 +13,11 @@ Item {
 
     Barra_superiore{titolo: qsTr("ALLENAMENTO LIBERO")}
 
-    Component.onCompleted: console.log("loading page")
+    Component.onCompleted: console.log("loading SceltaGruppo")
 
     Component.onDestruction:
     {
+        console.log("closing SceltaGruppo")
     }
 
     FrecceSxDx
