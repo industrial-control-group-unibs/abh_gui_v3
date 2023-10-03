@@ -100,6 +100,7 @@ Rectangle   {
         fillMode: Image.Stretch
         visible: false
         mipmap: true
+        asynchronous: true
         anchors
         {
             fill: parent

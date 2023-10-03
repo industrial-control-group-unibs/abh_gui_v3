@@ -54,6 +54,7 @@ Rectangle   {
         id: immagine_esercizio
         layer.enabled: true
         fillMode: Image.Stretch
+        asynchronous: true
         visible: false
         mipmap: true
         anchors.fill: parent
