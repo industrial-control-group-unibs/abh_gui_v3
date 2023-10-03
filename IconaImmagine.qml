@@ -23,6 +23,7 @@ IconaRettangolo
         visible: true
         z: component.z-2
         mipmap: true
+        asynchronous: true
         anchors
         {
             fill: parent

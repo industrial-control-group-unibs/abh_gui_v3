@@ -246,7 +246,7 @@ Item {
         width: control.width
         height: control.height
         layer.enabled: true
-        layer.samples: 8
+        layer.samples: 4
         visible: !control.hideTrack
         antialiasing: true
         ShapePath {
@@ -275,7 +275,7 @@ Item {
         width: control.width
         height: control.height
         layer.enabled: true
-        layer.samples: 8
+        layer.samples: 4
         visible: !control.hideProgress
         antialiasing: true
         ShapePath {
