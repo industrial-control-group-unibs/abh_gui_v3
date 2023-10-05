@@ -18,7 +18,7 @@ PaginaVideoSingolo
     timer: false
 
     testo_visibile: true
-    testo: qsTr("ESEGUI LE ISTRUZIONI")
+    testo: qsTr("SEGUI LE ISTRUZIONI")
 
 
     Component.onCompleted:
