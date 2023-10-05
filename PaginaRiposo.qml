@@ -10,6 +10,7 @@ import QtMultimedia 5.0
 
 
 Item {
+    id: component
     anchors.fill: parent
 
     implicitHeight: 1920/2

@@ -1,5 +1,6 @@
 import QtQuick 2.12
 
+import QtMultimedia 5.0
 Item
 {
 
@@ -63,11 +64,35 @@ Item
             {
                 icona_rep.ripetizioni=selected_exercise.reps-value*0.001
             }
+            if (icona_rep.ripetizioni<9 && !playgo)
+            {
+                playgo=true
+                playSound_go.play()
+            }
+
+            if (icona_rep.ripetizioni<6 && !play5s)
+            {
+                play5s=true
+                playSound_5s.play()
+            }
+
         }
+
+        property bool play5s: false
+        property bool playgo: false
+
+
     }
 
 
-
+    SoundEffect {
+        id: playSound_5s
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/54321ding.wav"
+    }
+    SoundEffect {
+        id: playSound_go
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/frase5sec.wav"
+    }
     LinearSlider
     {
         visible: selected_exercise.type===1
