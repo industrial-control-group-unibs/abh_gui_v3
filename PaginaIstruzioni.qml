@@ -17,6 +17,10 @@ PaginaVideoSingolo
     titolo: selected_exercise.name
     timer: false
 
+    testo_visibile: true
+    testo: qsTr("ESEGUI LE ISTRUZIONI")
+
+
     Component.onCompleted:
     {
         startstop_udp.string="rewire"

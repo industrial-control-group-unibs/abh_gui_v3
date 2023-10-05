@@ -22,6 +22,8 @@ Item {
     property string titolo: selected_exercise.name
     property bool timer: true
     property bool play: true
+    property bool testo_visibile: false
+    property string testo: ""
 
     signal endVideo
 
@@ -76,6 +78,24 @@ Item {
             bottom: parent.bottom
         }
         height: parent.height*0.3
+
+        Testo
+        {
+            visible: component.testo_visibile
+            text: component.testo
+            font.pixelSize: 60
+            fontSizeMode: Text.Fit
+            wrapMode: Text.WordWrap
+            anchors
+            {
+                horizontalCenter: parent.horizontalCenter
+                top: parent.top
+                topMargin: parent.height*0.25
+
+            }
+            width: parent.width
+        }
+
         FrecceSxDx
         {
             onPressSx:
