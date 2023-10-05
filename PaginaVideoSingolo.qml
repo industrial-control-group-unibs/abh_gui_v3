@@ -21,6 +21,7 @@ Item {
     property string video_name: selected_exercise.video_preparati
     property string titolo: selected_exercise.name
     property bool timer: true
+    property bool play: true
 
     signal endVideo
 
@@ -98,7 +99,49 @@ Item {
             value: mp_esercizio_preparati.position/mp_esercizio_preparati.duration
             tempo: (mp_esercizio_preparati.duration-mp_esercizio_preparati.position) //timerino.remaining_time
             colore: parametri_generali.coloreUtente
-            coloreTesto: colore
+            coloreTesto: component.play?colore:"transparent"
+
+            Item {
+                visible: !component.play
+                anchors.fill: parent
+                Rectangle
+                {
+                    color: tempo.colore
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenterOffset: -0.08*parent.width
+                    width: 0.1*parent.width
+                    height: 0.5*parent.height
+                }
+                Rectangle
+                {
+                    color: tempo.colore
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenterOffset: 0.08*parent.width
+                    width: 0.1*parent.width
+                    height: 0.5*parent.height
+                }
+            }
+            MouseArea
+            {
+                id: play_pause_timer
+                anchors.fill: parent
+                onPressed:
+                {
+                    if (component.play)
+                    {
+                        component.play=false
+                        mp_esercizio_preparati.pause()
+                    }
+                    else
+                    {
+                        component.play=true
+                        mp_esercizio_preparati.play()
+                        pause_timer.restart()
+                    }
+                }
+            }
         }
     }
 
@@ -126,17 +169,16 @@ Item {
             {
                 id: play_pause
                 anchors.fill: parent
-                property bool play: true
                 onPressed:
                 {
-                    if (play)
+                    if (component.play)
                     {
-                        play=false
+                        component.play=false
                         mp_esercizio_preparati.pause()
                     }
                     else
                     {
-                        play=true
+                        component.play=true
                         mp_esercizio_preparati.play()
                         pause_timer.restart()
                     }
