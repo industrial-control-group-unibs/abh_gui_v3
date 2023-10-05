@@ -51,10 +51,12 @@ Item {
     SoundEffect {
         id: playSound
         source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/321beep.wav"
+        volume: parametri_generali.voice?1.0:0.0
     }
     SoundEffect {
         id: playSound_go
         source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/readygo.wav"
+        volume: parametri_generali.voice?1.0:0.0
     }
 
     Barra_superiore{

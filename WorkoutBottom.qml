@@ -88,11 +88,46 @@ Item
     SoundEffect {
         id: playSound_5s
         source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/54321ding.wav"
+        volume: parametri_generali.voice?1.0:0.0
     }
     SoundEffect {
         id: playSound_go
         source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/frase5sec.wav"
+        volume: parametri_generali.voice?1.0:0.0
     }
+
+    SoundEffect {
+        id: playSound_ding
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/ding.wav"
+        volume: parametri_generali.voice?1.0:0.0
+    }
+    SoundEffect {
+        id: playSound_1
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/1.wav"
+        volume: parametri_generali.voice?1.0:0.0
+    }
+    SoundEffect {
+        id: playSound_2
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/2.wav"
+        volume: parametri_generali.voice?1.0:0.0
+    }
+    SoundEffect {
+        id: playSound_3
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/3.wav"
+        volume: parametri_generali.voice?1.0:0.0
+    }
+    SoundEffect {
+        id: playSound_4
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/4.wav"
+        volume: parametri_generali.voice?1.0:0.0
+    }
+    SoundEffect {
+        id: playSound_5
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/5.wav"
+        volume: parametri_generali.voice?1.0:0.0
+    }
+
+
     LinearSlider
     {
         visible: selected_exercise.type===1
@@ -151,8 +186,22 @@ Item
                         selected_exercise.score+=selected_exercise.power/(1.0*component.default_power*selected_exercise.reps*selected_exercise.sets)
 
                 }
+                if (ripetizioni===selected_exercise.reps)
+                    playSound_1.play()
+                if (ripetizioni===selected_exercise.reps-1)
+                    playSound_2.play()
+                if (ripetizioni===selected_exercise.reps-2)
+                    playSound_3.play()
+                if (ripetizioni===selected_exercise.reps-3)
+                    playSound_4.play()
+                if (ripetizioni===selected_exercise.reps-4)
+                    playSound_5.play()
+
                 if (ripetizioni>selected_exercise.reps)
+                {
+                    playSound_ding.play()
                     pageLoader.source = "PaginaRiposo.qml"
+                }
             }
             else
             {

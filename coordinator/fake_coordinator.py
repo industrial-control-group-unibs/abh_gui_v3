@@ -72,7 +72,7 @@ def exercise_thread():
                 state=Status.STOP
             print(f"Next state {state}")
         if send_data:
-            if idx==500:
+            if idx==1000:
                 idx=0
                 if state==Status.FORWARD:
                     repetition_count=repetition_count+1
@@ -96,7 +96,7 @@ def exercise_thread():
 
         print(f"rep: {repetition_count}, stato: {stato_macchina}")
 
-        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina])
+        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina,percentage])
 
     if not isinstance(startstop_client,int):
         startstop_client.stopThread()
