@@ -53,9 +53,61 @@ Item {
 
         Titolo
         {
+            id: titolo
             text: component.titolo
             height: parent.height*0.1
             fontSize: 40
+        }
+
+        Item
+        {
+            //visible: component.conferma
+            anchors
+            {
+                top: volume.bottom
+                topMargin: titolo.height
+                left: titolo.left
+                right: titolo.right
+                leftMargin: 113/1080*parent.width
+                rightMargin: 113/1080*parent.width
+            }
+            height: titolo.height
+            IconaCerchio
+            {
+                id: icona_salva_pwd
+                state: parametri_generali.voice?"pieno":"vuoto"
+                onPressed: {
+                    if (parametri_generali.voice)
+                    {
+                        parametri_generali.voice=false
+                        state="vuoto"
+                    }
+                    else
+                    {
+                        parametri_generali.voice=true
+                        state="pieno"
+                    }
+                }
+            }
+
+
+            Testo
+            {
+                text: parametri_generali.voice?qsTr("DISATTIVA AUDIO CONTEGGIO ESERCIZIO"):qsTr("ATTIVA AUDIO CONTEGGIO ESERCIZIO")
+                anchors
+                {
+                    verticalCenter: icona_salva_pwd.verticalCenter
+                    left: icona_salva_pwd.right
+                    right: parent.right
+                }
+                anchors.margins: 10
+                fontSizeMode: Text.Fit
+                wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+
+            }
+
         }
 
         Item
