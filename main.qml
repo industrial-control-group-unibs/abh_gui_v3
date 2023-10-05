@@ -14,7 +14,7 @@ import QtGraphicalEffects 1.12
 
 ApplicationWindow {
     visible: true
-    width: 1080/2
+    width: 1080
     //    height: 1080
     height: width/1080*1920
 
