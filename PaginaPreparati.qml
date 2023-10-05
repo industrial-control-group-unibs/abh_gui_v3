@@ -34,9 +34,15 @@ PaginaVideoSingolo
     }
 
     property bool play3s: false
+    property bool playgo: false
     onRemaning_timeChanged:
     {
         console.log(component.remaning_time)
+        if (component.remaning_time<6.0 && !component.playgo)
+        {
+            component.playgo=true
+            playSound_go.play()
+        }
         if (component.remaning_time<4.0 && !component.play3s)
         {
             component.play3s=true
@@ -47,7 +53,10 @@ PaginaVideoSingolo
     SoundEffect {
         id: playSound
         source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/321beep.wav"
-
+    }
+    SoundEffect {
+        id: playSound_go
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/readygo.wav"
     }
 
     Component.onCompleted:
