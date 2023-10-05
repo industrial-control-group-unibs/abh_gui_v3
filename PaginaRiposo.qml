@@ -173,14 +173,14 @@ Item {
                 tempo: (conto_alla_rovescia.duration-conto_alla_rovescia.position) //timerino.remaining_time
                 onTempoChanged:
                 {
-                    if (tempo<10000)
+                    if (tempo.tempo<10000)
                     {
                         startstop_udp.string="rewire"
                         led_udp.data=[parametri_generali.coloreLedFinePausa.r, parametri_generali.coloreLedFinePausa.g, parametri_generali.coloreLedFinePausa.b]
                     }
                 }
 
-                colore: (tempo<10000)?"red":parametri_generali.coloreUtente
+                colore: (tempo.tempo<10000)?"red":parametri_generali.coloreUtente
                 coloreTesto: colore
                 MouseArea
                 {
