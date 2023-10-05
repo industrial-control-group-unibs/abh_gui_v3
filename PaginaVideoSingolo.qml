@@ -24,7 +24,7 @@ Item {
     property bool play: true
     property bool testo_visibile: false
     property string testo: ""
-
+    property real remaning_time: 10000
     signal endVideo
 
     Component.onCompleted:
@@ -93,7 +93,7 @@ Item {
                 topMargin: parent.height*0.25
 
             }
-            width: parent.width
+            width: 0.5*parent.width
         }
 
         FrecceSxDx
@@ -121,6 +121,7 @@ Item {
             colore: parametri_generali.coloreUtente
             coloreTesto: component.play?colore:"transparent"
 
+            onTempoChanged: component.remaning_time=tempo.tempo*0.001
             Item {
                 visible: !component.play
                 anchors.fill: parent

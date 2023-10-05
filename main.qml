@@ -52,6 +52,7 @@ ApplicationWindow {
         property int logo_time: 2000
         property bool login_page: false
         property string wifi_name
+        property string lingua: "abh_it"
 
 
         Component.onCompleted:

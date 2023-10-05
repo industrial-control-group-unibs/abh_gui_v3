@@ -29,6 +29,24 @@ Item {
         startstop_udp.string="stop_rewire"
     }
 
+    property real remaning_time: 0.001*tempo.tempo
+    property bool play3s: false
+    onRemaning_timeChanged:
+    {
+        console.log(component.remaning_time)
+        if (component.remaning_time<4.0 && !component.play3s)
+        {
+            component.play3s=true
+            playSound.play()
+        }
+    }
+
+    SoundEffect {
+        id: playSound
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/321beep.wav"
+
+    }
+
     Barra_superiore{
 
         Item
@@ -130,6 +148,7 @@ Item {
 
 
             CircularTimer {
+                id: tempo
                 anchors
                 {
                     horizontalCenter: parent.horizontalCenter

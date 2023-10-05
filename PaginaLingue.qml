@@ -120,6 +120,7 @@ Item {
                             onClicked:
                             {
                                 _settings.setLanguage(dict)
+                                parametri_generali.lingua=dict
                             }
                             z: 40
                         }
