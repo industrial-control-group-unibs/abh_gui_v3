@@ -203,6 +203,7 @@ def exercise_thread():
 
         if (exercise_client.isNewStringAvailable()):
             esercizio=exercise_client.getLastStringAndClearQueue()
+            repetition_count = 1
             if (esercizio=="photo"):
                 exercise_name_eval.sendString(esercizio)
                 continue
@@ -257,9 +258,11 @@ def exercise_thread():
                 motor_target_data=[0,0.20,0.2,1]
                 print("rewire on")
             elif stringa=="stop_rewire":
+                repetition_count = 1
                 state=Status.STOP
                 motor_target_data=[1,0,0,0.5]
             elif stringa=="stop":
+                repetition_count = 1
                 state=Status.STOP
                 motor_target_data=[1,0,0,0.5]
 
