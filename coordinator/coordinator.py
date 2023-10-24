@@ -287,7 +287,6 @@ def exercise_thread():
                 motor_speed=motor_fb[1]
                 real_current_value = motor_fb[2]
                 reference_current_value = motor_fb[3]
-                print(f" real current = {real_current_value}, reference_current = {reference_current_value}")
 
 
             max_pos_motor_speed=max(motor_speed,max_pos_motor_speed)
@@ -367,7 +366,9 @@ def exercise_thread():
         elif (initializing):
           stato_macchina=11
 
-        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina,percentage_graph])
+        #repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina,percentage_graph])
+        repetition_udp_repetiter.sendData(
+            [repetition_count, direction, real_current_value, percentage, vosk_command, stato_macchina, percentage_graph])
         vosk_command = 0
 
         if (last_state != state or resend):
