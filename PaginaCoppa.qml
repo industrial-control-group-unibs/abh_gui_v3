@@ -23,17 +23,6 @@ Item {
             pageLoader.source = "PaginaRiepilogoSetWorkout.qml"
     }
 
-    Component.onCompleted:
-    {
-        if (selected_exercise.workout_finito)
-        {
-            playSound_allenamento.play()
-        }
-        else
-        {
-            playSound_serie.play()
-        }
-    }
 
     SoundEffect {
         id: playSound_serie
@@ -56,6 +45,14 @@ Item {
 
     Component.onCompleted:
     {
+        if (selected_exercise.workout_finito)
+        {
+            playSound_allenamento.play()
+        }
+        else
+        {
+            playSound_serie.play()
+        }
         timer_tut.stop()
         timer_tut.active=false
         timer_tempo.stop()
