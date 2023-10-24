@@ -12,6 +12,7 @@ import QtMultimedia 5.0
 Item {
     id: component
     anchors.fill: parent
+    property bool skip: false
 
     implicitHeight: 1920/2
     implicitWidth: 1080/2
@@ -36,7 +37,11 @@ Item {
     property bool playend: false
     onRemaning_timeChanged:
     {
-        if (selected_exercise.current_set<selected_exercise.sets)
+        if (component.skip)
+        {
+
+        }
+        else if ((selected_exercise.current_set+1)<selected_exercise.sets)
         {
             if (component.remaning_time<6.0 && !component.playgo)
             {
@@ -111,7 +116,10 @@ Item {
         {
             sx_visible: false
             dx_visible: true
-            onPressDx: conto_alla_rovescia.position=conto_alla_rovescia.duration
+            onPressDx: {
+                component.skip=true
+                conto_alla_rovescia.position=conto_alla_rovescia.duration
+            }
         }
 
 
