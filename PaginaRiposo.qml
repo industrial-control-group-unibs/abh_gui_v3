@@ -33,18 +33,29 @@ Item {
     property real remaning_time: 0.001*tempo.tempo
     property bool play3s: false
     property bool playgo: false
+    property bool playend: false
     onRemaning_timeChanged:
     {
-        console.log(component.remaning_time)
-        if (component.remaning_time<6.0 && !component.playgo)
+        if (selected_exercise.current_set<selected_exercise.sets)
         {
-            component.playgo=true
-            playSound_go.play()
+            if (component.remaning_time<6.0 && !component.playgo)
+            {
+                component.playgo=true
+                playSound_go.play()
+            }
+            if (component.remaning_time<4.0 && !component.play3s)
+            {
+                component.play3s=true
+                playSound.play()
+            }
         }
-        if (component.remaning_time<4.0 && !component.play3s)
+        else
         {
-            component.play3s=true
-            playSound.play()
+            if (component.remaning_time<2.0 && !component.playend)
+            {
+                component.playend=true
+                playSound_fine_esercizio.play()
+            }
         }
     }
 
@@ -58,6 +69,12 @@ Item {
         source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/readygo.wav"
         volume: parametri_generali.voice?1.0:0.0
     }
+    SoundEffect {
+        id: playSound_fine_esercizio
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/esercizio_terminato.wav"
+        volume: parametri_generali.voice?1.0:0.0
+    }
+
 
     Barra_superiore{
 

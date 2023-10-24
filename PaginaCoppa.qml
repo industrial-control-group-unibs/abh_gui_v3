@@ -23,6 +23,32 @@ Item {
             pageLoader.source = "PaginaRiepilogoSetWorkout.qml"
     }
 
+    Component.onCompleted:
+    {
+        if (selected_exercise.workout_finito)
+        {
+            playSound_allenamento.play()
+        }
+        else
+        {
+            playSound_serie.play()
+        }
+    }
+
+    SoundEffect {
+        id: playSound_serie
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/fine_sessione.wav"
+        volume: parametri_generali.voice?1.0:0.0
+    }
+
+    SoundEffect {
+        id: playSound_allenamento
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/allenamento_completato.wav"
+        volume: parametri_generali.voice?1.0:0.0
+    }
+
+
+
     anchors.fill: parent
 
     implicitHeight: 1920/2
