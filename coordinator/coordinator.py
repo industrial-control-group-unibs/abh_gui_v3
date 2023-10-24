@@ -89,7 +89,7 @@ def exercise_thread():
 
 
             motor_fb_udp = UdpBinaryReceiverThread("motor_feedback",abh.ABH_CONTROL,abh.MOTOR_FEEDBACK_PORT)
-            motor_fb_udp.bufferLength(2)
+            motor_fb_udp.bufferLength(4)
             motor_fb_udp.start()
 
             logging.debug("connected with gui")
@@ -154,6 +154,9 @@ def exercise_thread():
     direction=0.0
 
     motor_speed=0.0
+    real_current_value = 0.0
+    reference_current_value = 0.0
+
     max_pos_motor_speed=0.0
     max_neg_motor_speed=0.0
 
@@ -280,8 +283,13 @@ def exercise_thread():
 
         if (motor_fb_udp.isNewDataAvailable()):
             motor_fb=motor_fb_udp.getLastDataAndClearQueue()
-            if len(motor_fb)==2:
+            if len(motor_fb)==4:
                 motor_speed=motor_fb[1]
+                real_current_value = motor_fb[2]
+                reference_current_value = motor_fb[3]
+                print(f" real current = {real_current_value}, reference_current = {reference_current_value}")
+
+
             max_pos_motor_speed=max(motor_speed,max_pos_motor_speed)
             max_neg_motor_speed=min(motor_speed,max_neg_motor_speed)
         if (repetition_udp.isNewDataAvailable()):

@@ -31,6 +31,9 @@ state=0
 dtorque=0
 torque_change_time=0.5
 
+real_current_value=0.0
+reference_current_value=0.0
+
 def handler(signal_received, frame):
     global stop
     logging.debug("stop!!")
@@ -46,6 +49,8 @@ def comunicationThread():
     global fb_velocity
     global dtorque
     global torque_change_time
+    global real_current_value
+    global reference_current_value
     logging.debug("starting comunication_thread")
     itrial=0
 
@@ -92,7 +97,7 @@ def comunicationThread():
             velocity_cmd=min(1,max(0,float(cmd[2])))
             torque_change_time=max(0.01,float(cmd[3]))
             logging.info("received torque_perc = "+ str(stiffness_cmd) + ", velocity_perc = " + str(velocity_cmd) + ", off ="+ str(off) )
-        motor_feedback.sendData([abs_position,fb_velocity])
+        motor_feedback.sendData([abs_position, fb_velocity, real_current_value, reference_current_value])
 
         time.sleep(0.001)
 
@@ -118,6 +123,8 @@ def controlThread():
     global fb_velocity
     global dtorque
     global torque_change_time
+    global real_current_value
+    global reference_current_value
     logging.debug("starting control_thread")
 
     simulate=False
@@ -222,7 +229,6 @@ def controlThread():
                 position = instrument.read_register(ENCODER_POS_REGISTER)
                 real_current_value = instrument.read_register(REAL_CURRENT)
                 reference_current_value = instrument.read_register(REFERENCE_CURRENT)
-                print(f" real current = {real_current_value}, reference_current = {reference_current_value}")
             else:
                 position = last_position+vel_actual*passi_motore/8
 
