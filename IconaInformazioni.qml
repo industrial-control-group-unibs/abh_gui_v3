@@ -19,6 +19,42 @@ IconaRettangolo
     property real fontSize: 50
     text: titolo==="+"?titolo:""
 
+    property color colorBordoTransparent: Qt.rgba(parametri_generali.coloreSfondo.r, parametri_generali.coloreSfondo.g, parametri_generali.coloreSfondo.b, 0.70)
+
+    Image {
+        visible: titolo!=="+"
+        id: immagine
+        fillMode: Image.Stretch
+        z: component.z-2
+        mipmap: true
+        asynchronous: true
+        anchors
+        {
+            fill: parent
+            margins: component.margin
+        }
+        source: "file://"+PATH+"/allenamento_programmato/WORKOUT_DEMO.jpg"
+
+        layer.enabled: true
+        layer.effect: OpacityMask {
+            maskSource: Item {
+                width: immagine.width
+                height: immagine.height
+                Rectangle {
+                    anchors.fill: parent
+                    radius: component.radius-0*component.bordo-component.margin
+                }
+            }
+        }
+        Rectangle
+        {
+
+            radius: parent.radius
+            anchors.fill: parent
+            z: component.z+4
+            color: component.colorBordoTransparent
+        }
+    }
 
 
     Item {

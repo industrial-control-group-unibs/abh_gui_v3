@@ -29,6 +29,7 @@ PaginaVideoSingolo
             if (data==1)
             {
                 pageLoader.source="PaginaWorkout.qml"
+                console.log("comando vocale in arrivo")
             }
         }
     }

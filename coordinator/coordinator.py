@@ -179,6 +179,7 @@ def exercise_thread():
 
         if (vosk_client.isNewDataAvailable()):
             vosk_command=vosk_client.getLastDataAndClearQueue()[0]
+            print(f"vosk comamnd={vosk_command}")
 
         if (type_client.isNewDataAvailable()):
             exercise_type=type_client.getLastDataAndClearQueue()[0]

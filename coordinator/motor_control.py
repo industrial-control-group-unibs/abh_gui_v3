@@ -129,6 +129,10 @@ def controlThread():
     ENCODER_VEL_REGISTER = 0x2214
     ENCODER_POS_REGISTER = 0x1002
     DIRECTION_REGISTER = 0x0000
+    REAL_CURRENT = 0x1008
+    REFERENCE_CURRENT = 0x1013
+
+    read_current = True
 
     while (not stop):
         try:
@@ -205,7 +209,10 @@ def controlThread():
     is_rewired = False
     last_abs_position=0
 
-    fb_velocity_raw=0.0;
+    fb_velocity_raw=0.0
+
+    real_current_value = 0.0
+    reference_current_value = 0.0
     while (not stop):
         try:
             tc1 = time.time()
@@ -213,6 +220,9 @@ def controlThread():
             dtorque=(torque_max-torque_min)/torque_change_time*dt
             if (not simulate):
                 position = instrument.read_register(ENCODER_POS_REGISTER)
+                real_current_value = instrument.read_register(REAL_CURRENT)
+                reference_current_value = instrument.read_register(REFERENCE_CURRENT)
+                print(f" real current = {real_current_value}, reference_current = {reference_current_value}")
             else:
                 position = last_position+vel_actual*passi_motore/8
 
