@@ -227,8 +227,8 @@ def controlThread():
             dtorque=(torque_max-torque_min)/torque_change_time*dt
             if (not simulate):
                 position = instrument.read_register(ENCODER_POS_REGISTER)
-                real_current_value = instrument.read_register(REAL_CURRENT)*0.01
-                reference_current_value = instrument.read_register(REFERENCE_CURRENT)*0.01
+                real_current_value = instrument.read_register(REAL_CURRENT)*50.0/torque_max
+                #reference_current_value = instrument.read_register(REFERENCE_CURRENT)*50.0/torque_max
             else:
                 position = last_position+vel_actual*passi_motore/8
 

@@ -366,9 +366,7 @@ def exercise_thread():
         elif (initializing):
           stato_macchina=11
 
-        #repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina,percentage_graph])
-        repetition_udp_repetiter.sendData(
-            [repetition_count, direction, real_current_value, percentage, vosk_command, stato_macchina, percentage_graph])
+        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina,percentage_graph,real_current_value])
         vosk_command = 0
 
         if (last_state != state or resend):

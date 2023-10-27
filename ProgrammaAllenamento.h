@@ -59,7 +59,7 @@ public:
 
   void readFile(std::string file_name);
   public slots:
-    QString createWorkout(QString user_id, QString workout_name, int number_of_session);
+    QString createWorkout(QString user_id, QString workout_name, int number_of_session, QString image_name);
     bool createEmptyWorkout(QString user_id, QString workout_name);
 
     void extend(int number_of_session);

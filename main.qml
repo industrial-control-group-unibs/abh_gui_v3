@@ -165,6 +165,7 @@ ApplicationWindow {
         property real max_neg_speed: -10
         property real score: 0
         property string workout: ""
+        property string workout_image: ""
         property bool personalizzato: false
         property bool workout_finito: false
         property int type: 1
@@ -283,9 +284,9 @@ ApplicationWindow {
         // @disable-check M16
         port: "21012"
         // @disable-check M16
-        data: [0.0,0.0,0.0, 0.0,0.0,0.0, 0.0]
+        data: [0.0,0.0,0.0, 0.0,0.0,0.0, 0.0, 0.0]
         // @disable-check M16
-        size: 7
+        size: 8
         // @disable-check M16
 
 

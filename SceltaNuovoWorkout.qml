@@ -103,6 +103,8 @@ Item {
                 width: lista_workout.width-2
                 onPressed: {
                     selected_exercise.workout=vector[0]
+                    selected_exercise.workout_image=PATH+"/allenamento_programmato/"+vector[1]
+                    console.log("foto",selected_exercise.workout_image)
                     lista_workout.currentIndex=index
                 }
             }

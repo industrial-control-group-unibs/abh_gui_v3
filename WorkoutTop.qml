@@ -216,7 +216,7 @@ Item
             font.pixelSize: 40
             fontSizeMode: Text.Fit
             verticalAlignment: Text.AlignBottom
-            text: chrt_areachart.show_motor? qsTr("VELOCITA' ISTANTANEA"): qsTr("VISIONE")
+            text: chrt_areachart.show_motor? qsTr("VELOCITA' ISTANTANEA"): chrt_areachart.show_current? qsTr("FM") :qsTr("VISIONE")
             onTextChanged: chrt_areachart.clear()
             color: parametri_generali.coloreUtente
         }
@@ -229,6 +229,7 @@ Item
                 verticalCenter: parent.verticalCenter
             }
             property bool show_motor: true
+            property bool show_current: false
             width: parent.width
             height: parent.height-2*parent.radius
 
@@ -237,11 +238,27 @@ Item
             // @disable-check M16
             color:parametri_generali.coloreUtente
             // @disable-check M16
-            chdata: show_motor? (fb_udp.data[2]) : 2.0*(fb_udp.data[6]-50.0)
+            chdata: show_motor? (fb_udp.data[2]) : show_current? 2.0*(fb_udp.data[7]-50.0): 2.0*(fb_udp.data[6]-50.0)
 
             MouseArea{
                 anchors.fill: parent
-                onPressed: parent.show_motor=!(parent.show_motor)
+                onPressed:
+                {
+                    if (parent.show_motor && !parent.show_current)
+                    {
+                        parent.show_motor=false
+                    }
+                    else if (!parent.show_motor && !parent.show_current)
+                    {
+                        parent.show_current=true
+                    }
+                    else
+                    {
+                        parent.show_current=false
+                        parent.show_motor=true
+                    }
+
+                }
             }
 
             RigaGrafico

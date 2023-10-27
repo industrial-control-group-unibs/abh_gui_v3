@@ -5,6 +5,9 @@ import time
 import getpass
 
 import psutil
+import datetime
+import shutil
+import copy
 
 path=os.path.dirname(os.path.realpath(__file__))
 os.system("pkill abh_gui_v3")
@@ -29,18 +32,53 @@ else:
     pycmd="python"
 try:
     p=[]
+
+    now = datetime.datetime.now()
+    datestr=now.strftime('%Y%m%d_%H%M%S')
+
+
     if (user!='jacobi'):
-        p.append(subprocess.Popen([pycmd, "/home/"+user+"/ABHORIZON_PC_VISION/AB_main_PC.py"], cwd=r'/home/'+user+'/ABHORIZON_PC_VISION'))
+        all_logs='/home/' + user + '/Scrivania/abh/utenti/logs/'
+    else:
+        all_logs='/home/' + user + '/projects/abh/utenti/logs/'
+    logpath = all_logs+datestr+'/'
+
+
+    if not os.path.isdir(logpath):
+        os.makedirs(logpath)
+
+    subfolders = [f.path for f in os.scandir(all_logs) if f.is_dir()]
+    for subf in subfolders:
+        x=subf.replace(all_logs, '')
+        try:
+            date_log = datetime.datetime.strptime(x, '%Y%m%d_%H%M%S')
+            diff_data=(now-date_log).total_seconds()
+            if (diff_data>604800):
+                shutil.rmtree(subf)
+        except:
+            shutil.rmtree(subf)
+
+
+    if (user!='jacobi'):
+        file_visione = open(logpath + 'visione.txt', 'w')
+        p.append(subprocess.Popen([pycmd, "/home/"+user+"/ABHORIZON_PC_VISION/AB_main_PC.py"], cwd=r'/home/'+user+'/ABHORIZON_PC_VISION', stdout=file_visione))
         p[-1].name="vision"
         time.sleep(0.5)
 
-    p.append(subprocess.Popen([pycmd,path+"/coordinator.py"], cwd=path))
+    file_coordinator = open(logpath + 'coordinator.txt', 'w')
+    p.append(subprocess.Popen([pycmd,path+"/coordinator.py"], cwd=path, stdout=file_coordinator))
     p[-1].name="coordinator"
-    p.append(subprocess.Popen([pycmd,path+"/led_control.py"], cwd=path))
+
+    file_led_control = open(logpath + 'led_control.txt', 'w')
+    p.append(subprocess.Popen([pycmd,path+"/led_control.py"], cwd=path, stdout=file_led_control))
     p[-1].name="led"
-    p.append(subprocess.Popen([path+"/../build/abh_gui_v3"], cwd=path, stdout=subprocess.DEVNULL    ))
+
+    file_abh_gui_v3 = open(logpath + 'abh_gui_v3.txt', 'w')
+    p.append(subprocess.Popen([path+"/../build/abh_gui_v3"], cwd=path, stdout=file_abh_gui_v3))
     p[-1].name="gui"
-    p.append(subprocess.Popen([pycmd,path+"/../vosk/microphone.py"], cwd=path+"/../vosk", stdout=subprocess.DEVNULL    ))
+
+    file_microphone = open(logpath + 'microphone.txt', 'w')
+    p.append(subprocess.Popen([pycmd,path+"/../vosk/microphone.py"], cwd=path+"/../vosk", stdout=file_microphone))
     p[-1].name="vosk"
 
     if (user=='jacobi'):
@@ -49,7 +87,8 @@ try:
         p.append(subprocess.Popen([pycmd, path+"/sender.py"], cwd=path))
         p[-1].name="sender"
     else:
-        p.append(subprocess.Popen([pycmd,path+"/motor_control.py"], cwd=path))
+        file_motor_control = open(logpath + 'motor_control.txt', 'w')
+        p.append(subprocess.Popen([pycmd,path+"/motor_control.py"], cwd=path, stdout=file_motor_control))
         p[-1].name="motor_control"
 
     is_died=False
@@ -70,3 +109,4 @@ except KeyboardInterrupt:
         proc.send_signal(signal.SIGINT)
 os.system("pkill abh_gui_v3")
 os.system("pkill python")
+file1.close()

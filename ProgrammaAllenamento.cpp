@@ -857,7 +857,7 @@ bool ProgrammaAllenamento::createEmptyWorkout(QString user_id, QString workout_n
   return true;
 }
 
-QString ProgrammaAllenamento::createWorkout(QString user_id, QString workout_name, int number_of_session)
+QString ProgrammaAllenamento::createWorkout(QString user_id, QString workout_name, int number_of_session, QString image_name)
 {
 
   workoutName_=workout_name;
@@ -922,6 +922,7 @@ QString ProgrammaAllenamento::createWorkout(QString user_id, QString workout_nam
   }
 
   file_name_=dir_path_.toStdString()+"/"+user_id.toStdString()+"/"+workout_name.toStdString()+".csv";
+  std::string user_image_file=dir_path_.toStdString()+"/"+user_id.toStdString()+"/"+workout_name.toStdString()+".jpg";
 
 
   for  (int idx=0;idx<(int)doc_->GetRowCount();idx++)
@@ -936,9 +937,10 @@ QString ProgrammaAllenamento::createWorkout(QString user_id, QString workout_nam
   doc_->Save(file_name_);
   readFile(file_name_);
 
-
+  system(("cp "+image_name.toStdString()+" "+user_image_file).c_str());
 
   QString workout_id=workout_name;
+
   return workout_id;
 
 

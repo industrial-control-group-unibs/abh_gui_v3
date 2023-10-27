@@ -16,6 +16,7 @@ IconaRettangolo
     property real progress: 0.5
     property real punteggio: 8.5
 
+    property string image_name
     property real fontSize: 50
     text: titolo==="+"?titolo:""
 
@@ -33,7 +34,7 @@ IconaRettangolo
             fill: parent
             margins: component.margin
         }
-        source: "file://"+PATH+"/allenamento_programmato/WORKOUT_DEMO.jpg"
+        source: component.image_name
 
         layer.enabled: true
         layer.effect: OpacityMask {
@@ -48,8 +49,6 @@ IconaRettangolo
         }
         Rectangle
         {
-
-            radius: parent.radius
             anchors.fill: parent
             z: component.z+4
             color: component.colorBordoTransparent

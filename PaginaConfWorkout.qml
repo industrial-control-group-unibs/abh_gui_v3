@@ -247,7 +247,7 @@ Item {
                 }
                 else
                 {
-                    workout_id=_workout.createWorkout(impostazioni_utente.identifier,selected_exercise.workout+"_"+component.state,component.giorni*component.settimane)
+                    workout_id=_workout.createWorkout(impostazioni_utente.identifier,selected_exercise.workout+"_"+component.state,component.giorni*component.settimane,selected_exercise.workout_image)
 
                     if (workout_id!=="")
                     {

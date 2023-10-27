@@ -61,7 +61,7 @@ PaginaSiNo
                                               component.name+"_"+component.next_level)
         }
 
-        component.workout_id=_workout.createWorkout(impostazioni_utente.identifier,component.name+"_"+component.next_level,_workout.getNumberOfSession())
+        component.workout_id=_workout.createWorkout(impostazioni_utente.identifier,component.name+"_"+component.next_level,_workout.getNumberOfSession(),selected_exercise.workout_image)
 
         if (component.workout_id!=="")
         {
