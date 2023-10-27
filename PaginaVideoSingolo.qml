@@ -186,6 +186,16 @@ Item {
             border.color: mp_esercizio_preparati.status===MediaPlayer.EndOfMedia? "transparent": parametri_generali.coloreBordo
             border.width: 2
 
+            Testo
+            {
+                visible: mp_esercizio_preparati.status===MediaPlayer.EndOfMedia
+                anchors.fill: parent
+                text: qsTr("PREMI PER RIAVVIARE")
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                fontSizeMode: Text.Fit
+            }
+
             MouseArea
             {
                 id: play_pause

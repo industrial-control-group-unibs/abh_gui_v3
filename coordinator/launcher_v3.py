@@ -65,9 +65,9 @@ try:
         p[-1].name="vision"
         time.sleep(0.5)
 
-    file_coordinator = open(logpath + 'coordinator.txt', 'w')
-    p.append(subprocess.Popen([pycmd,path+"/coordinator.py"], cwd=path, stdout=file_coordinator))
-    p[-1].name="coordinator"
+        file_coordinator = open(logpath + 'coordinator.txt', 'w')
+        p.append(subprocess.Popen([pycmd,path+"/coordinator.py"], cwd=path, stdout=file_coordinator))
+        p[-1].name="coordinator"
 
     file_led_control = open(logpath + 'led_control.txt', 'w')
     p.append(subprocess.Popen([pycmd,path+"/led_control.py"], cwd=path, stdout=file_led_control))
@@ -82,8 +82,9 @@ try:
     p[-1].name="vosk"
 
     if (user=='jacobi'):
-        p.append(subprocess.Popen([pycmd,path+"/fake_evaluator.py"], cwd=path))
-        p[-1].name="fake_evaluator"
+        file_coordinator = open(logpath + 'coordinator.txt', 'w')
+        p.append(subprocess.Popen([pycmd,path+"/fake_coordinator.py"], cwd=path, stdout=file_coordinator))
+        p[-1].name="coordinator"
         p.append(subprocess.Popen([pycmd, path+"/sender.py"], cwd=path))
         p[-1].name="sender"
     else:
