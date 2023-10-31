@@ -69,7 +69,7 @@ Item {
 
                 }
                 text: ex_name
-                image: "file://"+PATH+"/zone/"+image_file
+                image: "file://"+PATH+"/zone/"+image_name
                 width: lista_zona.width-2
                 onPressed: {
                     selected_exercise.name="unselected"

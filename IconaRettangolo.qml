@@ -35,7 +35,7 @@ Item {
     property bool erase: false
 
     Image {
-        visible: titolo!=="+"
+        visible: titolo!=="+" && text!=="+"
         id: immagine
         fillMode: Image.Stretch
         z: component.z-2
