@@ -18,7 +18,7 @@ IconaRettangolo
         fontSize: 30
     }
     Image {
-        id: immagine
+        id: immagine1
         fillMode: Image.Stretch
         visible: true
         z: component.z-2
@@ -34,8 +34,8 @@ IconaRettangolo
         layer.enabled: true
         layer.effect: OpacityMask {
             maskSource: Item {
-                width: immagine.width
-                height: immagine.height
+                width: immagine1.width
+                height: immagine1.height
                 Rectangle {
                     anchors.fill: parent
                     radius: component.radius-0*component.bordo-component.margin
