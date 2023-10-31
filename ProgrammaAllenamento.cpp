@@ -937,6 +937,7 @@ QString ProgrammaAllenamento::createWorkout(QString user_id, QString workout_nam
   doc_->Save(file_name_);
   readFile(file_name_);
 
+  qDebug(("cp "+image_name.toStdString()+" "+user_image_file).c_str());
   system(("cp "+image_name.toStdString()+" "+user_image_file).c_str());
 
   QString workout_id=workout_name;
