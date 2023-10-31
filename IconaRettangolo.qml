@@ -18,7 +18,7 @@ Item {
     property color colorTransparent: Qt.rgba(color.r, color.g, color.b, 0.440)
 
     property string testo_elimina: qsTr("VUOI ELIMINARE IL PROGRAMMA DI ALLENAMENTO?")
-    property string image_name
+    property string image_file
 
     property color colorBordoTransparent: Qt.rgba(parametri_generali.coloreSfondo.r, parametri_generali.coloreSfondo.g, parametri_generali.coloreSfondo.b, 0.70)
 
@@ -46,7 +46,7 @@ Item {
             fill: parent
             margins: component.margin
         }
-        source: component.image_name
+        source: component.image_file
 
         layer.enabled: true
         layer.effect: OpacityMask {

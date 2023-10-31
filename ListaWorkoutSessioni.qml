@@ -108,7 +108,7 @@ Item {
 
             delegate: IconaInformazioni{
 
-                image_name: "file://"+PATH+"/../utenti/"+impostazioni_utente.identifier+"/"+selected_exercise.workout+".jpg"
+                image_file: "file://"+PATH+"/../utenti/"+impostazioni_utente.identifier+"/"+selected_exercise.workout+".jpg"
 
                 color: parametri_generali.coloreBordo
                 color2: parametri_generali.coloreUtente
