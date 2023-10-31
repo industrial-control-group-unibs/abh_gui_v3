@@ -190,7 +190,7 @@ Item {
             {
                 visible: mp_esercizio_preparati.status===MediaPlayer.EndOfMedia
                 anchors.fill: parent
-                text: qsTr("PREMI PER RIAVVIARE")
+                text: qsTr("PREMI PER VEDERE IL TUTORIAL")
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 fontSizeMode: Text.Fit
