@@ -18,6 +18,11 @@ Item {
     property color colorTransparent: Qt.rgba(color.r, color.g, color.b, 0.440)
 
     property string testo_elimina: qsTr("VUOI ELIMINARE IL PROGRAMMA DI ALLENAMENTO?")
+    property string image_name
+
+    property color colorBordoTransparent: Qt.rgba(parametri_generali.coloreSfondo.r, parametri_generali.coloreSfondo.g, parametri_generali.coloreSfondo.b, 0.70)
+
+
     id: component
 
     signal pressed
@@ -28,6 +33,39 @@ Item {
     property string text: ""
 
     property bool erase: false
+
+    Image {
+        visible: titolo!=="+"
+        id: immagine
+        fillMode: Image.Stretch
+        z: component.z-2
+        mipmap: true
+        asynchronous: true
+        anchors
+        {
+            fill: parent
+            margins: component.margin
+        }
+        source: component.image_name
+
+        layer.enabled: true
+        layer.effect: OpacityMask {
+            maskSource: Item {
+                width: immagine.width
+                height: immagine.height
+                Rectangle {
+                    anchors.fill: parent
+                    radius: component.radius-0*component.bordo-component.margin
+                }
+            }
+        }
+        Rectangle
+        {
+            anchors.fill: parent
+            z: component.z+4
+            color: component.colorBordoTransparent
+        }
+    }
 
     Rectangle
     {

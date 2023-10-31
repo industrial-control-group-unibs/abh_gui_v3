@@ -115,9 +115,10 @@ Item {
                 tempo: vector[4]
 
                 width: lista_workout.width-2
-
+                image_name: "file://"+PATH+"/allenamento_programmato/CUSTOM_"+index%8+".jpg"
                 onPressed: {
                     lista_workout.currentIndex=index
+                    selected_exercise.workout_image=image_name
                     component.link_dx_visible=true
                     if (vector[0]==="+")
                     {

@@ -104,6 +104,7 @@ Item {
                         false;
 
                 }
+                image_name: selected_exercise.workout_image
                 text:
                 {
                     if (modelData==="+")

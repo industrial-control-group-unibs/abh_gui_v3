@@ -16,44 +16,11 @@ IconaRettangolo
     property real progress: 0.5
     property real punteggio: 8.5
 
-    property string image_name
+
     property real fontSize: 50
     text: titolo==="+"?titolo:""
 
-    property color colorBordoTransparent: Qt.rgba(parametri_generali.coloreSfondo.r, parametri_generali.coloreSfondo.g, parametri_generali.coloreSfondo.b, 0.70)
 
-    Image {
-        visible: titolo!=="+"
-        id: immagine
-        fillMode: Image.Stretch
-        z: component.z-2
-        mipmap: true
-        asynchronous: true
-        anchors
-        {
-            fill: parent
-            margins: component.margin
-        }
-        source: component.image_name
-
-        layer.enabled: true
-        layer.effect: OpacityMask {
-            maskSource: Item {
-                width: immagine.width
-                height: immagine.height
-                Rectangle {
-                    anchors.fill: parent
-                    radius: component.radius-0*component.bordo-component.margin
-                }
-            }
-        }
-        Rectangle
-        {
-            anchors.fill: parent
-            z: component.z+4
-            color: component.colorBordoTransparent
-        }
-    }
 
 
     Item {
