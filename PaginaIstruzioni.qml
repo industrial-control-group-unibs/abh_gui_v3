@@ -20,8 +20,8 @@ PaginaVideoSingolo
     property bool ex_right: selected_exercise.code.endsWith("_r")
 
     testo_visibile: true
-    testo: ex_left? qsTr("SEGUI LE ISTRUZIONI\nIMPUGNA LA MANIGLIA SINISTRA\nPOI PREMI CONTINUA") :
-                 ex_right? qsTr("SEGUI LE ISTRUZIONI\nIMPUGNA LA MANIGLIA DESTRA\nPOI PREMI CONTINUA") :
+    testo: ex_left? qsTr("SEGUI LE ISTRUZIONI\nUTILIZZA LA MANIGLIA SINISTRA\nPOI PREMI CONTINUA") :
+                 ex_right? qsTr("SEGUI LE ISTRUZIONI\nUTILIZZA LA MANIGLIA DESTRA\nPOI PREMI CONTINUA") :
                         qsTr("SEGUI LE ISTRUZIONI\nPOI PREMI CONTINUA")
 
 
