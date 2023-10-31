@@ -16,12 +16,12 @@ PaginaVideoSingolo
     video_name: selected_exercise.video_istruzioni
     titolo: selected_exercise.name
     timer: false
-    property bool left: selected_exercise.code.includes("left")
-    property bool right: selected_exercise.code.includes("right")
+    property bool ex_left: selected_exercise.code.includes("left")
+    property bool ex_right: selected_exercise.code.includes("right")
 
     testo_visibile: true
-    testo: left? qsTr("SEGUI LE ISTRUZIONI\nIMPUGNA LA MANIGLIA SINISTRA\nPOI PREMI CONTINUA") :
-                 right? qsTr("SEGUI LE ISTRUZIONI\nIMPUGNA LA MANIGLIA DESTRA\nPOI PREMI CONTINUA") :
+    testo: ex_left? qsTr("SEGUI LE ISTRUZIONI\nIMPUGNA LA MANIGLIA SINISTRA\nPOI PREMI CONTINUA") :
+                 ex_right? qsTr("SEGUI LE ISTRUZIONI\nIMPUGNA LA MANIGLIA DESTRA\nPOI PREMI CONTINUA") :
                         qsTr("SEGUI LE ISTRUZIONI\nPOI PREMI CONTINUA")
 
 
