@@ -72,6 +72,7 @@ def led_thread():
 
         if (led_client.isNewDataAvailable()):
             led_color=led_client.getLastDataAndClearQueue()
+            print(f"colore {led_color}")
 
         colore[0]=led_color[0]*255.0
         colore[1]=led_color[1]*255.0
