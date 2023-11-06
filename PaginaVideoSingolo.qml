@@ -201,6 +201,7 @@ Item {
             {
                 id: play_pause
                 anchors.fill: parent
+                onPressAndHold: console.error("press and hold during video")
                 onPressed:
                 {
                     if (component.play && mp_esercizio_preparati.status!==MediaPlayer.EndOfMedia)
