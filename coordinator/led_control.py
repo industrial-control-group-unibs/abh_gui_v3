@@ -33,10 +33,12 @@ def led_thread():
     led_client.start()
 
     shelly.cb_device_added.append(device_added)
-    shelly.host_ip='192.168.10.108'
-    shelly.bind_ip='192.168.10.108'
+    shelly.host_ip='192.168.33.2'
+    shelly.bind_ip='192.168.33.2'
     shelly.start()
     shelly.discover()
+    shelly.add_device_by_ip('192.168.33.1','IP-addr')
+
 
     waiting=True
     while waiting:
