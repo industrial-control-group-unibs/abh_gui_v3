@@ -190,7 +190,7 @@ Item {
             {
                 visible: mp_esercizio_preparati.status===MediaPlayer.EndOfMedia
                 anchors.fill: parent
-                text: qsTr("PREMI PER VEDERE IL TUTORIAL")
+                text: qsTr("PREMI PER VEDERE\nIL TUTORIAL")
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 fontSizeMode: Text.Fit
@@ -202,16 +202,18 @@ Item {
                 anchors.fill: parent
                 onPressed:
                 {
-                    if (component.play)
+                    if (component.play && mp_esercizio_preparati.status!==MediaPlayer.EndOfMedia)
                     {
                         component.play=false
                         mp_esercizio_preparati.pause()
+                        console.log("qui")
                     }
                     else
                     {
                         component.play=true
                         mp_esercizio_preparati.play()
                         pause_timer.restart()
+                        console.log("qua")
                     }
                 }
             }
