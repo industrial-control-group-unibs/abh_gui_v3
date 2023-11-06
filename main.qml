@@ -53,6 +53,7 @@ ApplicationWindow {
         property bool login_page: false
         property string wifi_name
         property string lingua: "abh_it"
+        property string wifi_net: _default[9]
         property bool voice: true
 
         Component.onCompleted:

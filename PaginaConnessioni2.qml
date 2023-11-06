@@ -121,7 +121,7 @@ Item {
 
             onPressDx:
             {
-                chiamata_sistema.string="nmcli device wifi connect "+parametri_generali.wifi_name+" password "+input_nome.text
+                chiamata_sistema.string="nmcli device wifi connect "+parametri_generali.wifi_name+" ifname "+parametri_generali.wifi_net+" password "+input_nome.text
                 chiamata_sistema.call()
             }
 

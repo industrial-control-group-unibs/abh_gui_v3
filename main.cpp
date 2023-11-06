@@ -146,6 +146,7 @@ int main(int argc, char *argv[])
   std::string coloreLedFinePausa="#ff0000";
 
   std::string pausaRiposo="30";
+  std::string wifi_name="";
 
   double score_min,score_max;
   try {
@@ -163,6 +164,7 @@ int main(int argc, char *argv[])
     pausaRiposo=doc.GetCell<std::string>(1,8);
     score_min=doc.GetCell<double>(1,9);
     score_max=doc.GetCell<double>(1,10);
+    wifi_name=doc.GetCell<std::string>(1,11);
 
   } catch (std::exception ex) {
     std::cerr << "error:" << ex.what() <<std::endl;
@@ -172,17 +174,18 @@ int main(int argc, char *argv[])
 
   workout.setThresholds(score_min,score_max);
   QStringList default_values;
-  default_values.push_back(QString().fromStdString(coloreBordo             ));
-  default_values.push_back(QString().fromStdString(coloreSfondo            ));
-  default_values.push_back(QString().fromStdString(coloreUtente            ));
-  default_values.push_back(QString().fromStdString(coloreLed               ));
+  default_values.push_back(QString().fromStdString(coloreBordo             )); // 0
+  default_values.push_back(QString().fromStdString(coloreSfondo            )); // 1
+  default_values.push_back(QString().fromStdString(coloreUtente            )); // 2
+  default_values.push_back(QString().fromStdString(coloreLed               )); // 3
 
-  default_values.push_back(QString().fromStdString(coloreLedEsercizioInizio));
-  default_values.push_back(QString().fromStdString(coloreLedEsercizioFine  ));
-  default_values.push_back(QString().fromStdString(coloreLedPausa          ));
-  default_values.push_back(QString().fromStdString(coloreLedFinePausa      ));
+  default_values.push_back(QString().fromStdString(coloreLedEsercizioInizio)); // 4
+  default_values.push_back(QString().fromStdString(coloreLedEsercizioFine  )); // 5
+  default_values.push_back(QString().fromStdString(coloreLedPausa          )); // 6
+  default_values.push_back(QString().fromStdString(coloreLedFinePausa      )); // 7
 
-  default_values.push_back(QString().fromStdString(pausaRiposo             ));
+  default_values.push_back(QString().fromStdString(pausaRiposo             )); // 8
+  default_values.push_back(QString().fromStdString(wifi_name             )); // 9
 
   utenti.setDefaultColor(default_values);
 
