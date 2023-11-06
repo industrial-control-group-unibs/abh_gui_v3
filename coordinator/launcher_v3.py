@@ -70,7 +70,7 @@ try:
         p[-1].name="coordinator"
 
     file_led_control = open(logpath + 'led_control.txt', 'w')
-    p.append(subprocess.Popen([pycmd,path+"/led_control.py"], cwd=path, stdout=file_led_control))
+    p.append(subprocess.Popen([pycmd,path+"/led_control.py"], cwd=path, stdout=file_led_control, stderr=file_led_control))
     p[-1].name="led"
 
     file_abh_gui_v3 = open(logpath + 'abh_gui_v3.txt', 'w')
