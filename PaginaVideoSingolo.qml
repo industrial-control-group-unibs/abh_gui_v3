@@ -207,14 +207,12 @@ Item {
                     {
                         component.play=false
                         mp_esercizio_preparati.pause()
-                        console.log("qui")
                     }
                     else
                     {
                         component.play=true
                         mp_esercizio_preparati.play()
                         pause_timer.restart()
-                        console.log("qua")
                     }
                 }
             }

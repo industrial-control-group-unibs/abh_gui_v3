@@ -10,7 +10,7 @@ import shutil
 import copy
 
 path=os.path.dirname(os.path.realpath(__file__))
-os.system("pkill abh_gui_v3")
+os.system("pkill -9 abh_gui_v3")
 
 
 pids = psutil.pids()
@@ -108,6 +108,5 @@ try:
 except KeyboardInterrupt:
     for proc in p:
         proc.send_signal(signal.SIGINT)
-os.system("pkill abh_gui_v3")
-os.system("pkill python")
-file1.close()
+os.system("pkill -9 abh_gui_v3")
+os.system("pkill -9 python")
