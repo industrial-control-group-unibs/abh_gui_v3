@@ -194,6 +194,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 fontSizeMode: Text.Fit
+                font.pixelSize: 40
             }
 
             MouseArea
