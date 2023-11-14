@@ -27,12 +27,12 @@ Item {
     }
 
     Component.onCompleted: {
-        chiamata_sistema.string="xinput disable "+parametri_generali.touch
+        chiamata_sistema.string="xinput disable '"+parametri_generali.touch+"'"
         chiamata_sistema.call()
     }
     Component.onDestruction:
     {
-        chiamata_sistema.string="xinput enable "+parametri_generali.touch
+        chiamata_sistema.string="xinput enable '"+parametri_generali.touch+"'"
         chiamata_sistema.call()
     }
 

@@ -157,6 +157,7 @@ int main(int argc, char *argv[])
     wifi_name=info.GetCell<std::string>(1,0);
     monitor=info.GetCell<std::string>(1,1);
     touch=info.GetCell<std::string>(1,2);
+    std::cout << "touch: " << touch << std::endl;
 
   } catch (std::exception ex) {
     std::cerr << "error:" << ex.what() <<std::endl;
@@ -189,6 +190,9 @@ int main(int argc, char *argv[])
     return 0;
   }
 
+  std::system(("xrandr --output "+monitor+" --auto").c_str());
+
+
   workout.setThresholds(score_min,score_max);
   QStringList default_values;
   default_values.push_back(QString().fromStdString(coloreBordo             )); // 0
@@ -211,7 +215,6 @@ int main(int argc, char *argv[])
   ListaWifi wifi;
   ListStringCSV wifi2(data_path+"/../utenti");
   wifi2.appendIcon(false);
-  wifi2.readFile("list_wifi.csv");
 
   zone.readFile("Zone");
   workout_list.readFile("lista_workout");

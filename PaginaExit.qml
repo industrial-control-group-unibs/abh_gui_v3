@@ -28,7 +28,7 @@ PaginaSiNo
 
         chiamata_sistema.string="systemctl poweroff"
         chiamata_sistema.call()
-        chiamata_sistema.string="xset -display :0.0 dpms force off"
+        chiamata_sistema.string="xrandr --output "+parametri_generali.monitor+" --off"
         chiamata_sistema.call()
     }
 
