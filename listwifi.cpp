@@ -39,7 +39,8 @@ QHash<int, QByteArray> ListaWifi::roleNames() const
 {
   static QHash<int, QByteArray> mapping {
     {Role_nome,"nome"},
-    {Role_uuid,"uuid"}
+    {Role_uuid,"uuid"},
+    {Role_known,"known"}
   };
 
   return mapping;
@@ -49,6 +50,10 @@ QHash<int, QByteArray> ListaWifi::roleNames() const
 void ListaWifi::readList()
 {
   data_.clear();
+
+
+
+
   QDBusInterface interface(
         NM_DBUS_SERVICE,
         NM_DBUS_PATH_SETTINGS,
@@ -59,6 +64,7 @@ void ListaWifi::readList()
   Connection settings;
 
   // Call ListConnections D-Bus method
+  interface.call("RequestScan");
   QDBusReply<QList<QDBusObjectPath> > result = interface.call("ListConnections");
 
   int now = std::time(nullptr);;
@@ -76,11 +82,15 @@ void ListaWifi::readList()
 
     if (connection2["connection"]["type"].toString()=="802-11-wireless")
     {
+      data_.push_back(connection2["connection"]["id"].toString());
+      uuid_.push_back(connection2["connection"]["uuid"].toString());
+
       if (connection2["connection"]["timestamp"].toInt()> (now -60*5))
       {
-        data_.push_back(connection2["connection"]["id"].toString());
-        uuid_.push_back(connection2["connection"]["uuid"].toString());
+        known_.push_back(true);
       }
+      else
+        known_.push_back(false);
     }
 
   }

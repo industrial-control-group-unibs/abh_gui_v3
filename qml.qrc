@@ -119,5 +119,6 @@
         <file>PaginaSanificazione.qml</file>
         <file>SceltaEserciziNew.qml</file>
         <file>PaginaProseguiWorkout.qml</file>
+        <file>ColorSelector.qml</file>
     </qresource>
 </RCC>

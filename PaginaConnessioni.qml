@@ -12,14 +12,16 @@ Item {
     anchors.fill: parent
 
     property string titolo: qsTr("CONNESSIONI")
+    property int numero_wifi: 0
 
     Component.onCompleted:
     {
         parametri_generali.wifi_name=""
         chiamata_sistema.string="nmcli device wifi rescan"
         chiamata_sistema.call()
-        _wifi.readList()
-
+        _wifi.readFile("wifi_list")
+        numero_wifi=_wifi.rowCount()
+        lista_wifi.reload()
     }
 
 
@@ -39,7 +41,9 @@ Item {
         {
             chiamata_sistema.string="nmcli device wifi rescan"
             chiamata_sistema.call()
-            _wifi.readList()
+            _wifi.readFile("wifi_list")
+            numero_wifi=_wifi.rowCount()
+            lista_wifi.reload()
         }
     }
 
@@ -132,7 +136,7 @@ Item {
 
                 Testo
                 {
-                    text: lista_wifi.count>0?qsTr("RETI DISPONIBILI"):qsTr("NESSUNA RETE WIFI")
+                    text: component.numero_wifi>0?qsTr("RETI DISPONIBILI"):qsTr("NESSUNA RETE WIFI")
                     id: titoletto
                     anchors
                     {
@@ -160,6 +164,19 @@ Item {
                     height: parent.height*0.5
                     model: _wifi
                     currentIndex:-1
+//                    verticalLayoutDirection: ListView.BottomToTop
+
+
+                    signal reload;
+
+                    onReload:
+                    {
+                        lista_wifi.model=[]
+                        lista_wifi.model= _wifi
+                        lista_wifi.forceLayout()
+                        currentIndex:-1
+                    }
+
                     delegate:
                         IconaRettangolo{
 
@@ -173,13 +190,15 @@ Item {
                                 false;
 
                         }
-                        text: nome
+                        text: vector[2]
 
                         width: lista_wifi.width-2
 
                         onPressed: {
                             lista_wifi.currentIndex = index
-                            parametri_generali.wifi_name=nome
+                            parametri_generali.wifi_name=vector[2]
+                            parametri_generali.wifi_known=vector[1]==="True"?true:false
+                            parametri_generali.wifi_connected=vector[0]==="True"?true:false
                         }
                         onPressAndHold:
                         {
@@ -221,7 +240,11 @@ Item {
             dx_visible: parametri_generali.wifi_name!==""
             onPressDx:
             {
-                pageLoader.source="PaginaConnessioni2.qml"
+                _history.pop()
+                if (parametri_generali.wifi_connected)
+                    pageLoader.source="PaginaImpostazioni.qml"
+                else
+                    pageLoader.source="PaginaConnessioni2.qml"
             }
 
             z:5

@@ -81,6 +81,11 @@ try:
     p.append(subprocess.Popen([pycmd,path+"/../vosk/microphone.py"], cwd=path+"/../vosk", stdout=file_microphone))
     p[-1].name="vosk"
 
+
+    file_microphone = open(logpath + 'wifi_list.txt', 'w')
+    p.append(subprocess.Popen([pycmd,path+"/wifi_list.py"], cwd=path+"/../vosk", stdout=file_microphone))
+    p[-1].name="wifi_list"
+
     if (user=='jacobi'):
         file_coordinator = open(logpath + 'coordinator.txt', 'w')
         p.append(subprocess.Popen([pycmd,path+"/fake_coordinator.py"], cwd=path, stdout=file_coordinator))

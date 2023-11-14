@@ -147,8 +147,25 @@ int main(int argc, char *argv[])
 
   std::string pausaRiposo="30";
   std::string wifi_name="";
+  std::string monitor;
+  std::string touch;
 
   double score_min,score_max;
+
+  try {
+    rapidcsv::Document info(dir_path+"/../utenti/device_names.csv");
+    wifi_name=info.GetCell<std::string>(1,0);
+    monitor=info.GetCell<std::string>(1,1);
+    touch=info.GetCell<std::string>(1,2);
+
+  } catch (std::exception ex) {
+    std::cerr << "error:" << ex.what() <<std::endl;
+    std::cerr << "file " << dir_path <<"/../utenti/device_names.csv is wrong, it should have 3 rows" << std::endl;
+    return 0;
+  }
+
+
+
   try {
     rapidcsv::Document doc(dir_path+"/default.csv");
     coloreBordo=doc.GetCell<std::string>(1,0);
@@ -164,7 +181,7 @@ int main(int argc, char *argv[])
     pausaRiposo=doc.GetCell<std::string>(1,8);
     score_min=doc.GetCell<double>(1,9);
     score_max=doc.GetCell<double>(1,10);
-    wifi_name=doc.GetCell<std::string>(1,11);
+
 
   } catch (std::exception ex) {
     std::cerr << "error:" << ex.what() <<std::endl;
@@ -185,11 +202,16 @@ int main(int argc, char *argv[])
   default_values.push_back(QString().fromStdString(coloreLedFinePausa      )); // 7
 
   default_values.push_back(QString().fromStdString(pausaRiposo             )); // 8
-  default_values.push_back(QString().fromStdString(wifi_name             )); // 9
+  default_values.push_back(QString().fromStdString(wifi_name               )); // 9
+  default_values.push_back(QString().fromStdString(monitor                 )); // 10
+  default_values.push_back(QString().fromStdString(touch                   )); // 11
 
   utenti.setDefaultColor(default_values);
 
   ListaWifi wifi;
+  ListStringCSV wifi2(data_path+"/../utenti");
+  wifi2.appendIcon(false);
+  wifi2.readFile("list_wifi.csv");
 
   zone.readFile("Zone");
   workout_list.readFile("lista_workout");
@@ -250,7 +272,7 @@ int main(int argc, char *argv[])
   context->setContextProperty("_fullscreen", fs);
   context->setContextProperty("_esercizi",&esercizi);
   context->setContextProperty("_workout", &workout);
-  context->setContextProperty("_wifi", &wifi);
+  context->setContextProperty("_wifi", &wifi2);
   context->setContextProperty("_queue", &queue);
   context->setContextProperty("_history", &page_history);
   context->setContextProperty("_active_workouts", &active_workouts);

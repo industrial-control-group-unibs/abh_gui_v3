@@ -7,6 +7,8 @@ import QtQuick.Shapes 1.12
 import QtQuick.Layouts 1.1
 import QtQuick 2.2
 import QtQuick.Dialogs 1.0
+
+
 Item {
     id: component
     anchors.fill: parent
@@ -253,6 +255,7 @@ Item {
                 ColorDialog {
                     title: qsTr("SELEZIONA COLORE")
                     id: colorDialog3
+                    modality: Qt.NonModal
                     onAccepted: {
                         if (colorDialog3.color!==parametri_generali.coloreSfondo)
                         {
