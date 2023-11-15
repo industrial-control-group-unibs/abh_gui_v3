@@ -181,8 +181,8 @@ ApplicationWindow {
         property real completamento: 0
         property string difficulty: "Facile"  // TO BE REMOVED
 
-        property bool corde: selected_exercise===1 || selected_exercise===3
-        property bool a_tempo: selected_exercise===2 || selected_exercise===4
+        property bool corde: selected_exercise.type===1 || selected_exercise.type===3
+        property bool a_tempo: selected_exercise.type===2 || selected_exercise.type===4
         property bool movimento: false
         property bool attivo: false
 
@@ -300,6 +300,8 @@ ApplicationWindow {
         onDataChanged:
         {
             selected_exercise.movimento = data[2]<-1.5 || data[2]>1.5
+            if (selected_exercise.movimento)
+                console.log("movimento: ",selected_exercise.movimento, " corde ", selected_exercise.corde)
             selected_exercise.attivo = data[1]!==5
             if ( (!selected_exercise.corde || (selected_exercise.movimento && selected_exercise.corde))
                     && selected_exercise.attivo && timer_tut.active)
