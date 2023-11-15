@@ -164,7 +164,7 @@ Item {
         Item
         {
             anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: -parent.height*0.33
+            anchors.verticalCenterOffset: -parent.height*0.25
             anchors.left: parent.left
             anchors.right: parent.right
             height: 100
