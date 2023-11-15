@@ -33,6 +33,8 @@ while (not stop):
         nota = c.ssid in connessioni_note_ssid
         if not c.ssid:
             continue
+        if "Shelly" in c.ssid:
+            continue
         conn={'is_use': c.in_use, 'knonw': nota, 'ssid': c.ssid}
 
 

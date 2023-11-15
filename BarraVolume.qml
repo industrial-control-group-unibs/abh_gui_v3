@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import SysCall 1.0
 import QtGraphicalEffects 1.12
+import QtMultimedia 5.0
 
 Item {
     id: component
@@ -21,6 +22,11 @@ Item {
         property bool muted: isMuted()
     }
 
+    SoundEffect {
+        id: playSound_ding
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/ding.wav"
+        volume: parametri_generali.voice?1.0:0.0
+    }
 
 
     Item
@@ -135,6 +141,7 @@ Item {
                     chiamata_sistema.call()
                     chiamata_sistema.volume= chiamata_sistema.getVolume()
                     }
+                    playSound_ding.play()
                 }
                 id: meno
             }
@@ -155,6 +162,7 @@ Item {
                         chiamata_sistema.call()
                         chiamata_sistema.volume= chiamata_sistema.getVolume()
                     }
+                    playSound_ding.play()
                 }
                 id: piu
             }

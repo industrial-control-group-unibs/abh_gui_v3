@@ -194,6 +194,17 @@ Item {
 
                         width: lista_wifi.width-2
 
+                        Testo
+                        {
+                            visible: vector[0]==="True"?true:false
+                            text: qsTr("CONNESSO")
+                            anchors.fill: parent
+                            anchors.margins: parent.height*0.1
+                            horizontalAlignment: Text.AlignLeft
+                            verticalAlignment: Text.AlignTop
+                        }
+
+
                         onPressed: {
                             lista_wifi.currentIndex = index
                             parametri_generali.wifi_name=vector[2]

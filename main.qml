@@ -299,7 +299,7 @@ ApplicationWindow {
         property int counter: 0
         onDataChanged:
         {
-            selected_exercise.movimento = data[2]<-0.1 || data[2]>0.1
+            selected_exercise.movimento = data[2]<-1.5 || data[2]>1.5
             selected_exercise.attivo = data[1]!==5
             if ( (!selected_exercise.corde || (selected_exercise.movimento && selected_exercise.corde))
                     && selected_exercise.attivo && timer_tut.active)
