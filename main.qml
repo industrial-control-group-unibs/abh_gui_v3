@@ -279,6 +279,7 @@ ApplicationWindow {
                 console.log("Unable to received data")
                 fb_udp.rebootThread()
             }
+            console.log("tick")
         }
     }
     BinaryReceiver
