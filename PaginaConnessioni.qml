@@ -203,6 +203,15 @@ Item {
                             horizontalAlignment: Text.AlignLeft
                             verticalAlignment: Text.AlignTop
                         }
+                        Testo
+                        {
+                            visible: vector[0]==="False" && vector[1]==="True"?true:false
+                            text: qsTr("SALVATA")
+                            anchors.fill: parent
+                            anchors.margins: parent.height*0.1
+                            horizontalAlignment: Text.AlignLeft
+                            verticalAlignment: Text.AlignTop
+                        }
 
 
                         onPressed: {
