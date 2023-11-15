@@ -300,8 +300,6 @@ ApplicationWindow {
         onDataChanged:
         {
             selected_exercise.movimento = data[2]<-1.5 || data[2]>1.5
-            if (selected_exercise.movimento)
-                console.log("movimento: ",selected_exercise.movimento, " corde ", selected_exercise.corde)
             selected_exercise.attivo = data[1]!==5
             if ( (!selected_exercise.corde || (selected_exercise.movimento && selected_exercise.corde))
                     && selected_exercise.attivo && timer_tut.active)
