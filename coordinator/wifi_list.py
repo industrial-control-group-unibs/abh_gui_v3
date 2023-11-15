@@ -35,6 +35,8 @@ while (not stop):
             continue
         if "Shelly" in c.ssid:
             continue
+        if "shelly" in c.ssid:
+            continue
         conn={'is_use': c.in_use, 'knonw': nota, 'ssid': c.ssid}
 
 
