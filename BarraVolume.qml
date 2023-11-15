@@ -24,7 +24,7 @@ Item {
 
     SoundEffect {
         id: playSound_ding
-        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/ding.wav"
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/ding_regolazione_audio.wav"
         volume: parametri_generali.voice?1.0:0.0
     }
 

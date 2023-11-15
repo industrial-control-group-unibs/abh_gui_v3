@@ -17,7 +17,12 @@ pids = psutil.pids()
 found_abh_gui=False
 for pid in pids:
     p=psutil.Process(pid)
-    if (any('ABHORIZON_PC_VISION' in s for s in p.cmdline()) or any('abh_gui_v3' in s for s in p.cmdline()) or any('wifi_list' in s for s in p.cmdline())):
+    if (any('ABHORIZON_PC_VISION' in s for s in p.cmdline())
+            or any('abh_gui_v3' in s for s in p.cmdline())
+            or any('wifi_list' in s for s in p.cmdline())
+            or any('coordinator' in s for s in p.cmdline())
+            or any('led_control' in s for s in p.cmdline())
+            or any('motor_control' in s for s in p.cmdline())):
         if any('launcher_v3' in s for s in p.cmdline()):
             print("questo è il main!")
             continue

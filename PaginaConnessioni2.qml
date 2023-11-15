@@ -18,13 +18,13 @@ Item {
         chiamata_sistema.string="nmcli device wifi rescan"
         chiamata_sistema.call()
 
-//        if (parametri_generali.wifi_known)
-//        {
-//            chiamata_sistema.string="nmcli device wifi connect "+parametri_generali.wifi_name+" ifname "+parametri_generali.wifi_net
-//            chiamata_sistema.call()
-//            _history.pop()
-//            pageLoader.source="PaginaImpostazioni.qml"
-//        }
+        if (parametri_generali.wifi_known)
+        {
+            chiamata_sistema.string="nmcli device wifi connect "+parametri_generali.wifi_name+" ifname "+parametri_generali.wifi_net
+            chiamata_sistema.call()
+            _history.pop()
+            pageLoader.source="PaginaImpostazioni.qml"
+        }
     }
     implicitHeight: 1920/2
     implicitWidth: 1080/2

@@ -3,7 +3,7 @@ import csv
 import os
 import getpass
 import time
-
+import subprocess
 
 stop=False
 def handler(signal_received, frame):
@@ -37,16 +37,22 @@ while (not stop):
             continue
         if "shelly" in c.ssid:
             continue
-        conn={'is_use': c.in_use, 'knonw': nota, 'ssid': c.ssid}
+        conn={'is_use': c.in_use, 'known': False, 'ssid': c.ssid}
+
 
 
         if not any(d['ssid'] == c.ssid for d in connessioni):
+            password=subprocess.getoutput("nmcli -s -g 802-11-wireless-security.psk connection show " + c.ssid)
+            if password:
+                if not "Error:" in password:
+                    conn['known']=True
             connessioni.append(conn)
 
         for d in connessioni:
             if (d['ssid'] == c.ssid):
                 d['is_use'] = d['is_use'] or c.in_use
 
+    connessioni = sorted(connessioni, key=lambda x: x['known'])
     connessioni = sorted(connessioni, key=lambda x: x['is_use'])
     # connessioni.reverse()
     keys = connessioni[0].keys()
