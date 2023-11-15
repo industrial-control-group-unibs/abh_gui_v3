@@ -144,7 +144,7 @@ Item {
 
             Testo
             {
-                text: !chiamata_sistema.muted?qsTr("PREMI PER LA MODALITA' SILENZIOSA"):qsTr("PREMI PER USCIRE LA MODALITA' SILENZIOSA")
+                text: !chiamata_sistema.muted?qsTr("PREMI PER LA MODALITA' SILENZIOSA"):qsTr("PREMI PER USCIRE DALLA MODALITA' SILENZIOSA")
                 anchors
                 {
                     verticalCenter: icona2.verticalCenter
