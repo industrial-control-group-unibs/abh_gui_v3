@@ -78,7 +78,7 @@ Item {
                 leftMargin: 113/1080*parent.width
                 rightMargin: 113/1080*parent.width
             }
-            height: titolo.height
+            height: titolo.height*.7
             IconaCerchio
             {
                 id: icona_salva_pwd
@@ -128,7 +128,7 @@ Item {
                 leftMargin: 113/1080*parent.width
                 rightMargin: 113/1080*parent.width
             }
-            height: titolo.height
+            height: titolo.height*.7
             IconaCerchio
             {
                 id: icona2
