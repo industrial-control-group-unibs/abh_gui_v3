@@ -216,7 +216,7 @@ Item
             font.pixelSize: 40
             fontSizeMode: Text.Fit
             verticalAlignment: Text.AlignBottom
-            text: chrt_areachart.show_motor? qsTr("VELOCITA' ISTANTANEA"): chrt_areachart.show_current? qsTr("FM") :qsTr("VISIONE")
+            text: chrt_areachart.show_motor? qsTr("VELOCITA' ISTANTANEA"): chrt_areachart.show_current? qsTr("POWER") :qsTr("VISIONE")
             onTextChanged: chrt_areachart.clear()
             color: parametri_generali.coloreUtente
         }

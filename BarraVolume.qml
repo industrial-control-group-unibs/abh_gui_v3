@@ -68,6 +68,7 @@ Item {
         Item
         {
             //visible: component.conferma
+            id: audio_esercizi
             anchors
             {
                 top: volume.bottom
@@ -99,11 +100,55 @@ Item {
 
             Testo
             {
-                text: parametri_generali.voice?qsTr("PREMI PER DISATTIVARE AUDIO CONTEGGIO ESERCIZIO"):qsTr("PREMI PER ATTIVARE AUDIO CONTEGGIO ESERCIZIO")
+                text: component.muted?qsTr("PREMI PER DISATTIVARE AUDIO CONTEGGIO ESERCIZIO"):qsTr("PREMI PER ATTIVARE AUDIO CONTEGGIO ESERCIZIO")
                 anchors
                 {
                     verticalCenter: icona_salva_pwd.verticalCenter
                     left: icona_salva_pwd.right
+                    right: parent.right
+                }
+                anchors.margins: 10
+                fontSizeMode: Text.Fit
+                wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+
+            }
+
+        }
+        Item
+        {
+            //visible: component.conferma
+            anchors
+            {
+                top: audio_esercizi.bottom
+                topMargin: titolo.height
+                left: titolo.left
+                right: titolo.right
+                leftMargin: 113/1080*parent.width
+                rightMargin: 113/1080*parent.width
+            }
+            height: titolo.height
+            IconaCerchio
+            {
+                id: icona2
+                state: !chiamata_sistema.muted?"pieno":"vuoto"
+                onPressed: {
+                    chiamata_sistema.string="pactl set-sink-mute @DEFAULT_SINK@ toggle"
+                    chiamata_sistema.call()
+                    chiamata_sistema.volume= chiamata_sistema.getVolume()
+                    chiamata_sistema.muted= chiamata_sistema.isMuted()
+                }
+            }
+
+
+            Testo
+            {
+                text: !chiamata_sistema.muted?qsTr("PREMI PER LA MODALITA' SILENZIOSA"):qsTr("PREMI PER USCIRE LA MODALITA' SILENZIOSA")
+                anchors
+                {
+                    verticalCenter: icona2.verticalCenter
+                    left: icona2.right
                     right: parent.right
                 }
                 anchors.margins: 10
@@ -192,6 +237,7 @@ Item {
 
             IconaCerchio
             {
+                visible: false
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.verticalCenterOffset: -2*piu.height
@@ -215,6 +261,7 @@ Item {
                 }
 
             }
+
 
         }
 
