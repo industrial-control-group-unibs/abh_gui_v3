@@ -122,7 +122,7 @@ Item {
             anchors
             {
                 top: audio_esercizi.bottom
-                topMargin: titolo.height
+                topMargin: titolo.height*.5
                 left: titolo.left
                 right: titolo.right
                 leftMargin: 113/1080*parent.width
