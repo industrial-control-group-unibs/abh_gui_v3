@@ -99,7 +99,7 @@ Item {
 
             Testo
             {
-                text: parametri_generali.voice?qsTr("DISATTIVA AUDIO CONTEGGIO ESERCIZIO"):qsTr("ATTIVA AUDIO CONTEGGIO ESERCIZIO")
+                text: parametri_generali.voice?qsTr("PREMI PER DISATTIVARE AUDIO CONTEGGIO ESERCIZIO"):qsTr("PREMI PER ATTIVARE AUDIO CONTEGGIO ESERCIZIO")
                 anchors
                 {
                     verticalCenter: icona_salva_pwd.verticalCenter
