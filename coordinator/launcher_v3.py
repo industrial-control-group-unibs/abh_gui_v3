@@ -104,14 +104,19 @@ try:
 
     is_died=False
     while True:
-        for proc in p:
+        for idx,proc in enumerate(p):
             if not(proc.poll() is None):
-                print("process ",proc.name, " is died")
-                is_died=True
-                for proc2 in p:
-                    proc2.send_signal(signal.SIGINT)
-                    print("process ",proc2.name, " is killed")
-                break
+                print(f"process {proc.name} is died: {proc.returncode}")
+                if (proc.name == "gui" and proc.returncode<0):
+                    proc = subprocess.Popen([path+"/../build/abh_gui_v3"], cwd=path, stdout=file_abh_gui_v3, stderr=file_abh_gui_v3)
+                    p[idx]=proc
+                    p[idx].name="gui"
+                else:
+                    is_died=True
+                    for proc2 in p:
+                        proc2.send_signal(signal.SIGINT)
+                        print("process ",proc2.name, " is killed")
+                    break
         if (is_died):
             break
         time.sleep(1)
