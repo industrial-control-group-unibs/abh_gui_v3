@@ -17,7 +17,7 @@ Item {
     Component.onCompleted:
     {
         parametri_generali.wifi_name=""
-        chiamata_sistema.string="nmcli device wifi rescan"
+//        chiamata_sistema.string="nmcli device wifi rescan"
         chiamata_sistema.call()
         _wifi.readFile("wifi_list")
         numero_wifi=_wifi.rowCount()
@@ -39,7 +39,7 @@ Item {
         running: true
         onTriggered:
         {
-            chiamata_sistema.string="nmcli device wifi rescan"
+//            chiamata_sistema.string="nmcli device wifi rescan"
             chiamata_sistema.call()
             _wifi.readFile("wifi_list")
             numero_wifi=_wifi.rowCount()
@@ -174,7 +174,7 @@ Item {
                         lista_wifi.model=[]
                         lista_wifi.model= _wifi
                         lista_wifi.forceLayout()
-                        currentIndex:-1
+//                        currentIndex:-1
                     }
 
                     delegate:
