@@ -49,6 +49,17 @@ Item
         }
     }
 
+    Timer{
+        id: go_out
+        interval: 500
+        repeat: false
+        running: false
+        onTriggered:
+        {
+            pageLoader.source = "PaginaRiposo.qml"
+        }
+    }
+
 
     Timer
     {
@@ -200,7 +211,8 @@ Item
                 if (ripetizioni>selected_exercise.reps)
                 {
                     playSound_ding.play()
-                    pageLoader.source = "PaginaRiposo.qml"
+                    go_out.running = true
+//                    pageLoader.source = "PaginaRiposo.qml"
                 }
             }
             else
