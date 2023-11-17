@@ -52,6 +52,7 @@ Item {
         {
             Component.onCompleted:
             {
+                console.log("selected_exercise.selected_session: ",selected_exercise.selected_session)
                 xvalues=_workout.getSelectedSessionNumbers(selected_exercise.selected_session)
                 yvalues=_workout.getSelectedSessionScores(selected_exercise.selected_session)
                 yvalues2=_workout.getSelectedSessionMeanScores(selected_exercise.selected_session)

@@ -110,7 +110,7 @@ Item {
 
                 onPressed: {
                     lista_workout.currentIndex=index
-                    selected_exercise.selected_session=lista_workout.currentIndex+1
+                    //selected_exercise.selected_session=lista_workout.currentIndex+1
                 }
 
                 onSeeStat:
