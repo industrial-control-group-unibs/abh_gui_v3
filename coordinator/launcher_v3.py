@@ -111,6 +111,11 @@ try:
                     proc = subprocess.Popen([path+"/../build/abh_gui_v3"], cwd=path, stdout=file_abh_gui_v3, stderr=file_abh_gui_v3)
                     p[idx]=proc
                     p[idx].name="gui"
+                elif (proc.name == "vision" and proc.returncode < 0):
+                    proc = subprocess.Popen([pycmd, "/home/"+user+"/ABHORIZON_PC_VISION/AB_main_PC.py"], cwd=r'/home/'+user+'/ABHORIZON_PC_VISION', stdout=file_visione, stderr=file_visione)
+                    p[idx] = proc
+                    p[idx].name = "vision"
+
                 else:
                     is_died=True
                     for proc2 in p:
