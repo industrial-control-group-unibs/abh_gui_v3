@@ -129,7 +129,7 @@ try:
                     break
         if (is_died):
             break
-        time.sleep(.1)
+        time.sleep(.01)
 except KeyboardInterrupt:
     for proc in p:
         proc.send_signal(signal.SIGINT)
