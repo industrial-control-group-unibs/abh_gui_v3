@@ -20,7 +20,7 @@ Item {
 
         if (parametri_generali.wifi_known)
         {
-            chiamata_sistema.string="nmcli device wifi connect "+parametri_generali.wifi_name+" ifname "+parametri_generali.wifi_net
+            chiamata_sistema.string="nmcli device wifi connect "+parametri_generali.wifi_name+" ifname "+parametri_generali.wifi_net+" &"
             chiamata_sistema.call()
             _history.pop()
             pageLoader.source="PaginaImpostazioni.qml"
