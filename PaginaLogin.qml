@@ -21,6 +21,7 @@ Rectangle {
         impostazioni_utente.identifier=""
         parametri_generali.login_page=true
         led_udp.data=[parametri_generali.coloreLed.r, parametri_generali.coloreLed.g, parametri_generali.coloreLed.b]
+        led_udp.send()
     }
     Component.onDestruction:
     {

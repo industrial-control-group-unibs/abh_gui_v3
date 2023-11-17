@@ -125,12 +125,14 @@ Item {
             {
                 _history.pop()
                 pageLoader.source=_history.pop()
+
             }
 
             onPressDx:
             {
                 chiamata_sistema.string="nmcli device wifi connect "+parametri_generali.wifi_name+" ifname "+parametri_generali.wifi_net+" password "+input_nome.text + " &"
                 chiamata_sistema.call()
+                pageLoader.source="PaginaImpostazioni.qml"
             }
 
             z:5

@@ -27,10 +27,12 @@ public:
 
   protected slots:
   void createSocket();
+  void send();
 signals:
   void portChanged();
   void hostChanged();
   void dataChanged();
+
 protected:
   QString host_;
   QString port_;

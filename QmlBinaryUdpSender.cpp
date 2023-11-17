@@ -46,6 +46,16 @@ void BinarySender::setData(QVector<qreal> data)
   }
 }
 
+void BinarySender::send()
+{
+  if (socket_)
+  {
+    std::vector<double> v=data_.toStdVector(); //QVector<double>::toStdVector(data_);
+    socket_->sendData(v);
+    emit dataChanged();
+  }
+}
+
 void BinarySender::createSocket()
 {
   if (host_.isEmpty() or port_.isEmpty())
