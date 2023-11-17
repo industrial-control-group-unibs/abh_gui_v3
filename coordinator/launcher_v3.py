@@ -108,9 +108,14 @@ try:
             if not(proc.poll() is None):
                 print(f"process {proc.name} is died: {proc.returncode}")
                 if (proc.name == "gui" and proc.returncode<0):
+
+                    os.system("xset -display :0.0 dpms force off")
+
                     proc = subprocess.Popen([path+"/../build/abh_gui_v3"], cwd=path, stdout=file_abh_gui_v3, stderr=file_abh_gui_v3)
                     p[idx]=proc
                     p[idx].name="gui"
+                    time.sleep(2)
+                    os.system("xset -display :0.0 dpms force on")
                 elif (proc.name == "vision" and proc.returncode < 0):
                     proc = subprocess.Popen([pycmd, "/home/"+user+"/ABHORIZON_PC_VISION/AB_main_PC.py"], cwd=r'/home/'+user+'/ABHORIZON_PC_VISION', stdout=file_visione, stderr=file_visione)
                     p[idx] = proc
@@ -124,7 +129,7 @@ try:
                     break
         if (is_died):
             break
-        time.sleep(1)
+        time.sleep(.1)
 except KeyboardInterrupt:
     for proc in p:
         proc.send_signal(signal.SIGINT)
