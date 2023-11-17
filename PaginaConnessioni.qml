@@ -37,13 +37,17 @@ Item {
         id: timer_scan
         repeat: true
         running: true
+        property int  indice: 0
         onTriggered:
         {
 //            chiamata_sistema.string="nmcli device wifi rescan"
-            chiamata_sistema.call()
+//            chiamata_sistema.call()
+            indice=lista_wifi.currentItem
             _wifi.readFile("wifi_list")
             numero_wifi=_wifi.rowCount()
+
             lista_wifi.reload()
+            lista_wifi.currentItem=indice
         }
     }
 
