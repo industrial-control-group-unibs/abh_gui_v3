@@ -259,6 +259,7 @@ Item {
             id: freccia
             onPressSx:
             {
+                _history.pop()
                 pageLoader.source=_history.pop()
             }
             dx_visible: parametri_generali.wifi_name!==""
