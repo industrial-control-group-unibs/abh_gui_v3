@@ -59,6 +59,7 @@ ApplicationWindow {
         property string monitor: _default[10]
         property string touch: _default[11]
         property bool wifi_on: false
+        property bool wifi_acceso: wifi_on
         property bool voice: true
 
         onWifi_onChanged: {

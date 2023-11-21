@@ -90,21 +90,24 @@ Item {
                 height: parent.height*0.2
                 id: spegni
 
-                property bool acceso: true
+                property bool acceso: parametri_generali.wifi_acceso
                 IconaCerchio
                 {
                     id: icona_salva_pwd
+                    pieno: parametri_generali.wifi_acceso
                     onPressed: {
-                        pieno=!pieno
-                        spegni.acceso=pieno
-                        if (spegni.acceso)
+                        if (parametri_generali.wifi_acceso)
                         {
-                            chiamata_sistema.string="nmcli radio wifi on"
+                            parametri_generali.wifi_acceso=false
+                            pieno=false
+                            chiamata_sistema.string="nmcli radio wifi off"
                             chiamata_sistema.call()
                         }
                         else
                         {
-                            chiamata_sistema.string="nmcli radio wifi off"
+                            parametri_generali.wifi_acceso=true
+                            pieno=true
+                            chiamata_sistema.string="nmcli radio wifi on"
                             chiamata_sistema.call()
                         }
 
@@ -114,7 +117,7 @@ Item {
 
                 Testo
                 {
-                    text: parent.acceso?qsTr("DISATTIVA WIFI"):qsTr("ATTIVA WIFI")
+                    text: parent.acceso?qsTr("PREMI PER DISATTIVARE IL WIFI"):qsTr("PREMI PER ATTIVARE IL WIFI")
                     anchors
                     {
                         verticalCenter: icona_salva_pwd.verticalCenter
