@@ -76,7 +76,7 @@ Item {
                 black: true
                 onPressed:
                 {
-                    if (chiamata_sistema.luminosita>5)
+                    if (chiamata_sistema.luminosita>15)
                     {
                         chiamata_sistema.luminosita-=5
                         chiamata_sistema.string="xrandr --output "+parametri_generali.monitor+ " --brightness "+chiamata_sistema.luminosita*0.01
