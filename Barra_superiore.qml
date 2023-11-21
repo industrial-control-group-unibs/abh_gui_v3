@@ -116,7 +116,8 @@ Item
         {
             bottom: immagine_utente.bottom
             right: immagine_utente.right
-            rightMargin: -100
+            rightMargin: -80
+            bottomMargin: -20
         }
         width: 40
         color: parametri_generali.coloreBordo
