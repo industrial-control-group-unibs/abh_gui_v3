@@ -10,6 +10,13 @@ Item {
     anchors.fill: parent
 
     //Component.onDestruction: pageLoader.last_source="PaginaImpostazioni.qml"
+    Component.onCompleted:
+    {
+        if (impostazioni_utente.identifier==="")
+        {
+           pageLoader.source="PaginaLogin.qml"
+        }
+    }
 
     property string titolo: qsTr("IMPOSTAZIONI")
 

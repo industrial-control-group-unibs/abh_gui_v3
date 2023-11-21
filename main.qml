@@ -289,10 +289,8 @@ ApplicationWindow {
             for (var index=0; index<_wifi.rowCount(); index++)
             {
 
-                console.log("wifi: ",_wifi.getValue(index,0),_wifi.getValue(index,2))
                 if (_wifi.getValue(index,0)==="True")
                 {
-                    console.log("wifi: ",_wifi.getValue(index,0),_wifi.getValue(index,2))
                     parametri_generali.wifi_on=true
                 }
             }

@@ -116,11 +116,16 @@ Item
         {
             bottom: immagine_utente.bottom
             right: immagine_utente.right
-            rightMargin: -50
+            rightMargin: -100
         }
         width: 40
         color: parametri_generali.coloreBordo
         connesso: parametri_generali.wifi_on
+        MouseArea
+        {
+            anchors.fill: parent
+            onClicked: pageLoader.source="PaginaConnessioni.qml"
+        }
     }
     Rectangle {
 

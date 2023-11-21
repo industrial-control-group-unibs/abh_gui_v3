@@ -76,11 +76,11 @@ Item {
                 black: true
                 onPressed:
                 {
-                    if (chiamata_sistema.luminosita>0)
+                    if (chiamata_sistema.luminosita>5)
                     {
-                        chiamata_sistema.string="light -U 5"
-                        chiamata_sistema.call()
                         chiamata_sistema.luminosita-=5
+                        chiamata_sistema.string="xrandr --output "+parametri_generali.monitor+ " --brightness "+chiamata_sistema.luminosita*0.01
+                        chiamata_sistema.call()
                     }
                 }
                 id: meno
@@ -96,11 +96,11 @@ Item {
 //                anchors.top: parent.top
                 onPressed:
                 {
-                    if (chiamata_sistema.luminosita<100)
+                    if (chiamata_sistema.luminosita<95)
                     {
-                        chiamata_sistema.string="light -A 5"
-                        chiamata_sistema.call()
                         chiamata_sistema.luminosita+=5
+                        chiamata_sistema.string="xrandr --output "+parametri_generali.monitor+ " --brightness "+chiamata_sistema.luminosita*0.01
+                        chiamata_sistema.call()
                     }
                 }
                 id: piu

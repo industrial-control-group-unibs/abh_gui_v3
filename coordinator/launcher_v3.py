@@ -153,12 +153,8 @@ try:
                     file_launcher.flush()
                 else:
                     is_died=True
-                    file_launcher.write(f"kill all process")
+                    file_launcher.write(f"process is died: {p[idx].name}")
                     file_launcher.flush()
-                    for proc2 in p:
-                        proc2.send_signal(signal.SIGINT)
-                        print("process ",proc2.name, " is killed")
-                    break
 
         if (is_died):
             break
