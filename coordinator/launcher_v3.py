@@ -63,6 +63,9 @@ try:
         except:
             shutil.rmtree(subf)
 
+    file_launcher = open(logpath + 'launcher.txt', 'w')
+    file_launcher.write("Start launcher\n")
+    file_launcher.flush()
 
     if (user!='jacobi'):
         file_visione = open(logpath + 'visione.txt', 'w')
@@ -83,12 +86,12 @@ try:
     p[-1].name="gui"
 
     file_microphone = open(logpath + 'microphone.txt', 'w')
-    p.append(subprocess.Popen([pycmd,path+"/../vosk/microphone.py"], cwd=path+"/../vosk", stdout=file_microphone))
+    p.append(subprocess.Popen([pycmd,path+"/../vosk/microphone.py"], cwd=path+"/../vosk", stdout=file_microphone, stderr=file_microphone))
     p[-1].name="vosk"
 
 
-    file_microphone = open(logpath + 'wifi_list.txt', 'w')
-    p.append(subprocess.Popen([pycmd,path+"/wifi_list.py"], cwd=path+"/../vosk", stdout=file_microphone))
+    file_wifi = open(logpath + 'wifi_list.txt', 'w')
+    p.append(subprocess.Popen([pycmd,path+"/wifi_list.py"], cwd=path+"/../vosk", stdout=file_wifi, stderr=file_wifi))
     p[-1].name="wifi_list"
 
     if (user=='jacobi'):
@@ -99,7 +102,7 @@ try:
         p[-1].name="sender"
     else:
         file_motor_control = open(logpath + 'motor_control.txt', 'w')
-        p.append(subprocess.Popen([pycmd,path+"/motor_control.py"], cwd=path, stdout=file_motor_control))
+        p.append(subprocess.Popen([pycmd,path+"/motor_control.py"], cwd=path, stdout=file_motor_control, stderr=file_motor_control))
         p[-1].name="motor_control"
 
     is_died=False
@@ -116,17 +119,47 @@ try:
                     p[idx].name="gui"
                     time.sleep(2)
                     os.system("xset -display :0.0 dpms force on")
-                elif (proc.name == "vision" and proc.returncode < 0):
-                    proc = subprocess.Popen([pycmd, "/home/"+user+"/ABHORIZON_PC_VISION/AB_main_PC.py"], cwd=r'/home/'+user+'/ABHORIZON_PC_VISION', stdout=file_visione, stderr=file_visione)
+                    file_launcher.write(f"restart {p[idx].name}\n")
+                    file_launcher.flush()
+                elif (proc.name == "led" and proc.returncode < 0):
+                    proc = subprocess.Popen([pycmd,path+"/led_control.py"], cwd=path, stdout=file_led_control, stderr=file_led_control)
                     p[idx] = proc
-                    p[idx].name = "vision"
-
+                    p[idx].name = "led"
+                    file_launcher.write(f"restart {p[idx].name}\n")
+                    file_launcher.flush()
+                elif (proc.name == "coordinator" and proc.returncode < 0):
+                    proc =subprocess.Popen([pycmd,path+"/coordinator.py"], cwd=path, stdout=file_coordinator, stderr=file_coordinator)
+                    p[idx] = proc
+                    p[idx].name = "coordinator"
+                    file_launcher.write(f"restart {p[idx].name}\n")
+                    file_launcher.flush()
+                elif (proc.name == "vosk" and proc.returncode < 0):
+                    proc = subprocess.Popen([pycmd,path+"/../vosk/microphone.py"], cwd=path+"/../vosk", stdout=file_microphone, stderr=file_microphone)
+                    p[idx] = proc
+                    p[idx].name = "vosk"
+                    file_launcher.write(f"restart {p[idx].name}\n")
+                    file_launcher.flush()
+                elif (proc.name == "wifi_list" and proc.returncode < 0):
+                    proc = subprocess.Popen([pycmd,path+"/wifi_list.py"], cwd=path+"/../vosk", stdout=file_wifi, stderr=file_wifi)
+                    p[idx] = proc
+                    p[idx].name = "wifi_list"
+                    file_launcher.write(f"restart {p[idx].name}\n")
+                    file_launcher.flush()
+                elif (proc.name == "motor_control" and proc.returncode < 0):
+                    proc =subprocess.Popen([pycmd,path+"/motor_control.py"], cwd=path, stdout=file_motor_control, stderr=file_motor_control)
+                    p[idx] = proc
+                    p[idx].name = "motor_control"
+                    file_launcher.write(f"restart {p[idx].name}\n")
+                    file_launcher.flush()
                 else:
                     is_died=True
+                    file_launcher.write(f"kill all process")
+                    file_launcher.flush()
                     for proc2 in p:
                         proc2.send_signal(signal.SIGINT)
                         print("process ",proc2.name, " is killed")
                     break
+
         if (is_died):
             break
         time.sleep(.01)

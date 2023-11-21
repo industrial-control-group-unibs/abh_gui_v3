@@ -18,7 +18,7 @@ Item {
     {
         parametri_generali.wifi_name=""
 //        chiamata_sistema.string="nmcli device wifi rescan"
-        chiamata_sistema.call()
+//        chiamata_sistema.call()
         _wifi.readFile("wifi_list")
         numero_wifi=_wifi.rowCount()
         lista_wifi.reload()

@@ -34,6 +34,7 @@ public:
       Role_coloreBordo,
       Role_coloreSfondo,
       Role_coloreUtente,
+      Role_coloreLed,
       Role_password,
       Role_storePwd,
       Role_Workout
@@ -57,7 +58,7 @@ public slots:
     QString addUser(std::vector<QString> dati);
     void editUser(QString identifier, QVector<QString> dati);
     QVector<QString> getUser(QString identifier);
-    void saveColor(QString identifier, QString coloreBordo, QString coloreSfondo, QString coloreUtente);
+    void saveColor(QString identifier, QString coloreBordo, QString coloreSfondo, QString coloreUtente, QString coloreLed);
     void savePassword(QString identifier, QString pwd);
     QString getPassword(QString identifier);
 

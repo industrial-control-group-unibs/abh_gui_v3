@@ -37,6 +37,11 @@ QVariant ListStringCSV::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
+QString ListStringCSV::getValue(int row_idx,int col_idx)
+{
+  const QStringList &data = data_.at(row_idx);
+  return data[col_idx];
+}
 
 QHash<int, QByteArray> ListStringCSV::roleNames() const
 {

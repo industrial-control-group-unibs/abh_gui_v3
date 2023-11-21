@@ -24,6 +24,8 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
 
+
+
 public slots:
     void readFile(QString filename);
     bool rename(QString oldname, QString newname, bool replace=false);
@@ -35,6 +37,7 @@ public slots:
     void changeValue(QString filename, int row_idx,int col_idx, QString value);
     QStringList uniqueElementsOfColumn(QString filename, QString col_name);
     QString getValue(QString filename, int row_idx,int col_idx);
+    QString getValue(int row_idx,int col_idx);
 
     bool checkIfExistColumn(QString filename, int col_idx, QString value);
 

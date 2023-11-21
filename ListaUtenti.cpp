@@ -68,6 +68,8 @@ QVariant ListaUtenti::data(const QModelIndex &index, int role) const
     return data.fields_[14];
   else if ( role == Role_coloreUtente )
     return data.fields_[15];
+  else if ( role == Role_coloreLed )
+    return data.fields_[19];
   else if ( role == Role_password )
     return data.fields_[16];
   else if ( role == Role_storePwd )
@@ -102,6 +104,7 @@ QString ListaUtenti::addUser(std::vector<QString> dati)
   row[13]=default_colors_[0].toStdString();
   row[14]=default_colors_[1].toStdString();
   row[15]=default_colors_[2].toStdString();
+  row[19]=default_colors_[3].toStdString();
   row[16]="9999";
   row[17]="false";
   row[18]="";
@@ -193,6 +196,7 @@ QHash<int, QByteArray> ListaUtenti::roleNames() const
     {Role_foto           ,"foto"},
     {Role_coloreBordo    ,"coloreBordo"},
     {Role_coloreSfondo   ,"coloreSfondo"},
+    {Role_coloreLed      ,"coloreLed"},
     {Role_coloreUtente   ,"coloreUtente"},
     {Role_password       ,"password"},
     {Role_storePwd       ,"store_pwd"},
@@ -263,7 +267,7 @@ void ListaUtenti::readFile()
   }
 }
 
-void ListaUtenti::saveColor(QString identifier, QString coloreBordo, QString coloreSfondo, QString coloreUtente)
+void ListaUtenti::saveColor(QString identifier, QString coloreBordo, QString coloreSfondo, QString coloreUtente, QString coloreLed)
 {
   std::string nome=identifier.toStdString();
   std::string nome_file=dir_path_+"/utenti.csv";
@@ -277,6 +281,8 @@ void ListaUtenti::saveColor(QString identifier, QString coloreBordo, QString col
       doc.SetCell<std::string>(13,ifield,coloreBordo.toStdString());
       doc.SetCell<std::string>(14,ifield,coloreSfondo.toStdString());
       doc.SetCell<std::string>(15,ifield,coloreUtente.toStdString());
+      doc.SetCell<std::string>(19,ifield,coloreLed.toStdString());
+
       break;
     }
   }

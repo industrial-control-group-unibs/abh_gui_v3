@@ -110,7 +110,18 @@ Item
     }
 
 
-
+    IconaWifi
+    {
+        anchors
+        {
+            bottom: immagine_utente.bottom
+            right: immagine_utente.right
+            rightMargin: -50
+        }
+        width: 40
+        color: parametri_generali.coloreBordo
+        connesso: parametri_generali.wifi_on
+    }
     Rectangle {
 
         id: immagine_utente
@@ -127,6 +138,9 @@ Item
             left: parent.left
             leftMargin: 40
         }
+
+
+
         radius: width*0.5
         color: "transparent"
         border{
@@ -184,6 +198,8 @@ Item
                     }
                 }
             }
+
+
         }
     }
 
@@ -300,3 +316,9 @@ Item
 }
 
 
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+##^##*/

@@ -120,5 +120,6 @@
         <file>SceltaEserciziNew.qml</file>
         <file>PaginaProseguiWorkout.qml</file>
         <file>ColorSelector.qml</file>
+        <file>IconaWifi.qml</file>
     </qresource>
 </RCC>

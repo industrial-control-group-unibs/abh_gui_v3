@@ -43,6 +43,7 @@ Item
                 parametri_generali.coloreSfondo      =  coloreSfondo
                 parametri_generali.coloreBordo       =  coloreBordo
                 parametri_generali.coloreUtente      =  coloreUtente
+                parametri_generali.coloreLed         =  coloreLed
 
                 if (_utenti.getStorePassword(impostazioni_utente.identifier))
                     pageLoader.source=  "PaginaAllenamento.qml"

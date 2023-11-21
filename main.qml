@@ -58,7 +58,12 @@ ApplicationWindow {
         property string wifi_net: _default[9]
         property string monitor: _default[10]
         property string touch: _default[11]
+        property bool wifi_on: false
         property bool voice: true
+
+        onWifi_onChanged: {
+            console.log("connesso: ", wifi_on)
+        }
 
         Component.onCompleted:
         {
@@ -278,6 +283,18 @@ ApplicationWindow {
             {
                 console.log("Unable to received data")
                 fb_udp.rebootThread()
+            }
+            _wifi.readFile("wifi_list")
+            parametri_generali.wifi_on=false
+            for (var index=0; index<_wifi.rowCount(); index++)
+            {
+
+                console.log("wifi: ",_wifi.getValue(index,0),_wifi.getValue(index,2))
+                if (_wifi.getValue(index,0)==="True")
+                {
+                    console.log("wifi: ",_wifi.getValue(index,0),_wifi.getValue(index,2))
+                    parametri_generali.wifi_on=true
+                }
             }
             console.log("tick")
         }
