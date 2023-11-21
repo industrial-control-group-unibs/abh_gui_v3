@@ -64,6 +64,8 @@ ApplicationWindow {
 
         onWifi_onChanged: {
             console.log("connesso: ", wifi_on)
+            if (wifi_on)
+                wifi_acceso=true
         }
 
         Component.onCompleted:
