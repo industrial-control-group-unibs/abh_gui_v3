@@ -35,7 +35,7 @@ def handler(signal_received, frame):
 
 def exercise_thread():
     global stop
-    print("starting coordinator", file=sys.stderr )
+    print("starting coordinator", file=sys.stderr)
 
 
 
