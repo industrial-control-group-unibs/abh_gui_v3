@@ -140,7 +140,8 @@ def exercise_thread():
 
     motor_speed_threshold=1.0
     motor_speed_threshold_return=-1.0
-    torque_change_time=0.5
+    torque_change_time_bw=0.5
+    torque_change_time_fw=0.5
     exercise_type=1
 
     motor_speed_early_stop=0.1
@@ -221,7 +222,8 @@ def exercise_thread():
                 logging.warning("exercise not found: %s", esercizio)
                 continue
             exercise["name"]=esercizio
-            torque_change_time=es_data.TimeFrom0To100.iloc[0]
+            torque_change_time_fw = es_data.TimeFrom0To100Forward.iloc[0]
+            torque_change_time_bw = es_data.TimeFrom0To100Backward.iloc[0]
             motor_speed_threshold=es_data.PositiveVelocityThreshold.iloc[0]
             motor_speed_threshold_return=es_data.NegativeVelocityThreshold.iloc[0]
             motor_speed_early_stop=es_data.VelocityEndPhase.iloc[0]
@@ -252,7 +254,7 @@ def exercise_thread():
                 if (exercise_type==1):
                     state=Status.BACKWARD
                     change_direction=True
-                    motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time]
+                    motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time_bw]
                 if not isinstance(exercise_name_eval,int):
                     print("Start vision")
                     exercise_name_eval.sendString("start")
@@ -372,10 +374,10 @@ def exercise_thread():
         if (last_state != state or resend):
             resend=False
             if (state == Status.FORWARD and exercise_type==1):
-                motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time]
+                motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time_fw]
                 logging.debug("Forward")
             elif (state == Status.BACKWARD and exercise_type==1):
-                motor_target_data=[0,exercise["force_return"]/100,exercise["velocity"]/100,torque_change_time]
+                motor_target_data=[0,exercise["force_return"]/100,exercise["velocity"]/100,torque_change_time_bw]
                 logging.debug("Backward")
             elif (state == Status.STOP):
                 motor_target_data=[1,0,0,1]
