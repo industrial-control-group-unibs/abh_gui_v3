@@ -61,6 +61,7 @@ QString ListUserConfig::getValue(QString field)
   std::string str=field.toStdString();
   for (size_t idx=0;idx<doc_->GetRowCount();idx++)
   {
+    std::cout << "v";
     if (!doc_->GetCell<std::string>(idx,0).compare(str))
     {
       std::string value= doc_->GetCell<std::string>(idx,1);

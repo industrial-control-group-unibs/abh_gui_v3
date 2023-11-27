@@ -192,8 +192,8 @@ void UdpVideoStream::receiverThread()
           std::cerr << "decode failure!" << std::endl;
           continue;
         }
-        this->updateFrame(frame);
-        emit signalVideoSurfaceChanged();
+        //this->updateFrame(frame);
+        //emit signalVideoSurfaceChanged();
         total_pack=dat.size();
         dat.clear();
       }
