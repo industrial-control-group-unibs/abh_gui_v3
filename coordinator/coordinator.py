@@ -5,7 +5,6 @@ from python_binary_udp_helper import UdpBinarySenderThread, UdpBinaryReceiverThr
 import sys
 import socket
 import time
-import logging
 from threading import Thread
 import Colorer
 import pandas as pd
@@ -36,7 +35,7 @@ def handler(signal_received, frame):
 
 def exercise_thread():
     global stop
-    logging.debug("starting")
+    print("starting coordinator")
 
 
 
@@ -46,7 +45,6 @@ def exercise_thread():
     else:
         df = pd.read_excel (r'/home/jacobi/projects/abh//abh_data/esercizi.xlsx', sheet_name='ParameteriForza')
         df_forza=pd.read_csv(r'/home/jacobi/projects/abh/abh_data/livelli_potenza.csv')
-    logging.debug("creating client from gui")
     itrial=0
 
     exercise_client=-1
@@ -92,43 +90,34 @@ def exercise_thread():
             motor_fb_udp.bufferLength(4)
             motor_fb_udp.start()
 
-            logging.debug("connected with gui")
+            print("connected with gui")
             break
         except:
             if itrial % 60==0:
-                logging.debug("waiting for connection with Display manager.")
+                print("waiting for connection with Display manager.")
             itrial+=1
             time.sleep(1)
     if (stop):
-        logging.info("stopped before connecting with Display manager, tried %d times", itrial)
+        print(f"stopped before connecting with Display manager, tried {itrial} times")
         del exercise_name_eval
         return
 
-
-    logging.debug("connected with Display manager")
-    logging.debug("create server for vision")
 
     try:
         exercise_name_eval = UdpSenderThread("exercise_name_eval",abh.ABH_VISION,abh.EXERCISE_NAME_PORT)
         repetition_udp_repetiter = UdpBinarySenderThread("repetition_udp_repetiter",abh.ABH_VISION,abh.REP_COUNT_PORT_DM)
     except Exception as e:
-        #stop=True
-        logging.error("unable to connect with Evaluator")
-        logging.critical(str(e), exc_info=True)  # log exception info at CRITICAL log level
+        print("unable to connect with Evaluator")
 
-    logging.debug("connected with Evaluator")
-    logging.debug("create server for motor control")
 
     try:
         motor_target = UdpBinarySenderThread("motor_target",abh.ABH_CONTROL,abh.MOTOR_TARGET_PORT)
         motor_target.start()
     except Exception as e:
         stop=True
-        logging.error("unable to connect with motor control")
-        logging.critical(str(e), exc_info=True)  # log exception info at CRITICAL log level
+        print("unable to connect with motor control")
 
 
-    logging.debug("connected with motor control")
 
     exercise=dict.fromkeys(['name','level','difficulty','force','velocity'])
 
@@ -219,8 +208,9 @@ def exercise_thread():
                 print("invalid exercise = ", stringa)
                 continue
             if (len(es_data)==0):
-                logging.warning("exercise not found: %s", esercizio)
+                print(f"exercise not found: {esercizio}")
                 continue
+            print(f"esercizio:\n{es_data}")
             exercise["name"]=esercizio
             torque_change_time_fw = es_data.TimeFrom0To100Forward.iloc[0]
             torque_change_time_bw = es_data.TimeFrom0To100Backward.iloc[0]
@@ -280,7 +270,7 @@ def exercise_thread():
                 exercise_name_eval.sendString("start")
 
             else:
-                logging.warning("startstop_client_d should receive start or stop. received: "+stringa)
+                print(f"startstop_client_d should receive start or stop. received: {stringa}")
 
 
         if (motor_fb_udp.isNewDataAvailable()):
@@ -323,7 +313,7 @@ def exercise_thread():
               print("lunghezza messaggio visione non corretta")
         else:
             vision_msg_counter+=1
-            if (vision_msg_counter>1000):
+            if (vision_msg_counter>10000):
               print("no messaggi da visione")
               vision_msg_counter=0
               rep_count_from_vision=-10
@@ -375,19 +365,14 @@ def exercise_thread():
             resend=False
             if (state == Status.FORWARD and exercise_type==1):
                 motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time_fw]
-                logging.debug("Forward")
             elif (state == Status.BACKWARD and exercise_type==1):
                 motor_target_data=[0,exercise["force_return"]/100,exercise["velocity"]/100,torque_change_time_bw]
-                logging.debug("Backward")
             elif (state == Status.STOP):
                 motor_target_data=[1,0,0,1]
-                logging.debug("Stop")
             elif (state == Status.UNDEFINED):
                 motor_target_data=[1,0,0,1]
-                logging.debug("undefined")
             elif (state == Status.REWIRE):
                 motor_target_data=[0,0.20,0.2,1]
-                logging.debug("undefined")
             motor_target.sendData(motor_target_data)
             last_state = state
 
@@ -395,54 +380,36 @@ def exercise_thread():
     if not isinstance(exercise_client,type):
         exercise_client.stopThread()
         exercise_client.join()
-    else:
-        logging.debug("exercise client is off")
 
     if not isinstance(startstop_client,int):
         startstop_client.stopThread()
         startstop_client.join()
-    else:
-        logging.debug("startstop_client is off")
 
     if not isinstance(user_client,int):
         user_client.stopThread()
         user_client.join()
-    else:
-        logging.debug("user_client is off")
 
     if not isinstance(power_client,int):
         power_client.stopThread()
         power_client.join()
-    else:
-        logging.debug("power_client is off")
 
 
 
     if not isinstance(repetition_udp,int):
         repetition_udp.stopThread()
         repetition_udp.join()
-    else:
-        logging.debug("repetition_udp is off")
 
     if not isinstance(motor_fb_udp,int):
         motor_fb_udp.stopThread()
         motor_fb_udp.join()
-    else:
-        logging.debug("motor_fb_udp is off")
 
 
-    logging.debug("return clean")
 
 
 if __name__ == '__main__':
     # %% initialization
     signal(SIGINT, handler)
-    logging.basicConfig(filename='coordinator.log', level=logging.DEBUG, format=' [%(asctime)s,%(filename)s:%(lineno)-4s - %(funcName)20s()] %(levelname)-8s :: %(message)s', filemode='w')
-    logger = logging.getLogger(__name__)
-    console = logging.StreamHandler()
-    console.setFormatter(logging.Formatter(logging.BASIC_FORMAT))
-    console.setLevel(logging.INFO)
-    logging.getLogger('').addHandler(console)
+
     # %%
     ex_thread = Thread(target=exercise_thread, args=())
     ex_thread.start()
@@ -450,4 +417,4 @@ if __name__ == '__main__':
         time.sleep(0.1)
 
     ex_thread.join()
-    logging.info("return clean")
+    print("return clean")

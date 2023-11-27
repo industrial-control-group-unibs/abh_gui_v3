@@ -33,6 +33,8 @@
 
 #include <QTranslator>
 
+#include <ListUserConfig.h>
+
 
 std::string exec(const char* cmd) {
     std::array<char, 128> buffer;
@@ -108,6 +110,12 @@ int main(int argc, char *argv[])
   std::cout << "create users" <<std::endl;
   ListaUtenti utenti(data_path+"/../utenti",
                      template_path);
+
+  ListUserConfig user_config(data_path+"/../utenti");
+  user_config.readFile("test.csv");
+  std::cout << " valore: " <<user_config.getValue("colore1").toStdString() << std::endl;
+  std::cout << " valore: " <<user_config.getValue("colore2").toStdString() << std::endl;
+  std::cout << " valore: " <<user_config.getValue("colore3").toStdString() << std::endl;
 
   std::cout << "create workouts" <<std::endl;
   abh::ProgrammaAllenamento workout(data_path+"/../utenti",
