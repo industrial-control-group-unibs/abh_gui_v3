@@ -34,6 +34,7 @@ public:
 signals:
   void signalVideoSurfaceChanged();
   void portChanged();
+  void imageChanged();
 
 public slots:
   void slotTick();
