@@ -75,10 +75,19 @@ try:
         p.append(subprocess.Popen([pycmd, "/home/"+user+"/ABHORIZON_PC_VISION/AB_main_PC.py"], cwd=r'/home/'+user+'/ABHORIZON_PC_VISION', stdout=file_visione, stderr=file_visione))
         p[-1].name="vision"
         time.sleep(0.5)
+        file_motor_control = open(logpath + 'motor_control.txt', 'w')
+        p.append(subprocess.Popen([pycmd, path + "/motor_control.py"], cwd=path, stdout=file_motor_control,
+                                  stderr=file_motor_control))
+        p[-1].name = "motor_control"
 
-        file_coordinator = open(logpath + 'coordinator.txt', 'w')
-        p.append(subprocess.Popen([pycmd,path+"/coordinator.py"], cwd=path, stdout=file_coordinator, stderr=file_coordinator))
-        p[-1].name="coordinator"
+    else:
+        p.append(subprocess.Popen([pycmd, path + "/sender.py"], cwd=path))
+        p[-1].name = "sender"
+
+    file_coordinator = open(logpath + 'coordinator.txt', 'w')
+    p.append(subprocess.Popen([pycmd,path+"/coordinator.py"], cwd=path, stdout=file_coordinator, stderr=file_coordinator))
+    #p.append(subprocess.Popen([pycmd,path+"/coordinator.py"], cwd=path))
+    p[-1].name="coordinator"
 
     file_led_control = open(logpath + 'led_control.txt', 'w')
     p.append(subprocess.Popen([pycmd,path+"/led_control.py"], cwd=path, stdout=file_led_control, stderr=file_led_control))
@@ -96,17 +105,12 @@ try:
     file_wifi = open(logpath + 'wifi_list.txt', 'w')
     p.append(subprocess.Popen([pycmd,path+"/wifi_list.py"], cwd=path+"/../vosk", stdout=file_wifi, stderr=file_wifi))
     p[-1].name="wifi_list"
-
-    if (user=='jacobi'):
-        file_coordinator = open(logpath + 'coordinator.txt', 'w')
-        p.append(subprocess.Popen([pycmd,path+"/fake_coordinator.py"], cwd=path, stdout=file_coordinator))
-        p[-1].name="coordinator"
-        p.append(subprocess.Popen([pycmd, path+"/sender.py"], cwd=path))
-        p[-1].name="sender"
-    else:
-        file_motor_control = open(logpath + 'motor_control.txt', 'w')
-        p.append(subprocess.Popen([pycmd,path+"/motor_control.py"], cwd=path, stdout=file_motor_control, stderr=file_motor_control))
-        p[-1].name="motor_control"
+    #
+    # if (user=='jacobi'):
+    #     file_coordinator = open(logpath + 'coordinator.txt', 'w')
+    #     p.append(subprocess.Popen([pycmd,path+"/fake_coordinator.py"], cwd=path, stdout=file_coordinator))
+    #     p[-1].name="coordinator"
+    #
 
     is_died=False
     while True:

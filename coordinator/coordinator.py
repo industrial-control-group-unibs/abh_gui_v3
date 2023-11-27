@@ -35,7 +35,7 @@ def handler(signal_received, frame):
 
 def exercise_thread():
     global stop
-    print("starting coordinator")
+    print("starting coordinator", file=sys.stderr )
 
 
 
@@ -411,10 +411,12 @@ if __name__ == '__main__':
     signal(SIGINT, handler)
 
     # %%
-    ex_thread = Thread(target=exercise_thread, args=())
-    ex_thread.start()
-    while (not stop):
-        time.sleep(0.1)
-
-    ex_thread.join()
+    print("starting coordinator thread")
+    # ex_thread = Thread(target=exercise_thread, args=())
+    # ex_thread.start()
+    # while (not stop):
+    #     time.sleep(0.1)
+    #
+    # ex_thread.join()
+    exercise_thread()
     print("return clean")
