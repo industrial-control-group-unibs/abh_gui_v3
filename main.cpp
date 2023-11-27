@@ -314,11 +314,14 @@ int main(int argc, char *argv[])
   engine->load(url);
 
   int output;
+  std::cout << "running gui";
   try {
     output=app->exec();
   } catch (std::exception ex) {
     std::cout << "exception: "<<ex.what();
   }
+
+  std::cout << "exiting gui";
 
   engine.reset();
   std::cout << "exit" << std::endl;
