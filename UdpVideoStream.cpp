@@ -172,6 +172,7 @@ void UdpVideoStream::receiverThread()
     cv::Mat raw_data;
     cv::Mat frame;
 
+    int idx_alive=0;
     while (1) {
       if (stop_flag_)
       {
@@ -192,10 +193,16 @@ void UdpVideoStream::receiverThread()
           std::cerr << "decode failure!" << std::endl;
           continue;
         }
-        //this->updateFrame(frame);
-        //emit signalVideoSurfaceChanged();
+        this->updateFrame(frame);
+        emit signalVideoSurfaceChanged();
         total_pack=dat.size();
         dat.clear();
+      }
+
+      if (idx_alive++>1000)
+      {
+        idx_alive=0;
+        std::cout << "I'm receiving videos!" <<std::endl;
       }
       usleep(1000);
     }
