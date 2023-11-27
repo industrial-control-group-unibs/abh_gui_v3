@@ -341,7 +341,7 @@ def exercise_thread():
             state=Status.FORWARD
         elif (none_counter>=2000):
             state = Status.UNDEFINED
-        if (direction==5)
+        if (direction==5):
             none_counter += 1
         else:
             none_counter = 0
