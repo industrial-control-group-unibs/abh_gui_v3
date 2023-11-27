@@ -166,6 +166,8 @@ def exercise_thread():
     force_power_level_0_first_reps = 0.0
 
     vision_msg_counter=0
+
+    none_counter = 0;
     while (not stop):
         time.sleep(0.001)
         switch_timer += 0.001
@@ -337,8 +339,12 @@ def exercise_thread():
             state=Status.BACKWARD
         elif (state == Status.UNDEFINED and direction==-1):
             state=Status.FORWARD
-        elif (direction==5):
-            state=Status.UNDEFINED
+        elif (none_counter>=2000):
+            state = Status.UNDEFINED
+        if (direction==5)
+            none_counter += 1
+        else:
+            none_counter = 0
 
 
         if (state == Status.STOP and exercise_type==1):
