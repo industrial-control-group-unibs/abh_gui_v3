@@ -194,12 +194,12 @@ void UdpVideoStream::receiverThread()
           continue;
         }
         this->updateFrame(frame);
-        emit signalVideoSurfaceChanged();
+//        emit signalVideoSurfaceChanged();
         total_pack=dat.size();
         dat.clear();
       }
 
-      if (idx_alive++>1000)
+      if (idx_alive++>100)
       {
         idx_alive=0;
         std::cout << "I'm receiving videos!" <<std::endl;
