@@ -72,11 +72,11 @@ try:
 
     if (user!='jacobi'):
         file_visione = open(logpath + 'visione.txt', 'w')
-        p.append(subprocess.Popen([pycmd, "/home/"+user+"/ABHORIZON_PC_VISION/AB_main_PC.py"], cwd=r'/home/'+user+'/ABHORIZON_PC_VISION', stdout=file_visione, stderr=file_visione))
+        p.append(subprocess.Popen([pycmd, "-u", "/home/"+user+"/ABHORIZON_PC_VISION/AB_main_PC.py"], cwd=r'/home/'+user+'/ABHORIZON_PC_VISION', stdout=file_visione, stderr=file_visione))
         p[-1].name="vision"
         time.sleep(0.5)
         file_motor_control = open(logpath + 'motor_control.txt', 'w')
-        p.append(subprocess.Popen([pycmd, path + "/motor_control.py"], cwd=path, stdout=file_motor_control,
+        p.append(subprocess.Popen([pycmd, "-u", path + "/motor_control.py"], cwd=path, stdout=file_motor_control,
                                   stderr=file_motor_control))
         p[-1].name = "motor_control"
 
@@ -85,12 +85,12 @@ try:
         p[-1].name = "sender"
 
     file_coordinator = open(logpath + 'coordinator.txt', 'w')
-    p.append(subprocess.Popen([pycmd,path+"/coordinator.py"], cwd=path, stdout=file_coordinator, stderr=file_coordinator))
+    p.append(subprocess.Popen([pycmd, "-u", path+"/coordinator.py"], cwd=path, stdout=file_coordinator, stderr=file_coordinator))
     #p.append(subprocess.Popen([pycmd,path+"/coordinator.py"], cwd=path))
     p[-1].name="coordinator"
 
     file_led_control = open(logpath + 'led_control.txt', 'w')
-    p.append(subprocess.Popen([pycmd,path+"/led_control.py"], cwd=path, stdout=file_led_control, stderr=file_led_control))
+    p.append(subprocess.Popen([pycmd, "-u", path+"/led_control.py"], cwd=path, stdout=file_led_control, stderr=file_led_control))
     p[-1].name="led"
 
     file_abh_gui_v3 = open(logpath + 'abh_gui_v3.txt', 'w')
@@ -98,12 +98,12 @@ try:
     p[-1].name="gui"
 
     file_microphone = open(logpath + 'microphone.txt', 'w')
-    p.append(subprocess.Popen([pycmd,path+"/../vosk/microphone.py"], cwd=path+"/../vosk", stdout=file_microphone, stderr=file_microphone))
+    p.append(subprocess.Popen([pycmd,  "-u",path+"/../vosk/microphone.py"], cwd=path+"/../vosk", stdout=file_microphone, stderr=file_microphone))
     p[-1].name="vosk"
 
 
     file_wifi = open(logpath + 'wifi_list.txt', 'w')
-    p.append(subprocess.Popen([pycmd,path+"/wifi_list.py"], cwd=path+"/../vosk", stdout=file_wifi, stderr=file_wifi))
+    p.append(subprocess.Popen([pycmd, "-u",path+"/wifi_list.py"], cwd=path+"/../vosk", stdout=file_wifi, stderr=file_wifi))
     p[-1].name="wifi_list"
     #
     # if (user=='jacobi'):
