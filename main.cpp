@@ -112,10 +112,12 @@ int main(int argc, char *argv[])
                      template_path);
 
   ListUserConfig user_config(data_path+"/../utenti");
-  user_config.readFile("test.csv");
-  std::cout << " valore: " <<user_config.getValue("colore1").toStdString() << std::endl;
-  std::cout << " valore: " <<user_config.getValue("colore2").toStdString() << std::endl;
-  std::cout << " valore: " <<user_config.getValue("colore3").toStdString() << std::endl;
+  user_config.readFile("test");
+  user_config.getValue("colore1");
+  user_config.getValue("colore2");
+  user_config.getValue("colore3");
+  user_config.setValue("colore1","0x000000");
+  user_config.getValue("colore1");
 
   std::cout << "create workouts" <<std::endl;
   abh::ProgrammaAllenamento workout(data_path+"/../utenti",
@@ -138,6 +140,8 @@ int main(int argc, char *argv[])
   custom_sessions.appendIcon(true);
 
 
+  UdpCom::UdpVideoStream udpStream;
+  udpStream.setPort("5000");
 
   ListStringCSV workout_list(data_path+"/allenamento_programmato");
 
@@ -290,6 +294,7 @@ int main(int argc, char *argv[])
   context->setContextProperty("_custom_workouts", &custom_workouts);
   context->setContextProperty("_custom_sessions", &custom_sessions);
   context->setContextProperty("_settings", &settings);
+  context->setContextProperty("udpStream", &udpStream);
 
 
 

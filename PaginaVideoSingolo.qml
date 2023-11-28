@@ -263,6 +263,7 @@ Item {
 
                 source: mp_esercizio_preparati
                 anchors.fill: parent
+                fillMode: VideoOutput.PreserveAspectFit
                 z:0
                 visible: false
             }

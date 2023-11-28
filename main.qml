@@ -63,7 +63,6 @@ ApplicationWindow {
         property bool voice: true
 
         onWifi_onChanged: {
-            console.log("connesso: ", wifi_on)
             if (wifi_on)
                 wifi_acceso=true
         }
@@ -349,11 +348,11 @@ ApplicationWindow {
 //        }
 //    }
 
-    UdpVideoStream {
-        id: udpStream
-        // @disable-check M16
-        port: "5000"
-    }
+//    UdpVideoStream {
+//        id: udpStream
+//        // @disable-check M16
+//        port: "5000"
+//    }
 
     Rectangle
     {

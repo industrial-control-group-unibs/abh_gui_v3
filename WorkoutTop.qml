@@ -166,6 +166,7 @@ Item
 
             source: mp_workout
             anchors.fill: parent
+            fillMode: VideoOutput.PreserveAspectFit
             z:0
             visible: false
         }
@@ -537,6 +538,7 @@ Item
 
             source: udpStream
             anchors.fill: parent
+            fillMode: VideoOutput.PreserveAspectFit
             z:0
             visible: false
         }
