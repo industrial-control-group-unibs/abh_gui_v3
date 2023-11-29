@@ -315,6 +315,7 @@ Item
         property real perc_saturata: 0
         property real velocita: 0
 
+        property string testo2: ""
         property string testo:
         {
             if (fb_udp.data[5]===0)
@@ -348,10 +349,12 @@ Item
             t3=t4
             t4=t5
             console.log("testo = ",testo)
-            if (testo==="FORWARD")
+            if (testo==="FORWARD" && testo2==="BACKWARD")
                 t5="F="+perc_saturata+"%;"+velocita+" | "
-            else if (testo==="BACKWARD")
+            else if (testo==="BACKWARD" && testo2==="FORWARD")
                 t5="B="+perc_saturata+"%;"+velocita+" | "
+
+            testo2=testo
         }
 
         text: testo+" V: "+perc+"%"+"\n" +t1+t2+t3+t4+t5
