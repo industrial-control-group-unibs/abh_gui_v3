@@ -333,15 +333,30 @@ Item
                 return "INITIALIZING"
         }
 
+        property string t1: ""
+        property string t2: ""
+        property string t3: ""
+        property string t4: ""
+        property string t5: ""
         onTestoChanged:
         {
             perc = fb_udp.data[6].toFixed(0)
             perc_saturata = fb_udp.data[3].toFixed(0)
             velocita = fb_udp.data[2].toFixed(1)
-            console.log("UQI")
+
+            t1=t2
+            t2=t3
+            t3=t4
+            t4=t5
+            console.log("testo = ",testo)
+            if (testo==="FORWARD")
+                t5="F="+perc_saturata+"%;"+velocita+" | "
+            else
+                t5="B="+perc_saturata+"%;"+velocita+" | "
         }
 
-        text: testo+" VISIONE: "+perc +  ". CAMBIO: VISIONE " + perc + " VELOCITA: " + velocita + " VISIONE SATURATA: " + perc_saturata
+        //text: testo+" VISIONE: "+perc
+        text: t1+t2+t3+t4+t5
 
     }
 

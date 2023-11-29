@@ -80,6 +80,15 @@ def exercise_thread():
                     repetition_count=repetition_count+1
                     print(repetition_count)
 
+        if state == Status.FORWARD:
+            motor_speed=motor_speed+0.03
+        elif state == Status.BACKWARD:
+            motor_speed = motor_speed - 0.03
+        if (motor_speed>100.0):
+            state = Status.BACKWARD
+        elif (motor_speed<-100.0):
+            state = Status.FORWARD
+        percentage=motor_speed
 
         stato_macchina=float(state.value)
         stato_macchina=11
@@ -91,12 +100,8 @@ def exercise_thread():
             stato_macchina=2
 
 
-        motor_speed=motor_speed+0.03
-        if (motor_speed>100.0):
-            motor_speed=0.0
-        percentage=motor_speed
 
-        
+
         repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina,percentage,percentage])
 
     if not isinstance(startstop_client,int):

@@ -75,7 +75,7 @@ Item
             PropertyChanges { target: rect_video_centrale; x: 0.75*component.width-0.5*width }
             PropertyChanges { target: rect_video_centrale; y: 0.5*(component.height-height)   }
             PropertyChanges { target: rect_video_centrale; visible: false }
-            PropertyChanges { target: rect_utente; visible: false }
+            PropertyChanges { target: rect_utente; visible: true }
         }
     ]
 
@@ -484,291 +484,291 @@ Item
     }
 
 
-    Rectangle
-    {
-        height: 0.7*component.height
-        x: 0.25*component.width-0.5*width
-        y: 0.5*(component.height-height)
-        width: 9/16*height
-        id: rect_grafici2
-        color: "transparent"
-        radius: rect_utente.radius
-        border.width: rect_video_centrale.border.width
-        border.color: parametri_generali.coloreBordo
-        visible: !rect_video_centrale.visible
+//    Rectangle
+//    {
+//        height: 0.7*component.height
+//        x: 0.25*component.width-0.5*width
+//        y: 0.5*(component.height-height)
+//        width: 9/16*height
+//        id: rect_grafici2
+//        color: "transparent"
+//        radius: rect_utente.radius
+//        border.width: rect_video_centrale.border.width
+//        border.color: parametri_generali.coloreBordo
+//        visible: !rect_video_centrale.visible
 
-        Testo
-        {
+//        Testo
+//        {
 
 
-            anchors.bottom: rect_grafici2.top
-            anchors.left: parent.left
-            anchors.right: parent.right
-            height: parent.height*0.1
-            font.pixelSize: 40
-            fontSizeMode: Text.Fit
-            verticalAlignment: Text.AlignBottom
-            text: chrt_areachart2.show_motor? qsTr("VELOCITA' ISTANTANEA"): chrt_areachart2.show_current? qsTr("POWER") :qsTr("VISIONE")
-            onTextChanged: chrt_areachart2.clear()
-            color: parametri_generali.coloreUtente
-        }
-        AreaChart{
-            id: chrt_areachart2
-            //            anchors.fill: parent
-            anchors
-            {
-                horizontalCenter: parent.horizontalCenter
-                verticalCenter: parent.verticalCenter
-            }
-            property bool show_motor: true
-            property bool show_current: false
-            width: parent.width
-            height: parent.height-2*parent.radius
+//            anchors.bottom: rect_grafici2.top
+//            anchors.left: parent.left
+//            anchors.right: parent.right
+//            height: parent.height*0.1
+//            font.pixelSize: 40
+//            fontSizeMode: Text.Fit
+//            verticalAlignment: Text.AlignBottom
+//            text: chrt_areachart2.show_motor? qsTr("VELOCITA' ISTANTANEA"): chrt_areachart2.show_current? qsTr("POWER") :qsTr("VISIONE")
+//            onTextChanged: chrt_areachart2.clear()
+//            color: parametri_generali.coloreUtente
+//        }
+//        AreaChart{
+//            id: chrt_areachart2
+//            //            anchors.fill: parent
+//            anchors
+//            {
+//                horizontalCenter: parent.horizontalCenter
+//                verticalCenter: parent.verticalCenter
+//            }
+//            property bool show_motor: true
+//            property bool show_current: false
+//            width: parent.width
+//            height: parent.height-2*parent.radius
 
-            // @disable-check M16
-            max: 100
-            // @disable-check M16
-            color:parametri_generali.coloreUtente
-            // @disable-check M16
-            chdata: show_motor? (fb_udp.data[2]) : show_current? 2.0*(fb_udp.data[7]-50.0): 2.0*(fb_udp.data[6]-50.0)
+//            // @disable-check M16
+//            max: 100
+//            // @disable-check M16
+//            color:parametri_generali.coloreUtente
+//            // @disable-check M16
+//            chdata: show_motor? (fb_udp.data[2]) : show_current? 2.0*(fb_udp.data[7]-50.0): 2.0*(fb_udp.data[6]-50.0)
 
-            MouseArea{
-                anchors.fill: parent
-                onPressed:
-                {
-                    if (parent.show_motor && !parent.show_current)
-                    {
-                        parent.show_motor=false
-                    }
-                    else if (!parent.show_motor && !parent.show_current)
-                    {
-                        parent.show_current=true
-                    }
-                    else
-                    {
-                        parent.show_current=false
-                        parent.show_motor=true
-                    }
-
-                }
-            }
-
-            RigaGrafico
-            {
-                value: 1.0
-                motore: chrt_areachart2.show_motor
-                larghezza: chrt_areachart2.width
-                altezza: chrt_areachart2.height
-                anchors.fill: parent
-            }
-            RigaGrafico
-            {
-                value: 0.9
-                motore: chrt_areachart2.show_motor
-                larghezza: chrt_areachart2.width
-                altezza: chrt_areachart2.height
-                anchors.fill: parent
-            }
-            RigaGrafico
-            {
-                value: 0.8
-                motore: chrt_areachart2.show_motor
-                larghezza: chrt_areachart2.width
-                altezza: chrt_areachart2.height
-                anchors.fill: parent
-            }
-            RigaGrafico
-            {
-                value: 0.7
-                motore: chrt_areachart2.show_motor
-                larghezza: chrt_areachart2.width
-                altezza: chrt_areachart2.height
-                anchors.fill: parent
-            }
-            RigaGrafico
-            {
-                value: 0.6
-                motore: chrt_areachart2.show_motor
-                larghezza: chrt_areachart2.width
-                altezza: chrt_areachart2.height
-                anchors.fill: parent
-            }
-            RigaGrafico
-            {
-                value: 0.5
-                motore: chrt_areachart2.show_motor
-                larghezza: chrt_areachart2.width
-                altezza: chrt_areachart2.height
-                anchors.fill: parent
-            }
-            RigaGrafico
-            {
-                value: 0.4
-                motore: chrt_areachart2.show_motor
-                larghezza: chrt_areachart2.width
-                altezza: chrt_areachart2.height
-                anchors.fill: parent
-            }
-            RigaGrafico
-            {
-                value: 0.3
-                motore: chrt_areachart2.show_motor
-                larghezza: chrt_areachart2.width
-                altezza: chrt_areachart2.height
-                anchors.fill: parent
-            }
-            RigaGrafico
-            {
-                value: 0.2
-                motore: chrt_areachart2.show_motor
-                larghezza: chrt_areachart2.width
-                altezza: chrt_areachart2.height
-                anchors.fill: parent
-            }
-            RigaGrafico
-            {
-                value: 0.1
-                motore: chrt_areachart2.show_motor
-                larghezza: chrt_areachart2.width
-                altezza: chrt_areachart2.height
-                anchors.fill: parent
-            }
-            RigaGrafico
-            {
-                value: 0.0
-                motore: chrt_areachart2.show_motor
-                larghezza: chrt_areachart2.width
-                altezza: chrt_areachart2.height
-                anchors.fill: parent
-            }
-
-//            Item {
-//                id: riga
-//                property real value: 0.8
-//                property real label: riga.motore? 100.0*riga.value:100.0*(-1+2*riga.value)
-//                property bool motore: chrt_areachart.show_motor
-//                property real larghezza: chrt_areachart.width
-//                property real altezza: chrt_areachart.height
+//            MouseArea{
 //                anchors.fill: parent
-//                Testo
+//                onPressed:
 //                {
-//                    anchors.top: parent.top
-//                    anchors.leftMargin: parent.width*0.1
-//                    anchors.topMargin: parent.height*(1-riga.value)-height*0.5
-//                    anchors.right: parent.left
-//                    anchors.rightMargin: parent.width*0.02
-//                    height: parent.height*0.1
-//                    width: parent.width*0.1
-//                    font.pixelSize: 20
-//                    horizontalAlignment: Text.AlignRight
-//                    verticalAlignment: Text.AlignVCenter
-//                    text: riga.label.toFixed(0).toString()
-//                    color: parametri_generali.coloreUtente
-//                }
-
-//                Shape {
-//                    anchors.fill: parent
-//                    ShapePath {
-//                        strokeColor: parametri_generali.coloreBordo
-//                        strokeWidth: 2.0
-//                        startX: 0
-//                        startY: riga.altezza*(1.0-riga.value)
-//                        PathLine { x: riga.larghezza; y: riga.altezza*(1.0-riga.value) }
+//                    if (parent.show_motor && !parent.show_current)
+//                    {
+//                        parent.show_motor=false
 //                    }
+//                    else if (!parent.show_motor && !parent.show_current)
+//                    {
+//                        parent.show_current=true
+//                    }
+//                    else
+//                    {
+//                        parent.show_current=false
+//                        parent.show_motor=true
+//                    }
+
 //                }
 //            }
 
+//            RigaGrafico
+//            {
+//                value: 1.0
+//                motore: chrt_areachart2.show_motor
+//                larghezza: chrt_areachart2.width
+//                altezza: chrt_areachart2.height
+//                anchors.fill: parent
+//            }
+//            RigaGrafico
+//            {
+//                value: 0.9
+//                motore: chrt_areachart2.show_motor
+//                larghezza: chrt_areachart2.width
+//                altezza: chrt_areachart2.height
+//                anchors.fill: parent
+//            }
+//            RigaGrafico
+//            {
+//                value: 0.8
+//                motore: chrt_areachart2.show_motor
+//                larghezza: chrt_areachart2.width
+//                altezza: chrt_areachart2.height
+//                anchors.fill: parent
+//            }
+//            RigaGrafico
+//            {
+//                value: 0.7
+//                motore: chrt_areachart2.show_motor
+//                larghezza: chrt_areachart2.width
+//                altezza: chrt_areachart2.height
+//                anchors.fill: parent
+//            }
+//            RigaGrafico
+//            {
+//                value: 0.6
+//                motore: chrt_areachart2.show_motor
+//                larghezza: chrt_areachart2.width
+//                altezza: chrt_areachart2.height
+//                anchors.fill: parent
+//            }
+//            RigaGrafico
+//            {
+//                value: 0.5
+//                motore: chrt_areachart2.show_motor
+//                larghezza: chrt_areachart2.width
+//                altezza: chrt_areachart2.height
+//                anchors.fill: parent
+//            }
+//            RigaGrafico
+//            {
+//                value: 0.4
+//                motore: chrt_areachart2.show_motor
+//                larghezza: chrt_areachart2.width
+//                altezza: chrt_areachart2.height
+//                anchors.fill: parent
+//            }
+//            RigaGrafico
+//            {
+//                value: 0.3
+//                motore: chrt_areachart2.show_motor
+//                larghezza: chrt_areachart2.width
+//                altezza: chrt_areachart2.height
+//                anchors.fill: parent
+//            }
+//            RigaGrafico
+//            {
+//                value: 0.2
+//                motore: chrt_areachart2.show_motor
+//                larghezza: chrt_areachart2.width
+//                altezza: chrt_areachart2.height
+//                anchors.fill: parent
+//            }
+//            RigaGrafico
+//            {
+//                value: 0.1
+//                motore: chrt_areachart2.show_motor
+//                larghezza: chrt_areachart2.width
+//                altezza: chrt_areachart2.height
+//                anchors.fill: parent
+//            }
+//            RigaGrafico
+//            {
+//                value: 0.0
+//                motore: chrt_areachart2.show_motor
+//                larghezza: chrt_areachart2.width
+//                altezza: chrt_areachart2.height
+//                anchors.fill: parent
+//            }
 
-            Shape {
-                anchors.fill: parent
-                id: limiti2
-                property real up: chrt_areachart2.height*0.5*(1-(selected_exercise.max_pos_speed/chrt_areachart2.max))
-                property real down: chrt_areachart2.height*0.5*(1-(selected_exercise.max_neg_speed/chrt_areachart2.max))
+////            Item {
+////                id: riga
+////                property real value: 0.8
+////                property real label: riga.motore? 100.0*riga.value:100.0*(-1+2*riga.value)
+////                property bool motore: chrt_areachart.show_motor
+////                property real larghezza: chrt_areachart.width
+////                property real altezza: chrt_areachart.height
+////                anchors.fill: parent
+////                Testo
+////                {
+////                    anchors.top: parent.top
+////                    anchors.leftMargin: parent.width*0.1
+////                    anchors.topMargin: parent.height*(1-riga.value)-height*0.5
+////                    anchors.right: parent.left
+////                    anchors.rightMargin: parent.width*0.02
+////                    height: parent.height*0.1
+////                    width: parent.width*0.1
+////                    font.pixelSize: 20
+////                    horizontalAlignment: Text.AlignRight
+////                    verticalAlignment: Text.AlignVCenter
+////                    text: riga.label.toFixed(0).toString()
+////                    color: parametri_generali.coloreUtente
+////                }
 
-                Testo
-                {
-                    anchors.top: parent.top
-                    anchors.left: parent.left
-                    anchors.leftMargin: parent.width*0.1
-                    anchors.topMargin: limiti2.up-height
-                    anchors.right: parent.right
-                    height: parent.height*0.1
-                    font.pixelSize: 20
-                    horizontalAlignment: Text.AlignLeft
-                    verticalAlignment: Text.AlignBottom
-                    text: qsTr("LIMITE SUPERIORE")
-                    color: parametri_generali.coloreUtente
-                    visible: chrt_areachart2.show_motor
-                }
-
-                Testo
-                {
-                    anchors.top: parent.top
-                    anchors.left: parent.left
-                    anchors.leftMargin: parent.width*0.1
-                    anchors.topMargin: limiti2.down
-                    anchors.right: parent.right
-                    height: parent.height*0.1
-                    font.pixelSize: 20
-                    horizontalAlignment: Text.AlignLeft
-                    verticalAlignment: Text.AlignTop
-                    text: qsTr("LIMITE INFERIORE")
-                    color: parametri_generali.coloreUtente
-                    visible: chrt_areachart2.show_motor
-                }
+////                Shape {
+////                    anchors.fill: parent
+////                    ShapePath {
+////                        strokeColor: parametri_generali.coloreBordo
+////                        strokeWidth: 2.0
+////                        startX: 0
+////                        startY: riga.altezza*(1.0-riga.value)
+////                        PathLine { x: riga.larghezza; y: riga.altezza*(1.0-riga.value) }
+////                    }
+////                }
+////            }
 
 
+//            Shape {
+//                anchors.fill: parent
+//                id: limiti2
+//                property real up: chrt_areachart2.height*0.5*(1-(selected_exercise.max_pos_speed/chrt_areachart2.max))
+//                property real down: chrt_areachart2.height*0.5*(1-(selected_exercise.max_neg_speed/chrt_areachart2.max))
 
-                ShapePath {
-                    strokeColor: chrt_areachart2.show_motor? (chrt_areachart2.chdata>selected_exercise.max_pos_speed?"red": parametri_generali.coloreBordo) : "transparent"
-                    strokeWidth: 2
-                    strokeStyle: ShapePath.DashLine
-                    //startY: parent.width*0.5*(1.0+selected_exercise.max_pos_speed/max)
+//                Testo
+//                {
+//                    anchors.top: parent.top
+//                    anchors.left: parent.left
+//                    anchors.leftMargin: parent.width*0.1
+//                    anchors.topMargin: limiti2.up-height
+//                    anchors.right: parent.right
+//                    height: parent.height*0.1
+//                    font.pixelSize: 20
+//                    horizontalAlignment: Text.AlignLeft
+//                    verticalAlignment: Text.AlignBottom
+//                    text: qsTr("LIMITE SUPERIORE")
+//                    color: parametri_generali.coloreUtente
+//                    visible: chrt_areachart2.show_motor
+//                }
 
-                    startX: 0
-                    startY: limiti.up
-                    PathLine { x: chrt_areachart2.width; y: limiti2.up }
-                }
-                ShapePath {
-                    strokeColor: chrt_areachart2.show_motor? (chrt_areachart2.chdata<selected_exercise.max_neg_speed?"red": parametri_generali.coloreBordo) : "transparent"
-                    strokeWidth: 2
-                    strokeStyle: ShapePath.DashLine
-                    //startY: parent.width*0.5*(1.0+selected_exercise.max_pos_speed/max)
-
-                    startX: 0
-                    startY: limiti.down
-                    PathLine { x: chrt_areachart2.width; y: limiti2.down }
-                }
-
-
-                ShapePath {
-                    strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 1
-                    startX:  chrt_areachart2.width*.5
-                    startY: 0
-                    PathLine { x: chrt_areachart2.width*.5; y: chrt_areachart2.height }
-                }
-
-                ShapePath {
-                    strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 1
-                    startX:  chrt_areachart2.width*.75
-                    startY: 0
-                    PathLine { x: chrt_areachart2.width*.75; y: chrt_areachart2.height }
-                }
-
-                ShapePath {
-                    strokeColor: parametri_generali.coloreBordo
-                    strokeWidth: 1
-                    startX:  chrt_areachart2.width*.25
-                    startY: 0
-                    PathLine { x: chrt_areachart2.width*.25; y: chrt_areachart2.height }
-                }
-            }
-        }
+//                Testo
+//                {
+//                    anchors.top: parent.top
+//                    anchors.left: parent.left
+//                    anchors.leftMargin: parent.width*0.1
+//                    anchors.topMargin: limiti2.down
+//                    anchors.right: parent.right
+//                    height: parent.height*0.1
+//                    font.pixelSize: 20
+//                    horizontalAlignment: Text.AlignLeft
+//                    verticalAlignment: Text.AlignTop
+//                    text: qsTr("LIMITE INFERIORE")
+//                    color: parametri_generali.coloreUtente
+//                    visible: chrt_areachart2.show_motor
+//                }
 
 
-    }
+
+//                ShapePath {
+//                    strokeColor: chrt_areachart2.show_motor? (chrt_areachart2.chdata>selected_exercise.max_pos_speed?"red": parametri_generali.coloreBordo) : "transparent"
+//                    strokeWidth: 2
+//                    strokeStyle: ShapePath.DashLine
+//                    //startY: parent.width*0.5*(1.0+selected_exercise.max_pos_speed/max)
+
+//                    startX: 0
+//                    startY: limiti.up
+//                    PathLine { x: chrt_areachart2.width; y: limiti2.up }
+//                }
+//                ShapePath {
+//                    strokeColor: chrt_areachart2.show_motor? (chrt_areachart2.chdata<selected_exercise.max_neg_speed?"red": parametri_generali.coloreBordo) : "transparent"
+//                    strokeWidth: 2
+//                    strokeStyle: ShapePath.DashLine
+//                    //startY: parent.width*0.5*(1.0+selected_exercise.max_pos_speed/max)
+
+//                    startX: 0
+//                    startY: limiti.down
+//                    PathLine { x: chrt_areachart2.width; y: limiti2.down }
+//                }
+
+
+//                ShapePath {
+//                    strokeColor: parametri_generali.coloreBordo
+//                    strokeWidth: 1
+//                    startX:  chrt_areachart2.width*.5
+//                    startY: 0
+//                    PathLine { x: chrt_areachart2.width*.5; y: chrt_areachart2.height }
+//                }
+
+//                ShapePath {
+//                    strokeColor: parametri_generali.coloreBordo
+//                    strokeWidth: 1
+//                    startX:  chrt_areachart2.width*.75
+//                    startY: 0
+//                    PathLine { x: chrt_areachart2.width*.75; y: chrt_areachart2.height }
+//                }
+
+//                ShapePath {
+//                    strokeColor: parametri_generali.coloreBordo
+//                    strokeWidth: 1
+//                    startX:  chrt_areachart2.width*.25
+//                    startY: 0
+//                    PathLine { x: chrt_areachart2.width*.25; y: chrt_areachart2.height }
+//                }
+//            }
+//        }
+
+
+//    }
 
 
     Rectangle   {
