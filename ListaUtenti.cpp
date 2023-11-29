@@ -428,7 +428,8 @@ void ListaUtenti::createStatFile(QString user_id)
   boost::filesystem::create_directories(dir_path_+"/../utenti/"+user_id.toStdString());
   boost::filesystem::rename(dir_path_+"/../utenti/foto.png",
                             dir_path_+"/../utenti/"+user_id.toStdString()+"/foto.png");
-
+  boost::filesystem::copy_file(dir_path_+"/../utenti/user_config.csv",
+                            dir_path_+"/../utenti/"+user_id.toStdString()+"/user_config.csv");
   std::string stat_file_name_=dir_path_+"/../utenti/"+user_id.toStdString()+"/stat.csv";
   std::cout << "create stat file: " << stat_file_name_ << std::endl;
   std::cout << "from template: " << template_path_+"/stat_template.csv" << std::endl;

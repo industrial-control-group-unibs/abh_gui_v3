@@ -22,7 +22,6 @@ Item {
         id: chiamata_sistema
         property int volume: parametri_generali.volume
         property string volumeString: chiamata_sistema.volume
-        property bool muted: isMuted()
         onVolumeChanged:
         {
             _user_config.setValue("volume",volumeString)
@@ -94,12 +93,10 @@ Item {
                     if (parametri_generali.voice)
                     {
                         _user_config.setValue("voice","false")
-                        state="vuoto"
-                    }
+                     }
                     else
                     {
                         _user_config.setValue("voice","true")
-                        state="pieno"
                     }
                 }
             }
@@ -107,7 +104,7 @@ Item {
 
             Testo
             {
-                text: component.muted?qsTr("PREMI PER DISATTIVARE AUDIO CONTEGGIO ESERCIZIO"):qsTr("PREMI PER ATTIVARE AUDIO CONTEGGIO ESERCIZIO")
+                text: parametri_generali.voice?qsTr("PREMI PER DISATTIVARE AUDIO CONTEGGIO ESERCIZIO"):qsTr("PREMI PER ATTIVARE AUDIO CONTEGGIO ESERCIZIO")
                 anchors
                 {
                     verticalCenter: icona_salva_pwd.verticalCenter
@@ -139,17 +136,19 @@ Item {
             IconaCerchio
             {
                 id: icona2
-                state: !chiamata_sistema.muted?"pieno":"vuoto"
+                state: !parametri_generali.mute?"pieno":"vuoto"
                 onPressed: {
-                    chiamata_sistema.string="pactl set-sink-mute @DEFAULT_SINK@ toggle"
-                    chiamata_sistema.call()
+                    if (parametri_generali.mute)
+                        _user_config.setValue("mute","false")
+                    else
+                        _user_config.setValue("mute","true")
                 }
             }
 
 
             Testo
             {
-                text: !chiamata_sistema.muted?qsTr("PREMI PER LA MODALITA' SILENZIOSA"):qsTr("PREMI PER USCIRE DALLA MODALITA' SILENZIOSA")
+                text: !parametri_generali.mute?qsTr("PREMI PER LA MODALITA' SILENZIOSA"):qsTr("PREMI PER USCIRE DALLA MODALITA' SILENZIOSA")
                 anchors
                 {
                     verticalCenter: icona2.verticalCenter
@@ -246,16 +245,12 @@ Item {
                 width: parent.height
                 onPressed:
                 {
-                    chiamata_sistema.string="pactl set-sink-mute @DEFAULT_SINK@ toggle"
-                    chiamata_sistema.call()
-                    chiamata_sistema.volume= chiamata_sistema.getVolume()
-                    chiamata_sistema.muted= chiamata_sistema.isMuted()
-
+                    _user_config.setValue("mute",parametri_generali.mute?"true":"false")
                 }
 
                 Testo
                 {
-                    text: chiamata_sistema.muted? qsTr("UNMUTE"): qsTr("MUTE")
+                    text: parametri_generali.mute? qsTr("UNMUTE"): qsTr("MUTE")
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                     verticalAlignment: Text.AlignVCenter

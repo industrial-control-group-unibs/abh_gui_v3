@@ -47,7 +47,7 @@ bool ListUserConfig::setValue(QString field, QString value)
       return true;
     }
   }
-  qCritical() << "the field does not exist = " << nome_file.c_str();
+  qCritical() << "the field " << field <<" does not exist = " << nome_file.c_str();
   return false;
 }
 

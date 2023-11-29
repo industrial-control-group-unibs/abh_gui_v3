@@ -94,7 +94,6 @@ def exercise_thread():
             motor_speed=0.0
         percentage=motor_speed
 
-        print(f"rep: {repetition_count}, stato: {stato_macchina}")
         motor_speed = 0.0
         repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina,percentage,percentage])
 

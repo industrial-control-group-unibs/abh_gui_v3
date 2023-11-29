@@ -79,6 +79,7 @@ void  BinaryReceiver::rebootThread()
   std::cout << "Rebooting thread" << std::endl;
   if (reboot_thread_.joinable())
     reboot_thread_.join();
+  std::cout << "joined" << std::endl;
   reboot_thread_=std::thread(&BinaryReceiver::createSocket,this);
   std::cout << "Rebooting thread: sequence launched" << std::endl;
 
@@ -138,12 +139,12 @@ void BinaryReceiver::createSocket()
 {
   if (port_.isEmpty())
     return;
-
+  stop_flag_=true;
+  if (thread_.joinable())
+    thread_.join();
   if (socket_)
   {
-    stop_flag_=true;
-    if (thread_.joinable())
-      thread_.join();
+
 
     stop_flag_=false;
     socket_.reset();

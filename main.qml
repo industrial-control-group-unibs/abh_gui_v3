@@ -109,6 +109,8 @@ ApplicationWindow {
             chiamata_sistema.call()
         }
 
+        onVoiceChanged: console.log("")
+
         Component.onCompleted:
         {
             coloreBordoTrasparent=Qt.rgba(coloreBordo.r, coloreBordo.g, coloreBordo.b, 0.440)
@@ -306,7 +308,7 @@ ApplicationWindow {
         // @disable-check M16
         host: "localhost"
         // @disable-check M16
-        string: impostazioni_utente.nome
+        string: impostazioni_utente.identifier
     }
 
     StringSender {

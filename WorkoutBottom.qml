@@ -197,7 +197,7 @@ Item
                         selected_exercise.score+=selected_exercise.power/(1.0*component.default_power*selected_exercise.reps*selected_exercise.sets)
 
                 }
-                if (ripetizioni===selected_exercise.reps)
+                if (ripetizioni===selected_exercise.reps && go_out.running===false)
                     playSound_1.play()
                 if (ripetizioni===selected_exercise.reps-1)
                     playSound_2.play()
