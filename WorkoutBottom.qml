@@ -311,7 +311,7 @@ Item
         anchors.right: parent.right
         anchors.bottom: parent.bottom
 
-        property real perc: 0
+        property real perc: fb_udp.data[6].toFixed(0)
         property real perc_saturata: 0
         property real velocita: 0
 
@@ -340,7 +340,6 @@ Item
         property string t5: ""
         onTestoChanged:
         {
-            perc = fb_udp.data[6].toFixed(0)
             perc_saturata = fb_udp.data[3].toFixed(0)
             velocita = fb_udp.data[2].toFixed(1)
 
