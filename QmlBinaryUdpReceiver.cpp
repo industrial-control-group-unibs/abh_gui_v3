@@ -171,6 +171,7 @@ BinaryReceiver::~BinaryReceiver()
   stop_flag_=true;
   if (thread_.joinable())
     thread_.join();
-
+  if (reboot_thread_.joinable())
+    reboot_thread_.join();
 }
 }
