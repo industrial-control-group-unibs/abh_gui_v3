@@ -45,7 +45,7 @@ def exercise_thread():
     state=Status.STOP
     repetition_count=1
     direction=1
-    motor_speed=0
+    motor_speed=2
     percentage=0
     vosk_command=0
 
@@ -96,7 +96,7 @@ def exercise_thread():
             motor_speed=0.0
         percentage=motor_speed
 
-        motor_speed = 0.0
+        
         repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina,percentage,percentage])
 
     if not isinstance(startstop_client,int):
