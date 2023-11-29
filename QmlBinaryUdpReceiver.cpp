@@ -72,7 +72,12 @@ bool BinaryReceiver::receivedData()
 
 void  BinaryReceiver::rebootThread()
 {
-  createSocket();
+  std::cout << "Rebooting thread" << std::endl;
+  if (reboot_thread_.joinable())
+    reboot_thread_.join();
+  reboot_thread_=std::thread(&BinaryReceiver::createSocket,this);
+  std::cout << "Rebooting thread: sequence launched" << std::endl;
+
 }
 
 void BinaryReceiver::readThread()
@@ -85,6 +90,8 @@ void BinaryReceiver::readThread()
 
     if (socket_->isUnreadDataAvailable())
     {
+      if (!received_data_)
+        std::cout << "First data received"  << std::endl;
       received_data_=true;
       std::vector<double> v=socket_->getData();
       if (v.size()==size_)
@@ -138,7 +145,7 @@ void BinaryReceiver::createSocket()
     socket_.reset();
   }
   try {
-    qDebug() << "create udp_binary_helper::Receiver. Port: "<<port_;
+    qInfo() << "create udp_binary_helper::Receiver. Port: "<<port_;
     socket_=std::make_shared<udp_binary_helper::Receiver>( port_.toStdString());
     stop_flag_=false;
     connected_=true;
@@ -150,6 +157,7 @@ void BinaryReceiver::createSocket()
     return;
   }
   thread_=std::thread(&BinaryReceiver::readThread,this);
+  std::cout << "Rebooting thread: done" << std::endl;
 
 
 }

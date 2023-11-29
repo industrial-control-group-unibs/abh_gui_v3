@@ -49,6 +49,7 @@ protected:
   bool stop_flag_=false;
   bool received_data_=false;
   std::thread thread_;
+  std::thread reboot_thread_;
   int size_;
 
   std::mutex data_mtx;

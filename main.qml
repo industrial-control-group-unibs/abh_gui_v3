@@ -331,6 +331,7 @@ ApplicationWindow {
             if (!fb_udp.receivedData())
             {
                 console.log("Unable to received data")
+                fb_udp.rebootThread()
             }
             _wifi.readFile("wifi_list")
             parametri_generali.wifi_on=false
