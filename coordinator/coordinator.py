@@ -40,7 +40,7 @@ def exercise_thread():
 
 
     if (user!='jacobi'):
-        df = pd.read_excel (r'/home/'+user+'/Scrivania/abh/abh_data/esercizi.xlsx', sheet_name='ParameteriForza')
+        df = pd.read_excel (r'/home/'+user+'/Scrivania/abh/abh_data/esercizi_controllo.xlsx', sheet_name='ParameteriForza')
         df_forza=pd.read_csv(r'/home/'+user+'/Scrivania/abh/abh_data/livelli_potenza.csv')
     else:
         df = pd.read_excel (r'/home/jacobi/projects/abh//abh_data/esercizi.xlsx', sheet_name='ParameteriForza')
