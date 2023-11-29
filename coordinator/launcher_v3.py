@@ -173,10 +173,6 @@ try:
                     is_died = True
                     file_launcher.write(f"process is died: {p[idx].name}")
                     file_launcher.flush()
-                else:
-                    is_died=True
-                    file_launcher.write(f"process is died: {p[idx].name}")
-                    file_launcher.flush()
 
         if (is_died):
             break
