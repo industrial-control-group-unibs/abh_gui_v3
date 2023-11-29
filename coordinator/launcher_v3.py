@@ -101,12 +101,6 @@ try:
 
     if (user!='jacobi'):
         file_visione = open(logpath + 'visione.txt', 'w')
-        time.sleep(2)
-        proc = subprocess.Popen([pycmd, "-u", "/home/"+user+"/ABHORIZON_PC_VISION/AB_main_PC.py"], cwd=r'/home/'+user+'/ABHORIZON_PC_VISION', stdout=file_visione, stderr=file_visione)
-        time.sleep(3)
-        proc.send_signal(signal.SIGKILL)
-
-        time.sleep(2)
         proc = subprocess.Popen([pycmd, "-u", "/home/" + user + "/ABHORIZON_PC_VISION/AB_main_PC.py"],
                                 cwd=r'/home/' + user + '/ABHORIZON_PC_VISION', stdout=file_visione, stderr=file_visione)
 
