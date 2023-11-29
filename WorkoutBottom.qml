@@ -212,6 +212,7 @@ Item
                 {
                     playSound_ding.play()
                     go_out.running = true
+                    ripetizioni=selected_exercise.reps
 //                    pageLoader.source = "PaginaRiposo.qml"
                 }
             }
