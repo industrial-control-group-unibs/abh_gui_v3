@@ -9,6 +9,7 @@ import BinaryReceiver 1.0
 import BinarySender 1.0
 import UdpVideoStream 1.0
 import QtGraphicalEffects 1.12
+import SysCall 1.0
 
 
 
@@ -19,6 +20,30 @@ ApplicationWindow {
     height: width/1080*1920
 
 
+    Connections {
+        target: _user_config
+        onUpdated: {
+            parametri_generali.lingua=_user_config.getValue("lingua")
+            impostazioni_utente.nome=_user_config.getValue("nome")
+            impostazioni_utente.foto=_user_config.getValue("foto")
+            parametri_generali.coloreBordo=_user_config.getValue("coloreBordo")
+            parametri_generali.coloreSfondo =  _user_config.getValue("coloreSfondo")
+            parametri_generali.coloreUtente =  _user_config.getValue("coloreUtente")
+            parametri_generali.coloreLed =  _user_config.getValue("coloreLed")
+            parametri_generali.voice =  _user_config.getValue("voice")==="true"
+            parametri_generali.mute =  _user_config.getValue("mute")==="true"
+            parametri_generali.volume =  parseInt(_user_config.getValue("volume"))
+
+            console.log("Parametri aggiornati")
+        }
+    }
+
+    SysCall
+    {
+        id: chiamata_sistema
+        property int volume: getVolume()
+        property bool muted: isMuted()
+    }
 
     visibility: _fullscreen?"FullScreen":false
     onVisibilityChanged: {
@@ -61,10 +86,27 @@ ApplicationWindow {
         property bool wifi_on: false
         property bool wifi_acceso: wifi_on
         property bool voice: true
+        property bool mute: false
+        property int volume: 100
 
         onWifi_onChanged: {
             if (wifi_on)
                 wifi_acceso=true
+        }
+
+        onVolumeChanged:
+        {
+            chiamata_sistema.string="pactl set-sink-volume @DEFAULT_SINK@ "+volume+"%"
+            chiamata_sistema.call()
+        }
+
+        onMuteChanged:
+        {
+            if (mute)
+                chiamata_sistema.string="pactl set-sink-mute @DEFAULT_SINK@ on"
+            else
+                chiamata_sistema.string="pactl set-sink-mute @DEFAULT_SINK@ off"
+            chiamata_sistema.call()
         }
 
         Component.onCompleted:
@@ -152,6 +194,10 @@ ApplicationWindow {
         {
 
             _utenti.readFile()
+        }
+        onIdentifierChanged:
+        {
+            _user_config.readFile(identifier+"/user_config")
         }
     }
 

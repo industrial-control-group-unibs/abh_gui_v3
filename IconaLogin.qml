@@ -37,13 +37,13 @@ Item
             }
             else
             {
-                impostazioni_utente.nome=nome
-                impostazioni_utente.foto=foto
+//                impostazioni_utente.nome=nome
+//                impostazioni_utente.foto=foto
                 impostazioni_utente.identifier=identifier
-                parametri_generali.coloreSfondo      =  coloreSfondo
-                parametri_generali.coloreBordo       =  coloreBordo
-                parametri_generali.coloreUtente      =  coloreUtente
-                parametri_generali.coloreLed         =  coloreLed
+//                parametri_generali.coloreSfondo      =  coloreSfondo
+//                //parametri_generali.coloreBordo       =  coloreBordo
+//                parametri_generali.coloreUtente      =  coloreUtente
+//                parametri_generali.coloreLed         =  coloreLed
 
                 if (_utenti.getStorePassword(impostazioni_utente.identifier))
                     pageLoader.source=  "PaginaAllenamento.qml"

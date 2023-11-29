@@ -17,7 +17,8 @@ Item {
 
     Component.onDestruction:
     {
-        _utenti.saveColor(impostazioni_utente.identifier,parametri_generali.coloreBordo,parametri_generali.coloreSfondo,parametri_generali.coloreUtente,parametri_generali.coloreLed)
+        //_utenti.saveColor(impostazioni_utente.identifier,parametri_generali.coloreBordo,parametri_generali.coloreSfondo,parametri_generali.coloreUtente,parametri_generali.coloreLed)
+        _user_config.setValue("coloreBordo",parametri_generali.coloreBordo)
     }
 
 //    property variant internalModel: ListModel {

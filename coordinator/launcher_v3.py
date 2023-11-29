@@ -70,19 +70,9 @@ try:
     file_launcher.write("Start launcher\n")
     file_launcher.flush()
 
-    if (user!='jacobi'):
-        file_visione = open(logpath + 'visione.txt', 'w')
-        p.append(subprocess.Popen([pycmd, "-u", "/home/"+user+"/ABHORIZON_PC_VISION/AB_main_PC.py"], cwd=r'/home/'+user+'/ABHORIZON_PC_VISION', stdout=file_visione, stderr=file_visione))
-        p[-1].name="vision"
-        time.sleep(0.5)
-        file_motor_control = open(logpath + 'motor_control.txt', 'w')
-        p.append(subprocess.Popen([pycmd, "-u", path + "/motor_control.py"], cwd=path, stdout=file_motor_control,
-                                  stderr=file_motor_control))
-        p[-1].name = "motor_control"
-
-    else:
-        p.append(subprocess.Popen([pycmd, path + "/sender.py"], cwd=path))
-        p[-1].name = "sender"
+    file_abh_gui_v3 = open(logpath + 'abh_gui_v3.txt', 'w')
+    p.append(subprocess.Popen([path+"/../build/abh_gui_v3"], cwd=path, stdout=file_abh_gui_v3, stderr=file_abh_gui_v3))
+    p[-1].name="gui"
 
     file_coordinator = open(logpath + 'coordinator.txt', 'w')
     p.append(subprocess.Popen([pycmd, "-u", path+"/coordinator.py"], cwd=path, stdout=file_coordinator, stderr=file_coordinator))
@@ -93,9 +83,6 @@ try:
     p.append(subprocess.Popen([pycmd, "-u", path+"/led_control.py"], cwd=path, stdout=file_led_control, stderr=file_led_control))
     p[-1].name="led"
 
-    file_abh_gui_v3 = open(logpath + 'abh_gui_v3.txt', 'w')
-    p.append(subprocess.Popen([path+"/../build/abh_gui_v3"], cwd=path, stdout=file_abh_gui_v3, stderr=file_abh_gui_v3))
-    p[-1].name="gui"
 
     file_microphone = open(logpath + 'microphone.txt', 'w')
     p.append(subprocess.Popen([pycmd,  "-u",path+"/../vosk/microphone.py"], cwd=path+"/../vosk", stdout=file_microphone, stderr=file_microphone))
@@ -105,6 +92,22 @@ try:
     file_wifi = open(logpath + 'wifi_list.txt', 'w')
     p.append(subprocess.Popen([pycmd, "-u",path+"/wifi_list.py"], cwd=path+"/../vosk", stdout=file_wifi, stderr=file_wifi))
     p[-1].name="wifi_list"
+
+    if (user!='jacobi'):
+        file_motor_control = open(logpath + 'motor_control.txt', 'w')
+        p.append(subprocess.Popen([pycmd, "-u", path + "/motor_control.py"], cwd=path, stdout=file_motor_control,
+                                  stderr=file_motor_control))
+        p[-1].name = "motor_control"
+
+    if (user!='jacobi'):
+        time.sleep(5)
+        file_visione = open(logpath + 'visione.txt', 'w')
+        p.append(subprocess.Popen([pycmd, "-u", "/home/"+user+"/ABHORIZON_PC_VISION/AB_main_PC.py"], cwd=r'/home/'+user+'/ABHORIZON_PC_VISION', stdout=file_visione, stderr=file_visione))
+        p[-1].name="vision"
+    else:
+        p.append(subprocess.Popen([pycmd, path + "/sender.py"], cwd=path))
+        p[-1].name = "sender"
+
     #
     # if (user=='jacobi'):
     #     file_coordinator = open(logpath + 'coordinator.txt', 'w')
@@ -157,6 +160,18 @@ try:
                     p[idx] = proc
                     p[idx].name = "motor_control"
                     file_launcher.write(f"restart {p[idx].name}\n")
+                    file_launcher.flush()
+                elif (proc.name == "vision" and proc.returncode < 0):
+                    proc = subprocess.Popen([pycmd, "-u", "/home/" + user + "/ABHORIZON_PC_VISION/AB_main_PC.py"],
+                                            cwd=r'/home/' + user + '/ABHORIZON_PC_VISION', stdout=file_visione,
+                                            stderr=file_visione)
+                    p[idx] = proc
+                    p[idx].name = "vision"
+                    file_launcher.write(f"restart {p[idx].name}\n")
+                    file_launcher.flush()
+                else:
+                    is_died = True
+                    file_launcher.write(f"process is died: {p[idx].name}")
                     file_launcher.flush()
                 else:
                     is_died=True

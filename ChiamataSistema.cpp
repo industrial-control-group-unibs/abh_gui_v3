@@ -43,7 +43,7 @@ std::string SysCall::execute(std::string cmd)
 int SysCall::getVolume()
 {
 
-  std::string cmd="amixer -c 1 -M -D pulse get Master | grep -m 1 -o -E [[:digit:]]+% | tr -d \"%\"";
+  std::string cmd="amixer  -M -D pulse get Master | grep -m 1 -o -E [[:digit:]]+% | tr -d \"%\"";
   std::string cmd_out=execute(cmd);
   int volume=std::stoi(cmd_out);
 

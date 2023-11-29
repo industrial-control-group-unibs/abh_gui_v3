@@ -6,8 +6,6 @@ import QtQuick.Shapes 1.12
 
 import QtQuick.Layouts 1.1
 
-import SysCall 1.0
-
 Item {
     id: component
     anchors.fill: parent

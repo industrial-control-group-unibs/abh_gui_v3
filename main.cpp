@@ -112,12 +112,7 @@ int main(int argc, char *argv[])
                      template_path);
 
   ListUserConfig user_config(data_path+"/../utenti");
-  user_config.readFile("test");
-  user_config.getValue("colore1");
-  user_config.getValue("colore2");
-  user_config.getValue("colore3");
-  user_config.setValue("colore1","0x000000");
-  user_config.getValue("colore1");
+  user_config.readFile("user_config");
 
   std::cout << "create workouts" <<std::endl;
   abh::ProgrammaAllenamento workout(data_path+"/../utenti",
@@ -224,6 +219,8 @@ int main(int argc, char *argv[])
 
   utenti.setDefaultColor(default_values);
 
+
+
   ListaWifi wifi;
   ListStringCSV wifi2(data_path+"/../utenti");
   wifi2.appendIcon(false);
@@ -295,6 +292,7 @@ int main(int argc, char *argv[])
   context->setContextProperty("_custom_sessions", &custom_sessions);
   context->setContextProperty("_settings", &settings);
   context->setContextProperty("udpStream", &udpStream);
+  context->setContextProperty("_user_config", &user_config);
 
 
 

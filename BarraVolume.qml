@@ -13,13 +13,20 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
+    Component.onCompleted: console.log("entrato")
+
     Barra_superiore{}
 
     SysCall
     {
         id: chiamata_sistema
-        property int volume: getVolume()
+        property int volume: parametri_generali.volume
+        property string volumeString: chiamata_sistema.volume
         property bool muted: isMuted()
+        onVolumeChanged:
+        {
+            _user_config.setValue("volume",volumeString)
+        }
     }
 
     SoundEffect {
@@ -86,12 +93,12 @@ Item {
                 onPressed: {
                     if (parametri_generali.voice)
                     {
-                        parametri_generali.voice=false
+                        _user_config.setValue("voice","false")
                         state="vuoto"
                     }
                     else
                     {
-                        parametri_generali.voice=true
+                        _user_config.setValue("voice","true")
                         state="pieno"
                     }
                 }
@@ -136,8 +143,6 @@ Item {
                 onPressed: {
                     chiamata_sistema.string="pactl set-sink-mute @DEFAULT_SINK@ toggle"
                     chiamata_sistema.call()
-                    chiamata_sistema.volume= chiamata_sistema.getVolume()
-                    chiamata_sistema.muted= chiamata_sistema.isMuted()
                 }
             }
 
@@ -183,9 +188,7 @@ Item {
                 {
                     if (chiamata_sistema.volume>=0)
                     {
-                    chiamata_sistema.string="pactl set-sink-volume @DEFAULT_SINK@ -5%"
-                    chiamata_sistema.call()
-                    chiamata_sistema.volume= chiamata_sistema.getVolume()
+                      chiamata_sistema.volume -= 5
                     }
                     playSound_ding.play()
                 }
@@ -204,9 +207,7 @@ Item {
                 {
                     if (chiamata_sistema.volume<100)
                     {
-                        chiamata_sistema.string="pactl set-sink-volume @DEFAULT_SINK@ +5%"
-                        chiamata_sistema.call()
-                        chiamata_sistema.volume= chiamata_sistema.getVolume()
+                        chiamata_sistema.volume += 5
                     }
                     playSound_ding.play()
                 }
@@ -268,6 +269,8 @@ Item {
 
 
     }
+
+
 }
 
 

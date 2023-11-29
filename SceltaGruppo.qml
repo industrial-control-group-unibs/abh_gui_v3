@@ -13,7 +13,6 @@ Item {
 
     Barra_superiore{titolo: qsTr("ALLENAMENTO LIBERO")}
 
-    Component.onCompleted: console.log("loading SceltaGruppo")
 
     Component.onDestruction:
     {
@@ -58,7 +57,6 @@ Item {
             currentIndex:-1
 
             delegate: IconaImmagine{
-                Component.onCompleted: console.log("loading ",ex_name)
                 color: parametri_generali.coloreBordo
                 highlighted:
                 {
