@@ -351,7 +351,7 @@ Item
             console.log("testo = ",testo)
             if (testo==="FORWARD")
                 t5="F="+perc_saturata+"%;"+velocita+" | "
-            else
+            elseif (testo==="BACKWARD")
                 t5="B="+perc_saturata+"%;"+velocita+" | "
         }
 

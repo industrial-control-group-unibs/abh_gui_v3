@@ -91,13 +91,13 @@ def exercise_thread():
         percentage=motor_speed
 
         stato_macchina=float(state.value)
-        stato_macchina=11
-        if repetition_count==1:
-            stato_macchina=11
-        if repetition_count<=4:
-            stato_macchina=10
-        if (repetition_count>10 and repetition_count<20):
-            stato_macchina=2
+        # stato_macchina=11
+        # if repetition_count==1:
+        #     stato_macchina=11
+        # if repetition_count<=4:
+        #     stato_macchina=10
+        # if (repetition_count>10 and repetition_count<20):
+        #     stato_macchina=2
 
 
 
