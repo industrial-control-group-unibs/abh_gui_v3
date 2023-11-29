@@ -51,9 +51,11 @@ def exercise_thread():
 
     idx=0
     send_data=True
+
     while (not stop):
         time.sleep(0.001)
         idx=idx+1
+
         if (startstop_client.isNewStringAvailable()):
             stringa=startstop_client.getLastStringAndClearQueue()
             print(stringa)

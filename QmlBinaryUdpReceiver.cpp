@@ -129,7 +129,7 @@ void BinaryReceiver::readThread()
          socket_->setDataSize(size_);
       }
     }
-    usleep(1000);
+    usleep(10);
   }
   std::cout << "[" << name_.toStdString() <<": " << port_.toStdString() << "]" << " stop read thread" << std::endl;
   socket_.reset();
@@ -144,14 +144,13 @@ void BinaryReceiver::createSocket()
     thread_.join();
   if (socket_)
   {
-
-
     stop_flag_=false;
     socket_.reset();
   }
   try {
     qInfo() << "create udp_binary_helper::Receiver. Port: "<<port_;
     socket_=std::make_shared<udp_binary_helper::Receiver>( port_.toStdString());
+    socket_->setDataSize(size_);
     stop_flag_=false;
     connected_=true;
   }
