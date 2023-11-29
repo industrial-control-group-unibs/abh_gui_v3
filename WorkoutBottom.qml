@@ -51,7 +51,7 @@ Item
 
     Timer{
         id: go_out
-        interval: 500
+        interval: 200
         repeat: false
         running: false
         onTriggered:
