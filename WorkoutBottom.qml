@@ -355,8 +355,7 @@ Item
                 t5="B="+perc_saturata+"%;"+velocita+" | "
         }
 
-        //text: testo+" VISIONE: "+perc
-        text: t1+t2+t3+t4+t5
+        text: testo+" V: "+perc+"%"+"\n" +t1+t2+t3+t4+t5
 
     }
 
