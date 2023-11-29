@@ -67,6 +67,10 @@ bool BinaryReceiver::receivedData()
 {
   bool tmp=received_data_;
   received_data_=false;
+  if (tmp)
+    std::cout << "RECEIVED" << std::endl;
+  else
+    std::cout << "NOT RECEIVED" << std::endl;
   return tmp;
 }
 
