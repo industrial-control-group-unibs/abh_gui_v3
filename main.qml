@@ -332,7 +332,6 @@ ApplicationWindow {
             {
                 console.log("Unable to received data")
             }
-            received_data=false
             _wifi.readFile("wifi_list")
             parametri_generali.wifi_on=false
             for (var index=0; index<_wifi.rowCount(); index++)
