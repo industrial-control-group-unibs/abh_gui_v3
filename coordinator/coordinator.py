@@ -301,6 +301,9 @@ def exercise_thread():
                     percentage=min(percentage,max(0,float(repetition_state[2])))
                 initializing=repetition_state[2] == -30
                 calibrating=repetition_state[2] == -50
+                if repetition_state[2] < 0:
+                    percentage = 50.0
+
                 #print(rep_count_from_vision,exercise_type)
 
                 if (exercise_type>1):
