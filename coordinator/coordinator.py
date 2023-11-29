@@ -174,7 +174,8 @@ def exercise_thread():
 
         if (vosk_client.isNewDataAvailable()):
             vosk_command=vosk_client.getLastDataAndClearQueue()[0]
-            print(f"vosk comamnd={vosk_command}")
+            if vosk_command>0:
+                print(f"vosk comamnd={vosk_command}")
 
         if (type_client.isNewDataAvailable()):
             exercise_type=type_client.getLastDataAndClearQueue()[0]
@@ -314,7 +315,10 @@ def exercise_thread():
             else:
               print("lunghezza messaggio visione non corretta")
         else:
-            vision_msg_counter+=1
+            if state == Status.STOP:
+                vision_msg_counter=0
+            else:
+                vision_msg_counter+=1
             if (vision_msg_counter>10000):
               print("no messaggi da visione")
               vision_msg_counter=0
