@@ -27,12 +27,10 @@ class Status(Enum):
     REWIRE    =  3
 
 class MotorStatus(Enum):
-    INIT_FORWARD = 0
     MOVE_FORWARD = 1
     REST_FORWARD = 2
     MOVE_BACKWARD = 3
     REST_BACKWARD = 4
-    INIT_BACKWARD = 5
 
 stop=False
 def handler(signal_received, frame):
@@ -69,7 +67,7 @@ def exercise_thread():
     calibrating=False
     initializing=False
 
-    motor_status = MotorStatus.INIT_BACKWARD
+    motor_status = MotorStatus.REST_BACKWARD
 
 
 
