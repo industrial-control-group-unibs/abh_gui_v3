@@ -355,7 +355,7 @@ def exercise_thread():
         if ( (state == Status.FORWARD) and
              ( (motor_speed<motor_speed_threshold and direction==-1 and exercise["force"]<20  and (switch_timer>switch_timer_th)) or
                ((motor_speed<motor_speed_early_stop) and  (percentage>percentage_early_stop)) or
-               (initializing and motor_status== motor_status.REST_BACKWARD)
+               (( initializing or calibrating)  and (motor_status == motor_status.REST_BACKWARD and motor_status == motor_status.MOVE_BACKWARD))
              )
            ):
             state=Status.BACKWARD
