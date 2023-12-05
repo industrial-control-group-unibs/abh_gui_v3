@@ -26,6 +26,14 @@ class Status(Enum):
     UNDEFINED =  2
     REWIRE    =  3
 
+class MotorStatus(Enum):
+    INIT_FORWARD = 0
+    MOVE_FORWARD = 1
+    REST_FORWARD = 2
+    MOVE_BACKWARD = 3
+    REST_BACKWARD = 4
+    INIT_BACKWARD = 5
+
 stop=False
 def handler(signal_received, frame):
     global stop
@@ -60,6 +68,8 @@ def exercise_thread():
     percentage_graph=0
     calibrating=False
     initializing=False
+
+    motor_status = MotorStatus.INIT_BACKWARD
 
 
 
@@ -326,6 +336,23 @@ def exercise_thread():
               print("no messaggi da visione")
               vision_msg_counter=0
               rep_count_from_vision=-10
+
+        prev_motor_status = motor_status
+        if motor_status == MotorStatus.REST_BACKWARD and motor_speed<motor_speed_threshold_return*2.0:
+            motor_status = MotorStatus.MOVE_BACKWARD
+        elif motor_status == MotorStatus.REST_BACKWARD and motor_speed>0:
+            motor_status = MotorStatus.REST_FORWARD
+        elif motor_status == MotorStatus.MOVE_BACKWARD and motor_speed>motor_speed_threshold_return:
+            motor_status = MotorStatus.REST_FORWARD
+        elif motor_status == MotorStatus.REST_FORWARD and motor_speed>motor_speed_threshold*2:
+            motor_status = MotorStatus.MOVE_FORWARD
+        elif motor_status == MotorStatus.REST_FORWARD and motor_speed < 0:
+            motor_status = MotorStatus.REST_BACKWARD
+        elif motor_status == MotorStatus.MOVE_FORWARD and motor_speed<motor_speed_threshold:
+            motor_status = MotorStatus.REST_BACKWARD
+        if motor_status != prev_motor_status:
+            print(f"change from {prev_motor_status} to {motor_status}")
+
 
         if ( (state == Status.FORWARD) and
              ( (motor_speed<motor_speed_threshold and direction==-1 and exercise["force"]<20  and (switch_timer>switch_timer_th)) or
