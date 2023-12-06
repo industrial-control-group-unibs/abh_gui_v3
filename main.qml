@@ -18,12 +18,8 @@ ApplicationWindow {
     width: 1080
     //    height: 1080
     height: width/1080*1920
-    Component.onCompleted:
-    {
+    id: app
 
-        _user_config.readFile("user_config")
-        updateValue()
-    }
 
     signal updateValue
     onUpdateValue: {
@@ -74,7 +70,7 @@ ApplicationWindow {
         property color coloreSfondo: "#2A211B"
         property color coloreUtente: "#8c177b"
         property color coloreUtenteTrasparent: "#c6aa7640"
-        property color coloreLed: "#ffffff"
+        property color coloreLed: "#000000"
         property color coloreLedInizio: "#ff0000"
         property color coloreLedFine: "#00ff00"
         property color coloreLedPausa: "#ffff00"
