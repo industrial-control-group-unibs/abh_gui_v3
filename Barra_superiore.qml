@@ -112,6 +112,7 @@ Item
 
     IconaWifi
     {
+        id: icona_wifi
         anchors
         {
             bottom: immagine_utente.bottom
@@ -125,9 +126,59 @@ Item
         MouseArea
         {
             anchors.fill: parent
-            onClicked: pageLoader.source="PaginaConnessioni.qml"
+            onClicked:
+            {
+                if (parametri_generali.login_page)
+                    pageLoader.source="PaginaConnessioni.qml"
+            }
         }
     }
+    IconaAudio
+    {
+        anchors
+        {
+            bottom: icona_wifi.bottom
+            left: icona_wifi.right
+            leftMargin: 2
+        }
+        id: icona_audio
+        width: icona_wifi.width
+        color: parametri_generali.coloreBordo
+        active: !parametri_generali.mute
+
+        MouseArea
+        {
+            anchors.fill: parent
+            onClicked:
+            {
+                if (parametri_generali.login_page)
+                    pageLoader.source="BarraVolume.qml"
+            }
+        }
+    }
+    IconaLingua
+    {
+        anchors
+        {
+            bottom: icona_audio.bottom
+            left: icona_audio.right
+            leftMargin: 10
+        }
+        width: icona_audio.width*.75
+
+        color: parametri_generali.coloreBordo
+
+        MouseArea
+        {
+            anchors.fill: parent
+            onClicked:
+            {
+                if (parametri_generali.login_page)
+                    pageLoader.source="PaginaLingue.qml"
+            }
+        }
+    }
+
     Rectangle {
 
         id: immagine_utente

@@ -194,7 +194,7 @@ Item {
                 width: parent.width
                 height: width
                 tacche: 120
-                value: 1-conto_alla_rovescia.position/conto_alla_rovescia.duration
+                value: (conto_alla_rovescia.position/conto_alla_rovescia.duration)
                 tempo: (conto_alla_rovescia.duration-conto_alla_rovescia.position) //timerino.remaining_time
                 onTempoChanged:
                 {

@@ -11,8 +11,10 @@ CircularSlider {
     width: 120
     height: width
 
+
     property color colore: parametri_generali.coloreBordo
     property color coloreTesto: parametri_generali.coloreBordo
+
 
 
     interactive: false
@@ -26,51 +28,51 @@ CircularSlider {
 
         function getTime() {
             var hours   = Math.floor(tempo*.001 / 3600)
-                                     var minutes = Math.floor((tempo*.001-hours*3600) / 60)
-                                     var seconds = Math.floor((tempo*.001-hours*3600-minutes*60))
-                                     return (hours>0?((hours < 10 ? "0" + hours : hours)+":"):"") +
-                                     (minutes < 10 ? "0" + minutes : minutes) + ":" +
-                                     (seconds < 10 ? "0" + seconds : seconds)
+            var minutes = Math.floor((tempo*.001-hours*3600) / 60)
+            var seconds = Math.floor((tempo*.001-hours*3600-minutes*60))
+            return (hours>0?((hours < 10 ? "0" + hours : hours)+":"):"") +
+            (minutes < 10 ? "0" + minutes : minutes) + ":" +
+            (seconds < 10 ? "0" + seconds : seconds)        }
+
+                 anchors
+                 {
+                     horizontalCenter: parent.horizontalCenter
+                     verticalCenter: parent.verticalCenter
+                 }
+                 color:  progressIndicator.coloreTesto
+                 font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
+
+                 font.italic: false
+                 font.letterSpacing: 0
+                 font.pixelSize: 30/120*progressIndicator.width
+                 font.weight: Font.Normal
+                 horizontalAlignment: Text.AlignHCenter
+                 verticalAlignment: Text.AlignTop
+
+                 fontSizeMode: Text.Fit
         }
 
-                                     anchors
-                                     {
-                                         horizontalCenter: parent.horizontalCenter
-                                         verticalCenter: parent.verticalCenter
-                                     }
-                                     color:  progressIndicator.coloreTesto
-                                     font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
+         Repeater {
+             model: progressIndicator.tacche
 
-                                     font.italic: false
-                                     font.letterSpacing: 0
-                                     font.pixelSize: 30/120*progressIndicator.width
-                                     font.weight: Font.Normal
-                                     horizontalAlignment: Text.AlignHCenter
-                                     verticalAlignment: Text.AlignTop
+             Rectangle {
+                 id: indicator1
+                 width: 4
+                 height: width
+                 radius: width / 2
 
-                                     fontSizeMode: Text.Fit
-        }
-
-                                     Repeater {
-                                         model: progressIndicator.tacche
-
-                                         Rectangle {
-                                             id: indicator1
-                                             width: 4
-                                             height: width
-                                             radius: width / 2
-                                             color: indicator1.angle > progressIndicator.angle ? "transparent" : progressIndicator.colore
-                                             readonly property real angle: index * 360/progressIndicator.tacche
-                                             transform: [
-                                                 Translate {
-                                                     x: progressIndicator.width / 2 - width / 2
-                                                 },
-                                                 Rotation {
-                                                     origin.x: progressIndicator.width / 2
-                                                     origin.y: progressIndicator.height / 2
-                                                     angle: indicator1.angle
-                                                 }
-                                             ]
-                                         }
-                                     }
+                 color: indicator1.angle > progressIndicator.angle ? "transparent" : progressIndicator.colore
+                 readonly property real angle: index * 360/progressIndicator.tacche
+                 transform: [
+                     Translate {
+                         x: progressIndicator.width / 2 - width / 2
+                     },
+                     Rotation {
+                         origin.x: progressIndicator.width / 2
+                         origin.y: progressIndicator.height / 2
+                         angle: indicator1.angle
+                     }
+                 ]
+             }
+         }
         }

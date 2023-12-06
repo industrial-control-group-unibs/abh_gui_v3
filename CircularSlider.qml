@@ -99,7 +99,7 @@ Item {
         This property holds the current value of the slider.
         The default value is \c{0.0}.
     */
-    property real value: 0.0
+    property real value: 0.5
 
     /*!
         \qmlproperty real CircularSlider::angle

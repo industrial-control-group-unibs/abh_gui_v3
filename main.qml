@@ -199,6 +199,7 @@ ApplicationWindow {
         }
         onIdentifierChanged:
         {
+            console.log("Reading user_config of ",identifier)
             _user_config.readFile(identifier+"/user_config")
         }
     }

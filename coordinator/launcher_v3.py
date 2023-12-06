@@ -74,8 +74,13 @@ try:
     p.append(subprocess.Popen([path+"/../build/abh_gui_v3"], cwd=path, stdout=file_abh_gui_v3, stderr=file_abh_gui_v3))
     p[-1].name="gui"
 
+
     file_coordinator = open(logpath + 'coordinator.txt', 'w')
-    p.append(subprocess.Popen([pycmd, "-u", path+"/coordinator.py"], cwd=path, stdout=file_coordinator, stderr=file_coordinator))
+    if (user != 'jacobi'):
+        p.append(subprocess.Popen([pycmd, "-u", path+"/coordinator.py"], cwd=path, stdout=file_coordinator, stderr=file_coordinator))
+    else:
+        p.append(subprocess.Popen([pycmd, "-u", path + "/fake_coordinator.py"], cwd=path, stdout=file_coordinator,
+                                  stderr=file_coordinator))
     #p.append(subprocess.Popen([pycmd,path+"/coordinator.py"], cwd=path))
     p[-1].name="coordinator"
 
@@ -107,8 +112,9 @@ try:
         p.append(proc)
         p[-1].name="vision"
     else:
-        p.append(subprocess.Popen([pycmd, path + "/sender.py"], cwd=path))
-        p[-1].name = "sender"
+        print("solo camera")
+        #p.append(subprocess.Popen([pycmd, path + "/sender.py"], cwd=path))
+        #p[-1].name = "sender"
 
     #
     # if (user=='jacobi'):

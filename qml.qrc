@@ -121,5 +121,7 @@
         <file>PaginaProseguiWorkout.qml</file>
         <file>ColorSelector.qml</file>
         <file>IconaWifi.qml</file>
+        <file>IconaAudio.qml</file>
+        <file>IconaLingua.qml</file>
     </qresource>
 </RCC>
