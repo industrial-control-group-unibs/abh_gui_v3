@@ -20,7 +20,9 @@ Rectangle {
         impostazioni_utente.foto=""
         impostazioni_utente.identifier=""
         parametri_generali.login_page=true
-        parametri_generali.coloreLed="0xffffff"
+
+        _user_config.readFile("user_config")
+        app.updateValue()
         led_udp.data=[parametri_generali.coloreLed.r, parametri_generali.coloreLed.g, parametri_generali.coloreLed.b]
         led_udp.send()
     }
@@ -31,8 +33,7 @@ Rectangle {
         _active_workouts.readFile((impostazioni_utente.identifier+"/ACTIVEWORKOUT"))
         _custom_workouts.readFile((impostazioni_utente.identifier+"/CUSTOMWORKOUT"))
 
-        _user_config.readFile("user_config")
-        app.updateValue()
+
     }
 
 

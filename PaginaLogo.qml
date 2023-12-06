@@ -16,7 +16,10 @@ Rectangle {
 
     color:parametri_generali.coloreSfondo
 
-    Component.onCompleted: led_udp.data=[parametri_generali.coloreLed.r, parametri_generali.coloreLed.g, parametri_generali.coloreLed.b]
+    Component.onCompleted:
+    {
+        led_udp.data=[parametri_generali.coloreLed.r, parametri_generali.coloreLed.g, parametri_generali.coloreLed.b]
+    }
     clip: true 
 
 //    Timer {
