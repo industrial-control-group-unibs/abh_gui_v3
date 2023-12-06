@@ -22,8 +22,7 @@ Rectangle {
         parametri_generali.login_page=true
 
         _user_config.readFile("user_config")
-        app.updateValue()
-        led_udp.data=[parametri_generali.coloreLed.r, parametri_generali.coloreLed.g, parametri_generali.coloreLed.b]
+        //app.updateValue()
         led_udp.send()
     }
     Component.onDestruction:

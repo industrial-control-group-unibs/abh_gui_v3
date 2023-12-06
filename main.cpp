@@ -291,7 +291,7 @@ int main(int argc, char *argv[])
   context->setContextProperty("_custom_workouts", &custom_workouts);
   context->setContextProperty("_custom_sessions", &custom_sessions);
   context->setContextProperty("_settings", &settings);
-//  context->setContextProperty("udpStream", &udpStream);
+  context->setContextProperty("udpStream", &udpStream);
   context->setContextProperty("_user_config", &user_config);
 
 
