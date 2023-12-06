@@ -15,7 +15,7 @@ CircularSlider {
     property color colore: parametri_generali.coloreBordo
     property color coloreTesto: parametri_generali.coloreBordo
 
-
+    property bool visualizza_tempo: true
 
     interactive: false
     property int tacche: 60
@@ -23,6 +23,8 @@ CircularSlider {
 
     Text {
         text: time_string
+
+        visible: parent.visualizza_tempo
 
         property string time_string: getTime()
 

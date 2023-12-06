@@ -179,6 +179,15 @@ Item
         colore: parametri_generali.coloreBordo
         ripetizioni: fb_udp.data[0]
         property real ratio: 1.0
+
+        CircularTimer {
+            colore: parametri_generali.coloreUtente
+            anchors.fill: parent
+            anchors.margins: parent.width*0.05
+            value: parent.ratio
+            visualizza_tempo: false
+        }
+
         onRipetizioniChanged: {
 
             conto_alla_rovescia.restart()
