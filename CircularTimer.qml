@@ -16,7 +16,7 @@ CircularSlider {
     property color coloreTesto: parametri_generali.coloreBordo
 
     property bool visualizza_tempo: true
-
+    property double dimensione_tache: 4
     interactive: false
     property int tacche: 60
     property double tempo: 0.0
@@ -59,7 +59,7 @@ CircularSlider {
 
              Rectangle {
                  id: indicator1
-                 width: 4
+                 width: progressIndicator.dimensione_tache
                  height: width
                  radius: width / 2
 

@@ -183,9 +183,10 @@ Item
         CircularTimer {
             colore: parametri_generali.coloreUtente
             anchors.fill: parent
-            anchors.margins: parent.width*0.05
+            anchors.margins: -dimensione_tache*0.5
             value: parent.ratio
             visualizza_tempo: false
+            dimensione_tache: 8
         }
 
         onRipetizioniChanged: {
