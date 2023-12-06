@@ -110,74 +110,7 @@ Item
     }
 
 
-    IconaWifi
-    {
-        id: icona_wifi
-        anchors
-        {
-            bottom: immagine_utente.bottom
-            right: immagine_utente.right
-            rightMargin: -80
-            bottomMargin: -20
-        }
-        width: 40
-        color: parametri_generali.coloreBordo
-        connesso: parametri_generali.wifi_on
-        MouseArea
-        {
-            anchors.fill: parent
-            onClicked:
-            {
-                if (parametri_generali.login_page)
-                    pageLoader.source="PaginaConnessioni.qml"
-            }
-        }
-    }
-    IconaAudio
-    {
-        anchors
-        {
-            bottom: icona_wifi.bottom
-            left: icona_wifi.right
-            leftMargin: 2
-        }
-        id: icona_audio
-        width: icona_wifi.width
-        color: parametri_generali.coloreBordo
-        active: !parametri_generali.mute
 
-        MouseArea
-        {
-            anchors.fill: parent
-            onClicked:
-            {
-                if (parametri_generali.login_page)
-                    pageLoader.source="BarraVolume.qml"
-            }
-        }
-    }
-    IconaLingua
-    {
-        anchors
-        {
-            bottom: icona_audio.bottom
-            left: icona_audio.right
-            leftMargin: 10
-        }
-        width: icona_audio.width*.75
-
-        color: parametri_generali.coloreBordo
-
-        MouseArea
-        {
-            anchors.fill: parent
-            onClicked:
-            {
-                if (parametri_generali.login_page)
-                    pageLoader.source="PaginaLingue.qml"
-            }
-        }
-    }
 
     Rectangle {
 
@@ -349,6 +282,76 @@ Item
             }
         }
 
+    }
+
+    IconaWifi
+    {
+        id: icona_wifi
+        anchors
+        {
+            top: parent.top
+            left: logo_barra.left
+            leftMargin: -30
+            topMargin: 5
+        }
+        width: 40
+        color: parametri_generali.coloreBordo
+        connesso: parametri_generali.wifi_on
+        MouseArea
+        {
+            anchors.fill: parent
+            onClicked:
+            {
+                if (parametri_generali.login_page)
+                    pageLoader.source="PaginaConnessioni.qml"
+            }
+        }
+    }
+
+    IconaAudio
+    {
+        anchors
+        {
+            bottom: icona_wifi.bottom
+            left: icona_wifi.right
+            leftMargin: 2
+        }
+        id: icona_audio
+        width: icona_wifi.width
+        color: parametri_generali.coloreBordo
+        active: !parametri_generali.mute
+
+        MouseArea
+        {
+            anchors.fill: parent
+            onClicked:
+            {
+                if (parametri_generali.login_page)
+                    pageLoader.source="BarraVolume.qml"
+            }
+        }
+    }
+    IconaLingua
+    {
+        anchors
+        {
+            bottom: icona_audio.bottom
+            left: icona_audio.right
+            leftMargin: 10
+        }
+        width: icona_audio.width*.75
+
+        color: parametri_generali.coloreBordo
+
+        MouseArea
+        {
+            anchors.fill: parent
+            onClicked:
+            {
+                if (parametri_generali.login_page)
+                    pageLoader.source="PaginaLingue.qml"
+            }
+        }
     }
 
     Item
