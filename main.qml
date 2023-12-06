@@ -20,6 +20,11 @@ ApplicationWindow {
     height: width/1080*1920
     id: app
 
+    Component.onCompleted:
+    {
+        chiamata_sistema.string="pactl set-sink-mute @DEFAULT_SINK@ off"
+        chiamata_sistema.call()
+    }
 
     signal updateValue
     onUpdateValue: {
@@ -30,11 +35,16 @@ ApplicationWindow {
         parametri_generali.coloreSfondo =  _user_config.getValue("coloreSfondo")
         parametri_generali.coloreUtente =  _user_config.getValue("coloreUtente")
         parametri_generali.coloreLed =  _user_config.getValue("coloreLed")
+        parametri_generali.coloreLedInizio =  _user_config.getValue("coloreLedInizio")
+        parametri_generali.coloreLedFine =  _user_config.getValue("coloreLedFine")
+        parametri_generali.coloreLedPausa =  _user_config.getValue("coloreLedPausa")
+        parametri_generali.coloreLedFinePausa =  _user_config.getValue("coloreLedFinePausa")
         parametri_generali.voice =  _user_config.getValue("voice")==="true"
         parametri_generali.mute =  _user_config.getValue("mute")==="true"
         parametri_generali.volume =  parseInt(_user_config.getValue("volume"))
 
         console.log("Parametri aggiornati")
+        console.log("Colore led: ", parametri_generali.coloreLed)
     }
 
     Connections {
@@ -141,14 +151,14 @@ ApplicationWindow {
         states: [
             State {
                 name: "SABBIA"
-                PropertyChanges { target: parametri_generali; coloreBordo:  _default[0]} //"#c6aa76"
-                PropertyChanges { target: parametri_generali; coloreSfondo: _default[1]}
-                PropertyChanges { target: parametri_generali; coloreUtente: _default[2]}
-                PropertyChanges { target: parametri_generali; coloreLed:    _default[3]}
-                PropertyChanges { target: parametri_generali; coloreLedInizio:    _default[4]}
-                PropertyChanges { target: parametri_generali; coloreLedFine:      _default[5]}
-                PropertyChanges { target: parametri_generali; coloreLedPausa:     _default[6]}
-                PropertyChanges { target: parametri_generali; coloreLedFinePausa: _default[7]}
+                //PropertyChanges { target: parametri_generali; coloreBordo:  _default[0]} //"#c6aa76"
+                //PropertyChanges { target: parametri_generali; coloreSfondo: _default[1]}
+                //PropertyChanges { target: parametri_generali; coloreUtente: _default[2]}
+                //ropertyChanges { target: parametri_generali; coloreLed:    _default[3]}
+//                PropertyChanges { target: parametri_generali; coloreLedInizio:    _default[4]}
+//                PropertyChanges { target: parametri_generali; coloreLedFine:      _default[5]}
+//                PropertyChanges { target: parametri_generali; coloreLedPausa:     _default[6]}
+//                PropertyChanges { target: parametri_generali; coloreLedFinePausa: _default[7]}
             }
         ]
     }
