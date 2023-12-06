@@ -291,7 +291,7 @@ Item
         {
             top: parent.top
             left: logo_barra.left
-            leftMargin: -25
+            leftMargin: -120
             topMargin: 2
         }
         width: 40
