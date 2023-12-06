@@ -19,6 +19,9 @@ Item {
     {
         //_utenti.saveColor(impostazioni_utente.identifier,parametri_generali.coloreBordo,parametri_generali.coloreSfondo,parametri_generali.coloreUtente,parametri_generali.coloreLed)
         _user_config.setValue("coloreBordo",parametri_generali.coloreBordo)
+        _user_config.setValue("coloreSfondo",parametri_generali.coloreSfondo)
+        _user_config.setValue("coloreUtente",parametri_generali.coloreUtente)
+        _user_config.setValue("coloreLed",parametri_generali.coloreLed)
     }
 
 //    property variant internalModel: ListModel {
