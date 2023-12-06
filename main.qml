@@ -18,6 +18,7 @@ ApplicationWindow {
     width: 1080
     //    height: 1080
     height: width/1080*1920
+    Component.onCompleted: _user_config.readFile("/user_config")
 
 
     Connections {
