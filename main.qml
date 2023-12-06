@@ -18,25 +18,32 @@ ApplicationWindow {
     width: 1080
     //    height: 1080
     height: width/1080*1920
-    Component.onCompleted: _user_config.readFile("user_config")
+    Component.onCompleted:
+    {
 
+        _user_config.readFile("user_config")
+        updateValue()
+    }
+
+    signal updateValue
+    onUpdateValue: {
+        parametri_generali.lingua=_user_config.getValue("lingua")
+        impostazioni_utente.nome=_user_config.getValue("nome")
+        impostazioni_utente.foto=_user_config.getValue("foto")
+        parametri_generali.coloreBordo=_user_config.getValue("coloreBordo")
+        parametri_generali.coloreSfondo =  _user_config.getValue("coloreSfondo")
+        parametri_generali.coloreUtente =  _user_config.getValue("coloreUtente")
+        parametri_generali.coloreLed =  _user_config.getValue("coloreLed")
+        parametri_generali.voice =  _user_config.getValue("voice")==="true"
+        parametri_generali.mute =  _user_config.getValue("mute")==="true"
+        parametri_generali.volume =  parseInt(_user_config.getValue("volume"))
+
+        console.log("Parametri aggiornati")
+    }
 
     Connections {
         target: _user_config
-        onUpdated: {
-            parametri_generali.lingua=_user_config.getValue("lingua")
-            impostazioni_utente.nome=_user_config.getValue("nome")
-            impostazioni_utente.foto=_user_config.getValue("foto")
-            parametri_generali.coloreBordo=_user_config.getValue("coloreBordo")
-            parametri_generali.coloreSfondo =  _user_config.getValue("coloreSfondo")
-            parametri_generali.coloreUtente =  _user_config.getValue("coloreUtente")
-            parametri_generali.coloreLed =  _user_config.getValue("coloreLed")
-            parametri_generali.voice =  _user_config.getValue("voice")==="true"
-            parametri_generali.mute =  _user_config.getValue("mute")==="true"
-            parametri_generali.volume =  parseInt(_user_config.getValue("volume"))
-
-            console.log("Parametri aggiornati")
-        }
+        onUpdated: updateValue()
     }
 
     SysCall
