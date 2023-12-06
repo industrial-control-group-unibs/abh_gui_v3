@@ -67,10 +67,6 @@ bool BinaryReceiver::receivedData()
 {
   bool tmp=received_data_;
   received_data_=false;
-  if (tmp)
-    std::cout << "RECEIVED" << std::endl;
-  else
-    std::cout << "NOT RECEIVED" << std::endl;
   return tmp;
 }
 
@@ -95,11 +91,11 @@ void BinaryReceiver::readThread()
 
     if (socket_->isUnreadDataAvailable())
     {
-      if (!received_data_)
-        std::cout << "First data received"  << std::endl;
+      //if (!received_data_)
+      //  qDebug() << "First data received" ;
       received_data_=true;
       std::vector<double> v=socket_->getData();
-      if (v.size()==size_)
+      if ((int)v.size()==size_)
       {
         data_mtx.lock();
         for (size_t idx=0;idx<v.size();idx++)
@@ -112,7 +108,7 @@ void BinaryReceiver::readThread()
       else
       {
         std::cout << "[" << name_.toStdString() <<": " << port_.toStdString() << "]" << v.size()<< " instead of " << size_ << std::endl;
-        if (v.size()<size_)
+        if ((int)v.size()<size_)
         {
           int tmp_size=(size_-v.size());
           socket_->setDataSize(tmp_size);

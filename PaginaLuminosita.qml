@@ -14,11 +14,6 @@ Item {
 
     Barra_superiore{}
 
-    SysCall
-    {
-        id: chiamata_sistema
-        property int luminosita: _light
-    }
 
 
 
@@ -76,11 +71,9 @@ Item {
                 black: true
                 onPressed:
                 {
-                    if (chiamata_sistema.luminosita>15)
+                    if (parametri_generali.luminosita>15)
                     {
-                        chiamata_sistema.luminosita-=5
-                        chiamata_sistema.string="xrandr --output "+parametri_generali.monitor+ " --brightness "+chiamata_sistema.luminosita*0.01
-                        chiamata_sistema.call()
+                        _user_config.setValue("luminosita",parametri_generali.luminosita-5)
                     }
                 }
                 id: meno
@@ -96,11 +89,9 @@ Item {
 //                anchors.top: parent.top
                 onPressed:
                 {
-                    if (chiamata_sistema.luminosita<95)
+                    if (parametri_generali.luminosita<95)
                     {
-                        chiamata_sistema.luminosita+=5
-                        chiamata_sistema.string="xrandr --output "+parametri_generali.monitor+ " --brightness "+chiamata_sistema.luminosita*0.01
-                        chiamata_sistema.call()
+                        _user_config.setValue("luminosita",parametri_generali.luminosita+5)
                     }
                 }
                 id: piu
@@ -108,7 +99,7 @@ Item {
 
             Item
             {
-                anchors.horizontalCenter: parent.horizontalCenter
+                //anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.left: meno.right
                 anchors.right: piu.left
@@ -122,7 +113,7 @@ Item {
                         anchors.fill: parent
                         gradient: Gradient {
                             GradientStop { position: 0.0; color: parametri_generali.coloreUtente}
-                            GradientStop { position: (0.8*chiamata_sistema.luminosita+80)/300; color: "transparent" }
+                            GradientStop { position: (0.8*parametri_generali.luminosita+80)/300; color: "transparent" }
                         }
                     }
             }

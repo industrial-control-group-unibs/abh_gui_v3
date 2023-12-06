@@ -117,7 +117,6 @@ bool ListStringCSV::rename(QString oldname, QString newname, bool replace)
     return false;
 
 
-  std::cout << oldfile<<std::endl;
   rapidcsv::Document doc(oldfile);
 
   doc.Save(newfile);

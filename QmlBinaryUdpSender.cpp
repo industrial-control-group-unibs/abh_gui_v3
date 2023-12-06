@@ -61,7 +61,6 @@ void BinarySender::createSocket()
   if (host_.isEmpty() or port_.isEmpty())
     return;
 
-  std::cout << host_.toStdString() << " : " << port_.toStdString() << std::endl;
   if (socket_)
   {
     socket_.reset();

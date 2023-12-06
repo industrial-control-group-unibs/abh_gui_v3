@@ -119,8 +119,8 @@ Item {
                             anchors.fill: parent
                             onClicked:
                             {
-                                _settings.setLanguage(dict)
-                                parametri_generali.lingua=dict
+                                _user_config.setValue("lingua",dict)
+
                             }
                             z: 40
                         }

@@ -42,9 +42,7 @@ ApplicationWindow {
         parametri_generali.voice =  _user_config.getValue("voice")==="true"
         parametri_generali.mute =  _user_config.getValue("mute")==="true"
         parametri_generali.volume =  parseInt(_user_config.getValue("volume"))
-
-        console.log("Parametri aggiornati")
-        console.log("Colore led: ", parametri_generali.coloreLed)
+        parametri_generali.luminosita =  parseInt(_user_config.getValue("luminosita"))
     }
 
     Connections {
@@ -93,7 +91,7 @@ ApplicationWindow {
         property string wifi_name
         property bool wifi_known
         property bool wifi_connected
-        property string lingua: "abh_it"
+        property string lingua: ""
         property string wifi_net: _default[9]
         property string monitor: _default[10]
         property string touch: _default[11]
@@ -102,10 +100,30 @@ ApplicationWindow {
         property bool voice: true
         property bool mute: false
         property int volume: 100
+        property int luminosita: 100
 
         onWifi_onChanged: {
             if (wifi_on)
                 wifi_acceso=true
+        }
+
+        onLuminositaChanged:
+        {
+            if (parametri_generali.luminosita>=10 && parametri_generali.luminosita<=100)
+            {
+                chiamata_sistema.string="xrandr --output "+parametri_generali.monitor+ " --brightness "+parametri_generali.luminosita*0.01
+                chiamata_sistema.call()
+            }
+            else
+            {
+                console.error("luminosità = ", parametri_generali.luminosita)
+            }
+        }
+
+        onLinguaChanged:
+        {
+            console.log("lingua: ",lingua)
+            _settings.setLanguage(lingua)
         }
 
         onVolumeChanged:
@@ -146,21 +164,6 @@ ApplicationWindow {
             led_udp.data=[coloreLed.r, coloreLed.g, coloreLed.b]
         }
 
-        state: "SABBIA"
-
-        states: [
-            State {
-                name: "SABBIA"
-                //PropertyChanges { target: parametri_generali; coloreBordo:  _default[0]} //"#c6aa76"
-                //PropertyChanges { target: parametri_generali; coloreSfondo: _default[1]}
-                //PropertyChanges { target: parametri_generali; coloreUtente: _default[2]}
-                //ropertyChanges { target: parametri_generali; coloreLed:    _default[3]}
-//                PropertyChanges { target: parametri_generali; coloreLedInizio:    _default[4]}
-//                PropertyChanges { target: parametri_generali; coloreLedFine:      _default[5]}
-//                PropertyChanges { target: parametri_generali; coloreLedPausa:     _default[6]}
-//                PropertyChanges { target: parametri_generali; coloreLedFinePausa: _default[7]}
-            }
-        ]
     }
 
     Timer
@@ -360,7 +363,6 @@ ApplicationWindow {
                     parametri_generali.wifi_on=true
                 }
             }
-            console.log("tick")
         }
     }
     BinaryReceiver

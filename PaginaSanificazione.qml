@@ -21,7 +21,6 @@ Item {
     SysCall
     {
         id: chiamata_sistema
-        property int luminosita: _light
     }
 
 

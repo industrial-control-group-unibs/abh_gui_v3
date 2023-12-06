@@ -147,7 +147,7 @@ Item
         }
 
         Image {
-            visible: impostazioni_utente.nome !==""
+            visible: impostazioni_utente.identifier !==""
             id: img_barra
             layer.enabled: true
             fillMode: Image.PreserveAspectCrop

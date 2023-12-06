@@ -37,7 +37,6 @@ bool ListUserConfig::setValue(QString field, QString value)
   std::string str=field.toStdString();
   for (size_t idx=0;idx<doc_->GetRowCount();idx++)
   {
-    std::cout << doc_->GetCell<std::string>(0,idx) << std::endl;
     if (!doc_->GetCell<std::string>(0,idx).compare(str))
     {
       doc_->SetCell<std::string>(1,idx,value.toStdString());
@@ -63,7 +62,6 @@ QString ListUserConfig::getValue(QString field)
   std::string str=field.toStdString();
   for (size_t idx=0;idx<doc_->GetRowCount();idx++)
   {
-    std::cout << "v";
     if (!doc_->GetCell<std::string>(0,idx).compare(str))
     {
       std::string value= doc_->GetCell<std::string>(1,idx);

@@ -67,7 +67,6 @@ int main(int argc, char *argv[])
   QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
   std::string Username = getlogin();
-  std::cout << Username << std::endl;
   bool fs=true;
   if (!Username.compare("jacobi"))
   {
@@ -98,31 +97,24 @@ int main(int argc, char *argv[])
 
   QString q_template_path=QString::fromStdString(template_path);
 
-  std::cout << "reading file from " << dir_path <<std::endl;
   QString data_path=QString::fromStdString(dir_path);
 
-  std::cout << "create model" <<std::endl;
   ListaNome model(data_path);
   ListString ls;
-  std::cout << "create zone" <<std::endl;
   ListaImmagini zone(data_path+"/zone");
 
-  std::cout << "create users" <<std::endl;
   ListaUtenti utenti(data_path+"/../utenti",
                      template_path);
 
   ListUserConfig user_config(data_path+"/../utenti");
   user_config.readFile("user_config");
 
-  std::cout << "create workouts" <<std::endl;
   abh::ProgrammaAllenamento workout(data_path+"/../utenti",
                                     data_path+"/allenamento_programmato",
                                     template_path);
 
-  std::cout << "create exercise descriptions" <<std::endl;
   abh::DescrizioneEsercizi esercizi(data_path);
 
-  std::cout << "reading file from " << dir_path <<std::endl;
   StringQuee queue;
 
   ListStringCSV active_workouts(data_path+"/../utenti");
@@ -164,8 +156,6 @@ int main(int argc, char *argv[])
     wifi_name=info.GetCell<std::string>(1,0);
     monitor=info.GetCell<std::string>(1,1);
     touch=info.GetCell<std::string>(1,2);
-    std::cout << "touch: " << touch << std::endl;
-
   } catch (std::exception ex) {
     std::cerr << "error:" << ex.what() <<std::endl;
     std::cerr << "file " << dir_path <<"/../utenti/device_names.csv is wrong, it should have 3 rows" << std::endl;
@@ -232,10 +222,11 @@ int main(int argc, char *argv[])
 
   std::shared_ptr<QGuiApplication> app=std::make_shared<QGuiApplication>(argc, argv);
   std::shared_ptr<QTranslator> translator=std::make_shared<QTranslator>();
+  //if (!translator->load("abh_en",QString().fromStdString(dir_path)+"/traduzioni/"))
   if (!translator->load("abh_it"))
-    std::cerr << "unable to load translation" <<std::endl;
+    std::cerr << "unable to load translation" << std::endl;
   if (!app->installTranslator(translator.get()))
-    std::cerr << "unable to install translation" <<std::endl;
+    std::cerr << "unable to install translation" << std::endl;
 
   std::shared_ptr<QQmlApplicationEngine> engine=std::make_shared<QQmlApplicationEngine>();
 
@@ -303,9 +294,6 @@ int main(int argc, char *argv[])
   engine->rootContext()->setContextProperty("_privacy", privacy);
   engine->rootContext()->setContextProperty("_info", info);
 
-  double light=std::stod(exec("light"));
-  std::cout << "light = " << light <<std::endl;
-  engine->rootContext()->setContextProperty("_light", light);
 
 
   const QUrl url(QStringLiteral("qrc:/main.qml"));
