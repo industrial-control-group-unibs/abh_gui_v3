@@ -8,7 +8,7 @@ import QtQuick.Layouts 1.1
 
 PaginaSiNo
 {
-    titolo: qsTr("VUOI SALVARE LA PASSWORD?")
+    titolo: qsTr("VUOI SALVARE IL PIN?")
 
 
     onPressNo: {

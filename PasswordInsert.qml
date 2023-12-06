@@ -5,7 +5,7 @@ Item {
     id: component
     anchors.fill: parent
 
-    property string titolo: qsTr("INSERISCI PASSWORD")
+    property string titolo: qsTr("INSERISCI IL PIN")
     signal pressYes
     signal pressNo
     implicitHeight: 1920/2
