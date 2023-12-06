@@ -18,10 +18,10 @@ Item {
     Component.onDestruction:
     {
         //_utenti.saveColor(impostazioni_utente.identifier,parametri_generali.coloreBordo,parametri_generali.coloreSfondo,parametri_generali.coloreUtente,parametri_generali.coloreLed)
-        _user_config.setValue("coloreBordo",parametri_generali.coloreBordo)
-        _user_config.setValue("coloreSfondo",parametri_generali.coloreSfondo)
-        _user_config.setValue("coloreUtente",parametri_generali.coloreUtente)
-        _user_config.setValue("coloreLed",parametri_generali.coloreLed)
+//        _user_config.setValue("coloreBordo",parametri_generali.coloreBordo)
+//        _user_config.setValue("coloreSfondo",parametri_generali.coloreSfondo)
+//        _user_config.setValue("coloreUtente",parametri_generali.coloreUtente)
+//        _user_config.setValue("coloreLed",parametri_generali.coloreLed)
     }
 
 //    property variant internalModel: ListModel {
@@ -141,7 +141,7 @@ Item {
                     title: qsTr("SELEZIONA COLORE")
                     id: colorDialog
                     onAccepted: {
-                        parametri_generali.coloreSfondo=colorDialog.color
+                        _user_config.setValue("coloreSfondo",rect.color)
                         rect.color= parametri_generali.coloreSfondo
                         visible: false
                     }
@@ -201,7 +201,7 @@ Item {
                     onAccepted: {
                         if (colorDialog2.color!==parametri_generali.coloreSfondo)
                         {
-                            parametri_generali.coloreBordo=colorDialog2.color
+                            _user_config.setValue("coloreBordo",colorDialog2.color)
                             rect2.color= parametri_generali.coloreBordo
                         }
                         visible: false
@@ -263,7 +263,7 @@ Item {
                     onAccepted: {
                         if (colorDialog3.color!==parametri_generali.coloreSfondo)
                         {
-                            parametri_generali.coloreUtente=colorDialog3.color
+                            _user_config.setValue("coloreUtente",colorDialog3.color)
                             rect3.color= parametri_generali.coloreUtente
                         }
                         visible: false
@@ -323,7 +323,7 @@ Item {
                     title: qsTr("SELEZIONA COLORE")
                     id: colorDialogLed
                     onAccepted: {
-                        parametri_generali.coloreLed=colorDialogLed.color
+                        _user_config.setValue("coloreLed",colorDialogLed.color)
                         rect_led.color= parametri_generali.coloreLed
                         visible: false
                     }
