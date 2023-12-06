@@ -74,7 +74,7 @@ ApplicationWindow {
         property color coloreSfondo: "#2A211B"
         property color coloreUtente: "#8c177b"
         property color coloreUtenteTrasparent: "#c6aa7640"
-        property color coloreLed: "#8c177b"
+        property color coloreLed: "#ffffff"
         property color coloreLedInizio: "#ff0000"
         property color coloreLedFine: "#00ff00"
         property color coloreLedPausa: "#ffff00"
