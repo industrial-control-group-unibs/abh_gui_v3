@@ -291,8 +291,8 @@ Item
         {
             top: parent.top
             left: logo_barra.left
-            leftMargin: -30
-            topMargin: 5
+            leftMargin: -25
+            topMargin: 2
         }
         width: 40
         color: parametri_generali.coloreBordo
