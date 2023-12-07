@@ -1,0 +1,2 @@
+bash /home/$USER/ruota_mouse.bash
+xset -display :0.0 dpms force off

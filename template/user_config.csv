@@ -1,10 +1,8 @@
 field,value
-coloreLed,#c6aa76
 lingua,abh_it
 coloreBordo,#c6aa76
 coloreSfondo,#2A211B
 coloreUtente,#8c177b
-coloreUtenteTrasparent,#c6aa7640
 coloreLed,#8c177b
 coloreLedInizio,#ff0000
 coloreLedFine,#00ff00
@@ -15,3 +13,4 @@ foto,foto.png
 volume,50
 voice,true
 mute,false
+luminosita,100.0
