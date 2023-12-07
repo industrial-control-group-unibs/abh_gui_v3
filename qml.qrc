@@ -124,5 +124,8 @@
         <file>IconaAudio.qml</file>
         <file>IconaLingua.qml</file>
         <file>SceltaEserciziSearch.qml</file>
+        <file>PaginaImpostazioniAccount.qml</file>
+        <file>PaginaExitAccount.qml</file>
+        <file>PaginaAccount.qml</file>
     </qresource>
 </RCC>

@@ -25,6 +25,7 @@ Item {
     Component.onCompleted:
     {
         led_udp.data=[parametri_generali.coloreLedPausa.r, parametri_generali.coloreLedPausa.g, parametri_generali.coloreLedPausa.b]
+        playSound_ding.play()
     }
     Component.onDestruction:
     {
@@ -64,6 +65,11 @@ Item {
         }
     }
 
+    SoundEffect {
+        id: playSound_ding
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/ding.wav"
+        volume: parametri_generali.voice?1.0:0.0
+    }
     SoundEffect {
         id: playSound
         source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/321beep.wav"

@@ -267,6 +267,33 @@ Item {
                 z:0
                 visible: false
             }
+            Item {
+                visible: !component.play  && !component.timer
+                anchors.left: parent.left
+                anchors.top: parent.top
+                anchors.topMargin: parent.width*0.02
+                anchors.leftMargin: parent.width*0.02
+                width: parent.width*0.28
+                height: width
+                Rectangle
+                {
+                    color: parametri_generali.coloreBordo
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenterOffset: -0.08*parent.width
+                    width: 0.1*parent.width
+                    height: 0.5*parent.height
+                }
+                Rectangle
+                {
+                    color: parametri_generali.coloreBordo
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenterOffset: 0.08*parent.width
+                    width: 0.1*parent.width
+                    height: 0.5*parent.height
+                }
+            }
 
 
 

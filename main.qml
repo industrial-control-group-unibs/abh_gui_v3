@@ -124,6 +124,8 @@ ApplicationWindow {
         {
             console.log("lingua: ",lingua)
             _settings.setLanguage(lingua)
+
+//            lingua_udp.string=lingua
         }
 
         onVolumeChanged:
@@ -329,6 +331,15 @@ ApplicationWindow {
         string: impostazioni_utente.identifier
     }
 
+    StringSender {
+        id: lingua_udp
+        // @disable-check M16
+        port: "21025"
+        // @disable-check M16
+        host: "localhost"
+        // @disable-check M16
+        string: parametri_generali.lingua
+    }
     StringSender {
         id: startstop_udp
         //@disable-check M16

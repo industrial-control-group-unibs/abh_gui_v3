@@ -68,9 +68,6 @@ PaginaVideoSingolo
     }
     Component.onDestruction:
     {
-        //_history.pop()
-        //link_sx=_history.pop()
-
         if (selected_exercise.workout==="")
         {
             timer_tempo.resetValue()

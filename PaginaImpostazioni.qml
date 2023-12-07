@@ -9,22 +9,19 @@ Item {
     id: component
     anchors.fill: parent
 
-    //Component.onDestruction: pageLoader.last_source="PaginaImpostazioni.qml"
     Component.onCompleted:
     {
         if (impostazioni_utente.identifier==="")
         {
-           pageLoader.source="PaginaLogin.qml"
+            console.log("vai qui")
+           pageLoader.source="PaginaImpostazioniAccount.qml"
         }
     }
 
     property string titolo: qsTr("IMPOSTAZIONI")
 
     property variant internalModel: ListModel {
-        //        ListElement {
-        //            nome: "CAMBIA UTENTE"
-        //            link: "PaginaSceltaLogout.qml"
-        //        }
+
 
         ListElement {
             nome: qsTr("MODIFICA UTENTE")
@@ -84,8 +81,6 @@ Item {
                 onPressSx:
                 {
                     pageLoader.source="PaginaAllenamento.qml"
-                    //_history.pop()
-                    //pageLoader.source=_history.pop()
                 }
                 dx_visible: false
                 z:5
@@ -255,12 +250,9 @@ Item {
                             verticalAlignment: Text.AlignVCenter
                             text: nome
                         }
-
                     }
                 }
             }
-
         }
     }
-
 }

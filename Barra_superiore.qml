@@ -146,6 +146,19 @@ Item
             color: "#40000000"
         }
 
+        MouseArea
+        {
+            anchors.fill: parent
+            onClicked:
+            {
+                if (parametri_generali.login_page)
+                {
+                    pageLoader.source=  "PaginaImpostazioni.qml"
+                }
+
+            }
+        }
+
         Image {
             visible: impostazioni_utente.identifier !==""
             id: img_barra
@@ -162,18 +175,7 @@ Item
                 rightMargin: parent.border.width
             }
 
-            MouseArea
-            {
-                anchors.fill: parent
-                onClicked:
-                {
-                    if (parametri_generali.login_page)
-                    {
-                        pageLoader.source=  "PaginaImpostazioni.qml"
-                    }
 
-                }
-            }
 
             source:  "file://"+PATH+"/../utenti/"+impostazioni_utente.identifier+"/"+impostazioni_utente.foto
             layer.effect: OpacityMask {

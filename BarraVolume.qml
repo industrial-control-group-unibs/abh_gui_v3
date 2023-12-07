@@ -13,7 +13,6 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
-    Component.onCompleted: console.log("entrato")
 
     Barra_superiore{}
 

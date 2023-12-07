@@ -49,16 +49,16 @@ Item
         }
     }
 
-    Timer{
-        id: go_out
-        interval: 200
-        repeat: false
-        running: false
-        onTriggered:
-        {
-            pageLoader.source = "PaginaRiposo.qml"
-        }
-    }
+//    Timer{
+//        id: go_out
+//        interval: 200
+//        repeat: false
+//        running: false
+//        onTriggered:
+//        {
+//            pageLoader.source = "PaginaRiposo.qml"
+//        }
+//    }
 
 
     Timer
@@ -207,7 +207,7 @@ Item
                         selected_exercise.score+=selected_exercise.power/(1.0*component.default_power*selected_exercise.reps*selected_exercise.sets)
 
                 }
-                if (ripetizioni===selected_exercise.reps && go_out.running===false)
+                if (ripetizioni===selected_exercise.reps )
                     playSound_1.play()
                 if (ripetizioni===selected_exercise.reps-1)
                     playSound_2.play()
@@ -220,10 +220,10 @@ Item
 
                 if (ripetizioni>selected_exercise.reps)
                 {
-                    playSound_ding.play()
-                    go_out.running = true
-                    ripetizioni=selected_exercise.reps
-//                    pageLoader.source = "PaginaRiposo.qml"
+                    //playSound_ding.play()
+                    //go_out.running = true
+//                    ripetizioni=selected_exercise.reps
+                    pageLoader.source = "PaginaRiposo.qml"
                 }
             }
             else

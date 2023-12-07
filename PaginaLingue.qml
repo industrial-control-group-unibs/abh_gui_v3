@@ -9,7 +9,6 @@ Item {
     id: component
     anchors.fill: parent
 
-    //Component.onDestruction: pageLoader.last_source="PaginaImpostazioni.qml"
 
     property string titolo: qsTr("LINGUA")
 
@@ -120,6 +119,8 @@ Item {
                             onClicked:
                             {
                                 _user_config.setValue("lingua",dict)
+                                _history.pop()
+                                pageLoader.source=_history.pop()
 
                             }
                             z: 40
