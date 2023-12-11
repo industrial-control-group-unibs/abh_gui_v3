@@ -192,7 +192,7 @@ Item {
             }
             currentIndex: -1
 
-            model: _myModel
+            model: gruppo_model_
 
             signal reload;
 

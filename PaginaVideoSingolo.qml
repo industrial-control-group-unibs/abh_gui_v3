@@ -101,7 +101,7 @@ Item {
             onPressSx:
             {
                 _history.pop()
-                pageLoader.source= _history.front()
+                pageLoader.source= _history.pop()
             }
             onPressDx: pageLoader.source= link_dx
         }

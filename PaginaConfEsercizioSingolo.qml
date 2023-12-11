@@ -65,7 +65,11 @@ Item {
         height: parent.height*0.2
         FrecceSxDx
         {
-            onPressSx: pageLoader.source= "SceltaEsercizi.qml"
+            //onPressSx: pageLoader.source= "SceltaEsercizi.qml"
+            onPressSx: {
+                _history.pop()
+                pageLoader.source= _history.pop()
+            }
             onPressDx: pageLoader.source=  "PaginaIstruzioni.qml"
         }
     }

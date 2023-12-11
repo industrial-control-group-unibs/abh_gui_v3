@@ -15,8 +15,8 @@ ListaNome::ListaNome(QString path, QObject *parent) :
   path_=path;
   dir_path_=path_.toStdString();
 
-//  readFile("Gambe");
   data_.clear();
+  unfilter_data_.clear();
 }
 
 int ListaNome::rowCount( const QModelIndex& parent) const
@@ -75,6 +75,8 @@ void ListaNome::readFile(QString string)
   } catch (std::exception& ex) {
     std::cout << "expection " << ex.what() << " while reading file " << nome_file << std::endl;
   }
+
+  unfilter_data_=data_;
 }
 
 
@@ -86,5 +88,18 @@ void ListaNome::fromList(QStringList list)
 
     QString ex_name=list.at(idx);
     data_ << EsData(ex_name);
+  }
+  unfilter_data_=data_;
+}
+
+void ListaNome::filterByName(QString string)
+{
+  data_.clear();
+  for (const EsData& s: unfilter_data_)
+  {
+    if (s.ex_name_.contains(string,Qt::CaseInsensitive))
+    {
+      data_<<s;
+    }
   }
 }

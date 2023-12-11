@@ -26,6 +26,29 @@ Item {
         dx_visible: lista_zona.currentIndex>=0
         colore: parametri_generali.coloreBordo
     }
+
+    BottoniSwipe{
+
+        anchors
+        {
+            bottom: parent.bottom
+            bottomMargin: parent.height*0.05
+            horizontalCenter: parent.horizontalCenter
+        }
+        z:5
+        width: 0.4*parent.width
+        bordo: parametri_generali.coloreUtente
+        onPressRight:
+        {
+            zona_allenamento.gruppo="tutti"
+            pageLoader.source=  "SceltaEserciziSearch.qml"
+        }
+        onPressLeft:
+        {
+//            pageLoader.source=  "SceltaEserciziSearch.qml"
+        }
+        state: "sx"
+    }
     Rectangle{
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra

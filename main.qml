@@ -280,7 +280,7 @@ ApplicationWindow {
     Item {
         id: zona_allenamento
         property string gruppo: ""
-        onGruppoChanged: _myModel.readFile(gruppo)
+        onGruppoChanged: gruppo_model_.readFile(gruppo)
     }
 
     StringSender {

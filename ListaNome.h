@@ -38,8 +38,11 @@ public slots:
 
     void fromList(QStringList list);
 
+    void filterByName(QString string);
+
 private: //members
     QVector< EsData > data_;
+    QVector< EsData > unfilter_data_;
     std::string dir_path_;
     QString path_;
 };

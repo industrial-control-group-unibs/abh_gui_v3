@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
 
   QString data_path=QString::fromStdString(dir_path);
 
-  ListaNome model(data_path);
+  ListaNome gruppo_model(data_path);
   ListString ls;
   ListaImmagini zone(data_path+"/zone");
 
@@ -267,7 +267,7 @@ int main(int argc, char *argv[])
   StringQuee page_history;
 
   QQmlContext *context = engine->rootContext();
-  context->setContextProperty("_myModel", &model);
+  context->setContextProperty("gruppo_model_", &gruppo_model);
   context->setContextProperty("_list_string", &ls);
   context->setContextProperty("_workout_list", &workout_list);
   context->setContextProperty("_utenti", &utenti);

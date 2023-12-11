@@ -170,7 +170,7 @@ Item {
 
             Component.onCompleted: {currentIndex=-1}
 
-            model: _myModel //zona_allenamento.lista //Lista_pettorali {}
+            model: gruppo_model_ //zona_allenamento.lista //Lista_pettorali {}
             //delegate:IconaEsercizi{}
 
             delegate: IconaImmagine{

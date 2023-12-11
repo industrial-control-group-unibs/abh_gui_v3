@@ -22,16 +22,30 @@ Item {
 
 
     Barra_superiore{
-       titolo: zona_allenamento.gruppo
+       titolo: qsTr("RICERCA PER NOME")
     }
 
-    FrecceSxDx
+
+
+    Item
     {
-        onPressSx: pageLoader.source= "SceltaGruppo.qml"
-        onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
-        dx_visible: lista_workout.currentIndex>=0
-        colore: parametri_generali.coloreBordo
+        id: sotto
+        anchors
+        {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        height: parent.height*0.2
+        z:10
+        FrecceSxDx
+        {
+            onPressSx: pageLoader.source= "SceltaGruppo.qml"
+            onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
+            dx_visible: lista_workout.currentIndex>=0
+        }
     }
+
 
     BottoniSwipe{
 
@@ -50,201 +64,136 @@ Item {
         }
         onPressLeft:
         {
-            pageLoader.source=  "SceltaEsercizi.qml"
+            pageLoader.source=  "SceltaGruppo.qml"
         }
-        visible: component.swipe
         state: "dx"
     }
 
-    Rectangle
+    Column
     {
         id: rect_grid
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
-        color:parametri_generali.coloreSfondo
         clip: true
+        spacing: 10
 
         Rectangle
         {
-            id: header
-            height: video_zone.height+nome_titolo.height+20
+            id: casella
+            property color colore: parametri_generali.coloreBordo
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.top: parent.top
-            color: rect_grid.color
-            z: 1
+            height: parent.height*0.1
+            radius: 20
+            color: "transparent"
+            border.color: colore
 
+            Testo
+            {
+                anchors.fill: parent
+                text: tastierino.testo
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                fontSizeMode: Text.Fit
+            }
 
-            Text {
-                id: nome_titolo
-                text:selected_exercise.name==="unselected"? zona_allenamento.gruppo : selected_exercise.name
-                anchors
-                {
-                    horizontalCenter: parent.horizontalCenter
+        }
+
+        Tastiera
+        {
+            id: tastierino
+            anchors.left: parent.left
+            anchors.right: parent.right
+            colore: parametri_generali.coloreBordo
+            font_colore: parametri_generali.coloreSfondo
+            onTestoChanged:
+            {
+                gruppo_model_.filterByName(testo)
+                lista_workout.reload()
+            }
+        }
+
+        Item
+        {
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: parent.height*0.6
+            clip: true
+            ListView {
+                snapMode: ListView.SnapOneItem
+                id: lista_workout
+                anchors {
                     top: parent.top
+                    //topMargin: header.height
+                    bottom: parent.bottom
+                    left: parent.left
+                    right: parent.right
                 }
-                color: parametri_generali.coloreBordo
-                wrapMode: TextEdit.WordWrap
-                font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
+                currentIndex: -1
 
-                font.italic: false
-                font.letterSpacing: 0
-                font.pixelSize: 30
-                font.weight: Font.Normal
-                horizontalAlignment: Text.AlignLeft
-                verticalAlignment: Text.AlignTop
+                model: gruppo_model_
 
-                layer.enabled: true
-                layer.effect: DropShadow {
-                    verticalOffset: 2
-                    color: "#80000000"
-                    radius: 1
-                    samples: 3
-                }
-            }
+                signal reload;
 
-            Rectangle   {
-                color: "black"
-                id: video_zone
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: nome_titolo.bottom
-
-
-
-                width: lista_workout.width*0.33
-                height: width
-                radius: 20
-                border.color: selected_exercise.immagine? parametri_generali.coloreBordo: "transparent"
-                border.width: 2
-
-
-
-                Rectangle
+                onReload:
                 {
-                    id: immagine_selezionata_mask
-                    anchors
+                    lista_workout.model=[]
+                    lista_workout.model= gruppo_model_
+                    lista_workout.forceLayout()
+                    currentIndex: -1
+                }
+
+                delegate: IconaDescrizioneEsercizi{
+
+
+                    color: parametri_generali.coloreBordo
+                    highlighted:
                     {
-                        fill: parent
-                        topMargin: parent.border.width
-                        bottomMargin: parent.border.width
-                        leftMargin: parent.border.width
-                        rightMargin: parent.border.width
+                        if (lista_workout.currentIndex>=0)
+                            lista_workout.currentIndex === index
+                        else
+                            false;
                     }
-                    visible: false
-                    color: "white"
-                    radius: parent.radius-parent.border.width
-                }
-
-                OpacityMask {
-                    anchors.fill:immagine_selezionata_mask
-                    source: videoOutput
-                    maskSource: immagine_selezionata_mask
-                }
-
-
-                MediaPlayer {
-                    id: mp_esercizio
-                    autoPlay: false
-                    autoLoad: true
-
-                    source: "file://"+PATH+"/video_brevi_esercizi/"+selected_exercise.video_intro
-
-                    onPlaybackStateChanged: {
-                        if(playbackState==1){
-                            durTrig.stop();
-                            durTrig.interval=duration-100;
-                            durTrig.restart();
-                         }
+                    onHighlightedChanged:
+                    {
+                        if (highlighted)
+                        {
+                            selected_exercise.video_intro=_esercizi.getVideoIntro(vector[0])
+                        }
                     }
-                }
-                Timer{
-                    id:durTrig
-                    running:false
-                    repeat: false
-                    onTriggered:{
-                       mp_esercizio.pause();
+
+                    nome:  _esercizi.getName(ex_name)
+                    type:  _esercizi.getType(ex_name)
+                    immagine:  _esercizi.getImage(ex_name)
+
+                    ripetizioni:-1
+                    serie: -1
+                    potenza: -1
+
+
+
+                    width: lista_workout.width-2
+
+                    onPressed: {
+                        selected_exercise.code= ex_name
+                        selected_exercise.sets=1
+                        lista_workout.currentIndex=index
                     }
                 }
 
-
-                VideoOutput {
-                    id: videoOutput
-
-                    source: mp_esercizio
-                    anchors.fill: parent
-                    z:0
-                    visible: false
+                onCurrentIndexChanged: {
+                    if (currentIndex>=0)
+                    {
+                        mp_esercizio.stop()
+                        mp_esercizio.play()
+                    }
                 }
-
 
             }
         }
 
-        ListView {
-            snapMode: ListView.SnapOneItem
-            id: lista_workout
-            anchors {
-                top: parent.top
-                topMargin: header.height
-                bottom: parent.bottom
-                left: parent.left
-                right: parent.right
-            }
-            currentIndex: -1
-
-            model: _myModel
-
-            signal reload;
 
 
-            delegate: IconaDescrizioneEsercizi{
-
-
-                color: parametri_generali.coloreBordo
-                highlighted:
-                {
-                    if (lista_workout.currentIndex>=0)
-                        lista_workout.currentIndex === index
-                    else
-                        false;
-                }
-                onHighlightedChanged:
-                {
-                    if (highlighted)
-                    {
-                        selected_exercise.video_intro=_esercizi.getVideoIntro(vector[0])
-                    }
-                }
-
-                nome:  _esercizi.getName(ex_name)
-                type:  _esercizi.getType(ex_name)
-                immagine:  _esercizi.getImage(ex_name)
-
-                ripetizioni:-1
-                serie: -1
-                potenza: -1
-
-
-
-                width: lista_workout.width-2
-
-                onPressed: {
-                    selected_exercise.code= ex_name
-                    selected_exercise.sets=1
-                    lista_workout.currentIndex=index
-                }
-            }
-
-            onCurrentIndexChanged: {
-                if (currentIndex>=0)
-                {
-                    mp_esercizio.stop()
-                    mp_esercizio.play()
-                }
-            }
-
-        }
     }
-
 
 }
