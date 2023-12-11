@@ -14,6 +14,10 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
+    Component.onCompleted: {
+        gruppo_model_.filterByName("")
+        lista_workout.reload()
+    }
 
     Component.onDestruction:
     {
@@ -92,6 +96,7 @@ Item {
             {
                 anchors.fill: parent
                 text: tastierino.testo
+                font.pixelSize: 70
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 fontSizeMode: Text.Fit
