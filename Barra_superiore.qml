@@ -277,7 +277,7 @@ Item
             anchors.fill: parent
             onClicked:
             {
-                if (parametri_generali.login_page)
+                if (parametri_generali.login_page && impostazioni_utente.identifier!=="")
                 {
                     pageLoader.source=  "PaginaAllenamento.qml"
                 }
@@ -286,72 +286,77 @@ Item
 
     }
 
-    IconaWifi
+    Row
     {
-        id: icona_wifi
         anchors
         {
             top: parent.top
-            left: logo_barra.left
-            leftMargin: -120
-            topMargin: 2
+            horizontalCenter: logo_barra.horizontalCenter
+
         }
-        width: 40
-        color: parametri_generali.coloreBordo
-        connesso: parametri_generali.wifi_on
-        MouseArea
+        spacing: 5
+
+        IconaWifi
         {
-            anchors.fill: parent
-            onClicked:
+            id: icona_wifi
+
+            width: 40
+            color: parametri_generali.coloreBordo
+            connesso: parametri_generali.wifi_on
+            MouseArea
             {
-                if (parametri_generali.login_page)
-                    pageLoader.source="PaginaConnessioni.qml"
+                anchors.fill: parent
+                onClicked:
+                {
+                    if (parametri_generali.login_page)
+                        pageLoader.source="PaginaConnessioni.qml"
+                }
             }
         }
-    }
 
-    IconaAudio
-    {
-        anchors
+        IconaAudio
         {
-            bottom: icona_wifi.bottom
-            left: icona_wifi.right
-            leftMargin: 2
-        }
-        id: icona_audio
-        width: icona_wifi.width
-        color: parametri_generali.coloreBordo
-        active: !parametri_generali.mute
+//            anchors
+//            {
+//                bottom: icona_wifi.bottom
+//                right: icona_wifi.left
+//                leftMargin: 2
+//            }
+            id: icona_audio
+            width: icona_wifi.width
+            color: parametri_generali.coloreBordo
+            active: !parametri_generali.mute
 
-        MouseArea
-        {
-            anchors.fill: parent
-            onClicked:
+            MouseArea
             {
-                if (parametri_generali.login_page)
-                    pageLoader.source="BarraVolume.qml"
+                anchors.fill: parent
+                onClicked:
+                {
+                    if (parametri_generali.login_page)
+                        pageLoader.source="BarraVolume.qml"
+                }
             }
         }
-    }
-    IconaLingua
-    {
-        anchors
+        IconaLingua
         {
-            bottom: icona_audio.bottom
-            left: icona_audio.right
-            leftMargin: 10
-        }
-        width: icona_audio.width*.75
+//            anchors
+//            {
+//                bottom: icona_audio.bottom
+//                right: icona_audio.left
+//                leftMargin: 10
+//            }
+            width: icona_audio.width
 
-        color: parametri_generali.coloreBordo
+            color: parametri_generali.coloreBordo
 
-        MouseArea
-        {
-            anchors.fill: parent
-            onClicked:
+            MouseArea
             {
-                if (parametri_generali.login_page)
-                    pageLoader.source="PaginaLingue.qml"
+                anchors.fill: parent
+                onClicked:
+                {
+                    if (parametri_generali.login_page)
+                        pageLoader.source="PaginaLingue.qml"
+                }
             }
         }
     }

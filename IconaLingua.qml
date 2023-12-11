@@ -7,16 +7,16 @@ height: width
 property color color: "red"
 id: component
 
-
 Rectangle {
     anchors.fill: parent
     color: "transparent"
     clip: false
-
+    anchors.topMargin: height*-0.05
+    anchors.leftMargin: width*-0.15
 
     Shape {
         anchors.fill: parent
-        scale: component.width/48
+        scale: component.width/70
 
         ShapePath {
 

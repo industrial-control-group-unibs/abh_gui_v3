@@ -7,7 +7,6 @@ height: width
 property color color: "red"
 property bool active: false
 id: component
-
 Rectangle {
     anchors.fill: parent
     color: "transparent"
@@ -17,6 +16,8 @@ Rectangle {
     {
         anchors.fill: parent
         scale: component.width/75
+        anchors.topMargin: height*-0.3
+        anchors.leftMargin: width*-0.3
         visible: !component.active
         ShapePath {
 
@@ -48,6 +49,8 @@ Rectangle {
 
     Shape {
         anchors.fill: parent
+        anchors.topMargin: height*-0.3
+        anchors.leftMargin: width*-0.3
         scale: component.width/75
         visible: component.active
         ShapePath {
@@ -66,7 +69,8 @@ Rectangle {
     Shape {
         anchors.fill: parent
         scale: component.width/75
-
+        anchors.topMargin: height*-0.3
+        anchors.leftMargin: width*-0.3
         ShapePath {
             joinStyle: ShapePath.MiterJoin
             strokeColor: component.color

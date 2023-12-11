@@ -269,15 +269,17 @@ Item {
             }
             Item {
                 visible: !component.play  && !component.timer
-                anchors.left: parent.left
-                anchors.top: parent.top
-                anchors.topMargin: parent.width*0.02
-                anchors.leftMargin: parent.width*0.02
-                width: parent.width*0.28
+//                anchors.left: parent.left
+//                anchors.top: parent.top
+//                anchors.topMargin: parent.width*0.02
+//                anchors.leftMargin: parent.width*0.02
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                width: parent.width*0.40
                 height: width
                 Rectangle
                 {
-                    color: parametri_generali.coloreBordo
+                    color: parametri_generali.coloreUtente
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.horizontalCenterOffset: -0.08*parent.width
@@ -286,7 +288,7 @@ Item {
                 }
                 Rectangle
                 {
-                    color: parametri_generali.coloreBordo
+                    color: parametri_generali.coloreUtente
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.horizontalCenterOffset: 0.08*parent.width
