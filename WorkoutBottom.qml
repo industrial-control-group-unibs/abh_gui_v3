@@ -271,6 +271,9 @@ Item
         value: timer_tempo.value/1000/60-Math.floor(timer_tempo.value/1000/60)
         tempo: timer_tempo.value
         visible: parent.is_visible
+        dimensione_tache: 8
+        tacche: 30
+
         Testo
         {
             text: qsTr("TIME")
@@ -295,6 +298,9 @@ Item
         value: timer_tut.value/1000.0/60.0-Math.floor(timer_tut.value/1000.0/60.0)
         tempo: timer_tut.value
         visible: parent.is_visible
+
+        dimensione_tache: 8
+        tacche: 30
         Testo
         {
             text: qsTr("TU")
