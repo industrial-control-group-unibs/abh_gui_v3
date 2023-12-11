@@ -33,11 +33,22 @@ else:
 device_file=open(device_list,mode='r')
 devices=csv.DictReader(device_file,delimiter=',')
 scheda = ""
+scheda_shelly = ""
+wifi_shelly = ""
+pwd_shelly =  ""
 for r in devices:
+    print(r)
     if r["nome"] == 'scheda wifi':
         scheda = r["valore"]
-
+    if r["nome"] == 'scheda wifi shelly':
+        scheda_shelly = r["valore"]
+    if r["nome"] == 'nome wifi shelly':
+        wifi_shelly = r["valore"]
+    if r["nome"] == 'password wifi shelly':
+        pwd_shelly = r["valore"]
 print(f"scheda: {scheda}")
+print(f"scheda shelly: {scheda_shelly}")
+
 
 while (not stop):
     stato = nmcli.device.show(scheda)
@@ -77,4 +88,14 @@ while (not stop):
         dict_writer = csv.DictWriter(output_file, keys)
         dict_writer.writeheader()
         dict_writer.writerows(connessioni)
+
+    stato_shelly = nmcli.device.show(scheda_shelly)
+    connessioni_wifi_shelly = nmcli.device.wifi(scheda_shelly)
+    connesso_a_shelly = False
+    for c in connessioni_wifi_shelly:
+        if c.in_use and c.ssid == wifi_shelly:
+            connesso_a_shelly = True
+    if not connesso_a_shelly:
+        nmcli.device.wifi_connect(ssid=wifi_shelly, ifname=scheda_shelly, password=pwd_shelly)
+
     time.sleep(5)
