@@ -186,7 +186,8 @@ Item
             anchors.margins: -dimensione_tache*0.5
             value: parent.ratio
             visualizza_tempo: false
-            dimensione_tache: 8
+            dimensione_tache: 16
+            tacche: 30
         }
 
         onRipetizioniChanged: {
