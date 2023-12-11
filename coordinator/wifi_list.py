@@ -96,6 +96,9 @@ while (not stop):
         if c.in_use and c.ssid == wifi_shelly:
             connesso_a_shelly = True
     if not connesso_a_shelly:
-        nmcli.device.wifi_connect(ssid=wifi_shelly, ifname=scheda_shelly, password=pwd_shelly)
+        try:
+            nmcli.device.wifi_connect(ssid=wifi_shelly, ifname=scheda_shelly, password=pwd_shelly)
+        except:
+            print("unable to connect to wifi")
 
     time.sleep(5)
