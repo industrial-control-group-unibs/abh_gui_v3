@@ -70,7 +70,8 @@ if user=='jacobi':
 else:
     pycmd="python"
 if (user!='jacobi'):
-    user_path='/home/' + user + '/Scrivania/abh/utenti/'
+    #user_path='/home/' + user + '/Scrivania/abh/utenti/'
+    user_path = '/home/' + user + '/Scrivania/abh/aws_test/'
 else:
     user_path='/home/' + user + '/projects/abh/utenti/'
 
