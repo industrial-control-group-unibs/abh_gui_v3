@@ -108,6 +108,12 @@ while (not stop):
     differenza = dict(set(bucket_keys.items())-set(last_bucket_keys.items()))
     download_file_from_s3(s3_path=s3_bucket, s3_files=differenza)
 
+    deleted_files_from_s3 = list(set(last_bucket_keys.keys()) - set(bucket_keys.keys()))
+    for f in deleted_files_from_s3:
+        print(f"Deleting {f} from local")
+        os.remove(user_path+f)
+    #delete_file_from_s3(s3_path=s3_bucket, files_to_delete=deleted_files, user_path=user_path)
+
 
     # read last s3 files local time_stamp
     if not os.path.isfile(user_path+'last_read_local.json'):
@@ -123,9 +129,8 @@ while (not stop):
     local_difference = dict(set(local_files_stamps.items())-set(last_local_files_stamps.items()))
     upload_file_to_s3(s3_path=s3_bucket,files_to_upload=local_difference,user_path=user_path)
 
-    deleted_files=list(set(last_local_files_stamps.keys()) - set(local_files_stamps.keys()))
-    print(f"files to be deleted: {deleted_files}")
-    delete_file_from_s3(s3_path=s3_bucket,files_to_delete=deleted_files,user_path=user_path)
+    deleted_files_from_local=list(set(last_local_files_stamps.keys()) - set(local_files_stamps.keys()))
+    delete_file_from_s3(s3_path=s3_bucket,files_to_delete=deleted_files_from_local,user_path=user_path)
 
     with open(user_path + 'last_read_local.json', 'w') as convert_file:
         convert_file.write(json.dumps(local_files_stamps))
