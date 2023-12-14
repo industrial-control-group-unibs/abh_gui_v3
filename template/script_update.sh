@@ -11,10 +11,10 @@ make
 
 cd ..
 cp Scrivania/abh/abh-data/traduzioni/*.ts .
-lupdate qml.qrc -ts abh_ar.ts
-lupdate qml.qrc -ts abh_de.ts
-lupdate qml.qrc -ts abh_en.ts
-lupdate qml.qrc -ts abh_fr.ts
-lupdate qml.qrc -ts abh_it.ts
+lupdate -extensions qml -ts abh_ar.ts
+lupdate -extensions qml -ts abh_de.ts
+lupdate -extensions qml -ts abh_en.ts
+lupdate -extensions qml -ts abh_fr.ts
+lupdate -extensions qml -ts abh_it.ts
 
 cd coordinator
