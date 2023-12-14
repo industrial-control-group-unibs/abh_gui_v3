@@ -69,7 +69,7 @@ class UdpBinaryReceiverThread (Thread):
                 msg = self.s.recv(self.buf_len*8) # buffer size is 1024 bytes
                 full_msg = list(struct.unpack(f'{self.buf_len}d',msg))
                 if len(full_msg) > 0:
-                    self.new_value=True;
+                    self.new_value = True
                     self.lock.acquire()
                     self.queue.append(full_msg)
                     self.lock.release()

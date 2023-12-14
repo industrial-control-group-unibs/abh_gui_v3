@@ -49,7 +49,7 @@ Item {
                 component.playgo=true
                 playSound_go.play()
             }
-            if (component.remaning_time<4.0 && !component.play3s)
+            if (component.remaning_time<4.5 && !component.play3s)
             {
                 component.play3s=true
                 playSound.play()

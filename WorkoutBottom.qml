@@ -98,7 +98,7 @@ Item
 
     SoundEffect {
         id: playSound_5s
-        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/54321ding.wav"
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/54321.wav"
         volume: parametri_generali.voice?1.0:0.0
     }
     SoundEffect {
@@ -107,11 +107,7 @@ Item
         volume: parametri_generali.voice?1.0:0.0
     }
 
-    SoundEffect {
-        id: playSound_ding
-        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/ding.wav"
-        volume: parametri_generali.voice?1.0:0.0
-    }
+
     SoundEffect {
         id: playSound_1
         source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/1.wav"
