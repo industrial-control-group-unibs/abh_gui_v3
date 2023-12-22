@@ -32,6 +32,10 @@ def led_thread():
     led_client.bufferLength(3)
     led_client.start()
 
+    uv_client = UdpBinaryReceiverThread("led_client_d", abh.ABH_CONTROL, abh.UV_PORT)
+    uv_client.bufferLength(1)
+    uv_client.start()
+
     shelly.cb_device_added.append(device_added)
     shelly.host_ip='192.168.33.2'
     shelly.bind_ip='192.168.33.2'
@@ -39,13 +43,21 @@ def led_thread():
     shelly.discover()
     shelly.add_device_by_ip('192.168.33.1','IP-addr')
 
+    uv = 0
 
     waiting=True
+
+    find_led = False
+    find_uv = False
+
     while waiting:
         time.sleep(2)
-        if (led_client.isNewDataAvailable()):
+        if led_client.isNewDataAvailable():
             led_color=led_client.getLastDataAndClearQueue()
             print("color = ", led_color)
+        if (uv_client.isNewDataAvailable()):
+            uv=uv_client.getLastDataAndClearQueue()
+            print(f"uv command {uv}")
         print("waiting")
         if (stop):
             led_client.stopThread()
@@ -53,10 +65,14 @@ def led_thread():
             return
         for dev in shelly.devices:
             print(dev.device_type)
-            if (dev.device_type=="RGBLIGHT"):
+            if dev.device_type == "RGBLIGHT":
                 led=dev
-                waiting=False
-                break
+                find_led = True
+            if dev.device_type == "RELAY":
+                uv_light=dev
+                find_led = True
+        if find_uv and find_led:
+            break
 
 
     if not led.turn_off():
@@ -73,12 +89,19 @@ def led_thread():
         if (led_client.isNewDataAvailable()):
             led_color=led_client.getLastDataAndClearQueue()
             print(f"colore {led_color}")
+        if (uv_client.isNewDataAvailable()):
+            uv=uv_client.getLastDataAndClearQueue()
+            print(f"uv command {uv}")
 
         colore[0]=led_color[0]*255.0
         colore[1]=led_color[1]*255.0
         colore[2]=led_color[2]*255.0
         led.set_values(rgb=colore)
 
+        if (uv>0):
+            uv_light.turn_on()
+        else:
+            uv_light.turn_off()
         if (stop):
             led_client.stopThread()
             led_client.join()

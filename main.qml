@@ -102,9 +102,19 @@ ApplicationWindow {
         property int volume: 100
         property int luminosita: 100
 
+        property bool uv_light: false
+
         onWifi_onChanged: {
             if (wifi_on)
                 wifi_acceso=true
+        }
+
+        onUv_lightChanged:
+        {
+            if (uv_light)
+                uv_udp.data=[1]
+            else
+                uv_udp.data=[0]
         }
 
         onLuminositaChanged:
@@ -309,7 +319,18 @@ ApplicationWindow {
         // @disable-check M16
         host: "localhost"
         // @disable-check M16
-        data: [coloreLed.r, coloreLed.g, coloreLed.b]
+        data: [parametri_generali.coloreLed.r, parametri_generali.coloreLed.g, parametri_generali.coloreLed.b]
+    }
+
+    BinarySender {
+        id: uv_udp
+        // @disable-check M16
+        port: "21052"
+        // @disable-check M16
+        host: "localhost"
+        // @disable-check M16
+        data: [0]
+
     }
     BinarySender {
         id: type_udp

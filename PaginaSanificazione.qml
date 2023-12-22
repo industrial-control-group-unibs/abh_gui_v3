@@ -16,6 +16,11 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
+    onAvviaChanged:
+    {
+        parametri_generali.uv_light=avvia
+    }
+
     Barra_superiore{}
 
     SysCall
@@ -113,6 +118,7 @@ Item {
                     }
                     else
                     {
+                        component.avvia=false
                         chiamata_sistema.string="systemctl poweroff"
                         chiamata_sistema.call()
                         chiamata_sistema.string="xrandr --output "+parametri_generali.monitor+" --off"
