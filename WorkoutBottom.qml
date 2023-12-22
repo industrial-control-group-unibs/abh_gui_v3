@@ -167,7 +167,7 @@ Item
     IconaRipetizioni
     {
         id: icona_rep
-
+        visible: parent.is_visible && selected_exercise.code !== "novision"
         width: parent.height*0.35
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenterOffset: -parent.height*0.25
@@ -242,7 +242,6 @@ Item
                 }
             }
         }
-        visible: parent.is_visible
         Testo
         {
             text: selected_exercise.type===3?qsTr("DURATA"):qsTr("RIPETIZIONI")
