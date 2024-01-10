@@ -49,7 +49,7 @@ def exercise_thread():
         df = pd.read_excel (r'/home/'+user+'/Scrivania/abh/abh_data/esercizi_controllo.xlsx', sheet_name='ParameteriForza')
         df_forza=pd.read_csv(r'/home/'+user+'/Scrivania/abh/abh_data/livelli_potenza.csv')
     else:
-        df = pd.read_excel (r'/home/jacobi/projects/abh//abh_data/esercizi.xlsx', sheet_name='ParameteriForza')
+        df = pd.read_excel (r'/home/jacobi/projects/abh//abh_data/esercizi_controllo.xlsx', sheet_name='ParameteriForza')
         df_forza=pd.read_csv(r'/home/jacobi/projects/abh/abh_data/livelli_potenza.csv')
     itrial=0
 
@@ -205,7 +205,6 @@ def exercise_thread():
                 force_power_level_0_first_reps = tmp.force.iloc[0]
 
 
-            print(exercise)
             resend=True
 
         if (exercise_client.isNewStringAvailable()):
@@ -225,7 +224,6 @@ def exercise_thread():
             if (len(es_data)==0):
                 print(f"exercise not found: {esercizio}")
                 continue
-            print(f"esercizio:\n{es_data}")
             exercise["name"]=esercizio
             torque_change_time_fw = es_data.TimeFrom0To100Forward.iloc[0]
             torque_change_time_bw = es_data.TimeFrom0To100Backward.iloc[0]
@@ -246,12 +244,10 @@ def exercise_thread():
         if (user_client.isNewStringAvailable()):
             stringa=user_client.getLastStringAndClearQueue()
             if (stringa):
-                print("user_"+stringa)
                 exercise_name_eval.sendString("user_"+stringa)
 
         if (startstop_client.isNewStringAvailable()):
             stringa=startstop_client.getLastStringAndClearQueue()
-            print(stringa)
             if stringa=="start":
                 repetition_count=1
                 percentage = 0
@@ -358,8 +354,7 @@ def exercise_thread():
             motor_status = MotorStatus.REST_BACKWARD
         elif motor_status == MotorStatus.MOVE_FORWARD and motor_speed<motor_speed_threshold:
             motor_status = MotorStatus.REST_BACKWARD
-        if motor_status != prev_motor_status:
-            print(f"change from {prev_motor_status} to {motor_status}")
+
 
 
         if ( (state == Status.FORWARD) and
@@ -369,7 +364,6 @@ def exercise_thread():
              )
            ):
             state=Status.BACKWARD
-            print("vel =", motor_speed, ", th = ",motor_speed_early_stop_return, " perc = ", percentage, " th = ",percentage_early_stop_return, " force = ",exercise["force"])
             switch_timer=0
         elif ( (state == Status.BACKWARD) and
              ( (motor_speed>motor_speed_threshold_return and direction==1 and exercise["force"]<20 and (switch_timer>switch_timer_th)) or
@@ -427,7 +421,6 @@ def exercise_thread():
             motor_target.sendData(motor_target_data)
             last_state = state
 
-    print(isinstance(exercise_client,int))
     if not isinstance(exercise_client,type):
         exercise_client.stopThread()
         exercise_client.join()

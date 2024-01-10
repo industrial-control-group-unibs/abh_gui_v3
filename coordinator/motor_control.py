@@ -96,7 +96,6 @@ def comunicationThread():
             stiffness_cmd=min(3,max(0,float(cmd[1])))
             velocity_cmd=min(1,max(0,float(cmd[2])))
             torque_change_time=max(0.01,float(cmd[3]))
-            logging.info("received torque_perc = "+ str(stiffness_cmd) + ", velocity_perc = " + str(velocity_cmd) + ", off ="+ str(off) )
         motor_feedback.sendData([abs_position, fb_velocity, real_current_value, reference_current_value])
 
         time.sleep(0.001)
@@ -288,8 +287,7 @@ def controlThread():
 
             if ((time.time()-log_time)>log_period):
                 log_time=time.time()
-                logging.info("tor perc= "+ str(stiffness_cmd_local)+ ", torque = "+ str(torque) + ", velocity = " + str(vel_actual)+ ", pos ="+ str(abs_position))
-
+                
             if (torque>(saturated_torque+dtorque)):
                 saturated_torque+=dtorque
                 #print("torque_change_time = ",torque_change_time," dtorque = ",dtorque, " saturated_torque = ",saturated_torque)
