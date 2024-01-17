@@ -48,8 +48,10 @@ Item {
             id: freccia
             onPressSx:
             {
-                _history.pop()
-                pageLoader.source=_history.pop()
+                if (impostazioni_utente.identifier !=="")
+                    pageLoader.source="PaginaAllenamento.qml"
+                else
+                    pageLoader.source="PaginaLogin.qml"
             }
             dx_visible: false
             z:5

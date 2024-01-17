@@ -294,7 +294,7 @@ Item
             horizontalCenter: logo_barra.horizontalCenter
 
         }
-        spacing: 5
+        spacing: 25
 
         IconaWifi
         {

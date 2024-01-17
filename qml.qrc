@@ -111,10 +111,6 @@
         <file>SceltaAllenamentoPersonalizzatoConfEsercizio.qml</file>
         <file>SceltaAllenamentoPersonalizzatoConfWorkout.qml</file>
         <file>IconaBottone.qml</file>
-        <file>abh_it.qm</file>
-        <file>abh_en.qm</file>
-        <file>abh_en.ts</file>
-        <file>abh_it.ts</file>
         <file>PaginaLingue.qml</file>
         <file>PaginaSanificazione.qml</file>
         <file>SceltaEserciziNew.qml</file>
