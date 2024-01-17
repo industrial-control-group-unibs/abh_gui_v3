@@ -172,6 +172,8 @@ def exercise_thread():
     # if power level == zero, use the the level=1 for the first repetitions
     force_power_level_0_last_reps = 0.0
     force_power_level_0_first_reps = 0.0
+    force_power_first_reps = 0.0
+    force_power_last_reps = 0.0
 
     vision_msg_counter=0
 
@@ -197,8 +199,10 @@ def exercise_thread():
             parametri_forza=df_forza[df_forza.power == power_level]
             exercise["force"]=parametri_forza.force.iloc[0]
             exercise["force_return"]=parametri_forza.force_return.iloc[0]
+            force_power_last_reps = exercise["force"]
             exercise["velocity"]=parametri_forza.velocity.iloc[0]
-
+            tmp = df_forza[df_forza.power == 0]
+            force_power_first_reps = parametri_forza.force_return.iloc[0]
             if power_level == 0:
                 force_power_level_0_last_reps = exercise["force"]
                 tmp = df_forza[df_forza.power == power_level+1]
@@ -396,6 +400,10 @@ def exercise_thread():
                 exercise["force"] = force_power_level_0_first_reps
             else:
                 exercise["force"] = force_power_level_0_last_reps
+        elif initializing or calibrating:
+            exercise["force"] = force_power_first_reps
+        else:
+            exercise["force"] = force_power_last_reps
 
         stato_macchina=float(state.value)
         if (calibrating):
