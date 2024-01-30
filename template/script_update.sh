@@ -9,6 +9,8 @@ git pull origin main
 cd build
 make
 
+
+
 cd ~
 cp Scrivania/abh/abh-data/traduzioni/*.ts .
 lupdate -extensions qml -ts abh_ar.ts
@@ -17,4 +19,9 @@ lupdate -extensions qml -ts abh_en.ts
 lupdate -extensions qml -ts abh_fr.ts
 lupdate -extensions qml -ts abh_it.ts
 
-cd coordinator
+
+
+cd ~/projects/abh_gui_v3/template/
+cp script_update.sh ~
+
+cd ../coordinator
