@@ -44,6 +44,10 @@ def device_added(dev,code):
 def led_thread():
 
     global stop
+    global find_uv
+    global find_led
+    global led
+    global uv_light
     shelly = pyShelly()
     print("version:",shelly.version())
 
@@ -66,8 +70,7 @@ def led_thread():
 
     waiting=True
 
-    find_led = False
-    find_uv = False
+
 
     while waiting and (not stop):
         time.sleep(2)
