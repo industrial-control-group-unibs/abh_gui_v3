@@ -18,8 +18,25 @@ def handler(signal_received, frame):
     stop=True
 
 
+
+find_led = False
+find_uv = False
+led=[]
+uv_light=[]
+
 def device_added(dev,code):
-  print (dev," ",code)
+    global find_uv
+    global find_led
+    global led
+    global uv_light
+    print (dev," ",code)
+    print(dev.device_type)
+    if dev.device_type == "RGBLIGHT":
+        led=dev
+        find_led = True
+    if dev.device_type == "RELAY":
+        uv_light=dev
+        find_led = True
 
 
 def led_thread():
@@ -63,16 +80,18 @@ def led_thread():
             led_client.stopThread()
             led_client.join()
             return
-        for dev in shelly.devices:
-            print(dev.device_type)
-            if dev.device_type == "RGBLIGHT":
-                led=dev
-                find_led = True
-            if dev.device_type == "RELAY":
-                uv_light=dev
-                find_led = True
-        if find_uv and find_led:
-            break
+        if find_led:
+            waiting = False
+        # for dev in shelly.devices:
+        #     print(dev.device_type)
+        #     if dev.device_type == "RGBLIGHT":
+        #         led=dev
+        #         find_led = True
+        #     if dev.device_type == "RELAY":
+        #         uv_light=dev
+        #         find_led = True
+        # if find_uv and find_led:
+        #     break
 
 
     if not led.turn_off():
@@ -98,10 +117,11 @@ def led_thread():
         colore[2]=led_color[2]*255.0
         led.set_values(rgb=colore)
 
-        if (uv>0):
-            uv_light.turn_on()
-        else:
-            uv_light.turn_off()
+        if find_uv:
+            if (uv>0):
+                uv_light.turn_on()
+            else:
+                uv_light.turn_off()
         if (stop):
             led_client.stopThread()
             led_client.join()
