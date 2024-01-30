@@ -34,9 +34,11 @@ def device_added(dev,code):
     if dev.device_type == "RGBLIGHT":
         led=dev
         find_led = True
+        print(f"Find led")
     if dev.device_type == "RELAY":
         uv_light=dev
         find_led = True
+        print(f"Find uv light")
 
 
 def led_thread():
