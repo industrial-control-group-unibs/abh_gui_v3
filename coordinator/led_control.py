@@ -72,7 +72,7 @@ def led_thread():
 
 
 
-    while waiting and (not stop):
+    while waiting:
         time.sleep(2)
         if led_client.isNewDataAvailable():
             led_color=led_client.getLastDataAndClearQueue()
