@@ -25,6 +25,11 @@ Item {
        titolo: zona_allenamento.gruppo
     }
 
+    Item {
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: parametri_generali.larghezza_barra
     FrecceSxDx
     {
         onPressSx: pageLoader.source= "SceltaGruppo.qml"
@@ -54,13 +59,14 @@ Item {
         visible: component.swipe
         state: "sx"
     }
-
+    }
 
     Rectangle
     {
         id: rect_grid
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
+        anchors.bottomMargin: parametri_generali.larghezza_barra
         color:parametri_generali.coloreSfondo
         clip: true
 
@@ -187,8 +193,9 @@ Item {
             anchors.topMargin: header.height
             cellWidth: width*0.33; cellHeight: cellWidth
             anchors.fill: parent
-            snapMode: GridView.SnapToRow
+            snapMode: GridView.SnapOneRow //SnapToRow
             focus: true
+
 
             Component.onCompleted: {currentIndex=-1}
 

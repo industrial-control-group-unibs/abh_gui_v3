@@ -922,7 +922,7 @@ QString ProgrammaAllenamento::createWorkout(QString user_id, QString workout_nam
   }
 
   file_name_=dir_path_.toStdString()+"/"+user_id.toStdString()+"/"+workout_name.toStdString()+".csv";
-  std::string user_image_file=dir_path_.toStdString()+"/"+user_id.toStdString()+"/"+workout_name.toStdString()+".jpg";
+  std::string user_image_file=dir_path_.toStdString()+"/"+user_id.toStdString()+"/"+workout_name.toStdString()+".png";
 
 
   for  (int idx=0;idx<(int)doc_->GetRowCount();idx++)

@@ -40,7 +40,7 @@ Item {
             right: parent.right
             bottom: parent.bottom
         }
-        height: parent.height*0.2
+        height: parametri_generali.larghezza_barra
         z:10
         FrecceSxDx
         {
@@ -48,7 +48,7 @@ Item {
             onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
             dx_visible: lista_workout.currentIndex>=0
         }
-    }
+
 
 
     BottoniSwipe{
@@ -72,12 +72,14 @@ Item {
         }
         state: "dx"
     }
+    }
 
     Column
     {
         id: rect_grid
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
+        anchors.bottomMargin: parametri_generali.larghezza_barra
         clip: true
         spacing: 10
 

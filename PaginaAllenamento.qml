@@ -26,16 +26,16 @@ Item {
 
     QuattroImmagini
     {
-        immagine11: "workout.jpg"
+        immagine11: "workout.png"
         testo11: qsTr("ALLENAMENTO\n GUIDATO")
         link11: "SceltaWorkout.qml"
-        immagine21: "allenamento_singolo.jpg"
+        immagine21: "allenamento_singolo.png"
         testo21: qsTr("ALLENAMENTO\n LIBERO")
         link21: "SceltaGruppo.qml"
-        immagine12: "sfida.jpg"
+        immagine12: "sfida.png"
         testo12: qsTr("ALLENAMENTO\n PERSONALIZZATO")
         link12: "SceltaAllenamentoPersonalizzato.qml"
-        immagine22: "statistiche.jpg"
+        immagine22: "statistiche.png"
         testo22: qsTr("STATISTICHE\n")
         link22: "SceltaStatisticheWorkout.qml"
     }

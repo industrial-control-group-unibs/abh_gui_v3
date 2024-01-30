@@ -19,6 +19,11 @@ Item {
         console.log("closing SceltaGruppo")
     }
 
+    Item {
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: parametri_generali.larghezza_barra
     FrecceSxDx
     {
         onPressSx: pageLoader.source= "PaginaAllenamento.qml"
@@ -26,7 +31,6 @@ Item {
         dx_visible: lista_zona.currentIndex>=0
         colore: parametri_generali.coloreBordo
     }
-
     BottoniSwipe{
 
         anchors
@@ -49,9 +53,13 @@ Item {
         }
         state: "sx"
     }
+    }
+
+
     Rectangle{
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
+        anchors.bottomMargin: parametri_generali.larghezza_barra
         color:parametri_generali.coloreSfondo
         clip: true
 

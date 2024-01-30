@@ -15,7 +15,7 @@ import SysCall 1.0
 
 ApplicationWindow {
     visible: true
-    width: 1080
+    width: 1080/2
     //    height: 1080
     height: width/1080*1920
     id: app
