@@ -1,5 +1,9 @@
-"nome","valore"
-"scheda wifi","wlx90de80f4646d"
-"monitor","DisplayPort-0"
-"touch","eGalax Inc. eGalaxTouch P80H84 4104 v270HCT6_T1 k4.10.143"
-"indirizzo_ip_shelly1plus","192.168.33.3"
+nome,valore
+scheda wifi,
+monitor,
+touch,
+scheda wifi shelly,
+nome wifi shelly,
+indirizzo ip shelly RGB2,192.168.33.1
+indirizzo ip shelly SWITCH,192.168.33.3
+password wifi shelly,
