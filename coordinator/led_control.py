@@ -87,6 +87,7 @@ def led_thread():
             return
         if find_led:
             waiting = False
+            break
         # for dev in shelly.devices:
         #     print(dev.device_type)
         #     if dev.device_type == "RGBLIGHT":
