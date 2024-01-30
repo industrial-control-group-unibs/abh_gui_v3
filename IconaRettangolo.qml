@@ -173,6 +173,7 @@ Item {
         font.pixelSize: 70
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
+        fontSizeMode: Text.Fit
         anchors
         {
             //verticalCenter: parent.verticalCenter

@@ -4,7 +4,7 @@ import QtQuick 2.12
 TemplateInserimentoTesto
 {
     titolo: qsTr("NUOVO PROGRAMMA")
-    onPressSx: pageLoader.source= "SceltaAllenamentoPersonalizzato.qml"
+    onPressSx: pageLoader.source= "AllenamentoPersonalizzato.qml"
     property bool replace: false
     onPressDx:
     {

@@ -11,7 +11,7 @@ TemplateListaAggiungile
     model: _custom_workouts
     titolo: qsTr("ALLENAMENTO PERSONALIZZATO")
 
-    onPressSx: pageLoader.source= "PaginaAllenamento.qml"
+    onPressSx: pageLoader.source= "AllenamentoPersonalizzato.qml"
     onPressDx:
     {
         if (new_element)

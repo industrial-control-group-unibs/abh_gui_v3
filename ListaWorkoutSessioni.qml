@@ -35,7 +35,7 @@ Item {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         z:parent.z+2
-        height:274+50
+        height:parametri_generali.larghezza_barra
         FrecceSxDx
         {
             onPressSx:
@@ -75,6 +75,7 @@ Item {
     Rectangle{
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
+        anchors.bottomMargin: parametri_generali.larghezza_barra
         color:parametri_generali.coloreSfondo
         clip: true
 

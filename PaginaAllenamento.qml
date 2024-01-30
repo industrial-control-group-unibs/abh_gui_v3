@@ -34,7 +34,7 @@ Item {
         link21: "SceltaGruppo.qml"
         immagine12: "sfida.png"
         testo12: qsTr("ALLENAMENTO\n PERSONALIZZATO")
-        link12: "SceltaAllenamentoPersonalizzato.qml"
+        link12: "AllenamentoPersonalizzato.qml"
         immagine22: "statistiche.png"
         testo22: qsTr("STATISTICHE\n")
         link22: "SceltaStatisticheWorkout.qml"

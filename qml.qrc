@@ -123,5 +123,9 @@
         <file>PaginaImpostazioniAccount.qml</file>
         <file>PaginaExitAccount.qml</file>
         <file>PaginaAccount.qml</file>
+        <file>AllenamentoPersonalizzato.qml</file>
+        <file>PaginaWorkoutManuale.qml</file>
+        <file>WorkoutTopManuale.qml</file>
+        <file>WorkoutBottomManuale.qml</file>
     </qresource>
 </RCC>
