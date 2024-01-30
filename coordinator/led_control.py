@@ -99,7 +99,7 @@ def led_thread():
         # if find_uv and find_led:
         #     break
 
-
+    print(f"Start control of the LED")
     if not led.turn_off():
         led.turn_off()
     time.sleep(0.5)
