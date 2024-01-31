@@ -354,10 +354,11 @@ Item {
                 {
                     anchors.fill: parent
                     onPressed: {
-                        parametri_generali.coloreBordo     = _default[0]
-                        parametri_generali.coloreSfondo    = _default[1]
-                        parametri_generali.coloreUtente    = _default[2]
-                        parametri_generali.coloreLed       = _default[3]
+
+                        _user_config.setValue("coloreBordo",_default[0])
+                        _user_config.setValue("coloreSfondo",_default[1])
+                        _user_config.setValue("coloreUtente",_default[2])
+                        _user_config.setValue("coloreLed",_default[3])
 
                         rect.color     = parametri_generali.coloreSfondo
                         rect2.color    = parametri_generali.coloreBordo
