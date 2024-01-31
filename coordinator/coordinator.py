@@ -218,7 +218,7 @@ def exercise_thread():
                 exercise_name_eval.sendString(esercizio)
                 continue
 
-            use_vision =  esercizio != "novision"
+            # use_vision =  esercizio != "novision"
 
             try:
                 es_data=df[(df.Name==esercizio)]

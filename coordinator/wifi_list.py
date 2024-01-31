@@ -88,7 +88,7 @@ while (not stop):
         connessioni = sorted(connessioni, key=lambda x: x['is_use'])
         # connessioni.reverse()
 
-        
+
         if wrong_connection and len(connessioni)>0:
             for tmp in connessioni:
                 if (tmp['know']):
