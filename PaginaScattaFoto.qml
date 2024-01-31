@@ -25,7 +25,11 @@ Item {
         dateTimeString = currentDate.toLocaleDateString( locale,"yyyyMMdd")+Qt.formatTime(new Date(),"hhmmss");
         selected_exercise.code="photo"
     }
-    Component.onDestruction: startstop_udp.string="stop"
+    Component.onDestruction:
+    {
+        selected_exercise.code="novision"
+        startstop_udp.string="stop"
+    }
     Barra_superiore{}
 
 
