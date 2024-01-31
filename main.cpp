@@ -83,18 +83,22 @@ int main(int argc, char *argv[])
 
 
 
-
+  std::string build_path;
   if (fs)
   {
     dir_path="/home/"+Username+"/Scrivania/abh/abh_data";
     template_path="/home/"+Username+"/Scrivania/abh/abh_data/template";
+    build_path="/home/"+Username+"/projects/abh_gui_v3/build/";
   }
   else
   {
     dir_path="/home/jacobi/projects/abh/abh_data";
     template_path="/home/jacobi/projects/abh/abh_gui_v3/template";
+    build_path="/home/"+Username+"/projects/abh/abh_gui_v3/build/";
   }
 
+
+  QString build_path_q=QString::fromStdString(build_path);
   QString q_template_path=QString::fromStdString(template_path);
 
   QString data_path=QString::fromStdString(dir_path);
@@ -290,6 +294,8 @@ int main(int argc, char *argv[])
   context->setContextProperty("_default", default_values);
 
   engine->rootContext()->setContextProperty("PATH", data_path);
+  engine->rootContext()->setContextProperty("BUILD_PATH", build_path_q);
+
   engine->rootContext()->setContextProperty("_template_path", q_template_path);
   engine->rootContext()->setContextProperty("_privacy", privacy);
   engine->rootContext()->setContextProperty("_info", info);

@@ -133,7 +133,7 @@ ApplicationWindow {
         onLinguaChanged:
         {
             console.log("lingua: ",lingua)
-            _settings.setLanguage(lingua)
+            _settings.setLanguage(BUILD_PATH+lingua)
 
 //            lingua_udp.string=lingua
         }

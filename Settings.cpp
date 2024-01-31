@@ -21,6 +21,7 @@ bool Settings::setLanguage(QString dict)
     {
       qDebug() << "unable to remove translation";
     }
+    qInfo() << dict;
     if (!translator_->load(dict))
     {
       qDebug() << "unable to load translation";
