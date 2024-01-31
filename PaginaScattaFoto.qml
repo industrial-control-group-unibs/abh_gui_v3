@@ -27,7 +27,6 @@ Item {
     }
     Component.onDestruction:
     {
-        selected_exercise.code="novision"
         startstop_udp.string="stop"
     }
     Barra_superiore{}

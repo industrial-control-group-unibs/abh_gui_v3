@@ -57,7 +57,7 @@ Item {
         }
 
         Image {
-
+            cache: false
             fillMode: Image.PreserveAspectCrop
             visible: false
             mipmap: true
