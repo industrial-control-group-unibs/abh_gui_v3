@@ -35,8 +35,9 @@ Item {
 
         anchors
         {
-            bottom: parent.bottom
-            bottomMargin: parent.height*0.05
+            //bottom: parent.bottom
+            //bottomMargin: parent.height*0.05
+            verticalCenter: parent.verticalCenter
             horizontalCenter: parent.horizontalCenter
         }
         z:5
