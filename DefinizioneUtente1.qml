@@ -113,6 +113,7 @@ Item {
                 Image {
 
                     fillMode: Image.PreserveAspectCrop
+                    cache: false
                     visible: false
                     mipmap: true
                     anchors.fill:parent
