@@ -61,6 +61,7 @@ Item {
     Item{
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
+        anchors.bottomMargin: parametri_generali.larghezza_barra
         clip: true
 
         Titolo
@@ -257,7 +258,7 @@ Item {
             right: parent.right
             bottom: parent.bottom
         }
-        height: parent.height*0.3
+        height: parametri_generali.larghezza_barra
         FrecceSxDx
         {
             id: freccia

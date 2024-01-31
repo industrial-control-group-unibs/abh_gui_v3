@@ -52,6 +52,8 @@ print(f"scheda shelly: {scheda_shelly}")
 
 while (not stop):
     try:
+
+        wrong_connection = False
         stato = nmcli.device.show(scheda)
         attivo = "connected" in stato['GENERAL.STATE']
         connessioni_wifi=nmcli.device.wifi(scheda)
@@ -62,9 +64,10 @@ while (not stop):
             nota = c.ssid in connessioni_note_ssid
             if not c.ssid:
                 continue
-            if "Shelly" in c.ssid:
-                continue
-            if "shelly" in c.ssid:
+            if ("Shelly" in c.ssid) or ("shelly" in c.ssid):
+                if c.in_use:
+                    print("shelly is in use in the wrong board")
+                    wrong_connection = True
                 continue
             conn={'is_use': c.in_use and attivo, 'known': False, 'ssid': c.ssid}
 
@@ -84,6 +87,14 @@ while (not stop):
         connessioni = sorted(connessioni, key=lambda x: x['known'])
         connessioni = sorted(connessioni, key=lambda x: x['is_use'])
         # connessioni.reverse()
+
+        
+        if wrong_connection and len(connessioni)>0:
+            for tmp in connessioni:
+                if (tmp['know']):
+                    print(f"first connection:\n{tmp}")
+                    nmcli.device.wifi_connect(ssid=tmp['ssid'], ifname=scheda)
+                    break
         keys = ['is_use', 'known', 'ssid']
         with open(filename, 'w', newline='') as output_file:
             dict_writer = csv.DictWriter(output_file, keys)
