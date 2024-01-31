@@ -68,7 +68,7 @@ Item
 
     LinearSlider
     {
-        visible: selected_exercise.type===1
+        visible: true
         id: power_settings
         height: parent.height*0.20*0.66
         width: parent.width*0.5
