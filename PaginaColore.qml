@@ -141,7 +141,7 @@ Item {
                     title: qsTr("SELEZIONA COLORE")
                     id: colorDialog
                     onAccepted: {
-                        _user_config.setValue("coloreSfondo",rect.color)
+                        _user_config.setValue("coloreSfondo",colorDialog.color)
                         rect.color= parametri_generali.coloreSfondo
                         visible: false
                     }

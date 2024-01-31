@@ -19,6 +19,7 @@ cp ~/Scrivania/abh/abh_data/traduzioni/*.ts ~/projects/abh_gui_v3
 
 cd build
 make
+cp *.qm ..
 
 cd ~/projects/abh_gui_v3/template/
 cp script_update.sh ~
