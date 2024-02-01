@@ -45,7 +45,13 @@ int SysCall::getVolume()
 
   std::string cmd="amixer  -M -D pulse get Master | grep -m 1 -o -E [[:digit:]]+% | tr -d \"%\"";
   std::string cmd_out=execute(cmd);
-  int volume=std::stoi(cmd_out);
+  int volume;
+  try {
+    volume=std::stoi(cmd_out);
+  } catch () {
+    volume=50;
+  }
+
 
   return volume;
 }
