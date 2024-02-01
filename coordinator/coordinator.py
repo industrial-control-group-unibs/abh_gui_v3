@@ -191,6 +191,7 @@ def exercise_thread():
 
         if (type_client.isNewDataAvailable()):
             exercise_type=type_client.getLastDataAndClearQueue()[0]
+            print(f"exercise_type: {exercise_type}")
 
         if (power_client.isNewDataAvailable()):
             power_array=power_client.getLastDataAndClearQueue()
@@ -229,7 +230,6 @@ def exercise_thread():
                 print(f"exercise not found: {esercizio}")
                 continue
 
-            print(f"es_data: {es_data}")
             exercise["name"]=esercizio
             torque_change_time_fw = es_data.TimeFrom0To100Forward.iloc[0]
             torque_change_time_bw = es_data.TimeFrom0To100Backward.iloc[0]
@@ -239,6 +239,7 @@ def exercise_thread():
             percentage_early_stop=es_data.PercentageEndPhase.iloc[0]
             motor_speed_early_stop_return=es_data.VelocityEndPhaseReturn.iloc[0]
             percentage_early_stop_return=es_data.PercentageEndPhaseReturn.iloc[0]
+
 
             if (not isinstance(exercise_name_eval,int)):
                 exercise_name_eval.sendString(esercizio)
@@ -257,6 +258,7 @@ def exercise_thread():
                 max_pos_motor_speed=0.0
                 max_neg_motor_speed=0.0
                 last_state = Status.UNDEFINED
+                print(f"exercise: {exercise}")
 
                 if (exercise_type==1):
                     state=Status.BACKWARD
