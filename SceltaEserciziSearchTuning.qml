@@ -5,6 +5,7 @@ import QtQuick.Shapes 1.12
 import QtQuick.Layouts 1.1
 import QtMultimedia 5.0
 
+
 Item {
     anchors.fill: parent
 
@@ -41,35 +42,10 @@ Item {
         z:10
         FrecceSxDx
         {
-            onPressSx: pageLoader.source= "SceltaGruppo.qml"
-            onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
+            onPressSx: pageLoader.source= "PaginaAllenamento.qml"
+            onPressDx: pageLoader.source=  "PaginaWorkoutTuning.qml"
             dx_visible: lista_workout.currentIndex>=0
         }
-
-
-
-    BottoniSwipe{
-
-        anchors
-        {
-            //bottom: parent.bottom
-            //bottomMargin: parent.height*0.05
-            verticalCenter: parent.verticalCenter
-            horizontalCenter: parent.horizontalCenter
-        }
-        z:5
-        width: 0.4*parent.width
-        bordo: parametri_generali.coloreUtente
-        onPressRight:
-        {
-//            component.state="stats"
-        }
-        onPressLeft:
-        {
-            pageLoader.source=  "SceltaGruppo.qml"
-        }
-        state: "dx"
-    }
     }
 
     Column

@@ -52,6 +52,7 @@ Item {
             link: "PaginaUbuntu.qml"
         }
 
+
     }
 
     implicitHeight: 1920/2
