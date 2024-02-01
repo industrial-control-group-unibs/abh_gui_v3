@@ -315,6 +315,7 @@ def exercise_thread():
                     motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time_bw]
                 if not isinstance(exercise_name_eval,int):
                     print("Start vision")
+                    exercise_name_eval.sendString(esercizio)
                     exercise_name_eval.sendString("start")
 
             elif stringa=="rewire":
