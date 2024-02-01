@@ -148,10 +148,11 @@ Item {
 
 
 
-        WorkoutTop{
+        WorkoutTopTuning{
             id: video_top
             swipe: component.state==="sotto"
         }
+
         WorkoutBottomTuning{
             id: sotto
 

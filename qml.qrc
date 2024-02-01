@@ -130,5 +130,7 @@
         <file>SceltaEserciziSearchTuning.qml</file>
         <file>PaginaWorkoutTuning.qml</file>
         <file>WorkoutBottomTuning.qml</file>
+        <file>WorkoutTopTuning.qml</file>
+        <file>VariazioneParametri.qml</file>
     </qresource>
 </RCC>
