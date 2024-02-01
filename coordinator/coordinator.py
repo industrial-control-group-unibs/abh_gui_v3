@@ -179,7 +179,7 @@ def exercise_thread():
 
     none_counter = 0
 
-    use_vision = True
+    manual_training = True
     while (not stop):
         time.sleep(0.001)
         switch_timer += 0.001
@@ -218,7 +218,7 @@ def exercise_thread():
                 exercise_name_eval.sendString(esercizio)
                 continue
 
-            # use_vision =  esercizio != "novision"
+            manual_training =  esercizio == "novision"
 
             try:
                 es_data=df[(df.Name==esercizio)]
@@ -239,10 +239,7 @@ def exercise_thread():
             percentage_early_stop_return=es_data.PercentageEndPhaseReturn.iloc[0]
 
             if (not isinstance(exercise_name_eval,int)):
-                if  use_vision:
-                    exercise_name_eval.sendString(esercizio)
-                else:
-                    exercise_name_eval.sendString("photo")
+                exercise_name_eval.sendString(esercizio)
                 print("send to vision the code  =  ", esercizio)
 
         if (user_client.isNewStringAvailable()):
@@ -342,7 +339,7 @@ def exercise_thread():
               vision_msg_counter=0
               rep_count_from_vision=-10
 
-        if not use_vision:
+        if manual_training:
             calibrating = True
 
         prev_motor_status = motor_status
