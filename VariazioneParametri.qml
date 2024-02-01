@@ -17,7 +17,7 @@ Item
         Testo
         {
             anchors.fill: parent
-            font.pixelSize: 10
+            font.pixelSize: 20
             fontSizeMode: Text.Fit
             verticalAlignment: Text.AlignVCenter
             text: component.name
@@ -26,6 +26,7 @@ Item
     }
     Item
     {   anchors.right: parent.right
+        anchors.rightMargin: parent.height*0.05
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         width: parent.width*0.3
@@ -59,7 +60,7 @@ Item
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
 
-            font.pixelSize: 10
+            font.pixelSize: 20
             fontSizeMode: Text.Fit
             verticalAlignment: Text.AlignVCenter
             text: component.value.toPrecision(2)
