@@ -31,6 +31,7 @@ Item {
     Component.onDestruction:
     {
         startstop_udp.string="stop"
+        selected_exercise.code="photo"
         parametri_generali.login_page=true
     }
 
