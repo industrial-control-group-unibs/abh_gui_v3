@@ -48,7 +48,7 @@ int SysCall::getVolume()
   int volume;
   try {
     volume=std::stoi(cmd_out);
-  } catch () {
+  } catch (...) {
     volume=50;
   }
 
