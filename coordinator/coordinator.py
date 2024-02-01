@@ -341,6 +341,8 @@ def exercise_thread():
 
         if manual_training:
             calibrating = True
+            force_power_level_0_first_reps=force_power_level_0_last_reps
+            force_power_first_reps=force_power_last_reps
 
         prev_motor_status = motor_status
         if motor_status == MotorStatus.REST_BACKWARD and motor_speed<motor_speed_threshold_return*2.0:
@@ -382,7 +384,7 @@ def exercise_thread():
                 print(f"None present")
             state = Status.UNDEFINED
         if (direction==5):
-            none_counter += 0 #1
+            none_counter += 1
         else:
             none_counter = 0
 

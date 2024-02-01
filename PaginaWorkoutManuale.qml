@@ -25,7 +25,6 @@ Item {
     Component.onCompleted:
     {
 
-        startstop_udp.string="start"
         parametri_generali.login_page=false
 
     }

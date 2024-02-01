@@ -159,6 +159,11 @@ Item
         colore2: "transparent"
         onPressed: {
             component.stop=!component.stop
+            if (component.stop)
+                startstop_udp.string="stop"
+            else
+                startstop_udp.string="start"
+
         }
         Testo
         {
