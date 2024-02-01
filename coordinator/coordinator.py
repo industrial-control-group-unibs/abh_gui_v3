@@ -159,6 +159,7 @@ def exercise_thread():
     max_neg_motor_speed=0.0
 
     resend=False
+    started = False
 
     vosk_command=0
 
@@ -211,8 +212,8 @@ def exercise_thread():
                 tmp = df_forza[df_forza.power == power_level+1]
                 force_power_level_0_first_reps = tmp.force.iloc[0]
 
-
-            resend=True
+            if started:
+                resend = True
 
         if (exercise_client.isNewStringAvailable()):
             esercizio=exercise_client.getLastStringAndClearQueue()
@@ -254,7 +255,9 @@ def exercise_thread():
 
         if (startstop_client.isNewStringAvailable()):
             stringa=startstop_client.getLastStringAndClearQueue()
+            started = False
             if stringa=="start":
+                started = True
                 repetition_count=1
                 percentage = 0
                 max_pos_motor_speed=0.0
@@ -275,6 +278,7 @@ def exercise_thread():
                 motor_target_data=[0,0.20,0.2,1]
                 print("rewire on")
             elif stringa=="stop_rewire":
+                started = False
                 repetition_count = 1
                 state=Status.STOP
                 motor_target_data=[1,0,0,0.5]
