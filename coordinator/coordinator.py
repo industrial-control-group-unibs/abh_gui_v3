@@ -347,7 +347,7 @@ def exercise_thread():
             calibrating = True
             force_power_level_0_first_reps=force_power_level_0_last_reps
             force_power_first_reps=force_power_last_reps
-            none_counter = 0 #DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG 
+            none_counter = 0 #DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG
 
         prev_motor_status = motor_status
         if motor_status == MotorStatus.REST_BACKWARD and motor_speed<motor_speed_threshold_return*2.0:
@@ -431,6 +431,7 @@ def exercise_thread():
             elif (state == Status.REWIRE):
                 motor_target_data=[0,0.20,0.2,1]
             motor_target.sendData(motor_target_data)
+            print(f"state = {state}")
             last_state = state
 
     if not isinstance(exercise_client,type):
