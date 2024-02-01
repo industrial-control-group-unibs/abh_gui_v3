@@ -13,7 +13,7 @@ from enum import Enum
 
 import os
 import getpass
-
+pd.options.mode.chained_assignment = None  # default='warn'
 
 
 path=os.path.dirname(os.path.realpath(__file__))
@@ -440,7 +440,7 @@ def exercise_thread():
                 print(f"None present")
             state = Status.UNDEFINED
         if (direction==5):
-            none_counter += 0 #1
+            none_counter += 1
         else:
             none_counter = 0
 
