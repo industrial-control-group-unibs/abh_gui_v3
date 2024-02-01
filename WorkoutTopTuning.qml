@@ -85,31 +85,7 @@ Item
         border.color: parametri_generali.coloreBordo
         visible: !rect_utente.visible
 
-        IconaBottone
-        {
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: parent.bottom
-            width: 100
-            colore: parametri_generali.coloreUtente
-            colore2: "transparent"
-            onPressed: {
-                component.exerciseParameters[8]=1
-                parameters_udp.data=component.exerciseParameters
-                component.exerciseParameters[8]=0
-            }
-            Testo
-            {
-                text: qsTr("SALVA")
-                color: parametri_generali.coloreBordo
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
-                width: parent.width*0.8
-                height: width
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                fontSizeMode: Text.Fit
-            }
-        }
+
 
         Testo
         {
@@ -358,6 +334,32 @@ Item
         border.color: parametri_generali.coloreBordo
         visible: true
 
+        IconaBottone
+        {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.bottom
+            anchors.topMargin: width*0.1
+            width: 100
+            colore: parametri_generali.coloreUtente
+            colore2: "transparent"
+            onPressed: {
+                component.exerciseParameters[8]=1
+                parameters_udp.data=component.exerciseParameters
+                component.exerciseParameters[8]=0
+            }
+            Testo
+            {
+                text: qsTr("SALVA")
+                color: parametri_generali.coloreBordo
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                width: parent.width*0.8
+                height: width
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                fontSizeMode: Text.Fit
+            }
+        }
         Testo
         {
             anchors.bottom: parent.top
