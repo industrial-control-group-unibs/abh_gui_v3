@@ -192,6 +192,8 @@ def exercise_thread():
         if (type_client.isNewDataAvailable()):
             exercise_type=type_client.getLastDataAndClearQueue()[0]
             print(f"exercise_type: {exercise_type}")
+            if exercise_type==0:
+                exercise_type=1
 
         if (power_client.isNewDataAvailable()):
             power_array=power_client.getLastDataAndClearQueue()
