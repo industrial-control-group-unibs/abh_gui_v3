@@ -99,7 +99,7 @@ Item
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenterOffset: -parent.height*0.25
         anchors.verticalCenter: parent.verticalCenter
-        width: icona_rep.width
+        width: parent.height*0.35
         colore: parametri_generali.coloreUtente
         id: time
         value: component.time_manual/1000/60-Math.floor(component.time_manual/1000/60)
