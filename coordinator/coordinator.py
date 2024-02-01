@@ -440,7 +440,7 @@ def exercise_thread():
                 print(f"None present")
             state = Status.UNDEFINED
         if (direction==5):
-            none_counter += 1
+            none_counter += 0 #1
         else:
             none_counter = 0
 
