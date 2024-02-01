@@ -168,7 +168,7 @@ Item {
             onCancel: {
                 component.state="sotto"
             }
-            onExit: pageLoader.source = SceltaEserciziSearchTuning.qml
+            onExit: pageLoader.source = "SceltaEserciziSearchTuning.qml"
         }
 
     }
