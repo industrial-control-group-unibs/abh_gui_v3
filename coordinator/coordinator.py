@@ -84,7 +84,7 @@ def exercise_thread():
             power_client.bufferLength(1)
             power_client.start()
             parameters_client = UdpBinaryReceiverThread("parameters_client", abh.ABH_CONTROL, abh.PARAMETER_DM)
-            parameters_client.bufferLength(8)
+            parameters_client.bufferLength(9)
             parameters_client.start()
 
             type_client = UdpBinaryReceiverThread("type_client_d",abh.ABH_CONTROL,abh.TYPE_PORT)
