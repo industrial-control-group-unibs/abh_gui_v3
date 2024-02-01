@@ -279,6 +279,7 @@ def exercise_thread():
                 state=Status.STOP
                 motor_target_data=[1,0,0,0.5]
             elif stringa=="stop":
+                print("Stop motor")
                 repetition_count = 1
                 state=Status.STOP
                 motor_target_data=[1,0,0,0.5]
