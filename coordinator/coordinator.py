@@ -228,6 +228,8 @@ def exercise_thread():
             if (len(es_data)==0):
                 print(f"exercise not found: {esercizio}")
                 continue
+
+            print(f"es_data: {es_data}")
             exercise["name"]=esercizio
             torque_change_time_fw = es_data.TimeFrom0To100Forward.iloc[0]
             torque_change_time_bw = es_data.TimeFrom0To100Backward.iloc[0]
