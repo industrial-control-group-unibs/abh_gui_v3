@@ -40,7 +40,7 @@ Item {
         onPressDx: {
             if (component.what_pressed===1)
                  pageLoader.source="SceltaAllenamentoPersonalizzatoTitolo.qml"
-            else if (component.what_pressed===1)
+            else if (component.what_pressed===2)
                 pageLoader.source="SceltaAllenamentoPersonalizzato.qml"
             else
             {
@@ -69,7 +69,7 @@ Item {
             IconaRettangolo{
                 color: parametri_generali.coloreBordo
                 highlighted: component.what_pressed===1
-                text: qsTr("CREA IL PROGRAMMA DI ALLENAMENTO")
+                text: qsTr("CREA IL PROGRAMMA\nDI ALLENAMENTO")
                 width: parent.width-2
 
                 onPressed: {
@@ -81,7 +81,7 @@ Item {
             IconaRettangolo{
                 color: parametri_generali.coloreBordo
                 highlighted: component.what_pressed===2
-                text: qsTr("CONTINUA IL PROGRAMMA DI ALLENAMENTO")
+                text: qsTr("CONTINUA IL PROGRAMMA\nDI ALLENAMENTO")
                 width: parent.width-2
 
                 onPressed: {
