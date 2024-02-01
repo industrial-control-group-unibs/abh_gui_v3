@@ -349,7 +349,7 @@ def exercise_thread():
             calibrating = True
             force_power_level_0_first_reps=force_power_level_0_last_reps
             force_power_first_reps=force_power_last_reps
-            none_counter = 0 #DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG DEBUG
+            
 
         prev_motor_status = motor_status
         if motor_status == MotorStatus.REST_BACKWARD and motor_speed<motor_speed_threshold_return*2.0:
