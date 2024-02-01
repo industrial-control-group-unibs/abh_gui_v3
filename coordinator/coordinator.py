@@ -271,6 +271,7 @@ def exercise_thread():
             percentage_early_stop = parameters_array[5]
             motor_speed_early_stop_return = -parameters_array[6]
             percentage_early_stop_return = parameters_array[7]
+            save_parameters = parameters_array[8]
             try:
                 es_data=df[(df.Name==esercizio)]
                 es_data.TimeFrom0To100Forward.iloc[0] = torque_change_time_fw
@@ -281,16 +282,15 @@ def exercise_thread():
                 es_data.PercentageEndPhase.iloc[0] = percentage_early_stop
                 es_data.VelocityEndPhaseReturn.iloc[0] = motor_speed_early_stop_return
                 es_data.PercentageEndPhaseReturn.iloc[0] = percentage_early_stop_return
-                print(f"es_data   = {es_data}")
-                df[(df.Name==esercizio)] = es_data
-                print(f"es_data 2 = {df[(df.Name==esercizio)]}")
 
-                if (user != 'jacobi'):
-                    df.to_excel(r'/home/' + user + '/Scrivania/abh/abh_data/esercizi_controllo.xlsx',
-                                       sheet_name='ParameteriForza')
-                else:
-                    df.to_excel(r'/home/jacobi/projects/abh//abh_data/esercizi_controllo.xlsx',
-                                       sheet_name='ParameteriForza')
+                if save_parameters>0:
+                    df[(df.Name == esercizio)] = es_data
+                    if (user != 'jacobi'):
+                        df.to_excel(r'/home/' + user + '/Scrivania/abh/abh_data/esercizi_controllo.xlsx',
+                                           sheet_name='ParameteriForza')
+                    else:
+                        df.to_excel(r'/home/jacobi/projects/abh//abh_data/esercizi_controllo.xlsx',
+                                           sheet_name='ParameteriForza')
             except:
                 print("invalid exercise = ", esercizio)
                 continue

@@ -32,8 +32,9 @@ Item
     property real perc_end_phase: fb_udp.data[13]
     property real vel_end_phase_ret: fb_udp.data[14]
     property real perc_end_phas_ret: fb_udp.data[15]
+    property real save_parameters: 0
 
-    property var exerciseParameters: [pos_velocity_th,neg_velocity_th,time_0_100_fw,time_0_100_bw,vel_end_phase,perc_end_phase,vel_end_phase_ret,perc_end_phas_ret]
+    property var exerciseParameters: [pos_velocity_th,neg_velocity_th,time_0_100_fw,time_0_100_bw,vel_end_phase,perc_end_phase,vel_end_phase_ret,perc_end_phas_ret,save_parameters]
 
 
     BinarySender {
@@ -83,6 +84,32 @@ Item
         border.width: rect_utente.border.width
         border.color: parametri_generali.coloreBordo
         visible: !rect_utente.visible
+
+        IconaBottone
+        {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.bottom
+            width: 100
+            colore: parametri_generali.coloreUtente
+            colore2: "transparent"
+            onPressed: {
+                component.exerciseParameters[8]=1
+                parameters_udp.data=component.exerciseParameters
+                component.exerciseParameters[8]=0
+            }
+            Testo
+            {
+                text: qsTr("SALVA")
+                color: parametri_generali.coloreBordo
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                width: parent.width*0.8
+                height: width
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                fontSizeMode: Text.Fit
+            }
+        }
 
         Testo
         {
