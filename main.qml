@@ -405,9 +405,10 @@ ApplicationWindow {
         // @disable-check M16
         port: "21012"
         // @disable-check M16
-        data: [0.0,0.0,0.0, 0.0,0.0,0.0, 0.0, 0.0]
+        data: [0.0,0.0,0.0, 0.0,0.0,0.0, 0.0, 0.0,
+               0.0,0.0,0.0, 0.0,0.0,0.0, 0.0, 0.0]
         // @disable-check M16
-        size: 8
+        size: 16
         // @disable-check M16
 
 

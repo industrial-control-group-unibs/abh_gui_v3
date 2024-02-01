@@ -27,4 +27,5 @@ REP_COUNT_PORT          = 21011
 REP_COUNT_PORT_DM       = 21012
 LED_PORT                = 21051
 UV_PORT                 = 21052
-LANGUAGE_PORT       = 21025
+LANGUAGE_PORT           = 21025
+PARAMETER_DM            = 21026

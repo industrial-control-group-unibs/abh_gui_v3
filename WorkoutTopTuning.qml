@@ -8,12 +8,13 @@ import QtMultimedia 5.12
 
 import UdpVideoStream 1.0
 
+import BinarySender 1.0
 import Charts 1.0
+
+
 Item
 {
-    Component.onCompleted: {
-        timer_tempo.start()
-    }
+    Component.onCompleted:  timer_tempo.start()
     Component.onDestruction: timer_tempo.stop()
 
     implicitWidth: 1080*.5
@@ -23,6 +24,30 @@ Item
     id: component
 
     property bool swipe: true
+    property real pos_velocity_th: fb_udp.data[8]
+    property real neg_velocity_th: fb_udp.data[9]
+    property real time_0_100_fw: fb_udp.data[10]
+    property real time_0_100_bw: fb_udp.data[11]
+    property real vel_end_phase: fb_udp.data[12]
+    property real perc_end_phase: fb_udp.data[13]
+    property real vel_end_phase_ret: fb_udp.data[14]
+    property real perc_end_phas_ret: fb_udp.data[15]
+
+    property var exerciseParameters: [pos_velocity_th,neg_velocity_th,time_0_100_fw,time_0_100_bw,vel_end_phase,perc_end_phase,vel_end_phase_ret,perc_end_phas_ret]
+
+
+    BinarySender {
+        id: parameters_udp
+        // @disable-check M16
+        port: "21026"
+        // @disable-check M16
+        host: "localhost"
+        // @disable-check M16
+        data: component.exerciseParameters
+
+    }
+
+
 
     state: "workout"
     states: [
@@ -329,72 +354,112 @@ Item
                 anchors.left: parent.left
                 anchors.right: parent.right
                 height: parent.height*0.1
-                value: 1.0
+                value: component.pos_velocity_th
                 step: 0.1
                 name: qsTr("POSITIVE VELOCITY THRESHOLD")
+                onValueChanged:
+                {
+                    component.exerciseParameters[0]=value
+                    parameters_udp.data=component.exerciseParameters
+                }
             }
             VariazioneParametri
             {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 height: parent.height*0.1
-                value: 1.0
+                value: component.neg_velocity_th
                 step: 0.1
                 name: qsTr("NEGATIVE VELOCITY THRESHOLD")
+                onValueChanged:
+                {
+                    component.exerciseParameters[1]=value
+                    parameters_udp.data=component.exerciseParameters
+                }
             }
             VariazioneParametri
             {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 height: parent.height*0.1
-                value: 1.0
+                value: component.time_0_100_fw
                 step: 0.1
                 name: qsTr("TIME FROM 0 TO 100 FORWARD")
+                onValueChanged:
+                {
+                    component.exerciseParameters[2]=value
+                    parameters_udp.data=component.exerciseParameters
+                }
             }
             VariazioneParametri
             {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 height: parent.height*0.1
-                value: 1.0
+                value: component.time_0_100_bw
                 step: 0.1
                 name: qsTr("TIME FROM 0 TO 100 BACKWARD")
+                onValueChanged:
+                {
+                    component.exerciseParameters[3]=value
+                    parameters_udp.data=component.exerciseParameters
+                }
             }
             VariazioneParametri
             {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 height: parent.height*0.1
-                value: 1.0
-                step: 0.1
+                value: component.vel_end_phase
+                step: 1
                 name: qsTr("VELOCITY END PHASE")
+                onValueChanged:
+                {
+                    component.exerciseParameters[4]=value
+                    parameters_udp.data=component.exerciseParameters
+                }
             }
             VariazioneParametri
             {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 height: parent.height*0.1
-                value: 1.0
-                step: 0.1
+                value: component.perc_end_phase
+                step: 1
                 name: qsTr("PERCENTAGE END PHASE")
+                onValueChanged:
+                {
+                    component.exerciseParameters[5]=value
+                    parameters_udp.data=component.exerciseParameters
+                }
             }
             VariazioneParametri
             {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 height: parent.height*0.1
-                value: 1.0
-                step: 0.1
+                value: component.vel_end_phase_ret
+                step: 2
                 name: qsTr("VELOCITY END PHASE RETURN")
+                onValueChanged:
+                {
+                    component.exerciseParameters[6]=value
+                    parameters_udp.data=component.exerciseParameters
+                }
             }
             VariazioneParametri
             {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 height: parent.height*0.1
-                value: 1.0
-                step: 0.1
+                value: component.perc_end_phas_ret
+                step: 1
                 name: qsTr("PERCENTAGE END PHASE RETURN")
+                onValueChanged:
+                {
+                    component.exerciseParameters[7]=value
+                    parameters_udp.data=component.exerciseParameters
+                }
             }
         }
     }

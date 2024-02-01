@@ -7,6 +7,8 @@ Item
 
     property real value: 1.0
     property real step: 0.1
+    property real max: 100
+
     property string name: "POSITIVE VELOCITY THRESHOLD"
     Item
     {   anchors.left: parent.left
@@ -53,7 +55,10 @@ Item
             onPressed:
             {
                 component.value+=component.step
+                if (component.value>component.max)
+                    component.value=component.max
             }
+
         }
         Testo
         {

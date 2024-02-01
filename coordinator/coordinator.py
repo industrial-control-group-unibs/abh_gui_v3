@@ -57,6 +57,7 @@ def exercise_thread():
     startstop_client=-1
     user_client=-1
     power_client=-1
+    parameters_client=-1
     type_client=-1
     exercise_name_eval=-1
     motor_target=-1
@@ -70,7 +71,7 @@ def exercise_thread():
     motor_status = MotorStatus.REST_BACKWARD
 
 
-
+    exercise_parameters=[0,0,0,0, 0,0,0,0]
     while (not stop):
         try:
             exercise_client = UdpReceiverThread("exercise_name_d",abh.ABH_CONTROL,abh.EXERCISE_NAME_DM_PORT)
@@ -82,6 +83,10 @@ def exercise_thread():
             power_client = UdpBinaryReceiverThread("power_client_d",abh.ABH_CONTROL,abh.POWER_NAME_DM_PORT)
             power_client.bufferLength(1)
             power_client.start()
+            parameters_client = UdpBinaryReceiverThread("parameters_client", abh.ABH_CONTROL, abh.PARAMETER_DM)
+            parameters_client.bufferLength(8)
+            parameters_client.start()
+
             type_client = UdpBinaryReceiverThread("type_client_d",abh.ABH_CONTROL,abh.TYPE_PORT)
             type_client.bufferLength(1)
             type_client.start()
@@ -243,6 +248,9 @@ def exercise_thread():
             motor_speed_early_stop_return=es_data.VelocityEndPhaseReturn.iloc[0]
             percentage_early_stop_return=es_data.PercentageEndPhaseReturn.iloc[0]
 
+            exercise_parameters=[motor_speed_threshold,-motor_speed_threshold_return,torque_change_time_fw,
+                                 torque_change_time_bw,motor_speed_early_stop,percentage_early_stop,
+                                 -motor_speed_early_stop_return,percentage_early_stop_return]
 
             if (not isinstance(exercise_name_eval,int)):
                 exercise_name_eval.sendString(esercizio)
@@ -252,6 +260,42 @@ def exercise_thread():
             stringa=user_client.getLastStringAndClearQueue()
             if (stringa):
                 exercise_name_eval.sendString("user_"+stringa)
+
+        if (parameters_client.isNewDataAvailable()):
+            parameters_array=parameters_client.getLastDataAndClearQueue()
+            motor_speed_threshold = parameters_array[0]
+            motor_speed_threshold_return = -parameters_array[1]
+            torque_change_time_fw = parameters_array[2]
+            torque_change_time_bw = parameters_array[3]
+            motor_speed_early_stop = parameters_array[4]
+            percentage_early_stop = parameters_array[5]
+            motor_speed_early_stop_return = -parameters_array[6]
+            percentage_early_stop_return = parameters_array[7]
+            try:
+                es_data=df[(df.Name==esercizio)]
+                es_data.TimeFrom0To100Forward.iloc[0] = torque_change_time_fw
+                es_data.TimeFrom0To100Backward.iloc[0] = torque_change_time_bw
+                es_data.PositiveVelocityThreshold.iloc[0] = motor_speed_threshold
+                es_data.NegativeVelocityThreshold.iloc[0] = motor_speed_threshold_return
+                es_data.VelocityEndPhase.iloc[0] = motor_speed_early_stop
+                es_data.PercentageEndPhase.iloc[0] = percentage_early_stop
+                es_data.VelocityEndPhaseReturn.iloc[0] = motor_speed_early_stop_return
+                es_data.PercentageEndPhaseReturn.iloc[0] = percentage_early_stop_return
+                print(f"es_data   = {es_data}")
+                df[(df.Name==esercizio)] = es_data
+                print(f"es_data 2 = {df[(df.Name==esercizio)]}")
+
+                if (user != 'jacobi'):
+                    df.to_excel(r'/home/' + user + '/Scrivania/abh/abh_data/esercizi_controllo.xlsx',
+                                       sheet_name='ParameteriForza')
+                else:
+                    df.to_excel(r'/home/jacobi/projects/abh//abh_data/esercizi_controllo.xlsx',
+                                       sheet_name='ParameteriForza')
+            except:
+                print("invalid exercise = ", esercizio)
+                continue
+
+            print(f"parameters = {parameters_array}")
 
         if (startstop_client.isNewStringAvailable()):
             stringa=startstop_client.getLastStringAndClearQueue()
@@ -422,7 +466,9 @@ def exercise_thread():
         elif (initializing):
           stato_macchina=11
 
-        repetition_udp_repetiter.sendData([repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina,percentage_graph,real_current_value])
+        data_to_be_send=[repetition_count,direction,motor_speed,percentage,vosk_command,stato_macchina,percentage_graph,real_current_value]
+
+        repetition_udp_repetiter.sendData(data_to_be_send+exercise_parameters)
         vosk_command = 0
 
         if (last_state != state or resend):
