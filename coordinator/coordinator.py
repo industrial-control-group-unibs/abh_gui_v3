@@ -199,6 +199,7 @@ def exercise_thread():
             exercise_type=type_client.getLastDataAndClearQueue()[0]
             print(f"exercise_type: {exercise_type}")
             if exercise_type==0:
+                print(f"exercise_type: {exercise_type}")
                 exercise_type=1
 
         if (power_client.isNewDataAvailable()):
@@ -374,7 +375,7 @@ def exercise_thread():
 
                 #print(rep_count_from_vision,exercise_type)
 
-                if (exercise_type>1):
+                if exercise_type>1:
                     if last_rep_count_from_vision!=rep_count_from_vision:
                         repetition_count=repetition_count+1
                 elif ((last_rep_count_from_vision!=rep_count_from_vision) and (max_pos_motor_speed>10) and (max_neg_motor_speed<-2)):
@@ -397,8 +398,8 @@ def exercise_thread():
 
         if manual_training:
             calibrating = True
-            force_power_level_0_first_reps=force_power_level_0_last_reps
-            force_power_first_reps=force_power_last_reps
+            #force_power_level_0_first_reps=force_power_level_0_last_reps
+            #force_power_first_reps=force_power_last_reps
 
 
         prev_motor_status = motor_status
@@ -414,6 +415,9 @@ def exercise_thread():
             motor_status = MotorStatus.REST_BACKWARD
         elif motor_status == MotorStatus.MOVE_FORWARD and motor_speed<motor_speed_threshold:
             motor_status = MotorStatus.REST_BACKWARD
+
+        if prev_motor_status != motor_status:
+            print(f"switch from {prev_motor_status} to {motor_status}")
 
 
 
@@ -472,7 +476,7 @@ def exercise_thread():
         repetition_udp_repetiter.sendData(data_to_be_send+exercise_parameters)
         vosk_command = 0
 
-        if (last_state != state or resend):
+        if ((last_state != state) or resend):
             resend=False
             if (state == Status.FORWARD and exercise_type==1):
                 motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time_fw]
