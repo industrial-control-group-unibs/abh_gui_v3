@@ -478,9 +478,9 @@ def exercise_thread():
 
         if ((last_state != state) or resend):
             resend=False
-            if (state == Status.FORWARD and exercise_type==1):
+            if (state == Status.FORWARD and exercise_type == 1):
                 motor_target_data=[0,exercise["force"]/100,exercise["velocity"]/100,torque_change_time_fw]
-            elif (state == Status.BACKWARD and exercise_type==1):
+            elif (state == Status.BACKWARD and exercise_type == 1):
                 motor_target_data=[0,exercise["force_return"]/100,exercise["velocity"]/100,torque_change_time_bw]
             elif (state == Status.STOP):
                 motor_target_data=[1,0,0,1]

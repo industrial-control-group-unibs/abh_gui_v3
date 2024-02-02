@@ -50,7 +50,7 @@ Item
 
 
 
-    state: "workout"
+    state: "stats"
     states: [
         State {
             name: "utente"
@@ -108,7 +108,7 @@ Item
                 horizontalCenter: parent.horizontalCenter
                 verticalCenter: parent.verticalCenter
             }
-            property bool show_motor: true
+            property bool show_motor: false
             property bool show_current: false
             width: parent.width
             height: parent.height-2*parent.radius
