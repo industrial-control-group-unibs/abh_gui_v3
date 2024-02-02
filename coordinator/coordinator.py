@@ -217,6 +217,9 @@ def exercise_thread():
                 force_power_level_0_last_reps = exercise["force"]
                 tmp = df_forza[df_forza.power == power_level+1]
                 force_power_level_0_first_reps = tmp.force.iloc[0]
+            if manual_training:
+                force_power_last_reps = parametri_forza.force_return.iloc[0]
+
 
             if started:
                 resend = True
