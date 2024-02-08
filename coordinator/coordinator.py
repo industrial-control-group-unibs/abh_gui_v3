@@ -425,7 +425,7 @@ def exercise_thread():
 
         if started and (motor_status==MotorStatus.REST_FORWARD or MotorStatus.REST_BACKWARD):
             rest_counter+=1
-        else
+        else:
             rest_counter =0
 
         if ( (state == Status.FORWARD) and
