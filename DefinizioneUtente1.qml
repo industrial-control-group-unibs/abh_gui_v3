@@ -163,6 +163,8 @@ Item {
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: parent.height*0.1
                 width: 100
+                reverse: true
+
                 onPressed:
                 {
                     if (impostazioni_utente.identifier !=="")
@@ -173,7 +175,7 @@ Item {
                 }
                 Testo
                 {
-                    text: qsTr("CONTINUA")
+                    text: qsTr("RITORNA")
                     anchors
                     {
                         horizontalCenter: parent.horizontalCenter
