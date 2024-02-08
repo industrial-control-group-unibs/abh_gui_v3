@@ -184,6 +184,7 @@ def exercise_thread():
     vision_msg_counter=0
 
     none_counter = 0
+    rest_counter = 0
 
     manual_training = True
     while (not stop):
@@ -417,15 +418,18 @@ def exercise_thread():
         elif motor_status == MotorStatus.REST_FORWARD and motor_speed < 0:
             motor_status = MotorStatus.REST_BACKWARD
         elif motor_status == MotorStatus.MOVE_FORWARD and motor_speed<motor_speed_threshold:
-            motor_status = MotorStatus.REST_BACKWARD
+            motor_status = motor_status
 
         if prev_motor_status != motor_status:
             print(f"switch from {prev_motor_status} to {motor_status}")
 
-
+        if started and (motor_status==MotorStatus.REST_FORWARD or MotorStatus.REST_BACKWARD):
+            rest_counter+=1
+        else
+            rest_counter =0
 
         if ( (state == Status.FORWARD) and
-             ( (motor_speed<motor_speed_threshold and direction==-1 and exercise["force"]<20  and (switch_timer>switch_timer_th)) or
+             ( (motor_speed<motor_speed_threshold and direction==-1 and exercise["force"]<30  and (switch_timer>switch_timer_th)) or
                ((motor_speed<motor_speed_early_stop) and  (percentage>percentage_early_stop)) or
                (( initializing or calibrating)  and (motor_status == motor_status.REST_BACKWARD and motor_status == motor_status.MOVE_BACKWARD))
              )
@@ -433,7 +437,7 @@ def exercise_thread():
             state=Status.BACKWARD
             switch_timer=0
         elif ( (state == Status.BACKWARD) and
-             ( (motor_speed>motor_speed_threshold_return and direction==1 and exercise["force"]<20 and (switch_timer>switch_timer_th)) or
+             ( (motor_speed>motor_speed_threshold_return and direction==1 and exercise["force"]<30 and (switch_timer>switch_timer_th)) or
                ((motor_speed>motor_speed_early_stop_return) and  (percentage<percentage_early_stop_return))
              )
            ):
