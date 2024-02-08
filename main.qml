@@ -24,6 +24,7 @@ ApplicationWindow {
     {
         chiamata_sistema.string="pactl set-sink-mute @DEFAULT_SINK@ off"
         chiamata_sistema.call()
+        updateValue()
     }
 
     signal updateValue
@@ -99,7 +100,7 @@ ApplicationWindow {
         property bool wifi_acceso: wifi_on
         property bool voice: true
         property bool mute: false
-        property int volume: 100
+        property int volume: 30
         property int luminosita: 100
 
         property bool uv_light: false
