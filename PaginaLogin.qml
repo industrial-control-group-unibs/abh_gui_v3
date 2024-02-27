@@ -80,15 +80,41 @@ Rectangle {
 
     }
 
+
     IconaOff
     {
+        id: icona_off
         anchors
         {
             horizontalCenter: parent.horizontalCenter
+            horizontalCenterOffset: -0.2*parent.width
             bottom: parent.bottom
             bottomMargin: 40
         }
         onPressed: pageLoader.source=  "PaginaExit.qml"
     }
+
+    IconaLingua
+    {
+        width: 1.0*icona_off.width
+        color: parametri_generali.coloreBordo
+        anchors
+        {
+            horizontalCenter: parent.horizontalCenter
+            horizontalCenterOffset: 0.2*parent.width
+            bottom: parent.bottom
+            bottomMargin: 40
+        }
+        MouseArea
+        {
+            anchors.fill: parent
+            onClicked:
+            {
+                if (parametri_generali.login_page)
+                    pageLoader.source="PaginaLingue.qml"
+            }
+        }
+    }
+
 
 }

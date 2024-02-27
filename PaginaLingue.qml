@@ -122,7 +122,7 @@ Item {
                             {
                                 _user_config.setValue("lingua",dict)
                                 _history.pop()
-                                pageLoader.source=_history.pop()
+                                pageLoader.source= "PaginaConfermaLingue.qml"
 
                             }
                             z: 40

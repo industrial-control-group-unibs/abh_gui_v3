@@ -11,6 +11,8 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
+    Component.onCompleted:         selected_exercise.code="photo"
+
     id: component
     state: impostazioni_utente.foto===""? "nofoto": "sifoto"
 
