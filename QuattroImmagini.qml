@@ -10,7 +10,7 @@ Item {
     implicitHeight: 1920/2
     implicitWidth: 1080/2
     id: component
-
+    anchors.topMargin: parametri_generali.larghezza_barra
     property real ratio: 0.8
     property string immagine11: "place_holder_4_3.png"
     property string testo11: "ALLENAMENTO\n"
@@ -27,19 +27,12 @@ Item {
 
     Item{
         anchors.fill: parent
-        anchors.topMargin: parametri_generali.larghezza_barra
+        //
         clip: true
 
 
         Item {
-            anchors
-            {
-                left: parent.left
-                right: parent.right
-                top: parent.top
-                topMargin: parent.height*.1
-            }
-            height: parent.height*0.9
+            anchors.fill: parent
 
             Icona_4_3{
                 nome: component.testo11
