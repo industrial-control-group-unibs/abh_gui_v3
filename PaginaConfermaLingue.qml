@@ -20,6 +20,7 @@ PaginaSiNo
     }
     onPressYes: {
         _history.pop()
+        _user_config.setValue("lingua",parametri_generali.nuova_lingua)
 
         if (impostazioni_utente.identifier !=="")
             pageLoader.source="PaginaAllenamento.qml"

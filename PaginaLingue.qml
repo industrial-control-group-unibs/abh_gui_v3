@@ -120,7 +120,7 @@ Item {
                             anchors.fill: parent
                             onClicked:
                             {
-                                _user_config.setValue("lingua",dict)
+                                parametri_generali.nuova_lingua=dict
                                 _history.pop()
                                 pageLoader.source= "PaginaConfermaLingue.qml"
 

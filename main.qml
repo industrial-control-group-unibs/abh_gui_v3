@@ -93,6 +93,7 @@ ApplicationWindow {
         property bool wifi_known
         property bool wifi_connected
         property string lingua: ""
+        property string nuova_lingua: ""
         property string wifi_net: _default[9]
         property string monitor: _default[10]
         property string touch: _default[11]
