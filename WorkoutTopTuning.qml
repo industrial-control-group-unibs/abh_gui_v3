@@ -563,7 +563,7 @@ Item
             component.state="utente"
         }
         visible: component.swipe
-        state: "sx"
+        state: "dx"
     }
 
 }

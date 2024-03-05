@@ -103,7 +103,7 @@ Item {
             Titolo
             {
 
-                text:selected_exercise.name
+                text: qsTr("TUNING")
             }
         }
     }

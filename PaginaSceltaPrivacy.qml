@@ -34,7 +34,13 @@ Item {
     {
         if (rifiuto)
         {
-            pageLoader.source = "PaginaLogin.qml"
+
+            _utenti.removeUser(impostazioni_utente.identifier)
+            _utenti.readFile()
+            impostazioni_utente.nome=""
+            impostazioni_utente.foto=""
+
+            pageLoader.source=  "PaginaLogin.qml"
         }
         else
         {

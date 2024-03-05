@@ -17,7 +17,9 @@ Item
 
     MouseArea {
         anchors.fill: parent
-        pressAndHoldInterval: 2000
+        pressAndHoldInterval: 1000
+        z: 10
+        preventStealing: true
         onPressAndHold:
         {
             if(identifier !== "") {
