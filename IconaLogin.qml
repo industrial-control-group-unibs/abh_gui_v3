@@ -8,58 +8,81 @@ import QtQuick.Shapes 1.12
 Item
 {
 
+    id: component
 
-    implicitWidth: 200
-    implicitHeight: 200
-    width: lista_login.cellWidth
-    height: lista_login.cellHeight
 
+    implicitWidth: 170
+    height: width
+    //width: lista_login.cellWidth
+    //height: lista_login.cellHeight
+
+    property bool active: false
+
+    signal pressed
+    signal selected
+    signal erase
+    signal clicked
+
+
+    onSelected:
+    {
+        if (identifier === "")
+            pressed()
+        else
+            active= true
+        clicked()
+    }
+
+    onErase: {
+        if(identifier !== "") {
+            impostazioni_utente.nome=nome
+            impostazioni_utente.foto=foto
+            impostazioni_utente.identifier=identifier
+            pageLoader.source=  "PaginaCancellaUtente.qml"
+        }
+    }
+
+
+    onPressed: {
+        if(identifier === "") {
+            pageLoader.source=  "DefinizioneUtente1.qml"
+            impostazioni_utente.nome=""
+            impostazioni_utente.foto=""
+            impostazioni_utente.identifier=""
+        }
+        else
+        {
+
+            impostazioni_utente.identifier=identifier
+
+
+            if (_utenti.getStorePassword(impostazioni_utente.identifier))
+                pageLoader.source=  "PaginaAllenamento.qml"
+            else
+                pageLoader.source=  "PasswordInsert.qml"
+        }
+    }
 
     MouseArea {
         anchors.fill: parent
-        pressAndHoldInterval: 1000
+        pressAndHoldInterval: 500
         z: 10
         preventStealing: true
-        onPressAndHold:
-        {
-            if(identifier !== "") {
-                impostazioni_utente.nome=nome
-                impostazioni_utente.foto=foto
-                impostazioni_utente.identifier=identifier
-                pageLoader.source=  "PaginaCancellaUtente.qml"
-            }
-        }
-
-        onClicked: {
-            if(identifier === "") {
-                pageLoader.source=  "DefinizioneUtente1.qml"
-                impostazioni_utente.nome=""
-                impostazioni_utente.foto=""
-                impostazioni_utente.identifier=""
-            }
-            else
-            {
-
-                impostazioni_utente.identifier=identifier
+        onPressAndHold: component.pressed()
 
 
-                if (_utenti.getStorePassword(impostazioni_utente.identifier))
-                    pageLoader.source=  "PaginaAllenamento.qml"
-                else
-                    pageLoader.source=  "PasswordInsert.qml"
-            }
-        }
+        onClicked: component.active? component.pressed(): component.selected()
     }
 
     Rectangle {
         color: "transparent";
-        width:170
-        height: width
+        anchors.fill: parent
         visible: identifier !== ""
 
         border.color: parametri_generali.coloreBordo
-        border.width: 4
+        border.width: component.active?8:4
         radius: width*0.5
+
 
 
         Image {
@@ -100,6 +123,46 @@ Item
                 horizontalCenter: parent.horizontalCenter
                 top: parent.bottom
                 topMargin: 5
+            }
+            id: testo
+        }
+
+        Rectangle
+        {
+            border.color: parametri_generali.coloreBordo
+            border.width: 4
+            z: 20
+            color: "transparent"
+
+            width: parent.width*0.2
+            height: width
+            radius: width*0.5
+            anchors.top: testo.bottom
+            anchors.topMargin: 5
+            anchors.horizontalCenter: parent.horizontalCenter
+            visible: component.active
+
+            Testo
+            {
+                text: "X"
+                font.pixelSize: 20
+                anchors
+                {
+                    horizontalCenter: parent.horizontalCenter
+                    verticalCenter: parent.verticalCenter
+                }
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                fontSizeMode: Text.Fit
+                font.bold: true
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                pressAndHoldInterval: 1000
+                z: 10
+                preventStealing: true
+                onClicked: component.erase()
             }
         }
     }

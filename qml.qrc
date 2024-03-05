@@ -133,5 +133,7 @@
         <file>WorkoutTopTuning.qml</file>
         <file>VariazioneParametri.qml</file>
         <file>PaginaConfermaLingue.qml</file>
+        <file>IconaUpDown.qml</file>
+        <file>BottoniUpDown.qml</file>
     </qresource>
 </RCC>

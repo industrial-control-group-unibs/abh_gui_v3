@@ -123,7 +123,7 @@ Item {
 
             width: tastierino.width
             property real spacing: 5
-            property int pwd_lenght: 8
+            property int pwd_lenght: 4
             property real key_width: (width-(pwd_lenght-1)*spacing)/pwd_lenght
 
             Row

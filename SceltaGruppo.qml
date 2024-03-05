@@ -33,10 +33,9 @@ Item {
     }
     BottoniSwipe{
 
+
         anchors
         {
-            //bottom: parent.bottom
-            //bottomMargin: parent.height*0.05
             verticalCenter: parent.verticalCenter
             horizontalCenter: parent.horizontalCenter
         }
@@ -54,6 +53,23 @@ Item {
         }
         state: "sx"
     }
+
+    BottoniUpDown
+    {
+        anchors
+        {
+            top: parent.top
+            topMargin: 20
+            horizontalCenter: parent.horizontalCenter
+        }
+        width: 0.4*parent.width
+        up: lista_zona.currentIndex>0
+        down: lista_zona.currentIndex<(lista_zona.count-1)
+        onPressDown: lista_zona.currentIndex+=1
+        onPressUp: lista_zona.currentIndex-=1
+    }
+
+
     }
 
 

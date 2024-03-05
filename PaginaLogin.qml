@@ -68,11 +68,17 @@ Rectangle {
                 }
                 id: lista_login
 
-
                 model: _utenti
 
 
-                delegate: IconaLogin{}
+                delegate: IconaLogin{
+                    property int indice: lista_login.currentIndex
+                    onClicked: lista_login.currentIndex=index
+                    onIndiceChanged: {
+                        if (indice!==index)
+                            active=false
+                    }
+                }
 
             }
         }
