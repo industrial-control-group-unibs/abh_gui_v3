@@ -33,7 +33,7 @@ Item
     property real vel_end_phase_ret: fb_udp.data[14]
     property real perc_end_phas_ret: fb_udp.data[15]
     property real save_parameters: 0
-
+    property bool stop: true
     property var exerciseParameters: [pos_velocity_th,neg_velocity_th,time_0_100_fw,time_0_100_bw,vel_end_phase,perc_end_phase,vel_end_phase_ret,perc_end_phas_ret,save_parameters]
 
 
