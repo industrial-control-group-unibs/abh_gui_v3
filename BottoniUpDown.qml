@@ -16,7 +16,7 @@ Item {
     z: 10
 
     width: 340
-    property real margine: 5
+    property real margine: 2
     property real icon_width: (width-margine*3)/2
 
     IconaUpDown

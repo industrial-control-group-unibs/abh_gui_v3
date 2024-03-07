@@ -9,7 +9,7 @@ Rectangle
 {
     width: 100
     height: 20
-    radius: height*0.1
+    radius: 5
 
 
     id: component
