@@ -270,6 +270,10 @@ def exercise_thread():
             motor_speed_early_stop_return=es_data.VelocityEndPhaseReturn.iloc[0]
             percentage_early_stop_return=es_data.PercentageEndPhaseReturn.iloc[0]
             handles_up = es_data.HandlesUp.iloc[0] == 1
+            if handles_up:
+                print("Maniglie in alto")
+            else:
+                print("Maniglie in basso")
 
             exercise_parameters=[motor_speed_threshold,-motor_speed_threshold_return,torque_change_time_fw,
                                  torque_change_time_bw,motor_speed_early_stop,percentage_early_stop,
