@@ -50,7 +50,7 @@ Item
 
 
 
-    state: "stats"
+    state: "utente"
     states: [
         State {
             name: "utente"
@@ -563,7 +563,7 @@ Item
             component.state="utente"
         }
         visible: component.swipe
-        state: "dx"
+        state: component.state==="stats"?"dx":"sx"
     }
 
 }
