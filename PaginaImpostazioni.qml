@@ -113,35 +113,35 @@ Item {
                 color: "transparent"
                 border.color: parametri_generali.coloreBordo
                 border.width: 5
-//                Image {
-//                    cache: false
-//                    fillMode: Image.PreserveAspectCrop
-//                    visible: false
-//                    mipmap: true
-//                    anchors.fill:parent
-//                    source: "file://"+PATH+"/../utenti/"+impostazioni_utente.foto
-//                    id: allenamento_icona
-//                }
+                Image {
+                    cache: false
+                    fillMode: Image.PreserveAspectCrop
+                    visible: false
+                    mipmap: true
+                    anchors.fill:parent
+                    source: "file://"+PATH+"/../utenti/"+impostazioni_utente.identifier+"/foto.png"
+                    id: allenamento_icona
+                }
 
-//                Rectangle {
-//                    id: allenamento_mask
-//                    anchors
-//                    {
-//                        fill: parent
-//                        topMargin: parent.border.width
-//                        bottomMargin: parent.border.width
-//                        leftMargin: parent.border.width
-//                        rightMargin: parent.border.width
-//                    }
-//                    visible: false
-//                    color: "blue"
-//                    radius: parent.radius-parent.border.width
-//                }
-//                OpacityMask {
-//                    anchors.fill: allenamento_mask
-//                    source: allenamento_icona
-//                    maskSource: allenamento_mask
-//                }
+                Rectangle {
+                    id: allenamento_mask
+                    anchors
+                    {
+                        fill: parent
+                        topMargin: parent.border.width
+                        bottomMargin: parent.border.width
+                        leftMargin: parent.border.width
+                        rightMargin: parent.border.width
+                    }
+                    visible: false
+                    color: "blue"
+                    radius: parent.radius-parent.border.width
+                }
+                OpacityMask {
+                    anchors.fill: allenamento_mask
+                    source: allenamento_icona
+                    maskSource: allenamento_mask
+                }
 
                 MouseArea
                 {
