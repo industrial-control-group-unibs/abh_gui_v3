@@ -65,8 +65,8 @@ Item {
         width: parent.width
         up: lista_zona.currentIndex>0
         down: lista_zona.currentIndex<(lista_zona.count-1)
-        onPressDown: lista_zona.currentIndex+=1
-        onPressUp: lista_zona.currentIndex-=1
+        onPressDown: lista_zona.currentIndex<(lista_zona.count-1)?lista_zona.currentIndex+=1:""
+        onPressUp: lista_zona.currentIndex>0?lista_zona.currentIndex-=1:""
     }
 
 
