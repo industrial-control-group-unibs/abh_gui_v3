@@ -185,6 +185,7 @@ def exercise_thread():
 
     none_counter = 0
     rest_counter = 0
+    handles_up = True
 
     manual_training = True
     while (not stop):
@@ -208,18 +209,34 @@ def exercise_thread():
             print("received ",power_array)
             power_level=min(25,max(0,int(power_array[0])))
             parametri_forza=df_forza[df_forza.power == power_level]
-            exercise["force"]=parametri_forza.force.iloc[0]
-            exercise["force_return"]=parametri_forza.force_return.iloc[0]
+
+            if handles_up:
+                exercise["force"]=parametri_forza.force_handles_up.iloc[0]
+                exercise["force_return"]=parametri_forza.force_return_handles_up.iloc[0]
+            else:
+                exercise["force"] = parametri_forza.force_handles_down.iloc[0]
+                exercise["force_return"] = parametri_forza.force_return_handles_down.iloc[0]
+
             force_power_last_reps = exercise["force"]
             exercise["velocity"]=parametri_forza.velocity.iloc[0]
             tmp = df_forza[df_forza.power == 0]
-            force_power_first_reps = parametri_forza.force_return.iloc[0]
+            if handles_up:
+                force_power_first_reps = parametri_forza.force_return_handles_up.iloc[0]
+            else:
+                force_power_first_reps = parametri_forza.force_return_handles_down.iloc[0]
             if power_level == 0:
                 force_power_level_0_last_reps = exercise["force"]
                 tmp = df_forza[df_forza.power == power_level+1]
-                force_power_level_0_first_reps = tmp.force.iloc[0]
+                if handles_up:
+                    force_power_level_0_first_reps = tmp.force_handles_up.iloc[0]
+                else:
+                    force_power_level_0_first_reps = tmp.force_handles_up.iloc[0]
             if manual_training:
-                force_power_last_reps = parametri_forza.force_return.iloc[0]
+                if handles_up:
+                    force_power_last_reps = parametri_forza.force_return_handles_up.iloc[0]
+                else:
+                    force_power_last_reps = parametri_forza.force_return_handles_down.iloc[0]
+
 
 
             if started:
@@ -252,6 +269,7 @@ def exercise_thread():
             percentage_early_stop=es_data.PercentageEndPhase.iloc[0]
             motor_speed_early_stop_return=es_data.VelocityEndPhaseReturn.iloc[0]
             percentage_early_stop_return=es_data.PercentageEndPhaseReturn.iloc[0]
+            handles_up = es_data.HandlesUp.iloc[0] == 1
 
             exercise_parameters=[motor_speed_threshold,-motor_speed_threshold_return,torque_change_time_fw,
                                  torque_change_time_bw,motor_speed_early_stop,percentage_early_stop,
@@ -287,6 +305,8 @@ def exercise_thread():
                 es_data.PercentageEndPhase.iloc[0] = percentage_early_stop
                 es_data.VelocityEndPhaseReturn.iloc[0] = motor_speed_early_stop_return
                 es_data.PercentageEndPhaseReturn.iloc[0] = percentage_early_stop_return
+
+
 
                 if save_parameters>0:
                     df[(df.Name == esercizio)] = es_data
