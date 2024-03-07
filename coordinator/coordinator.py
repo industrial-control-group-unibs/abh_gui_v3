@@ -237,7 +237,7 @@ def exercise_thread():
                 else:
                     force_power_last_reps = parametri_forza.force_return_handles_down.iloc[0]
 
-
+            print(f"forza: {exercise}")
 
             if started:
                 resend = True
