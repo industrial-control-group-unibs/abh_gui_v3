@@ -8,7 +8,7 @@ import QtQuick.Layouts 1.1
 Rectangle
 {
     width: 100
-    height: 60
+    height: 30
     radius: height*0.1
 
 
