@@ -39,6 +39,7 @@ Item {
         }
         height: parametri_generali.larghezza_barra
         z:10
+        clip: true
         FrecceSxDx
         {
             onPressSx: pageLoader.source= "SceltaGruppo.qml"
@@ -70,6 +71,23 @@ Item {
         }
         state: "dx"
     }
+
+
+    BottoniUpDown
+    {
+        anchors
+        {
+            top: parent.top
+            topMargin: 20
+            horizontalCenter: parent.horizontalCenter
+        }
+        width: parent.width
+        up: lista_workout.currentIndex>0
+        down: lista_workout.currentIndex<(lista_zona.count-1)
+        onPressDown: lista_workout.currentIndex+=1
+        onPressUp: lista_workout.currentIndex-=1
+    }
+
     }
 
     Column

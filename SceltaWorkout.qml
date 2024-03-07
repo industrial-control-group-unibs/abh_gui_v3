@@ -58,12 +58,27 @@ Item {
                     selected_exercise.current_set=0
                     selected_exercise.power=_workout.power
                      _list_string.fromList(_workout.listSessionsNumber())
-                    pageLoader.source="ListaWorkoutSessioni.qml"
+                    pageLoader.source="ListaWo  rkoutSessioni.qml"
                 }
             }
 
             dx_visible: lista_workout.currentIndex>=0
             colore: parametri_generali.coloreBordo
+        }
+
+        BottoniUpDown
+        {
+            anchors
+            {
+                top: parent.top
+                topMargin: 20
+                horizontalCenter: parent.horizontalCenter
+            }
+            width: parent.width
+            up: lista_workout.currentIndex>0
+            down: lista_workout.currentIndex<(lista_zona.count-1)
+            onPressDown: lista_workout.currentIndex+=1
+            onPressUp: lista_workout.currentIndex-=1
         }
     }
 
@@ -73,6 +88,8 @@ Item {
         anchors.bottomMargin: parametri_generali.larghezza_barra
         color:parametri_generali.coloreSfondo
         clip: true
+
+
 
         Component.onDestruction:
         {

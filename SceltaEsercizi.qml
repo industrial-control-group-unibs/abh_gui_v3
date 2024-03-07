@@ -60,6 +60,21 @@ Item {
         visible: component.swipe
         state: "sx"
     }
+
+    BottoniUpDown
+    {
+        anchors
+        {
+            top: parent.top
+            topMargin: 20
+            horizontalCenter: parent.horizontalCenter
+        }
+        width: parent.width
+        up: grid.currentIndex>0
+        down: grid.currentIndex<(lista_zona.count-1)
+        onPressDown: grid.currentIndex+=1
+        onPressUp: grid.currentIndex-=1
+    }
     }
 
     Rectangle

@@ -62,7 +62,7 @@ Item {
             topMargin: 20
             horizontalCenter: parent.horizontalCenter
         }
-        width: 0.4*parent.width
+        width: parent.width
         up: lista_zona.currentIndex>0
         down: lista_zona.currentIndex<(lista_zona.count-1)
         onPressDown: lista_zona.currentIndex+=1

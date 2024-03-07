@@ -281,6 +281,21 @@ Item {
 
             z:5
         }
+
+        BottoniUpDown
+        {
+            anchors
+            {
+                top: parent.top
+                topMargin: 20
+                horizontalCenter: parent.horizontalCenter
+            }
+            width: parent.width
+            up: lista_wifi.currentIndex>0
+            down: lista_wifi.currentIndex<(lista_zona.count-1)
+            onPressDown: lista_wifi.currentIndex+=1
+            onPressUp: lista_wifi.currentIndex-=1
+        }
     }
 
 

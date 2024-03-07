@@ -16,14 +16,15 @@ Item {
     z: 10
 
     width: 340
-
-    property real icon_width: (width-20)/2
+    property real margine: 20
+    property real icon_width: (width-margine*3)/2
 
     IconaUpDown
     {
         anchors {
             verticalCenter: parent.verticalCenter
             left: parent.left
+            leftMargin: component.margine
         }
         width: component.icon_width
         down: true
@@ -35,6 +36,7 @@ Item {
         anchors {
             verticalCenter: parent.verticalCenter
             right: parent.right
+            rightMargin: component.margine
         }
         width: component.icon_width
         down: false
