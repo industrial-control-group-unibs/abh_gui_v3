@@ -24,50 +24,59 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         height: parametri_generali.larghezza_barra
-    FrecceSxDx
-    {
-        onPressSx: pageLoader.source= "PaginaAllenamento.qml"
-        onPressDx: pageLoader.source=  "SceltaEsercizi.qml"
-        dx_visible: lista_zona.currentIndex>=0
-        colore: parametri_generali.coloreBordo
-    }
-    BottoniSwipe{
+
+        Item {
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: bottoni.bottom
+            FrecceSxDx
+            {
+                onPressSx: pageLoader.source= "PaginaAllenamento.qml"
+                onPressDx: pageLoader.source=  "SceltaEsercizi.qml"
+                dx_visible: lista_zona.currentIndex>=0
+                colore: parametri_generali.coloreBordo
+            }
+            BottoniSwipe{
 
 
-        anchors
-        {
-            verticalCenter: parent.verticalCenter
-            horizontalCenter: parent.horizontalCenter
+                anchors
+                {
+                    verticalCenter: parent.verticalCenter
+                    horizontalCenter: parent.horizontalCenter
+                }
+                z:5
+                width: 0.4*parent.width
+                bordo: parametri_generali.coloreUtente
+                onPressRight:
+                {
+                    zona_allenamento.gruppo="tutti"
+                    pageLoader.source=  "SceltaEserciziSearch.qml"
+                }
+                onPressLeft:
+                {
+                    //            pageLoader.source=  "SceltaEserciziSearch.qml"
+                }
+                state: "sx"
+            }
         }
-        z:5
-        width: 0.4*parent.width
-        bordo: parametri_generali.coloreUtente
-        onPressRight:
-        {
-            zona_allenamento.gruppo="tutti"
-            pageLoader.source=  "SceltaEserciziSearch.qml"
-        }
-        onPressLeft:
-        {
-//            pageLoader.source=  "SceltaEserciziSearch.qml"
-        }
-        state: "sx"
-    }
 
-    BottoniUpDown
-    {
-        anchors
+
+        BottoniUpDown
         {
-            top: parent.top
-            topMargin: 20
-            horizontalCenter: parent.horizontalCenter
+            id: bottoni
+            anchors
+            {
+                top: parent.top
+                topMargin: 2
+                horizontalCenter: parent.horizontalCenter
+            }
+            width: parent.width
+            up: lista_zona.currentIndex>0
+            down: lista_zona.currentIndex<(lista_zona.count-1)
+            onPressDown: lista_zona.currentIndex<(lista_zona.count-1)?lista_zona.currentIndex+=1:""
+            onPressUp: lista_zona.currentIndex>0?lista_zona.currentIndex-=1:""
         }
-        width: parent.width
-        up: lista_zona.currentIndex>0
-        down: lista_zona.currentIndex<(lista_zona.count-1)
-        onPressDown: lista_zona.currentIndex<(lista_zona.count-1)?lista_zona.currentIndex+=1:""
-        onPressUp: lista_zona.currentIndex>0?lista_zona.currentIndex-=1:""
-    }
 
 
     }

@@ -15,6 +15,7 @@ Item {
 
     z: 10
 
+    height: 60
     width: 340
     property real margine: 2
     property real icon_width: (width-margine*3)/2
@@ -27,6 +28,7 @@ Item {
             leftMargin: component.margine
         }
         width: component.icon_width
+        height: component.height
         down: true
         visible: component.down
         onPressed: component.pressDown()
@@ -39,6 +41,7 @@ Item {
             rightMargin: component.margine
         }
         width: component.icon_width
+        height: component.height
         down: false
         visible: component.up
         onPressed: component.pressUp()
