@@ -114,6 +114,7 @@ Item
 
 
 
+
     IconaRipetizioni
     {
         id: icona_rep

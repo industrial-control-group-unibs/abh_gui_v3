@@ -360,6 +360,9 @@ Item
                 fontSizeMode: Text.Fit
             }
         }
+
+
+
         Testo
         {
             anchors.bottom: parent.top
@@ -540,8 +543,39 @@ Item
             z:0
             visible: false
         }
+
+
     }
 
+    IconaBottone
+    {
+        anchors.horizontalCenter: rect_utente.horizontalCenter
+        anchors.top: rect_utente.bottom
+        anchors.topMargin: width*0.1
+        width: 100
+        colore: parametri_generali.coloreUtente
+        colore2: "transparent"
+        onPressed: {
+            component.stop=!component.stop
+            if (component.stop)
+                startstop_udp.string="stop"
+            else
+                startstop_udp.string="start"
+
+        }
+        Testo
+        {
+            text: component.stop?qsTr("AVVIA"):qsTr("FERMA")
+            color: parametri_generali.coloreBordo
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            width: parent.width*0.8
+            height: width
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            fontSizeMode: Text.Fit
+        }
+    }
 
 
     BottoniSwipe{
