@@ -60,9 +60,9 @@ Item {
         dx_visible: !_workout.endWorkout && selected_exercise.selected_session===_workout.getActiveSession()
 
         up_visible: lista_workout.currentIndex>0
-        down_visible: lista_workout.currentIndex<(lista_zona.count-1)
-        onPressDown: lista_workout.currentIndex+=1
-        onPressUp: lista_workout.currentIndex-=1
+        down_visible: lista_workout.currentIndex<(lista_workout.count-1)
+        onPressDown:  lista_workout.currentIndex<(lista_workout.count-1)?lista_workout.currentIndex+=1:lista_workout.currentIndex
+        onPressUp: lista_workout.currentIndex>0?lista_workout.currentIndex-=1:lista_workout.currentIndex
     }
 
 

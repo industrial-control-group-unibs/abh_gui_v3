@@ -44,7 +44,7 @@ Item {
         }
         up_visible: grid.currentIndex>0
         down_visible: grid.currentIndex<(lista_zona.count-1)
-        onPressDown: grid.currentIndex+=1
+        onPressDown:  lista_workout.currentIndex<(lista_workout.count-1)?lista_workout.currentIndex+=1:lista_workout.currentIndex
         onPressUp: grid.currentIndex-=1
     }
 

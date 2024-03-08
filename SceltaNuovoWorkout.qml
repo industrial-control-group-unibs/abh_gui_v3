@@ -34,6 +34,25 @@ Item {
     {
     }
 
+    FreccieSotto
+    {
+
+        swipe_visible: false
+
+        onPressSx: pageLoader.source= "SceltaWorkout.qml"
+        onPressDx:
+        {
+            pageLoader.source="PaginaConfWorkout.qml"
+        }
+
+        dx_visible: lista_workout.currentIndex>=0
+
+        up_visible: lista_workout.currentIndex>0
+        down_visible: lista_workout.currentIndex<(lista_workout.count-1)
+        onPressDown:  lista_workout.currentIndex<(lista_workout.count-1)?lista_workout.currentIndex+=1:lista_workout.currentIndex
+        onPressUp: lista_workout.currentIndex>0?lista_workout.currentIndex-=1:lista_workout.currentIndex
+    }
+
     Item
     {
         anchors.left: parent.left
@@ -57,6 +76,7 @@ Item {
     Rectangle{
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
+        anchors.bottomMargin: parametri_generali.larghezza_barra
         color:parametri_generali.coloreSfondo
         clip: true
 
