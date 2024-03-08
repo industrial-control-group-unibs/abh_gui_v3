@@ -204,14 +204,6 @@ Item {
                     else
                         false;
                 }
-                onHighlightedChanged:
-                {
-                    if (highlighted)
-                    {
-                        selected_exercise.video_intro=_esercizi.getVideoIntro(vector[0])
-                    }
-                }
-
                 nome:  _esercizi.getName(ex_name)
                 type:  _esercizi.getType(ex_name)
                 immagine:  _esercizi.getImage(ex_name)
@@ -236,6 +228,7 @@ Item {
                 {
                     if (highlighted)
                     {
+                        selected_exercise.video_intro=_esercizi.getVideoIntro(vector[0])
                         selected()
                     }
                 }
