@@ -11,6 +11,7 @@ Item {
 
     property string titolo: selected_exercise.name
 
+    property bool sino_visible: true
     signal pressYes
     signal pressNo
     implicitHeight: 1920/2
@@ -33,6 +34,7 @@ Item {
 
         SiNo
         {
+            visible: component.sino_visible
             onPressNo: component.pressNo()
             onPressYes: component.pressYes()
         }

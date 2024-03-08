@@ -20,14 +20,17 @@ PaginaSiNo
         State {
             name: "init"
             PropertyChanges { target: component; frase: qsTr("VUOI AGGIORNARE?\nGLI AGGIORNAMENTI SARANNO OPERATIVI DOPO IL RIAVVIO")}
+            PropertyChanges { target: component; sino_visible: true}
         },
         State {
             name: "run"
             PropertyChanges { target: component; frase: qsTr("AGGIORNAMENTO IN CORSO")}
+            PropertyChanges { target: component; sino_visible: false}
         },
         State {
             name: "reboot"
             PropertyChanges { target: component; frase: qsTr("VUOI SPEGNERE?\nGLI AGGIORNAMENTI SARANNO OPERATIVI DOPO IL RIAVVIO")}
+            PropertyChanges { target: component; sino_visible: true}
         }
     ]
 
@@ -47,7 +50,7 @@ PaginaSiNo
         }
         else if (state==="reboot")
         {
-//            spegni()
+            spegni()
         }
         else
         {
