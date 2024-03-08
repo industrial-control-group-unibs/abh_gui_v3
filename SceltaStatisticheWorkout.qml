@@ -64,7 +64,7 @@ Item {
         IconaBottone
         {
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.top: parent.top
             width: 100
 
             onPressed: {
