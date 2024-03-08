@@ -5,6 +5,7 @@ import getpass
 import time
 import subprocess
 import getpass
+import traceback
 
 stop=False
 def handler(signal_received, frame):
@@ -69,15 +70,18 @@ while (not stop):
                     print("shelly is in use in the wrong board")
                     wrong_connection = True
                 continue
-            conn={'is_use': c.in_use and attivo, 'known': False, 'ssid': c.ssid}
+            conn={'is_use': c.in_use and attivo, 'known': False, 'ssid': c.ssid, 'pwd': ''}
 
 
 
             if not any(d['ssid'] == c.ssid for d in connessioni):
                 password=subprocess.getoutput("nmcli -s -g 802-11-wireless-security.psk connection show " + c.ssid)
+
                 if password:
                     if not "Error:" in password:
                         conn['known']=True
+                        conn['pwd']=password
+                        #print(f"pwd = {conn}")
                 connessioni.append(conn)
 
             for d in connessioni:
@@ -91,11 +95,12 @@ while (not stop):
 
         if wrong_connection and len(connessioni)>0:
             for tmp in connessioni:
-                if (tmp['know']):
+                print(tmp)
+                if (tmp['known']):
                     print(f"first connection:\n{tmp}")
-                    nmcli.device.wifi_connect(ssid=tmp['ssid'], ifname=scheda)
+                    nmcli.device.wifi_connect(ssid=tmp['ssid'], ifname=scheda, password=tmp['pwd'])
                     break
-        keys = ['is_use', 'known', 'ssid']
+        keys = ['is_use', 'known', 'ssid','pwd']
         with open(filename, 'w', newline='') as output_file:
             dict_writer = csv.DictWriter(output_file, keys)
             dict_writer.writeheader()
@@ -111,8 +116,9 @@ while (not stop):
             try:
                 nmcli.device.wifi_connect(ssid=wifi_shelly, ifname=scheda_shelly, password=pwd_shelly)
             except:
-                print("unable to connect to wifi")
-    except:
-        print("unable to connect to network")
+                print(f"unable to connect {wifi_shelly} to shelly wifi {wifi_shelly} with pwd {pwd_shelly}")
+    except Exception as e:
+        traceback.print_exc()
+        print(f"unable to connect to network: {e}")
 
     time.sleep(5)
