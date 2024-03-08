@@ -7,20 +7,17 @@ import QtQuick.Layouts 1.1
 
 Rectangle
 {
-    width: 100
-    height: 60
-    radius: 5
+    height: 100
+    width: height
+    radius: width*0.5
 
 
     id: component
 
 
 
-
-
-    property real size: height*0.2
     property bool down: false
-    property bool black: false
+    property bool black: true
 
     color: component.black? parametri_generali.coloreSfondo: parametri_generali.coloreBordo
     property color inner_color: component.black? parametri_generali.coloreBordo: parametri_generali.coloreSfondo
@@ -34,7 +31,7 @@ Rectangle
     Testo
     {
         text: component.down?"↓":"↑"
-        font.pixelSize: 20
+        font.pixelSize: 60
         color: component.inner_color
         anchors.fill: parent
         horizontalAlignment: Text.AlignHCenter

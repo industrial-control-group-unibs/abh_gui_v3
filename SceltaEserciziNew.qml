@@ -25,58 +25,31 @@ Item {
        titolo: zona_allenamento.gruppo
     }
 
-    Item {
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        height: parametri_generali.larghezza_barra
-    FrecceSxDx
+
+    FreccieSotto
     {
+        id: sotto
+        swipe_sx: false
+
         onPressSx: pageLoader.source= "SceltaGruppo.qml"
         onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
         dx_visible: lista_workout.currentIndex>=0
-        colore: parametri_generali.coloreBordo
-    }
 
-    BottoniSwipe{
+        onSwipeDx:
+        {
 
-        anchors
-        {
-            //bottom: parent.bottom
-            //bottomMargin: parent.height*0.05
-            verticalCenter: parent.verticalCenter
-            horizontalCenter: parent.horizontalCenter
         }
-        z:5
-        width: 0.4*parent.width
-        bordo: parametri_generali.coloreUtente
-        onPressRight:
-        {
-//            component.state="stats"
-        }
-        onPressLeft:
+        onSwipeSx:
         {
             pageLoader.source=  "SceltaEsercizi.qml"
         }
-        visible: component.swipe
-        state: "dx"
-    }
-
-    BottoniUpDown
-    {
-        anchors
-        {
-            top: parent.top
-            topMargin: 20
-            horizontalCenter: parent.horizontalCenter
-        }
-        width: parent.width
-        up: lista_workout.currentIndex>0
-        down: lista_workout.currentIndex<(lista_zona.count-1)
+        up_visible: lista_workout.currentIndex>0
+        down_visible: lista_workout.currentIndex<(lista_zona.count-1)
         onPressDown: lista_workout.currentIndex+=1
         onPressUp: lista_workout.currentIndex-=1
     }
-    }
+
+
 
     Rectangle
     {

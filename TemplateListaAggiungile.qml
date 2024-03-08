@@ -42,25 +42,34 @@ Item {
     {
     }
 
-    Item
+
+    FreccieSotto
     {
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        z:parent.z+2
-        height:274+50
-        FrecceSxDx
+
+        swipe_visible: false
+
+        onPressSx: component.pressSx()
+        onPressDx: component.pressDx()
+        dx_visible: component.link_dx_visible
+
+        onSwipeDx:
         {
-            onPressSx: component.pressSx()
-            onPressDx: component.pressDx()
-            dx_visible: component.link_dx_visible
-            colore: parametri_generali.coloreBordo
+         }
+        onSwipeSx:
+        {
         }
+        up_visible: lista_workout.currentIndex>0
+        down_visible: lista_workout.currentIndex<(lista_workout.count-1)
+        onPressDown: lista_workout.currentIndex<(lista_workout.count-1)?lista_workout.currentIndex+=1:""
+        onPressUp: lista_workout.currentIndex>0?lista_workout.currentIndex-=1:""
     }
+
+
 
     Rectangle{
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
+        anchors.bottomMargin: parametri_generali.larghezza_barra
         color:parametri_generali.coloreSfondo
         clip: true
 

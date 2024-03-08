@@ -31,56 +31,42 @@ Item {
     {
     }
 
-    Item
+    FreccieSotto
     {
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        z:parent.z+2
-        height:parametri_generali.larghezza_barra
-        FrecceSxDx
-        {
-            onPressSx: pageLoader.source= "PaginaAllenamento.qml"
-            onPressDx:
-            {
-                if (component.new_workout)
-                {
-                    pageLoader.source="SceltaNuovoWorkout.qml"
-                }
-                else
-                {
-                    _workout.loadWorkout(impostazioni_utente.identifier,selected_exercise.workout)
-                    selected_exercise.code=_workout.code
-                    selected_exercise.reps=_workout.reps
-                    selected_exercise.rest_time=_workout.rest
-                    selected_exercise.rest_set_time=_workout.restSet
-                    selected_exercise.sets=_workout.sets
-                    selected_exercise.current_set=0
-                    selected_exercise.power=_workout.power
-                     _list_string.fromList(_workout.listSessionsNumber())
-                    pageLoader.source="ListaWo  rkoutSessioni.qml"
-                }
-            }
 
-            dx_visible: lista_workout.currentIndex>=0
-            colore: parametri_generali.coloreBordo
+        swipe_visible: false
+
+        onPressSx: pageLoader.source= "PaginaAllenamento.qml"
+        onPressDx:
+        {
+            if (component.new_workout)
+            {
+                pageLoader.source="SceltaNuovoWorkout.qml"
+            }
+            else
+            {
+                _workout.loadWorkout(impostazioni_utente.identifier,selected_exercise.workout)
+                selected_exercise.code=_workout.code
+                selected_exercise.reps=_workout.reps
+                selected_exercise.rest_time=_workout.rest
+                selected_exercise.rest_set_time=_workout.restSet
+                selected_exercise.sets=_workout.sets
+                selected_exercise.current_set=0
+                selected_exercise.power=_workout.power
+                 _list_string.fromList(_workout.listSessionsNumber())
+                pageLoader.source="ListaWorkoutSessioni.qml"
+            }
         }
 
-        BottoniUpDown
-        {
-            anchors
-            {
-                top: parent.top
-                topMargin: 20
-                horizontalCenter: parent.horizontalCenter
-            }
-            width: parent.width
-            up: lista_workout.currentIndex>0
-            down: lista_workout.currentIndex<(lista_zona.count-1)
-            onPressDown: lista_workout.currentIndex+=1
-            onPressUp: lista_workout.currentIndex-=1
-        }
+        dx_visible: lista_workout.currentIndex>=0
+
+        up_visible: lista_workout.currentIndex>0
+        down_visible: lista_workout.currentIndex<(lista_zona.count-1)
+        onPressDown: lista_workout.currentIndex+=1
+        onPressUp: lista_workout.currentIndex-=1
     }
+
+
 
     Rectangle{
         anchors.fill: parent

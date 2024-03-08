@@ -25,57 +25,30 @@ Item {
        titolo: zona_allenamento.gruppo
     }
 
-    Item {
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        height: parametri_generali.larghezza_barra
-    FrecceSxDx
+    FreccieSotto
     {
+        id: sotto
+        swipe_sx: true
+
         onPressSx: pageLoader.source= "SceltaGruppo.qml"
         onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
         dx_visible: grid.currentIndex>=0
-        colore: parametri_generali.coloreBordo
-    }
 
-    BottoniSwipe{
-
-        anchors
-        {
-            //bottom: parent.bottom
-            //bottomMargin: parent.height*0.05
-            verticalCenter: parent.verticalCenter
-            horizontalCenter: parent.horizontalCenter
-        }
-        z:5
-        bordo: parametri_generali.coloreUtente
-        width: 0.4*parent.width
-        onPressRight:
+        onSwipeDx:
         {
             pageLoader.source=  "SceltaEserciziNew.qml"
         }
-        onPressLeft:
+        onSwipeSx:
         {
-        }
-        visible: component.swipe
-        state: "sx"
-    }
 
-    BottoniUpDown
-    {
-        anchors
-        {
-            top: parent.top
-            topMargin: 20
-            horizontalCenter: parent.horizontalCenter
         }
-        width: parent.width
-        up: grid.currentIndex>0
-        down: grid.currentIndex<(lista_zona.count-1)
+        up_visible: grid.currentIndex>0
+        down_visible: grid.currentIndex<(lista_zona.count-1)
         onPressDown: grid.currentIndex+=1
         onPressUp: grid.currentIndex-=1
     }
-    }
+
+
 
     Rectangle
     {

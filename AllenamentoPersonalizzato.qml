@@ -36,7 +36,7 @@ Item {
         height: parametri_generali.larghezza_barra
     FrecceSxDx
     {
-        onPressSx: pageLoader.source= "SceltaGruppo.qml"
+        onPressSx: pageLoader.source= "PaginaAllenamento.qml"
         onPressDx: {
             if (component.what_pressed===1)
                  pageLoader.source="SceltaAllenamentoPersonalizzatoTitolo.qml"

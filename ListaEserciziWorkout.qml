@@ -46,30 +46,26 @@ Item {
         selected_exercise.power=_workout.power
     }
 
-
-    Item
+    FreccieSotto
     {
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        z:parent.z+2
-        height:274+50
-        FrecceSxDx
-        {
-            onPressSx:{
-                //_history.pop();
-                // _list_string.fromList(_workout.listSessionsNumber())
-                //pageLoader.source=_history.popIfMe(pageLoader.source)
-                _list_string.fromList(_workout.listSessionsNumber())
-                pageLoader.source="ListaWorkoutSessioni.qml"
 
-            }
+        swipe_visible: false
 
-            onPressDx: pageLoader.source=  "PaginaIstruzioni.qml"
-            dx_visible: !_workout.endWorkout && selected_exercise.selected_session===_workout.getActiveSession()
-            colore: parametri_generali.coloreBordo
+        onPressSx:{
+            _list_string.fromList(_workout.listSessionsNumber())
+            pageLoader.source="ListaWorkoutSessioni.qml"
         }
+
+        onPressDx: pageLoader.source=  "PaginaIstruzioni.qml"
+        dx_visible: !_workout.endWorkout && selected_exercise.selected_session===_workout.getActiveSession()
+
+        up_visible: lista_workout.currentIndex>0
+        down_visible: lista_workout.currentIndex<(lista_zona.count-1)
+        onPressDown: lista_workout.currentIndex+=1
+        onPressUp: lista_workout.currentIndex-=1
     }
+
+
 
     Barra_superiore{}
 
@@ -81,6 +77,7 @@ Item {
         id: rect_grid
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
+        anchors.bottomMargin: parametri_generali.larghezza_barra
         color: parametri_generali.coloreSfondo
         clip: true
 

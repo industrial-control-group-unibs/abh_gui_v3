@@ -38,31 +38,29 @@ Item {
         _active_workouts.appendIcon(true);
     }
 
-    Item
+    FreccieSotto
     {
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        z:parent.z+2
-        height:274+50
 
+        swipe_visible: false
 
-        FrecceSxDx
+        onPressSx: pageLoader.source= "PaginaAllenamento.qml"
+        onPressDx:
         {
-            onPressSx: pageLoader.source= "PaginaAllenamento.qml"
-            onPressDx:
+            _workout.loadWorkout(impostazioni_utente.identifier,selected_exercise.workout)
+            if (!_workout.isEmpty())
             {
-                _workout.loadWorkout(impostazioni_utente.identifier,selected_exercise.workout)
-                if (!_workout.isEmpty())
-                {
-                    _list_string.fromList(_workout.listSessionsNumber())
-                    pageLoader.source="ListaStatisticheWorkoutSessioni.qml"
-                }
+                _list_string.fromList(_workout.listSessionsNumber())
+                pageLoader.source="ListaStatisticheWorkoutSessioni.qml"
             }
-
-            dx_visible: lista_workout.currentIndex>=0
-            colore: parametri_generali.coloreBordo
         }
+
+        dx_visible: lista_workout.currentIndex>=0
+
+        up_visible: lista_workout.currentIndex>0
+        down_visible: lista_workout.currentIndex<(lista_zona.count-1)
+        onPressDown: lista_workout.currentIndex+=1
+        onPressUp: lista_workout.currentIndex-=1
+
         IconaBottone
         {
             anchors.horizontalCenter: parent.horizontalCenter
@@ -87,9 +85,12 @@ Item {
         }
     }
 
+
+
     Rectangle{
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
+        anchors.bottomMargin: parametri_generali.larghezza_barra
         color:parametri_generali.coloreSfondo
         clip: true
 

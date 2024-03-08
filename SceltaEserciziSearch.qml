@@ -28,67 +28,29 @@ Item {
 
 
 
-    Item
+    FreccieSotto
     {
         id: sotto
-        anchors
-        {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
-        height: parametri_generali.larghezza_barra
-        z:10
-        clip: true
-        FrecceSxDx
-        {
-            onPressSx: pageLoader.source= "SceltaGruppo.qml"
-            onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
-            dx_visible: lista_workout.currentIndex>=0
-        }
+        swipe_sx: false
 
+        onPressSx: pageLoader.source= "SceltaGruppo.qml"
+        onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
+        dx_visible: lista_workout.currentIndex>=0
 
-
-    BottoniSwipe{
-
-        anchors
+        onSwipeDx:
         {
-            //bottom: parent.bottom
-            //bottomMargin: parent.height*0.05
-            verticalCenter: parent.verticalCenter
-            horizontalCenter: parent.horizontalCenter
         }
-        z:5
-        width: 0.4*parent.width
-        bordo: parametri_generali.coloreUtente
-        onPressRight:
-        {
-//            component.state="stats"
-        }
-        onPressLeft:
+        onSwipeSx:
         {
             pageLoader.source=  "SceltaGruppo.qml"
         }
-        state: "dx"
-    }
-
-
-    BottoniUpDown
-    {
-        anchors
-        {
-            top: parent.top
-            topMargin: 20
-            horizontalCenter: parent.horizontalCenter
-        }
-        width: parent.width
-        up: lista_workout.currentIndex>0
-        down: lista_workout.currentIndex<(lista_zona.count-1)
+        up_visible: lista_workout.currentIndex>0
+        down_visible: lista_workout.currentIndex<(lista_zona.count-1)
         onPressDown: lista_workout.currentIndex+=1
         onPressUp: lista_workout.currentIndex-=1
     }
 
-    }
+
 
     Column
     {

@@ -68,10 +68,10 @@ Item
         pressAndHoldInterval: 500
         z: 10
         preventStealing: true
-        onPressAndHold: component.pressed()
+        onPressAndHold: component.active? component.pressed(): component.selected()
 
 
-        onClicked: component.active? component.pressed(): component.selected()
+        onClicked: component.pressed()
     }
 
     Rectangle {

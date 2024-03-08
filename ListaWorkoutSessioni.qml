@@ -29,48 +29,48 @@ Item {
     {
     }
 
-    Item
+    FreccieSotto
     {
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        z:parent.z+2
-        height:parametri_generali.larghezza_barra
-        FrecceSxDx
-        {
-            onPressSx:
-            {
-                if (selected_exercise.personalizzato)
-                    pageLoader.source= "SceltaAllenamentoPersonalizzato.qml"
-                else
-                    pageLoader.source= "SceltaWorkout.qml"
-            }
-            onPressDx:
-            {
-                if (component.new_workout)
-                {
-                    pageLoader.source="SceltaNuovoWorkout.qml"
-                }
-                else
-                {
-                    _workout.loadWorkout(impostazioni_utente.identifier,selected_exercise.workout)
-                    selected_exercise.code=_workout.code
-                    selected_exercise.reps=_workout.reps
-                    selected_exercise.rest_time=_workout.rest
-                    selected_exercise.rest_set_time=_workout.restSet
-                    selected_exercise.sets=_workout.sets
-                    selected_exercise.current_set=0
-                    selected_exercise.power=_workout.power
-                    selected_exercise.selected_session=lista_workout.currentIndex+1
-                    _list_string.fromList(_workout.listSessionExercise(selected_exercise.selected_session))
-                    pageLoader.source="ListaEserciziWorkout.qml"
-                }
-            }
+        id: sotto
+        swipe_visible: false
 
-            dx_visible: lista_workout.currentIndex>=0
-            colore: parametri_generali.coloreBordo
+        onPressSx:
+        {
+            if (selected_exercise.personalizzato)
+                pageLoader.source= "SceltaAllenamentoPersonalizzato.qml"
+            else
+                pageLoader.source= "SceltaWorkout.qml"
         }
+        onPressDx:
+        {
+            if (component.new_workout)
+            {
+                pageLoader.source="SceltaNuovoWorkout.qml"
+            }
+            else
+            {
+                _workout.loadWorkout(impostazioni_utente.identifier,selected_exercise.workout)
+                selected_exercise.code=_workout.code
+                selected_exercise.reps=_workout.reps
+                selected_exercise.rest_time=_workout.rest
+                selected_exercise.rest_set_time=_workout.restSet
+                selected_exercise.sets=_workout.sets
+                selected_exercise.current_set=0
+                selected_exercise.power=_workout.power
+                selected_exercise.selected_session=lista_workout.currentIndex+1
+                _list_string.fromList(_workout.listSessionExercise(selected_exercise.selected_session))
+                pageLoader.source="ListaEserciziWorkout.qml"
+            }
+        }
+
+        dx_visible: lista_workout.currentIndex>=0
+
+        up_visible: lista_workout.currentIndex>0
+        down_visible: lista_workout.currentIndex<(lista_zona.count-1)
+        onPressDown: lista_workout.currentIndex+=1
+        onPressUp: lista_workout.currentIndex-=1
     }
+
 
     Rectangle{
         anchors.fill: parent
