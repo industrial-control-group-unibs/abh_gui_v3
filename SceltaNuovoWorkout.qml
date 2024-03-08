@@ -53,26 +53,6 @@ Item {
         onPressUp: lista_workout.currentIndex>0?lista_workout.currentIndex-=1:lista_workout.currentIndex
     }
 
-    Item
-    {
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        z:parent.z+2
-        height:274+50
-        FrecceSxDx
-        {
-            onPressSx: pageLoader.source= "SceltaWorkout.qml"
-            onPressDx:
-            {
-                pageLoader.source="PaginaConfWorkout.qml"
-            }
-
-            dx_visible: lista_workout.currentIndex>=0
-            colore: parametri_generali.coloreBordo
-        }
-    }
-
     Rectangle{
         anchors.fill: parent
         anchors.topMargin: parametri_generali.larghezza_barra
