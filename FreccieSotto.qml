@@ -21,39 +21,49 @@ Rectangle {
     property bool swipe_sx: true
     property bool swipe_visible: true
 
-FrecceSxDx
-{
-    onPressSx: component.pressSx()
-    onPressDx: component.pressDx()
-    dx_visible: component.dx_visible
-    sx_visible: component.sx_visible
-    colore: parametri_generali.coloreBordo
-}
-BottoniUpDown
-{
-    anchors
-    {
-        top: parent.top
-        topMargin: 20
-        horizontalCenter: parent.horizontalCenter
+
+    BottoniSwipe2{
+        id: swipe
+        visible: component.swipe_visible
+        z:5
+        bordo: parametri_generali.coloreUtente
+        onPressLeft: component.swipeSx()
+        onPressRight: component.swipeDx()
+        state: component.swipe_sx?"sx":"dx"
     }
-    width: 0.4*parent.width
 
-    up: component.up_visible
-    down: component.down_visible
-    onPressDown: component.pressDown()
-    onPressUp: component.pressUp()
-}
+    Item
+    {
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: swipe.bottom
+        FrecceSxDx
+        {
+            onPressSx: component.pressSx()
+            onPressDx: component.pressDx()
+            dx_visible: component.dx_visible
+            sx_visible: component.sx_visible
+            colore: parametri_generali.coloreBordo
+        }
+        BottoniUpDown
+        {
+            anchors
+            {
+                top: parent.top
+                topMargin: 20
+                horizontalCenter: parent.horizontalCenter
+            }
+            width: 0.4*parent.width
+
+            up: component.up_visible
+            down: component.down_visible
+            onPressDown: component.pressDown()
+            onPressUp: component.pressUp()
+        }
+    }
 
 
-BottoniSwipe2{
-    visible: component.swipe_visible
-    z:5
-    bordo: parametri_generali.coloreUtente
-    onPressLeft: component.swipeSx()
-    onPressRight: component.swipeDx()
-    state: component.swipe_sx?"sx":"dx"
-}
 
 
 }
