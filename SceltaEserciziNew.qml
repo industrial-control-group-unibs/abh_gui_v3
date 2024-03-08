@@ -228,7 +228,7 @@ Item {
                 {
                     if (highlighted)
                     {
-                        selected_exercise.video_intro=_esercizi.getVideoIntro(vector[0])
+                        selected_exercise.video_intro=_esercizi.getVideoIntro(ex_name)
                         selected()
                     }
                 }
