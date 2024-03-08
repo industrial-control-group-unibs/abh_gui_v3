@@ -28,6 +28,7 @@ PaginaSiNo
 
         IconaBottone
         {
+            visible: impostazioni_utente.identifier!==""
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             width: 100
