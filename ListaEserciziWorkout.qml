@@ -226,13 +226,7 @@ Item {
                     else
                         false;
                 }
-                onHighlightedChanged:
-                {
-                    if (highlighted)
-                    {
-                        selected_exercise.video_intro=_esercizi.getVideoIntro(vector[0])
-                    }
-                }
+
 
                 nome:  _esercizi.getName(vector[0])
                 type:  _esercizi.getType(vector[0])
@@ -246,10 +240,26 @@ Item {
 
                 width: lista_workout.width-2
 
-                onPressed: {
+                signal selected
+                onSelected:
+                {
                     lista_workout.currentIndex=index
                     selected_exercise.code=vector[0]
                 }
+
+                onHighlightedChanged:
+                {
+                    if (highlighted)
+                    {
+                        selected_exercise.video_intro=_esercizi.getVideoIntro(vector[0])
+                        selected()
+                    }
+                }
+
+                onPressed: {
+                    selected()
+                }
+
             }
 
 

@@ -26,7 +26,7 @@ Rectangle {
 
         onPressSx: pageLoader.source= "PaginaAllenamento.qml"
         onPressDx: pageLoader.source=  "SceltaEsercizi.qml"
-        dx_visible: lista_zona.currentIndex>=0
+        dx_visible: lista_workout.currentIndex>=0
 
         onSwipeDx:
         {
@@ -37,10 +37,10 @@ Rectangle {
         {
             //            pageLoader.source=  "SceltaEserciziSearch.qml"
         }
-        up_visible: lista_zona.currentIndex>0
-        down_visible: lista_zona.currentIndex<(lista_zona.count-1)
-        onPressDown:  lista_zona.currentIndex<(lista_zona.count-1)?lista_zona.currentIndex+=1:lista_zona.currentIndex
-        onPressUp: lista_zona.currentIndex>0?lista_zona.currentIndex-=1:lista_zona.currentIndex
+        up_visible: lista_workout.currentIndex>0
+        down_visible: lista_workout.currentIndex<(lista_workout.count-1)
+        onPressDown:  lista_workout.currentIndex<(lista_workout.count-1)?lista_workout.currentIndex+=1:lista_workout.currentIndex
+        onPressUp: lista_workout.currentIndex>0?lista_workout.currentIndex-=1:lista_workout.currentIndex
     }
 
 
@@ -65,7 +65,7 @@ Rectangle {
 
         ListView {
             snapMode: ListView.SnapOneItem
-            id: lista_zona
+            id: lista_workout
             anchors {
                 top: parent.top
                 bottom: parent.bottom
@@ -82,19 +82,34 @@ Rectangle {
                 color: parametri_generali.coloreBordo
                 highlighted:
                 {
-                    if (lista_zona.currentIndex>=0)
-                        lista_zona.currentIndex === index
+                    if (lista_workout.currentIndex>=0)
+                        lista_workout.currentIndex === index
                     else
                         false;
 
                 }
                 text: ex_name
                 image: "file://"+PATH+"/zone/"+image_name
-                width: lista_zona.width-2
-                onPressed: {
+                width: lista_workout.width-2
+
+                signal selected
+                onSelected:
+                {
                     selected_exercise.name="unselected"
                     zona_allenamento.gruppo=ex_name
-                    lista_zona.currentIndex=index
+                    lista_workout.currentIndex=index
+                }
+
+                onHighlightedChanged:
+                {
+                    if (highlighted)
+                    {
+                        selected()
+                    }
+                }
+
+                onPressed: {
+                    selected()
                 }
             }
 

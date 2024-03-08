@@ -224,10 +224,24 @@ Item {
 
                 width: lista_workout.width-2
 
-                onPressed: {
+                signal selected
+                onSelected:
+                {
                     selected_exercise.code= ex_name
                     selected_exercise.sets=1
                     lista_workout.currentIndex=index
+                }
+
+                onHighlightedChanged:
+                {
+                    if (highlighted)
+                    {
+                        selected()
+                    }
+                }
+
+                onPressed: {
+                    selected()
                 }
             }
 

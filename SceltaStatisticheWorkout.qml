@@ -147,12 +147,6 @@ Item {
                         false;
 
                 }
-                onHighlightedChanged:
-                {
-                    if (lista_workout.currentIndex === index)
-                        selected_exercise.workout=vector[0]
-                }
-
                 titolo: vector[0]
                 progress: parseFloat(vector[1])
                 punteggio: 10.0*parseFloat(vector[2])
@@ -165,11 +159,26 @@ Item {
 
                 width: lista_workout.width-2
 
-                onPressed: {
+                signal selected
+                onSelected:
+                {
                     component.selected=true
                     lista_workout.currentIndex=index
-//                    selected_exercise.workout=vector[0]
                 }
+
+                onHighlightedChanged:
+                {
+                    if (highlighted)
+                    {
+                        selected_exercise.workout=vector[0]
+                        selected()
+                    }
+                }
+
+                onPressed: {
+                    selected()
+                }
+
                 onSeeStat:
                 {
                     _workout.loadWorkout(impostazioni_utente.identifier,selected_exercise.workout)

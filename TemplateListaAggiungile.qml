@@ -125,7 +125,9 @@ Item {
 
                 width: lista_workout.width-2
                 image_file: "file://"+PATH+"/allenamento_programmato/CUSTOM_"+index%8+".jpg"
-                onPressed: {
+
+                signal selected
+                onSelected:{
                     lista_workout.currentIndex=index
                     selected_exercise.workout_image=image_file
                     component.link_dx_visible=true
@@ -138,6 +140,18 @@ Item {
                         component.new_element=false
                         component.text=vector[0]
                     }
+                }
+
+                onHighlightedChanged:
+                {
+                    if (highlighted)
+                    {
+                        selected()
+                    }
+                }
+
+                onPressed: {
+                    selected()
                 }
                 onPressAndHold:
                 {

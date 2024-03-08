@@ -22,7 +22,7 @@ Item {
 
 
     Barra_superiore{
-       titolo: zona_allenamento.gruppo
+        titolo: zona_allenamento.gruppo
     }
 
     FrecceSotto
@@ -149,7 +149,7 @@ Item {
                             durTrig.stop();
                             durTrig.interval=duration-100;
                             durTrig.restart();
-                         }
+                        }
                     }
                 }
                 Timer{
@@ -157,7 +157,7 @@ Item {
                     running:false
                     repeat: false
                     onTriggered:{
-                       mp_esercizio.pause();
+                        mp_esercizio.pause();
                     }
                 }
 
@@ -207,11 +207,26 @@ Item {
                 width: grid.cellWidth-2
                 height: grid.cellHeight-2
 
-                onPressed: {
+                signal selected
+                onSelected:
+                {
                     selected_exercise.code= ex_name
                     selected_exercise.sets=1
                     grid.currentIndex=index
                 }
+
+                onHighlightedChanged:
+                {
+                    if (highlighted)
+                    {
+                        selected()
+                    }
+                }
+
+                onPressed: {
+                    selected()
+                }
+
             }
 
             onCurrentIndexChanged: {

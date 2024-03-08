@@ -139,7 +139,8 @@ Item {
 
                 width: lista_workout.width-2
 
-                onPressed: {
+                signal selected
+                onSelected:{
                     lista_workout.currentIndex=index
                     if (vector[0]==="+")
                     {
@@ -152,6 +153,19 @@ Item {
                         selected_exercise.workout_image=PATH+"/../utenti/"+impostazioni_utente.identifier+"/"+vector[0]+".jpg"
                     }
                 }
+
+                onHighlightedChanged:
+                {
+                    if (highlighted)
+                    {
+                        selected()
+                    }
+                }
+
+                onPressed: {
+                    selected()
+                }
+
                 onPressAndHold:
                 {
                     erase=true

@@ -110,9 +110,22 @@ Item {
 
                 width: lista_workout.width-2
 
-                onPressed: {
+                signal selected
+                onSelected:
+                {
                     lista_workout.currentIndex=index
-                    //selected_exercise.selected_session=lista_workout.currentIndex+1
+                }
+
+                onHighlightedChanged:
+                {
+                    if (highlighted)
+                    {
+                        selected()
+                    }
+                }
+
+                onPressed: {
+                    selected()
                 }
 
                 onSeeStat:

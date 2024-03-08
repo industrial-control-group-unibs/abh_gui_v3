@@ -133,11 +133,24 @@ Item {
 
                 width: lista_workout.width-2
 
-                onPressed: {
+                signal selected
+                onSelected:
+                {
                     lista_workout.currentIndex=index
                 }
-            }
 
+                onHighlightedChanged:
+                {
+                    if (highlighted)
+                    {
+                        selected()
+                    }
+                }
+
+                onPressed: {
+                    selected()
+                }
+            }
 
         }
 
