@@ -34,7 +34,7 @@ Item {
     {
     }
 
-    FreccieSotto
+    FrecceSotto
     {
 
         swipe_visible: false

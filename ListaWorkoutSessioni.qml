@@ -29,7 +29,7 @@ Item {
     {
     }
 
-    FreccieSotto
+    FrecceSotto
     {
         id: sotto
         swipe_visible: false

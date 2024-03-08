@@ -30,7 +30,7 @@ Item {
         selected_exercise.power=_workout.power
     }
 
-    FreccieSotto
+    FrecceSotto
     {
 
         swipe_visible: false

@@ -5,11 +5,10 @@ import QtQuick 2.12
 import QtQuick.Shapes 1.12
 import QtQuick.Layouts 1.1
 
-Rectangle
+Item
 {
     height: 100
     width: height
-    radius: width*0.5
 
 
     id: component
@@ -24,51 +23,60 @@ Rectangle
     property real sign: reverse? -1.0: 1.0
 
     property bool black: false
+    property bool visibile: true
 
-    color: component.black? parametri_generali.coloreSfondo: parametri_generali.coloreBordo
+
     property color inner_color: component.black? parametri_generali.coloreBordo: parametri_generali.coloreSfondo
-    border.color: parametri_generali.coloreBordo
-    border.width: 5
 
 
 
     signal pressed
 
-    Shape {
-        anchors.fill: parent
-
-        ShapePath {
-            strokeColor: component.inner_color
-            strokeWidth: 5
-            startX: component.height*0.5 + component.sign*component.size*0.5
-            startY: component.height*0.5
-            PathLine { x: component.height*0.5 - component.sign*component.size*0.5; y: component.height*0.5 - component.size}
-        }
-        ShapePath {
-            strokeColor: component.inner_color
-            strokeWidth: 5
-            startX: component.height*0.5 + component.sign*component.size*0.5
-            startY: component.height*0.5
-            PathLine { x: component.height*0.5 - component.sign*component.size*0.5; y: component.height*0.5 + component.size}
-        }
-    }
-
-    Timer
+    Rectangle
     {
-        id: repeater_timer
-        interval: 200
-        repeat: true
-        running: false
-        onTriggered:
-        {
-            component.pressed()
+        anchors.fill: parent
+        radius: width*0.5
+        color: component.black? parametri_generali.coloreSfondo: parametri_generali.coloreBordo
+        border.color: parametri_generali.coloreBordo
+        border.width: 5
+        visible: component.visibile
 
+        Shape {
+            anchors.fill: parent
+
+            ShapePath {
+                strokeColor: component.inner_color
+                strokeWidth: 5
+                startX: component.height*0.5 + component.sign*component.size*0.5
+                startY: component.height*0.5
+                PathLine { x: component.height*0.5 - component.sign*component.size*0.5; y: component.height*0.5 - component.size}
+            }
+            ShapePath {
+                strokeColor: component.inner_color
+                strokeWidth: 5
+                startX: component.height*0.5 + component.sign*component.size*0.5
+                startY: component.height*0.5
+                PathLine { x: component.height*0.5 - component.sign*component.size*0.5; y: component.height*0.5 + component.size}
+            }
+        }
+
+        Timer
+        {
+            id: repeater_timer
+            interval: 200
+            repeat: true
+            running: false
+            onTriggered:
+            {
+                component.pressed()
+
+            }
         }
     }
 
     onVisibleChanged:
     {
-        if (!visible)
+        if (!visibile)
         {
             repeater_timer.running=false
             repeater_timer.repeat=false

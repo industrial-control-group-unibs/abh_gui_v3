@@ -38,7 +38,7 @@ Item {
         _active_workouts.appendIcon(true);
     }
 
-    FreccieSotto
+    FrecceSotto
     {
 
         swipe_visible: false

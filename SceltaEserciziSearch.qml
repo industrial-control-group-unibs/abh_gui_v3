@@ -28,7 +28,7 @@ Item {
 
 
 
-    FreccieSotto
+    FrecceSotto
     {
         id: sotto
         swipe_sx: false

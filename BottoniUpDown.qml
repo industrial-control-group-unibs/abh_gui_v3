@@ -33,8 +33,11 @@ Item {
         }
         down: true
 
-        visible: component.down
-        onPressed: component.pressDown()
+        visibile: component.down
+        onPressed: {
+            if (component.down)
+                component.pressDown()
+        }
     }
     IconaUpDown
     {
@@ -43,8 +46,11 @@ Item {
             right: parent.right
         }
         down: false
-        visible: component.up
-        onPressed: component.pressUp()
+        visibile: component.up
+        onPressed: {
+            if (component.up)
+                component.pressUp()
+        }
     }
 
 

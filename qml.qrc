@@ -135,7 +135,7 @@
         <file>PaginaConfermaLingue.qml</file>
         <file>IconaUpDown.qml</file>
         <file>BottoniUpDown.qml</file>
-        <file>FreccieSotto.qml</file>
+        <file>FrecceSotto.qml</file>
         <file>BottoniSwipe2.qml</file>
     </qresource>
 </RCC>

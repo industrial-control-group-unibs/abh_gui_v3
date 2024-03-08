@@ -19,7 +19,7 @@ Rectangle {
         console.log("closing SceltaGruppo")
     }
 
-    FreccieSotto
+    FrecceSotto
     {
 
         swipe_sx: true

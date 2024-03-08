@@ -25,7 +25,7 @@ Item {
        titolo: zona_allenamento.gruppo
     }
 
-    FreccieSotto
+    FrecceSotto
     {
         id: sotto
         swipe_sx: true
@@ -44,7 +44,7 @@ Item {
         }
         up_visible: grid.currentIndex>0
         down_visible: grid.currentIndex<(lista_zona.count-1)
-        onPressDown:  lista_workout.currentIndex<(lista_workout.count-1)?lista_workout.currentIndex+=1:lista_workout.currentIndex
+        onPressDown:  grid.currentIndex<(grid.count-1)?grid.currentIndex+=1:grid.currentIndex
         onPressUp: grid.currentIndex-=1
     }
 

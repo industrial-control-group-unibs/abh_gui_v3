@@ -27,7 +27,7 @@ Item {
 
     IconaPlus
     {
-        visible: component.sx_visible
+        visibile: component.sx_visible
         anchors
         {
             verticalCenter: parent.verticalCenter
@@ -41,7 +41,7 @@ Item {
 
     IconaPlus
     {
-        visible: component.dx_visible
+        visibile: component.dx_visible
         anchors
         {
             verticalCenter: parent.verticalCenter
