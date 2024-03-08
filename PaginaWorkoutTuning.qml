@@ -27,7 +27,7 @@ Item {
     Component.onCompleted:
     {
 
-        startstop_udp.string="start"
+//        startstop_udp.string="start"
         parametri_generali.login_page=false
         _active_workouts.readFile((impostazioni_utente.identifier+"/ACTIVEWORKOUT"))
 
