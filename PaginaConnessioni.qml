@@ -250,53 +250,44 @@ Item {
         }
     }
 
-    Item
+    FrecceSotto
     {
-        anchors
-        {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
-        height: parametri_generali.larghezza_barra
-        FrecceSxDx
-        {
-            id: freccia
-            onPressSx:
-            {
-                if (impostazioni_utente.identifier !=="")
-                    pageLoader.source="PaginaAllenamento.qml"
-                else
-                    pageLoader.source="PaginaLogin.qml"
-            }
-            dx_visible: parametri_generali.wifi_name!==""
-            onPressDx:
-            {
-                _history.pop()
-                if (parametri_generali.wifi_connected)
-                    pageLoader.source="PaginaImpostazioni.qml"
-                else
-                    pageLoader.source="PaginaConnessioni2.qml"
-            }
+        id: sotto
+        swipe_visible: false
 
-            z:5
+        onPressSx:
+        {
+            if (impostazioni_utente.identifier !=="")
+                pageLoader.source="PaginaAllenamento.qml"
+            else
+                pageLoader.source="PaginaLogin.qml"
+        }
+        dx_visible: parametri_generali.wifi_name!==""
+        onPressDx:
+        {
+            _history.pop()
+            if (parametri_generali.wifi_connected)
+                pageLoader.source="PaginaImpostazioni.qml"
+            else
+                pageLoader.source="PaginaConnessioni2.qml"
         }
 
-        BottoniUpDown
+        onSwipeDx:
         {
-            anchors
-            {
-                top: parent.top
-                topMargin: 20
-                horizontalCenter: parent.horizontalCenter
-            }
-            width: parent.width
-            up: lista_wifi.currentIndex>0
-            down: lista_wifi.currentIndex<(lista_zona.count-1)
-            onPressDown: lista_wifi.currentIndex+=1
-            onPressUp: lista_wifi.currentIndex-=1
+            pageLoader.source=  "SceltaEserciziNew.qml"
         }
+        onSwipeSx:
+        {
+
+        }
+        up_visible: lista_wifi.currentIndex>0
+        down_visible: lista_wifi.currentIndex<(lista_zona.count-1)
+        onPressDown: lista_wifi.currentIndex+=1
+        onPressUp: lista_wifi.currentIndex-=1
     }
+
+
+
 
 
 }
