@@ -78,7 +78,7 @@ while (not stop):
                 password=subprocess.getoutput("nmcli -s -g 802-11-wireless-security.psk connection show " + c.ssid)
 
                 if password:
-                    if not "Error:" in password:
+                    if (not "Error:" in password) and (not "Errore:" in password):
                         conn['known']=True
                         conn['pwd']=password
                         #print(f"pwd = {conn}")
