@@ -23,6 +23,11 @@ PaginaSiNo
             PropertyChanges { target: component; sino_visible: true}
         },
         State {
+            name: "prepare"
+            PropertyChanges { target: component; frase: qsTr("AGGIORNAMENTO IN CORSO")}
+            PropertyChanges { target: component; sino_visible: false}
+        },
+        State {
             name: "run"
             PropertyChanges { target: component; frase: qsTr("AGGIORNAMENTO IN CORSO")}
             PropertyChanges { target: component; sino_visible: false}
@@ -44,6 +49,7 @@ PaginaSiNo
     onPressYes: {
         if (state==="init")
         {
+            component.state="prepare"
             aggiorna()
             conto_alla_rovescia.running=true
             component.state="run"
