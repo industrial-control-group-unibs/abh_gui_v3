@@ -60,6 +60,10 @@ while (not stop):
         connessioni_wifi=nmcli.device.wifi(scheda)
         connessioni_note = nmcli.connection()
 
+        connessioni_note_ssid = []
+        for c in connessioni_note:
+            connessioni_note_ssid.append(c.name)
+
         connessioni=[]
         for c in connessioni_wifi:
             nota = c.ssid in connessioni_note_ssid

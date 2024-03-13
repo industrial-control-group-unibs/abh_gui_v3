@@ -281,7 +281,7 @@ Item {
 
         }
         up_visible: lista_wifi.currentIndex>0
-        down_visible: lista_wifi.currentIndex<(lista_zona.count-1)
+        down_visible: lista_wifi.currentIndex<(lista_wifi.count-1)
         onPressDown: lista_wifi.currentIndex+=1
         onPressUp: lista_wifi.currentIndex-=1
     }
