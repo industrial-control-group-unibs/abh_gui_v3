@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=ABH
+Exec=python /home/horizonone/projects/abh_gui_v3/coordinator/launcher_v3.py
+Icon=/home/horizonone/Scrivania/abh/abh_data/loghi/LogoABHCorner.png
+Type=Application
+Terminal=false
+
+

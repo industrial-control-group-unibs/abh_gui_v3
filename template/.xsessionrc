@@ -1,2 +1,9 @@
-bash /home/$USER/ruota_mouse.bash
+#!/bin/env bash
+#echo "INIT"
 xset -display :0.0 dpms force off
+source $HOME/ruota_mouse.sh
+
+
+
+
+

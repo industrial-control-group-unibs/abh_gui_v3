@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/horizonone/start_abh.bash
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[it_IT]=abh_gui
+Name=abh_gui
+Comment[it_IT]=Avvia ABH
+Comment=Avvia ABH
