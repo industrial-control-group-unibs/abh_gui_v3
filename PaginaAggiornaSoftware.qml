@@ -64,7 +64,7 @@ PaginaSiNo
     }
 
     onSpegni: {
-        chiamata_sistema.string="systemctl poweroff"
+        chiamata_sistema.string="systemctl reboot"
         chiamata_sistema.call()
         chiamata_sistema.string="xrandr --output "+parametri_generali.monitor+" --off"
         chiamata_sistema.call()
