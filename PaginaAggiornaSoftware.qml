@@ -46,13 +46,13 @@ PaginaSiNo
         _history.pop()
         pageLoader.source=  "PaginaImpostazioni.qml"
     }
+
     onPressYes: {
         if (state==="init")
         {
             component.state="prepare"
-            aggiorna()
-            conto_alla_rovescia.running=true
-            component.state="run"
+            conto_avvio.running=true
+
         }
         else if (state==="reboot")
         {
@@ -62,7 +62,6 @@ PaginaSiNo
         {
 
         }
-
     }
     onAggiorna: {
         chiamata_sistema.string=". ~/script_update.sh"
@@ -70,10 +69,22 @@ PaginaSiNo
     }
 
     onSpegni: {
-        chiamata_sistema.string="systemctl reboot"
-        chiamata_sistema.call()
         chiamata_sistema.string="xrandr --output "+parametri_generali.monitor+" --off"
         chiamata_sistema.call()
+        chiamata_sistema.string="systemctl reboot"
+        chiamata_sistema.call()
+    }
+
+    Timer{
+        id: conto_avvio
+        interval: 500
+        repeat: false
+        running: false
+        onTriggered: {
+                aggiorna()
+                conto_alla_rovescia.running=true
+                component.state="run"
+        }
     }
 
     Timer{
