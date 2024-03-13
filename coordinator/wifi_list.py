@@ -86,6 +86,8 @@ while (not stop):
                         conn['known']=True
                         conn['pwd']=password
                         #print(f"pwd = {conn}")
+                    else:
+                        conn['known'] = False
                 connessioni.append(conn)
 
             for d in connessioni:

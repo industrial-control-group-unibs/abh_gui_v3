@@ -26,7 +26,7 @@ Item {
 
 
     Barra_superiore{
-       titolo: zona_allenamento.gruppo
+       titolo: qsTr("ALLENAMENTO PERSONALIZZATO")
     }
 
     Item {
