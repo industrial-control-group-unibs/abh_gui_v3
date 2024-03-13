@@ -369,7 +369,7 @@ Item
             testo2=testo
         }
 
-        text: testo+" V: "+perc+"%"+"\n" +t1+t2+t3+t4+t5
+        text: testo //+" V: "+perc+"%"+"\n" +t1+t2+t3+t4+t5
 
     }
 
