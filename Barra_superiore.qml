@@ -279,7 +279,7 @@ Item
             {
                 if (parametri_generali.login_page && impostazioni_utente.identifier!=="")
                 {
-                    pageLoader.source=  "PaginaAllenamento.qml"
+                    pageLoader.source=  "PaginaMondi.qml"
                 }
             }
         }

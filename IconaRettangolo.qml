@@ -10,7 +10,7 @@ Item {
 
     property bool highlighted: true
     property bool shadow: !highlighted
-
+    property bool dark_shadow: false
 
 
     property real margin: 2
@@ -23,6 +23,8 @@ Item {
     property color colorShadow: parametri_generali.coloreSfondo
     property color colorShadowTransparent: Qt.rgba(colorShadow.r, colorShadow.g, colorShadow.b, 0.440)
 
+    property color colorDarkShadowTransparent: Qt.rgba(colorShadow.r, colorShadow.g, colorShadow.b, 0.80)
+
     property string testo_elimina: qsTr("VUOI ELIMINARE IL PROGRAMMA DI ALLENAMENTO?")
     property string image_file
 
@@ -31,10 +33,6 @@ Item {
 
     id: component
 
-    onShadowChanged:
-    {
-        console.log("icona ",component.text," shadow: ",component.shadow?"on":"off")
-    }
 
     signal pressed
     signal pressAndHold
@@ -208,6 +206,7 @@ Item {
 
         MouseArea {
             anchors.fill: parent
+            visible: !component.dark_shadow
             propagateComposedEvents: true
             onPressed: {
                 component.pressed()
@@ -233,11 +232,21 @@ Item {
     Rectangle
     {
         id: shadow
-        visible: component.shadow
+        visible: component.shadow && !component.dark_shadow
         radius: parent.radius
         anchors.fill: icona
         z: component.z+4
         color: component.colorShadowTransparent
+    }
+
+    Rectangle
+    {
+        id: dark_shadow
+        visible: component.dark_shadow
+        radius: parent.radius
+        anchors.fill: icona
+        z: shadow.z+4
+        color: component.colorDarkShadowTransparent
     }
 
 }

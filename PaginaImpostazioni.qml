@@ -81,7 +81,7 @@ Item {
                 property url this_source:"PaginaImpostazioni.qml"
                 onPressSx:
                 {
-                    pageLoader.source="PaginaAllenamento.qml"
+                    pageLoader.source="PaginaMondi.qml"
                 }
                 dx_visible: false
                 z:5

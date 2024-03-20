@@ -173,7 +173,7 @@ Item {
                 if (tastierino.testo.length>=display.pwd_lenght)
                 {
                     if (tastierino.testo===_utenti.getPassword(impostazioni_utente.identifier))
-                        pageLoader.source=  "PaginaAllenamento.qml"
+                        pageLoader.source=  "PaginaMondi.qml"
                     else
                         testo=""
                 }

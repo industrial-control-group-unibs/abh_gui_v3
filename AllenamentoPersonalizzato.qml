@@ -89,7 +89,7 @@ Item {
                 color: parametri_generali.coloreBordo
                 highlighted: component.what_pressed===2
                 text: qsTr("CONTINUA IL PROGRAMMA\nDI ALLENAMENTO")
-                image: "file://"+PATH+"/immagini_allenamento_personalizzato/ALLENAMENTO_PERSONALIZZATO_0.jpg"
+                image: "file://"+PATH+"/immagini_allenamento_personalizzato/ALLENAMENTO_PERSONALIZZATO_1.jpg"
                 width: parent.width-2
                 height: rect_grid.cell_height
                 onPressed: {
@@ -103,7 +103,7 @@ Item {
                 color: parametri_generali.coloreBordo
                 highlighted: component.what_pressed===3
                 text: qsTr("MODALITA' MANUALE")
-                image: "file://"+PATH+"/immagini_allenamento_personalizzato/ALLENAMENTO_PERSONALIZZATO_0.jpg"
+                image: "file://"+PATH+"/immagini_allenamento_personalizzato/ALLENAMENTO_PERSONALIZZATO_2.jpg"
                 width: parent.width-2
                 height: rect_grid.cell_height
 
@@ -117,8 +117,9 @@ Item {
             IconaImmagine{
                 color: parametri_generali.coloreBordo
                 highlighted: component.what_pressed===4
-                text: qsTr("STATISTICHE")
-                image: "file://"+PATH+"/immagini_allenamento_personalizzato/ALLENAMENTO_PERSONALIZZATO_0.jpg"
+                dark_shadow: true
+                text: qsTr("MODALITA' TUNING")
+                image: "file://"+PATH+"/immagini_allenamento_personalizzato/ALLENAMENTO_PERSONALIZZATO_3.jpg"
                 width: parent.width-2
                 height: rect_grid.cell_height
 

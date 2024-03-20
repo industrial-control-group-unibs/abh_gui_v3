@@ -49,7 +49,7 @@ Item {
             onPressSx:
             {
                 if (impostazioni_utente.identifier !=="")
-                    pageLoader.source="PaginaAllenamento.qml"
+                    pageLoader.source="PaginaMondi.qml"
                 else
                     pageLoader.source="PaginaLogin.qml"
             }

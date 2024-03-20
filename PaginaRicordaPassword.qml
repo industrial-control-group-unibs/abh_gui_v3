@@ -13,11 +13,11 @@ PaginaSiNo
 
     onPressNo: {
         _utenti.saveStorePassword(impostazioni_utente.identifier,"false")
-        pageLoader.source=  "PaginaAllenamento.qml"
+        pageLoader.source=  "PaginaMondi.qml"
     }
     onPressYes: {
         _utenti.saveStorePassword(impostazioni_utente.identifier,"true")
-        pageLoader.source=  "PaginaAllenamento.qml"
+        pageLoader.source=  "PaginaMondi.qml"
     }
 
 }

@@ -26,42 +26,33 @@ Rectangle {
     Barra_superiore{id: barra}
 
     color: parametri_generali.coloreSfondo
-    BottoniSwipe2{
-        id: swipe
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.top: parent.bottom+30
-        bordo: parametri_generali.coloreUtente
-        state: "dx"
-        onPressLeft: pageLoader.source="PaginaAllenamento.qml"
-    }
+
 
     Item {
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.bottom: swipe.top
+        anchors.bottom: parent.bottom
         anchors.top: barra.bottom
 
 
         QuattroImmagini
         {
-            immagine11: "meditazione.png"
-            testo11: qsTr("MEDITAZIONE")
-            link11: "SceltaWorkout.qml"
-
-            immagine21: "yoga.png"
-            testo21: qsTr("ALTRA SCRITTA")
-            link21: "SceltaGruppo.qml"
-
+            immagine11: "allenamento.png"
+            testo11: qsTr("Allenamento")
+            link11: "PaginaAllenamento.qml"
 
             immagine12: "yoga.png"
             testo12: qsTr("YOGA")
-            link12: "AllenamentoPersonalizzato.qml"
+            link12: "PaginaMondi.qml"
 
-            immagine22: "yoga.png"
-            testo22: qsTr("ALTRA SCRITTA")
-            link22: "SceltaStatisticheWorkout.qml"
+
+            immagine21: "pilates.png"
+            testo21: qsTr("PILATES")
+            link21: "PaginaMondi.qml"
+
+            immagine22: "meditazione.png"
+            testo22: qsTr("MEDITATIONE")
+            link22: "PaginaMondi.qml"
         }
 
     }

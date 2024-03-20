@@ -26,17 +26,22 @@ Rectangle {
     Barra_superiore{id: barra}
 
     color: parametri_generali.coloreSfondo
-    BottoniSwipe2{
-        id: swipe
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.top: parent.bottom+30
-        bordo: parametri_generali.coloreUtente
-        state: "sx"
-        onPressRight: pageLoader.source="PaginaMondi.qml"
-    }
 
+
+    FrecceSotto
+    {
+        id: swipe
+        swipe_visible: false
+
+        onPressSx:{
+           pageLoader.source="PaginaMondi.qml"
+        }
+
+        dx_visible: false
+
+        up_visible: false
+        down_visible: false
+    }
     Item {
         anchors.left: parent.left
         anchors.right: parent.right
@@ -49,12 +54,12 @@ Rectangle {
             immagine11: "workout.png"
             testo11: qsTr("ALLENAMENTO\n GUIDATO")
             link11: "SceltaWorkout.qml"
-            immagine21: "allenamento_singolo.png"
-            testo21: qsTr("ALLENAMENTO\n LIBERO")
-            link21: "SceltaGruppo.qml"
-            immagine12: "sfida.png"
-            testo12: qsTr("ALLENAMENTO\n PERSONALIZZATO")
-            link12: "AllenamentoPersonalizzato.qml"
+            immagine12: "allenamento_singolo.png"
+            testo12: qsTr("ALLENAMENTO\n LIBERO")
+            link12: "SceltaGruppo.qml"
+            immagine21: "sfida.png"
+            testo21: qsTr("ALLENAMENTO\n PERSONALIZZATO")
+            link21: "AllenamentoPersonalizzato.qml"
             immagine22: "statistiche.png"
             testo22: qsTr("STATISTICHE")
             link22: "SceltaStatisticheWorkout.qml"
