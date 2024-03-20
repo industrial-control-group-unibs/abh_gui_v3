@@ -32,13 +32,14 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
+        anchors.bottomMargin: barra.height
         anchors.top: barra.bottom
 
 
         QuattroImmagini
         {
             immagine11: "allenamento.png"
-            testo11: qsTr("Allenamento")
+            testo11: qsTr("ALLENAMENTO")
             link11: "PaginaAllenamento.qml"
 
             immagine12: "yoga.png"
