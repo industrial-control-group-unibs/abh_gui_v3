@@ -5,70 +5,66 @@ import QtQuick 2.12
 import QtQuick.Shapes 1.12
 
 import QtQuick.Layouts 1.1
-Item {
+Rectangle {
     anchors.fill: parent
 
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
-    Barra_superiore{}
-
-    QuattroImmagini
+    Component.onCompleted:
     {
-        immagine11: "mondi1.png"
-        testo11: "ALLENAMENTO\n"
-        link11: "PaginaAllenamento.qml"
-        immagine12: "mondi2.png"
-        testo12: "NUTRIZIONE\n"
-        link12: "PaginaLogin.qml"
-        immagine21: "mondi3.png"
-        testo21: "PSICHE\n"
-        link21: "PaginaLogin.qml"
-        immagine22: "mondi4.png"
-        testo22: "MEDITAZIONE\n"
-        link22: "PaginaLogin.qml"
+        if (impostazioni_utente.nome ==="")
+            pageLoader.source="PaginaLogin.qml"
+
+        led_udp.data=[parametri_generali.coloreLed.r, parametri_generali.coloreLed.g, parametri_generali.coloreLed.b]
     }
 
-//    Rectangle{
-//        anchors.fill: parent
-//        anchors.topMargin: parametri_generali.larghezza_barra
-//        color: "transparent"//parametri_generali.coloreSfondo
 
-//        clip: true
+    Component.onDestruction: console.log("closing PaginaAllenamento")
 
 
-//            GridLayout {
-//                id: mondi_layout
-//                anchors.left: parent.left
-//                anchors.right: parent.right
-//                anchors.verticalCenter: parent.verticalCenter
-//                columns: 2
+    Barra_superiore{id: barra}
 
-//                Icona_4_3{
-//                    nome: "ALLENAMENTO\n"
-//                    link: "PaginaAllenamento.qml"
-//                    immagine: "place_holder_4_3.png"
-//                }
+    color: parametri_generali.coloreSfondo
+    BottoniSwipe2{
+        id: swipe
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.top: parent.bottom+30
+        bordo: parametri_generali.coloreUtente
+        state: "dx"
+        onPressLeft: pageLoader.source="PaginaAllenamento.qml"
+    }
 
-//                Icona_4_3{
-//                    nome: "NUTRIZIONE\n"
-//                    link: "PaginaLogin.qml"
-//                    immagine: "place_holder_4_3.png"
-//                }
-
-//                Icona_4_3{
-//                    nome: "PSICHE\n"
-//                    link: "PaginaLogin.qml"
-//                    immagine: "place_holder_4_3.png"
-//                }
-
-//                Icona_4_3{
-//                    nome: "ALIMENTAZIONE\n"
-//                    link: "PaginaLogin.qml"
-//                    immagine: "place_holder_4_3.png"
-//                }
-//            }
+    Item {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: swipe.top
+        anchors.top: barra.bottom
 
 
-//    }
+        QuattroImmagini
+        {
+            immagine11: "meditazione.png"
+            testo11: qsTr("MEDITAZIONE")
+            link11: "SceltaWorkout.qml"
+
+            immagine21: "yoga.png"
+            testo21: qsTr("ALTRA SCRITTA")
+            link21: "SceltaGruppo.qml"
+
+
+            immagine12: "yoga.png"
+            testo12: qsTr("YOGA")
+            link12: "AllenamentoPersonalizzato.qml"
+
+            immagine22: "yoga.png"
+            testo22: qsTr("ALTRA SCRITTA")
+            link22: "SceltaStatisticheWorkout.qml"
+        }
+
+    }
+
+
 }

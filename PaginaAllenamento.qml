@@ -33,6 +33,8 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.top: parent.bottom+30
         bordo: parametri_generali.coloreUtente
+        state: "sx"
+        onPressRight: pageLoader.source="PaginaMondi.qml"
     }
 
     Item {
