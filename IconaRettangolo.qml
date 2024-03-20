@@ -11,6 +11,8 @@ Item {
     property bool highlighted: true
     property bool shadow: !highlighted
 
+
+
     property real margin: 2
     property real bordo: component.highlighted? 8: 2
     property real radius: 20
@@ -28,6 +30,11 @@ Item {
 
 
     id: component
+
+    onShadowChanged:
+    {
+        console.log("icona ",component.text," shadow: ",component.shadow?"on":"off")
+    }
 
     signal pressed
     signal pressAndHold
@@ -220,17 +227,17 @@ Item {
             color: component.colorTransparent
         }
 
-        Rectangle
-        {
-            id: shadow
-            visible: component.shadow
-            radius: parent.radius
-            anchors.fill: icona
-            z: component.z+4
-            color: component.colorShadowTransparent
-        }
+
     }
 
-
+    Rectangle
+    {
+        id: shadow
+        visible: component.shadow
+        radius: parent.radius
+        anchors.fill: icona
+        z: component.z+4
+        color: component.colorShadowTransparent
+    }
 
 }
