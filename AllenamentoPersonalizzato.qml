@@ -42,11 +42,14 @@ Item {
                  pageLoader.source="SceltaAllenamentoPersonalizzatoTitolo.qml"
             else if (component.what_pressed===2)
                 pageLoader.source="SceltaAllenamentoPersonalizzato.qml"
-            else
+            else if (component.what_pressed===3)
             {
                 selected_exercise.code="novision"
                 pageLoader.source="PaginaWorkoutManuale.qml"
             }
+            else if (component.what_pressed===4)
+                pageLoader.source="SceltaStatisticheWorkout.qml"
+
         }
         dx_visible: component.pressed
         colore: parametri_generali.coloreBordo
@@ -62,15 +65,19 @@ Item {
         color:parametri_generali.coloreSfondo
         clip: true
 
+        property real bordo: parametri_generali.larghezza_barra*0.05
+        property real cell_height: (height-3*bordo)/4
         Column
         {
             anchors.fill: parent
-            spacing: parametri_generali.larghezza_barra*0.1
-            IconaRettangolo{
+            spacing: rect_grid.bordo
+            IconaImmagine{
                 color: parametri_generali.coloreBordo
                 highlighted: component.what_pressed===1
                 text: qsTr("CREA IL PROGRAMMA\nDI ALLENAMENTO")
+                image: "file://"+PATH+"/immagini_allenamento_personalizzato/ALLENAMENTO_PERSONALIZZATO_0.jpg"
                 width: parent.width-2
+                height: rect_grid.cell_height
 
                 onPressed: {
                     component.pressed=true
@@ -78,12 +85,13 @@ Item {
                 }
 
             }
-            IconaRettangolo{
+            IconaImmagine{
                 color: parametri_generali.coloreBordo
                 highlighted: component.what_pressed===2
                 text: qsTr("CONTINUA IL PROGRAMMA\nDI ALLENAMENTO")
+                image: "file://"+PATH+"/immagini_allenamento_personalizzato/ALLENAMENTO_PERSONALIZZATO_0.jpg"
                 width: parent.width-2
-
+                height: rect_grid.cell_height
                 onPressed: {
 
                     component.pressed=true
@@ -91,15 +99,32 @@ Item {
                 }
 
             }
-            IconaRettangolo{
+            IconaImmagine{
                 color: parametri_generali.coloreBordo
                 highlighted: component.what_pressed===3
                 text: qsTr("MODALITA' MANUALE")
+                image: "file://"+PATH+"/immagini_allenamento_personalizzato/ALLENAMENTO_PERSONALIZZATO_0.jpg"
                 width: parent.width-2
+                height: rect_grid.cell_height
 
                 onPressed: {
                     component.pressed=true
                     component.what_pressed=3
+                }
+
+            }
+
+            IconaImmagine{
+                color: parametri_generali.coloreBordo
+                highlighted: component.what_pressed===4
+                text: qsTr("STATISTICHE")
+                image: "file://"+PATH+"/immagini_allenamento_personalizzato/ALLENAMENTO_PERSONALIZZATO_0.jpg"
+                width: parent.width-2
+                height: rect_grid.cell_height
+
+                onPressed: {
+                    component.pressed=true
+                    component.what_pressed=4
                 }
 
             }

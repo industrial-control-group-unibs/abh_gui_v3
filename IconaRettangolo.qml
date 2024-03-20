@@ -9,6 +9,7 @@ Item {
     implicitHeight: 225
 
     property bool highlighted: true
+    property bool shadow: !highlighted
 
     property real margin: 2
     property real bordo: component.highlighted? 8: 2
@@ -16,6 +17,9 @@ Item {
 
     property color color: parametri_generali.coloreBordo
     property color colorTransparent: Qt.rgba(color.r, color.g, color.b, 0.440)
+
+    property color colorShadow: parametri_generali.coloreSfondo
+    property color colorShadowTransparent: Qt.rgba(colorShadow.r, colorShadow.g, colorShadow.b, 0.440)
 
     property string testo_elimina: qsTr("VUOI ELIMINARE IL PROGRAMMA DI ALLENAMENTO?")
     property string image_file
@@ -138,6 +142,7 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 text: "NO"
                 fontSizeMode: Text.Fit
+
             }
         }
     }
@@ -180,6 +185,7 @@ Item {
             //horizontalCenter: parent.horizontalCenter
             fill: parent
         }
+        z: shadow.z+2
     }
 
     Rectangle   {
@@ -212,6 +218,16 @@ Item {
             anchors.fill: icona
             z: component.z+4
             color: component.colorTransparent
+        }
+
+        Rectangle
+        {
+            id: shadow
+            visible: component.shadow
+            radius: parent.radius
+            anchors.fill: icona
+            z: component.z+4
+            color: component.colorShadowTransparent
         }
     }
 
