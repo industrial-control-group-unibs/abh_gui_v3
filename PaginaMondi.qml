@@ -24,7 +24,6 @@ Rectangle {
 
 
     Barra_superiore{id: barra}
-
     color: parametri_generali.coloreSfondo
 
 
@@ -44,7 +43,7 @@ Rectangle {
 
             immagine12: "yoga.png"
             testo12: qsTr("YOGA")
-            link12: "PaginaMondi.qml"
+            link12: "SceltaYoga.qml"
 
 
             immagine21: "pilates.png"

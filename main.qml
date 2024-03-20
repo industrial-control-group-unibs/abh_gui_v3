@@ -73,6 +73,11 @@ ApplicationWindow {
     }
 
     Item {
+        id: yoga
+        property string pratica: ""
+    }
+
+    Item {
         id: parametri_generali
         property color coloreBordo:  _default[0]
         property color coloreBordoTrasparent:  "#c6aa7640"

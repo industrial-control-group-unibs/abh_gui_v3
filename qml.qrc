@@ -137,5 +137,8 @@
         <file>BottoniUpDown.qml</file>
         <file>FrecceSotto.qml</file>
         <file>BottoniSwipe2.qml</file>
+        <file>SceltaLista.qml</file>
+        <file>SceltaYoga.qml</file>
+        <file>SceltaYogaPratica.qml</file>
     </qresource>
 </RCC>

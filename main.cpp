@@ -106,6 +106,7 @@ int main(int argc, char *argv[])
   ListaNome gruppo_model(data_path);
   ListString ls;
   ListaImmagini zone(data_path+"/zone");
+  ListaImmagini read_lista(data_path);
 
   ListaUtenti utenti(data_path+"/../utenti",
                      template_path);
@@ -276,6 +277,7 @@ int main(int argc, char *argv[])
   context->setContextProperty("_workout_list", &workout_list);
   context->setContextProperty("_utenti", &utenti);
   context->setContextProperty("_zona", &zone);
+  context->setContextProperty("_read_lista", &read_lista);
   context->setContextProperty("_fullscreen", fs);
   context->setContextProperty("_esercizi",&esercizi);
   context->setContextProperty("_workout", &workout);
