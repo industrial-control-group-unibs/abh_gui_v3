@@ -31,6 +31,7 @@ Item {
         IconaImmagine{
             color: parametri_generali.coloreBordo
             highlighted: component.what_pressed===1
+            shadow: false
             text: component.testo11
             image: "file://"+PATH+"/loghi/"+component.immagine11
             width: parent.width-2
@@ -44,6 +45,7 @@ Item {
         IconaImmagine{
             color: parametri_generali.coloreBordo
             highlighted: component.what_pressed===2
+            shadow: false
             text: component.testo12
             image: "file://"+PATH+"/loghi/"+component.immagine12
             width: parent.width-2
@@ -56,6 +58,7 @@ Item {
         IconaImmagine{
             color: parametri_generali.coloreBordo
             highlighted: component.what_pressed===3
+            shadow: false
             text: component.testo21
             image: "file://"+PATH+"/loghi/"+component.immagine21
             width: parent.width-2
@@ -70,6 +73,7 @@ Item {
         IconaImmagine{
             color: parametri_generali.coloreBordo
             highlighted: component.what_pressed===4
+            shadow: false
             text: component.testo22
             image: "file://"+PATH+"/loghi/"+component.immagine22
             width: parent.width-2
