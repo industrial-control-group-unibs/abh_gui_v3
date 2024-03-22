@@ -10,7 +10,7 @@ SceltaQuadrati
     titolo: disciplina.pratica
 
     onPressSx: pageLoader.source="SceltaYogaPratica.qml"
-    onPressDx: pageLoader.source="PaginaWorkoutPratica.qml"
+    onPressDx: pageLoader.source="PaginaPreparatiPratica.qml"
 
     swipe: true
     swipe_sx: true

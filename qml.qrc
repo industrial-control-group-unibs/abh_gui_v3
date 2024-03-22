@@ -147,5 +147,6 @@
         <file>PaginaWorkoutPratica.qml</file>
         <file>WorkoutTopPratica.qml</file>
         <file>WorkoutBottomPratica.qml</file>
+        <file>PaginaPreparatiPratica.qml</file>
     </qresource>
 </RCC>

@@ -188,69 +188,69 @@ Item
 
 
 
-//    Rectangle   {
-//        height: 0.3*parent.height
-//        width: 9/16*height
-//        x: 890/1080*parent.width-0.5*width
-//        y: 0.1*parent.height
-//        id: rect_utente
-//        visible: true
+    Rectangle   {
+        height: 0.3*parent.height
+        width: 9/16*height
+        x: 890/1080*parent.width-0.5*width
+        y: 0.1*parent.height
+        id: rect_utente
+        visible: true
 
-//        color: "black"
-//        radius: 20
-//        border.color: parametri_generali.coloreBordo
-//        border.width: 2
+        color: "black"
+        radius: 20
+        border.color: parametri_generali.coloreBordo
+        border.width: 2
 
-//        MouseArea
-//        {
-//            anchors.fill: parent
-//            onClicked:
-//            {
-//                if (component.state==="workout")
-//                    component.state="utente"
-//                else if (component.state==="utente")
-//                    component.state="uguali"
-//                else if (component.state==="uguali")
-//                    component.state="workout"
-//                mp_workout.play()
-//            }
+        MouseArea
+        {
+            anchors.fill: parent
+            onClicked:
+            {
+                if (component.state==="workout")
+                    component.state="utente"
+                else if (component.state==="utente")
+                    component.state="uguali"
+                else if (component.state==="uguali")
+                    component.state="workout"
+                mp_workout.play()
+            }
 
-//        }
+        }
 
-//        Rectangle
-//        {
-//            id: video2_mask
-//            anchors
-//            {
-//                fill: parent
-//                topMargin: parent.border.width
-//                bottomMargin: parent.border.width
-//                leftMargin: parent.border.width
-//                rightMargin: parent.border.width
-//            }
-//            visible: false
-//            color: "white"
-//            radius: parent.radius-parent.border.width
-//        }
+        Rectangle
+        {
+            id: video2_mask
+            anchors
+            {
+                fill: parent
+                topMargin: parent.border.width
+                bottomMargin: parent.border.width
+                leftMargin: parent.border.width
+                rightMargin: parent.border.width
+            }
+            visible: false
+            color: "white"
+            radius: parent.radius-parent.border.width
+        }
 
 
 
-//        OpacityMask {
-//            anchors.fill:video2_mask
-//            source: video2_workout
-//            maskSource: video2_mask
-//        }
+        OpacityMask {
+            anchors.fill:video2_mask
+            source: video2_workout
+            maskSource: video2_mask
+        }
 
-//        VideoOutput {
-//            id: video2_workout
+        VideoOutput {
+            id: video2_workout
 
-//            source: udpStream
-//            anchors.fill: parent
-//            fillMode: VideoOutput.PreserveAspectFit
-//            z:0
-//            visible: false
-//        }
-//    }
+            source: udpStream
+            anchors.fill: parent
+            fillMode: VideoOutput.PreserveAspectFit
+            z:0
+            visible: false
+        }
+    }
 
 
 

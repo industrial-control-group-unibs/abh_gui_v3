@@ -8,52 +8,181 @@ import QtQuick.Layouts 1.1
 
 import QtMultimedia 5.0
 
-//import UdpVideoStream 1.0
 
-PaginaVideoSingolo
-{
-    id: component
-    onPressSx: pageLoader.source= "SceltaYogaPraticaEsercizi.qml"
-    link_dx: "SceltaYogaPraticaEsercizi.qml"
-    link_dx_visible: false
-    video_folder: "video_workout_esercizi"
-    video_name: _esercizi.getVideoWorkout(disciplina.esercizio)
-    titolo: _esercizi.getName(disciplina.esercizio)
-    timer: true
-    testo_visibile: false
+Item {
+    anchors.fill: parent
 
-    Component.onCompleted: {
-        video_name= _esercizi.getVideoWorkout(disciplina.esercizio)
+    implicitHeight: 1920/2
+    implicitWidth: 1080/2
+
+    property real time_ex: 0
+    property real tut_ex: 0
+
+    property real ripetizioni
+
+
+    Component.onCompleted:
+    {
+        startstop_udp.string="start"
+        state="sotto"
+    }
+    Component.onDestruction:
+    {
+        startstop_udp.string="stop"
     }
 
-    onEndVideo: pageLoader.source=pageLoader.source= "SceltaYogaPraticaEsercizi.qml"
 
-    property bool play5s: false
-    onRemaning_timeChanged:
-    {
+    id: component
+    state: "sotto"
 
-        if (component.remaning_time<5.0 && !component.play5s)
+    signal finish
+
+    onFinish: {
+        pageLoader.source= "SceltaYogaPraticaEsercizi.qml"
+    }
+
+    states: [
+        State {
+            name: "sotto"
+            PropertyChanges { target: sotto;      visible: true}
+            PropertyChanges { target: early_stop; visible: false}
+            PropertyChanges { target: skip;       visible: false}
+            PropertyChanges { target: sotto;      z: 5}
+            PropertyChanges { target: early_stop; z: 1}
+            PropertyChanges { target: skip;       z: 1}
+
+        },
+        State {
+            name: "early_stop"
+            PropertyChanges { target: sotto;      visible: false}
+            PropertyChanges { target: early_stop; visible: true}
+            PropertyChanges { target: skip;       visible: false}
+            PropertyChanges { target: sotto;      z: 1}
+            PropertyChanges { target: early_stop; z: 5}
+            PropertyChanges { target: skip;       z: 1}
+        },
+        State {
+            name: "skip"
+            PropertyChanges { target: sotto;      visible: false}
+            PropertyChanges { target: early_stop; visible: false}
+            PropertyChanges { target: skip;       visible: true}
+            PropertyChanges { target: sotto;      z: 1}
+            PropertyChanges { target: early_stop; z: 1}
+            PropertyChanges { target: skip;       z: 5}
+        }
+    ]
+
+    Item {
+        id: ricevi_comando_vocale
+        property real data: fb_udp.data[4]
+        onDataChanged:
         {
-            component.play5s=true
-            playSound.play()
+            if (data==2)
+            {
+                pageLoader.source = "PaginaRiposo.qml"
+            }
         }
     }
 
-    SoundEffect {
-        id: playSound
-        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/frase5sec.wav"
-        volume: parametri_generali.voice?1.0:0.0
+    Barra_superiore{
+        Item
+        {
+            anchors
+            {
+                top: parent.top
+                bottom: parent.bottom
+                left: parent.left
+                right: parent.right
+                leftMargin: 170
+                rightMargin: 170
+            }
+            Titolo
+            {
+
+                text:selected_exercise.name
+            }
+        }
     }
 
 
-//    Component.onCompleted:
-//    {
-//        startstop_udp.string="rewire"
-//    }
-//    Component.onDestruction:
-//    {
-//        startstop_udp.string="stop_rewire"
-//    }
+    Item
+    {
+        anchors
+        {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        height: 140//210
+        FrecceSxDx
+        {
+            id: freccia
+            visible: component.state==="sotto"
+            onPressSx:
+            {
+                component.state="early_stop"
+
+            }
+            dx_visible: component.state==="sotto"
+            onPressDx:
+            {
+                component.state="skip"
+            }
+            z:5
+        }
+    }
 
 
+
+    Rectangle{
+        anchors.fill: parent
+        anchors.topMargin: parametri_generali.larghezza_barra
+        color: "transparent"//parametri_generali.coloreSfondo
+        clip: true
+
+
+
+
+
+
+        WorkoutTopPratica{
+            id: video_top
+            swipe: false
+        }
+        WorkoutBottomPratica{
+            id: sotto
+
+            duration: video_top.duration
+            position: video_top.position
+            onTimeout:
+            {
+                component.state="early_stop"
+            }
+            onFinish: component.finish()
+        }
+
+        WorkoutEarlyStop
+        {
+            id: early_stop
+            visible: false
+            onCancel: {
+                component.state="sotto"
+
+            }
+            onExit: component.finish()
+        }
+
+        WorkoutSkip
+        {
+            id: skip
+            visible: false
+            onCancel: {
+                component.state="sotto"
+
+            }
+            onExit: component.finish()
+        }
+
+    }
 }
+
