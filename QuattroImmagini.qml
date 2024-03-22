@@ -35,6 +35,7 @@ Item {
         anchors.fill: parent
         spacing: component.bordo
         IconaImmagine{
+            Component.onCompleted: console.log("immagine dimensioni:",width,height)
             color: parametri_generali.coloreBordo
             highlighted: component.what_pressed===1
             shadow: true
