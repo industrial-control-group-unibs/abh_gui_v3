@@ -74,7 +74,7 @@ Item {
 //                bottom: display.top
 //                bottomMargin: display.height*0.1
                 verticalCenter: display.verticalCenter
-                verticalCenterOffset: -display.key_width-height/2
+                verticalCenterOffset: -display.key_width/2-height/2+display.key_width/10
                 left: titolo.left
                 right: titolo.right
                 leftMargin: 113/1080*parent.width
