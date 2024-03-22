@@ -77,7 +77,8 @@ Item
     }
 
 
-    IconaRipetizioni
+
+    IconaTempo
     {
         id: icona_rep
         visible: true
@@ -86,8 +87,9 @@ Item
 //        anchors.verticalCenterOffset: -parent.height*0.25
         anchors.verticalCenter: parent.verticalCenter
         colore: parametri_generali.coloreBordo
-        ripetizioni: (component.duration-component.position)*0.001
+        tempo: (component.duration-component.position)*0.001
         property real ratio: (1.0*component.position)/component.duration
+
 
         CircularTimer {
             colore: parametri_generali.coloreUtente
@@ -101,7 +103,7 @@ Item
 
         property bool play5s: false
         property bool playgo: false
-        onRipetizioniChanged: {
+        onTempoChanged: {
 
             if (!playgo)
             {
@@ -109,7 +111,7 @@ Item
                 playSound_go.play()
             }
 
-            if (icona_rep.ripetizioni<6 && !play5s)
+            if (icona_rep.tempo<6 && !play5s)
             {
                 play5s=true
                 playSound_5s.play()
@@ -117,11 +119,11 @@ Item
 
             conto_alla_rovescia.restart()
 
-            led_udp.data=[parametri_generali.coloreLedInizio.r*(1.0-ratio)+parametri_generali.coloreLedFine.r*ratio,
-                          parametri_generali.coloreLedInizio.g*(1.0-ratio)+parametri_generali.coloreLedFine.g*ratio,
-                          parametri_generali.coloreLedInizio.b*(1.0-ratio)+parametri_generali.coloreLedFine.b*ratio]
+            led_udp.data=[parametri_generali.coloreLedInizio.r*(ratio)+parametri_generali.coloreLedFine.r*(1-ratio),
+                          parametri_generali.coloreLedInizio.g*(ratio)+parametri_generali.coloreLedFine.g*(1-ratio),
+                          parametri_generali.coloreLedInizio.b*(ratio)+parametri_generali.coloreLedFine.b*(1-ratio)]
 
-            if (ripetizioni<=0)
+            if (tempo<=0)
             {
                 component.finish()
             }

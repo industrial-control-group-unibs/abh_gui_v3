@@ -5,7 +5,16 @@ Item {
     id: component
     signal pressed
     property color colore: parametri_generali.coloreBordo
-    property int ripetizioni: 0
+    property int tempo: 0
+
+    property string time_string: getTime()
+
+    onTempoChanged:
+    {
+        console.log("time: ",tempo)
+        time_string= getTime()
+    }
+    onTime_stringChanged: console.log("time: ",time_string)
 
 
 
@@ -43,12 +52,9 @@ Item {
         }
 
         Text {
-            text:Number(component.ripetizioni).toFixed()
-            anchors
-            {
-                verticalCenter: parent.verticalCenter
-                horizontalCenter: parent.horizontalCenter
-            }
+            text:component.time_string
+            anchors.fill: parent
+            anchors.margins: parent.height*0.1
             color: parametri_generali.coloreUtente
             wrapMode: TextEdit.WordWrap
             font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
@@ -57,11 +63,20 @@ Item {
             font.letterSpacing: 0
             font.pixelSize: 60
             font.weight: Font.Normal
-            horizontalAlignment: Text.AlignLeft
-            verticalAlignment: Text.AlignTop
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            fontSizeMode: Text.Fit
 
         }
     }
 
 
+    function getTime() {
+        var hours   = Math.floor(tempo / 3600)
+                                 var minutes = Math.floor((tempo-hours*3600) / 60)
+                                 var seconds = Math.floor((tempo-hours*3600-minutes*60))
+                                 return (hours>0?((hours < 10 ? "0" + hours : hours)+":"):"") +
+                                 (minutes < 10 ? "0" + minutes : minutes) + ":" +
+                                 (seconds < 10 ? "0" + seconds : seconds)
+    }
 }

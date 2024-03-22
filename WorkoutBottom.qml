@@ -224,9 +224,9 @@ Item
             {
                 ratio=ripetizioni/(1.0*selected_exercise.reps)
 
-                led_udp.data=[parametri_generali.coloreLedInizio.r*(1.0-ratio)+parametri_generali.coloreLedFine.r*ratio,
-                              parametri_generali.coloreLedInizio.g*(1.0-ratio)+parametri_generali.coloreLedFine.g*ratio,
-                              parametri_generali.coloreLedInizio.b*(1.0-ratio)+parametri_generali.coloreLedFine.b*ratio]
+                led_udp.data=[parametri_generali.coloreLedInizio.r*(ratio)+parametri_generali.coloreLedFine.r*(1.0-ratio),
+                              parametri_generali.coloreLedInizio.g*(ratio)+parametri_generali.coloreLedFine.g*(1.0-ratio),
+                              parametri_generali.coloreLedInizio.b*(ratio)+parametri_generali.coloreLedFine.b*(1.0-ratio)]
 
                 if (ripetizioni<=0)
                 {

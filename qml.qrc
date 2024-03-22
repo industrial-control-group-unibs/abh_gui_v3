@@ -148,5 +148,6 @@
         <file>WorkoutTopPratica.qml</file>
         <file>WorkoutBottomPratica.qml</file>
         <file>PaginaPreparatiPratica.qml</file>
+        <file>IconaTempo.qml</file>
     </qresource>
 </RCC>
