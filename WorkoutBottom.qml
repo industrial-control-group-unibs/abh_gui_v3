@@ -217,15 +217,12 @@ Item
 
                 if (ripetizioni>selected_exercise.reps)
                 {
-                    //playSound_ding.play()
-                    //go_out.running = true
-//                    ripetizioni=selected_exercise.reps
                     pageLoader.source = "PaginaRiposo.qml"
                 }
             }
             else
             {
-                ratio=1.0-ripetizioni/(1.0*selected_exercise.reps)
+                ratio=ripetizioni/(1.0*selected_exercise.reps)
 
                 led_udp.data=[parametri_generali.coloreLedInizio.r*(1.0-ratio)+parametri_generali.coloreLedFine.r*ratio,
                               parametri_generali.coloreLedInizio.g*(1.0-ratio)+parametri_generali.coloreLedFine.g*ratio,
