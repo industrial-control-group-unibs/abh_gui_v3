@@ -83,7 +83,7 @@ Item
         visible: true
         width: parent.height*0.35
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenterOffset: -parent.height*0.25
+//        anchors.verticalCenterOffset: -parent.height*0.25
         anchors.verticalCenter: parent.verticalCenter
         colore: parametri_generali.coloreBordo
         ripetizioni: (component.duration-component.position)*0.001
