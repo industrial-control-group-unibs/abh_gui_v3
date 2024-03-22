@@ -71,8 +71,10 @@ Item {
             //visible: component.conferma
             anchors
             {
-                top: titolo.bottom
-                topMargin: titolo.height*0.1
+//                bottom: display.top
+//                bottomMargin: display.height*0.1
+                verticalCenter: display.verticalCenter
+                verticalCenterOffset: -display.key_width-height/2
                 left: titolo.left
                 right: titolo.right
                 leftMargin: 113/1080*parent.width
