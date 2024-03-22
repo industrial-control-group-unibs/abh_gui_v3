@@ -7,7 +7,7 @@ import QtQuick.Shapes 1.12
 import QtQuick.Layouts 1.1
 SceltaQuadrati
 {
-    titolo: yoga.pratica
+    titolo: disciplina.pratica
 
     onPressSx: pageLoader.source="SceltaYogaPratica.qml"
     onPressDx: pageLoader.source="PaginaWorkoutPratica.qml"

@@ -7,8 +7,8 @@ import QtQuick.Shapes 1.12
 import QtQuick.Layouts 1.1
 SceltaLista
 {
-    titolo: yoga.pratica
-    cartella_immagini: "yoga"
+    titolo: disciplina.pratica
+    cartella_immagini: disciplina.nome
 
     onPressSx: pageLoader.source="SceltaYoga.qml"
     onPressDx: pageLoader.source="SceltaYogaPraticaEsercizi.qml"
