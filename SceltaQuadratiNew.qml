@@ -9,44 +9,55 @@ import QtQuick.Layouts 1.1
 
 import QtMultimedia 5.0
 Item {
+
+    id: component
     anchors.fill: parent
 
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
+    signal pressSx
+    signal pressDx
+    signal swipeSx
+    signal swipeDx
+    signal selected(string name)
+    signal reload
+    signal shadow
 
-    Component.onDestruction:
-    {
-        selected_exercise.workout=""
-    }
+    onShadow: lista.shadow()
+    onReload: lista.reload()
 
+    property string titolo: "TITOLO"
+    property string selezione: ""
+    property variant model
+    property bool swipe: false
+    property bool swipe_sx: false
+
+    Barra_superiore{titolo: component.titolo}
 
     Barra_superiore{
         titolo: zona_allenamento.gruppo
     }
 
+
     FrecceSotto
     {
-        id: sotto
-        swipe_sx: true
+        onPressSx: component.pressSx()
+        onPressDx: component.pressDx()
+        dx_visible: lista.currentIndex>=0
 
-        onPressSx: pageLoader.source= "SceltaGruppo.qml"
-        onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
-        dx_visible: grid.currentIndex>=0
+        swipe_visible: component.swipe
+        swipe_sx: component.swipe_sx
+        onSwipeDx: component.swipeDx()
+        onSwipeSx: component.swipeSx()
 
-        onSwipeDx:
-        {
-            pageLoader.source=  "SceltaEserciziNew.qml"
-        }
-        onSwipeSx:
-        {
-
-        }
-        up_visible: grid.currentIndex>0
-        down_visible: grid.currentIndex<(grid.count-1)
-        onPressDown:  grid.currentIndex<(grid.count-1)?grid.currentIndex+=1:grid.currentIndex
-        onPressUp: grid.currentIndex-=1
+        up_visible: lista.currentIndex>0
+        down_visible: lista.currentIndex<(lista.count-1)
+        onPressDown:  lista.currentIndex<(lista.count-1)?lista.currentIndex+=1:lista.currentIndex
+        onPressUp: lista.currentIndex>0?lista.currentIndex-=1:lista.currentIndex
     }
+
+
 
 
 
@@ -70,32 +81,19 @@ Item {
             z: 1
 
 
-            Text {
+            Testo
+            {
                 id: nome_titolo
-                text:selected_exercise.name==="unselected"? zona_allenamento.gruppo : selected_exercise.name
+                text: component.selezione
                 anchors
                 {
                     horizontalCenter: parent.horizontalCenter
                     top: parent.top
                 }
-                color: parametri_generali.coloreBordo
-                wrapMode: TextEdit.WordWrap
-                font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
-
-                font.italic: false
-                font.letterSpacing: 0
                 font.pixelSize: 30
                 font.weight: Font.Normal
                 horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignTop
-
-                layer.enabled: true
-                layer.effect: DropShadow {
-                    verticalOffset: 2
-                    color: "#80000000"
-                    radius: 1
-                    samples: 3
-                }
             }
 
             Rectangle   {
@@ -106,10 +104,10 @@ Item {
 
 
 
-                width: grid.cellWidth
+                width: lista.width*0.33
                 height: width
                 radius: 20
-                border.color: selected_exercise.immagine? parametri_generali.coloreBordo: "transparent"
+                border.color: component.selezione!==""? parametri_generali.coloreBordo: "transparent"
                 border.width: 2
 
 
@@ -142,7 +140,7 @@ Item {
                     autoPlay: false
                     autoLoad: true
 
-                    source: "file://"+PATH+"/video_brevi_esercizi/"+selected_exercise.video_intro
+                    source: "file://"+PATH+"/video_brevi_esercizi/"+_esercizi.getVideoIntro(component.selezione)
 
                     onPlaybackStateChanged: {
                         if(playbackState==1){
@@ -175,43 +173,53 @@ Item {
             }
         }
 
+        ListView {
+            snapMode: ListView.SnapOneItem
+            id: lista
+            anchors {
+                top: parent.top
+                topMargin: header.height
+                bottom: parent.bottom
+                left: parent.left
+                right: parent.right
+            }
+            currentIndex: -1
 
-        GridView {
+            model: component.model
 
-            id: grid
-            anchors.topMargin: header.height
-            cellWidth: width*0.33; cellHeight: cellWidth
-            anchors.fill: parent
-            snapMode: GridView.SnapOneRow //SnapToRow
-            focus: true
+            signal reload;
 
 
-            Component.onCompleted: {currentIndex=-1}
+            delegate: IconaDescrizioneEsercizi{
 
-            model: gruppo_model_
 
-            delegate: IconaImmagine{
-                name: _esercizi.getName(ex_name)
                 color: parametri_generali.coloreBordo
                 highlighted:
                 {
-                    if (grid.currentIndex>=0)
-                        grid.currentIndex === index
+                    if (lista.currentIndex>=0)
+                        lista.currentIndex === index
                     else
                         false;
                 }
-                text: ""
-                image:"file://"+PATH+"/immagini_esercizi/"+_esercizi.getImage(ex_name)
+                nome:  _esercizi.getName(vector[0])
+                type:  _esercizi.getType(vector[0])
+                immagine:  _esercizi.getImage(vector[0])
 
-                width: grid.cellWidth-2
-                height: grid.cellHeight-2
+                ripetizioni:-1
+                serie: -1
+                potenza: -1
+
+
+
+                width: lista.width-2
 
                 signal selected
+
                 onSelected:
                 {
-                    selected_exercise.code= ex_name
-                    selected_exercise.sets=1
-                    grid.currentIndex=index
+                    component.selezione= vector[0]
+                    lista.currentIndex=index
+                    component.selected(vector[0])
                 }
 
                 onHighlightedChanged:
@@ -225,7 +233,6 @@ Item {
                 onPressed: {
                     selected()
                 }
-
             }
 
             onCurrentIndexChanged: {
@@ -235,8 +242,8 @@ Item {
                     mp_esercizio.play()
                 }
             }
-        }
 
+        }
     }
 
 

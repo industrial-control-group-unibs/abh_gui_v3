@@ -16,7 +16,9 @@ Rectangle {
     signal pressDx
     signal selected(string name)
     signal reload
+    signal shadow
 
+    onShadow: lista.shadow()
 
 
     property string titolo: "TITOLO"
@@ -25,11 +27,6 @@ Rectangle {
     Barra_superiore{titolo: component.titolo}
 
     onReload: lista.reload()
-
-    Component.onDestruction:
-    {
-        console.log("closing SceltaGruppo")
-    }
 
     FrecceSotto
     {
@@ -82,6 +79,12 @@ Rectangle {
                 lista.forceLayout()
             }
 
+            signal shadow
+            onShadow:
+            {
+                lista.currentItem.dark_shadow=true
+            }
+
             model: component.model
             currentIndex:-1
 
@@ -95,15 +98,46 @@ Rectangle {
                         false;
 
                 }
-                text: ex_name
-                image: "file://"+PATH+"/"+component.cartella_immagini+"/"+image_name
+                text: vector[0]
+                dark_shadow: vector[3]==="no"
+                image: "file://"+PATH+"/"+component.cartella_immagini+"/"+vector[1]
                 width: lista.width-2
 
+
+                Testo
+                {
+                    visible: !dark_shadow && vector[2]!==""
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: parent.height*0.1
+                    height: parent.height*0.3
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.rightMargin: parent.width*0.05
+                    anchors.leftMargin: parent.width*0.05
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignBottom
+                    text: vector[2]
+                    fontSizeMode: Text.Fit
+                }
+                Testo
+                {
+                    visible: dark_shadow
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: parent.height*0.1
+                    height: parent.height*0.3
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignBottom
+                    text: qsTr("NON DISPONIBILE CON IL TUO PIANO")
+                    fontSizeMode: Text.Fit
+                }
+                Component.onCompleted: added()
                 signal selected
                 onSelected:
                 {
                     lista.currentIndex = index
-                    component.selected(ex_name)
+                    component.selected(vector[0])
                 }
 
                 onHighlightedChanged:

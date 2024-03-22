@@ -11,11 +11,17 @@ SceltaLista
     cartella_immagini: "yoga"
 
     onPressSx: pageLoader.source="SceltaYoga.qml"
-    onPressDx: pageLoader.source="SceltaYoga.qml"
-    //onSelected:
+    onPressDx: pageLoader.source="SceltaYogaPraticaEsercizi.qml"
+
+    onSelected:
+    {
+        console.log("selezionato ", name)
+        disciplina.pratica=name
+    }
 
     Component.onCompleted: {
-        _read_lista.readFile("yoga/"+yoga.pratica)
+        if (!_read_lista.readFile(disciplina.nome+"/"+yoga.tipologia))
+            pageLoader.source="SceltaYoga.qml"
         reload()
 
     }

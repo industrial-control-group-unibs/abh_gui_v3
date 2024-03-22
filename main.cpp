@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
   ListaNome gruppo_model(data_path);
   ListString ls;
   ListaImmagini zone(data_path+"/zone");
-  ListaImmagini read_lista(data_path);
+  ListStringCSV read_lista(data_path);
 
   ListaUtenti utenti(data_path+"/../utenti",
                      template_path);
@@ -156,11 +156,14 @@ int main(int argc, char *argv[])
 
   double score_min,score_max;
 
+  bool modalita_tuning=false;
   try {
     rapidcsv::Document info(dir_path+"/../utenti/device_names.csv");
     wifi_name=info.GetCell<std::string>(1,0);
     monitor=info.GetCell<std::string>(1,1);
     touch=info.GetCell<std::string>(1,2);
+    if (info.GetRowCount()>=9)
+      modalita_tuning=info.GetCell<std::string>(1,8).compare("no"); // true if not equal to "no"
   } catch (std::exception ex) {
     std::cerr << "error:" << ex.what() <<std::endl;
     std::cerr << "file " << dir_path <<"/../utenti/device_names.csv is wrong, it should have 3 rows" << std::endl;
@@ -301,6 +304,7 @@ int main(int argc, char *argv[])
   engine->rootContext()->setContextProperty("_template_path", q_template_path);
   engine->rootContext()->setContextProperty("_privacy", privacy);
   engine->rootContext()->setContextProperty("_info", info);
+  engine->rootContext()->setContextProperty("_modalita_tuning", modalita_tuning);
 
 
 

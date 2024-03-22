@@ -7,14 +7,14 @@ import QtQuick.Layouts 1.1
 Item {
     implicitWidth: 800
     implicitHeight: 225
-
+    clip: true
     property bool highlighted: true
     property bool shadow: !highlighted
     property bool dark_shadow: false
 
 
     property real margin: 2
-    property real bordo: component.highlighted? 8: 2
+    property real bordo: component.highlighted? 8: 4
     property real radius: 20
 
     property color color: parametri_generali.coloreBordo

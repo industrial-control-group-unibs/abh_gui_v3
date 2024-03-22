@@ -32,7 +32,7 @@ public:
     QHash<int, QByteArray> roleNames() const override;
 
 public slots:
-    void readFile(QString string);
+    bool readFile(QString string);
 
 
 private: //members

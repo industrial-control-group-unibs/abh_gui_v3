@@ -117,7 +117,7 @@ Item {
             IconaImmagine{
                 color: parametri_generali.coloreBordo
                 highlighted: component.what_pressed===4
-                dark_shadow: true
+                dark_shadow: !_modalita_tuning
                 text: qsTr("MODALITA' TUNING")
                 image: "file://"+PATH+"/immagini_allenamento_personalizzato/ALLENAMENTO_PERSONALIZZATO_3.jpg"
                 width: parent.width-2

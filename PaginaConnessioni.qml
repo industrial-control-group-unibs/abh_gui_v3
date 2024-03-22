@@ -33,7 +33,7 @@ Item {
 
     Timer
     {
-        interval: 5000
+        interval: 10000
         id: timer_scan
         repeat: true
         running: true
@@ -178,12 +178,14 @@ Item {
 
                     signal reload;
 
+                    property int tmp_idx: 0
                     onReload:
                     {
+                        lista_wifi.tmp_idx=lista_wifi.currentIndex
                         lista_wifi.model=[]
                         lista_wifi.model= _wifi
                         lista_wifi.forceLayout()
-//                        currentIndex:-1
+                        lista_wifi.currentIndex=lista_wifi.tmp_idx
                     }
 
                     delegate:

@@ -17,6 +17,7 @@ Item {
     implicitWidth: 1080/2
 
     property string link_dx: "PaginaPreparati.qml"
+    property bool link_dx_visible: true
     property string video_folder: "video_istruzioni"
     property string video_name: selected_exercise.video_preparati
     property string titolo: selected_exercise.name
@@ -27,6 +28,13 @@ Item {
     property real remaning_time: 10000
     signal endVideo
 
+
+    signal pressSx
+    onPressSx:
+    {
+        _history.pop()
+        pageLoader.source= _history.pop()
+    }
     Component.onCompleted:
     {
 
@@ -98,11 +106,8 @@ Item {
 
         FrecceSxDx
         {
-            onPressSx:
-            {
-                _history.pop()
-                pageLoader.source= _history.pop()
-            }
+            dx_visible: component.link_dx_visible
+            onPressSx: component.pressSx()
             onPressDx: pageLoader.source= link_dx
         }
 

@@ -27,7 +27,7 @@ public:
 
 
 public slots:
-    void readFile(QString filename);
+    bool readFile(QString filename);
     bool rename(QString oldname, QString newname, bool replace=false);
     void appendIcon(bool flag){      append_=flag;    }
     void addRow(QString filename, QStringList row);

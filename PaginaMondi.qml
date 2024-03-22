@@ -20,7 +20,6 @@ Rectangle {
     }
 
 
-    Component.onDestruction: console.log("closing PaginaAllenamento")
 
 
     Barra_superiore{id: barra}
@@ -31,12 +30,30 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: barra.height
+//        anchors.bottomMargin: barra.height
         anchors.top: barra.bottom
 
 
         QuattroImmagini
         {
+
+            onPress11: {
+                pageLoader.source = link11
+            }
+            onPress12: {
+                disciplina.nome="YOGA"
+                console.log("disciplina",disciplina.nome)
+                pageLoader.source = link12
+            }
+            onPress21: {
+                disciplina.nome="PILATES"
+                pageLoader.source = link21
+            }
+            onPress22: {
+                disciplina.nome="MEDITAZIONE"
+                pageLoader.source = link22
+            }
+
             immagine11: "allenamento.png"
             testo11: qsTr("ALLENAMENTO")
             link11: "PaginaAllenamento.qml"
@@ -48,11 +65,11 @@ Rectangle {
 
             immagine21: "pilates.png"
             testo21: qsTr("PILATES")
-            link21: "PaginaMondi.qml"
+            link21:  "SceltaYoga.qml"
 
             immagine22: "meditazione.png"
             testo22: qsTr("MEDITATIONE")
-            link22: "PaginaMondi.qml"
+            link22:  "SceltaYoga.qml"
         }
 
     }

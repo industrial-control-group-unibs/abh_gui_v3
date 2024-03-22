@@ -140,5 +140,12 @@
         <file>SceltaLista.qml</file>
         <file>SceltaYoga.qml</file>
         <file>SceltaYogaPratica.qml</file>
+        <file>SceltaQuadrati.qml</file>
+        <file>SceltaYogaPraticaEsercizi.qml</file>
+        <file>SceltaQuadratiNew.qml</file>
+        <file>SceltaYogaPraticaEserciziNew.qml</file>
+        <file>PaginaWorkoutPratica.qml</file>
+        <file>WorkoutTopPratica.qml</file>
+        <file>WorkoutBottomPratica.qml</file>
     </qresource>
 </RCC>

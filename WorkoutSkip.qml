@@ -26,10 +26,6 @@ Item
         font.pixelSize: 40
         anchors
         {
-            //horizontalCenter: parent.horizontalCenter
-            //verticalCenter: parent.verticalCenter
-            //topMargin: 5
-
             horizontalCenter: parent.horizontalCenter
             top: parent.top
             topMargin: 5

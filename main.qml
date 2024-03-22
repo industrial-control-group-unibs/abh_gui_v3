@@ -73,8 +73,11 @@ ApplicationWindow {
     }
 
     Item {
-        id: yoga
+        id: disciplina
+        property string nome: ""
         property string pratica: ""
+        property string tipologia: ""
+        property string esercizio: ""
     }
 
     Item {

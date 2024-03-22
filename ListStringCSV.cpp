@@ -52,7 +52,7 @@ QHash<int, QByteArray> ListStringCSV::roleNames() const
 }
 
 
-void ListStringCSV::readFile(QString filename)
+bool ListStringCSV::readFile(QString filename)
 {
 
   std::string nome_file=dir_path_+"/"+filename.toStdString()+".csv";
@@ -85,7 +85,9 @@ void ListStringCSV::readFile(QString filename)
   } catch (...) {
     qCritical() << "the file does not exist = " << nome_file.c_str();
     data_.clear();
+    return false;
   }
+  return true;
 }
 
 

@@ -52,7 +52,7 @@ QHash<int, QByteArray> ListaImmagini::roleNames() const
 }
 
 
-void ListaImmagini::readFile(QString string)
+bool ListaImmagini::readFile(QString string)
 {
   std::string nome_file=dir_path_+"/"+string.toStdString()+".csv";
 
@@ -76,8 +76,10 @@ void ListaImmagini::readFile(QString string)
     }
   } catch (std::exception& ex) {
     std::cout << "expection " << ex.what() << " while reading file " << nome_file << std::endl;
+    return false;
   }
 
+  return true;
 
 
 }

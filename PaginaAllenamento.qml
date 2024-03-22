@@ -51,6 +51,19 @@ Rectangle {
 
         QuattroImmagini
         {
+            onPress11: {
+                pageLoader.source = link11
+            }
+            onPress12: {
+                pageLoader.source = link12
+            }
+            onPress21: {
+                pageLoader.source = link21
+            }
+            onPress22: {
+                pageLoader.source = link22
+            }
+
             immagine11: "workout.png"
             testo11: qsTr("ALLENAMENTO\n GUIDATO")
             link11: "SceltaWorkout.qml"

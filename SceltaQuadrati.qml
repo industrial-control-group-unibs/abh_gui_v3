@@ -9,17 +9,31 @@ import QtQuick.Layouts 1.1
 
 import QtMultimedia 5.0
 Item {
+
+    id: component
     anchors.fill: parent
 
     implicitHeight: 1920/2
     implicitWidth: 1080/2
 
+    signal pressSx
+    signal pressDx
+    signal swipeSx
+    signal swipeDx
+    signal selected(string name)
+    signal reload
+    signal shadow
 
-    Component.onDestruction:
-    {
-        selected_exercise.workout=""
-    }
+    onShadow: grid.shadow()
+    onReload: grid.reload()
 
+    property string titolo: "TITOLO"
+    property string selezione: ""
+    property variant model
+    property bool swipe: false
+    property bool swipe_sx: true
+
+    Barra_superiore{titolo: component.titolo}
 
     Barra_superiore{
         titolo: zona_allenamento.gruppo
@@ -28,20 +42,18 @@ Item {
     FrecceSotto
     {
         id: sotto
-        swipe_sx: true
 
-        onPressSx: pageLoader.source= "SceltaGruppo.qml"
-        onPressDx: pageLoader.source=  "PaginaConfEsercizioSingolo.qml"
+
+
+        onPressSx: component.pressSx()
+        onPressDx: component.pressDx()
         dx_visible: grid.currentIndex>=0
 
-        onSwipeDx:
-        {
-            pageLoader.source=  "SceltaEserciziNew.qml"
-        }
-        onSwipeSx:
-        {
+        swipe_visible: component.swipe
+        swipe_sx: component.swipe_sx
+        onSwipeDx: component.swipeDx()
+        onSwipeSx: component.swipeSx()
 
-        }
         up_visible: grid.currentIndex>0
         down_visible: grid.currentIndex<(grid.count-1)
         onPressDown:  grid.currentIndex<(grid.count-1)?grid.currentIndex+=1:grid.currentIndex
@@ -70,32 +82,19 @@ Item {
             z: 1
 
 
-            Text {
+            Testo
+            {
                 id: nome_titolo
-                text:selected_exercise.name==="unselected"? zona_allenamento.gruppo : selected_exercise.name
+                text: component.selezione
                 anchors
                 {
                     horizontalCenter: parent.horizontalCenter
                     top: parent.top
                 }
-                color: parametri_generali.coloreBordo
-                wrapMode: TextEdit.WordWrap
-                font.family:  "Helvetica" //".AppleSystemUIFont"  //sudo apt-get install fonts-paratype
-
-                font.italic: false
-                font.letterSpacing: 0
                 font.pixelSize: 30
                 font.weight: Font.Normal
                 horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignTop
-
-                layer.enabled: true
-                layer.effect: DropShadow {
-                    verticalOffset: 2
-                    color: "#80000000"
-                    radius: 1
-                    samples: 3
-                }
             }
 
             Rectangle   {
@@ -109,7 +108,7 @@ Item {
                 width: grid.cellWidth
                 height: width
                 radius: 20
-                border.color: selected_exercise.immagine? parametri_generali.coloreBordo: "transparent"
+                border.color: component.selezione!==""? parametri_generali.coloreBordo: "transparent"
                 border.width: 2
 
 
@@ -142,7 +141,7 @@ Item {
                     autoPlay: false
                     autoLoad: true
 
-                    source: "file://"+PATH+"/video_brevi_esercizi/"+selected_exercise.video_intro
+                    source: "file://"+PATH+"/video_brevi_esercizi/"+_esercizi.getVideoIntro(component.selezione)
 
                     onPlaybackStateChanged: {
                         if(playbackState==1){
@@ -185,13 +184,27 @@ Item {
             snapMode: GridView.SnapOneRow //SnapToRow
             focus: true
 
+            signal reload;
+
+            onReload:
+            {
+                grid.model=[]
+                grid.model= component.model
+                grid.forceLayout()
+            }
+
+            signal shadow
+            onShadow:
+            {
+                grid.currentItem.dark_shadow=true
+            }
 
             Component.onCompleted: {currentIndex=-1}
 
-            model: gruppo_model_
+            model: component.model
 
             delegate: IconaImmagine{
-                name: _esercizi.getName(ex_name)
+                name: _esercizi.getName(vector[0])
                 color: parametri_generali.coloreBordo
                 highlighted:
                 {
@@ -201,7 +214,7 @@ Item {
                         false;
                 }
                 text: ""
-                image:"file://"+PATH+"/immagini_esercizi/"+_esercizi.getImage(ex_name)
+                image:"file://"+PATH+"/immagini_esercizi/"+_esercizi.getImage(vector[0])
 
                 width: grid.cellWidth-2
                 height: grid.cellHeight-2
@@ -209,9 +222,9 @@ Item {
                 signal selected
                 onSelected:
                 {
-                    selected_exercise.code= ex_name
-                    selected_exercise.sets=1
+                    component.selezione= vector[0]
                     grid.currentIndex=index
+                    component.selected(vector[0])
                 }
 
                 onHighlightedChanged:
