@@ -95,7 +95,7 @@ Item
     {
         visible: true
         id: tasto_video
-        width: 50
+        width: 100
         anchors
         {
             horizontalCenter: parent.horizontalCenter
