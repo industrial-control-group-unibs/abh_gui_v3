@@ -61,7 +61,7 @@ def main():
     while (cap.isOpened()):
         _, frame = cap.read()
         fs.udp_frame(frame)
-        time.sleep(0.1)
+        time.sleep(0.3)
     cap.release()
     cv2.destroyAllWindows()
     s.close()

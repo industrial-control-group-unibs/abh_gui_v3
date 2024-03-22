@@ -66,14 +66,14 @@ Item {
             //visible: component.conferma
             anchors
             {
-                top: titolo.bottom
-                topMargin: titolo.height*0.1
-                left: titolo.left
-                right: titolo.right
+                bottom: display.top
+                bottomMargin: display.height*0.1
+                left: display.left
+                right: display.right
                 leftMargin: 113/1080*parent.width
                 rightMargin: 113/1080*parent.width
             }
-            height: titolo.height
+            height: display.height
             IconaCerchio
             {
                 id: icona_salva_pwd

@@ -7,3 +7,4 @@ nome wifi shelly,
 indirizzo ip shelly RGB2,192.168.33.1
 indirizzo ip shelly SWITCH,192.168.33.3
 password wifi shelly,
+modalita tuning,no
