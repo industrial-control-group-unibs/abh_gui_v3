@@ -24,7 +24,7 @@ SceltaQuadrati
 
 
     Component.onCompleted: {
-        yoga.esercizio=""
+        disciplina.esercizio=""
         if (!_read_lista.readFile(disciplina.nome+"/"+disciplina.tipologia+"/"+disciplina.pratica))
             pageLoader.source="SceltaYogaPratica.qml"
         reload()

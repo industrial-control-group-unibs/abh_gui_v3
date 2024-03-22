@@ -167,7 +167,7 @@ Item
             autoPlay: true
             autoLoad: true
             //loops: MediaPlayer.Infinite
-            source: "file://"+PATH+"/video_workout_esercizi/"+_esercizi.getVideoWorkout(yoga.esercizio)
+            source: "file://"+PATH+"/video_workout_esercizi/"+_esercizi.getVideoWorkout(disciplina.esercizio)
             onStopped: tasto_video.state= "play"
 
         }

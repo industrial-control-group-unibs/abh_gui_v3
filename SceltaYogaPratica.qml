@@ -20,7 +20,7 @@ SceltaLista
     }
 
     Component.onCompleted: {
-        if (!_read_lista.readFile(disciplina.nome+"/"+yoga.tipologia))
+        if (!_read_lista.readFile(disciplina.nome+"/"+disciplina.tipologia))
             pageLoader.source="SceltaYoga.qml"
         reload()
 

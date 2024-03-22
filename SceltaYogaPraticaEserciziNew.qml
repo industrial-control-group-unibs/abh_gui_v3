@@ -7,7 +7,7 @@ import QtQuick.Shapes 1.12
 import QtQuick.Layouts 1.1
 SceltaQuadratiNew
 {
-    titolo: yoga.pratica
+    titolo: disciplina.pratica
 
     onPressSx: pageLoader.source="SceltaYogaPratica.qml"
     onPressDx: pageLoader.source="PaginaWorkoutPratica.qml"
@@ -23,7 +23,7 @@ SceltaQuadratiNew
 
     Component.onCompleted: {
         disciplina.esercizio=""
-        if (!_read_lista.readFile(disciplina.nome+"/"+yoga.tipologia+"/"+yoga.pratica))
+        if (!_read_lista.readFile(disciplina.nome+"/"+disciplina.tipologia+"/"+disciplina.pratica))
             pageLoader.source="SceltaYogaPratica.qml"
         reload()
 
