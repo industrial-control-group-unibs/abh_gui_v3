@@ -68,7 +68,7 @@ Rectangle {
             link21:  "SceltaYoga.qml"
 
             immagine22: "meditazione.png"
-            testo22: qsTr("MEDITATIONE")
+            testo22: qsTr("MEDITAZIONE")
             link22:  "SceltaYoga.qml"
         }
 
