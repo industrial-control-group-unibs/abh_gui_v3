@@ -23,6 +23,7 @@ PaginaVideoSingolo
     testo_visibile: false
 
     Component.onCompleted: {
+        selected_exercise.code="novision"
         video_name= _esercizi.getVideoWorkout(disciplina.esercizio)
     }
 
