@@ -33,29 +33,24 @@ Item {
             id: titolo
         }
 
-        Item
+        FrecceSotto
         {
-            id: icone
-            anchors
-            {
-                left: parent.left
-                right: parent.right
-                bottom: parent.bottom
-            }
-            height: parent.height*0.3
+            id: sotto
+            swipe_visible: false
 
-            FrecceSxDx
+            onPressSx:
             {
-                id: freccia
-                onPressSx:
-                {
-                    _history.pop()
-                    pageLoader.source=_history.pop()
-                }
-                dx_visible: false
-                z:5
+                _history.pop()
+                pageLoader.source=_history.pop()
             }
+            dx_visible: false
+
+            up_visible: flickable.ypos>0
+            down_visible: flickable.ypos<0.98
+            onPressDown:  flickable.contentY+=0.03*flickable.contentHeight
+            onPressUp: flickable.contentY-=0.03*flickable.contentHeight
         }
+
 
         Item {
             id: testo
@@ -64,13 +59,16 @@ Item {
                 left: parent.left
                 right: parent.right
                 top: titolo.bottom
-                bottom: icone.top
+                bottom: sotto.top
             }
 
             Flickable {
                 clip: true
                 anchors.fill: parent
                 contentWidth: parent.width; contentHeight: testo_privacy.height
+                property real ypos: visibleArea.yPosition
+
+                id: flickable
 
                 Testo
                 {
