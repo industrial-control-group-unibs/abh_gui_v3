@@ -174,6 +174,7 @@ Item
                 leftMargin: parent.border.width
                 rightMargin: parent.border.width
             }
+            cache: false
 
 
 
