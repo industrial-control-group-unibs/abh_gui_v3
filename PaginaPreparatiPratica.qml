@@ -33,7 +33,7 @@ PaginaVideoSingolo
     onRemaning_timeChanged:
     {
 
-        if (component.remaning_time<5.0 && !component.play5s)
+        if (component.remaning_time>4.0 && component.remaning_time<5.0 && !component.play5s)
         {
             component.play5s=true
             playSound.play()

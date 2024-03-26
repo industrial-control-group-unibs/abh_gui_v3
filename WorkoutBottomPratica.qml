@@ -45,7 +45,7 @@ Item
     }
     SoundEffect {
         id: playSound_go
-        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/frase5sec.wav"
+        source: "file://"+PATH+"/suoni/"+parametri_generali.lingua+"/readygo.wav"
         volume: parametri_generali.voice?1.0:0.0
     }
 

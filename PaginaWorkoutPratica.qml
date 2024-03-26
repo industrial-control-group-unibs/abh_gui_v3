@@ -148,6 +148,7 @@ Item {
         WorkoutTopPratica{
             id: video_top
             swipe: false
+            pausa_visible: component.state==="sotto"
         }
         WorkoutBottomPratica{
             id: sotto
