@@ -117,6 +117,7 @@ Rectangle {
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignBottom
                     text: vector[2]
+                    z: 5
                     fontSizeMode: Text.Fit
                 }
                 Testo
@@ -129,7 +130,8 @@ Rectangle {
                     anchors.right: parent.right
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignBottom
-                    text: qsTr("NON DISPONIBILE CON IL TUO PIANO")
+                    text: vector[4]===""?qsTr("NON DISPONIBILE CON IL TUO PIANO"):vector[4]
+                    z: 50
                     fontSizeMode: Text.Fit
                 }
                 Component.onCompleted: added()
