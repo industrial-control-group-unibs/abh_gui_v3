@@ -84,7 +84,7 @@ Item {
             Testo
             {
                 id: nome_titolo
-                text: component.selezione
+                text: _esercizi.getName(component.selezione)
                 anchors
                 {
                     horizontalCenter: parent.horizontalCenter
