@@ -78,6 +78,8 @@ Item {
                     anchors.right: parent.right
                     fontSizeMode: Text.VerticalFit
                     wrapMode: Text.WordWrap
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignTop
                     text: _privacy
                 }
             }

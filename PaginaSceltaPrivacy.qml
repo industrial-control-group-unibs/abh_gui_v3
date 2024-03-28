@@ -64,6 +64,20 @@ Item {
             id: titolo
         }
 
+        FrecceSotto
+        {
+            id: sotto
+            swipe_visible: false
+
+            sx_visible: false
+            dx_visible: false
+
+            up_visible: flickable.ypos>0
+            down_visible: flickable.ypos<0.98
+            onPressDown:  flickable.contentY+=0.03*flickable.contentHeight
+            onPressUp: flickable.contentY-=0.03*flickable.contentHeight
+        }
+
         Item
         {
             id: icone
@@ -71,7 +85,7 @@ Item {
             {
                 left: parent.left
                 right: parent.right
-                bottom: parent.bottom
+                bottom: sotto.top
             }
             height: parent.height*0.3
 
@@ -145,6 +159,8 @@ Item {
                 clip: true
                 anchors.fill: parent
                 contentWidth: parent.width; contentHeight: testo_privacy.height
+                id: flickable
+                property real ypos: visibleArea.yPosition
 
                 Testo
                 {
@@ -154,6 +170,8 @@ Item {
                     anchors.right: parent.right
                     fontSizeMode: Text.VerticalFit
                     wrapMode: Text.WordWrap
+                    horizontalAlignment: Text.AlignLeft
+                    verticalAlignment: Text.AlignTop
                     text: _privacy
                 }
             }
